@@ -1,0 +1,205 @@
+$search-height: 34px;
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 $header-padding;
+    width: 100%;
+    height: $header-hg;
+    background-color: $header-bg;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    z-index: $zindex-main-section + 1;
+
+    .menu-toggle {
+        display: none;
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        transition: all 300ms;
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+        cursor: pointer;
+        i {
+            color: #fff;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+            display: block;
+        }
+    }
+
+    .logo {
+        img {
+            vertical-align: middle;
+        }
+    }
+
+    .search {
+        flex: 1;
+        margin-right: $search-height;
+        position: relative;
+        .ant-input {
+            height: $search-height;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: none;
+            padding-left: $search-height !important;
+            &::-webkit-input-placeholder {
+                color: #fff;
+                opacity: 1;
+            }
+        }
+        .ant-input-prefix {
+            i {
+                transition: color 300ms, transform 400ms;
+                font-size: 18px;
+                color: #fff;
+            }
+        }
+        &.search__focus {
+            .ant-input {
+                background-color: #f3f3f3;
+                color: getColor('grey', 8);
+                &::placeholder {
+                    color: getColor('grey', 8);
+                    opacity: 1;
+                }
+            }
+            .ant-input-prefix {
+                i {
+                    transform: rotate(180deg);
+                    color: getColor('grey', 8);
+                    &:before {
+                        content: "\E61B";
+                    }
+                }
+            }
+        }
+    }
+}
+
+.top-nav {
+    >li {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .item {
+        display: block;
+        color: #fff;
+        border-radius: 2px;
+        text-align: center;
+        line-height: 100%;
+        padding: 8px 2px;
+        min-width: 50px;
+        transition: background-color 300ms;
+        cursor: pointer;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        i {
+            font-size: 18px;
+            line-height: 100%;
+        }
+    }
+    .search-btn {
+        display: none;
+    }
+}
+
+// patch
+.header {
+    .ant-card-body {
+        padding: 0;
+    }
+}
+
+@media (min-width: $screen-lg) {
+    .logo {
+        min-width: calc(#{$aside-wd} - #{$header-padding} + #{$content-padding});
+    }
+}
+
+@media (max-width: $screen-md-max) {
+    .header {
+        .menu-toggle {
+            display: block;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            transition: transform 300ms;
+            padding: 0 $header-padding;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+            z-index: $zindex-main-section + 20;
+            &:not(.search__toggled) {
+                transform: translate3d(0, -105%, 0);
+            }
+        }
+    }
+    .top-nav {
+        margin: 0 0 0 auto;
+        .search-btn {
+            display: inline-block;
+        }
+    }
+}
+
+// APP ICONS
+$padding-h: 12px;
+.app-icons {
+    padding: $padding-h;
+    .ant-col-6 {
+        padding: $padding-h 0;
+        border-radius: 4px;
+        text-align: center;
+        transition: background-color 300ms;
+        cursor: pointer;
+        &:hover {
+            background-color: #ECECEC;
+        }
+    }
+    i {
+        border-radius: 50%;
+        font-size: 22px;
+        padding: 15px;
+    }
+    small {
+        font-size: 14px;
+        padding-top: 4px;
+        color: #9c9c9c;
+        display: block;
+    }
+}
+
+// Theme Switch
+.theme-icons {
+    display: flex;
+    flex-wrap: wrap;
+    vertical-align: middle;
+    padding-left: 4px;
+    label {
+        flex: 0 1 auto;
+        border-radius: 50%;
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        margin-top: 6px;
+        margin-right: 6px;
+        cursor: pointer;
+        position: relative;
+        i {
+            font-size: 16px;
+            color: #fff;
+            line-height: 30px;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+<perfect-scrollbar [config]="{suppressScrollX: true}">
+    <nz-dropdown nzTrigger="click" nz-col nzSpan="24" class="mb-lg">
+        <div nz-dropdown nz-row nzType="flex" nzJustify="center" nzAlign="middle" class="width-sm rounded-md block-center bg-grey-lighter p-sm">
+            <div nz-col [nzSpan]="8" style="display:flex;">
+                <span class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-icon">
+                    <i class="anticon anticon-user"></i>
+                </span>
+            </div>
+            <div nz-col [nzSpan]="16" class="point">
+                {{settings.user.name}}
+                <p class="text-grey">{{settings.user.email}}</p>
+            </div>
+        </div>
+        <ul nz-menu>
+            <li nz-menu-item (click)="show('profile')">{{ 'profile' | translate }}</li>
+            <li nz-menu-item (click)="show('settings')">{{ 'settings' | translate }}</li>
+            <li nz-menu-item (click)="show('logout')">{{ 'logout' | translate }}</li>
+        </ul>
+    </nz-dropdown>
+    <ul nz-menu nzMode="inline" nzTheme="light">
+        <li nz-menu-group *ngFor="let group of menuSrv.menus">
+            <span title>{{ (group.translate | translate) || group.text }}</span>
+            <ul>
+                <ng-container *ngFor="let child of group.children">
+                    <li *ngIf="child.children" [nzOpen]="child.selected" nz-submenu>
+                        <span title><i class="{{ child.icon }}"></i> {{ (child.translate | translate) || child.text }}</span>
+                        <ul>
+                            <li nz-menu-item *ngFor="let item of child.children"
+                                [nzSelected]="item.selected"
+                                [routerLink]="item.link"
+                                (click)="closeMenu()">
+                                {{ (item.translate | translate) || item.text }}
+                            </li>
+                        </ul>
+                    </li>
+                    <li *ngIf="!child.children" nz-menu-item
+                        [nzSelected]="child.selected"
+                        [routerLink]="child.link"
+                        (click)="closeMenu()">
+                        <i class="{{ child.icon }}"></i> {{ (child.translate | translate) || child.text }}
+                    </li>
+                </ng-container>
+            </ul>
+        </li>
+    </ul>
+</perfect-scrollbar>

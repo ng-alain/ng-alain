@@ -1,0 +1,17 @@
+// Menu
+.ant-menu-inline {
+    border-right: none !important;
+    .ant-menu-item {
+        z-index: inherit !important;
+        &:after {
+            right: inherit !important;
+            left: 0;
+            border-right-color: $primary-color;
+        }
+        &:focus,
+        &:active {
+            outline: none;
+            border: none;
+        }
+    }
+}

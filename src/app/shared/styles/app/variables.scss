@@ -1,0 +1,103 @@
+// Layout Gutter
+$layout-gutter: 8px;
+
+$sm:    $layout-gutter;
+$md:    $layout-gutter * 2;
+$lg:    $layout-gutter * 3;
+
+$grid-breakpoints: (
+    xs: $screen-xs,
+    sm: $screen-sm,
+    md: $screen-md,
+    lg: $screen-lg,
+    xl: $screen-xl,
+) !default;
+
+// spaceing
+$spacings: (
+    0: 0,
+    sm: $sm,
+    md: $md,
+    lg: $lg
+);
+
+// type
+$ul-ol-margin:      18px;
+
+// position
+$zindex-base:       $zindex-back-top - 1;
+$zindex-fixed:      $zindex-base;
+
+// 文本
+$text-sm:       $font-size-base + 0; // 12px
+$text-md:       $font-size-base + 2; // 14px
+$text-lg:       $font-size-base + 4; // 16px
+
+// 宽度
+$widths: (
+    sm: $layout-gutter * 20, // 160px
+    md: $layout-gutter * 30, // 240px
+    lg: $layout-gutter * 40, // 320px
+);
+
+// 圆角
+$border-radius-base:     $border-radius-base; // 4px
+$border-radius-sm:       $border-radius-sm; // 2px
+$border-radius-md:       $border-radius-base; // 4px
+$border-radius-lg:       $border-radius-base + 2px; // 6px
+
+$muted-color:  getColor('grey', 7);
+
+// Colors
+$colors: (
+    red:    ( getColor('red', 5),      getColor('red', 6),     getColor('red', 7) ),
+    green:  ( getColor('green', 5),    getColor('green', 6),   getColor('green', 7) ),
+    blue:   ( getColor('blue', 5),     getColor('blue', 6),    getColor('blue', 7) ),
+    pink:   ( getColor('pink', 5),     getColor('pink', 6),    getColor('pink', 7) ),
+    orange: ( getColor('orange', 5),   getColor('orange', 6),  getColor('orange', 7) ),
+    purple: ( getColor('purple', 5),   getColor('purple', 6),  getColor('purple', 7) ),
+    yellow: ( getColor('yellow', 5),   getColor('yellow', 6),  getColor('yellow', 7) ),
+    cyan:   ( getColor('cyan', 5),     getColor('cyan', 6),    getColor('cyan', 7) ),
+    teal:   ( getColor('teal', 5),     getColor('teal', 6),    getColor('teal', 7) ),
+    grey:   ( getColor('grey', 5),     getColor('grey', 6),    getColor('grey', 7) )
+);
+
+// Grey patch
+$greyColorer: (
+    lighter: getColor('grey', 3),
+    darker:  getColor('grey', 9)
+);
+
+// Alias
+$aliasColors: (
+    primary:    blue,
+    success:    green,
+    error:      red,
+    warning:    yellow
+);
+
+// masonry
+$masonry-column-gap:  $layout-gutter * 2;
+
+// type
+// ==========
+
+// font-size
+// https://ant.design/docs/spec/font-cn#字号
+$font-size-large:         $font-size-base + 8;  // 20px
+$font-size-small:         $font-size-base;      // 12px
+
+$h1-font-size:            $font-size-base + 20; // 32px
+$h2-font-size:            $font-size-base + 12; // 24px
+$h3-font-size:            $font-size-base + 8;  // 20px
+$h4-font-size:            $font-size-base + 4;  // 16px
+$h5-font-size:            $font-size-base + 2;  // 14px
+$h6-font-size:            $font-size-base;      // 12px
+
+// List group
+$list-group-item-padding-y:      $layout-gutter;
+$list-group-item-padding-x:      $layout-gutter * 2;
+
+// Code
+$code-border-color:           #eee;
+$code-bg:                     #f7f7f7;

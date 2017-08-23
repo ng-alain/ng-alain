@@ -1,0 +1,40 @@
+// color
+.bg-white         { background-color: #fff !important; }
+.text-white       { color: #fff !important; }
+
+@each $name, $value in $colors {
+    .bg-#{$name}-light  { background-color: nth($value, 1) !important; }
+    .bg-#{$name}        { background-color: nth($value, 2) !important; }
+    .bg-#{$name}-dark   { background-color: nth($value, 3) !important; }
+
+    .bg-#{$name}-light-h  { transition: background-color 300ms; &:hover { background-color: nth($value, 1) !important; } }
+    .bg-#{$name}-h        { transition: background-color 300ms; &:hover { background-color: nth($value, 2) !important; } }
+    .bg-#{$name}-dark-h   { transition: background-color 300ms; &:hover { background-color: nth($value, 3) !important; } }
+
+    .text-#{$name}-light  { color: nth($value, 1) !important; }
+    .text-#{$name}        { color: nth($value, 2) !important; }
+    .text-#{$name}-dark   { color: nth($value, 3) !important; }
+}
+
+@each $name, $value in $aliasColors {
+    .bg-#{$name}-light  { background-color: nth(map-get($colors, $value), 1) !important; }
+    .bg-#{$name}        { background-color: nth(map-get($colors, $value), 2) !important; }
+    .bg-#{$name}-dark   { background-color: nth(map-get($colors, $value), 3) !important; }
+
+    .bg-#{$name}-light-h  { transition: background-color 300ms; &:hover { background-color: nth(map-get($colors, $value), 1) !important; } }
+    .bg-#{$name}-h        { transition: background-color 300ms; &:hover { background-color: nth(map-get($colors, $value), 2) !important; } }
+    .bg-#{$name}-dark-h   { transition: background-color 300ms; &:hover { background-color: nth(map-get($colors, $value), 3) !important; } }
+
+    .text-#{$name}-light  { color: nth(map-get($colors, $value), 1) !important; }
+    .text-#{$name}        { color: nth(map-get($colors, $value), 2) !important; }
+    .text-#{$name}-dark   { color: nth(map-get($colors, $value), 3) !important; }
+}
+
+// grey
+@each $er, $color in $greyColorer {
+    .bg-grey-#{$er}   { background-color: $color !important; }
+
+    .bg-grey-#{$er}-h { &:hover { background-color: $color !important; } }
+
+    .text-grey-#{$er}   { color: $color !important; }
+}

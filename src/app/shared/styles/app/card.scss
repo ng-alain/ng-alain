@@ -1,0 +1,47 @@
+.ant-card {
+    margin-bottom: $md;
+}
+
+// 标题为图片
+.ant-card__title-img {
+    .ant-card-head-title {
+        img {
+            vertical-align: middle;
+        }
+    }
+}
+
+// 图片式
+.ant-card__img {
+    .ant-card-body {
+        padding: 0;
+    }
+    .img {
+        max-width: 100%;
+        vertical-align: middle;
+    }
+}
+
+// Body no padding
+.ant-card__body-nopadding {
+    .ant-card-body {
+        padding: 0 !important;
+    }
+}
+
+// color
+@each $name, $value in $colors {
+    .ant-card__#{$name} {
+        .ant-card-head {
+            background-color: nth($value, 2);
+        }
+    }
+}
+
+@each $name, $value in $aliasColors {
+    .ant-card__#{$name} {
+        .ant-card-head {
+            background-color: nth(map-get($colors, $value), 2);
+        }
+    }
+}

@@ -1,0 +1,388 @@
+<div class="content__title">
+    <h1>
+        Grid
+        <small>24 Grids System</small>
+    </h1>
+</div>
+<div class="text-md bg-white p-lg">
+    <h2 class="mb-md">Design concept</h2>
+    <div class="grid-demo">
+        <div class="ant-row demo-row">
+            <div class="ant-col-24 demo-col demo-col-1">
+                100%
+            </div>
+        </div>
+        <div class="ant-row demo-row">
+            <div class="ant-col-6 demo-col demo-col-2">
+                25%
+            </div>
+            <div class="ant-col-6 demo-col demo-col-3">
+                25%
+            </div>
+            <div class="ant-col-6 demo-col demo-col-2">
+                25%
+            </div>
+            <div class="ant-col-6 demo-col demo-col-3">
+                25%
+            </div>
+        </div>
+        <div class="ant-row demo-row">
+            <div class="ant-col-8 demo-col demo-col-4">
+                33.33%
+            </div>
+            <div class="ant-col-8 demo-col demo-col-5">
+                33.33%
+            </div>
+            <div class="ant-col-8 demo-col demo-col-4">
+                33.33%
+            </div>
+        </div>
+        <div class="ant-row demo-row">
+            <div class="ant-col-12 demo-col demo-col-1">
+                50%
+            </div>
+            <div class="ant-col-12 demo-col demo-col-3">
+                50%
+            </div>
+        </div>
+        <div class="ant-row demo-row">
+            <div class="ant-col-16 demo-col demo-col-4">
+                66.66%
+            </div>
+            <div class="ant-col-8 demo-col demo-col-5">
+                33.33%
+            </div>
+        </div>
+    </div>
+    <p class="mt-md">In most business situations,Ant Design need solve a lot of information storage problems within the design area,so based
+        on 12 Grids System,we divided the design area into 24 aliquots.</p>
+    <p class="mt-md">We name the divided area as 'box'.We suggest that four boxes horizontal arrangement at most, one at least.Box on the
+        proportion of the entire screen as above picture.To ensure that the level of visual comfort,we custom typography
+        inside of the box based on the box unit.</p>
+    <h2 class="mt-md">Outline</h2>
+    <p class="mt-md">In the grid system, we define the frame outside the information area based on row and column, to ensure that every area
+        can steady arrangement.</p>
+    <p class="mt-md">Following is a brief look at how it works:</p>
+    <ul class="list-styled mt-md">
+        <li>
+            To establish a set of <code>column</code> in the horizontal direction by <code>row</code> (abbreviated col)
+        </li>
+        <li>
+            Direct your content elements should be placed in the <code>col</code>, and only <code>col</code> as the <code>row</code>
+        </li>
+        <li>
+            The column grid system is a value of 1-24 to represent its range spans.For example, three columns of equal width can be created
+            by <code>.col-8</code>.
+        </li>
+        <li>
+            If a <code>row</code> sum of <code>col</code> more than 24, then the extra <code>col</code> as a whole will start
+            a new line arrangement.
+        </li>
+    </ul>
+    <h2 class="mt-md">Flex layout</h2>
+    <p class="mt-md">Our grid systems support Flex layout to allow the child elements within the parent horizontal alignment - Left, center,
+        right of abode, and other wide arrangement, decentralized arrangement. Between sub-elements and sub-elements, support
+        the top of the aligned vertically centered, bottom-aligned manner. At the same time, you can define the order of
+        elements by using 'order'.</p>
+    <p class="mt-md">Flex layout is based on a grid 24 to define each "box" in width, but not rigidly adhere to the grid layout.</p>
+    <h2 class="mt-md">Examples</h2>
+    <h3 class="mt-md">Base Grid</h3>
+    <div class="mt-md" id="components-grid-demo-basic">
+        <div class="code-box-demo">
+            <div nz-row>
+                <div nz-col [nzSpan]="12">
+                    col-12
+                </div>
+                <div nz-col [nzSpan]="12">
+                    col-12
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col [nzSpan]="8">
+                    col-8
+                </div>
+                <div nz-col [nzSpan]="8">
+                    col-8
+                </div>
+                <div nz-col [nzSpan]="8">
+                    col-8
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col [nzSpan]="6">
+                    col-6
+                </div>
+                <div nz-col [nzSpan]="6">
+                    col-6
+                </div>
+                <div nz-col [nzSpan]="6">
+                    col-6
+                </div>
+                <div nz-col [nzSpan]="6">
+                    col-6
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-md">From the stack to the horizontal arrangement.</p>
+    <p class="mt-md">
+        You can create a basic grid system by using a single set of <code>Row</code> and <code>Col</code> grid assembly,
+        all of the columns (Col) must be placed in <code>Row</code>.
+    </p>
+    <h3 class="mt-md">Grid Gutter</h3>
+    <div class="mt-md" id="components-grid-demo-gutter">
+        <div class="code-box-demo">
+            <div nz-row [nzGutter]="8">
+                <div nz-col class="gutter-row" [nzSpan]="6">
+                    <div class="gutter-box">col-6</div>
+                </div>
+                <div nz-col class="gutter-row" [nzSpan]="6">
+                    <div class="gutter-box">col-6</div>
+                </div>
+                <div nz-col class="gutter-row" [nzSpan]="6">
+                    <div class="gutter-box">col-6</div>
+                </div>
+                <div nz-col class="gutter-row" [nzSpan]="6">
+                    <div class="gutter-box">col-6</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-md">
+        You can use the <code>gutter</code> property of <code>Row</code> as grid spacing, we recommend set it to <code>(16 + 8n) px</code>.
+        (
+        <code>n</code> stands for natural number.)</p>
+    <h3 class="mt-md">Column offset</h3>
+    <div class="mt-md" id="components-grid-demo-offset">
+        <div class="code-box-demo">
+            <div nz-row>
+                <div nz-col [nzSpan]="8">
+                    col-8
+                </div>
+                <div nz-col [nzSpan]="8" [nzOffset]="8">
+                    col-8
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col [nzSpan]="6" [nzOffset]="6">
+                    col-6 col-offset-6
+                </div>
+                <div nz-col [nzSpan]="6" [nzOffset]="6">
+                    col-6 col-offset-6
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col [nzSpan]="12" [nzOffset]="6">
+                    col-12 col-offset-6
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-md"><code>Offset</code> can set the column to the right side. For example, using <code>[nzOffset]="'4'"</code> can set the
+        element shifted to the right four columns width.</p>
+    <h3 class="mt-md">Grid sort</h3>
+    <div class="mt-md" id="components-grid-demo-offset">
+        <div class="code-box-demo">
+            <div nz-row>
+                <div nz-col [nzSpan]="18" [nzPush]="6">
+                    col-18 col-push-6
+                </div>
+                <div nz-col [nzSpan]="6" [nzPull]="18">
+                    col-6 col-pull-18
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-md">
+        By using <code>push</code> and <code>pull</code> class you can easily change column order.
+    </p>
+    <h3 class="mt-md">Flex Layout</h3>
+    <div class="mt-md" id="components-grid-demo-flex">
+        <div class="code-box-demo">
+            <p>sub-element align left</p>
+            <div nz-row [nzType]="'flex'" [nzJustify]="'start'">
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+            </div>
+            <p>sub-element align center</p>
+            <div nz-row [nzType]="'flex'" [nzJustify]="'center'">
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+            </div>
+            <p>sub-element align right</p>
+            <div nz-row [nzType]="'flex'" [nzJustify]="'end'">
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+            </div>
+            <p>sub-element monospaced arrangement</p>
+            <div nz-row [nzType]="'flex'" [nzJustify]="'space-between'">
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+            </div>
+            <p>sub-element align full</p>
+            <div nz-row [nzType]="'flex'" [nzJustify]="'space-around'">
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+                <div nz-col [nzSpan]="4">
+                    col-4
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-md">
+        Use <code>row-flex</code> define <code>flex</code> layout, its child elements depending on the value of the <code>start</code>,<code>center</code>,<code>end</code>,<code>space-between</code>,<code>space-around</code>,
+        which are defined in its parent node layout mode.
+    </p>
+    <h3 class="mt-md">Flex Alignment</h3>
+    <div class="mt-md" id="components-grid-demo-flex-align">
+        <div class="code-box-demo">
+            <p>Align Top</p>
+            <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'top'">
+                <div nz-col [nzSpan]="4">
+                    <p class="height-100">col-4</p>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <p class="height-50">col-4</p>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <p class="height-120">col-4</p>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <p class="height-80">col-4</p>
+                </div>
+            </div>
+            <p>Align Center</p>
+            <div nz-row [nzType]="'flex'" [nzJustify]="'space-around'" [nzAlign]="'middle'">
+                <div nz-col [nzSpan]="4">
+                    <p class="height-100">col-4</p>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <p class="height-50">col-4</p>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <p class="height-120">col-4</p>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <p class="height-80">col-4</p>
+                </div>
+            </div>
+            <p>Align Bottom</p>
+            <div nz-row [nzType]="'flex'" [nzJustify]="'space-between'" [nzAlign]="'bottom'">
+                <div nz-col [nzSpan]="4">
+                    <p class="height-100">col-4</p>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <p class="height-50">col-4</p>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <p class="height-120">col-4</p>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <p class="height-80">col-4</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-md">Flex child elements vertically aligned.</p>
+    <h3 class="mt-md">Flex Order</h3>
+    <div class="mt-md" id="components-grid-demo-flex-order">
+        <div class="code-box-demo">
+            <div nz-row [nzType]="'flex'">
+                <div nz-col [nzSpan]="6" [nzOrder]="order" *ngFor="let order of orderList;index as i">
+                    {{i + 1}} col-order-{{order}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-md">To change the element sort by Flex layout order.</p>
+    <h3 class="mt-md">Responsive</h3>
+    <div class="mt-md" id="components-grid-demo-responsive">
+        <div class="code-box-demo">
+            <div nz-row>
+                <div nz-col [nzXs]="2" [nzSm]="4" [nzMd]="6" [nzLg]="8" [nzXl]="10">
+                    Col
+                </div>
+                <div nz-col [nzXs]="20" [nzSm]="16" [nzMd]="12" [nzLg]="8" [nzXl]="4">
+                    Col
+                </div>
+                <div nz-col [nzXs]="2" [nzSm]="4" [nzMd]="6" [nzLg]="8" [nzXl]="10">
+                    Col
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-md">
+        Referring to the Bootstrap <a href="//getbootstrap.com/css/#grid-media-queries" target="_blank">responsive design</a>,
+        here preset five dimensions: <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code>.
+    </p>
+    <h3 class="mt-md">Playground</h3>
+    <div class="mt-md" id="components-grid-demo-responsive">
+        <div class="code-box-demo">
+            <div style="margin-bottom:16px;">
+                <span style="margin-right: 6px;">Gutter (px): </span>
+                <div style="width: 50%">
+                    <nz-slider [nzMarks]="marksGutter" [nzStep]="null" [nzDefaultValue]="16" [nzMax]="48" [(ngModel)]="gutter" (nzOnAfterChange)="generateCode()"></nz-slider>
+                </div>
+                <span style="margin-right: 6px;">Column Count:</span>
+                <div style="width: 50%">
+                    <nz-slider [nzMarks]="marksCount" [nzStep]="null" [nzDefaultValue]="4" [nzMax]="12" [(ngModel)]="count" (nzOnAfterChange)="generateCode()"></nz-slider>
+                </div>
+            </div>
+            <div class="gutter-example">
+                <div nz-row [nzGutter]="gutter">
+                    <div nz-col class="gutter-row" [nzSpan]="24/count" *ngFor="let i of generateArray(count)">
+                        <div class="grid-config">Column</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <pre class="mt-md"><code>{{code}}</code></pre>
+</div>

@@ -1,0 +1,32 @@
+.ant-avatar {
+    display: inline-block;
+    text-align: center;
+    background: #ccc;
+    color: #fff;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    vertical-align: middle;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.ant-avatar-lg {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.ant-avatar-lg,
+.ant-avatar-lg>* {
+    line-height: 40px;
+}
+
+.ant-avatar-lg.ant-avatar-icon {
+    font-size: 24px;
+}

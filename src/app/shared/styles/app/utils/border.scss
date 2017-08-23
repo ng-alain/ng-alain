@@ -1,0 +1,58 @@
+// see https://ant.design/docs/spec/colors#Neutral-color-application
+$border-color: getColor('grey', 5);
+$border-grids: (
+    sm: $border-radius-sm,
+    md: $border-radius-md,
+    lg: $border-radius-lg
+);
+
+.border      { border: 1px solid #{$border-color} !important; }
+
+@for $i from 0 to 2 {
+    $value: '0';
+    @if ($i != 0) {
+        $value: '#{$i}px solid #{$border-color}';
+    }
+    .border-#{$i}        { border: #{$value} !important; }
+    .border-top-#{$i}    { border-top: #{$value} !important; }
+    .border-right-#{$i}  { border-right: #{$value} !important; }
+    .border-bottom-#{$i} { border-bottom: #{$value} !important; }
+    .border-left-#{$i}   { border-left: #{$value} !important; }
+}
+
+@each $name, $value in $colors {
+    .border-#{$name} {
+        border-color: nth($value, 2) !important;
+    }
+}
+
+@each $name, $value in $aliasColors {
+    .border-#{$name} {
+        border-color: nth(map-get($colors, $value), 2) !important;
+    }
+}
+
+.border-white {
+    border-color: #fff !important;
+}
+
+// Border-radius
+@each $grid, $value in $border-grids {
+    .rounded-#{$grid} {
+        border-radius: $value !important;
+    }
+
+    @each $d in ('top-left', 'top-right', 'bottom-right', 'bottom-left') {
+        .rounded-#{$d}-#{$grid} {
+            border-#{$d}-radius: $value !important;
+        }
+    }
+}
+
+.rounded-circle {
+    border-radius: 50%;
+}
+
+.rounded-0 {
+    border-radius: 0;
+}

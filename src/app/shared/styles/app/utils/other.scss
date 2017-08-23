@@ -1,0 +1,19 @@
+.point {
+    cursor: pointer;
+}
+
+.no-resize {
+    resize: none;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.block-center {
+    margin: 0 auto;
+}
+
+// Background image
+.bg-center {
+  background-position: center center;
+  background-size: cover;
+}

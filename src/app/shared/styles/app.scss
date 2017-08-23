@@ -1,0 +1,31 @@
+@import "app/color/index";
+@import "app/mixins/index";
+@import "app/variables-antd";
+@import "app/variables";
+
+// antd patch
+@import "app/antd-patch-no-release/index";
+@import "app/patch";
+
+// Core CSS
+@import "app/animate";
+@import "app/type";
+
+// Layout
+@import "app/layout";
+@import "app/header";
+@import "app/sidebar";
+
+// Component
+@import "app/button";
+@import "app/breadcrumb";
+@import "app/card";
+@import "app/masonry-grid";
+@import "app/widget";
+@import "app/placeholder";
+@import "app/file-upload";
+@import "app/half-float";
+@import "app/router-progress-bar";
+
+// Other
+@import "app/utils/index";

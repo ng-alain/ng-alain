@@ -1,0 +1,23 @@
+@import "theme";
+
+$theme-color-name:  'yellow';
+$header-bg:         getColor($theme-color-name, 6);
+
+.header {
+    background-color: $header-bg;
+}
+
+.sidebar {
+    .ant-menu-item {
+        &:hover {
+            color: getColor($theme-color-name, $menu-item-selected-color-code-num) !important;
+        }
+    }
+    .ant-menu-item-selected {
+        color: getColor($theme-color-name, $menu-item-selected-color-code-num) !important;
+        background-color: getColor($theme-color-name, $menu-item-selected-bg-code-num) !important;
+        &:after {
+            border-right-color: getColor($theme-color-name, $menu-item-selected-color-code-num) !important;
+        }
+    }
+}

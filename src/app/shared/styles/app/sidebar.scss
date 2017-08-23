@@ -1,0 +1,30 @@
+.sidebar {
+    position: fixed;
+    left: 0;
+    width: $aside-wd;
+    padding: ($header-hg + 30) 0 10px 0;
+    height: 100%;
+    background-color: $aside-bg;
+    overflow: hidden;
+    z-index: $zindex-main-section;
+    border-right: 1px solid $content-heading-border;
+    perfect-scrollbar {
+        width: $aside-wd;
+        height: 100%;
+    }
+}
+
+@media (max-width: $screen-md-max) {
+    .sidebar {
+        transition: transform 300ms, opacity 300ms;
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+    }
+    .aside-collapsed {
+        .sidebar {
+            box-shadow: 5px 0 10px rgba(0, 0, 0, 0.08);
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+}
