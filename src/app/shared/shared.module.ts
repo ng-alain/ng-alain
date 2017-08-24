@@ -12,8 +12,9 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ScrollService } from "./scroll.service";
 import { ColorsService } from "./colors.service";
 import { SparklineDirective } from './directives/sparkline/sparkline.directive';
+import { MomentDatePipe } from "./directives/moment-date.directive";
 
-const DIRECTIVES = [SparklineDirective];
+const DIRECTIVES = [SparklineDirective, MomentDatePipe];
 
 @NgModule({
     imports: [

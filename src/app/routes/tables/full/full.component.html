@@ -142,7 +142,7 @@
                                     data-height="20" data-bar-width="2" data-bar-spacing="2"
                                     values="1,0,4,6,5,7,8,3,5,7,8"></div>
                             </td>
-                            <td nz-td>{{data.registered}}</td>
+                            <td nz-td>{{data.registered | mDate: 'YYYY年MM月DD日'}}</td>
                             <td nz-td>
                                 <a (click)="showMsg('Edit')">Edit</a>
                                 <span nz-table-divider></span>
