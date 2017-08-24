@@ -1,4 +1,4 @@
-import { ColorsService } from './../../../shared/colors.service';
+import { ColorsService } from './../../../shared/services/colors.service';
 import { Component } from '@angular/core';
 
 @Component({

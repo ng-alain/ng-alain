@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ColorsService } from './../../../shared/colors.service';
+import { ColorsService } from './../../../shared/services/colors.service';
 
 @Component({
     selector: 'app-typography',

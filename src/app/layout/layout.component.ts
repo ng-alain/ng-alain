@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Router, NavigationEnd, RouteConfigLoadStart } from "@angular/router";
 
 import { SettingsService } from '../core/settings/settings.service';
-import { ScrollService } from './../shared/scroll.service';
+import { ScrollService } from './../shared/services/scroll.service';
 import { NzMessageService } from "ng-zorro-antd";
 
 @Component({
