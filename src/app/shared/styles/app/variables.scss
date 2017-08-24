@@ -49,6 +49,9 @@ $border-radius-lg:       $border-radius-base + 2px; // 6px
 $muted-color:  getColor('grey', 7);
 
 // Colors
+$white:     #fff !default;
+$black:     #000 !default;
+
 $colors: (
     red:    ( getColor('red', 5),      getColor('red', 6),     getColor('red', 7) ),
     green:  ( getColor('green', 5),    getColor('green', 6),   getColor('green', 7) ),
@@ -94,10 +97,29 @@ $h4-font-size:            $font-size-base + 4;  // 16px
 $h5-font-size:            $font-size-base + 2;  // 14px
 $h6-font-size:            $font-size-base;      // 12px
 
-// List group
-$list-group-item-padding-y:      $layout-gutter;
-$list-group-item-padding-x:      $layout-gutter * 2;
-
 // Code
 $code-border-color:           #eee;
 $code-bg:                     #f7f7f7;
+
+// List group
+$list-group-bg:                  $white !default;
+$list-group-border-color:        $border-color-split !default;
+$list-group-border-width:        1px !default;
+$list-group-border-radius:       $border-radius-md !default;
+
+$list-group-item-padding-y:      $layout-gutter;
+$list-group-item-padding-x:      $layout-gutter * 2;
+
+$list-group-hover-bg:            getColor('grey', 1) !default;
+$list-group-active-color:        $white !default;
+$list-group-active-bg:           $primary-color !default;
+$list-group-active-border-color: $list-group-active-bg !default;
+
+$list-group-action-color:        getColor('grey', 7) !default;
+$list-group-action-hover-color:  $list-group-action-color !default;
+
+$list-group-disabled-color:      getColor('grey', 6) !default;
+$list-group-disabled-bg:         $list-group-bg !default;
+
+$list-group-action-active-color: getColor('grey', 9) !default;
+$list-group-action-active-bg:    getColor('grey', 2) !default;
