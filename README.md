@@ -6,6 +6,10 @@
 
 [DEMO](https://cipchk.github.io/ng-alain/)
 
+## VERSION
+
+0.0.1-alpha.2
+
 ## Quick start
 
 Make sure you have Node version >= 6.9.0 and NPM >= 3 or higher.
@@ -28,6 +32,15 @@ npm start
 # use HMR
 npm run serve:hmr
 ```
+
+## Guide Lines
+
++ [antd gruid lines](https://ant.design/docs/spec/introduce)
++ [`ng-alain` Layout Rule](_documents/layout.md)
++ [CSS Component Patch](_documents/component-patch.md)
++ [CSS Utility Rule](_documents/utils.md)
++ [Pipe](_documents/pipe.md)
++ [Upgrade](_documents/upgrade.md)
 
 ## Features
 

@@ -6,6 +6,10 @@
 
 [DEMO](https://cipchk.github.io/ng-alain/)
 
+## VERSION
+
+0.0.1-alpha.2
+
 ## 快速入门
 
 确保 `node` 版本 >= 6.9.0 且 `npm` 版本 >= 3 以上。
@@ -40,8 +44,8 @@ npm run serve:hmr
 + [整个antd的指引文章（非常经典一定要细读）](https://ant.design/docs/spec/introduce-cn)
 + [设计规则](_documents/layout.md)
 + [CSS组件补丁类](_documents/component-patch.md)
-+ [接地气Pipe](_documents/pipe.md)
 + [工具类规则](_documents/utils.md)
++ [接地气Pipe](_documents/pipe.md)
 + [目录结构与版本升级说明](_documents/upgrade.md)
 + 为了减少github的发布，后续有关 `ng-alain` 的文章，会一直发布在我的[SF专栏](https://segmentfault.com/blog/cipchk)当中。
 
