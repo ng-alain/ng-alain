@@ -231,12 +231,32 @@ const pages = {
     ]
 };
 
+const extras = <Menu>{
+    text: 'Extras',
+    translate: 'extras',
+    link: '/extras',
+    icon: 'icon-cup',
+    children: [
+        {
+            text: 'Help Center',
+            link: '/extras/helpcenter',
+            translate: 'helpcenter'
+        },
+        {
+            text: 'Settings',
+            link: '/extras/settings',
+            translate: 'settings'
+        }
+    ]
+};
+
 const groupMore = <Menu>{
     text: 'More',
     translate: 'more',
     group: true,
     children: [
-        pages
+        pages,
+        extras
     ]
 };
 

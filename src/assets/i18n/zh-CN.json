@@ -46,5 +46,7 @@
     "m-register": "注册页",
     "m-forget": "忘记密码页",
     "m-lock": "锁屏页",
-    "m-maintenance": "维护中"
+    "m-maintenance": "维护中",
+    "extras": "扩展",
+    "helpcenter": "帮助中心"
 }
