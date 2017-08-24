@@ -12,10 +12,11 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ScrollService } from "./scroll.service";
 import { ColorsService } from "./colors.service";
 import { SparklineDirective } from './directives/sparkline/sparkline.directive';
-import { MomentDatePipe } from "./directives/moment-date.directive";
-import { ACurrencyPipe } from "./directives/currency.directive";
+import { MomentDatePipe } from "./pipes/moment-date.pipe";
+import { CNCurrencyPipe } from "./pipes/cn-currency.pipe";
 
-const DIRECTIVES = [SparklineDirective, MomentDatePipe, ACurrencyPipe];
+const DIRECTIVES = [SparklineDirective];
+const PIPES = [MomentDatePipe, CNCurrencyPipe];
 
 @NgModule({
     imports: [
@@ -29,7 +30,7 @@ const DIRECTIVES = [SparklineDirective, MomentDatePipe, ACurrencyPipe];
         ChartsModule
     ],
     providers: [ScrollService, ColorsService],
-    declarations: [...DIRECTIVES],
+    declarations: [...DIRECTIVES, ...PIPES],
     exports: [
         CommonModule,
         FormsModule,
@@ -41,7 +42,8 @@ const DIRECTIVES = [SparklineDirective, MomentDatePipe, ACurrencyPipe];
         TranslateModule,
         ChartsModule,
 
-        ...DIRECTIVES
+        ...DIRECTIVES,
+        ...PIPES
     ]
 })
 export class SharedModule {

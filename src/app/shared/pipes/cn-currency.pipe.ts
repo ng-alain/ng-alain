@@ -11,7 +11,7 @@ import { CurrencyPipe } from "@angular/common";
  * ```
  */
 @Pipe({ name: '_currency' })
-export class ACurrencyPipe extends CurrencyPipe implements PipeTransform {
+export class CNCurrencyPipe extends CurrencyPipe implements PipeTransform {
     transform(
         value: any,
         currencyCode: string = 'CNY',
