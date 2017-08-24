@@ -115,6 +115,16 @@
 <div nz-row [nzGutter]="16">
     <div nz-col [nzMd]="8">
         <nz-card>
+            <ng-template #title>Display</ng-template>
+            <ng-template #body>
+                <p class="display-1">.display-1</p>
+                <p class="display-2">.display-2</p>
+                <p class="display-3">.display-3</p>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="8">
+        <nz-card>
             <ng-template #title>Code</ng-template>
             <ng-template #body>
                 <p>This is an example of an inline code element within body copy. Wrap inline code within a<code>...</code>tag.</p>
