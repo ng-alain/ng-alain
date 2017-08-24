@@ -79,3 +79,42 @@
         }
     }
   }
+
+
+@mixin list-group-item-variant($state, $background, $hover-background, $color) {
+    .list-group-item-#{$state} {
+      color: $color;
+      background-color: $background;
+    }
+
+    //scss-lint:disable QualifyingElement
+    a.list-group-item-#{$state},
+    button.list-group-item-#{$state} {
+      color: $color;
+
+      &:focus,
+      &:hover {
+        color: $color;
+        background-color: $hover-background;
+      }
+
+      &.active {
+        color: #fff;
+        background-color: $color;
+        border-color: $color;
+      }
+    }
+    // scss-lint:enable QualifyingElement
+  }
+
+
+// color
+@each $name, $value in $colors {
+    $colorKey: '' + $name;
+    @include list-group-item-variant($name, getColor($colorKey, 1), getColor($colorKey, 2), getColor($colorKey, 9));
+}
+
+@each $name, $value in $aliasColors {
+    $colorKey: '' + $value;
+    @include list-group-item-variant($name, getColor($colorKey, 1), getColor($colorKey, 2), getColor($colorKey, 9));
+}

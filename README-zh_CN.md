@@ -4,6 +4,8 @@
 
 [README in English](README.md)
 
+[DEMO](https://cipchk.github.io/ng-alain/)
+
 ## 快速入门
 
 确保 `node` 版本 >= 6.9.0 且 `npm` 版本 >= 3 以上。
@@ -37,6 +39,7 @@ npm run serve:hmr
 
 + [整个antd的指引文章（非常经典一定要细读）](https://ant.design/docs/spec/introduce-cn)
 + [设计规则](_documents/layout.md)
++ [CSS组件补丁类](_documents/component-patch.md)
 + [工具类规则](_documents/utils.md)
 + [目录结构与版本升级说明](_documents/upgrade.md)
 + 为了减少github的发布，后续有关 `ng-alain` 的文章，会一直发布在我的[SF专栏](https://segmentfault.com/blog/cipchk)当中。
@@ -44,11 +47,11 @@ npm run serve:hmr
 ## 特性
 
 + 基于 `ng-zorro-antd`
-+ 响应式而已
++ 响应式
 + 国际化
 + 延迟加载及良好的启用画面
 + 良好的UI路由设计
-+ 十种语言版本
++ 十种颜色版本
 + SCSS预编译
 + 良好的目录组织结构
 + 简单升级
