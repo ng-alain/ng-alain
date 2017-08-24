@@ -46,5 +46,7 @@
     "m-register": "Register",
     "m-forget": "Forget",
     "m-lock": "Lock",
-    "m-maintenance": "Maintenance"
+    "m-maintenance": "Maintenance",
+    "extras": "Extras",
+    "helpcenter": "Help Center"
 }
