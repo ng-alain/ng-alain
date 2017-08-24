@@ -26,6 +26,7 @@ export class TableFullComponent {
             .map(data => {
                 data.results.forEach(item => {
                     item.checked = false;
+                    item.price = +((Math.random()*(10000000 - 100)) + 100).toFixed(2);
                 });
                 return data;
             })

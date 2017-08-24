@@ -13,8 +13,9 @@ import { ScrollService } from "./scroll.service";
 import { ColorsService } from "./colors.service";
 import { SparklineDirective } from './directives/sparkline/sparkline.directive';
 import { MomentDatePipe } from "./directives/moment-date.directive";
+import { ACurrencyPipe } from "./directives/currency.directive";
 
-const DIRECTIVES = [SparklineDirective, MomentDatePipe];
+const DIRECTIVES = [SparklineDirective, MomentDatePipe, ACurrencyPipe];
 
 @NgModule({
     imports: [

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -36,7 +36,10 @@ export function HttpLoaderFactory(http: HttpClient) {
             }
         })
     ],
-    providers: [],
+    providers: [
+        // code see: https://github.com/unicode-cldr/cldr-core/blob/master/availableLocales.json
+        { provide: LOCALE_ID, useValue: 'zh-Hans' }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
