@@ -58,17 +58,13 @@ export class HeaderComponent {
         this.isFullscreen = screenfull.isFullscreen;
     }
 
-    ngOnInit() {
-        // https://github.com/NG-ZORRO/ng-zorro-antd/issues/73
-        setTimeout(() => {
-            this.qIpt._renderer.listen(this.qIpt._el.querySelector('input'), 'focus', () => {
-                this.focus = true;
-            });
-            this.qIpt._renderer.listen(this.qIpt._el.querySelector('input'), 'blur', () => {
-                this.focus = false;
-                this.searchToggled = false;
-            });
-        }, 500);
+    qFocus() {
+        this.focus = true;
+    }
+
+    qBlur() {
+        this.focus = false;
+        this.searchToggled = false;
     }
 
     searchToggleChange() {

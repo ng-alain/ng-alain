@@ -6,7 +6,8 @@
         <a [routerLink]="['/']"><img src="./assets/img/logo-full.png" style="height:26px;" alt="{{settings.app.name}}" /></a>
     </div>
     <div class="search" [class.search__focus]="focus" [class.search__toggled]="searchToggled">
-        <nz-input #qIpt nzPlaceHolder='{{ "top-search-ph" | translate}}' [(ngModel)]="q">
+        <nz-input #qIpt nzPlaceHolder='{{ "top-search-ph" | translate}}' [(ngModel)]="q"
+            (nzFocus)="qFocus()" (nzBlur)="qBlur()">
             <ng-template #prefix>
                 <i class="anticon anticon-search"></i>
             </ng-template>
