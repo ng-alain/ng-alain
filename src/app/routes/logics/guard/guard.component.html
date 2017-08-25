@@ -1,0 +1,29 @@
+<div class="content__title">
+    <h1>
+        路由守卫
+    </h1>
+</div>
+<nz-button-group>
+    <button nz-button [routerLink]="['/logics/guard/leave']">
+        <span>离开确认页</span>
+    </button>
+    <button nz-button [routerLink]="['/logics/guard/auth']">
+        <span>需要授权页</span>
+    </button>
+    <button nz-button [routerLink]="['/logics/guard/admin']">
+        <span>需要管理角色页</span>
+    </button>
+</nz-button-group>
+<nz-button-group>
+    <button nz-button (click)="toggleLogin()">
+        <span>设置【{{ userSrv.isLogin ? '未' : '已' }}登录】</span>
+    </button>
+    <button nz-button (click)="toggleRule()">
+        <span>设置【{{ !userSrv.hasRole('admin') ? '管理员' : '员工' }}】</span>
+    </button>
+</nz-button-group>
+<p class="mb-lg">
+    登录状态：{{ userSrv.isLogin ? '已' : '未' }}登录<br>
+    角色：{{ userSrv.hasRole('admin') ? '管理员' : '员工' }}
+</p>
+<router-outlet></router-outlet>

@@ -231,6 +231,20 @@ const pages = {
     ]
 };
 
+const logics = <Menu>{
+    text: 'Common Logics',
+    translate: 'logics',
+    link: '/logics',
+    icon: 'icon-compass',
+    children: [
+        {
+            text: 'Route Guard',
+            link: '/logics/guard',
+            translate: 'guard'
+        }
+    ]
+};
+
 const extras = <Menu>{
     text: 'Extras',
     translate: 'extras',
@@ -255,6 +269,7 @@ const groupMore = <Menu>{
     translate: 'more',
     group: true,
     children: [
+        logics,
         pages,
         extras
     ]
