@@ -4,6 +4,20 @@
         <small class="text-sm hidden-xs">Welcome !</small>
     </h1>
 </div>
+<div class="quick-menu" [class.show]="quickMenu" (click)="quickMenu=!quickMenu">
+    <div class="quick-menu-inner">
+        <div class="settings-ctrl">
+            <i class="anticon anticon-question-circle-o"></i>
+        </div>
+        <div class="list-group list-group-flush">
+            <a (click)="msg.info('item 1')" class="list-group-item">How do i create account?</a>
+            <a (click)="msg.info('item 2')" class="list-group-item">How do i create account?</a>
+            <a (click)="msg.info('item 3')" class="list-group-item">How do i create account?</a>
+            <a (click)="msg.info('item 4')" class="list-group-item">How do i create account?</a>
+            <a (click)="msg.info('item 5')" class="list-group-item">How do i create account?</a>
+        </div>
+    </div>
+</div>
 <div nz-row nzGutter="16">
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-primary rounded-md">

@@ -1,3 +1,4 @@
+import { NzMessageService } from 'ng-zorro-antd';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
     styleUrls: ['./v1.component.scss']
 })
 export class DashboardV1Component {
+
+    constructor(public msg: NzMessageService) {}
 
     sparkOptions1 = {
         barColor: '#fbfbfb',
