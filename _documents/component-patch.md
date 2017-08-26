@@ -29,3 +29,7 @@
     + `.row-masonry-{xs|sm|md|lg|xl}-{1-10}` 响应式样式
 + `col-masonry` 列
 
+## `nz-carousel` 补丁
+
++ `nz-carousel__dot-{{color}}` 设置指示点颜色；颜色值参[工具类规则](utils.md)。
+

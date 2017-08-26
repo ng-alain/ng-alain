@@ -468,3 +468,143 @@
         </div>
     </div>
 </div>
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
+        <nz-card [nzBordered]="false" [nzNoHovering]="true">
+            <ng-template #title>服务</ng-template>
+            <ng-template #extra><a (click)="msg.info('更多服务')">更多服务</a></ng-template>
+            <ng-template #body>
+                <div class="pb-md">
+                    <i class="anticon anticon-check-circle-o text-green"></i> 已开通 16 个
+                    <i class="anticon anticon-check-circle-o pl-md"></i> 未开通 4 个
+                </div>
+                <nz-carousel class="nz-carousel__dot-blue">
+                    <div nz-carousel-content>
+                        <div nz-row [nzGutter]="24" class="mb-md">
+                            <div nz-col [nzSpan]="12">
+                                <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+                                    <div nz-col [nzSpan]="8">
+                                        <i class="anticon anticon-laptop display-2 text-blue"></i>
+                                    </div>
+                                    <div nz-col [nzSpan]="16">
+                                        <h4 class="text-blue">服务注册中心</h4>
+                                        <p class="text-grey">Register Server</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div nz-col [nzSpan]="12">
+                                <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+                                    <div nz-col [nzSpan]="8">
+                                        <i class="anticon anticon-rocket display-2 text-red"></i>
+                                    </div>
+                                    <div nz-col [nzSpan]="16">
+                                        <h4 class="text-blue">可靠消息</h4>
+                                        <p class="text-grey">Msg Broker</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div nz-row [nzGutter]="24">
+                            <div nz-col [nzSpan]="12">
+                                <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+                                    <div nz-col [nzSpan]="8">
+                                        <i class="anticon anticon-usb display-2 text-purple"></i>
+                                    </div>
+                                    <div nz-col [nzSpan]="16">
+                                        <h4 class="text-blue">分布式资源管理</h4>
+                                        <p class="text-grey">DRM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div nz-col [nzSpan]="12">
+                                <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+                                    <div nz-col [nzSpan]="8">
+                                        <i class="anticon anticon-fork display-2 text-pink"></i>
+                                    </div>
+                                    <div nz-col [nzSpan]="16">
+                                        <h4 class="text-blue">分布式数据管理</h4>
+                                        <p class="text-grey">ZDC</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div nz-carousel-content>
+                        <div nz-row [nzGutter]="24" class="mb-md">
+                            <div nz-col [nzSpan]="12">
+                                <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+                                    <div nz-col [nzSpan]="8">
+                                        <i class="anticon anticon-laptop display-2 text-blue"></i>
+                                    </div>
+                                    <div nz-col [nzSpan]="16">
+                                        <h4 class="text-blue">服务注册中心</h4>
+                                        <p class="text-grey">Register Server</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div nz-col [nzSpan]="12">
+                                <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+                                    <div nz-col [nzSpan]="8">
+                                        <i class="anticon anticon-rocket display-2 text-red"></i>
+                                    </div>
+                                    <div nz-col [nzSpan]="16">
+                                        <h4 class="text-blue">可靠消息</h4>
+                                        <p class="text-grey">Msg Broker</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div nz-row [nzGutter]="24">
+                            <div nz-col [nzSpan]="12">
+                                <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+                                    <div nz-col [nzSpan]="8">
+                                        <i class="anticon anticon-usb display-2 text-purple"></i>
+                                    </div>
+                                    <div nz-col [nzSpan]="16">
+                                        <h4 class="text-blue">分布式资源管理</h4>
+                                        <p class="text-grey">DRM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div nz-col [nzSpan]="12">
+                                <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+                                    <div nz-col [nzSpan]="8">
+                                        <i class="anticon anticon-fork display-2 text-pink"></i>
+                                    </div>
+                                    <div nz-col [nzSpan]="16">
+                                        <h4 class="text-blue">分布式数据管理</h4>
+                                        <p class="text-grey">ZDC</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nz-carousel>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
+        <nz-card [nzBordered]="false" [nzNoHovering]="true">
+            <ng-template #title>开发服务器</ng-template>
+            <ng-template #body>
+                <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+                    <div nz-col [nzSpan]="4">
+                        <i class="anticon anticon-database display-1"></i>
+                    </div>
+                    <div nz-col [nzSpan]="15">
+                        <h3 class="font-weight-bold">暂无服务器</h3>
+                        <div class="pt-sm text-grey-dark">
+                            <nz-badge [nzStatus]="'error'"></nz-badge>
+                            服务器申请失败
+                        </div>
+                    </div>
+                    <div nz-col [nzSpan]="5" class="text-right">
+                        <button nz-button (click)="msg.info('Apply')" [nzType]="'default'" [nzSize]="'large'">
+                            <span>申请</span>
+                        </button>
+                    </div>
+                </div>
+            </ng-template>
+        </nz-card>
+    </div>
+</div>
