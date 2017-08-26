@@ -24,6 +24,10 @@ export class WidgetsComponent {
         { completed: false, avatar: '6', name: 'Forever', content: `Walking through green fields ，sunshine in my eyes.` }
     ];
 
+    like: boolean = false;
+
+    dislike: boolean = false;
+
     constructor(public msg: NzMessageService) {
 
     }

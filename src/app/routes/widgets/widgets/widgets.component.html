@@ -654,3 +654,53 @@
         </nz-card>
     </div>
 </div>
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzXs]="24" [nzMd]="12" class="mb-md">
+        <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="bg-white py-md rounded-md">
+            <div nz-col [nzSpan]="3" class="text-center">
+                <span class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-icon bg-primary">
+                    <i class="icon-speedometer"></i>
+                </span>
+            </div>
+            <div nz-col [nzSpan]="6">
+                <strong class="display-2">10</strong> 个
+                <p class="text-grey">运行测压任务</p>
+            </div>
+            <div nz-col [nzSpan]="5">
+                <nz-badge [nzStatus]="'success'"></nz-badge>
+                已完成
+                <span class="display-3 text-grey-dark">3</span>
+            </div>
+            <div nz-col [nzSpan]="5">
+                <nz-badge [nzStatus]="'processing'"></nz-badge>
+                正在进行
+                <span class="display-3 text-grey-dark">5</span>
+            </div>
+            <div nz-col [nzSpan]="5">
+                <nz-badge [nzStatus]="'error'"></nz-badge>
+                已失败
+                <span class="display-3 text-grey-dark">2</span>
+            </div>
+        </div>
+    </div>
+    <div nz-col [nzXs]="24" [nzMd]="12" class="mb-md">
+        <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="bg-white rounded-md border p-md">
+            <div nz-col [nzSpan]="16">
+                你觉得这篇文章如何：
+            </div>
+            <div nz-col [nzSpan]="8" class="text-right">
+                <nz-popconfirm [(nzVisible)]="like" [nzPlacement]="'top'"
+                    [nzTitle]="'喜欢就开启此内容提醒吧！'"
+                    [nzOkText]="'立即开启'" [nzCancelText]="'下次再说'"
+                    (nzOnConfirm)="msg.success('开启提醒')" (nzOnCancel)="msg.error('取消提醒')"
+                    style="display:inline-block;padding-top:15px;">
+                    <span nz-popconfirm></span>
+                </nz-popconfirm>
+                <span class="pr-lg">
+                    <i class="anticon anticon-like display-3 point" [class.text-primary]="like" (click)="like=!like"></i> 赞
+                </span>
+                <i class="anticon anticon-dislike display-3 point" [class.text-primary]="dislike" (click)="dislike=!dislike"></i> 踩
+            </div>
+        </div>
+    </div>
+</div>
