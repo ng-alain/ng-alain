@@ -69,4 +69,6 @@ export class DashboardV1Component {
             data: [28, 48, 40, 19, 86, 27, 90]
         }
     ];
+
+    quickMenu = false;
 }

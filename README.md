@@ -6,10 +6,6 @@
 
 [DEMO](https://cipchk.github.io/ng-alain/)
 
-## VERSION
-
-0.0.1-alpha.3
-
 ## Quick start
 
 Make sure you have Node version >= 6.9.0 and NPM >= 3 or higher.
@@ -32,6 +28,13 @@ npm start
 # use HMR
 npm run serve:hmr
 ```
+
+## Environment
+
+| package | version |
+| ------- | ------- |
+| `ng-alain` | 0.0.1-alpha.3 | 
+| `ng-zorro-antd` | 0.5.0-rc.3 |
 
 ## Guide Lines
 
