@@ -1,5 +1,5 @@
 // see https://ant.design/docs/spec/colors#Neutral-color-application
-$border-color: getColor('grey', 5);
+$border-color: $border-color-split;
 $border-grids: (
     sm: $border-radius-sm,
     md: $border-radius-md,

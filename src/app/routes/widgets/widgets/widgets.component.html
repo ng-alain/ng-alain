@@ -607,4 +607,50 @@
             </ng-template>
         </nz-card>
     </div>
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
+        <nz-card [nzBordered]="false" [nzNoHovering]="true" class="ant-card__body-nopadding">
+            <ng-template #title>华东 1</ng-template>
+            <ng-template #extra>
+                <nz-tooltip [nzTitle]="'购买实例'">
+                    <span nz-tooltip><i class="anticon anticon-shopping-cart display-3"></i></span>
+                </nz-tooltip>
+            </ng-template>
+            <ng-template #body>
+                <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" [nzGutter]="8">
+                    <div nz-col [nzSpan]="12" class="text-center">
+                        云服务器 <strong class="display-1 text-blur">12</strong>
+                    </div>
+                    <div nz-col [nzSpan]="12" class="my-md pl-md border-left-1">
+                        <div class="pb-sm">
+                            <nz-badge [nzStatus]="'success'"></nz-badge>
+                            运行中 <strong class="text-green">2</strong>
+                        </div>
+                        <div class="pb-sm">
+                            <nz-badge [nzStatus]="'default'"></nz-badge>
+                            近期创建 <strong class="text-grey">0</strong>
+                        </div>
+                        <div class="pb-sm">
+                            <nz-badge [nzStatus]="'error'"></nz-badge>
+                            即将过期 <strong class="text-red">0</strong>
+                        </div>
+                        <div class="pb-sm">
+                            <nz-badge [nzStatus]="'error'"></nz-badge>
+                            已过期 <strong class="text-red">1</strong>
+                        </div>
+                    </div>
+                </div>
+                <div nz-row class="text-center border-top-1">
+                    <div nz-col [nzSpan]="8" class="bg-grey-lighter-h py-sm point">
+                        磁盘 <strong class="text-blue">18</strong>
+                    </div>
+                    <div nz-col [nzSpan]="8" class="bg-grey-lighter-h py-sm point">
+                        快照 <strong>0</strong>
+                    </div>
+                    <div nz-col [nzSpan]="8" class="bg-grey-lighter-h py-sm point">
+                        镜像 <strong class="text-blue">2</strong>
+                    </div>
+                </div>
+            </ng-template>
+        </nz-card>
+    </div>
 </div>
