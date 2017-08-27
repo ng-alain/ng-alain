@@ -2,9 +2,7 @@
     <nz-dropdown nzTrigger="click" nz-col nzSpan="24" class="mb-lg">
         <div nz-dropdown nz-row nzType="flex" nzJustify="center" nzAlign="middle" class="width-sm rounded-md block-center bg-grey-lighter p-sm">
             <div nz-col [nzSpan]="8" style="display:flex;">
-                <span class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-icon">
-                    <i class="anticon anticon-user"></i>
-                </span>
+                <nz-avatar [nzIcon]="'user'" [nzSize]="'large'"></nz-avatar>
             </div>
             <div nz-col [nzSpan]="16" class="point">
                 {{settings.user.name}}

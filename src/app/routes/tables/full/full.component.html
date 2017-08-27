@@ -128,9 +128,7 @@
                                 </label>
                             </td>
                             <td nz-td>
-                                <span class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-icon">
-                                    <img [src]="data.picture.thumbnail">
-                                </span>
+                                <nz-avatar [nzSrc]="data.picture.thumbnail" [nzSize]="'large'"></nz-avatar>
                             </td>
                             <td nz-td>{{data.name.first}} {{data.name.last}}</td>
                             <td nz-td>

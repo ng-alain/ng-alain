@@ -126,9 +126,7 @@
                 <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point"
                     *ngFor="let item of todoData">
                     <div nz-col [nzSpan]="4" class="text-center">
-                        <span class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-icon">
-                            <img src="./assets/img/{{item.avatar}}.png">
-                        </span>
+                        <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'" [nzSize]="'large'"></nz-avatar>
                     </div>
                     <div nz-col [nzSpan]="20">
                         <strong>{{item.name}}</strong>
@@ -145,9 +143,7 @@
                 <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point"
                     *ngFor="let item of todoData">
                     <div nz-col [nzSpan]="4" class="text-center">
-                        <span class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-icon">
-                            <img src="./assets/img/{{item.avatar}}.png">
-                        </span>
+                        <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'" [nzSize]="'large'"></nz-avatar>
                     </div>
                     <div nz-col [nzSpan]="18">
                         <strong>{{item.name}}</strong>
@@ -162,7 +158,6 @@
                                 <li nz-menu-item (click)="todoData.splice(todoData.indexOf(item), 1)">Delted</li>
                             </ul>
                         </nz-dropdown>
-
                     </div>
                 </div>
             </ng-template>

@@ -187,9 +187,7 @@
         <nz-card [nzBordered]="false" [nzNoHovering]="true" class="ant-card__body-nopadding">
             <ng-template #body>
                 <div class="text-center bg-center py-lg text-white" style="background-image: url('./assets/img/bg9.jpg')">
-                    <span class="ant-avatar ant-avatar-lg ant-avatar-circle">
-                        <img src="./assets/img/1.png">
-                    </span>
+                    <nz-avatar [nzSrc]="'./assets/img/1.png'" [nzSize]="'large'"></nz-avatar>
                     <h3 class="text-white">cipchk</h3>
                     <p>
                         <i class="fa fa-github fa-fw"></i>
@@ -363,9 +361,7 @@
                 <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point"
                     *ngFor="let item of todoData">
                     <div nz-col [nzSpan]="4" class="text-center">
-                        <span class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-icon">
-                            <img src="./assets/img/{{item.avatar}}.png">
-                        </span>
+                        <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'" [nzSize]="'large'"></nz-avatar>
                     </div>
                     <div nz-col [nzSpan]="20">
                         <strong>{{item.name}}</strong>
@@ -382,9 +378,7 @@
                 <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point"
                     *ngFor="let item of todoData">
                     <div nz-col [nzSpan]="4" class="text-center">
-                        <span class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-icon">
-                            <img src="./assets/img/{{item.avatar}}.png">
-                        </span>
+                        <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'" [nzSize]="'large'"></nz-avatar>
                     </div>
                     <div nz-col [nzSpan]="18">
                         <strong>{{item.name}}</strong>
