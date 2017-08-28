@@ -38,6 +38,8 @@
     "core-js": "^2.4.1",
     "d3": "^4.10.0",
     "font-awesome": "^4.7.0",
+    "g2": "^2.3.9",
+    "g2-angular": "^1.0.0",
     "jquery": "^3.2.1",
     "jquery-sparkline": "^2.4.0",
     "moment": "^2.18.1",

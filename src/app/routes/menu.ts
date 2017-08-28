@@ -126,6 +126,10 @@ const charts = <Menu>{
     icon: 'icon-graph',
     children: [
         {
+            text: 'G2',
+            link: '/charts/g2'
+        },
+        {
             text: 'ngx-charts',
             link: '/charts/ngxcharts',
             translate: 'ngxcharts'

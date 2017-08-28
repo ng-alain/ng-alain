@@ -1,0 +1,31 @@
+<div class="content__title">
+    <h1>
+        G2
+        <small>use <a href="//github.com/cipchk/g2-angular" target="_blank">g2-angular</a> library.</small>
+    </h1>
+    <div>
+        <div sparkline data-bar-color="#cfdbe2"
+            data-height="20" data-bar-width="3" data-bar-spacing="2"
+            values="1,0,4,6,5,7,8,3,5,7,8"></div>
+    </div>
+</div>
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzMd]="12">
+        <nz-card>
+            <ng-template #title>Line</ng-template>
+            <ng-template #body>
+                <g2-chart [options]="lineOptions"
+                  (ready)="lineReady($event)"></g2-chart>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="12">
+        <nz-card>
+            <ng-template #title>Area</ng-template>
+            <ng-template #body>
+                <g2-chart [options]="areaOptions"
+                  (ready)="areaReady($event)"></g2-chart>
+            </ng-template>
+        </nz-card>
+    </div>
+</div>

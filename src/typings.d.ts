@@ -11,3 +11,5 @@ interface WebpackRequire {
 }
 interface NodeRequire extends WebpackRequire {}
 declare var require: NodeRequire;
+
+declare var G2: any;
