@@ -1,3 +1,10 @@
+# 0.0.1-alpha.4
+
++ 新增G2图表
++ 移除未发布 `nz-avatar` antd补丁样式
++ 升级 `ng-zorro-antd` 至最新版本
++ 修复 [#1](https://github.com/cipchk/ng-alain/issues/1)
+
 # 0.0.1-alpha.3
 
 + 新增路由守卫DEMO
