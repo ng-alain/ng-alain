@@ -133,6 +133,10 @@ Ant Design 并没有按钮色这一说，而是以视觉效果为基准。`nz-bu
 .bg-error-dark-h { &:hover { background-color: #a31837 !important; } }
 ```
 
+### 全量颜色
+
+包含10*10=100种颜色面板，具体效果参见 [color page](https://cipchk.github.io/ng-alain/#/elements/colors)。
+
 ## Clearfix
 
 `ng-zoroo-antd` 自带清除浮动 `.clearfix`。

@@ -61,3 +61,21 @@
         </nz-card>
     </div>
 </div>
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzMd]="24">
+        <nz-card>
+            <ng-template #title>Full Colors</ng-template>
+            <ng-template #body>
+                <div nz-row>
+                    <div nz-col [nzSpan]="4" *ngFor="let c of colorSrv.names">
+                        <div *ngFor="let i of nums" class="bg-{{c}}-{{i}} p-lg">
+                            .bg-{{c}}-{{i}}<br>
+                            .bg-{{c}}-{{i}}-h<br>
+                            .text-{{c}}-{{i}}<br>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </nz-card>
+    </div>
+</div>

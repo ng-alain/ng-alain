@@ -38,3 +38,14 @@
 
     .text-grey-#{$er}   { color: $color !important; }
 }
+
+// all colors
+@if $enable-all-colors {
+    @each $name, $value in $globalColors {
+        @for $i from 1 to 11 {
+            .bg-#{$name}-#{$i}    { background-color: nth($value, $i) !important; }
+            .bg-#{$name}-#{$i}-h  { transition: background-color 300ms; &:hover { background-color: nth($value, $i) !important; } }
+            .text-#{$name}-#{$i}  { color: nth($value, $i) !important; }
+        }
+    }
+}
