@@ -34,9 +34,28 @@ npm run serve:hmr
 | package | version |
 | ------- | ------- |
 | `ng-alain` | 0.0.1-alpha.4 | 
-| `ng-zorro-antd` | 0.5.0-rc.3 |
+| `ng-zorro-antd` | 0.5.0-rc.4 |
 | `@angular` | 4.2.4 |
 | `@angular/cli` | 1.4.0-beta.0 |
+
+**Third Library[Optional]**
+
+| package | dependencie | remark |
+| ------- | ------- | ------- |
+| `font-awesome` |  |  |
+| `simple-line-icons` |  |  |
+| `weather-icons` |  |  |
+| `angular-baidu-maps` |  | BaidDu Map |
+| `angular-qq-maps` |  | QQ Map |
+| `angular-web-storage` |  | LocalStorage |
+| `ng2-charts` | `chart.js` |  |
+| `d3` |  |  |
+| `g2-angular` | `g2` |  |
+| `jquery-sparkline` | `jquery` |  |
+| `ng2-file-upload` |  |  |
+| `ng2-img-cropper` |  |  |
+| `ngx-color-picker` |  |  |
+| `ngx-ueditor` |  |  |
 
 ## Guide Lines
 
