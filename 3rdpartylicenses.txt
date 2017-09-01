@@ -23,7 +23,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 
-ng-zorro-antd@0.5.0-rc.3 MIT
+ng-zorro-antd@0.5.0-rc.4 MIT
 MIT LICENSE
 
 Copyright (c) 2017 Alibaba.com
