@@ -35,7 +35,7 @@ npm run serve:hmr
 
 | 包 | 版本 |
 | ------- | ------- |
-| `ng-alain` | 0.0.1-alpha.4 | 
+| `ng-alain` | 0.0.1-alpha.6 | 
 | `ng-zorro-antd` | 0.5.0-rc.4 |
 | `@angular` | 4.2.4 |
 | `@angular/cli` | 1.4.0-beta.0 |
