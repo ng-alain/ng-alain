@@ -20,7 +20,7 @@ export class StartupService {
         private httpClient: HttpClient,
         private injector: Injector) { }
 
-    load() {
+    load(): Promise<any> {
         // only works with promises
         // https://github.com/angular/angular/issues/15088
         let ret = this.httpClient
@@ -41,6 +41,6 @@ export class StartupService {
                         return Promise.resolve(null);
                     });
 
-        return ret.then((res) => { });
+        return ret;
     }
 }

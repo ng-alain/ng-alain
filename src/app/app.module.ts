@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID, APP_INITIALIZER } from '@angular/core';
+import { NgModule, LOCALE_ID, APP_INITIALIZER, Injector } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from "@angular/common/http";
 
@@ -14,14 +14,15 @@ import { StartupService } from "./core/services/startup.service";
 import { MenuService } from "./core/menu/menu.service";
 import { TranslatorService } from "./core/translator/translator.service";
 import { SettingsService } from "./core/settings/settings.service";
+import { LocalStorageService } from "angular-web-storage";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-export function startupServiceFactory(startupService: StartupService): Function {
-    return () => { return startupService.load() };
+export function StartupServiceFactory(startupService: StartupService): Function {
+    return () => { return startupService.load(); }
 }
 
 @NgModule({
@@ -50,8 +51,8 @@ export function startupServiceFactory(startupService: StartupService): Function 
         StartupService,
         {
             provide: APP_INITIALIZER,
-            useFactory: startupServiceFactory,
-            deps: [StartupService, MenuService, TranslatorService, SettingsService],
+            useFactory: StartupServiceFactory,
+            deps: [StartupService],
             multi: true
         }
     ],
