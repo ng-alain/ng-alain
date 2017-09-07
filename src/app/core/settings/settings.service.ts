@@ -5,16 +5,16 @@ import { ThemeType } from "../themes/themes.service";
 const KEY: string = 'layout';
 
 export interface User {
-    name: string;
-    avatar: string;
-    email: string;
+    name?: string;
+    avatar?: string;
+    email?: string;
     [key: string]: any;
 }
 
 export interface App {
-    name: string,
-    description: string,
-    year: number;
+    name?: string,
+    description?: string,
+    year?: number;
     [key: string]: any;
 }
 
@@ -34,16 +34,10 @@ export interface Layout {
 @Injectable()
 export class SettingsService {
     app: App = {
-        name: 'Alain',
-        description: 'Ng-zorro admin panel front-end framework',
         year: (new Date()).getFullYear()
     };
 
-    user: User = {
-        name: 'Admin',
-        avatar: './assets/img/zorro.svg',
-        email: 'cipchk@qq.com'
-    };
+    user: User = {};
 
     private _layout: Layout = null;
 
@@ -68,6 +62,14 @@ export class SettingsService {
             return true;
         }
         return false;
+    }
+
+    setApp(val: App) {
+        this.app = Object.assign(this.app, val);
+    }
+
+    setUser(val: User) {
+        this.user = Object.assign(this.user, val);
     }
 
     constructor(private local: LocalStorageService) { }
