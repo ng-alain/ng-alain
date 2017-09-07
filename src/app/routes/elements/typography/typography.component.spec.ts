@@ -6,6 +6,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 import { SharedModule } from "../../../shared/shared.module";
 import { TypographyComponent } from "./typography.component";
+import { ColorsService } from "../../../core/services/colors.service";
 
 
 describe('Component: Typography', () => {
@@ -13,7 +14,8 @@ describe('Component: Typography', () => {
         TestBed.configureTestingModule({
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             imports: [RouterTestingModule, SharedModule.forRoot()],
-            declarations: [TypographyComponent]
+            declarations: [TypographyComponent],
+            providers: [ColorsService]
         });
     });
 

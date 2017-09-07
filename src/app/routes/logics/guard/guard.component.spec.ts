@@ -6,6 +6,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 import { SharedModule } from "../../../shared/shared.module";
 import { GuardComponent } from "./guard.component";
+import { ColorsService } from "../../../core/services/colors.service";
+import { UserService } from "./user.service";
 
 
 describe('Comoponent: Guard', () => {
@@ -13,7 +15,8 @@ describe('Comoponent: Guard', () => {
         TestBed.configureTestingModule({
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             imports: [RouterTestingModule, SharedModule.forRoot()],
-            declarations: [GuardComponent]
+            declarations: [GuardComponent],
+            providers: [ColorsService, UserService]
         });
     });
 
