@@ -37,6 +37,7 @@
             "translate": "elements",
             "link": "/elements",
             "icon": "icon-chemistry",
+            "acl": "role-a",
             "children": [{
                 "text": "按钮",
                 "link": "/elements/buttons",
@@ -79,6 +80,7 @@
             "translate": "forms",
             "link": "/forms",
             "icon": "icon-note",
+            "acl": "role-a",
             "children": [{
                 "text": "标准",
                 "link": "/forms/standard",
@@ -105,6 +107,7 @@
             "translate": "charts",
             "link": "/charts",
             "icon": "icon-graph",
+            "acl": "role-a",
             "children": [{
                 "text": "G2",
                 "link": "/charts/g2"
@@ -122,6 +125,7 @@
             "translate": "tables",
             "link": "/tables",
             "icon": "icon-grid",
+            "acl": "role-b",
             "children": [{
                 "text": "标准",
                 "link": "/tables/standard",
@@ -136,6 +140,7 @@
             "translate": "maps",
             "link": "/maps",
             "icon": "icon-map",
+            "acl": "role-b",
             "children": [{
                 "text": "QQ",
                 "link": "/maps/qq",
@@ -156,15 +161,22 @@
             "link": "/logics",
             "icon": "icon-compass",
             "children": [{
+                "text": "ACL",
+                "link": "/logics/acl",
+                "translate": "acl"
+            },
+            {
                 "text": "Route Guard",
                 "link": "/logics/guard",
-                "translate": "guard"
+                "translate": "guard",
+                "acl": "admin"
             }]
         }, {
             "text": "Pages",
             "translate": "pages",
             "link": "/pages",
             "icon": "icon-doc",
+            "acl": "admin",
             "children": [{
                 "text": "Login",
                 "link": "/login",
