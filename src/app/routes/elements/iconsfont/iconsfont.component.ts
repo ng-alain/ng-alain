@@ -1,7 +1,7 @@
 import { NzMessageService } from 'ng-zorro-antd';
 import { Component, ElementRef, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { ColorsService } from './../../../shared/services/colors.service';
+import { ColorsService } from './../../../core/services/colors.service';
 
 @Component({
     selector: 'app-iconsfont',

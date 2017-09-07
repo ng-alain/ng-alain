@@ -5,6 +5,8 @@ import { SettingsService } from "./settings/settings.service";
 import { MenuService } from "./menu/menu.service";
 import { ThemesService } from "./themes/themes.service";
 import { TranslatorService } from "./translator/translator.service";
+import { ScrollService } from "./services/scroll.service";
+import { ColorsService } from "./services/colors.service";
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import { TranslatorService } from "./translator/translator.service";
     ThemesService,
     SettingsService,
     MenuService,
-    TranslatorService
+    TranslatorService,
+    ScrollService,
+    ColorsService
   ],
   declarations: [
   ],

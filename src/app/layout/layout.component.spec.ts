@@ -6,7 +6,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 import { SharedModule } from "../shared/shared.module";
 import { SettingsService } from "../core/settings/settings.service";
-import { ScrollService } from "../shared/services/scroll.service";
+import { ScrollService } from "../core/services/scroll.service";
 
 import { LayoutComponent } from './layout.component';
 import { MenuService } from "../core/menu/menu.service";

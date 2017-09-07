@@ -9,8 +9,6 @@ import { NgZorroAntdModule } from "ng-zorro-antd";
 import { TranslateModule } from "@ngx-translate/core";
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
-import { ScrollService } from "./services/scroll.service";
-import { ColorsService } from "./services/colors.service";
 import { SparklineDirective } from './directives/sparkline/sparkline.directive';
 import { MomentDatePipe } from "./pipes/moment-date.pipe";
 import { CNCurrencyPipe } from "./pipes/cn-currency.pipe";
@@ -29,7 +27,6 @@ const PIPES = [MomentDatePipe, CNCurrencyPipe];
         PerfectScrollbarModule,
         ChartsModule
     ],
-    providers: [ScrollService, ColorsService],
     declarations: [...DIRECTIVES, ...PIPES],
     exports: [
         CommonModule,
