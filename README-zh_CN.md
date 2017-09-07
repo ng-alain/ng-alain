@@ -31,14 +31,34 @@ npm start
 npm run serve:hmr
 ```
 
-## Environment
+## 环境
 
-| package | version |
+| 包 | 版本 |
 | ------- | ------- |
 | `ng-alain` | 0.0.1-alpha.4 | 
-| `ng-zorro-antd` | 0.5.0-rc.3 |
+| `ng-zorro-antd` | 0.5.0-rc.4 |
 | `@angular` | 4.2.4 |
 | `@angular/cli` | 1.4.0-beta.0 |
+
+**第三方类型[可选]**
+
+| 包 | 额外依赖 | 说明 |
+| ------- | ------- | ------- |
+| `font-awesome` |  |  |
+| `simple-line-icons` |  |  |
+| `weather-icons` |  |  |
+| `angular-baidu-maps` |  | BaidDu Map |
+| `angular-qq-maps` |  | QQ Map |
+| `angular-web-storage` |  | LocalStorage |
+| `ng2-charts` | `chart.js` |  |
+| `d3` |  |  |
+| `g2-angular` | `g2` |  |
+| `jquery-sparkline` | `jquery` |  |
+| `ng2-file-upload` |  |  |
+| `ng2-img-cropper` |  |  |
+| `ngx-color-picker` |  |  |
+| `ngx-ueditor` |  |  |
+
 
 ## 指引文章
 
@@ -51,6 +71,7 @@ npm run serve:hmr
 + [CSS组件补丁类](_documents/component-patch.md)
 + [工具类规则](_documents/utils.md)
 + [接地气Pipe](_documents/pipe.md)
++ [ACL访问控制](_documents/acl.md)
 + [目录结构与版本升级说明](_documents/upgrade.md)
 + 为了减少github的发布，后续有关 `ng-alain` 的文章，会一直发布在我的[SF专栏](https://segmentfault.com/blog/cipchk)当中。
 
@@ -59,6 +80,7 @@ npm run serve:hmr
 + 基于 `ng-zorro-antd`
 + 响应式
 + 国际化
++ ACL访问控制
 + 延迟加载及良好的启用画面
 + 良好的UI路由设计
 + 十种颜色版本

@@ -10,6 +10,7 @@ import { CanAdminProvide } from "./guard/can-admin.provide";
 import { GuardAdminComponent } from "./guard/admin.component";
 import { GuardAuthComponent } from "./guard/auth.component";
 import { GuardLeaveComponent } from "./guard/leave.component";
+import { ACLComponent } from "./acl/acl.component";
 
 const routes: Routes = [
     {
@@ -20,7 +21,8 @@ const routes: Routes = [
             { path: 'auth', component: GuardAuthComponent, canActivate: [ CanAuthProvide ] },
             { path: 'admin', component: GuardAdminComponent, canActivate: [ CanAdminProvide ] }
         ]
-    }
+    },
+    { path: 'acl', component: ACLComponent }
 ];
 
 @NgModule({
@@ -33,7 +35,8 @@ const routes: Routes = [
         GuardComponent,
         GuardLeaveComponent,
         GuardAdminComponent,
-        GuardAuthComponent
+        GuardAuthComponent,
+        ACLComponent
     ],
     exports: [
         RouterModule

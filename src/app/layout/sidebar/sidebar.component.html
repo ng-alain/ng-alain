@@ -16,29 +16,35 @@
         </ul>
     </nz-dropdown>
     <ul nz-menu nzMode="inline" nzTheme="light">
-        <li nz-menu-group *ngFor="let group of menuSrv.menus">
-            <span title>{{ (group.translate | translate) || group.text }}</span>
-            <ul>
-                <ng-container *ngFor="let child of group.children">
-                    <li *ngIf="child.children" [nzOpen]="child.selected" nz-submenu>
-                        <span title><i class="{{ child.icon }}"></i> {{ (child.translate | translate) || child.text }}</span>
-                        <ul>
-                            <li nz-menu-item *ngFor="let item of child.children"
-                                [nzSelected]="item.selected"
-                                [routerLink]="item.link"
-                                (click)="closeMenu()">
-                                {{ (item.translate | translate) || item.text }}
+        <ng-container *ngFor="let group of menuSrv.menus">
+            <li nz-menu-group *ngIf="group.hide !== true">
+                <span title>{{ (group.translate | translate) || group.text }}</span>
+                <ul>
+                    <ng-container *ngFor="let child of group.children">
+                        <ng-container *ngIf="child.hide !== true">
+                            <li *ngIf="child.children" [nzOpen]="child.selected" nz-submenu>
+                                <span title><i class="{{ child.icon }}"></i> {{ (child.translate | translate) || child.text }}</span>
+                                <ul>
+                                    <ng-container *ngFor="let item of child.children">
+                                        <li nz-menu-item *ngIf="item.hide !== true"
+                                            [nzSelected]="item.selected"
+                                            [routerLink]="item.link"
+                                            (click)="closeMenu()">
+                                            {{ (item.translate | translate) || item.text }}
+                                        </li>
+                                    </ng-container>
+                                </ul>
                             </li>
-                        </ul>
-                    </li>
-                    <li *ngIf="!child.children" nz-menu-item
-                        [nzSelected]="child.selected"
-                        [routerLink]="child.link"
-                        (click)="closeMenu()">
-                        <i class="{{ child.icon }}"></i> {{ (child.translate | translate) || child.text }}
-                    </li>
-                </ng-container>
-            </ul>
-        </li>
+                            <li *ngIf="!child.children" nz-menu-item
+                                [nzSelected]="child.selected"
+                                [routerLink]="child.link"
+                                (click)="closeMenu()">
+                                <i class="{{ child.icon }}"></i> {{ (child.translate | translate) || child.text }}
+                            </li>
+                        </ng-container>
+                    </ng-container>
+                </ul>
+            </li>
+        </ng-container>
     </ul>
 </perfect-scrollbar>

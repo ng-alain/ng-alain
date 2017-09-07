@@ -7,6 +7,7 @@ import { SettingsService } from "../settings/settings.service";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
+import { ACLService } from "../acl/acl.service";
 /**
  * 用于应用启动时
  * 一般用来获取应用所需要的基础数据等
@@ -17,6 +18,7 @@ export class StartupService {
         private menuService: MenuService,
         private tr: TranslatorService,
         private settingService: SettingsService,
+        private aclService: ACLService,
         private httpClient: HttpClient,
         private injector: Injector) { }
 
@@ -32,6 +34,8 @@ export class StartupService {
 
                         this.settingService.setApp(res.app);
                         this.settingService.setUser(res.user);
+                        // 设置ＡＣＬ权限为全量
+                        this.aclService.setFull(true);
                         // 初始化菜单
                         this.menuService.add(res.menu);
                         // 调整语言

@@ -7,6 +7,7 @@ import { ThemesService } from "./themes/themes.service";
 import { TranslatorService } from "./translator/translator.service";
 import { ScrollService } from "./services/scroll.service";
 import { ColorsService } from "./services/colors.service";
+import { ACLService } from './acl/acl.service';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ColorsService } from "./services/colors.service";
     MenuService,
     TranslatorService,
     ScrollService,
-    ColorsService
+    ColorsService,
+    ACLService
   ],
   declarations: [
   ],

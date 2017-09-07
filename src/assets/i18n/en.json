@@ -43,6 +43,7 @@
     "baidu": "Baidu",
     "logics": "Logics",
     "guard": "Route Guard",
+    "acl": "ACL",
     "pages": "Pages",
     "m-login": "Login",
     "m-register": "Register",

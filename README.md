@@ -64,6 +64,7 @@ npm run serve:hmr
 + [CSS Component Patch](_documents/component-patch.md)
 + [CSS Utility Rule](_documents/utils.md)
 + [Pipe](_documents/pipe.md)
++ [ACL](_documents/acl.md)
 + [Upgrade](_documents/upgrade.md)
 
 ## Features
@@ -71,6 +72,7 @@ npm run serve:hmr
 + `ng-zorro-antd` based
 + Responsive Layout
 + I18n
++ ACL
 + Lazy load Assets
 + UI Router States
 + Multiple color options
