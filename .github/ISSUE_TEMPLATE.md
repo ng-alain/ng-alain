@@ -7,46 +7,37 @@
 6. 抱怨不能解决问题，通畅有效和心情舒畅的交流才能解决。
 -->
 
-## I'm submitting a...
-<!-- Check one of the following options with "x" -->
-<pre><code>
-[ ] Bug report  <!-- Please search GitHub for a similar issue or PR before submitting -->
-[ ] Feature request
-[ ] Documentation issue or request
-[ ] Regression (a behavior that used to work and stopped working in a new release)
-[ ] Support request => Please do not submit support request here
-</code></pre>
+## Bug Report or Feature Request (mark with an `x`)
+```
+- [ ] bug report -> please search issues before submitting
+- [ ] feature request
+```
 
-## Current behavior
-<!-- Describe how the issue manifests. -->
-
-
-## Expected behavior
-<!-- Describe what the desired behavior would be. -->
-
-
-## Minimal reproduction of the problem with instructions
+### Versions.
 <!--
-For bug reports please provide the *STEPS TO REPRODUCE* 
+Output from: `ng --version`.
+If nothing, output from: `node --version` and `npm --version`.
+  Windows (7/8/10). Linux (incl. distribution). macOS (El Capitan? Sierra?)
 -->
 
-## What is the motivation / use case for changing the behavior?
-<!-- Describe the motivation or the concrete use case. -->
+### Repro steps.
+<!--
+Simple steps to reproduce this bug.
+Please include: commands run, packages added, related code changes.
+A link to a sample repo would help too.
+-->
+
+### The log given by the failure.
+<!-- Normally this include a stack trace and some more information. -->
 
 
-## Environment
+### Desired functionality.
+<!--
+What would like to see implemented?
+What is the usecase?
+-->
 
-<pre><code>
-Browser:
-- [ ] Chrome (desktop) version XX
-- [ ] Firefox version XX
-- [ ] Safari (desktop) version XX
-- [ ] IE version XX
- 
-For Tooling issues:
-- Node version: XX  <!-- run `node --version` -->
-- Platform:  <!-- Mac, Linux, Windows -->
 
-Others:
-<!-- Anything else relevant?  Operating system version, IDE, package manager, HTTP server, ... -->
-</code></pre>
+### Mention any other details that might be useful.
+<!-- Please include a link to the repo if this is related to an OSS project. -->
+
