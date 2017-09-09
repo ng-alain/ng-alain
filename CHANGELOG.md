@@ -1,3 +1,10 @@
+# 0.0.1-alpha.7
+
++ 增加TOKEN拦截器示例
++ 修复菜单有时出现重复选择问题，closes #8
++ 升级 `angular-cli`、`ng-zorro-antd` 至最新版本
++ 由于新版 `angular-cli` 对commonjs都必须指定一个名称，因此重写 `preloader` （ 并在 `main.ts` 中导入它）。
+
 # 0.0.1-alpha.6
 
 + 新增应用启动，基础、菜单、用户数据由远程获取。
