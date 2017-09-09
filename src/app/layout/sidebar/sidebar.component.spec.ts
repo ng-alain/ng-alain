@@ -14,6 +14,7 @@ import { SidebarComponent } from './sidebar.component';
 import { TranslateService, TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpClient } from "@angular/common/http";
 import { HttpLoaderFactory } from "../../app.module";
+import { ACLService } from '../../core/acl/acl.service';
 
 describe('Layout: Sidebar', () => {
     beforeEach(() => {
@@ -28,7 +29,7 @@ describe('Layout: Sidebar', () => {
                     }
                 })],
             declarations: [SidebarComponent],
-            providers: [SettingsService, MenuService, ThemesService, ScrollService]
+            providers: [SettingsService, MenuService, ThemesService, ScrollService, ACLService]
         });
     });
 

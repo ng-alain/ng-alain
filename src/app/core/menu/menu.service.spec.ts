@@ -2,11 +2,12 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { MenuService } from './menu.service';
+import { ACLService } from '../acl/acl.service';
 
 describe('Service: Menu', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [MenuService]
+            providers: [MenuService, ACLService]
         });
     });
 

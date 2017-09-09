@@ -10,6 +10,7 @@ import { ScrollService } from "../core/services/scroll.service";
 
 import { LayoutComponent } from './layout.component';
 import { MenuService } from "../core/menu/menu.service";
+import { ACLService } from '../core/acl/acl.service';
 
 describe('Layout', () => {
     beforeEach(() => {
@@ -17,7 +18,7 @@ describe('Layout', () => {
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             imports: [RouterTestingModule, SharedModule.forRoot()],
             declarations: [LayoutComponent],
-            providers: [SettingsService, ScrollService, MenuService]
+            providers: [SettingsService, ScrollService, MenuService, ACLService]
         });
     });
 

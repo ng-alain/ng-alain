@@ -22,11 +22,13 @@ export interface Menu {
     /** 是否选中 */
     selected?: boolean;
     /** 是否隐藏 */
-    hide: boolean;
+    hide?: boolean;
     /** ACL配置 */
     acl?: string | string[] | ACLType;
     /** 二级菜单 */
     children?: Menu[];
+
+    [key: string]: any;
 }
 
 @Injectable()
@@ -35,6 +37,18 @@ export class MenuService {
     private data: Menu[] = [];
 
     constructor(private aclService: ACLService) { }
+
+    private visit(callback: (item: Menu, parentMenum: Menu) => void) {
+        const inFn = (list: Menu[], parentMenum: Menu) => {
+            for (let item of list) {
+                if (callback) callback(item, parentMenum);
+                if (item.children && item.children.length > 0)
+                    inFn(item.children, item);
+            }
+        };
+
+        inFn(this.data, null);
+    }
 
     add(items: Menu[]) {
         this.data.push(...items);
@@ -45,16 +59,10 @@ export class MenuService {
      * 若用户权限变动时需要调用刷新
      */
     resume() {
-        const inFn = (list: Menu[]) => {
-            for(let item of list) {
-                item.hide = item.acl && !this.aclService.can(item.acl);
-                if (item.children && item.children.length > 0)
-                    inFn(item.children);
-            }
-        };
-
-        inFn(this.data);
-        console.log(this.data);
+        this.visit((item, parent) => {
+            item.__parent = parent;
+            item.hide = item.acl && !this.aclService.can(item.acl);
+        });
     }
 
     get menus() {
@@ -63,25 +71,22 @@ export class MenuService {
 
     setSelected(url: string) {
         if (!url) return;
-        let pages = this.data
-            .map(g => g.children || [])
-            .reduce((acc, val) => [...acc, ...val], [])
-            .map(item => {
-                item.selected = false;
-                return item;
-            })
-            .filter(f => f.link && url.startsWith(f.link))
-            .map(m => {
-                m.selected = true;
-                return m.children || [];
-            })
-            .reduce((acc, val) => [...acc, ...val], [])
-            .filter(f => f.link && url.endsWith(f.link));
-        if (pages.length === 0) {
+
+        let findItem: Menu = null;
+        this.visit(item => {
+            item.selected = false;
+            if (!item.link) return;
+            if (!findItem && item.link.includes(url))
+                findItem = item;
+        });
+        if (!findItem) {
             console.warn(`not found page name: ${url}`)
             return;
         }
-        pages[0].selected = true;
-    }
 
+        do {
+            findItem.selected = true;
+            findItem = findItem.__parent;
+        } while (findItem);
+    }
 }

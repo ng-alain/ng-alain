@@ -14,6 +14,7 @@ import { HeaderComponent } from './header.component';
 import { TranslatorService } from "../../core/translator/translator.service";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { HttpLoaderFactory } from "../../app.module";
+import { ACLService } from '../../core/acl/acl.service';
 
 describe('Layout: Header', () => {
     beforeEach(() => {
@@ -28,7 +29,7 @@ describe('Layout: Header', () => {
                     }
                 })],
             declarations: [HeaderComponent],
-            providers: [SettingsService, MenuService, ThemesService, TranslatorService]
+            providers: [SettingsService, MenuService, ThemesService, TranslatorService, ACLService]
         });
     });
 
