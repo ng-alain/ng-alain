@@ -59,7 +59,7 @@ export class ValidationComponent {
         }
     };
 
-    getFormControl(name) {
+    getFormControl(name: string) {
         return this.form.controls[name];
     }
 

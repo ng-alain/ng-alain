@@ -22,7 +22,7 @@ export class ColorsService {
 
     constructor() { }
 
-    byName(name) {
+    byName(name: string) {
         return (this.APP_COLORS[name] || '#fff');
     }
 

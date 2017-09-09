@@ -21,7 +21,6 @@
             "styles.scss"
         ],
         "scripts": [
-            "app/core/preloader/preloader.js",
             "../node_modules/jquery/dist/jquery.js",
             "../node_modules/jquery-sparkline/jquery.sparkline.js",
             "../node_modules/chart.js/dist/chart.bundle.js"

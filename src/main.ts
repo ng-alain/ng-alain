@@ -6,6 +6,8 @@ import { environment } from './environments/environment';
 
 import { hmrBootstrap } from './hmr';
 
+import './app/core/preloader/preloader';
+
 if (environment.production) {
   enableProdMode();
 }
