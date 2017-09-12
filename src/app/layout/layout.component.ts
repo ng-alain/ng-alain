@@ -31,7 +31,7 @@ export class LayoutComponent {
             }, 100);
 
             // activation menu selected status by current url.
-            this.menuSrv.setSelected(evt.url);
+            this.menuSrv.setSelected(evt.urlAfterRedirects || evt.url);
         });
     }
 }
