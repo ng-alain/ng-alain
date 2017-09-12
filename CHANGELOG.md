@@ -1,3 +1,12 @@
+# 0.0.1-beta
+
++ 增加 `core`、`shared` 别名，允许通过 `@shared/shared.module` 访问 `SharedModule`
++ 增加顶部菜单栏 `.full` 样式，方便去掉搜索框菜单右对齐。
++ 修复首次加载菜单无法选中问题
++ 优化源代码包体大小，去掉 `ueditor` 示例、清除无效图像资源
++ 优化首次加载速度方法，仪表盘去掉延迟加载
++ 优化 `core/services` 目录结构
+
 # 0.0.1-alpha.7
 
 + 增加TOKEN拦截器示例
