@@ -27,7 +27,6 @@ src
     assets
         i18n (可选：国际化)
         img  (可选：一些图片资源)
-        ueditor  (可选：百度ueditor)
 .angular-cli.json
 package.json
 ```

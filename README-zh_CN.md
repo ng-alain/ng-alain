@@ -57,7 +57,6 @@ npm run serve:hmr
 | `ng2-file-upload` |  |  |
 | `ng2-img-cropper` |  |  |
 | `ngx-color-picker` |  |  |
-| `ngx-ueditor` |  |  |
 
 
 ## 指引文章

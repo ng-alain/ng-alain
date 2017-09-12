@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ColorPickerModule, ColorPickerService } from 'ngx-color-picker';
 import { ImageCropperModule } from 'ng2-img-cropper';
-import { UEditorModule } from 'ngx-ueditor';
 
 import { SharedModule } from "../../shared/shared.module";
 
@@ -27,13 +26,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         ColorPickerModule,
         FileUploadModule,
-        ImageCropperModule,
-        UEditorModule.forRoot({
-            path: './assets/ueditor/',
-            options: {
-                themePath: './assets/ueditor/themes/'
-            }
-        })
+        ImageCropperModule
     ],
     declarations: [
         StandardComponent,
