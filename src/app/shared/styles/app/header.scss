@@ -82,6 +82,9 @@ $search-height: 34px;
 }
 
 .top-nav {
+    &.full {
+        flex: 1;
+    }
     >li {
         display: inline-block;
         vertical-align: middle;
