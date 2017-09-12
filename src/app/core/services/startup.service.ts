@@ -1,9 +1,9 @@
 import { Router } from '@angular/router';
 import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MenuService } from "../menu/menu.service";
+import { MenuService } from "./menu.service";
 import { TranslatorService } from "../translator/translator.service";
-import { SettingsService } from "../settings/settings.service";
+import { SettingsService } from "./settings.service";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';

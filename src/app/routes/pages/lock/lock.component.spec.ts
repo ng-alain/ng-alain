@@ -4,8 +4,8 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
-import { SharedModule } from "../../../shared/shared.module";
-import { SettingsService } from "../../../core/settings/settings.service";
+import { SharedModule } from "@shared/shared.module";
+import { SettingsService } from "@core/services/settings.service";
 
 import { LockComponent } from './lock.component';
 

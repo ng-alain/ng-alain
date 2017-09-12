@@ -1,12 +1,13 @@
-import { ThemesService } from './../../core/themes/themes.service';
 import { Component, ViewChild } from '@angular/core';
 import * as screenfull from 'screenfull';
-import { SettingsService } from '../../core/settings/settings.service';
-import { MenuService } from "../../core/menu/menu.service";
-import { ThemeType } from "../../core/themes/themes.service";
 import { NzModalService, NzMessageService } from "ng-zorro-antd";
 import { LocalStorageService } from 'angular-web-storage';
-import { TranslatorService } from "../../core/translator/translator.service";
+
+import { SettingsService } from '@core/services/settings.service';
+import { ThemesService } from '@core/services/themes.service';
+import { MenuService } from "@core/services/menu.service";
+import { ThemeType } from "@core/services/themes.service";
+import { TranslatorService } from "@core/translator/translator.service";
 
 @Component({
     selector: 'app-header',

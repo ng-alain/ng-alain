@@ -1,7 +1,7 @@
 import { Component, HostBinding } from '@angular/core';
 
-import { SettingsService } from './core/settings/settings.service';
-import { ThemesService } from "./core/themes/themes.service";
+import { SettingsService } from './core/services/settings.service';
+import { ThemesService } from "./core/services/themes.service";
 import { TranslatorService } from "./core/translator/translator.service";
 
 @Component({

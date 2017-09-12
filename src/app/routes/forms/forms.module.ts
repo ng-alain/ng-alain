@@ -4,7 +4,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { ColorPickerModule, ColorPickerService } from 'ngx-color-picker';
 import { ImageCropperModule } from 'ng2-img-cropper';
 
-import { SharedModule } from "../../shared/shared.module";
+import { SharedModule } from "@shared/shared.module";
 
 import { StandardComponent } from "./standard/standard.component";
 import { ExtendedComponent } from "./extended/extended.component";

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SettingsService } from "../settings/settings.service";
+import { SettingsService } from "./settings.service";
 
 const themeA = require('../../shared/styles/themes/theme-a.scss');
 const themeB = require('../../shared/styles/themes/theme-b.scss');

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SettingsService } from "../../../core/settings/settings.service";
+import { SettingsService } from "@core/services/settings.service";
 
 @Component({
   selector: 'app-pages-404',

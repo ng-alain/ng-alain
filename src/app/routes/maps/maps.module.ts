@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AbmModule } from 'angular-baidu-maps';
 import { AqmModule } from 'angular-qq-maps';
 
-import { SharedModule } from "../../shared/shared.module";
+import { SharedModule } from "@shared/shared.module";
 
 import { MapsQQComponent } from "./qq/qq.component";
 import { MapsBaiduComponent } from "./baidu/baidu.component";

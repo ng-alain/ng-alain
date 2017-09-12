@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { SettingsService } from "../settings/settings.service";
+import { SettingsService } from "../services/settings.service";
 
 @Injectable()
 export class TranslatorService {

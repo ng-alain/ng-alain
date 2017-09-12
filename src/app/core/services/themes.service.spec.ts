@@ -1,9 +1,9 @@
-import { SharedModule } from './../../shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { ThemesService } from './themes.service';
-import { SettingsService } from "../settings/settings.service";
+import { SettingsService } from "./settings.service";
 
 describe('Service: Themes', () => {
     beforeEach(() => {

@@ -1,9 +1,9 @@
-import { MenuService } from './../core/menu/menu.service';
 import { Component } from '@angular/core';
 import { Router, NavigationEnd, RouteConfigLoadStart } from "@angular/router";
 
-import { SettingsService } from '../core/settings/settings.service';
-import { ScrollService } from './../core/services/scroll.service';
+import { SettingsService } from '@core/services/settings.service';
+import { MenuService } from '@core/services/menu.service';
+import { ScrollService } from '@core/services/scroll.service';
 import { NzMessageService } from "ng-zorro-antd";
 
 @Component({

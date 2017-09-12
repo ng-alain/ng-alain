@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from "angular-web-storage";
-import { ThemeType } from "../themes/themes.service";
+import { ThemeType } from "./themes.service";
 
 const KEY: string = 'layout';
 

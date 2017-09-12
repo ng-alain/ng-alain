@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { G2ChartModule } from 'g2-angular';
 
-import { SharedModule } from "../../shared/shared.module";
+import { SharedModule } from "@shared/shared.module";
 
 import { NgxChartsComponent } from "./ngxcharts/ngxcharts.component";
 import { ChartJsComponent } from "./chartjs/chartjs.component";

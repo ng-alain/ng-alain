@@ -11,9 +11,9 @@ import { AppComponent } from './app.component';
 import { RoutesModule } from "./routes/routes.module";
 import { LayoutModule } from "./layout/layout.module";
 import { StartupService } from "./core/services/startup.service";
-import { MenuService } from "./core/menu/menu.service";
+import { MenuService } from "./core/services/menu.service";
 import { TranslatorService } from "./core/translator/translator.service";
-import { SettingsService } from "./core/settings/settings.service";
+import { SettingsService } from "./core/services/settings.service";
 import { LocalStorageService } from "angular-web-storage";
 
 // AoT requires an exported function for factories

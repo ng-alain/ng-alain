@@ -8,7 +8,13 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "paths": {
+        "@shared": [ "app/shared" ],
+        "@shared/*": [ "app/shared/*" ],
+        "@core": [ "app/core/" ],
+        "@core/*": [ "app/core/*" ]
+    }
   },
   "files": [
     "test.ts"

@@ -1,4 +1,4 @@
-import { ColorsService } from './../../../core/services/colors.service';
+import { ColorsService } from '@core/services/colors.service';
 import { Component } from '@angular/core';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NzMessageService } from "ng-zorro-antd";
-import { SettingsService } from "../../core/settings/settings.service";
-import { MenuService } from '../../core/menu/menu.service';
+import { SettingsService } from "@core/services/settings.service";
+import { MenuService } from '@core/services/menu.service';
 
 @Component({
   selector   : 'app-sidebar',

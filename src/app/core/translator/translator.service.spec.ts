@@ -1,4 +1,4 @@
-import { SharedModule } from './../../shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
@@ -7,7 +7,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 import { TranslatorService } from './translator.service';
 import { HttpLoaderFactory } from '../../app.module';
-import { SettingsService } from "../settings/settings.service";
+import { SettingsService } from "../services/settings.service";
 
 describe('Service: Translator', () => {
     beforeEach(() => {

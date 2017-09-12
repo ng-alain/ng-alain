@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MenuService } from './../../../core/menu/menu.service';
-import { ACLService } from './../../../core/acl/acl.service';
+import { MenuService } from '@core/services/menu.service';
+import { ACLService } from '@core/acl/acl.service';
 
 @Component({
     selector: 'app-acl',

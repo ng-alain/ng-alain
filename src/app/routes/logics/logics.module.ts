@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router';
-import { SharedModule } from "../../shared/shared.module";
+import { SharedModule } from "@shared/shared.module";
 
 import { GuardComponent } from './guard/guard.component';
 import { CanLeaveProvide } from "./guard/can-leave.provide";
