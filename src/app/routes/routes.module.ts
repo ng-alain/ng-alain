@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 
 import { routes } from './routes';
+import { DashboardV1Component } from './dashboard/v1/v1.component';
 
 @NgModule({
     imports: [
@@ -11,7 +12,9 @@ import { routes } from './routes';
         RouterModule.forRoot(routes, { useHash: true }),
         PagesModule
     ],
-    declarations: [],
+    declarations: [
+        DashboardV1Component
+    ],
     exports: [
         RouterModule
     ]

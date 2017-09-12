@@ -6,14 +6,15 @@ import { ForgetComponent } from "./pages/forget/forget.component";
 import { MaintenanceComponent } from "./pages/maintenance/maintenance.component";
 import { Page404Component } from "./pages/404/404.component";
 import { Page500Component } from "./pages/500/500.component";
+import { DashboardV1Component } from "./dashboard/v1/v1.component";
 
 export const routes = [
     {
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-            { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+            { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
+            { path: 'dashboard/v1', component: DashboardV1Component },
             { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
             { path: 'elements', loadChildren: './elements/elements.module#ElementsModule' },
             { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
