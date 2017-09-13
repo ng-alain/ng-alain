@@ -1,13 +1,14 @@
 import { Router } from '@angular/router';
 import { Injectable, Injector } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { MenuService } from "./menu.service";
 import { TranslatorService } from "../translator/translator.service";
 import { SettingsService } from "./settings.service";
+import { ACLService } from "../acl/acl.service";
+
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
-import { ACLService } from "../acl/acl.service";
 /**
  * 用于应用启动时
  * 一般用来获取应用所需要的基础数据等
@@ -29,8 +30,6 @@ export class StartupService {
                     .get('./assets/app-data.json')
                     .toPromise()
                     .then((res: any) => {
-                        // just only injector way if you need navigate to login page.
-                        // this.injector.get(Router).navigate([ '/login' ]);
 
                         this.settingService.setApp(res.app);
                         this.settingService.setUser(res.user);
@@ -41,7 +40,17 @@ export class StartupService {
                         // 调整语言
                         this.tr.use('en');
                     })
-                    .catch((err: any) => {
+                    .catch((err: HttpErrorResponse) => {
+                        // just only injector way if you need navigate to login page.
+                        // this.injector.get(Router).navigate([ '/login' ]);
+                        switch(err.status) {
+                            case 401:
+                                this.injector.get(Router).navigate([ '/login' ]);
+                                break;
+                            default:
+                                this.injector.get(Router).navigate([ '/maintenance' ]);
+                                break;
+                        }
                         return Promise.resolve(null);
                     });
 
