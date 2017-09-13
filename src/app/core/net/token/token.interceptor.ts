@@ -17,7 +17,7 @@ import 'rxjs/add/operator/mergeMap';
  */
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-    constructor(private srv: TokenService, private injector: Injector) {}
+    constructor(private injector: Injector) {}
 
     private goLogin() {
         this.injector.get(Router).navigate([ '/login' ]);
@@ -28,7 +28,7 @@ export class TokenInterceptor implements HttpInterceptor {
         if (req.url.includes('/auth')) return next.handle(req);
 
         // 可以进一步处理，比如：重新刷新或重新登录
-        const authData = this.srv.data;
+        const authData = this.injector.get(TokenService).data;
         if (!authData.access_token) {
             this.goLogin();
             return next.handle(req);
