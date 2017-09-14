@@ -26,34 +26,22 @@ export class StartupService {
     load(): Promise<any> {
         // only works with promises
         // https://github.com/angular/angular/issues/15088
-        let ret = this.httpClient
-                    .get('./assets/app-data.json')
-                    .toPromise()
-                    .then((res: any) => {
+        return new Promise((resolve, reject) => {
+            this.httpClient.get('assets/app-data.json')
+                           .subscribe((res: any) => {
+                                this.settingService.setApp(res.app);
+                                this.settingService.setUser(res.user);
+                                // 设置ＡＣＬ权限为全量
+                                this.aclService.setFull(true);
+                                // 初始化菜单
+                                this.menuService.add(res.menu);
+                                // 调整语言
+                                this.tr.use('en');
 
-                        this.settingService.setApp(res.app);
-                        this.settingService.setUser(res.user);
-                        // 设置ＡＣＬ权限为全量
-                        this.aclService.setFull(true);
-                        // 初始化菜单
-                        this.menuService.add(res.menu);
-                        // 调整语言
-                        this.tr.use('en');
-                    })
-                    .catch((err: HttpErrorResponse) => {
-                        // just only injector way if you need navigate to login page.
-                        // this.injector.get(Router).navigate([ '/login' ]);
-                        switch(err.status) {
-                            case 401:
-                                this.injector.get(Router).navigate([ '/login' ]);
-                                break;
-                            default:
-                                this.injector.get(Router).navigate([ '/maintenance' ]);
-                                break;
-                        }
-                        return Promise.resolve(null);
-                    });
-
-        return ret;
+                                resolve(res);
+                            }, (err: HttpErrorResponse) => {
+                                resolve(null);
+                            })
+        });
     }
 }
