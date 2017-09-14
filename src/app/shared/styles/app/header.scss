@@ -81,10 +81,12 @@ $search-height: 34px;
     }
 }
 
+.top-nav-wrap {
+    flex: 1;
+    display: flex;
+}
+
 .top-nav {
-    &.full {
-        flex: 1;
-    }
     >li {
         display: inline-block;
         vertical-align: middle;
