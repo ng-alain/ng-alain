@@ -33,3 +33,7 @@
 
 + `nz-carousel__dot-{{color}}` 设置指示点颜色；颜色值参[工具类规则](utils.md)。
 
+## `nz-modal` 补丁
+
++ `.modal-{lg|sm}` 设置Modal的大小，例如：`wrapClassName: 'modal-lg'`
++ `.modal-footer` 自定义Modal时非常有效。

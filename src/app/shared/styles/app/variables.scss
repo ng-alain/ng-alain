@@ -1,9 +1,9 @@
 // Layout Gutter
-$layout-gutter: 8px;
+$layout-gutter: 8px !default;
 
-$sm:    $layout-gutter;
-$md:    $layout-gutter * 2;
-$lg:    $layout-gutter * 3;
+$sm:    $layout-gutter !default;
+$md:    $layout-gutter * 2 !default;
+$lg:    $layout-gutter * 3 !default;
 
 $grid-breakpoints: (
     xs: $screen-xs,
@@ -22,16 +22,16 @@ $spacings: (
 );
 
 // type
-$ul-ol-margin:      18px;
+$ul-ol-margin:      18px !default;
 
 // position
-$zindex-base:       $zindex-back-top - 1;
-$zindex-fixed:      $zindex-base;
+$zindex-base:       $zindex-back-top - 1 !default;
+$zindex-fixed:      $zindex-base !default;
 
 // 文本
-$text-sm:       $font-size-base + 0; // 12px
-$text-md:       $font-size-base + 2; // 14px
-$text-lg:       $font-size-base + 4; // 16px
+$text-sm:       $font-size-base + 0 !default; // 12px
+$text-md:       $font-size-base + 2 !default; // 14px
+$text-lg:       $font-size-base + 4 !default; // 16px
 
 // 宽度
 $widths: (
@@ -41,12 +41,12 @@ $widths: (
 );
 
 // 圆角
-$border-radius-base:     $border-radius-base; // 4px
-$border-radius-sm:       $border-radius-sm; // 2px
-$border-radius-md:       $border-radius-base; // 4px
-$border-radius-lg:       $border-radius-base + 2px; // 6px
+$border-radius-base:     $border-radius-base !default; // 4px
+$border-radius-sm:       $border-radius-sm !default; // 2px
+$border-radius-md:       $border-radius-base !default; // 4px
+$border-radius-lg:       $border-radius-base + 2px !default; // 6px
 
-$muted-color:  getColor('grey', 7);
+$muted-color:  getColor('grey', 7) !default;
 
 // Colors
 $white:     #fff !default;
@@ -80,27 +80,32 @@ $aliasColors: (
 );
 
 // masonry
-$masonry-column-gap:  $layout-gutter * 2;
+$masonry-column-gap:  $layout-gutter * 2 !default;
 
 // type
 // ==========
 
 // font-size
 // https://ant.design/docs/spec/font-cn#字号
-$font-size-large:         $font-size-base + 8;  // 20px
-$font-size-small:         $font-size-base;      // 12px
+$font-size-large:         $font-size-base + 8 !default;  // 20px
+$font-size-small:         $font-size-base !default;      // 12px
 
-$h1-font-size:            $font-size-base + 20; // 32px
-$h2-font-size:            $font-size-base + 12; // 24px
-$h3-font-size:            $font-size-base + 8;  // 20px
-$h4-font-size:            $font-size-base + 4;  // 16px
-$h5-font-size:            $font-size-base + 2;  // 14px
-$h6-font-size:            $font-size-base;      // 12px
+$h1-font-size:            $font-size-base + 20 !default; // 32px
+$h2-font-size:            $font-size-base + 12 !default; // 24px
+$h3-font-size:            $font-size-base + 8 !default;  // 20px
+$h4-font-size:            $font-size-base + 4 !default;  // 16px
+$h5-font-size:            $font-size-base + 2 !default;  // 14px
+$h6-font-size:            $font-size-base !default;      // 12px
 
 // Code
 $enable-all-colors:           true !default;
-$code-border-color:           #eee;
-$code-bg:                     #f7f7f7;
+$code-border-color:           #eee !default;
+$code-bg:                     #f7f7f7 !default;
+
+// Modal
+$modal-lg:                    900px !default;
+$modal-md:                    500px !default;
+$modal-sm:                    300px !default;
 
 // List group
 $list-group-bg:                  $white !default;
@@ -108,8 +113,8 @@ $list-group-border-color:        $border-color-split !default;
 $list-group-border-width:        1px !default;
 $list-group-border-radius:       $border-radius-md !default;
 
-$list-group-item-padding-y:      $layout-gutter;
-$list-group-item-padding-x:      $layout-gutter * 2;
+$list-group-item-padding-y:      $layout-gutter !default;
+$list-group-item-padding-x:      $layout-gutter * 2 !default;
 
 $list-group-hover-bg:            getColor('grey', 1) !default;
 $list-group-active-color:        $white !default;
