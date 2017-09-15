@@ -84,6 +84,13 @@ $search-height: 34px;
 .top-nav-wrap {
     flex: 1;
     display: flex;
+    justify-content: space-between;
+    @media (max-width: $screen-md-max) {
+        justify-content: flex-end;
+        .top-nav {
+            margin: inherit;
+        }
+    }
 }
 
 .top-nav {

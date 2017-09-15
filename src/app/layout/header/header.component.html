@@ -2,7 +2,7 @@
     <div class="menu-toggle" (click)="toggleCollapsedSideabar()">
         <i class="anticon anticon-menu-{{settings.layout.collapsed ? '' : 'un'}}fold"></i>
     </div>
-    <div class="logo hidden-xs">
+    <div class="logo">
         <a [routerLink]="['/']"><img src="./assets/img/logo.svg" style="height:26px;" alt="{{settings.app.name}}" /></a>
     </div>
     <div class="search" [class.search__focus]="focus" [class.search__toggled]="searchToggled">
