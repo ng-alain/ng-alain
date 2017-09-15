@@ -47,6 +47,10 @@
                 "link": "/elements/notification",
                 "translate": "notification"
             }, {
+                "text": "Modal",
+                "link": "/elements/modal",
+                "translate": "modal"
+            }, {
                 "text": "Spin",
                 "link": "/elements/spin",
                 "translate": "spin"

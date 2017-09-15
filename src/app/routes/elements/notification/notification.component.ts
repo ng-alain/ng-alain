@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService, NzNotificationService, NzModalService } from "ng-zorro-antd";
-import { ModelCustomComponent } from "./custom.component";
 
 @Component({
     selector: 'app-notification',
@@ -10,8 +9,7 @@ import { ModelCustomComponent } from "./custom.component";
 export class NotificationComponent {
     constructor(
         private msg: NzMessageService,
-        private ntf: NzNotificationService,
-        private model: NzModalService
+        private ntf: NzNotificationService
     ) { }
 
     marks = {
@@ -61,49 +59,6 @@ export class NotificationComponent {
 
     clearNotify() {
         this.ntf.remove();
-    }
-
-    // =====Model=====
-    basicModel(contentTpl) {
-        this.model.open({
-            title: 'Basic Modal',
-            content: contentTpl
-        });
-    }
-
-    confirmModel(contentTpl) {
-        this.model.open({
-            title: 'Confirm Modal',
-            content: contentTpl,
-            okText: 'OK',
-            cancelText: 'Return',
-            onOk: () => {
-                this.msg.success('Click OK!')
-            },
-            onCancel: () => {
-                this.msg.error('Click Return!')
-            }
-        });
-    }
-
-    customCompModel() {
-        this.model.open({
-            title: 'Confirm Modal',
-            content: ModelCustomComponent,
-            footer: false,
-            componentParams: {
-                name: 'From Parent Data'
-            }
-        }).subscribe(result => {
-            this.msg.info(`subscribe status: ${result}`);
-        });
-    }
-
-    showModel(type: string) {
-        this.model[type]({
-            title: `This is a ${type} message`,
-            content: `some messages...some messages...`
-        })
     }
 
     // Popconfirm

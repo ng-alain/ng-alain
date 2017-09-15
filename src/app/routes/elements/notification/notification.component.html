@@ -182,28 +182,6 @@
         </nz-card>
     </div>
     <div nz-col [nzMd]="12">
-        <ng-template #modelContent>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-        </ng-template>
-        <nz-card>
-            <ng-template #title>Modals</ng-template>
-            <ng-template #body>
-                <div class="pb-md">
-                    <button nz-button (click)="basicModel(modelContent)">Open</button>
-                    <button nz-button (click)="confirmModel(modelContent)">Confirm</button>
-                    <button nz-button (click)="customCompModel()">Open Custom Component</button>
-                </div>
-                <button nz-button (click)="showModel('info')">Info</button>
-                <button nz-button (click)="showModel('success')">Success</button>
-                <button nz-button (click)="showModel('error')">Error</button>
-                <button nz-button (click)="showModel('warning')">Warning</button>
-            </ng-template>
-        </nz-card>
-    </div>
-    <div nz-col [nzMd]="12">
         <nz-card>
             <ng-template #title>Popconfirm</ng-template>
             <ng-template #body>

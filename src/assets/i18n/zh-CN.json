@@ -21,6 +21,7 @@
     "elements": "基础元素",
     "buttons": "按钮",
     "notification": "通知",
+    "modal": "模态框",
     "spin": "加载中",
     "dropdown": "下拉菜单",
     "grid": "栅格系统",

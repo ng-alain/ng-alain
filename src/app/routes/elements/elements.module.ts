@@ -4,7 +4,8 @@ import { SharedModule } from "@shared/shared.module";
 
 import { ButtonsComponent } from './buttons/buttons.component';
 import { NotificationComponent } from "./notification/notification.component";
-import { ModelCustomComponent } from "./notification/custom.component";
+import { ModalComponent } from "./modal/modal.component";
+import { ModelCustomComponent } from "./modal/custom.component";
 import { SpinComponent } from "./spin/spin.component";
 import { DropdownComponent } from "./dropdown/dropdown.component";
 import { GridComponent } from "./grid/grid.component";
@@ -16,6 +17,7 @@ import { ColorsComponent } from "./colors/colors.component";
 const routes: Routes = [
     { path: 'buttons', component: ButtonsComponent },
     { path: 'notification', component: NotificationComponent },
+    { path: 'modal', component: ModalComponent },
     { path: 'spin', component: SpinComponent },
     { path: 'dropdown', component: DropdownComponent },
     { path: 'grid', component: GridComponent },
@@ -33,6 +35,7 @@ const routes: Routes = [
     declarations: [
         ButtonsComponent,
         NotificationComponent,
+        ModalComponent,
         ModelCustomComponent,
         SpinComponent,
         DropdownComponent,
