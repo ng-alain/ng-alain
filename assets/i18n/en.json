@@ -21,6 +21,7 @@
     "elements": "Elements",
     "buttons": "Buttons",
     "notification": "Notification",
+    "modal": "Modal",
     "spin": "Loading Spin",
     "dropdown": "Dropdown",
     "grid": "Grid",
