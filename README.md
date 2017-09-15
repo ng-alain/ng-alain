@@ -36,7 +36,7 @@ npm run serve:hmr
 | `ng-alain` | 0.0.1-beta | 
 | `ng-zorro-antd` | 0.5.0 |
 | `@angular` | 4.3.6 |
-| `@angular/cli` | 1.4.1 |
+| `@angular/cli` | 1.4.2 |
 
 **Third Library[Optional]**
 

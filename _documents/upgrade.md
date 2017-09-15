@@ -14,15 +14,16 @@ _screenshot (允许删除)
 src
     app
         core
-            menu
             preloader
             settings
-            themes
             translator (可选：国际化)
+            acl (可选：国际化)
+            net (可选：HTTP拦截器)
         layout
         routes
         shared
             directives (可选：若干自定义的指令)
+            pipes
             styles
     assets
         i18n (可选：国际化)
@@ -51,7 +52,7 @@ core文件夹包括菜单配置、布局配置、颜色主题、国际化（可�
 
 **.angular-cli.json**
 
-`scripts` 节点除了 `app/core/preloader/preloader.js` 以外，其他第三方类库也可以移除。
+`scripts` 节点包括第三方类库包引用配置，可以放心移除。
 
 ## 项目名称问题
 
