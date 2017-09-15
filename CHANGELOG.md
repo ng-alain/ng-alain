@@ -1,3 +1,14 @@
+# 0.0.1-beta.1
+
++ 增加顶部左右结构布局（替换 `header-left-right.component` 模板可以体验），新增 `.top-nav-wrap` 样式
++ 增加自定义样式风格目录结构
++ 增加利用 `environments` 使开发、生产设置不同参数（例如：后端地址）
++ 修复 `TokenService` 循环依赖问题
++ 重写模态框示例
++ 重写 `StartupService` 解决状态码处理BUG
++ 更新 `@angular/cli` 至最新版本，当前版本可能会存在 `licenses` BUG，可增加 ` --extract-licenses=false` 解决，抑或不升级
++ 优化样式目录结构
+
 # 0.0.1-beta
 
 + 增加 `core`、`shared` 别名，允许通过 `@shared/shared.module` 访问 `SharedModule`
