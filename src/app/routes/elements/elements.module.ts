@@ -17,11 +17,13 @@ import { IconsFontComponent } from "./iconsfont/iconsfont.component";
 import { ColorsComponent } from "./colors/colors.component";
 import { TreeAntdComponent } from './tree-antd/tree-antd.component';
 import { DemoSortableComponent } from './sortable/sortable.component';
+import { SweetAlertComponent } from './sweetalert/sweetalert.component';
 
 const routes: Routes = [
     { path: 'buttons', component: ButtonsComponent },
     { path: 'notification', component: NotificationComponent },
     { path: 'modal', component: ModalComponent },
+    { path: 'sweetalert', component: SweetAlertComponent },
     { path: 'spin', component: SpinComponent },
     { path: 'dropdown', component: DropdownComponent },
     { path: 'tree-antd', component: TreeAntdComponent },
@@ -61,7 +63,8 @@ const TreeAntdDemoComponentes = [ TreeAntdBasicComponent, TreeAntdAsyncComponent
         ColorsComponent,
         TreeAntdComponent,
         ...TreeAntdDemoComponentes,
-        DemoSortableComponent
+        DemoSortableComponent,
+        SweetAlertComponent
     ],
     exports: [
         RouterModule

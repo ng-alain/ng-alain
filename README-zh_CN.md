@@ -59,6 +59,7 @@ npm run serve:hmr
 | `ngx-color-picker` |  |  |
 | `ng-tree-antd` | `angular-tree-component` |  |
 | `ng2-dnd` |  |  |
+| `sweetalert` |  |  |
 
 ## 指引文章
 

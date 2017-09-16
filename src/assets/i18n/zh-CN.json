@@ -22,6 +22,7 @@
     "buttons": "按钮",
     "notification": "通知",
     "modal": "模态框",
+    "sweetalert": "SweetAlert",
     "spin": "加载中",
     "dropdown": "下拉菜单",
     "tree-antd": "树形控件",
