@@ -1,3 +1,7 @@
+# 0.0.1-beta.2
+
++ 增加 `tree`、`sortable`、`sweetalert` 示例
+
 # 0.0.1-beta.1
 
 + 增加顶部左右结构布局（替换 `header-left-right.component` 模板可以体验），新增 `.top-nav-wrap` 样式
