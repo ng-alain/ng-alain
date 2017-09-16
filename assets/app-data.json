@@ -51,6 +51,10 @@
                 "link": "/elements/modal",
                 "translate": "modal"
             }, {
+                "text": "SweetAlert",
+                "link": "/elements/sweetalert",
+                "translate": "sweetalert"
+            }, {
                 "text": "Tree Antd",
                 "link": "/elements/tree-antd",
                 "translate": "tree-antd"

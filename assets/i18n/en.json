@@ -22,6 +22,7 @@
     "buttons": "Buttons",
     "notification": "Notification",
     "modal": "Modal",
+    "sweetalert": "SweetAlert",
     "spin": "Loading Spin",
     "dropdown": "Dropdown",
     "tree-antd": "Tree",
