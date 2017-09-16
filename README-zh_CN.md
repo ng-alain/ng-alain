@@ -57,7 +57,8 @@ npm run serve:hmr
 | `ng2-file-upload` |  |  |
 | `ng2-img-cropper` |  |  |
 | `ngx-color-picker` |  |  |
-
+| `ng-tree-antd` | `angular-tree-component` |  |
+| `ng2-dnd` |  |  |
 
 ## 指引文章
 

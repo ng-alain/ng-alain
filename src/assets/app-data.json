@@ -55,6 +55,10 @@
                 "link": "/elements/tree-antd",
                 "translate": "tree-antd"
             }, {
+                "text": "Sortable",
+                "link": "/elements/sortable",
+                "translate": "sortable"
+            }, {
                 "text": "Spin",
                 "link": "/elements/spin",
                 "translate": "spin"

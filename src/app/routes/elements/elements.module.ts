@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from "@shared/shared.module";
 import { NzTreeModule } from 'ng-tree-antd';
+import { DndModule } from 'ng2-dnd';
 
 import { ButtonsComponent } from './buttons/buttons.component';
 import { NotificationComponent } from "./notification/notification.component";
@@ -15,6 +16,7 @@ import { TypographyComponent } from "./typography/typography.component";
 import { IconsFontComponent } from "./iconsfont/iconsfont.component";
 import { ColorsComponent } from "./colors/colors.component";
 import { TreeAntdComponent } from './tree-antd/tree-antd.component';
+import { DemoSortableComponent } from './sortable/sortable.component';
 
 const routes: Routes = [
     { path: 'buttons', component: ButtonsComponent },
@@ -23,6 +25,7 @@ const routes: Routes = [
     { path: 'spin', component: SpinComponent },
     { path: 'dropdown', component: DropdownComponent },
     { path: 'tree-antd', component: TreeAntdComponent },
+    { path: 'sortable', component: DemoSortableComponent },
     { path: 'grid', component: GridComponent },
     { path: 'gridmasonry', component: GridMasonryComponent },
     { path: 'typography', component: TypographyComponent },
@@ -41,6 +44,7 @@ const TreeAntdDemoComponentes = [ TreeAntdBasicComponent, TreeAntdAsyncComponent
     imports: [
         SharedModule,
         NzTreeModule,
+        DndModule.forRoot(),
         RouterModule.forChild(routes)
     ],
     declarations: [
@@ -56,7 +60,8 @@ const TreeAntdDemoComponentes = [ TreeAntdBasicComponent, TreeAntdAsyncComponent
         IconsFontComponent,
         ColorsComponent,
         TreeAntdComponent,
-        ...TreeAntdDemoComponentes
+        ...TreeAntdDemoComponentes,
+        DemoSortableComponent
     ],
     exports: [
         RouterModule
