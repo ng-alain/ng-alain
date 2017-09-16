@@ -24,6 +24,7 @@
     "modal": "模态框",
     "spin": "加载中",
     "dropdown": "下拉菜单",
+    "tree-antd": "树形控件",
     "grid": "栅格系统",
     "gridmasonry": "瀑布流",
     "typography": "字体排印",

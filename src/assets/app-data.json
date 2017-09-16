@@ -51,6 +51,10 @@
                 "link": "/elements/modal",
                 "translate": "modal"
             }, {
+                "text": "Tree Antd",
+                "link": "/elements/tree-antd",
+                "translate": "tree-antd"
+            }, {
                 "text": "Spin",
                 "link": "/elements/spin",
                 "translate": "spin"

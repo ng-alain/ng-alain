@@ -24,6 +24,7 @@
     "modal": "Modal",
     "spin": "Loading Spin",
     "dropdown": "Dropdown",
+    "tree-antd": "Tree",
     "grid": "Grid",
     "gridmasonry": "Grid Masonry",
     "typography": "Typography",
