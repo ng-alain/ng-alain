@@ -12,9 +12,11 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SparklineDirective } from './directives/sparkline/sparkline.directive';
 import { MomentDatePipe } from "./pipes/moment-date.pipe";
 import { CNCurrencyPipe } from "./pipes/cn-currency.pipe";
+import { KeysPipe } from "./pipes/keys.pipe";
+import { YNPipe } from "./pipes/yn.pipe";
 
 const DIRECTIVES = [SparklineDirective];
-const PIPES = [MomentDatePipe, CNCurrencyPipe];
+const PIPES = [MomentDatePipe, CNCurrencyPipe, KeysPipe, YNPipe];
 
 @NgModule({
     imports: [
