@@ -1,25 +1,25 @@
-$header-hg:                 64px;
-$header-bg:                 $primary-color;
-$header-padding:            20px;
+$header-hg:                 64px !default;
+$header-bg:                 $primary-color !default;
+$header-padding:            20px !default;
 
-$aside-wd:                  200px;
-$aside-bg:                  #fff;
+$aside-wd:                  200px !default;
+$aside-bg:                  #fff !default;
 
-$content-heading-bg:        #fafbfc;
-$content-heading-border:    #DFE3E5;
-$content-padding:           $layout-gutter * 3;
-$content-bg:                #f5f7fa;
-$text-color:                #707070;
+$content-heading-bg:        #fafbfc !default;
+$content-heading-border:    #DFE3E5 !default;
+$content-padding:           $layout-gutter * 3 !default;
+$content-bg:                #f5f7fa !default;
+$text-color:                #707070 !default;
 
-$boxed-max-width:           1140px;
-$zindex-main-section:       $zindex-base;
+$boxed-max-width:           1140px !default;
+$zindex-main-section:       $zindex-base !default;
 
-$quick-menu-width:          200px;
-$quick-menu-bg:             #fff;
-$quick-menu-border-width:   1px;
-$quick-menu-border-color:   #ddd;
-$quick-menu-top:            120px;
-$quick-menu-ctrl-hw:        50px;
+$quick-menu-width:          200px !default;
+$quick-menu-bg:             #fff !default;
+$quick-menu-border-width:   1px !default;
+$quick-menu-border-color:   #ddd !default;
+$quick-menu-top:            120px !default;
+$quick-menu-ctrl-hw:        50px !default;
 
 html {
   direction: ltr;

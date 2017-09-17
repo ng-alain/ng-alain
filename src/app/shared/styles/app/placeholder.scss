@@ -1,10 +1,10 @@
-$placeholder-margin-vertical:                   15px;
-$placeholder-padding:                           20px;
-$placeholder-border:                            #ddd;
-$placeholder-background:                        #fafafa;
-$placeholder-color:                             #444;
+$placeholder-margin-vertical:                   15px !default;
+$placeholder-padding:                           20px !default;
+$placeholder-border:                            #ddd !default;
+$placeholder-background:                        #fafafa !default;
+$placeholder-color:                             #444 !default;
 
-$placeholder-large-padding-vertical:            80px;
+$placeholder-large-padding-vertical:            80px !default;
 
 
 // Placeholder container

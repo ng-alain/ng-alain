@@ -19,7 +19,7 @@ $spacings: (
     sm: $sm,
     md: $md,
     lg: $lg
-);
+) !default;
 
 // type
 $ul-ol-margin:      18px !default;
@@ -38,7 +38,7 @@ $widths: (
     sm: $layout-gutter * 20, // 160px
     md: $layout-gutter * 30, // 240px
     lg: $layout-gutter * 40, // 320px
-);
+) !default;
 
 // 圆角
 $border-radius-base:     $border-radius-base !default; // 4px
@@ -63,13 +63,13 @@ $colors: (
     cyan:   ( getColor('cyan', 5),     getColor('cyan', 6),    getColor('cyan', 7) ),
     teal:   ( getColor('teal', 5),     getColor('teal', 6),    getColor('teal', 7) ),
     grey:   ( getColor('grey', 5),     getColor('grey', 6),    getColor('grey', 7) )
-);
+) !default;
 
 // Grey patch
 $greyColorer: (
     lighter: getColor('grey', 3),
     darker:  getColor('grey', 9)
-);
+) !default;
 
 // Alias
 $aliasColors: (
@@ -77,7 +77,7 @@ $aliasColors: (
     success:    green,
     error:      red,
     warning:    yellow
-);
+) !default;
 
 // masonry
 $masonry-column-gap:  $layout-gutter * 2 !default;
