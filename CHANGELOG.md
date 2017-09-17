@@ -1,3 +1,10 @@
+# 0.0.1-beta.3
+
++ **注** 允许通过 `_alain-custom-variables.scss` 覆盖 `styles` 属性值，例如：将内容区域背景色为白色。见 [升级目录结构](./_documents/upgrade.md)。
++ 增加 `yn`、`keys` 管道，见 [pipe文档](./_documents/pipe.md)
++ 增加 `badge` 样式
++ 升级 `angular-cli@4.4.1`、`ng-zorro-antd@0.5.1`
+
 # 0.0.1-beta.2
 
 + 增加 `tree`、`sortable`、`sweetalert` 示例
