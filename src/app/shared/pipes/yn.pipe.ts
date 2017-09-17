@@ -1,7 +1,7 @@
 import { PipeTransform, Pipe } from '@angular/core';
 
 /**
- * [是&否]文本徽章化
+ * 将boolean类型徽章化
  *
  * @example
  * ```html

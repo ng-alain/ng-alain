@@ -28,27 +28,36 @@ src
     assets
         i18n (可选：国际化)
         img  (可选：一些图片资源)
+    styles
+        _alain-custom-variables.scss
+        index.scss
 .angular-cli.json
 package.json
 ```
 
 对于**可选**的文件夹，允许你**直接删除**，但可能会由于一些依赖倒置编译失败，可以根据编译结果自行调整并删除相关语句。
 
-**core**
+**src/app/core**
 
 core文件夹包括菜单配置、布局配置、颜色主题、国际化（可选）；我建议如果企业后台无须国际化允许删除它。而其他建议保留。
 
-**layout**
+**src/app/layout**
 
 页面整体布局结构，包括：头部、左边菜单，**除非在更新日志中明确提醒否则该目录不太会变动**。
 
-**routes**
+**src/app/routes**
 
 具体业务页面可以全部放在该目录下面。有关文件结构，可以参考里面的风格。**这里的内容对于后续的升级不会有任何是影响。**
 
-**shared/styles**
+**src/app/shared/styles**
 
 核心文件，除非你知道你在干什么，否则不建议你去调整它们。
+
+**src/styles**
+
+建议项目所需要的样式放在该目录下。
+
+同时**勿删除_alain-custom-variables.scss**文件，你可以针对在此重新定义 ng-alain 的一些默认参数值。
 
 **.angular-cli.json**
 
