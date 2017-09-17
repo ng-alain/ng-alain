@@ -1,6 +1,7 @@
 @import "app/color/index";
 @import "app/mixins/index";
 @import "app/variables-antd";
+@import "app/functions";
 @import "app/variables";
 @import "../../../styles/_alain-custom-variables";
 
@@ -25,6 +26,7 @@
 @import "app/router-progress-bar";
 @import "app/list-group";
 @import "app/quick-menu";
+@import "app/badge";
 
 // Other
 @import "app/utils/index";

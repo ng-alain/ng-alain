@@ -1,0 +1,37 @@
+.badge {
+    display: inline-block;
+    padding: $badge-padding;
+    font-size: $badge-font-size;
+    line-height: 20px;
+    color: $badge-color;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: $border-radius-base;
+
+    // Empty badges collapse automatically
+    &:empty {
+        display: none;
+    }
+}
+
+// Colors
+@mixin badge-variant($bg) {
+    @include color-yiq($bg);
+    background-color: $bg;
+}
+
+// base colors
+@each $name, $value in $colors {
+    .badge-#{$name} {
+        @include badge-variant(nth($value, 2));
+    }
+}
+
+// alias
+@each $color, $value in $aliasColors {
+    .badge-#{$color} {
+        $aliasColor: nth(map-get($colors, $value), 2);
+        @include badge-variant($aliasColor);
+    }
+}
