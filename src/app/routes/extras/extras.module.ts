@@ -18,9 +18,6 @@ const routes: Routes = [
     declarations: [
         HelpCenterComponent,
         ExtrasSettingsComponent
-    ],
-    exports: [
-        RouterModule
     ]
 })
 export class ExtrasModule { }

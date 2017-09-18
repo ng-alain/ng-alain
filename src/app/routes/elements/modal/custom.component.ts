@@ -6,6 +6,12 @@ import { NzModalSubject, NzModalService, NzMessageService } from "ng-zorro-antd"
     <h3>From Custom Componetn!</h3>
     <p>Input Data: {{name}}</p>
     <p>submodal: <a (click)="show()">show</a></p>
+    <p>
+        Popconfirm 气泡确认框：
+        <nz-popconfirm [nzTitle]="'确定要删除这个任务吗？'">
+            <a nz-popconfirm>删除</a>
+        </nz-popconfirm>
+    </p>
     <div class="modal-footer">
         <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="cancel()">
             Cancel
