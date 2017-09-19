@@ -45,7 +45,7 @@ export class ModalHelper {
                 width: width ? width : undefined,
                 footer: false,
                 componentParams: params
-            }, options))
+            }, options || {}))
             .filter((res: any) => {
                 let findIdx = -1;
                 if (typeof res === 'string') {
@@ -54,5 +54,14 @@ export class ModalHelper {
                 }
                 return findIdx === -1;
             });
+    }
+
+    /**
+     * 静态框，点击蒙层不允许关闭
+     */
+    static(comp: any, params?: any, size: 'sm' | 'lg' | '' | number = 'lg', options?: any): Observable<any> {
+        return this.open(comp, params, size, Object.assign({
+            maskClosable: false
+        }, options));
     }
 }
