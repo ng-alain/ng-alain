@@ -14,9 +14,11 @@ import { MomentDatePipe } from "./pipes/moment-date.pipe";
 import { CNCurrencyPipe } from "./pipes/cn-currency.pipe";
 import { KeysPipe } from "./pipes/keys.pipe";
 import { YNPipe } from "./pipes/yn.pipe";
+import { ModalHelper } from "./helper/modal.helper";
 
 const DIRECTIVES = [SparklineDirective];
 const PIPES = [MomentDatePipe, CNCurrencyPipe, KeysPipe, YNPipe];
+const HELPERS = [ ModalHelper ];
 
 @NgModule({
     imports: [
@@ -30,6 +32,7 @@ const PIPES = [MomentDatePipe, CNCurrencyPipe, KeysPipe, YNPipe];
         ChartsModule
     ],
     declarations: [...DIRECTIVES, ...PIPES],
+    providers: [ ...HELPERS ],
     exports: [
         CommonModule,
         FormsModule,

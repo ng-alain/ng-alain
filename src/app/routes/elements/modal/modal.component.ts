@@ -9,18 +9,18 @@ import { ModelCustomComponent } from './custom.component';
 })
 export class ModalComponent {
     constructor(
-        private model: NzModalService,
+        private modal: NzModalService,
         private msg: NzMessageService) { }
 
     basicModel(contentTpl) {
-        this.model.open({
+        this.modal.open({
             title: 'Basic Modal',
             content: contentTpl
         });
     }
 
     confirmModel(contentTpl) {
-        this.model.open({
+        this.modal.open({
             title: 'Confirm Modal',
             content: contentTpl,
             okText: 'OK',
@@ -38,21 +38,19 @@ export class ModalComponent {
     customCompModel(size: '' | 'lg' | 'sm' = '') {
         this.options = {
             wrapClassName: size ? 'modal-' + size : '',
-            title: 'Confirm Modal',
             content: ModelCustomComponent,
             footer: false,
             componentParams: {
                 name: 'From Parent Data'
             }
         };
-        this.model.open(this.options).subscribe(result => {
-            if (Array.isArray(result))
-                this.msg.info(`subscribe status: ${JSON.stringify(result)}`);
+        this.modal.open(this.options).subscribe(result => {
+            this.msg.info(`subscribe status: ${JSON.stringify(result)}`);
         });
     }
 
     showModel(type: string) {
-        this.model[type]({
+        this.modal[type]({
             title: `This is a ${type} message`,
             content: `some messages...some messages...`
         })
