@@ -1,0 +1,90 @@
+<div class="modal-header">
+    <div class="modal-title">{{i.id > 0 ? '编辑' : '添加'}}-门店（基于HTML模板表单写法）</div>
+</div>
+<form #f="ngForm" (ngSubmit)="save()" nz-form [nzType]="'horizontal'">
+    <div nz-form-item nz-row class="mb-sm">
+        <div nz-form-label nz-col [nzSpan]="4"><label>所属分销商</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            {{i.user_id}}
+            <a (click)="msgSrv.info('find')">查找用户</a>
+        </div>
+    </div>
+    <div nz-form-item nz-row class="mb-sm">
+        <div nz-form-label nz-col [nzSpan]="4"><label>门店名称</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <input nz-input [(ngModel)]="i.name" name="name" maxlength="30" required />
+            <p nz-form-explain>如：国美、麦当劳，不应包含地区、地址、分店名等信息，错误示例：北京国美</p>
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4"><label>分店名称</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <input nz-input [(ngModel)]="i.branch_name" name="branch_name" maxlength="20" required />
+            <p nz-form-explain>不应包含地区信息，不应与门店名有重复，错误示例：北京王府井店</p>
+        </div>
+    </div>
+    <div nz-form-item nz-row class="mb-sm">
+        <div nz-form-label nz-col [nzSpan]="4"><label>所在地</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <input nz-input [(ngModel)]="i.geo" name="geo" maxlength="50" required />
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4"><label>街道地址</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <input nz-input [(ngModel)]="i.address" name="address" maxlength="50" required />
+        </div>
+    </div>
+    <div nz-form-item nz-row class="mb-sm">
+        <div nz-form-label nz-col [nzSpan]="4"><label>纬度</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <input nz-input [(ngModel)]="i.lat" name="lat" required />
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4"><label>经度</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <input nz-input [(ngModel)]="i.lng" name="lng" required />
+        </div>
+    </div>
+    <div nz-form-item nz-row class="mb-sm">
+        <div nz-form-label nz-col [nzSpan]="4"><label>电话</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <input nz-input [(ngModel)]="i.tel" name="tel" maxlength="30" required />
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4"><label>门店类型</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <nz-select [(ngModel)]="i.categories" name="categories" required [nzAllowClear]="false">
+                <nz-option
+                    *ngFor="let i of cat"
+                    [nzLabel]="i"
+                    [nzValue]="i">
+                </nz-option>
+            </nz-select>
+        </div>
+    </div>
+    <div nz-form-item nz-row class="mb-sm">
+        <div nz-form-label nz-col [nzSpan]="4"><label>推荐品</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <input nz-input [(ngModel)]="i.recommend" name="recommend" maxlength="200" placeholder="200字以内" />
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4"><label>特色服务</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <input nz-input [(ngModel)]="i.special" name="special" maxlength="50" placeholder="50字以内" />
+        </div>
+    </div>
+    <div nz-form-item nz-row class="mb-sm">
+        <div nz-form-label nz-col [nzSpan]="4"><label>商户简介</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <input nz-input [(ngModel)]="i.introduction" name="introduction" maxlength="300" placeholder="300字以内" />
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4"><label>营业时间</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <input nz-input [(ngModel)]="i.open_time" name="open_time" maxlength="30" placeholder="30字以内" />
+        </div>
+    </div>
+    <div nz-form-item nz-row class="mb-sm">
+        <div nz-form-label nz-col [nzSpan]="4"><label>人均价格</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <nz-input-number [(ngModel)]="i.avg_price" name="avg_price" [nzMin]="0" [nzStep]="10"></nz-input-number>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button nz-button type="button" (click)="close()">关闭</button>
+        <button nz-button [disabled]="!f.form.valid || !f.form.dirty" [nzLoading]="http.loading" [nzType]="'primary'">保存</button>
+    </div>
+</form>
