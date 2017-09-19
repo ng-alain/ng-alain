@@ -9,6 +9,7 @@ import { ScrollService } from "./services/scroll.service";
 import { ColorsService } from "./services/colors.service";
 import { ACLService } from './acl/acl.service';
 import { TokenService } from './net/token/token.service';
+import { _HttpClient } from './services/http.client';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { TokenService } from './net/token/token.service';
     ScrollService,
     ColorsService,
     ACLService,
-    TokenService
+    TokenService,
+    _HttpClient
   ],
   declarations: [
   ],
