@@ -233,6 +233,10 @@
                 "text": "Settings",
                 "link": "/extras/settings",
                 "translate": "settings"
+            }, {
+                "text": "Poi",
+                "link": "/extras/poi",
+                "translate": "poi"
             }]
         }]
     }]
