@@ -1,3 +1,13 @@
+# 0.0.1-beta.4
+
++ 增加 `.simple-table`、`.search-form`、`.fixed-btns` 样式，效果见[门店页](https://cipchk.github.io/ng-alain/#/extras/poi)
++ 增加HTML模板驱动表单视觉反馈，默认未开启，可以在 `_alain-custom-variables.scss` 增加 `$form-state-visual-feedback-enabled: true;`
++ 增加门店页
++ 增加 `_HttpClient`、`ModalHelper` 类
+    + `_HttpClient` 简化请求以及更好的与 `[nzLoading]` 属性相配合
+    + `ModalHelper` 简化打开与回调处理
++ 增加Modal相关样式，更便于自定义组件，见[CSS组件补丁类](./_documents/component-patch.md)
+
 # 0.0.1-beta.3
 
 + **注** 允许通过 `_alain-custom-variables.scss` 覆盖 `styles` 属性值，例如：将内容区域背景色为白色。见 [升级目录结构](./_documents/upgrade.md)。
