@@ -1,26 +1,3 @@
-$header-hg:                 64px !default;
-$header-bg:                 $primary-color !default;
-$header-padding:            20px !default;
-
-$aside-wd:                  200px !default;
-$aside-bg:                  #fff !default;
-
-$content-heading-bg:        #fafbfc !default;
-$content-heading-border:    #DFE3E5 !default;
-$content-padding:           $layout-gutter * 3 !default;
-$content-bg:                #f5f7fa !default;
-$text-color:                #707070 !default;
-
-$boxed-max-width:           1140px !default;
-$zindex-main-section:       $zindex-base !default;
-
-$quick-menu-width:          200px !default;
-$quick-menu-bg:             #fff !default;
-$quick-menu-border-width:   1px !default;
-$quick-menu-border-color:   #ddd !default;
-$quick-menu-top:            120px !default;
-$quick-menu-ctrl-hw:        50px !default;
-
 html {
   direction: ltr;
   height: 100%; // http://updates.html5rocks.com/2013/12/300ms-tap-delay-gone-away

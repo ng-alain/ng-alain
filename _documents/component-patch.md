@@ -36,4 +36,5 @@
 ## `nz-modal` 补丁
 
 + `.modal-{lg|sm}` 设置Modal的大小，例如：`wrapClassName: 'modal-lg'`
++ `.modal-header` 自定义Modal时非常有效。
 + `.modal-footer` 自定义Modal时非常有效。

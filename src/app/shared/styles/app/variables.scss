@@ -134,3 +134,50 @@ $list-group-disabled-bg:         $list-group-bg !default;
 
 $list-group-action-active-color: getColor('grey', 9) !default;
 $list-group-action-active-bg:    getColor('grey', 2) !default;
+
+// alain
+// ==========
+// layout
+$header-hg:                 64px !default;
+$header-bg:                 $primary-color !default;
+$header-padding:            20px !default;
+
+$aside-wd:                  200px !default;
+$aside-bg:                  #fff !default;
+
+$content-heading-bg:        #fafbfc !default;
+$content-heading-border:    #DFE3E5 !default;
+$content-padding:           $layout-gutter * 3 !default;
+$content-bg:                #f5f7fa !default;
+$text-color:                #707070 !default;
+
+$boxed-max-width:           1140px !default;
+$zindex-main-section:       $zindex-base !default;
+
+$quick-menu-width:          200px !default;
+$quick-menu-bg:             #fff !default;
+$quick-menu-border-width:   1px !default;
+$quick-menu-border-color:   #ddd !default;
+$quick-menu-top:            120px !default;
+$quick-menu-ctrl-hw:        50px !default;
+
+// header
+$search-height:             34px !default;
+
+// placeholder
+$placeholder-margin-vertical:                   15px !default;
+$placeholder-padding:                           20px !default;
+$placeholder-border:                            #ddd !default;
+$placeholder-background:                        #fafafa !default;
+$placeholder-color:                             #444 !default;
+$placeholder-large-padding-vertical:            80px !default;
+
+// track control state of visual feedback
+$form-state-visual-feedback-enabled: false !default;
+// search-form
+$search-form-bg:        #fbfbfb !default;
+$search-form-radius:    4px !default;
+// table
+$simple-table-bc:              #fff !default;
+$simple-table-fs:              12px !default;
+$simple-table-pagination-jc:   flex-end !default;

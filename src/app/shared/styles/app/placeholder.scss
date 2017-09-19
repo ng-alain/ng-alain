@@ -1,12 +1,3 @@
-$placeholder-margin-vertical:                   15px !default;
-$placeholder-padding:                           20px !default;
-$placeholder-border:                            #ddd !default;
-$placeholder-background:                        #fafafa !default;
-$placeholder-color:                             #444 !default;
-
-$placeholder-large-padding-vertical:            80px !default;
-
-
 // Placeholder container
 .box-placeholder {
     margin-bottom: $placeholder-margin-vertical;
@@ -16,9 +7,7 @@ $placeholder-large-padding-vertical:            80px !default;
     color: $placeholder-color;
 }
 
-
 // Remove margin from the last-child
-
 .box-placeholder > :last-child { margin-bottom: 0; }
 
 // Variant
