@@ -47,6 +47,22 @@
                 "link": "/elements/notification",
                 "translate": "notification"
             }, {
+                "text": "Modal",
+                "link": "/elements/modal",
+                "translate": "modal"
+            }, {
+                "text": "SweetAlert",
+                "link": "/elements/sweetalert",
+                "translate": "sweetalert"
+            }, {
+                "text": "Tree Antd",
+                "link": "/elements/tree-antd",
+                "translate": "tree-antd"
+            }, {
+                "text": "Sortable",
+                "link": "/elements/sortable",
+                "translate": "sortable"
+            }, {
                 "text": "Spin",
                 "link": "/elements/spin",
                 "translate": "spin"
@@ -217,6 +233,10 @@
                 "text": "Settings",
                 "link": "/extras/settings",
                 "translate": "settings"
+            }, {
+                "text": "Poi",
+                "link": "/extras/poi",
+                "translate": "poi"
             }]
         }]
     }]

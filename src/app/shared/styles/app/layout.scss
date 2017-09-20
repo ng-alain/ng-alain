@@ -1,26 +1,3 @@
-$header-hg:                 64px;
-$header-bg:                 $primary-color;
-$header-padding:            20px;
-
-$aside-wd:                  200px;
-$aside-bg:                  #fff;
-
-$content-heading-bg:        #fafbfc;
-$content-heading-border:    #DFE3E5;
-$content-padding:           $layout-gutter * 3;
-$content-bg:                #f5f7fa;
-$text-color:                #707070;
-
-$boxed-max-width:           1140px;
-$zindex-main-section:       $zindex-base;
-
-$quick-menu-width:          200px;
-$quick-menu-bg:             #fff;
-$quick-menu-border-width:   1px;
-$quick-menu-border-color:   #ddd;
-$quick-menu-top:            120px;
-$quick-menu-ctrl-hw:        50px;
-
 html {
   direction: ltr;
   height: 100%; // http://updates.html5rocks.com/2013/12/300ms-tap-delay-gone-away

@@ -1,0 +1,86 @@
+<div class="content__title">
+    <h1>
+        SweetAlert
+        <small>A beautiful replacement for JavaScript's "alert"</small>
+    </h1>
+</div>
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzMd]="8">
+        <nz-card>
+            <ng-template #title>Showing an alert</ng-template>
+            <ng-template #body>
+                <button nz-button (click)="alert1()">
+                    <span>Basic</span>
+                </button>
+                <button nz-button (click)="alert2()">
+                    <span>Basic2</span>
+                </button>
+                <button nz-button (click)="alert3()">
+                    <span>Success</span>
+                </button>
+                <button nz-button (click)="alert31()">
+                    <span>Error</span>
+                </button>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="8">
+        <nz-card>
+            <ng-template #title>Using options</ng-template>
+            <ng-template #body>
+                <button nz-button (click)="alert4()">
+                    <span>Show</span>
+                </button>
+                <button nz-button (click)="alert41()">
+                    <span>3s Auto Close</span>
+                </button>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="8">
+        <nz-card>
+            <ng-template #title>Using promises</ng-template>
+            <ng-template #body>
+                <button nz-button (click)="alert5()">
+                    <span>Show</span>
+                </button>
+                <button nz-button (click)="alert6()">
+                    <span>Are you sure?</span>
+                </button>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="8">
+        <nz-card>
+            <ng-template #title>Customizing buttons</ng-template>
+            <ng-template #body>
+                <button nz-button (click)="alert7()">
+                    <span>Show</span>
+                </button>
+                <button nz-button (click)="alert8()">
+                    <span>3 Buttons</span>
+                </button>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="8">
+        <nz-card>
+            <ng-template #title>AJAX requests</ng-template>
+            <ng-template #body>
+                <button nz-button (click)="alert9()">
+                    <span>Show</span>
+                </button>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="8">
+        <nz-card>
+            <ng-template #title>Using DOM nodes as content</ng-template>
+            <ng-template #body>
+                <button nz-button (click)="alert10()">
+                    <span>Show</span>
+                </button>
+            </ng-template>
+        </nz-card>
+    </div>
+</div>

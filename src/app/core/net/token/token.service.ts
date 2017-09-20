@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TokenData } from './token.type';
 
@@ -9,8 +8,6 @@ const KEY: string = '_user';
  */
 @Injectable()
 export class TokenService {
-    constructor(private http: HttpClient) {}
-
     /**
      * 保存
      */

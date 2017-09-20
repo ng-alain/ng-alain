@@ -21,8 +21,12 @@
     "elements": "基础元素",
     "buttons": "按钮",
     "notification": "通知",
+    "modal": "模态框",
+    "sweetalert": "SweetAlert",
     "spin": "加载中",
     "dropdown": "下拉菜单",
+    "tree-antd": "树形控件",
+    "sortable": "拖放",
     "grid": "栅格系统",
     "gridmasonry": "瀑布流",
     "typography": "字体排印",
@@ -51,5 +55,6 @@
     "m-lock": "锁屏页",
     "m-maintenance": "维护中",
     "extras": "扩展",
-    "helpcenter": "帮助中心"
+    "helpcenter": "帮助中心",
+    "poi": "门店"
 }

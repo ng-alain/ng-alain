@@ -1,5 +1,3 @@
-$search-height: 34px;
-
 .header {
     position: fixed;
     top: 0;
@@ -81,10 +79,19 @@ $search-height: 34px;
     }
 }
 
-.top-nav {
-    &.full {
-        flex: 1;
+.top-nav-wrap {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: $screen-md-max) {
+        justify-content: flex-end;
+        .top-nav {
+            margin: inherit;
+        }
     }
+}
+
+.top-nav {
     >li {
         display: inline-block;
         vertical-align: middle;

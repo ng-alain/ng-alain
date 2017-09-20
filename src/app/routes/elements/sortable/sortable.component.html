@@ -1,0 +1,70 @@
+<div class="content__title">
+    <h1>
+        Sortable 拖放
+        <small>use <a href="//github.com/akserg/ng2-dnd" target="_blank">ng2-dnd</a> library.</small>
+    </h1>
+</div>
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzMd]="8">
+        <nz-card>
+            <ng-template #title>韦小宝老婆排名</ng-template>
+            <ng-template #body>
+                <ul class="list-group" dnd-sortable-container [sortableData]="hiBaby">
+                    <li *ngFor="let item of hiBaby; let i = index"
+                        class="list-group-item" dnd-sortable [sortableIndex]="i">{{item}}</li>
+                </ul>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="8">
+        <nz-card>
+            <ng-template #title>新排名</ng-template>
+            <ng-template #body>
+                <ol>
+                    <li *ngFor="let item of hiBaby; let i = index">{{i + 1}}: {{item}}</li>
+                </ol>
+            </ng-template>
+        </nz-card>
+    </div>
+</div>
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzMd]="8">
+    <nz-card [nzBordered]="false" class="ant-card__body-nopadding ant-card__pink">
+        <ng-template #title><span class="text-white">翻牌</span></ng-template>
+            <ng-template #body>
+                <div class="p-md" dnd-sortable-container [dropZones]="['zone']" [sortableData]="hiBabyLove">
+                    <ul class="list-group">
+                        <li *ngFor="let item of hiBabyLove; let i = index"
+                            class="list-group-item" dnd-sortable [sortableIndex]="i">{{item}}</li>
+                    </ul>
+                </div>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="8">
+        <nz-card [nzBordered]="false" class="ant-card__body-nopadding ant-card__green">
+            <ng-template #title><span class="text-white">前半夜</span></ng-template>
+            <ng-template #body>
+                <div class="p-md" dnd-sortable-container [dropZones]="['zone']" [sortableData]="frontMidnight">
+                    <ul class="list-group">
+                        <li *ngFor="let item of frontMidnight; let i = index"
+                            class="list-group-item" dnd-sortable [sortableIndex]="i">{{item}}</li>
+                    </ul>
+                </div>
+            </ng-template>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="8">
+        <nz-card [nzBordered]="false" class="ant-card__body-nopadding ant-card__warning">
+            <ng-template #title><span class="text-white">后半夜</span></ng-template>
+            <ng-template #body>
+                <div class="p-md" dnd-sortable-container [dropZones]="['zone']" [sortableData]="afterMidnight">
+                    <ul class="list-group">
+                        <li *ngFor="let item of afterMidnight; let i = index"
+                            class="list-group-item" dnd-sortable [sortableIndex]="i">{{item}}</li>
+                    </ul>
+                </div>
+            </ng-template>
+        </nz-card>
+    </div>
+</div>

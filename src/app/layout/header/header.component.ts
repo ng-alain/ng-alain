@@ -56,7 +56,7 @@ export class HeaderComponent {
         if (screenfull.enabled) {
             screenfull.toggle();
         }
-        this.isFullscreen = screenfull.isFullscreen;
+        this.isFullscreen = !screenfull.isFullscreen;
     }
 
     qFocus() {

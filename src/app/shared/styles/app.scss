@@ -1,10 +1,12 @@
 @import "app/color/index";
 @import "app/mixins/index";
 @import "app/variables-antd";
+@import "app/functions";
 @import "app/variables";
+@import "../../../styles/_alain-custom-variables";
 
 // antd patch
-@import "app/patch";
+@import "app/_antd-patch";
 
 // Core CSS
 @import "app/animate";
@@ -16,9 +18,6 @@
 @import "app/sidebar";
 
 // Component
-@import "app/button";
-@import "app/breadcrumb";
-@import "app/card";
 @import "app/masonry-grid";
 @import "app/widget";
 @import "app/placeholder";
@@ -27,7 +26,9 @@
 @import "app/router-progress-bar";
 @import "app/list-group";
 @import "app/quick-menu";
-@import "app/carousel";
+@import "app/badge";
+@import "app/table";
+@import "app/form";
 
 // Other
 @import "app/utils/index";

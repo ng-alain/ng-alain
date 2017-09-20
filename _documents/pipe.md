@@ -23,7 +23,7 @@
 
 ## `_date` 货币
 
-`ng-zorro-antd` 依赖了 moment ，因此，可以创建一个基于moment的 `_date` 格式化。
+基于 moment 日期格式化，显示更多细节参考：http://momentjs.com/docs/#/displaying
 
 最大好处是 moment 支持不同种类的时间格式，例如：
 
@@ -42,4 +42,26 @@
 
 ```
 2017年08月24日
+```
+
+## `keys` 将对象数组化
+
+例如：
+
+```typescript
+const data = { name: 'cipchk', address: { city: 'shanghai', district: 'changning' } };
+```
+
+变成可迭代对象：
+
+```html
+<div *ngFor="let item of data | keys">{{item.value.city}} {{item.value.district}}</div>
+```
+
+## `yn` 将boolean类型徽章化
+
+```html
+<td [innerHTML]="enabled | yn"></td>
+Output: 
+<td><span class="badge badge-success">是</span></td>
 ```

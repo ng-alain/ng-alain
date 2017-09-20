@@ -21,8 +21,12 @@
     "elements": "Elements",
     "buttons": "Buttons",
     "notification": "Notification",
+    "modal": "Modal",
+    "sweetalert": "SweetAlert",
     "spin": "Loading Spin",
     "dropdown": "Dropdown",
+    "tree-antd": "Tree",
+    "sortable": "Sortable",
     "grid": "Grid",
     "gridmasonry": "Grid Masonry",
     "typography": "Typography",
@@ -51,5 +55,6 @@
     "m-lock": "Lock",
     "m-maintenance": "Maintenance",
     "extras": "Extras",
-    "helpcenter": "Help Center"
+    "helpcenter": "Help Center",
+    "poi": "Poi"
 }

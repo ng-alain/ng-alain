@@ -1,3 +1,35 @@
+# 0.0.1-beta.4
+
++ 增加 `.simple-table`、`.search-form`、`.fixed-btns` 样式，效果见[门店页](https://cipchk.github.io/ng-alain/#/extras/poi)
++ 增加HTML模板驱动表单视觉反馈，默认未开启，可以在 `_alain-custom-variables.scss` 增加 `$form-state-visual-feedback-enabled: true;`
++ 增加门店页
++ 增加 `_HttpClient`、`ModalHelper` 类
+    + `_HttpClient` 简化请求以及更好的与 `[nzLoading]` 属性相配合
+    + `ModalHelper` 简化打开与回调处理
++ 增加Modal相关样式，更便于自定义组件，见[CSS组件补丁类](./_documents/component-patch.md)
+
+# 0.0.1-beta.3
+
++ **注** 允许通过 `_alain-custom-variables.scss` 覆盖 `styles` 属性值，例如：将内容区域背景色为白色。见 [升级目录结构](./_documents/upgrade.md)。
++ 增加 `yn`、`keys` 管道，见 [pipe文档](./_documents/pipe.md)
++ 增加 `badge` 样式
++ 升级 `angular-cli@4.4.1`、`ng-zorro-antd@0.5.1`
+
+# 0.0.1-beta.2
+
++ 增加 `tree`、`sortable`、`sweetalert` 示例
+
+# 0.0.1-beta.1
+
++ 增加顶部左右结构布局（替换 `header-left-right.component` 模板可以体验），新增 `.top-nav-wrap` 样式
++ 增加自定义样式风格目录结构
++ 增加利用 `environments` 使开发、生产设置不同参数（例如：后端地址）
++ 修复 `TokenService` 循环依赖问题
++ 重写模态框示例
++ 重写 `StartupService` 解决状态码处理BUG
++ 更新 `@angular/cli` 至最新版本，当前版本可能会存在 `licenses` BUG，可增加 ` --extract-licenses=false` 解决，抑或不升级
++ 优化样式目录结构
+
 # 0.0.1-beta
 
 + 增加 `core`、`shared` 别名，允许通过 `@shared/shared.module` 访问 `SharedModule`
