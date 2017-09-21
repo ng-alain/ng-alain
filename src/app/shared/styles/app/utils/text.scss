@@ -11,6 +11,7 @@
 
 // wrapping
 .text-nowrap        { white-space: nowrap !important; }
+.text-wrap          { white-space: pre-wrap !important; }
 .text-truncate      { @include text-truncate("!important"); }
 
 // Weight and italics
