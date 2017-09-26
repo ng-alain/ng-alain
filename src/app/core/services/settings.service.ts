@@ -48,7 +48,7 @@ export class SettingsService {
                 collapsed: false,
                 boxed: false,
                 theme: 'A',
-                lang: null
+                lang: 'zh-CN'
             }, this.local.get(KEY));
             this.local.set(KEY, this._layout);
         }

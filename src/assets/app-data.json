@@ -6,7 +6,7 @@
     "user": {
         "name": "Admin",
         "avatar": "./assets/img/zorro.svg",
-        "email": "cipchk@qq.com"
+        "email": "admin@qq.com"
     },
     "menu": [{
         "text": "主导航",
