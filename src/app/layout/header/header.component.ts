@@ -1,13 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import * as screenfull from 'screenfull';
-import { NzModalService, NzMessageService } from "ng-zorro-antd";
+import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { LocalStorageService } from 'angular-web-storage';
 
 import { SettingsService, SidebarThemeType } from '@core/services/settings.service';
 import { ThemesService } from '@core/services/themes.service';
-import { MenuService } from "@core/services/menu.service";
-import { ThemeType } from "@core/services/themes.service";
-import { TranslatorService } from "@core/translator/translator.service";
+import { MenuService } from '@core/services/menu.service';
+import { ThemeType } from '@core/services/themes.service';
+import { TranslatorService } from '@core/translator/translator.service';
 
 @Component({
     selector: 'app-header',
@@ -17,10 +17,10 @@ import { TranslatorService } from "@core/translator/translator.service";
 export class HeaderComponent {
 
     q: string;
-    focus: boolean = false;
-    isFullscreen: boolean = false;
-    searchToggled: boolean = false;
-    appLoading: boolean = true;
+    focus = false;
+    isFullscreen = false;
+    searchToggled = false;
+    appLoading = true;
     themes: { l: ThemeType, bg: string, nav: string, con: string }[] = [
         { l: 'A', bg: '#108ee9', nav: '#fff', con: '#f5f7fa' },
         { l: 'B', bg: '#00a2ae', nav: '#fff', con: '#f5f7fa' },
@@ -96,6 +96,6 @@ export class HeaderComponent {
                 this.storageServ.clear();
                 this.messageServ.success('Clear Finished!');
             }
-        })
+        });
     }
 }

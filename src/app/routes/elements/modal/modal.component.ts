@@ -8,6 +8,8 @@ import { ModelCustomComponent } from './custom.component';
     styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent {
+    options = {};
+
     constructor(
         private modal: NzModalService,
         private msg: NzMessageService) { }
@@ -26,15 +28,14 @@ export class ModalComponent {
             okText: 'OK',
             cancelText: 'Return',
             onOk: () => {
-                this.msg.success('Click OK!')
+                this.msg.success('Click OK!');
             },
             onCancel: () => {
-                this.msg.error('Click Return!')
+                this.msg.error('Click Return!');
             }
         });
     }
 
-    options = {};
     customCompModel(size: '' | 'lg' | 'sm' = '') {
         this.options = {
             wrapClassName: size ? 'modal-' + size : '',
@@ -53,6 +54,6 @@ export class ModalComponent {
         this.modal[type]({
             title: `This is a ${type} message`,
             content: `some messages...some messages...`
-        })
+        });
     }
 }

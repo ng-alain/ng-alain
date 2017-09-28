@@ -53,7 +53,7 @@
                                     <label for="bio">Bio</label>
                                 </div>
                                 <div nz-form-control nz-col>
-                                    <nz-input formControlName="bio" [nzId]="bio" [nzType]="'textarea'" [nzRows]="'4'" [nzPlaceHolder]="'Tell us a little bit about yourself'"></nz-input>
+                                    <nz-input formControlName="bio" [nzId]="'bio'" [nzType]="'textarea'" [nzRows]="'4'" [nzPlaceHolder]="'Tell us a little bit about yourself'"></nz-input>
                                     <div nz-form-explain>You can <strong>@mention</strong> other users and organizations to link to them.</div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                     <label for="url">URL</label>
                                 </div>
                                 <div nz-form-control nz-col>
-                                    <nz-input formControlName="url" [nzId]="url"></nz-input>
+                                    <nz-input formControlName="url" [nzId]="'url'"></nz-input>
                                 </div>
                             </div>
                             <div nz-form-item nz-row>
@@ -70,7 +70,7 @@
                                     <label for="company">Company</label>
                                 </div>
                                 <div nz-form-control nz-col>
-                                    <nz-input formControlName="company" [nzId]="company"></nz-input>
+                                    <nz-input formControlName="company" [nzId]="'company'"></nz-input>
                                     <div nz-form-explain>You can <strong>@mention</strong> your company's GitHub organization to link it.</div>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                     <label for="location">Location</label>
                                 </div>
                                 <div nz-form-control nz-col>
-                                    <nz-input formControlName="location" [nzId]="location"></nz-input>
+                                    <nz-input formControlName="location" [nzId]="'location'"></nz-input>
                                 </div>
                             </div>
                             <div nz-row>

@@ -9,9 +9,9 @@ import { ACLService } from '@core/acl/acl.service';
 })
 export class ACLComponent {
 
-    full: boolean = true;
-    roleA: string = '';
-    roleB: string = '';
+    full = true;
+    roleA = '';
+    roleB = '';
 
     constructor(
         private aclService: ACLService,

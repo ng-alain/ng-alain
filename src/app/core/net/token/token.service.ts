@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TokenData } from './token.type';
 
 /** 存储键 */
-const KEY: string = '_user';
+const KEY = '_user';
 /**
  * 基于Token认证，在前后端分离非常普通，本身只提供一个接口的形式展示如果优雅处理HTTP请求
  */

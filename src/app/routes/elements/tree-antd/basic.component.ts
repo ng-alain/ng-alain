@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { generateData } from './generate-data';
 
 @Component({
-  selector: 'tree-antd-demo-basic',
+  selector: 'app-tree-antd-demo-basic',
   template: `
   <nz-card>
       <ng-template #title>Basic</ng-template>
@@ -14,7 +14,7 @@ import { generateData } from './generate-data';
   </nz-card>
   `
 })
-export class TreeAntdBasicComponent {
+export class TreeAntdBasicComponent implements OnInit {
   nodes = [];
 
   ngOnInit() {

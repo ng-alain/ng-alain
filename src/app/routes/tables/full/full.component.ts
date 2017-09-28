@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { RandomUserService } from "../randomUser.service";
-import { NzMessageService } from "ng-zorro-antd";
+import { Component, OnInit } from '@angular/core';
+import { RandomUserService } from '../randomUser.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
     selector: 'app-table-full',
     templateUrl: './full.component.html',
     styleUrls: ['./full.component.scss']
 })
-export class TableFullComponent {
+export class TableFullComponent implements OnInit {
 
     pi = 1;
     ps = 10;
@@ -15,9 +15,13 @@ export class TableFullComponent {
     list = [];
     loading = false;
     args = {};
+    _indeterminate = false;
+    _allChecked = false;
 
     load(pi?: number) {
-        if (typeof pi !== 'undefined') this.pi = pi || 1;
+        if (typeof pi !== 'undefined') {
+            this.pi = pi || 1;
+        }
 
         this.loading = true;
         this._allChecked = false;
@@ -26,14 +30,14 @@ export class TableFullComponent {
             .map(data => {
                 data.results.forEach(item => {
                     item.checked = false;
-                    item.price = +((Math.random()*(10000000 - 100)) + 100).toFixed(2);
+                    item.price = +((Math.random() * (10000000 - 100)) + 100).toFixed(2);
                 });
                 return data;
             })
             .subscribe(data => {
                 this.loading = false;
                 this.list = data.results;
-            })
+            });
     }
 
     clear() {
@@ -41,8 +45,6 @@ export class TableFullComponent {
         this.load(1);
     }
 
-    _indeterminate = false;
-    _allChecked = false;
     _checkAll() {
         this.list.forEach(item => item.checked = this._allChecked);
         this.refChecked();

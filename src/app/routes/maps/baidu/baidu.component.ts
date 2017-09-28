@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChild, ElementRef, NgZone, OnDestroy } from '@angular/core';
 import { AbmComponent } from 'angular-baidu-maps';
 
 declare const BMap: any;
@@ -9,11 +9,13 @@ declare const BMAP_SATELLITE_MAP: any;
     templateUrl: './baidu.component.html',
     styleUrls: ['./baidu.component.scss']
 })
-export class MapsBaiduComponent {
+export class MapsBaiduComponent implements OnDestroy {
 
-    options: any = {}
-    status: string = '';
+    options: any = {};
+    status = '';
     @ViewChild('map') mapComp: AbmComponent;
+    satelliteOptions: any;
+    private mapSatellite: any;
 
     constructor(private el: ElementRef, private zone: NgZone) { }
 
@@ -22,10 +24,10 @@ export class MapsBaiduComponent {
         this._map = map;
         map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
         map.addControl(new BMap.MapTypeControl());
-        map.setCurrentCity("北京");
+        map.setCurrentCity('北京');
         map.enableScrollWheelZoom(true);
         this.status = '加载完成';
-        //添加监听事件
+        // 添加监听事件
         map.addEventListener('tilesloaded', () => {
             this.status = '地图加载完毕';
         });
@@ -45,19 +47,17 @@ export class MapsBaiduComponent {
     }
 
     infoWindow() {
-        let infoWin = new BMap.InfoWindow("地址：北京市东城区王府井大街88号乐天银泰百货八层", {
+        const infoWin = new BMap.InfoWindow('地址：北京市东城区王府井大街88号乐天银泰百货八层', {
             width: 200,     // 信息窗口宽度
             height: 100,     // 信息窗口高度
-            title: "海底捞王府井店", // 信息窗口标题
-            enableMessage: true,//设置允许信息窗发送短息
-            message: "亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+            title: '海底捞王府井店', // 信息窗口标题
+            enableMessage: true, // 设置允许信息窗发送短息
+            message: '亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~'
         });
         this._map.openInfoWindow(infoWin, this._map.getCenter());
     }
 
     // 卫星
-    satelliteOptions: any;
-    private mapSatellite: any;
     onReadySatellite(map: any) {
         map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
         map.setMapType(BMAP_SATELLITE_MAP);

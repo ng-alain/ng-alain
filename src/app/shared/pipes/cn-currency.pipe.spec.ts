@@ -1,4 +1,4 @@
-import { CNCurrencyPipe } from "@shared/pipes/cn-currency.pipe";
+import { CNCurrencyPipe } from '@shared/pipes/cn-currency.pipe';
 
 describe('Pipe: _currency', () => {
 

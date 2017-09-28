@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { NzModalSubject, NzModalService, NzMessageService } from "ng-zorro-antd";
+import { NzModalSubject, NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { ModalHelper } from '@shared/helper/modal.helper';
+
 @Component({
     selector: 'app-model-custom',
     template: `
@@ -41,7 +42,7 @@ export class ModelCustomComponent {
             .open(ModelCustomComponent, { name: 'From Submodal Data' }, 'sm', {
                 zIndex: 1001 // https://github.com/NG-ZORRO/ng-zorro-antd/issues/317
             })
-            .subscribe(result => this.msg.info(`subscribe sub status: ${JSON.stringify(result)}`))
+            .subscribe(result => this.msg.info(`subscribe sub status: ${JSON.stringify(result)}`));
     }
 
     ok() {

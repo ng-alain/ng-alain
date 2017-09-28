@@ -1,11 +1,9 @@
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { SharedModule } from "@shared/shared.module";
-import { UploadComponent } from "./upload.component";
+import { SharedModule } from '@shared/shared.module';
+import { UploadComponent } from './upload.component';
 import { FormsModule } from './../forms.module';
 
 describe('Component: Upload', () => {
@@ -17,8 +15,8 @@ describe('Component: Upload', () => {
     });
 
     it('should create an instance', async(() => {
-        let fixture = TestBed.createComponent(UploadComponent);
-        let comp = fixture.debugElement.componentInstance;
+        const fixture = TestBed.createComponent(UploadComponent);
+        const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
     }));
 });

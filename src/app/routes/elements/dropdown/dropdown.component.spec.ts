@@ -1,12 +1,9 @@
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { SharedModule } from "@shared/shared.module";
-import { DropdownComponent } from "./dropdown.component";
-
+import { SharedModule } from '@shared/shared.module';
+import { DropdownComponent } from './dropdown.component';
 
 describe('Component: Dropdown', () => {
     beforeEach(() => {
@@ -18,8 +15,8 @@ describe('Component: Dropdown', () => {
     });
 
     it('should create an instance', async(() => {
-        let fixture = TestBed.createComponent(DropdownComponent);
-        let comp = fixture.debugElement.componentInstance;
+        const fixture = TestBed.createComponent(DropdownComponent);
+        const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
     }));
 });

@@ -1,12 +1,12 @@
-import { LayoutComponent } from "../layout/layout.component";
-import { LoginComponent } from "./pages/login/login.component";
-import { LockComponent } from "./pages/lock/lock.component";
-import { RegisterComponent } from "./pages/register/register.component";
-import { ForgetComponent } from "./pages/forget/forget.component";
-import { MaintenanceComponent } from "./pages/maintenance/maintenance.component";
-import { Page404Component } from "./pages/404/404.component";
-import { Page500Component } from "./pages/500/500.component";
-import { DashboardV1Component } from "./dashboard/v1/v1.component";
+import { LayoutComponent } from '../layout/layout.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LockComponent } from './pages/lock/lock.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ForgetComponent } from './pages/forget/forget.component';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
+import { Page404Component } from './pages/404/404.component';
+import { Page500Component } from './pages/500/500.component';
+import { DashboardV1Component } from './dashboard/v1/v1.component';
 
 export const routes = [
     {

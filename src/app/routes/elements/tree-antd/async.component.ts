@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'tree-antd-demo-async',
+  selector: 'app-tree-antd-demo-async',
   template: `
   <nz-card>
       <ng-template #title>Async</ng-template>

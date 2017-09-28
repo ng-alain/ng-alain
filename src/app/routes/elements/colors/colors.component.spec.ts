@@ -1,12 +1,10 @@
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { SharedModule } from "@shared/shared.module";
-import { ColorsComponent } from "./colors.component";
-import { ColorsService } from "@core/services/colors.service";
+import { SharedModule } from '@shared/shared.module';
+import { ColorsComponent } from './colors.component';
+import { ColorsService } from '@core/services/colors.service';
 
 describe('Component: Colors', () => {
     beforeEach(() => {
@@ -19,8 +17,8 @@ describe('Component: Colors', () => {
     });
 
     it('should create an instance', async(() => {
-        let fixture = TestBed.createComponent(ColorsComponent);
-        let comp = fixture.debugElement.componentInstance;
+        const fixture = TestBed.createComponent(ColorsComponent);
+        const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
     }));
 });

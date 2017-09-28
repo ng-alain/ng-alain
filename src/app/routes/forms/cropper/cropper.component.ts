@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Bounds, CropperSettings, ImageCropperComponent } from "ng2-img-cropper";
+import { Bounds, CropperSettings, ImageCropperComponent } from 'ng2-img-cropper';
 
 @Component({
     selector: 'app-cropper',
@@ -44,10 +44,10 @@ export class CropperComponent {
     }
 
     fileChange($event) {
-        let image: any = new Image();
-        let file: File = $event.target.files[0];
-        let myReader: FileReader = new FileReader();
-        let that = this;
+        const image: any = new Image();
+        const file: File = $event.target.files[0];
+        const myReader: FileReader = new FileReader();
+        const that = this;
         myReader.onloadend = (loadEvent: any) => {
             image.src = loadEvent.target.result;
             that.cropper.setImage(image);

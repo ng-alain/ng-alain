@@ -1,10 +1,10 @@
 import { Router } from '@angular/router';
 import { Injectable, Injector } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { MenuService } from "./menu.service";
-import { TranslatorService } from "../translator/translator.service";
-import { SettingsService } from "./settings.service";
-import { ACLService } from "../acl/acl.service";
+import { MenuService } from './menu.service';
+import { TranslatorService } from '../translator/translator.service';
+import { SettingsService } from './settings.service';
+import { ACLService } from '../acl/acl.service';
 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
@@ -41,7 +41,7 @@ export class StartupService {
                                 resolve(res);
                             }, (err: HttpErrorResponse) => {
                                 resolve(null);
-                            })
+                            });
         });
     }
 }

@@ -1,4 +1,4 @@
-import { YNPipe } from "@shared/pipes/yn.pipe";
+import { YNPipe } from '@shared/pipes/yn.pipe';
 
 describe('Pipe: yn', () => {
 

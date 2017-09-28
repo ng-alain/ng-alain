@@ -1,12 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-standard',
     templateUrl: './standard.component.html',
     styleUrls: ['./standard.component.scss']
 })
-export class StandardComponent {
+export class StandardComponent implements OnInit {
     selectValue;
 
     options = [
@@ -50,18 +50,33 @@ export class StandardComponent {
         100: 'E'
     };
 
-    rate: number = 3;
+    rate = 3;
 
-    constructor() {
+    hotTags: string[] = ['Movie', 'Books', 'Music', 'Sports'];
+
+    selectedTags: string[] = [];
+
+    validateForm: FormGroup;
+
+    controlArray = [];
+
+    isCollapse = true;
+
+    constructor(private fb: FormBuilder) {
         this.selectValue = this.options[0];
+    }
+
+    ngOnInit() {
+        this.validateForm = this.fb.group({});
+        for (let i = 0; i < 10; i++) {
+            this.controlArray.push({ index: i, show: i < 6 });
+            this.validateForm.addControl(`field${i}`, new FormControl());
+        }
     }
 
     changeCity(value) {
         console.log(value);
     }
-
-    hotTags = ['Movie', 'Books', 'Music', 'Sports'];
-    selectedTags = [];
 
     handleChange(checked: boolean, tag: string): void {
         if (checked) {
@@ -70,5 +85,16 @@ export class StandardComponent {
             this.selectedTags = this.selectedTags.filter(t => t !== tag);
         }
         console.log('You are interested in: ', this.selectedTags);
+    }
+
+    toggleCollapse() {
+      this.isCollapse = !this.isCollapse;
+      this.controlArray.forEach((c, index) => {
+        c.show = this.isCollapse ? (index < 6) : true;
+      });
+    }
+    
+    resetForm() {
+      this.validateForm.reset();
     }
 }

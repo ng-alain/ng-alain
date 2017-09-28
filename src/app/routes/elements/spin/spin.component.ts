@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
     styleUrls: ['./spin.component.scss']
 })
 export class SpinComponent {
-    loading: boolean = true;
+    loading = true;
 
     data = [];
-    dataLoading: boolean = false;
+    dataLoading = false;
 
     load() {
         this.dataLoading = true;

@@ -17,4 +17,4 @@ function remove() {
         remove();
         body.style.overflow = '';
     }, 100);
-}
+};

@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ModalHelper } from '@shared/helper/modal.helper';
 import { _HttpClient } from '@core/services/http.client';
 import { ExtrasPoiEditComponent } from './edit/edit.component';
 
 @Component({
-    selector: 'extras-poi',
+    selector: 'app-extras-poi',
     templateUrl: './poi.component.html'
 })
-export class ExtrasPoiComponent {
+export class ExtrasPoiComponent implements OnInit {
 
     list: any[] = [];
     s: any = {
@@ -16,7 +16,7 @@ export class ExtrasPoiComponent {
         ps: 10,
         s: ''
     };
-    total: number = 0;
+    total = 0;
 
     constructor(
         public http: _HttpClient,
@@ -28,7 +28,9 @@ export class ExtrasPoiComponent {
     }
 
     load(reload: boolean = false) {
-        if (reload) this.s.pi = 1;
+        if (reload) {
+            this.s.pi = 1;
+        }
         this.http.get('./assets/pois.json', this.s).subscribe((res: any) => {
             this.list = res.data;
             this.total = res.total;

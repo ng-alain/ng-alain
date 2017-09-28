@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd';
 import { Observable } from 'rxjs/Observable';
-import "rxjs/add/operator/filter";
+import 'rxjs/add/operator/filter';
 
 /**
  * 对话框辅助类
@@ -33,10 +33,11 @@ export class ModalHelper {
     open(comp: any, params?: any, size: 'sm' | 'lg' | '' | number = 'lg', options?: any): Observable<any> {
         let cls = '', width = '';
         if (size) {
-            if (typeof size === 'number')
+            if (typeof size === 'number') {
                 width = `${size}px`;
-            else
+            } else {
                 cls = `modal-${size}`;
+            }
         }
         return this.modalSrv
             .open(Object.assign({

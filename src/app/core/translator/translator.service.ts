@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { SettingsService } from "../services/settings.service";
+import { SettingsService } from '../services/settings.service';
 
 @Injectable()
 export class TranslatorService {
 
-    private _default: string = 'en';
+    private _default = 'en';
 
     private _langs = [
         { code: 'en', text: 'English' },
@@ -15,7 +15,9 @@ export class TranslatorService {
     constructor(settings: SettingsService, private translate: TranslateService) {
         this._default = settings.layout.lang || translate.getBrowserLang();
         const lans = this._langs.map(item => item.code);
-        if (!lans.includes(this._default)) this._default = lans[0];
+        if (!lans.includes(this._default)) {
+            this._default = lans[0];
+        }
         translate.addLangs(lans);
         translate.setDefaultLang(this._default);
     }

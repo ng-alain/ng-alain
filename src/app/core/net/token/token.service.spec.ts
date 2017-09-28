@@ -1,11 +1,11 @@
 import { TokenData } from './token.type';
-import { TokenService } from "./token.service";
+import { TokenService } from './token.service';
 import * as moment from 'moment';
 
 describe('Service: token', () => {
 
     let instance: TokenService = null;
-    let token = <TokenData>{
+    const token = <TokenData>{
         access_token: '1234567890',
         expire_time: moment().add(7, 'days').unix(),
         refresh_token: '234567890',
@@ -13,7 +13,7 @@ describe('Service: token', () => {
         user_name: 'cipchk'
     };
 
-    let _data = {};
+    const _data = {};
 
     beforeEach(() => {
         spyOn(localStorage, 'getItem').and.callFake((key) => {

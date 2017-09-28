@@ -1,4 +1,4 @@
-import { KeysPipe } from "@shared/pipes/keys.pipe";
+import { KeysPipe } from '@shared/pipes/keys.pipe';
 
 describe('Pipe: keys', () => {
 

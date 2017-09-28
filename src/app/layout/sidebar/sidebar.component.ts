@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NzMessageService } from "ng-zorro-antd";
+import { NzMessageService } from 'ng-zorro-antd';
 import { SettingsService } from '@core/services/settings.service';
 
 @Component({

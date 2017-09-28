@@ -1,11 +1,9 @@
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { SharedModule } from "@shared/shared.module";
-import { G2Component } from "./g2.component";
+import { SharedModule } from '@shared/shared.module';
+import { G2Component } from './g2.component';
 
 describe('Component: Chart.js', () => {
     beforeEach(() => {
@@ -17,8 +15,8 @@ describe('Component: Chart.js', () => {
     });
 
     it('should create an instance', async(() => {
-        let fixture = TestBed.createComponent(G2Component);
-        let comp = fixture.debugElement.componentInstance;
+        const fixture = TestBed.createComponent(G2Component);
+        const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
     }));
 });

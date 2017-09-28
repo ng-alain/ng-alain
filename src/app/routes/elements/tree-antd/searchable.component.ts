@@ -1,9 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { generateData } from './generate-data';
 import { NzTreeComponent } from 'ng-tree-antd';
 
 @Component({
-  selector: 'tree-antd-demo-searchable',
+  selector: 'app-tree-antd-demo-searchable',
   template: `
   <nz-card>
       <ng-template #title>Searchable</ng-template>
@@ -17,8 +17,8 @@ import { NzTreeComponent } from 'ng-tree-antd';
   </nz-card>
   `
 })
-export class TreeAntdSearchableComponent {
-  q: string = '';
+export class TreeAntdSearchableComponent implements OnInit {
+  q = '';
 
   nodes = [];
 
@@ -29,7 +29,9 @@ export class TreeAntdSearchableComponent {
   @ViewChild(NzTreeComponent) tree: NzTreeComponent;
   filterNodes() {
     this.tree.treeModel.filterNodes(this.q);
-    if (!this.q) this.tree.treeModel.collapseAll();
+    if (!this.q) {
+      this.tree.treeModel.collapseAll();
+    }
   }
 
   ngOnInit() {

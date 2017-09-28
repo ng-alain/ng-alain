@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { generateData } from './generate-data';
 
 @Component({
-  selector: 'tree-antd-demo-draggable',
+  selector: 'app-tree-antd-demo-draggable',
   template: `
   <nz-card>
       <ng-template #title>Draggable</ng-template>
@@ -14,7 +14,7 @@ import { generateData } from './generate-data';
   </nz-card>
   `
 })
-export class TreeAntdDraggableComponent {
+export class TreeAntdDraggableComponent implements OnInit {
   nodes = [];
 
   options = {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
-import { Observable } from "rxjs/Observable";
-import { UserService } from "./user.service";
-import { NzMessageService } from "ng-zorro-antd";
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { UserService } from './user.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Injectable()
 export class CanAuthProvide implements CanActivate {

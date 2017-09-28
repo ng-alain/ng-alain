@@ -1,10 +1,11 @@
-import { Directive, Input, ElementRef } from "@angular/core";
+// tslint:disable:directive-selector
+import { Directive, Input, ElementRef, OnInit, OnDestroy } from '@angular/core';
 declare var $: any;
 
 @Directive({
     selector: '[sparkline]'
 })
-export class SparklineDirective {
+export class SparklineDirective implements OnInit, OnDestroy {
 
     @Input() sparkline;
 
@@ -17,9 +18,9 @@ export class SparklineDirective {
     }
 
     initSparkLine() {
-        let $el = $(this.el.nativeElement),
-            options = this.sparkline,
-            data = $el.data();
+        const $el = $(this.el.nativeElement),
+              data = $el.data();
+        let options = this.sparkline;
 
         if (!options) {
             options = data;

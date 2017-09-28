@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-grid',
     templateUrl: './grid.component.html',
     styleUrls: ['./grid.component.scss']
 })
-export class GridComponent {
+export class GridComponent implements OnInit {
     gutter = 16;
     count = 4;
     marksGutter = {
@@ -24,23 +24,22 @@ export class GridComponent {
         8: 8,
         12: 12
     };
+    code = '';
+    orderList = [1, 2, 3, 4];
 
     generateArray(value) {
         return new Array(value);
     }
 
-    code: string = '';
     generateCode() {
-        let html = [];
+        const html = [];
         html.push(`<div nz-row [nzGutter]="${this.gutter}">\r\n`);
-        for (let i of this.generateArray(this.count)) {
-            html.push(`    <div nz-col [nzSpan]="${24 / this.count}"></div>\r\n`)
+        for (const i of this.generateArray(this.count)) {
+            html.push(`    <div nz-col [nzSpan]="${24 / this.count}"></div>\r\n`);
         }
-        html.push(`</div>`)
+        html.push(`</div>`);
         this.code = html.join('');
     }
-
-    orderList = [1, 2, 3, 4];
 
     ngOnInit() {
 
@@ -48,6 +47,6 @@ export class GridComponent {
 
         setTimeout(_ => {
             this.orderList = [...this.orderList.reverse()];
-        }, 10000)
+        }, 10000);
     }
 }

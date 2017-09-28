@@ -128,20 +128,20 @@
         </nz-card>
     </div>
 </div>
-<div nz-row [nzGutter]="16" class="d-none">
+<div nz-row [nzGutter]="16">
     <div nz-col [nzMd]="24">
         <nz-card>
             <ng-template #title>Search Form</ng-template>
             <ng-template #body>
-                <form nz-form>
+                <form nz-form [formGroup]="validateForm">
                     <div nz-row [nzGutter]="32">
-                        <div nz-col [nzSpan]="8" *ngFor="let item of searchFields" [class.d-none]="!item.showed">
+                        <div nz-col [nzSpan]="8" *ngFor="let control of controlArray" [class.d-none]="!control.show">
                             <div nz-form-item nz-row>
                                 <div nz-form-label nz-col [nzSpan]="5">
-                                    <label [attr.for]="'field' + item.index">Field {{item.index}}</label>
+                                    <label [attr.for]="'field' + control.index">Field {{control.index}}</label>
                                 </div>
                                 <div nz-form-control nz-col [nzSpan]="19">
-                                    <nz-input [nzPlaceHolder]="'placeholder'"></nz-input>
+                                    <nz-input [nzSize]="'large'" [nzPlaceHolder]="'placeholder'" [formControlName]="'field'+control.index" [nzId]="'field'+control.index"></nz-input>
                                 </div>
                             </div>
                         </div>
@@ -149,10 +149,10 @@
                     <div nz-row>
                         <div nz-col [nzSpan]="24" class="text-right">
                             <button nz-button [nzType]="'primary'">Search</button>
-                            <button nz-button>Clear</button>
-                            <a class="pl-sm" (click)="toggleSearchCollapse()">
+                            <button nz-button (click)="resetForm()">Clear</button>
+                            <a class="pl-sm" (click)="toggleCollapse()">
                                 Collapse
-                                <i class="anticon" [class.anticon-down]="searchCollapsed" [class.anticon-up]="!searchCollapsed"></i>
+                                <i class="anticon" [class.anticon-down]="isCollapse" [class.anticon-up]="!isCollapse"></i>
                             </a>
                         </div>
                     </div>

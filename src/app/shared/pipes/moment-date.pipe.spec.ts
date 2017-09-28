@@ -1,4 +1,4 @@
-import { MomentDatePipe } from "@shared/pipes/moment-date.pipe";
+import { MomentDatePipe } from '@shared/pipes/moment-date.pipe';
 
 describe('Pipe: _date', () => {
 

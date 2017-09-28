@@ -1,11 +1,9 @@
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { SharedModule } from "@shared/shared.module";
-import { CropperComponent } from "./cropper.component";
+import { SharedModule } from '@shared/shared.module';
+import { CropperComponent } from './cropper.component';
 import { FormsModule } from './../forms.module';
 
 describe('Component: Cropper', () => {
@@ -17,8 +15,8 @@ describe('Component: Cropper', () => {
     });
 
     it('should create an instance', async(() => {
-        let fixture = TestBed.createComponent(CropperComponent);
-        let comp = fixture.debugElement.componentInstance;
+        const fixture = TestBed.createComponent(CropperComponent);
+        const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
     }));
 });

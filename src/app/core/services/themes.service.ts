@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { SettingsService } from "./settings.service";
+import { SettingsService } from './settings.service';
 import { DOCUMENT } from '@angular/platform-browser';
 
 const themeA = require('../../shared/styles/themes/theme-a.scss');
@@ -37,16 +37,19 @@ export class ThemesService {
     }
 
     setTheme(name: ThemeType) {
-        if (name === this.defaultTheme) return;
+        if (name === this.defaultTheme) {
+            return;
+        }
         const bodyEl = this.doc.querySelector('body');
-        let removeArr = [];
+        const removeArr = [];
         for (let i = 0; i < bodyEl.classList.length; i++) {
-            if (bodyEl.classList[i].startsWith('theme-'))
+            if (bodyEl.classList[i].startsWith('theme-')) {
                 removeArr.push(bodyEl.classList[i]);
+            }
         }
         bodyEl.classList.remove(...removeArr);
         bodyEl.classList.add(`theme-${name.toLowerCase()}`);
-        let idx = name.charCodeAt(0) - 65;
+        const idx = name.charCodeAt(0) - 65;
         this.injectStylesheet([themeA, themeB, themeC, themeD, themeE, themeF, themeG, themeH, themeI, themeJ][idx]);
         this.defaultTheme = name;
     }

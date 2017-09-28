@@ -1,6 +1,6 @@
 import { ACLService } from './../acl/acl.service';
 import { Injectable } from '@angular/core';
-import { ACLType } from "../acl/acl.type";
+import { ACLType } from '../acl/acl.type';
 
 export interface Menu {
     /** 文本 */
@@ -29,7 +29,7 @@ export interface Menu {
     acl?: string | string[] | ACLType;
     /** 二级菜单 */
     children?: Menu[];
-    /** 
+    /**
      * 菜单类型，无须指定由 Service 自动识别
      * 1：链接
      * 2：外部链接
@@ -54,12 +54,13 @@ export class MenuService {
 
     visit(callback: (item: Menu, parentMenum: Menu, depth?: number) => void) {
         const inFn = (list: Menu[], parentMenu: Menu, depth: number) => {
-            for (let item of list) {
+            for (const item of list) {
                 callback(item, parentMenu, depth);
-                if (item.children && item.children.length > 0)
+                if (item.children && item.children.length > 0) {
                     inFn(item.children, item, depth + 1);
-                else
+                } else {
                     item.children = [];
+                }
             }
         };
 
@@ -83,14 +84,19 @@ export class MenuService {
 
             // badge
             if (item.badge) {
-                if (item.badge_dot !== true) item.badge_dot = false;
-                if (!item.badge_status) item.badge_status = 'error';
+                if (item.badge_dot !== true) {
+                    item.badge_dot = false;
+                }
+                if (!item.badge_status) {
+                    item.badge_status = 'error';
+                }
             }
 
             item.hide = item.acl && !this.aclService.can(item.acl);
             item._type = item.externalLink ? 2 : 1;
-            if (item.children && item.children.length > 0)
+            if (item.children && item.children.length > 0) {
                 item._type = 3;
+            }
         });
     }
 
@@ -99,17 +105,22 @@ export class MenuService {
     }
 
     setDefault(url: string) {
-        if (!url) return;
+        if (!url) {
+            return;
+        }
 
         let findItem: Menu = null;
         this.visit(item => {
             item._open = false;
-            if (!item.link) return;
-            if (!findItem && item.link.includes(url))
+            if (!item.link) {
+                return;
+            }
+            if (!findItem && item.link.includes(url)) {
                 findItem = item;
+            }
         });
         if (!findItem) {
-            console.warn(`not found page name: ${url}`)
+            console.warn(`not found page name: ${url}`);
             return;
         }
 

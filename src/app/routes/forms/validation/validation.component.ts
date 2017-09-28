@@ -1,9 +1,9 @@
 import { NzMessageService } from 'ng-zorro-antd';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AsyncValidatorFn, AbstractControl } from '@angular/forms';
-import { Observable } from "rxjs/Observable";
-import "rxjs/add/operator/delay";
-import "rxjs/add/operator/debounceTime";
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/debounceTime';
 
 const USERDATA = {
     nickname: 'test',
@@ -24,18 +24,21 @@ const USERDATA = {
     templateUrl: './validation.component.html',
     styleUrls: ['./validation.component.scss']
 })
-export class ValidationComponent {
+export class ValidationComponent implements OnInit {
     form: FormGroup;
+    loading = false;
 
     _submitForm() {
+        // tslint:disable-next-line:forin
         for (const i in this.form.controls) {
             this.form.controls[i].markAsDirty();
         }
         console.log('log', this.form.value);
-        if (this.form.valid)
+        if (this.form.valid) {
             this.msg.success('Successed!');
-        else
+        } else {
             this.msg.error('Fail!');
+        }
     }
 
     nicknameValidator = (control: FormControl): Observable<any>  => {
@@ -49,7 +52,7 @@ export class ValidationComponent {
                     }
                     control.setErrors(null);
                 });
-    };
+    }
 
     confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
         if (!control.value) {
@@ -57,7 +60,7 @@ export class ValidationComponent {
         } else if (control.value !== this.form.controls['password'].value) {
             return { confirm: true, error: true };
         }
-    };
+    }
 
     getFormControl(name: string) {
         return this.form.controls[name];
@@ -80,7 +83,6 @@ export class ValidationComponent {
         }, );
     }
 
-    loading: boolean = false;
     loadData() {
         this.loading = true;
         Observable.of(USERDATA)
@@ -88,7 +90,7 @@ export class ValidationComponent {
             .subscribe(data => {
                 this.loading = false;
                 this.form.reset(data);
-            })
+            });
     }
 
     getCaptcha(e: MouseEvent) {

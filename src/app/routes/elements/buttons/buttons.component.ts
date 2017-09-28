@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./buttons.component.scss']
 })
 export class ButtonsComponent {
-    disabled: boolean = false;
-    loading: boolean = false;
-    size: string = 'default';
+    disabled = false;
+    loading = false;
+    size = 'default';
 
     toggleDisabled() {
         this.disabled = !this.disabled;

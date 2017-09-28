@@ -1,6 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent, HttpHeaders } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler,
+         HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent,
+         HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { TokenService } from './token.service';
 import 'rxjs/add/operator/map';
@@ -17,11 +19,11 @@ export class TokenInterceptor implements HttpInterceptor {
 
     private goLogin() {
         const router = this.injector.get(Router);
-        debugger;
         this.injector.get(Router).navigate([ '/login' ]);
     }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
+    intercept(req: HttpRequest<any>, next: HttpHandler):
+        Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
         let header: HttpHeaders = null;
         // 过滤授权与多assets请求
         if (!req.url.includes('auth/') && !req.url.includes('assets/')) {
@@ -32,13 +34,14 @@ export class TokenInterceptor implements HttpInterceptor {
                 return Observable.create(observer => observer.error({ status: 401 }));
             }
             // 正常token值放在请求header当中，具体格式以后端为准
-            header = req.headers.set('Authorization', `Bearer ${authData.access_token}`)
+            header = req.headers.set('Authorization', `Bearer ${authData.access_token}`);
         }
 
         // 统一加上服务端前缀
         let url = req.url;
-        if (!url.startsWith('https://') && !url.startsWith('http://'))
+        if (!url.startsWith('https://') && !url.startsWith('http://')) {
             url = environment.SERVER_URL + url;
+        }
 
         const newReq = req.clone({
             headers: header,
@@ -57,7 +60,6 @@ export class TokenInterceptor implements HttpInterceptor {
                     return Observable.create(observer => observer.next(event));
                 })
                 .catch((res: HttpResponse<any>) => {
-                    debugger
                     // 一些通用操作
                     switch (res.status) {
                         case 401: // 未登录状态码

@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { RandomUserService } from "../randomUser.service";
-import { NzMessageService } from "ng-zorro-antd";
+// tslint:disable:member-ordering
+import { Component, OnInit } from '@angular/core';
+import { RandomUserService } from '../randomUser.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
     selector: 'app-table-standard',
     templateUrl: './standard.component.html',
     styleUrls: ['./standard.component.scss']
 })
-export class TableStandardComponent {
+export class TableStandardComponent implements OnInit {
 
     data = [
         {
@@ -28,6 +29,8 @@ export class TableStandardComponent {
         }
     ];
 
+    ageSort = '';
+
     ageSortChange($event) {
         if ($event === 'ascend') {
             this.data = [...this.data.sort((a, b) => {
@@ -47,14 +50,14 @@ export class TableStandardComponent {
     _displayDataChange($event) {
         this._displayData = $event;
         this._refreshStatus();
-    };
+    }
 
     _refreshStatus() {
         const allChecked = this._displayData.every(value => value.checked === true);
         const allUnChecked = this._displayData.every(value => !value.checked);
         this._allChecked = allChecked;
         this._indeterminate = (!allChecked) && (!allUnChecked);
-    };
+    }
 
     _checkAll(value) {
         if (value) {
@@ -67,7 +70,7 @@ export class TableStandardComponent {
             });
         }
         this._refreshStatus();
-    };
+    }
 
     // ajax
     _current = 1;
@@ -84,8 +87,8 @@ export class TableStandardComponent {
             this._ajaxLoading = false;
             this._total = 200;
             this._ajaxDataSet = data.results;
-        })
-    };
+        });
+    }
 
     ngOnInit() {
         this._ajaxRefreshData();
@@ -105,10 +108,11 @@ export class TableStandardComponent {
     _noresult = false;
 
     _toggleData() {
-        if (this._noresult)
+        if (this._noresult) {
             this._dataSet = [];
-        else
+        } else {
             this._genData();
+        }
     }
 
     _genData() {
@@ -126,9 +130,9 @@ export class TableStandardComponent {
 
     cancel = function () {
         this.message.info('click cancel');
-    }
+    };
 
     confirm = () => {
-        this.message.success('click confirm')
+        this.message.success('click confirm');
     }
 }

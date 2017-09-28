@@ -12,10 +12,11 @@ export class GuardComponent {
     constructor(public userSrv: UserService, private router: Router) {}
 
     toggleLogin() {
-        if (this.userSrv.isLogin)
+        if (this.userSrv.isLogin) {
             this.userSrv.logout();
-        else
+        } else {
             this.userSrv.login('admin');
+        }
 
         this.router.navigate([ '/logics/guard' ]);
     }

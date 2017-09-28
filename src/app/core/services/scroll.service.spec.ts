@@ -1,7 +1,7 @@
 import { ReflectiveInjector } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
 import { DOCUMENT } from '@angular/platform-browser';
-import { ScrollService } from "./scroll.service";
+import { ScrollService } from './scroll.service';
 
 describe('Service: Scroll', () => {
 

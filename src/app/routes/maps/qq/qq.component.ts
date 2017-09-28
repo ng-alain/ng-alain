@@ -1,5 +1,6 @@
-import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { AqmComponent } from "angular-qq-maps";
+import { Component, ViewChild, ElementRef, NgZone, OnDestroy } from '@angular/core';
+import { AqmComponent } from 'angular-qq-maps';
+
 declare const qq: any;
 
 @Component({
@@ -7,10 +8,12 @@ declare const qq: any;
     templateUrl: './qq.component.html',
     styleUrls: ['./qq.component.scss']
 })
-export class MapsQQComponent {
+export class MapsQQComponent implements OnDestroy {
     options: any = {};
-    status: string = '';
+    status = '';
     @ViewChild('map') mapComp: AqmComponent;
+    satelliteOptions: any;
+    private mapSatellite: any;
 
     constructor(private el: ElementRef, private zone: NgZone) { }
 
@@ -22,8 +25,9 @@ export class MapsQQComponent {
         });
         this.map = mapNative;
         this.status = '加载完成';
-        //添加监听事件
+        // 添加监听事件
         qq.maps.event.addListener(this.map, 'click', (event: any) => {
+            // tslint:disable-next-line:no-unused-expression
             new qq.maps.Marker({
                 position: event.latLng,
                 map: this.map
@@ -43,7 +47,7 @@ export class MapsQQComponent {
     }
 
     infoWindow() {
-        var infoWin = new qq.maps.InfoWindow({
+        const infoWin = new qq.maps.InfoWindow({
             map: this.map
         });
         infoWin.open();
@@ -52,8 +56,6 @@ export class MapsQQComponent {
     }
 
     // 卫星
-    satelliteOptions: any;
-    private mapSatellite: any;
     onReadySatellite(mapNative: any) {
         mapNative.setOptions({
             zoom: 14,

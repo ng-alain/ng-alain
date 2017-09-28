@@ -1,12 +1,9 @@
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { SharedModule } from "@shared/shared.module";
-import { WidgetsComponent } from "./widgets.component";
-
+import { SharedModule } from '@shared/shared.module';
+import { WidgetsComponent } from './widgets.component';
 
 describe('Comoponent: Widgets', () => {
     beforeEach(() => {
@@ -18,8 +15,8 @@ describe('Comoponent: Widgets', () => {
     });
 
     it('should create an instance', async(() => {
-        let fixture = TestBed.createComponent(WidgetsComponent);
-        let comp = fixture.debugElement.componentInstance;
+        const fixture = TestBed.createComponent(WidgetsComponent);
+        const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
     }));
 });

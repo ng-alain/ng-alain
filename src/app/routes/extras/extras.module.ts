@@ -1,10 +1,10 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SharedModule } from "@shared/shared.module";
+import { SharedModule } from '@shared/shared.module';
 
 import { HelpCenterComponent } from './helpcenter/helpcenter.component';
-import { ExtrasSettingsComponent } from "./settings/settings.component";
-import { ExtrasPoiComponent } from "./poi/poi.component";
+import { ExtrasSettingsComponent } from './settings/settings.component';
+import { ExtrasPoiComponent } from './poi/poi.component';
 import { ExtrasPoiEditComponent } from './poi/edit/edit.component';
 
 const routes: Routes = [

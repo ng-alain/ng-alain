@@ -1,17 +1,17 @@
-import { Component, ElementRef, Renderer2, Inject } from "@angular/core";
+import { Component, ElementRef, Renderer2, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SettingsService } from "@core/services/settings.service";
+import { DOCUMENT } from '@angular/common';
+import { SettingsService } from '@core/services/settings.service';
 import { MenuService, Menu } from '@core/services/menu.service';
-import { DOCUMENT } from "@angular/common";
 
 const SHOWCLS = 'nav-floating-show';
 const FLOATINGCLS = 'nav-floating';
 
 @Component({
-    selector: 'layout-nav',
+    selector: 'app-layout-nav',
     templateUrl: './nav.component.html'
 })
-export class SidebarNavComponent {
+export class SidebarNavComponent implements OnInit {
 
     private rootEl: HTMLDivElement;
     private floatingEl: HTMLDivElement;
@@ -32,9 +32,13 @@ export class SidebarNavComponent {
     }
 
     private floatingAreaClickHandle(e: MouseEvent) {
-        if (this.settings.layout.collapsed !== true) return;
+        if (this.settings.layout.collapsed !== true) {
+            return;
+        }
         const linkNode = (e.target as Element);
-        if (linkNode.nodeName !== 'A') return;
+        if (linkNode.nodeName !== 'A') {
+            return;
+        }
         this.hideAll();
     }
 
@@ -52,7 +56,9 @@ export class SidebarNavComponent {
     private genSubNode(linkNode: HTMLLinkElement, item: Menu): HTMLUListElement {
         const id = `_sidebar-nav-${item.__id}`;
         let node = this.floatingEl.querySelector('#' + id) as HTMLUListElement;
-        if (node) return node;
+        if (node) {
+            return node;
+        }
         node = linkNode.nextElementSibling.cloneNode(true) as HTMLUListElement;
         node.id = id;
         node.classList.add(FLOATINGCLS);
@@ -73,26 +79,32 @@ export class SidebarNavComponent {
     // calculate the node position values.
     private calPos(linkNode: HTMLLinkElement, node: HTMLUListElement) {
         const rect = linkNode.getBoundingClientRect();
-        let top = rect.top + this.doc.documentElement.scrollTop, 
-            left = rect.right + 5;
+        const top = rect.top + this.doc.documentElement.scrollTop,
+              left = rect.right + 5;
         node.style.top = `${top}px`;
         node.style.left = `${left}px`;
     }
 
     showSubMenu(e: MouseEvent, item: Menu) {
-        if (this.settings.layout.collapsed !== true) return;
+        if (this.settings.layout.collapsed !== true) {
+            return;
+        }
         e.preventDefault();
         const linkNode = (e.target as Element);
-        if (linkNode.nodeName !== 'A') return;
+        if (linkNode.nodeName !== 'A') {
+            return;
+        }
         const subNode = this.genSubNode(linkNode as HTMLLinkElement, item);
         this.hideAll();
         subNode.classList.add(SHOWCLS);
         this.calPos(linkNode as HTMLLinkElement, subNode);
     }
-    
+
     toggleOpen(item: Menu) {
         this.menuSrv.visit((i, p) => {
-            if (i !== item) i._open = false;
+            if (i !== item) {
+                i._open = false;
+            }
         });
         item._open = !item._open;
     }

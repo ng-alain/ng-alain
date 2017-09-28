@@ -1,12 +1,9 @@
-/* tslint:disable:no-unused-variable */
-
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { SharedModule } from "@shared/shared.module";
-import { GridMasonryComponent } from "./gridmasonry.component";
-
+import { SharedModule } from '@shared/shared.module';
+import { GridMasonryComponent } from './gridmasonry.component';
 
 describe('Component: GridMasonry', () => {
     beforeEach(() => {
@@ -18,8 +15,8 @@ describe('Component: GridMasonry', () => {
     });
 
     it('should create an instance', async(() => {
-        let fixture = TestBed.createComponent(GridMasonryComponent);
-        let comp = fixture.debugElement.componentInstance;
+        const fixture = TestBed.createComponent(GridMasonryComponent);
+        const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
     }));
 });

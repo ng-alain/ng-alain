@@ -1,5 +1,5 @@
 import { PipeTransform, Pipe } from '@angular/core';
-import { CurrencyPipe } from "@angular/common";
+import { CurrencyPipe } from '@angular/common';
 
 /**
  * 内置 `_currency` 货币格式化

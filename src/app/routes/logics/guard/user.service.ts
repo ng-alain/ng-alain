@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UserService {
 
-    private _isLogin: boolean = false;
+    private _isLogin = false;
 
-    private _user: string = '';
+    private _user = '';
 
     private _role: string[] = [];
 
-    private _token: string = '';
+    private _token = '';
 
     get isLogin(): boolean {
         return this._isLogin;
@@ -26,10 +26,11 @@ export class UserService {
     login(user: string) {
         this._user = user;
         // mock
-        if (user === 'admin')
+        if (user === 'admin') {
             this._role = [ 'admin' ];
-        else
+        } else {
             this._role = [ 'employee' ];
+        }
         this._isLogin = true;
         this._token = '' + Math.random();
         console.log(user, this._isLogin, this._role);

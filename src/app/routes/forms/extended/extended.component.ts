@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./extended.component.scss']
 })
 export class ExtendedComponent {
-    color1: string = '#555555';
+    color1 = '#555555';
+    color2 = '';
 }

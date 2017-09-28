@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ACLType } from "./acl.type";
+import { ACLType } from './acl.type';
 
 /**
  * 访问控制服务
@@ -9,10 +9,12 @@ export class ACLService {
 
     private roles: string[] = [];
     private abilities: (number | string)[] = [];
-    private full: boolean = false;
+    private full = false;
 
     private parseACLType(val: string | string[] | ACLType): ACLType {
-        if (typeof val !== 'string') return <ACLType>val;
+        if (typeof val !== 'string') {
+            return <ACLType>val;
+        }
         if (Array.isArray(val)) {
             return <ACLType>{ role: <string[]>val };
         }
@@ -65,10 +67,12 @@ export class ACLService {
      * @param {ACLType} value
      */
     add(value: ACLType) {
-        if (value.role && value.role.length > 0)
+        if (value.role && value.role.length > 0) {
             this.roles.push(...value.role);
-        if (value.ability && value.ability.length > 0)
+        }
+        if (value.ability && value.ability.length > 0) {
             this.abilities.push(...value.ability);
+        }
     }
 
     /**
@@ -77,9 +81,10 @@ export class ACLService {
      * @param {string[]} roles
      */
     attachRole(roles: string[]) {
-        for (let val of roles) {
-            if (!this.roles.includes(val))
+        for (const val of roles) {
+            if (!this.roles.includes(val)) {
                 this.roles.push(val);
+            }
         }
     }
 
@@ -89,9 +94,10 @@ export class ACLService {
      * @param {((number | string)[])} abilities
      */
     attachAbility(abilities: (number | string)[]) {
-        for (let val of abilities) {
-            if (!this.abilities.includes(val))
+        for (const val of abilities) {
+            if (!this.abilities.includes(val)) {
                 this.abilities.push(val);
+            }
         }
     }
 
@@ -101,9 +107,11 @@ export class ACLService {
      * @param {string[]} roles
      */
     removeRole(roles: string[]) {
-        for (let val of roles) {
+        for (const val of roles) {
             const idx = this.roles.indexOf(val);
-            if (idx !== -1) this.roles.splice(idx, 1);
+            if (idx !== -1) {
+                this.roles.splice(idx, 1);
+            }
         }
     }
 
@@ -113,9 +121,11 @@ export class ACLService {
      * @param {((number | string)[])} abilities
      */
     removeAbility(abilities: (number | string)[]) {
-        for (let val of abilities) {
+        for (const val of abilities) {
             const idx = this.abilities.indexOf(val);
-            if (idx !== -1) this.abilities.splice(idx, 1);
+            if (idx !== -1) {
+                this.abilities.splice(idx, 1);
+            }
         }
     }
 
@@ -125,19 +135,23 @@ export class ACLService {
      * @param {(string | string[] | ACLType)} roleOrAbility
      */
     can(roleOrAbility: string | string[] | ACLType): boolean {
-        if (this.full === true) return true;
+        if (this.full === true) {
+            return true;
+        }
 
         const t = this.parseACLType(roleOrAbility);
         if (t.role) {
             for (const _r of t.role) {
-                if (this.roles.includes(_r))
+                if (this.roles.includes(_r)) {
                     return true;
+                }
             }
         }
         if (t.ability) {
             for (const _p of t.ability) {
-                if (this.abilities.includes(_p))
+                if (this.abilities.includes(_p)) {
                     return true;
+                }
             }
         }
         return false;
