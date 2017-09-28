@@ -6,7 +6,7 @@ import { TranslatorService } from "./core/translator/translator.service";
 
 @Component({
   selector: 'app-root',
-  template: `<nz-root><router-outlet></router-outlet></nz-root>`
+  template: `<router-outlet></router-outlet>`
 })
 export class AppComponent {
 
