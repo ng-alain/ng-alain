@@ -13,6 +13,21 @@
     &:empty {
         display: none;
     }
+
+    em {
+        font-style: normal;
+    }
+
+    &-dot {
+        display: inline-block;
+        width: $layout-gutter;
+        height: $layout-gutter;
+        padding: 0;
+        border-radius: 50%;
+        > * {
+            display: none;
+        }
+    }
 }
 
 // Colors
