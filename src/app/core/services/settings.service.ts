@@ -18,6 +18,8 @@ export interface App {
     [key: string]: any;
 }
 
+export type SidebarThemeType = 'light' | 'dark';
+
 export interface Layout {
     /** 是否固定顶部菜单 */
     fixed: boolean;

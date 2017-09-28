@@ -3,7 +3,7 @@ import * as screenfull from 'screenfull';
 import { NzModalService, NzMessageService } from "ng-zorro-antd";
 import { LocalStorageService } from 'angular-web-storage';
 
-import { SettingsService } from '@core/services/settings.service';
+import { SettingsService, SidebarThemeType } from '@core/services/settings.service';
 import { ThemesService } from '@core/services/themes.service';
 import { MenuService } from "@core/services/menu.service";
 import { ThemeType } from "@core/services/themes.service";
@@ -21,17 +21,17 @@ export class HeaderComponent {
     isFullscreen: boolean = false;
     searchToggled: boolean = false;
     appLoading: boolean = true;
-    themes: { l: ThemeType, bg: string }[] = [
-        { l: 'A', bg: 'blue' },
-        { l: 'B', bg: 'purple' },
-        { l: 'C', bg: 'green' },
-        { l: 'D', bg: 'red' },
-        { l: 'E', bg: 'yellow' },
-        { l: 'F', bg: 'grey' },
-        { l: 'G', bg: 'pink' },
-        { l: 'H', bg: 'orange' },
-        { l: 'I', bg: 'teal' },
-        { l: 'J', bg: 'cyan' }
+    themes: { l: ThemeType, bg: string, nav: string, con: string }[] = [
+        { l: 'A', bg: '#108ee9', nav: '#fff', con: '#f5f7fa' },
+        { l: 'B', bg: '#00a2ae', nav: '#fff', con: '#f5f7fa' },
+        { l: 'C', bg: '#00a854', nav: '#fff', con: '#f5f7fa' },
+        { l: 'D', bg: '#f04134', nav: '#fff', con: '#f5f7fa' },
+        { l: 'E', bg: '#373d41', nav: '#fff', con: '#f5f7fa' },
+        { l: 'F', bg: '#108ee9', nav: '#404040', con: '#f5f7fa' },
+        { l: 'G', bg: '#00a2ae', nav: '#404040', con: '#f5f7fa' },
+        { l: 'H', bg: '#00a854', nav: '#404040', con: '#f5f7fa' },
+        { l: 'I', bg: '#f04134', nav: '#404040', con: '#f5f7fa' },
+        { l: 'J', bg: '#373d41', nav: '#404040', con: '#f5f7fa' }
     ];
 
     @ViewChild('qIpt')
@@ -75,6 +75,7 @@ export class HeaderComponent {
     }
 
     appChange() {
+        // bug: https://github.com/NG-ZORRO/ng-zorro-antd/issues/390
         setTimeout(() => this.appLoading = false, 500);
     }
 

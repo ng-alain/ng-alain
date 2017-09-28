@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { SettingsService } from "./settings.service";
+import { DOCUMENT } from '@angular/platform-browser';
 
 const themeA = require('../../shared/styles/themes/theme-a.scss');
 const themeB = require('../../shared/styles/themes/theme-b.scss');
@@ -20,25 +21,34 @@ export class ThemesService {
     styleTag: any;
     defaultTheme: ThemeType = 'A';
 
-    constructor(settings: SettingsService) {
+    constructor(settings: SettingsService, @Inject(DOCUMENT) private doc: Document) {
         setTimeout(() => {
             this.createStyle();
-            this.defaultTheme = settings.layout.theme;
-            this.setTheme(this.defaultTheme);
+            this.setTheme(settings.layout.theme);
         }, 500);
     }
 
     private createStyle() {
-        const head = document.head || document.getElementsByTagName('head')[0];
-        this.styleTag = document.createElement('style');
+        const head = this.doc.head || this.doc.getElementsByTagName('head')[0];
+        this.styleTag = this.doc.createElement('style');
         this.styleTag.type = 'text/css';
         this.styleTag.id = 'appthemes';
         head.appendChild(this.styleTag);
     }
 
     setTheme(name: ThemeType) {
+        if (name === this.defaultTheme) return;
+        const bodyEl = this.doc.querySelector('body');
+        let removeArr = [];
+        for (let i = 0; i < bodyEl.classList.length; i++) {
+            if (bodyEl.classList[i].startsWith('theme-'))
+                removeArr.push(bodyEl.classList[i]);
+        }
+        bodyEl.classList.remove(...removeArr);
+        bodyEl.classList.add(`theme-${name.toLowerCase()}`);
         let idx = name.charCodeAt(0) - 65;
         this.injectStylesheet([themeA, themeB, themeC, themeD, themeE, themeF, themeG, themeH, themeI, themeJ][idx]);
+        this.defaultTheme = name;
     }
 
     injectStylesheet(css) {

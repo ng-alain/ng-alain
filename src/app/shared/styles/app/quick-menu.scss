@@ -8,7 +8,7 @@
     backface-visibility: hidden;
     border: $quick-menu-border-width solid $quick-menu-border-color;
     margin-right: -$quick-menu-width;
-    z-index: $zindex-main-section + 2;
+    z-index: $zindex + 2;
     transition: margin .3s cubic-bezier(1, 0, 0, 1);
     &.show {
         margin-right: 0;

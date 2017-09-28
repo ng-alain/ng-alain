@@ -4,7 +4,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AngularWebStorageModule } from 'angular-web-storage';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { NgZorroAntdModule } from "ng-zorro-antd";
 import { TranslateModule } from "@ngx-translate/core";
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -28,7 +27,6 @@ const HELPERS = [ ModalHelper ];
         HttpClientModule,
         AngularWebStorageModule,
         NgZorroAntdModule.forRoot(),
-        PerfectScrollbarModule,
         ChartsModule
     ],
     declarations: [...DIRECTIVES, ...PIPES],
@@ -40,7 +38,6 @@ const HELPERS = [ ModalHelper ];
         NgZorroAntdModule,
         RouterModule,
         AngularWebStorageModule,
-        PerfectScrollbarModule,
         TranslateModule,
         ChartsModule,
 

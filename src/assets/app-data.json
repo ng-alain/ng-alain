@@ -26,7 +26,8 @@
             "text": "小部件",
             "translate": "widgets",
             "link": "/widgets",
-            "icon": "icon-grid"
+            "icon": "icon-grid",
+            "badge": 2
         }]
     }, {
         "text": "组件",
@@ -226,6 +227,30 @@
             "link": "/extras",
             "icon": "icon-cup",
             "children": [{
+                "text": "Blog",
+                "link": "/extras/blog",
+                "translate": "blog",
+                "children": [{
+                    "text": "List",
+                    "link": "/extras/blog/list",
+                    "translate": "list",
+                    "badge": 1,
+                    "badge_dot": true
+                },{
+                    "text": "Comment",
+                    "link": "/extras/blog/comment",
+                    "translate": "comment"
+                },{
+                    "text": "Post",
+                    "link": "/extras/blog/post",
+                    "translate": "post"
+                },{
+                    "text": "WebSite",
+                    "externalLink": "//github.com/cipchk/ng-alain",
+                    "target": "_blank",
+                    "translate": "website"
+                }]
+            }, {
                 "text": "Help Center",
                 "link": "/extras/helpcenter",
                 "translate": "helpcenter"

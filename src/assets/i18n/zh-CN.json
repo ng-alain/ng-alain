@@ -9,6 +9,8 @@
     "top-search-ph": "搜索：员工、文件、照片等",
     "theme": "主题",
     "theme-switch": "切换主题",
+    "light": "亮",
+    "dark": "暗",
     "fullscreen": "全屏",
     "fullscreen-exit": "退出全屏",
     "clear-local-storage": "清理本地缓存",
@@ -55,6 +57,11 @@
     "m-lock": "锁屏页",
     "m-maintenance": "维护中",
     "extras": "扩展",
+    "blog": "博客",
+    "list": "列表",
+    "comment": "评论",
+    "post": "新建",
+    "website": "前台（外链）",
     "helpcenter": "帮助中心",
     "poi": "门店"
 }

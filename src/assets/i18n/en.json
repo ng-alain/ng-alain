@@ -9,6 +9,8 @@
     "top-search-ph": "Search for people, file, photos...",
     "theme": "Theme",
     "theme-switch": "Theme Switch",
+    "light": "Light",
+    "dark": "Dark",
     "fullscreen": "Fullscreen",
     "fullscreen-exit": "Exit Fullscreen",
     "clear-local-storage": "Clear Local Storage",
@@ -55,6 +57,11 @@
     "m-lock": "Lock",
     "m-maintenance": "Maintenance",
     "extras": "Extras",
+    "blog": "Blog",
+    "list": "List",
+    "comment": "Comment",
+    "post": "Post",
+    "website": "Web Site (external)",
     "helpcenter": "Help Center",
     "poi": "Poi"
 }

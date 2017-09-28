@@ -1,50 +1,17 @@
-<perfect-scrollbar [config]="{suppressScrollX: true}">
-    <nz-dropdown nzTrigger="click" nz-col nzSpan="24" class="mb-lg">
-        <div nz-dropdown nz-row nzType="flex" nzJustify="center" nzAlign="middle" class="width-sm rounded-md block-center bg-grey-lighter p-sm">
-            <div nz-col [nzSpan]="8" style="display:flex;">
-                <nz-avatar [nzIcon]="'user'" [nzSize]="'large'"></nz-avatar>
-            </div>
-            <div nz-col [nzSpan]="16" class="point">
-                {{settings.user.name}}
-                <p class="text-grey">{{settings.user.email}}</p>
+<div class="aside-inner">
+    <nz-dropdown nzTrigger="click" class="user-block clearfix">
+        <div nz-dropdown class="user-block-dropdown">
+            <nz-avatar class="avatar" [nzIcon]="'user'" [nzSize]="'large'"></nz-avatar>
+            <div class="info">
+                <strong>{{settings.user.name}}</strong>
+                <p>{{settings.user.email}}</p>
             </div>
         </div>
         <ul nz-menu>
-            <li nz-menu-item (click)="show('profile')">{{ 'profile' | translate }}</li>
-            <li nz-menu-item (click)="show('settings')">{{ 'settings' | translate }}</li>
-            <li nz-menu-item (click)="show('logout')">{{ 'logout' | translate }}</li>
+            <li nz-menu-item (click)="msgSrv.success('profile')">{{ 'profile' | translate }}</li>
+            <li nz-menu-item (click)="msgSrv.success('settings')">{{ 'settings' | translate }}</li>
+            <li nz-menu-item (click)="msgSrv.success('logout')">{{ 'logout' | translate }}</li>
         </ul>
     </nz-dropdown>
-    <ul nz-menu nzMode="inline" nzTheme="light">
-        <ng-container *ngFor="let group of menuSrv.menus">
-            <li nz-menu-group *ngIf="group.hide !== true">
-                <span title>{{ (group.translate | translate) || group.text }}</span>
-                <ul>
-                    <ng-container *ngFor="let child of group.children">
-                        <ng-container *ngIf="child.hide !== true">
-                            <li *ngIf="child.children" [nzOpen]="child.selected" nz-submenu>
-                                <span title><i class="{{ child.icon }}"></i> {{ (child.translate | translate) || child.text }}</span>
-                                <ul>
-                                    <ng-container *ngFor="let item of child.children">
-                                        <li nz-menu-item *ngIf="item.hide !== true"
-                                            [nzSelected]="item.selected"
-                                            [routerLink]="item.link"
-                                            (click)="closeMenu()">
-                                            {{ (item.translate | translate) || item.text }}
-                                        </li>
-                                    </ng-container>
-                                </ul>
-                            </li>
-                            <li *ngIf="!child.children" nz-menu-item
-                                [nzSelected]="child.selected"
-                                [routerLink]="child.link"
-                                (click)="closeMenu()">
-                                <i class="{{ child.icon }}"></i> {{ (child.translate | translate) || child.text }}
-                            </li>
-                        </ng-container>
-                    </ng-container>
-                </ul>
-            </li>
-        </ng-container>
-    </ul>
-</perfect-scrollbar>
+    <layout-nav class="d-block py-lg"></layout-nav>
+</div>

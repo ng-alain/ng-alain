@@ -17,16 +17,30 @@ export interface Menu {
     target?: '_blank' | '_self' | '_parent' | '_top';
     /** 图标 */
     icon?: string;
-    /** 徽标数 */
-    badge?: string;
-    /** 是否选中 */
-    selected?: boolean;
+    /** 徽标数，展示的数字。（注：`group:true` 无效） */
+    badge?: number;
+    /** 徽标数，显示小红点 */
+    badge_dot?: boolean;
+    /** 徽标数，设置 Badge 颜色 （默认：error， 所有颜色值见：https://github.com/cipchk/ng-alain/blob/master/_documents/utils.md#色彩） */
+    badge_status?: string;
     /** 是否隐藏 */
     hide?: boolean;
     /** ACL配置 */
     acl?: string | string[] | ACLType;
     /** 二级菜单 */
     children?: Menu[];
+    /** 
+     * 菜单类型，无须指定由 Service 自动识别
+     * 1：链接
+     * 2：外部链接
+     * 3：链接（子菜单）
+     */
+    _type?: number;
+    /** 是否选中 */
+    _selected?: boolean;
+    /** 是否打开 */
+    _open?: boolean;
+    _depth?: number;
 
     [key: string]: any;
 }
@@ -38,16 +52,18 @@ export class MenuService {
 
     constructor(private aclService: ACLService) { }
 
-    private visit(callback: (item: Menu, parentMenum: Menu) => void) {
-        const inFn = (list: Menu[], parentMenum: Menu) => {
+    visit(callback: (item: Menu, parentMenum: Menu, depth?: number) => void) {
+        const inFn = (list: Menu[], parentMenu: Menu, depth: number) => {
             for (let item of list) {
-                if (callback) callback(item, parentMenum);
+                callback(item, parentMenu, depth);
                 if (item.children && item.children.length > 0)
-                    inFn(item.children, item);
+                    inFn(item.children, item, depth + 1);
+                else
+                    item.children = [];
             }
         };
 
-        inFn(this.data, null);
+        inFn(this.data, null, 0);
     }
 
     add(items: Menu[]) {
@@ -59,9 +75,22 @@ export class MenuService {
      * 若用户权限变动时需要调用刷新
      */
     resume() {
-        this.visit((item, parent) => {
+        let i = 1;
+        this.visit((item, parent, depth) => {
+            item.__id = i++;
             item.__parent = parent;
+            item._depth = depth;
+
+            // badge
+            if (item.badge) {
+                if (item.badge_dot !== true) item.badge_dot = false;
+                if (!item.badge_status) item.badge_status = 'error';
+            }
+
             item.hide = item.acl && !this.aclService.can(item.acl);
+            item._type = item.externalLink ? 2 : 1;
+            if (item.children && item.children.length > 0)
+                item._type = 3;
         });
     }
 
@@ -69,12 +98,12 @@ export class MenuService {
         return this.data;
     }
 
-    setSelected(url: string) {
+    setDefault(url: string) {
         if (!url) return;
 
         let findItem: Menu = null;
         this.visit(item => {
-            item.selected = false;
+            item._open = false;
             if (!item.link) return;
             if (!findItem && item.link.includes(url))
                 findItem = item;
@@ -85,7 +114,7 @@ export class MenuService {
         }
 
         do {
-            findItem.selected = true;
+            findItem._open = true;
             findItem = findItem.__parent;
         } while (findItem);
     }

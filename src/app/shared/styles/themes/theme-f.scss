@@ -1,23 +1,27 @@
 @import "theme";
 
-$theme-color-name:  'grey';
-$header-bg:         getColor($theme-color-name, 6);
+$theme-color-name:  'blue';
 
-.header {
-    background-color: $header-bg;
-}
-
-.sidebar {
-    .ant-menu-item {
-        &:hover {
-            color: getColor($theme-color-name, $menu-item-selected-color-code-num) !important;
-        }
+.theme-f {
+    @include dark-aside();
+    .header {
+        background-color: getColor($theme-color-name, 6);
     }
-    .ant-menu-item-selected {
-        color: getColor($theme-color-name, $menu-item-selected-color-code-num) !important;
-        background-color: getColor($theme-color-name, $menu-item-selected-bg-code-num) !important;
-        &:after {
-            border-right-color: getColor($theme-color-name, $menu-item-selected-color-code-num) !important;
+    .nav {
+        > li {
+            > a {
+                &:hover {
+                    color: getColor($theme-color-name, $menu-item-selected-color-code-num);
+                }
+            }
+            // Selected
+            &.#{$nav-prefix-cls}-item-selected {
+                border-left-color: getColor($theme-color-name, $menu-item-selected-color-code-num);
+                // background-color: $aside-nav-selected-bg;
+                >a {
+                    color: getColor($theme-color-name, $menu-item-selected-color-code-num);
+                }
+            }
         }
     }
 }

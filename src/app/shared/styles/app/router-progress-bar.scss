@@ -4,7 +4,7 @@
     overflow: hidden;
     background: rgba(221, 221, 221, 0.4);
     position: fixed;
-    z-index: $zindex-base + 10;
+    z-index: $zindex-base + 20;
     &::after {
         content: ' ';
         height: 100%;
