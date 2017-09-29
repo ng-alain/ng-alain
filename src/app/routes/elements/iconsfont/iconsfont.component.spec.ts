@@ -4,13 +4,15 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { SharedModule } from '@shared/shared.module';
 import { IconsFontComponent } from './iconsfont.component';
+import { _HttpClient } from '@core/services/http.client';
 
 describe('Component: IconsFont', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             imports: [RouterTestingModule, SharedModule.forRoot()],
-            declarations: [IconsFontComponent]
+            declarations: [IconsFontComponent],
+            providers: [_HttpClient]
         });
     });
 

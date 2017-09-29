@@ -1,4 +1,33 @@
-# 0.0.1-beta.4
+# 0.1.0-beta.1
+
+**0.1.0版本说明：**
+
+由于 `nz-menu` 很难满足 ng-alain 的需求，这包括换肤、收缩等问题，因此重写菜单；并且不兼容 `0.0.x` 的版本（已将独立另一分支）；主要改变：
+
++ `0.1.0` 影响到整个 `layout`（结构发生改变）、`styles` 文件夹，因此升级时最好移除并重新添加。
++ 原10套颜色主题，保留5个主要色，且每一色系包括：菜单栏黑、白两色系，新依然保持10个主题色。
++ 菜单默认 `14px` 字号。
++ 优化框架样式属性参数化，允许通过 `_alain-custom-variables.scss` 改变主题基本配置；主要是ng-alain，对于 `ng-zorro-antd` 组件（如：字号、间距等）并不支持，这一点我一直在尝试，但成本太高！
++ 顶部快捷菜单与搜索框由改成左中右布局
++ **实验性功能** 支持自定义 ng-zorro-antd 所有组件字号
++ closes #6 #12 #13 #14 #15 #23
+
+**其他**
+
++ 支持 `ng lint`
++ 从 `app.component.ts` 中移除非必选 `nz-root`
++ 样式：
+    + 新增 `badge-dot` 小红点。
+    + 新增 `nz-table` 单元格与文本垂直居中
+    + 新增 `unwrap` 样式，使内容区域与header、aside 无缝
+    + 优化 `width-*`、`modal-*`
++ 默认开启支持IE版本（可通过 `polyfills.ts` 自行关闭）
++ 新 Logo
++ 升级 `angular`、`angular-cli`、`ng-zorro-antd` 至最新版本
+    + 之前有过一个版本回退，以及 `licenses` BUG问题都已经修复。
+    + close #15
+
+# 0.1.0-beta.1
 
 + 增加 `.simple-table`、`.search-form`、`.fixed-btns` 样式，效果见[门店页](https://cipchk.github.io/ng-alain/#/extras/poi)
 + 增加HTML模板驱动表单视觉反馈，默认未开启，可以在 `_alain-custom-variables.scss` 增加 `$form-state-visual-feedback-enabled: true;`

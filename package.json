@@ -1,6 +1,6 @@
 {
   "name": "ng-alain",
-  "version": "0.0.1-beta.4",
+  "version": "0.1.0-beta.1",
   "description": "ng-zorro-antd admin panel front-end framework",
   "author": "cipchk",
   "homepage": "https://cipchk.github.io/ng-alain/",
@@ -69,7 +69,7 @@
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "@angular/cli": "^1.4.3",
+    "@angular/cli": "^1.4.4",
     "@angular/compiler-cli": "4.4.3",
     "@angular/language-service": "4.4.3",
     "@angularclass/hmr": "^2.1.3",

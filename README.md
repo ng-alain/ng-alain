@@ -36,10 +36,10 @@ npm run serve:hmr
 
 | package | version |
 | ------- | ------- |
-| `ng-alain` | 0.0.1-beta.4 | 
-| `ng-zorro-antd` | 0.5.1 |
-| `@angular` | 4.3.6 |
-| `@angular/cli` | 1.4.2 |
+| `ng-alain` | 0.1.0-beta.1 | 
+| `ng-zorro-antd` | 0.5.2 |
+| `@angular` | 4.4.3 |
+| `@angular/cli` | 1.4.4 |
 
 **Third Library[Optional]**
 
