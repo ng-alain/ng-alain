@@ -14,6 +14,7 @@ export const routes = [
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
+            { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
             { path: 'dashboard/v1', component: DashboardV1Component },
             { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
             { path: 'elements', loadChildren: './elements/elements.module#ElementsModule' },
