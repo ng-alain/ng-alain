@@ -1,21 +1,10 @@
 sudo: false
-dist: trusty
 language: node_js
 node_js:
   - "8.5.0"
 
 addons:
   chrome: stable
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
-
-cache:
-  directories:
-     - ./node_modules
-     - ./.chrome/chromium
 
 git:
   depth: 1
@@ -24,10 +13,10 @@ before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+  - npm install -g npm@~5.3.0
 
-before_script:
-  - npm install -g @angular/cli
-  - npm install -g karma
+install:
+  - npm install
 
 script:
   - npm run test

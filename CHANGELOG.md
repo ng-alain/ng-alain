@@ -10,7 +10,7 @@
 + 优化框架样式属性参数化，允许通过 `_alain-custom-variables.scss` 改变主题基本配置；主要是ng-alain，对于 `ng-zorro-antd` 组件（如：字号、间距等）并不支持，这一点我一直在尝试，但成本太高！
 + 顶部快捷菜单与搜索框由改成左中右布局
 + **实验性功能** 支持自定义 ng-zorro-antd 所有组件字号
-+ closes #6 #12 #13 #14 #15 #23
++ closes [#6](https://github.com/cipchk/ng-alain/issues/6) [#12](https://github.com/cipchk/ng-alain/issues/12) [#13](https://github.com/cipchk/ng-alain/issues/13) [#14](https://github.com/cipchk/ng-alain/issues/14) [#23](https://github.com/cipchk/ng-alain/issues/23)
 
 **其他**
 
@@ -25,7 +25,7 @@
 + 新 Logo
 + 升级 `angular`、`angular-cli`、`ng-zorro-antd` 至最新版本
     + 之前有过一个版本回退，以及 `licenses` BUG问题都已经修复。
-    + close #15
+    + close [#15](https://github.com/cipchk/ng-alain/issues/15)
 
 # 0.1.0-beta.1
 
