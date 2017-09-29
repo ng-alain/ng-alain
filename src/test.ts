@@ -1,8 +1,4 @@
 // This file is required by karma.conf.js and loads recursively all the .spec and framework files
-
-// issue: https://github.com/valor-software/ng2-charts/issues/570
-import 'chart.js';
-
 import 'zone.js/dist/long-stack-trace-zone';
 import 'zone.js/dist/proxy.js';
 import 'zone.js/dist/sync-test';

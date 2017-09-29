@@ -23,7 +23,7 @@
         "scripts": [
             "../node_modules/jquery/dist/jquery.js",
             "../node_modules/jquery-sparkline/jquery.sparkline.js",
-            "../node_modules/chart.js/dist/chart.bundle.js"
+            "../node_modules/chart.js/dist/Chart.bundle.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
