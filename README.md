@@ -32,6 +32,8 @@ npm start
 npm run serve:hmr
 ```
 
+> [vscode] recommended install [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) plugins, that includes `nz-alain-*` snippets.
+
 ## Environment
 
 | package | version |

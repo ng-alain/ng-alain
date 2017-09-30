@@ -31,6 +31,8 @@ npm start
 npm run serve:hmr
 ```
 
+> [vscode] 建议安装 [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) 插件，含 `nz-alain-*` 代码片断。
+
 ## 环境
 
 | 包 | 版本 |
