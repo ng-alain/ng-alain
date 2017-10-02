@@ -5,8 +5,7 @@ declare const qq: any;
 
 @Component({
     selector: 'app-maps-qq',
-    templateUrl: './qq.component.html',
-    styleUrls: ['./qq.component.scss']
+    templateUrl: './qq.component.html'
 })
 export class MapsQQComponent implements OnDestroy {
     options: any = {};

@@ -3,8 +3,7 @@ import { Bounds, CropperSettings, ImageCropperComponent } from 'ng2-img-cropper'
 
 @Component({
     selector: 'app-cropper',
-    templateUrl: './cropper.component.html',
-    styleUrls: ['./cropper.component.scss']
+    templateUrl: './cropper.component.html'
 })
 export class CropperComponent {
     name: string;

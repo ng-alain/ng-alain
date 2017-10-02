@@ -1,0 +1,40 @@
+@header-bg-code-num:                   6;
+@nav-item-selected-bg-code-num:        1;
+@nav-item-selected-color-code-num:     8;
+@nav-prefix-cls:                       nav;
+
+@import "../_antd-style/themes/default";
+@import "../app/mixins/index";
+@import "../app/variables";
+
+.getThemeColor(@name, @code-num) {
+    @n: ~'@{name}-@{code-num}';
+    @getThemeColor: @@n;
+}
+
+.dark-aside() {
+    .aside {
+        background-color:rgb(64, 64, 64);
+    }
+    .nav {
+        >li {
+            > a,
+            &.@{nav-prefix-cls}-group-title {
+                color: rgba(255, 255, 255, 0.67);
+            }
+            // Selected
+            &.@{nav-prefix-cls}-item-selected {
+                background-color: rgb(51, 51, 51);
+            }
+        }
+    }
+    .nav-floating {
+        background-color: rgb(64, 64, 64);
+        border: none;
+    }
+    .user-block {
+        .info {
+            color: rgba(255, 255, 255, 0.67);
+        }
+    }
+}

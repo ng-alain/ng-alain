@@ -5,8 +5,7 @@ import { SettingsService } from '@core/services/settings.service';
 
 @Component({
   selector: 'app-pages-lock',
-  templateUrl: './lock.component.html',
-  styleUrls: ['./lock.component.scss']
+  templateUrl: './lock.component.html'
 })
 export class LockComponent {
   valForm: FormGroup;

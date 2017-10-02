@@ -5,8 +5,7 @@ const URL = 'https://test.com/';
 
 @Component({
     selector: 'app-upload',
-    templateUrl: './upload.component.html',
-    styleUrls: ['./upload.component.scss']
+    templateUrl: './upload.component.html'
 })
 export class UploadComponent {
 

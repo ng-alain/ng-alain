@@ -1,3 +1,0 @@
-@each $breakpoint, $length in $widths {
-    .width-#{$breakpoint}  { width: $length !important; }
-}

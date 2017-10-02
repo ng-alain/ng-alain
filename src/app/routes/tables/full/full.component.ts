@@ -4,8 +4,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
     selector: 'app-table-full',
-    templateUrl: './full.component.html',
-    styleUrls: ['./full.component.scss']
+    templateUrl: './full.component.html'
 })
 export class TableFullComponent implements OnInit {
 

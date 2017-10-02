@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-spin',
-    templateUrl: './spin.component.html',
-    styleUrls: ['./spin.component.scss']
+    templateUrl: './spin.component.html'
 })
 export class SpinComponent {
     loading = true;

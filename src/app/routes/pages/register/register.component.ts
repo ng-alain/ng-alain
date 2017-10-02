@@ -5,8 +5,7 @@ import { SettingsService } from '@core/services/settings.service';
 
 @Component({
   selector: 'app-pages-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent {
   valForm: FormGroup;

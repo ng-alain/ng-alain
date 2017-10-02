@@ -2,16 +2,16 @@ import { Injectable, Inject } from '@angular/core';
 import { SettingsService } from './settings.service';
 import { DOCUMENT } from '@angular/platform-browser';
 
-const themeA = require('../../shared/styles/themes/theme-a.scss');
-const themeB = require('../../shared/styles/themes/theme-b.scss');
-const themeC = require('../../shared/styles/themes/theme-c.scss');
-const themeD = require('../../shared/styles/themes/theme-d.scss');
-const themeE = require('../../shared/styles/themes/theme-e.scss');
-const themeF = require('../../shared/styles/themes/theme-f.scss');
-const themeG = require('../../shared/styles/themes/theme-g.scss');
-const themeH = require('../../shared/styles/themes/theme-h.scss');
-const themeI = require('../../shared/styles/themes/theme-i.scss');
-const themeJ = require('../../shared/styles/themes/theme-j.scss');
+const themeA = require('../../shared/styles/themes/theme-a.less');
+const themeB = require('../../shared/styles/themes/theme-b.less');
+const themeC = require('../../shared/styles/themes/theme-c.less');
+const themeD = require('../../shared/styles/themes/theme-d.less');
+const themeE = require('../../shared/styles/themes/theme-e.less');
+const themeF = require('../../shared/styles/themes/theme-f.less');
+const themeG = require('../../shared/styles/themes/theme-g.less');
+const themeH = require('../../shared/styles/themes/theme-h.less');
+const themeI = require('../../shared/styles/themes/theme-i.less');
+const themeJ = require('../../shared/styles/themes/theme-j.less');
 
 export type ThemeType = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J';
 

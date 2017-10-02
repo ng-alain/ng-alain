@@ -29,8 +29,8 @@ src
         i18n (可选：国际化)
         img  (可选：一些图片资源)
     styles
-        _alain-custom-variables.scss
-        index.scss
+        _alain-custom-variables.less
+        index.less
 .angular-cli.json
 package.json
 ```
@@ -57,7 +57,7 @@ core文件夹包括菜单配置、布局配置、颜色主题、国际化（可�
 
 建议项目所需要的样式放在该目录下。
 
-同时**勿删除_alain-custom-variables.scss**文件，你可以针对在此重新定义 ng-alain 的一些默认参数值。
+同时**勿删除_alain-custom-variables.less**文件，你可以针对在此重新定义 ng-alain 的一些默认参数值。
 
 **.angular-cli.json**
 

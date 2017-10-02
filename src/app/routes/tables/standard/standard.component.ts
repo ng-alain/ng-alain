@@ -5,8 +5,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
     selector: 'app-table-standard',
-    templateUrl: './standard.component.html',
-    styleUrls: ['./standard.component.scss']
+    templateUrl: './standard.component.html'
 })
 export class TableStandardComponent implements OnInit {
 

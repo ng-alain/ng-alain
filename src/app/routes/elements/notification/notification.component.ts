@@ -3,8 +3,7 @@ import { NzMessageService, NzNotificationService, NzModalService } from 'ng-zorr
 
 @Component({
     selector: 'app-notification',
-    templateUrl: './notification.component.html',
-    styleUrls: ['./notification.component.scss']
+    templateUrl: './notification.component.html'
 })
 export class NotificationComponent {
     constructor(

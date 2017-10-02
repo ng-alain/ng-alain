@@ -8,8 +8,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
     selector: 'app-layout',
-    templateUrl: './layout.component.html',
-    styleUrls: ['./layout.component.scss']
+    templateUrl: './layout.component.html'
 })
 export class LayoutComponent {
     isFetching = false;

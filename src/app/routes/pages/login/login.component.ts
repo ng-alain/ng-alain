@@ -5,8 +5,7 @@ import { SettingsService } from '@core/services/settings.service';
 
 @Component({
   selector: 'app-pages-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent {
   valForm: FormGroup;

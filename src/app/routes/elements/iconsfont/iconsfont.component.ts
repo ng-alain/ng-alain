@@ -6,8 +6,7 @@ import { _HttpClient } from '@core/services/http.client';
 
 @Component({
     selector: 'app-iconsfont',
-    templateUrl: './iconsfont.component.html',
-    styleUrls: ['./iconsfont.component.scss']
+    templateUrl: './iconsfont.component.html'
 })
 export class IconsFontComponent implements OnInit {
     data = [];

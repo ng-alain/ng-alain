@@ -3,8 +3,7 @@ import swal from 'sweetalert';
 
 @Component({
     selector: 'app-sweetalert',
-    templateUrl: './sweetalert.component.html',
-    styleUrls: ['./sweetalert.component.scss']
+    templateUrl: './sweetalert.component.html'
 })
 export class SweetAlertComponent {
     alert1() {

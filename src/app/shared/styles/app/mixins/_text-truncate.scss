@@ -1,8 +1,0 @@
-// Text truncate
-// Requires inline-block or block for proper styling
-
-@mixin text-truncate($important: "") {
-    overflow: hidden #{$important};
-    text-overflow: ellipsis #{$important};
-    white-space: nowrap #{$important};
-  }

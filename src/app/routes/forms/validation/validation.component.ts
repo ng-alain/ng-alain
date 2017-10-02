@@ -21,8 +21,7 @@ const USERDATA = {
 
 @Component({
     selector: 'app-validation',
-    templateUrl: './validation.component.html',
-    styleUrls: ['./validation.component.scss']
+    templateUrl: './validation.component.html'
 })
 export class ValidationComponent implements OnInit {
     form: FormGroup;

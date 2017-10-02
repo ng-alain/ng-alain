@@ -1,0 +1,14 @@
+nz-carousel[class^="nz-carousel__dot-"] {
+    .slick-dots li button {
+        background: @grey-10;
+    }
+}
+
+// color
+.for-each(@colors, {
+    .nz-carousel__dot-@{key} {
+        .slick-dots li.slick-active button {
+            background: extract(@item, @color-basic-position) !important;
+        }
+    }
+});

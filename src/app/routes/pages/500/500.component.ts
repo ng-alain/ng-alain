@@ -3,8 +3,7 @@ import { SettingsService } from '@core/services/settings.service';
 
 @Component({
   selector: 'app-pages-500',
-  templateUrl: './500.component.html',
-  styleUrls: ['./500.component.scss']
+  templateUrl: './500.component.html'
 })
 export class Page500Component {
 

@@ -4,8 +4,7 @@ import { ModelCustomComponent } from './custom.component';
 
 @Component({
     selector: 'app-modal',
-    templateUrl: './modal.component.html',
-    styleUrls: ['./modal.component.scss']
+    templateUrl: './modal.component.html'
 })
 export class ModalComponent {
     options = {};

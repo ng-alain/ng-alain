@@ -1,0 +1,59 @@
+// see https://ant.design/docs/spec/colors#Neutral-color-application
+@border-color: @border-color-split;
+@border-grids:
+    sm @border-radius-sm,
+    md @border-radius-md,
+    lg @border-radius-lg
+;
+
+.border      { border: 1px solid @border-color !important; }
+
+@border-width-list: 0, 1;
+.for(@border-width-list, {
+    .border-css-mixin(@i) when(@i > 0) {
+        @css-value: ~"@{i}px solid @{border-color}";
+    }
+    .border-css-mixin(@i) when(default()) {
+        @css-value: 0;
+    }
+    .border-css-mixin(@index);
+    .border-@{index}        { border: @css-value !important; }
+    .border-top-@{index}    { border-top: @css-value !important; }
+    .border-right-@{index}  { border-right: @css-value !important; }
+    .border-bottom-@{index} { border-bottom: @css-value !important; }
+    .border-left-@{index}   { border-left: @css-value !important; }
+});
+
+// color
+.for-each(@colors, {
+    .border-@{key} {
+        border-color: extract(@item, @color-basic-position) !important;
+    }
+});
+
+.for-each(@aliasColors, {
+    .border-@{key} {
+        border-color: ~`getColor("@{colors}", "@{value}", @{color-basic-position})` !important;
+    }
+});
+
+.border-white {
+    border-color: #fff !important;
+}
+
+// Border-radius
+.for-each(@border-grids, {
+    .rounded-@{key}                 { border-radius: @value !important; }
+    .rounded-top-left-@{key}        { border-top-left-radius: @value !important; }
+    .rounded-top-right-@{key}       { border-top-right-radius: @value !important; }
+    .rounded-bottom-left-@{key}     { border-bottom-left-radius: @value !important; }
+    .rounded-bottom-right-@{key}    { border-bottom-right-radius: @value !important; }
+});
+
+.rounded-circle {
+    border-radius: 50%;
+}
+
+.rounded-0 {
+    border-radius: 0;
+}

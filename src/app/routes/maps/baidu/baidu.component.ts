@@ -6,8 +6,7 @@ declare const BMAP_SATELLITE_MAP: any;
 
 @Component({
     selector: 'app-maps-baidu',
-    templateUrl: './baidu.component.html',
-    styleUrls: ['./baidu.component.scss']
+    templateUrl: './baidu.component.html'
 })
 export class MapsBaiduComponent implements OnDestroy {
 

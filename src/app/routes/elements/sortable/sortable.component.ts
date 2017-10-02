@@ -1,8 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
     selector: 'app-sortable',
-    templateUrl: './sortable.component.html',
-    styleUrls: ['./sortable.component.scss']
+    templateUrl: './sortable.component.html'
 })
 export class DemoSortableComponent {
     hiBaby: string[] = ['沐剑屏', '方怡', '双儿', '建宁公主', '苏荃', '曾柔', '阿珂'];

@@ -4,8 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-extras-settings',
-    templateUrl: './settings.component.html',
-    styleUrls: ['./settings.component.scss']
+    templateUrl: './settings.component.html'
 })
 export class ExtrasSettingsComponent implements OnInit {
     active = 1;

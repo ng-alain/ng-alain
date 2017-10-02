@@ -5,8 +5,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-guard',
-    templateUrl: './guard.component.html',
-    styleUrls: ['./guard.component.scss']
+    templateUrl: './guard.component.html'
 })
 export class GuardComponent {
     constructor(public userSrv: UserService, private router: Router) {}

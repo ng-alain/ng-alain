@@ -5,8 +5,7 @@ import { SettingsService } from '@core/services/settings.service';
 
 @Component({
   selector: 'app-pages-forget',
-  templateUrl: './forget.component.html',
-  styleUrls: ['./forget.component.scss']
+  templateUrl: './forget.component.html'
 })
 export class ForgetComponent {
   valForm: FormGroup;

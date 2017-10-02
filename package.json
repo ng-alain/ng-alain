@@ -54,7 +54,7 @@
     "jquery-sparkline": "^2.4.0",
     "moment": "^2.18.1",
     "ng-tree-antd": "^1.0.0-bate",
-    "ng-zorro-antd": "^0.5.2",
+    "ng-zorro-antd": "^0.5.3",
     "ng2-charts": "^1.6.0",
     "ng2-dnd": "^4.2.0",
     "ng2-file-upload": "^1.2.1",

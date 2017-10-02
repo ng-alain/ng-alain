@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-ngxcharts',
-    templateUrl: './ngxcharts.component.html',
-    styleUrls: ['./ngxcharts.component.scss']
+    templateUrl: './ngxcharts.component.html'
 })
 export class NgxChartsComponent {
 

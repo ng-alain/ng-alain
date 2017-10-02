@@ -83,7 +83,7 @@ npm run serve:hmr
 + Lazy load Assets
 + UI Router States
 + Multiple color options
-+ SCSS preprocessor
++ Less preprocessor
 + Well organized & commented code
 + Simple upgrade
 + Hot Module Replacement

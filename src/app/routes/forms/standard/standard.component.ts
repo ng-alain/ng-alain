@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 
 @Component({
     selector: 'app-standard',
-    templateUrl: './standard.component.html',
-    styleUrls: ['./standard.component.scss']
+    templateUrl: './standard.component.html'
 })
 export class StandardComponent implements OnInit {
     selectValue;
