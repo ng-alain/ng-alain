@@ -29,6 +29,6 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-    browserNoActivityTimeout: 60000
+    browserNoActivityTimeout: 60000 
   });
 };
