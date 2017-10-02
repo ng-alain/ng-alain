@@ -8,16 +8,17 @@
         > li {
             > a {
                 &:hover {
-                    color: #373d41;
+                    color: #000;
                 }
             }
             // Selected
             &.@{nav-prefix-cls}-item-selected {
                 border-left-color: #373d41;
                 >a {
-                    color: #373d41;
+                    color: #000;
                 }
             }
         }
     }
+    .focusing-color-mixin(#373d41);
 }
