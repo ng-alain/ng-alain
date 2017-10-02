@@ -1,3 +1,14 @@
+# 0.1.1-beta.1
+
+为了 ng-alain 更好的发展（主要是 alain 在其他框架中做准备），最后还是决定由 scss 转为 less，虽然 scss 更优雅这也是当初选择的原因：
+
++ scss 转 less 升级要点
+    + `.angular-cli.json` 中 `styles`、`styleExt` 变更为 `.less`
+    + `themes.service.ts` 修改为 `.less`
+    + 对所有 `.scss` 文件后缀换成 `.less`
++ **注：** 根据团队反馈，去掉所有业务的 `.less` 文件，这是因为作为后台管理绝大多数页面中无须编写样式，去掉可以提升编译速度。
++ 升级 `ng-zorro-antd` 至最新版本，并移除已经修复BUG的部分样式代码。
+
 # 0.1.0-beta.1
 
 **0.1.0版本说明：**
