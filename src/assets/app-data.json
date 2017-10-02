@@ -187,6 +187,11 @@
                 "link": "/logics/guard",
                 "translate": "guard",
                 "acl": "admin"
+            },
+            {
+                "text": "Down File",
+                "link": "/logics/downfile",
+                "translate": "downfile"
             }]
         }, {
             "text": "Pages",

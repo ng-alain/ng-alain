@@ -50,6 +50,7 @@
     "logics": "常用逻辑",
     "guard": "路由守卫",
     "acl": "基于角色访问控制",
+    "downfile": "下载文件",
     "pages": "页面",
     "m-login": "登录页",
     "m-register": "注册页",

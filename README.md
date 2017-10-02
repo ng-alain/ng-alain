@@ -63,6 +63,7 @@ npm run serve:hmr
 | `ng-tree-antd` | `angular-tree-component` |  |
 | `ng2-dnd` |  |  |
 | `sweetalert` |  |  |
+| `file-saver` |  |  |
 
 ## Guide Lines
 

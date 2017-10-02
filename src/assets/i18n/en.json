@@ -50,6 +50,7 @@
     "logics": "Logics",
     "guard": "Route Guard",
     "acl": "ACL",
+    "downfile": "Down File",
     "pages": "Pages",
     "m-login": "Login",
     "m-register": "Register",

@@ -11,6 +11,7 @@ import { GuardAdminComponent } from './guard/admin.component';
 import { GuardAuthComponent } from './guard/auth.component';
 import { GuardLeaveComponent } from './guard/leave.component';
 import { ACLComponent } from './acl/acl.component';
+import { DownFileComponent } from 'app/routes/logics/downfile/downfile.component';
 
 const routes: Routes = [
     {
@@ -22,7 +23,8 @@ const routes: Routes = [
             { path: 'admin', component: GuardAdminComponent, canActivate: [ CanAdminProvide ] }
         ]
     },
-    { path: 'acl', component: ACLComponent }
+    { path: 'acl', component: ACLComponent },
+    { path: 'downfile', component: DownFileComponent }
 ];
 
 @NgModule({
@@ -36,7 +38,8 @@ const routes: Routes = [
         GuardLeaveComponent,
         GuardAdminComponent,
         GuardAuthComponent,
-        ACLComponent
+        ACLComponent,
+        DownFileComponent
     ],
     exports: [
         RouterModule

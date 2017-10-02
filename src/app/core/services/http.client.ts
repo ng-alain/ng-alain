@@ -23,7 +23,7 @@ export class _HttpClient {
         return this._loading;
     }
 
-    private parseParams(params: any): HttpParams {
+    parseParams(params: any): HttpParams {
         let ret = new HttpParams();
         if (params) {
             // tslint:disable-next-line:forin

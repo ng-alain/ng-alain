@@ -1,0 +1,10 @@
+<div class="content__title">
+    <h1>Download a file</h1>
+</div>
+<nz-card>
+    <ng-template #title>DEMO</ng-template>
+    <ng-template #body>
+        <button nz-button *ngFor="let i of fileTypes" class="mr-sm"
+            down-file [http-data]="data" http-url="assets/demo{{i}}" file-name="demo中文">{{i}}</button>
+    </ng-template>
+</nz-card>
