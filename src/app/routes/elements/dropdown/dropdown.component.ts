@@ -2,7 +2,16 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-dropdown',
-    templateUrl: './dropdown.component.html'
+    templateUrl: './dropdown.component.html',
+    styles: [`
+        .ant-box {
+            margin-bottom: 16px;
+            padding: 24px;
+            border: 1px dashed #ddd;
+            background: #fafafa;
+            color: #444;
+        }
+    `]
 })
 export class DropdownComponent {
     ants = [
