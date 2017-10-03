@@ -40,6 +40,12 @@ import { TreeAntdAsyncComponent } from './tree-antd/async.component';
 import { TreeAntdDraggableComponent } from './tree-antd/draggable.component';
 import { TreeAntdSearchableComponent } from './tree-antd/searchable.component';
 import { TreeAntdLineComponent } from './tree-antd/line.component';
+import { PopoverComponent } from './popover/popover.component';
+import { TooltipComponent } from './tooltip/tooltip.component';
+import { ProgressComponent } from './progress/progress.component';
+import { TabComponent } from './tab/tab.component';
+import { ListsComponent } from './lists/lists.component';
+import { NavComponent } from './nav/nav.component';
 
 const TreeAntdDemoComponentes = [
     TreeAntdBasicComponent,
@@ -71,7 +77,13 @@ const TreeAntdDemoComponentes = [
         TreeAntdComponent,
         ...TreeAntdDemoComponentes,
         DemoSortableComponent,
-        SweetAlertComponent
+        SweetAlertComponent,
+        PopoverComponent,
+        TooltipComponent,
+        ProgressComponent,
+        TabComponent,
+        ListsComponent,
+        NavComponent
     ],
     exports: [
         RouterModule
