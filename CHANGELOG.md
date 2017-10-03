@@ -1,3 +1,7 @@
+# 0.1.2-beta.1
+
++ 为了更好支持 git-subtree 调整 `styles` 目录位置至 `src/styles/alain/`（以及 `themes.service.ts` 变更）
+
 # 0.1.1-beta.2
 
 + 支持 `ng-zorro-antd` 部分组件换肤
