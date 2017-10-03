@@ -1,0 +1,35 @@
+@mp-list: margin m, padding p;
+
+.loop-mp(@infix, @key, @value, @i: 1) when (@i =< length(@mp-list)) {
+    @item: extract(@mp-list, @i);
+    @abbrev: extract(@item, 2);
+    @prop: extract(@item, 1);
+    .@{abbrev}@{infix}  { @{prop}:        @value !important; }
+    .@{abbrev}t@{infix} { @{prop}-top:    @value !important; }
+    .@{abbrev}r@{infix} { @{prop}-right:  @value !important; }
+    .@{abbrev}b@{infix} { @{prop}-bottom: @value !important; }
+    .@{abbrev}l@{infix} { @{prop}-left:   @value !important; }
+    .@{abbrev}x@{infix} {
+        @{prop}-right: @value !important;
+        @{prop}-left:  @value !important;
+    }
+    .@{abbrev}y@{infix} {
+        @{prop}-top:    @value !important;
+        @{prop}-bottom: @value !important;
+    }
+
+    .loop-mp(@infix, @key, @value, @i + 1);
+}
+
+.for-each(@spacings, {
+    .infix-mixin(@key) when(@key = 0) {
+        @infix: 0;
+    }
+    .infix-mixin(@key) when(default()) {
+        @infix: ~"-@{key}";
+    }
+    .infix-mixin(@key);
+
+    .loop-mp(@infix, @key, @value, 1);
+
+});

@@ -1,0 +1,30 @@
+.freakMixin() {
+    @functions: ~`(function() {
+        function toColorList(list) {
+            list = list.slice(1, list.length - 1).split(',');
+            var ret = [];
+            for (var i = 0, c = list.length; i < c; i++) {
+                ret.push(list[i].trim().split(' '));
+            }
+            return ret;
+        }
+
+        var catchColors;
+        function _initColor(list) {
+            if (!catchColors) catchColors = toColorList(list);
+        }
+
+        this.getColor = function(list, name, position) {
+            _initColor(list);
+            var ret = '';
+            for (var i = 0, c = catchColors.length; i < c; i++) {
+                if (catchColors[i][0] === name) {
+                    ret = catchColors[i][position - 1];
+                    break;
+                }
+            }
+            return ret;
+        }
+    })()`;
+}
+.freakMixin();

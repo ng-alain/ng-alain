@@ -1,0 +1,29 @@
+@import "theme";
+
+@theme-color-name:  'green';
+
+.theme-h {
+    .dark-aside();
+    .header {
+        .getThemeColor(@theme-color-name, 6);
+        background-color: @getThemeColor;
+    }
+    .getThemeColor(@theme-color-name, @nav-item-selected-color-code-num);
+    .nav {
+        > li {
+            > a {
+                &:hover {
+                    color: @getThemeColor;
+                }
+            }
+            // Selected
+            &.@{nav-prefix-cls}-item-selected {
+                border-left-color: @getThemeColor;
+                >a {
+                    color: @getThemeColor;
+                }
+            }
+        }
+    }
+    .focusing-color-mixin(@theme-color-name);
+}

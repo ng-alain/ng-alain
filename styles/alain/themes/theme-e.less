@@ -1,0 +1,24 @@
+@import "theme";
+
+.theme-e {
+    .header {
+        background-color: #373d41;
+    }
+    .nav {
+        > li {
+            > a {
+                &:hover {
+                    color: #000;
+                }
+            }
+            // Selected
+            &.@{nav-prefix-cls}-item-selected {
+                border-left-color: #373d41;
+                >a {
+                    color: #000;
+                }
+            }
+        }
+    }
+    .focusing-color-mixin(#373d41);
+}

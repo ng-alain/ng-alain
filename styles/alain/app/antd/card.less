@@ -1,0 +1,47 @@
+.ant-card {
+    margin-bottom: @md;
+}
+
+// 标题为图片
+.ant-card__title-img {
+    .ant-card-head-title {
+        img {
+            vertical-align: middle;
+        }
+    }
+}
+
+// 图片式
+.ant-card__img {
+    .ant-card-body {
+        padding: 0;
+    }
+    .img {
+        max-width: 100%;
+        vertical-align: middle;
+    }
+}
+
+// Body no padding
+.ant-card__body-nopadding {
+    .ant-card-body {
+        padding: 0 !important;
+    }
+}
+
+// color
+.for-each(@colors, {
+    .ant-card__@{key} { 
+        .ant-card-head {
+            background-color: extract(@item, @color-basic-position);
+        }
+    }
+});
+
+.for-each(@aliasColors, {
+    .ant-card__@{key} { 
+        .ant-card-head {
+            background-color: ~`getColor("@{colors}", "@{value}", @{color-basic-position})`;
+        }
+    }
+});

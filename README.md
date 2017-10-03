@@ -1,2 +1,3 @@
 # alain
-alain resource
+
+alain resource service for git subtree.

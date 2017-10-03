@@ -1,0 +1,50 @@
+.badge {
+    display: inline-block;
+    padding: @badge-padding;
+    font-size: @badge-font-size;
+    line-height: 20px;
+    color: @badge-color;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: @border-radius-base;
+
+    // Empty badges collapse automatically
+    &:empty {
+        display: none;
+    }
+
+    em {
+        font-style: normal;
+    }
+
+    &-dot {
+        display: inline-block;
+        width: @layout-gutter;
+        height: @layout-gutter;
+        padding: 0;
+        border-radius: 50%;
+        > * {
+            display: none;
+        }
+    }
+}
+
+// Colors
+.badge-variant(@bg) {
+    .color-yiq(@bg);
+    background-color: @bg;
+}
+
+.for-each(@colors, {
+    .badge-@{key} {
+        .badge-variant(extract(@item, @color-basic-position));
+    }
+});
+
+.for-each(@aliasColors, {
+    @aliasColor: ~`getColor("@{colors}", "@{value}", @{color-basic-position})`;
+    .badge-@{key} {
+        .badge-variant(color(@aliasColor))
+    }
+});

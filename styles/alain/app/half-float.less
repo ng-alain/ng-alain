@@ -1,0 +1,31 @@
+@hafl-float-size:
+    sm @layout-gutter * 8,
+    md @layout-gutter * 10,
+    lg @layout-gutter * 12
+;
+
+.half-float {
+    position: relative;
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+    .half-float-bottom {
+        position: absolute;
+        left: 50%;
+        z-index: 2;
+    }
+
+    .for-each(@hafl-float-size, {
+        &.half-float-@{key} {
+            margin-bottom: (@value / 2) + 10;
+            .half-float-bottom {
+                bottom: -(@value / 2);
+                width: @value;
+                height: @value;
+                margin-left: -(@value / 2);
+            }
+        }
+    });
+}

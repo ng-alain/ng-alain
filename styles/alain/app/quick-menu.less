@@ -1,0 +1,45 @@
+.quick-menu {
+    position: fixed;
+    top: @quick-menu-top;
+    right: -@quick-menu-border-width;
+    left: auto;
+    width: @quick-menu-width;
+    background-color: @quick-menu-bg;
+    backface-visibility: hidden;
+    border: @quick-menu-border-width solid @quick-menu-border-color;
+    margin-right: -@quick-menu-width;
+    z-index: @zindex + 2;
+    transition: margin .3s cubic-bezier(1, 0, 0, 1);
+    &.show {
+        margin-right: 0;
+    }
+    .settings-ctrl {
+        position: absolute;
+        top: -1px;
+        left: -@quick-menu-ctrl-hw;
+        width: @quick-menu-ctrl-hw;
+        height: @quick-menu-ctrl-hw;
+        background-color: @quick-menu-bg;
+        border: @quick-menu-border-width solid @quick-menu-border-color;
+        border-right: 0;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 3px 0 0 3px;
+        > i {
+            line-height: @quick-menu-ctrl-hw - 1;
+            font-size: 20px;
+        }
+    }
+
+    .list-group-item {
+        border: none;
+    }
+
+    @media (max-width: @screen-md) {
+        right: -(@content-padding + @quick-menu-border-width);
+    }
+}
+
+.quick-menu-inner {
+    position: relative;
+}

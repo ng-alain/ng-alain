@@ -1,0 +1,82 @@
+.focusing-mixin(@enabled) when(@enabled = true) {
+
+    body {
+        font-size: @nz-font-size !important;
+        // basic
+        label,
+        // General
+        .ant-btn,
+        // Layout
+        // ...
+        // Navigation
+        .ant-breadcrumb,
+        .ant-dropdown,
+        .ant-dropdown-menu-item,
+        .ant-dropdown-menu-submenu-title,
+        .ant-select,
+        .ant-select-dropdown,
+        .ant-menu-item-group-title,
+        .ant-menu-inline .ant-menu-item, 
+        .ant-menu-inline .ant-menu-submenu-title, 
+        .ant-menu-vertical .ant-menu-item, 
+        .ant-menu-vertical .ant-menu-submenu-title,
+        // Data Entry
+        .ant-cascader-menus,
+        .ant-cascader-picker,
+        .ant-checkbox-wrapper,
+        .ant-radio-wrapper,
+        .ant-time-picker-input,
+        .ant-calendar,
+        .ant-form-item,
+        .ant-input,
+        .ant-input-number,
+        .ant-rate-text,
+        // Data Display
+        .ant-fullcalendar,
+        .ant-card,
+        .ant-tree,
+        .ant-popover-message,
+        .ant-tooltip,
+        .ant-table,
+        .ant-timeline-item-content,
+        // FeedBack
+        .ant-alert,
+        .ant-message,
+        .ant-modal-body,
+        .ant-notification-notice-description,
+        .ant-notification-notice-with-icon .ant-notification-notice-description,
+        .ant-progress-line {
+            font-size: @nz-font-size;
+        }
+        // ========== detail repair ==========
+        // font-weight
+        .ant-btn {
+            font-weight: 400;
+        }
+        // anticon iconfont
+        .ant-message .anticon,
+        .ant-notification-notice-message,
+        .ant-notification-notice-with-icon .ant-notification-notice-message,
+        .ant-popover-message .anticon {
+            font-size: @nz-font-size + 2;
+        }
+        // dropdown after
+        .ant-dropdown-menu-submenu-title:after {
+            top: (@nz-font-size + @layout-gutter) / 2;
+        }
+        // checkbox & radio
+        .ant-checkbox-input,
+        .ant-checkbox-inner,
+        .ant-checkbox-checked:after,
+        .ant-radio-input,
+        .ant-radio-inner,
+        .ant-radio-checked:after {
+            top: -(@nz-font-size - @font-size-base);
+        }
+        .ant-form-explain {
+            font-size: 12px;
+        }
+    }
+
+}
+.focusing-mixin(@focusing-enabled);

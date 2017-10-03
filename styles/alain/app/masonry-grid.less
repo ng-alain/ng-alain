@@ -1,0 +1,29 @@
+.row-masonry {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    column-gap: @masonry-column-gap;
+    > .col-masonry {
+        display: inline-block;
+        width: 100%;
+        min-height: 1em;
+        margin-bottom: 15px;
+    }
+    img {
+        max-width: 100%;
+    }
+}
+
+.for-each(@grid-breakpoints, {
+    @media only screen and (min-width: @value) {
+        .loopColumn(@pos: 1) when (@pos < 10) {
+            .row-masonry-@{key}-@{pos} {
+                column-count: @pos;
+                columns: @pos;
+            }
+            .loopColumn(@pos + 1);
+        }
+        .loopColumn();
+    }
+});

@@ -1,0 +1,41 @@
+.router-progress-bar {
+    width: 100vw;
+    height: 4px;
+    overflow: hidden;
+    background: fade(#ddd, 40%);
+    position: fixed;
+    z-index: @zindex-base + 20;
+    &::after {
+        content: ' ';
+        height: 100%;
+        width: 33.3vw;
+        animation: gradcolours 5s steps(1) infinite, loadthird 1s infinite linear;
+        display: block;
+        transform-origin: top left;
+    }
+}
+
+.grad(@hex) {
+    background: linear-gradient(
+        90deg,
+        fade(@hex,0) 0%,
+        @hex 30%,
+        @hex 50%,
+        @hex 70%,
+        fade(@hex,0) 100%
+    );
+}
+
+
+@keyframes loadthird {
+    0%   { transform: translateX(-33.3vw); }
+    100% { transform: translateX(100vw); }
+}
+
+@keyframes gradcolours {
+    0%  { .grad(#e88098); }
+    20% { .grad(#84bebe); }
+    40% { .grad(#e98724); }
+    60% { .grad(#afc94e); }
+    80% { .grad(#6297a4); }
+}
