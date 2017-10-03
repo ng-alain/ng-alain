@@ -1,0 +1,40 @@
+// 中心元素
+.abs-center-container {
+    position: relative;
+}
+
+.abs-center {
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    &.abs-fixed {
+        position: fixed;
+        z-index: 999;
+    }
+    &.abs-right {
+        left: auto;
+        right: 20px;
+        text-align: right;
+    }
+    &.abs-left {
+        right: auto;
+        left: 20px;
+        text-align: left;
+    }
+}
+
+@media (max-width: 320px) {
+    .abs-center {
+        padding: 0 10px;
+    }
+}
+
+@media (max-height: @screen-sm) {
+    .abs-center {
+        position: relative;
+    }
+}

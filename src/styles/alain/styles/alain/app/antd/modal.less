@@ -1,0 +1,47 @@
+// Small screen / tablet
+@media (min-width:@screen-sm) {
+	.modal-sm .ant-modal {
+		max-width: @modal-sm;
+		width: auto!important
+	}
+}
+// Large screen / wide desktop
+@media (min-width:@screen-lg) {
+	.modal-lg .ant-modal {
+		max-width: @modal-lg;
+		width: auto!important
+	}
+}
+
+.modal {
+    &-header {
+        padding: 13px 16px;
+        margin: -16px -16px 16px -16px;
+        border-radius: @border-radius-base @border-radius-base 0 0;
+        background: @component-background;
+        border-bottom: @border-width-base @border-style-base @border-color-split;
+        display: flex;
+        justify-content: space-between;
+    }
+    &-title {
+        margin: 0;
+        font-size: @font-size-lg;
+        font-weight: 500;
+        small {
+            color: @muted-color;
+            font-size: 12px;
+            margin-left: @layout-gutter;
+        }
+    }
+    &-footer {
+        border-top: @border-width-base @border-style-base @border-color-split;
+        padding: 10px 18px 0 10px;
+        text-align: right;
+        border-radius: 0 0 @border-radius-base @border-radius-base;
+        margin: 15px -16px -5px -16px;
+        button+button {
+            margin-left: 8px;
+            margin-bottom: 0;
+        }
+    }
+}

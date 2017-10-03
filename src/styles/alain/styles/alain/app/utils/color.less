@@ -1,0 +1,56 @@
+// color
+.bg-white         { background-color: #fff !important; }
+.text-white       { color: #fff !important; }
+
+.for-each(@colors, {
+    .bg-@{key}-light       { background-color: extract(@item, @color-light-position) !important; }
+    .bg-@{key}             { background-color: extract(@item, @color-basic-position) !important; }
+    .bg-@{key}-dark        { background-color: extract(@item, @color-dark-position) !important; }
+
+    .bg-@{key}-light-h     { transition: background-color 300ms; &:hover { background-color: extract(@item, @color-light-position) !important; } }
+    .bg-@{key}-h           { transition: background-color 300ms; &:hover { background-color: extract(@item, @color-basic-position) !important; } }
+    .bg-@{key}-dark-h      { transition: background-color 300ms; &:hover { background-color: extract(@item, @color-dark-position) !important; } }
+
+    .text-@{key}-light     { color: extract(@item, @color-light-position) !important; }
+    .text-@{key}           { color: extract(@item, @color-basic-position) !important; }
+    .text-@{key}-dark      { color: extract(@item, @color-dark-position) !important; }
+});
+
+.for-each(@aliasColors, {
+    .bg-@{key}-light  { background-color: ~`getColor("@{colors}", "@{value}", @{color-light-position})` !important; }
+    .bg-@{key}        { background-color: ~`getColor("@{colors}", "@{value}", @{color-basic-position})` !important; }
+    .bg-@{key}-dark   { background-color: ~`getColor("@{colors}", "@{value}", @{color-dark-position})` !important; }
+
+    .bg-@{key}-light-h  { transition: background-color 300ms; &:hover { background-color: ~`getColor("@{colors}", "@{value}", @{color-light-position})` !important; } }
+    .bg-@{key}-h        { transition: background-color 300ms; &:hover { background-color: ~`getColor("@{colors}", "@{value}", @{color-basic-position})` !important; } }
+    .bg-@{key}-dark-h   { transition: background-color 300ms; &:hover { background-color: ~`getColor("@{colors}", "@{value}", @{color-dark-position})` !important; } }
+
+    .text-@{key}-light  { color: ~`getColor("@{colors}", "@{value}", @{color-light-position})` !important; }
+    .text-@{key}        { color: ~`getColor("@{colors}", "@{value}", @{color-basic-position})` !important; }
+    .text-@{key}-dark   { color: ~`getColor("@{colors}", "@{value}", @{color-dark-position})` !important; }
+});
+
+// grey
+.for-each(@greyColorer, {
+    .bg-grey-@{key}     { background-color: @value !important; }
+    .bg-grey-@{key}-h   { &:hover { background-color: @value !important; } }
+    .text-grey-@{key}   { color: @value !important; }
+});
+
+.all-colors-minin(@enabled) when (@enabled = true) {
+    
+    .loop-no(@key, @value, @i: 1) when (@i =< length(@color-no-list)) {
+        // @color-no-list
+        @name: "@{key}-@{i}";
+        .bg-@{key}-@{i}    { background-color: @@name !important; }
+        .bg-@{key}-@{i}-h  { transition: background-color 300ms; &:hover { background-color: @@name !important; } }
+        .text-@{key}-@{i}  { color: @@name !important; }
+        .loop-no(@key, @value, @i + 1);
+    }
+
+    .for-each(@colors, {
+        .loop-no(@key, @value, 1);
+    });
+
+}
+.all-colors-minin(@enable-all-colors);
