@@ -64,5 +64,11 @@
     "post": "新建",
     "website": "前台（外链）",
     "helpcenter": "帮助中心",
-    "poi": "门店"
+    "poi": "门店",
+    "popover": "冒泡停靠提示",
+    "tooltip": "小角标停靠提示",
+    "progress": "进度条",
+    "tab": "选项卡",
+    "lists": "列表",
+    "nav": "导航栏"
 }
