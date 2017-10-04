@@ -1,3 +1,92 @@
-<p>
-  tooltip works!
-</p>
+<div class="content__title">
+  <h1>
+      Tooltip | 小角标停靠提示框
+  </h1>
+</div>
+<div nz-row [nzGutter]="16">
+    <div  nz-col [nzMd]="12">
+        <nz-card>
+            <ng-template #title>Basic</ng-template>
+            <ng-template #body>
+                <div class="mb-sm">
+                    <nz-tooltip [nzTitle]="'some text'">
+                        <span nz-tooltip>Tooltip will show when mouse enter.</span>
+                      </nz-tooltip>
+                </div>
+            基本用法
+            </ng-template>
+        </nz-card>
+    </div>
+
+    <div  nz-col [nzMd]="12">
+        <nz-card>
+            <ng-template #title>HTML</ng-template>
+            <ng-template #body>
+                <div class="mb-sm">
+                    <nz-tooltip>
+                        <button nz-button nz-tooltip>This Tooltip Have Icon</button>
+                        <ng-template #nzTemplate>
+                          <i class="anticon anticon-file"></i> <span>带图标的Tooltip</span>
+                        </ng-template>
+                      </nz-tooltip>
+                </div>
+            装载模板
+            </ng-template>
+        </nz-card>
+    </div>
+
+    <div  nz-col [nzMd]="12">
+        <nz-card>
+            <ng-template #title>Freedom Direction</ng-template>
+            <ng-template #body>
+                <div class="mb-sm">
+                    <div style="margin-left:60px;">
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'topLeft'">
+                          <a nz-tooltip>TL</a>
+                        </nz-tooltip>
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'top'">
+                          <a nz-tooltip>Top</a>
+                        </nz-tooltip>
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'topRight'">
+                          <a nz-tooltip>TR</a>
+                        </nz-tooltip>
+                      </div>
+                      <div style="float:left;width: 60px;">
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'leftTop'">
+                          <a nz-tooltip>LT</a>
+                        </nz-tooltip>
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'left'">
+                          <a nz-tooltip>Left</a>
+                        </nz-tooltip>
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'leftBottom'">
+                          <a nz-tooltip>LB</a>
+                        </nz-tooltip>
+                      </div>
+                      <div style="margin-left:270px;width: 60px;">
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'rightTop'">
+                          <a nz-tooltip>RT</a>
+                        </nz-tooltip>
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'right'">
+                          <a nz-tooltip>Right</a>
+                        </nz-tooltip>
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'rightBottom'">
+                          <a nz-tooltip>RB</a>
+                        </nz-tooltip>
+                      </div>
+                      <div style="margin-left:60px;clear: both;">
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'bottomLeft'">
+                          <a nz-tooltip>BL</a>
+                        </nz-tooltip>
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'bottom'">
+                          <a nz-tooltip>Bottom</a>
+                        </nz-tooltip>
+                        <nz-tooltip [nzTitle]="'prompt text'" [nzPlacement]="'bottomRight'">
+                          <a nz-tooltip>BR</a>
+                        </nz-tooltip>
+                      </div>
+                </div>
+                随意的位置方向显示
+            </ng-template>
+        </nz-card>
+    </div>
+  </div>

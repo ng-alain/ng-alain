@@ -1,3 +1,219 @@
-<p>
-  tab works!
-</p>
+<div class="content__title">
+  <h1>
+      Tab | 选项卡
+  </h1>
+</div>
+
+<div nz-row [nzGutter]="16">
+      <div  nz-col [nzMd]="12">
+          <nz-card>
+              <ng-template #title>Basic</ng-template>
+              <ng-template #body>
+                  <div class="mb-sm">
+                      <nz-tabset>
+                          <nz-tab *ngFor="let tab of tabs">
+                            <ng-template #nzTabHeading>
+                              {{tab.name}}
+                            </ng-template>
+                            <span>{{tab.content}}</span>
+                          </nz-tab>
+                        </nz-tabset>
+                  </div>
+              基础选项卡
+              </ng-template>
+          </nz-card>
+      </div>
+  
+      <div  nz-col [nzMd]="12">
+          <nz-card>
+              <ng-template #title>Disable</ng-template>
+              <ng-template #body>
+                  <div class="mb-sm">
+                      <nz-tabset>
+                          <nz-tab *ngFor="let tab of tabs2"
+                            [nzDisabled]="tab.disabled">
+                            <ng-template #nzTabHeading>
+                              {{tab.name}}
+                            </ng-template>
+                            <span>{{tab.name}}</span>
+                          </nz-tab>
+                        </nz-tabset>  
+                  </div>
+              禁用
+              </ng-template>
+          </nz-card>
+      </div>
+
+
+      <div  nz-col [nzMd]="12">
+          <nz-card>
+              <ng-template #title>icon</ng-template>
+              <ng-template #body>
+                  <div class="mb-sm">
+                      <nz-tabset>
+                          <nz-tab *ngFor="let tab of tabs3">
+                            <ng-template #nzTabHeading>
+                              <i [ngClass]="tab.icon"></i>
+                              {{tab.name}}
+                            </ng-template>
+                            <span>{{tab.name}}</span>
+                          </nz-tab>
+                        </nz-tabset>
+                  </div>
+              图标
+              </ng-template>
+          </nz-card>
+      </div>
+
+
+      <div  nz-col [nzMd]="12">
+          <nz-card>
+              <ng-template #title>Slider</ng-template>
+              <ng-template #body>
+                  <div class="mb-sm">
+                      <nz-radio-group [(ngModel)]="nzTabPosition">
+                          <label nz-radio-button [nzValue]="'top'">
+                            <span>Horizontal</span>
+                          </label>
+                          <label nz-radio-button [nzValue]="'left'">
+                            <span>Vertical</span>
+                          </label>
+                        </nz-radio-group>
+                        <nz-input-number style="float:right;" [nzMin]="0" [nzMax]="10" [(ngModel)]="selectedIndex"></nz-input-number>
+                        <nz-tabset
+                          style="height:220px;"
+                          [nzTabPosition]="nzTabPosition"
+                          [(nzSelectedIndex)]="selectedIndex"
+                          (nzSelectChange)="_console([$event])">
+                          <nz-tab *ngFor="let tab of tabs4"
+                            (nzSelect)="_console(['select',tab])"
+                            (nzClick)="_console(['click',tab])"
+                            (nzDeselect)="_console(['deselect',tab])">
+                            <ng-template #nzTabHeading>
+                              {{tab.name}}
+                            </ng-template>
+                            <span>{{tab.content}}</span>
+                          </nz-tab>
+                        </nz-tabset>
+                  </div>
+              滑动选项卡
+              </ng-template>
+          </nz-card>
+      </div>
+
+
+      <div  nz-col [nzMd]="12">
+          <nz-card>
+              <ng-template #title>Extra</ng-template>
+              <ng-template #body>
+                  <div class="mb-sm">
+                      <nz-tabset>
+                          <nz-tab *ngFor="let tab of tabs">
+                            <ng-template #nzTabHeading>
+                             Tab {{tab.index}}
+                            </ng-template>
+                            <span>Content of tab {{tab.index}}</span>
+                          </nz-tab>
+                          <ng-template #nzTabBarExtraContent>
+                            <button nz-button>Extra Action</button>
+                          </ng-template>
+                        </nz-tabset>
+                  </div>
+              附加内容选项卡
+              </ng-template>
+          </nz-card>
+      </div>
+
+      <div  nz-col [nzMd]="12">
+          <nz-card>
+              <ng-template #title>Mini</ng-template>
+              <ng-template #body>
+                  <div class="mb-sm">
+                      <nz-tabset [nzSize]="'small'">
+                          <nz-tab *ngFor="let tab of tabs">
+                            <ng-template #nzTabHeading>
+                              Tab {{tab.index}}
+                            </ng-template>
+                            <span>Content of tab {{tab.index}}</span>
+                          </nz-tab>
+                        </nz-tabset>
+                  </div>
+              迷你选项卡
+              </ng-template>
+          </nz-card>
+      </div>
+
+      <div  nz-col [nzMd]="12">
+          <nz-card>
+              <ng-template #title>changeable position</ng-template>
+              <ng-template #body>
+                  <div class="mb-sm">
+                      <div style="margin-bottom: 16px;">
+                          Tab position：
+                          <nz-select [(ngModel)]="_position5" style="width: 80px;">
+                            <nz-option
+                              *ngFor="let option of options"
+                              [nzLabel]="option.label"
+                              [nzValue]="option.value">
+                            </nz-option>
+                          </nz-select>
+                        </div>
+                        <nz-tabset [nzTabPosition]="_position5" [nzType]="'line'">
+                          <nz-tab *ngFor="let tab of tabs5">
+                            <ng-template #nzTabHeading>
+                              Tab {{tab.index}}
+                            </ng-template>
+                            <span>Content of tab {{tab.index}}</span>
+                          </nz-tab>
+                        </nz-tabset>
+                  </div>
+              改变位置选项卡
+              </ng-template>
+          </nz-card>
+      </div>
+
+      <div  nz-col [nzMd]="12">
+          <nz-card>
+              <ng-template #title>Card</ng-template>
+              <ng-template #body>
+                  <div class="mb-sm">
+                      <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+                          <nz-tab *ngFor="let tab of tabs">
+                            <ng-template #nzTabHeading>
+                              Tab {{tab.index}}
+                            </ng-template>
+                            <span>Content of Tab Pane {{tab.index}}</span>
+                          </nz-tab>
+                        </nz-tabset>
+                  </div>
+              卡片选项卡
+              </ng-template>
+          </nz-card>
+      </div>
+
+      <div  nz-col [nzMd]="12">
+          <nz-card>
+              <ng-template #title>Close able tags</ng-template>
+              <ng-template #body>
+                  <div class="mb-sm">
+                      <nz-tabset [nzType]="'card'">
+                          <nz-tab *ngFor="let tab of tabs6">
+                            <ng-template #nzTabHeading>
+                              <div>
+                                {{tab.name}}
+                                <i class="anticon anticon-cross" (click)="closeTab(tab)"></i>
+                              </div>
+                            </ng-template>
+                            <span>Content of {{tab.name}}</span>
+                          </nz-tab>
+                          <ng-template #nzTabBarExtraContent>
+                            <i class="ant-tabs-new-tab anticon anticon-plus" (click)="newTab()"></i>
+                          </ng-template>
+                        </nz-tabset>
+                  </div>
+              可关闭标签选项卡
+              </ng-template>
+          </nz-card>
+      </div>
+
+    </div>
