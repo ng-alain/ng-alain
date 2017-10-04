@@ -32,7 +32,13 @@ const routes: Routes = [
     { path: 'gridmasonry', component: GridMasonryComponent },
     { path: 'typography', component: TypographyComponent },
     { path: 'iconsfont', component: IconsFontComponent },
-    { path: 'colors', component: ColorsComponent }
+    { path: 'colors', component: ColorsComponent },
+    { path: 'popover', component: PopoverComponent },
+    { path: 'tooltip', component: TooltipComponent },
+    { path: 'progress', component: ProgressComponent },
+    { path: 'tab', component: TabComponent },
+    { path: 'lists', component: ListsComponent },
+    { path: 'nav', component: NavComponent },
 ];
 
 import { TreeAntdBasicComponent } from './tree-antd/basic.component';
