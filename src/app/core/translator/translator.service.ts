@@ -30,4 +30,8 @@ export class TranslatorService {
         return this._langs;
     }
 
+    fanyi(key: string) {
+        return this.translate.instant(key);
+    }
+
 }

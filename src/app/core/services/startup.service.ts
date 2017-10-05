@@ -5,6 +5,7 @@ import { MenuService } from './menu.service';
 import { TranslatorService } from '../translator/translator.service';
 import { SettingsService } from './settings.service';
 import { ACLService } from '../acl/acl.service';
+import { TitleService } from '@core/services/title.service';
 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
@@ -20,6 +21,7 @@ export class StartupService {
         private tr: TranslatorService,
         private settingService: SettingsService,
         private aclService: ACLService,
+        private titleService: TitleService,
         private httpClient: HttpClient,
         private injector: Injector) { }
 
@@ -36,7 +38,9 @@ export class StartupService {
                                 // 初始化菜单
                                 this.menuService.add(res.menu);
                                 // 调整语言
-                                this.tr.use('en');
+                                this.tr.use(this.settingService.layout.lang);
+                                // 设置语言后缀
+                                this.titleService.suffix = res.app.name;
 
                                 resolve(res);
                             }, (err: HttpErrorResponse) => {
