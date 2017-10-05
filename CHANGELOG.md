@@ -1,3 +1,7 @@
+# 0.1.2-beta.2
+
++ 新增 `TitleService` 用于设置页面标题
+
 # 0.1.2-beta.1
 
 + 为了更好支持 git-subtree 调整 `styles` 目录位置至 `src/styles/alain/`（以及 `themes.service.ts` 变更）
