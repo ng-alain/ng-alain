@@ -19,13 +19,13 @@
     "build": "ng build --prod --build-optimizer",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "flow.changelog": "conventional-changelog -i CHANGELOG.md -s -p angular",
-    "flow.github-release": "conventional-github-releaser -p angular",
-    "demo.build": "ng build --prod --build-optimizer --bh ./",
-    "demo.gh-pages": "run-s demo.build demo.deploy",
-    "demo.deploy": "gh-pages -d dist",
     "test": "ng test -sr",
-    "test-coverage": "ng test -sr -cc"
+    "test-coverage": "ng test -sr -cc",
+    "chore.build": "ng build --prod --build-optimizer --bh ./",
+    "chore.gh-pages": "run-s chore.build chore.deploy",
+    "chore.deploy": "gh-pages -d dist",
+    "chore.alain.pull": "git subtree pull --prefix=src/styles/alain alain master",
+    "chore.alain.push": "git subtree push --prefix=src/styles/alain alain dev/ng"
   },
   "dependencies": {
     "@angular/animations": "^4.4.5",
