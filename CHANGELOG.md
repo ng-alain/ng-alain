@@ -1,3 +1,7 @@
+# 0.1.2-beta.3
+
++ 修复 `file-upload` 按钮由于 `span` 样式关系导致元素无法触发问题，closes [#27](https://github.com/cipchk/ng-alain/issues/27)
+
 # 0.1.2-beta.2
 
 + 新增 `TitleService` 用于设置页面标题
