@@ -1,6 +1,6 @@
 {
   "name": "ng-alain",
-  "version": "0.1.2-beta.3",
+  "version": "0.1.2-beta.4",
   "description": "ng-zorro-antd admin panel front-end framework",
   "author": "cipchk",
   "homepage": "https://cipchk.github.io/ng-alain/",
@@ -25,7 +25,7 @@
     "chore.gh-pages": "run-s chore.build chore.deploy",
     "chore.deploy": "gh-pages -d dist",
     "chore.alain.pull": "git subtree pull --prefix=src/styles/alain alain master",
-    "chore.alain.push": "git subtree push --prefix=src/styles/alain alain dev/ng"
+    "chore.alain.push": "git subtree push --prefix=src/styles/alain alain master"
   },
   "dependencies": {
     "@angular/animations": "^4.4.5",

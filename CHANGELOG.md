@@ -1,3 +1,7 @@
+# 0.1.2-beta.4
+
++ 修复分页当前页hover文字颜色问题，closes [#31](https://github.com/cipchk/ng-alain/issues/31)
+
 # 0.1.2-beta.3
 
 + 修复 `file-upload` 按钮由于 `span` 样式关系导致元素无法触发问题，closes [#27](https://github.com/cipchk/ng-alain/issues/27)
