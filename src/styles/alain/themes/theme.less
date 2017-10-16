@@ -53,7 +53,7 @@
     @new-hover-color:   ~`colorPalette("@{new-color}", 5)`;
     @new-hover-bgcolor: ~`colorPalette("@{new-color}", 1)`;
     @new-active-color:  ~`colorPalette("@{new-color}", 7)`;
-    
+
     .A-mixin() when(@focusing-full-color-enabled = true), (@focusing-a-color-enabled = true) {
         a {
             color: @new-color;
@@ -61,7 +61,7 @@
             &:hover {
               color: @new-hover-color;
             }
-          
+
             &:active {
               color: @new-active-color;
             }
@@ -70,7 +70,7 @@
     .A-mixin();
 
     .BTN-mixin() when(@focusing-full-color-enabled = true), (@focusing-btn-color-enabled = true) {
-        
+
         @btn-prefix-cls:  ant-btn;
 
         .button-color(@color; @new-color; @border) {
@@ -104,19 +104,19 @@
                 color: @new-active-color;
                 border-color: @new-active-color;
             }
-            
+
             &.@{btn-prefix-cls}-clicked {
                 &:after {
                     border-color: @new-color;
                 }
             }
-            
+
             .button-disabled();
         }
-        
+
         .@{btn-prefix-cls}-default {
         }
-        
+
         .@{btn-prefix-cls}-primary {
             background-color: @new-color;
             border-color: @new-color;
@@ -126,7 +126,7 @@
                 color: @btn-primary-color;
                 background-color: @new-hover-color;
             }
-            
+
             &:active,
             &.active {
                 color: @btn-primary-color;
@@ -139,24 +139,24 @@
 
         .@{btn-prefix-cls}-danger {
             .button-color(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
-          
+
             &:hover,
             &:focus {
               .button-color(@btn-primary-color; @btn-danger-color; @btn-danger-color);
             }
-          
+
             &:active,
             &.active {
               .button-color(@btn-primary-color; ~`colorPalette("@{btn-danger-color}", 7)`; ~`colorPalette("@{btn-danger-color}", 7)`;);
             }
-            
+
             &.@{btn-prefix-cls}-clicked {
                 &:after {
                     border-color: @btn-danger-border;
                 }
             }
         }
-        
+
         .@{btn-prefix-cls}-background-ghost {
             &.@{btn-prefix-cls}-primary {
                 .button-color(@new-color; transparent; @new-color);
@@ -187,7 +187,7 @@
             .@{btn-prefix-cls}-primary + .@{btn-prefix-cls}-primary {
                 border-left-color: @new-active-color;
             }
-            
+
             .@{btn-prefix-cls}-primary:first-child:not(:last-child) {
                 border-right-color: @new-active-color;
             }
@@ -200,7 +200,7 @@
         @radio-prefix-cls: ~"@{ant-prefix}-radio";
         @radio-group-prefix-cls: ~"@{radio-prefix-cls}-group";
         @radio-inner-prefix-cls: ~"@{radio-prefix-cls}-inner";
-        
+
         .@{radio-prefix-cls}-wrapper {
             &:hover {
                 .@{radio-inner-prefix-cls} {
@@ -277,7 +277,7 @@
 
     .SWITCH-mixin() when(@focusing-full-color-enabled = true), (@focusing-switch-color-enabled = true) {
         @switch-prefix-cls: ~"@{ant-prefix}-switch";
-        
+
         .@{switch-prefix-cls} {
             &-checked {
                 background-color: @new-color;
@@ -288,7 +288,7 @@
 
     .DROPDOWN-mixin() when(@focusing-full-color-enabled = true), (@focusing-dropdown-color-enabled = true) {
         @dropdown-prefix-cls: ~"@{ant-prefix}-dropdown";
-        
+
         .@{dropdown-prefix-cls} {
             &-menu {
                 &-item,
@@ -297,13 +297,13 @@
                     &-selected > a {
                       color: @new-color;
                     }
-              
+
                     &-selected,
                     &-selected > a,
                     &:hover {
                         background-color: @new-hover-bgcolor;
                     }
-                }  
+                }
             }
         }
     }
@@ -323,13 +323,13 @@
                   background-color: ~`colorPalette("@{new-color}", 7)`;
                 }
             }
-        }        
+        }
     }
     .TAG-mixin();
 
     .SPIN-mixin() when(@focusing-full-color-enabled = true), (@focusing-spin-color-enabled = true) {
         @spin-prefix-cls: ~"@{ant-prefix}-spin";
-        
+
         .@{spin-prefix-cls} {
             color: @new-color;
             &-dot {
@@ -368,7 +368,7 @@
                     color: @new-hover-color;
                 }
             }
-        }            
+        }
     }
     .INPUT-mixin();
 
@@ -382,11 +382,11 @@
                     border-color: @new-color;
                 }
             }
-            &-date { 
+            &-date {
                 &:hover {
                     background: @new-hover-bgcolor;
                 }
-            
+
                 &:active {
                     background: @new-hover-color;
                 }
@@ -412,11 +412,11 @@
 
     .PAGE-mixin() when(@focusing-full-color-enabled = true), (@focusing-page-color-enabled = true) {
         @pagination-prefix-cls: ~"@{ant-prefix}-pagination";
-        
+
         .@{pagination-prefix-cls} {
             &-prev,
             &-next,
-            &-item { 
+            &-item {
                 &:focus,
                 &:hover {
                     border-color: @new-color;
@@ -432,8 +432,19 @@
 
                     &:focus,
                     &:hover {
-                      background-color: @new-hover-color;
-                      border-color: @new-hover-color;
+                        background-color: @new-hover-color;
+                        border-color: @new-hover-color;
+                        a {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            &-jump-next,
+            &-jump-prev {
+                &:hover {
+                    &:after {
+                        color: @new-color;
                     }
                 }
             }
@@ -448,7 +459,7 @@
                     color: @disabled-color;
                 }
             }
-        }        
+        }
     }
     .PAGE-mixin();
 
@@ -459,7 +470,7 @@
                 &:hover {
                     border-color: @new-hover-color;
                 }
-            
+
                 .@{select-prefix-cls}-focused &,
                 &:focus,
                 &:active {
@@ -492,7 +503,7 @@
             }
             &-handle {
                 border-color: tint(@new-color, 50%);
-            
+
                 &:active {
                     box-shadow: 0 0 0 2px fadeout(@new-color, 80%);
                 }
@@ -502,7 +513,7 @@
                   border-color: tint(@new-color, 50%);
                 }
             }
-        }        
+        }
     }
     .SLIDER-mixin();
 }
