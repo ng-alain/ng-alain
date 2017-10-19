@@ -8,7 +8,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { TranslateModule } from '@ngx-translate/core';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
-import { SparklineDirective } from './directives/sparkline/sparkline.directive';
+import { SparklineDirective } from './directives/sparkline.directive';
 import { DownFileDirective } from '@shared/directives/down-file.directive';
 import { ImageDirective } from './directives/image.directive';
 
