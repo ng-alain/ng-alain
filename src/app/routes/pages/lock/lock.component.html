@@ -9,7 +9,7 @@
                 <form nz-form [formGroup]="valForm" (ngSubmit)="submit()" role="form">
                     <div nz-form-item>
                         <div nz-form-control [nzValidateStatus]="valForm.controls.password">
-                            <nz-input formControlName="password" [nzPlaceHolder]="'password'" [nzSize]="'large'">
+                            <nz-input formControlName="password" [nzPlaceHolder]="'password'" [nzType]="'password'" [nzSize]="'large'">
                                 <ng-template #suffix>
                                     <i class="anticon anticon-lock"></i>
                                 </ng-template>
