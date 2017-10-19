@@ -1,3 +1,17 @@
+# 0.1.2-beta.5
+
++ 新增 `[_src]` 指令，包括以下特性：
+    + 支持微信、qq头像规则缩略图规则
+    + 支持移除http&https协议http
+    + 支持增加onerror事件
++ 样式相关：
+    + 移除 `text-truncate` 的 `!important`。
+    + 调整 `.simple-table` 的 `img` 边距由 `padding-left` 改变成 `margin-left` 更为合理。
++ 修复用户EMAIL无法缩短问题，closes [#35](https://github.com/cipchk/ng-alain/issues/35)
++ 修复注册、找回、屏幕页面密码框类型问题，closes [#34](https://github.com/cipchk/ng-alain/issues/34)
++ 调整 `sparkline.directive.ts` 目录。
++ 调整tsline规则：`curly: false`。
+
 # 0.1.2-beta.4
 
 + 修复分页当前页hover文字颜色问题，closes [#31](https://github.com/cipchk/ng-alain/issues/31)
