@@ -1,4 +1,5 @@
 import { LayoutComponent } from '../layout/layout.component';
+import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LockComponent } from './pages/lock/lock.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -24,6 +25,14 @@ export const routes = [
             { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
             { path: 'logics', loadChildren: './logics/logics.module#LogicsModule' },
             { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' }
+        ]
+    },
+    // 全屏布局
+    {
+        path: 'data-v',
+        component: LayoutFullScreenComponent,
+        children: [
+            { path: '', loadChildren: './data-v/data-v.module#DataVModule' },
         ]
     },
     // 单页不包裹Layout
