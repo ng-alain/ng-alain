@@ -1,3 +1,9 @@
+# 0.1.2-beta.6
+
++ 增加全屏布局，见[用户关系图](https://cipchk.github.io/ng-alain/#/data-v/relation)
++ 侧边栏主菜单链接支持 `target` 属性
++ 基于Front-End-Checklist优化 `index.html`
+
 # 0.1.2-beta.5
 
 + 新增 `[_src]` 指令，包括以下特性：
