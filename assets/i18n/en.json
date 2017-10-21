@@ -51,6 +51,8 @@
     "guard": "Route Guard",
     "acl": "ACL",
     "downfile": "Down File",
+    "report": "Report",
+    "relation": "Relation",
     "pages": "Pages",
     "m-login": "Login",
     "m-register": "Register",

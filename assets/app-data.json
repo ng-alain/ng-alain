@@ -194,6 +194,16 @@
                 "translate": "downfile"
             }]
         }, {
+            "text": "Report",
+            "translate": "report",
+            "icon": "anticon anticon-cloud-o",
+            "children": [{
+                "text": "Relation",
+                "link": "/data-v/relation",
+                "translate": "relation",
+                "target": "_blank"
+            }]
+        }, {
             "text": "Pages",
             "translate": "pages",
             "link": "/pages",
