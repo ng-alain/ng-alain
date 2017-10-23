@@ -1,3 +1,9 @@
+# 0.1.2-beta.7
+
++ 增加Docker部署
+    + 增加 `.dockerignore`、`docker-compose.yml`、`docker-compose.debug.yml`、`Dockerfile` 文件
+    + 增加 `_nginx` 目录
+
 # 0.1.2-beta.6
 
 + 增加全屏布局，见[用户关系图](https://cipchk.github.io/ng-alain/#/data-v/relation)
