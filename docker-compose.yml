@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  ng-alain:
+    image: ng-alain
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 80:80

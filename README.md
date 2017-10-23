@@ -88,6 +88,7 @@ npm run serve:hmr
 + Well organized & commented code
 + Simple upgrade
 + Hot Module Replacement
++ Support [Docker](_documents/docker.md) deploy
 
 ## App Shots
 

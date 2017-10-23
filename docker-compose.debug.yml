@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  ng-alain:
+    image: ng-alain
+    build: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - 80:80
+      - 9229:9229
+    ## set your startup file here
+    command: node --inspect app.js
