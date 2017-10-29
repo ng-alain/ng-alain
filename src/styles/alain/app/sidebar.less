@@ -92,6 +92,7 @@
     }
     &-sub {
         &-title {
+            @fix-aside-icon-top: (((@aside-nav-fs * @line-height-base) + (@aside-nav-padding-top-bottom * 2)) - 18) / 2;
             &:after {
                 content: "\E61D";
                 font-family: anticon!important;
@@ -102,7 +103,7 @@
                 text-rendering: auto;
                 position: absolute;
                 right: @layout-gutter * 2;
-                top: @aside-nav-padding-top-bottom;
+                top: @fix-aside-icon-top;
                 display: inline-block;
                 font-size: 12px;
                 transform: scale(.66666667) rotate(0deg);
