@@ -23,6 +23,12 @@
                 "translate": "dashboard_v1"
             }]
         }, {
+            "text": "快捷菜单",
+            "translate": "shortcut",
+            "icon": "icon-rocket",
+            "shortcut_root": true,
+            "children": []
+        }, {
             "text": "小部件",
             "translate": "widgets",
             "link": "/widgets",
@@ -42,11 +48,13 @@
             "children": [{
                 "text": "按钮",
                 "link": "/elements/buttons",
-                "translate": "buttons"
+                "translate": "buttons",
+                "shortcut": true
             }, {
                 "text": "Notification",
                 "link": "/elements/notification",
-                "translate": "notification"
+                "translate": "notification",
+                "shortcut": true
             }, {
                 "text": "Modal",
                 "link": "/elements/modal",
@@ -113,7 +121,8 @@
             }, {
                 "text": "上传",
                 "link": "/forms/upload",
-                "translate": "upload"
+                "translate": "upload",
+                "shortcut": true
             }, {
                 "text": "图片裁剪",
                 "link": "/forms/cropper",
@@ -191,7 +200,8 @@
             {
                 "text": "Down File",
                 "link": "/logics/downfile",
-                "translate": "downfile"
+                "translate": "downfile",
+                "shortcut": true
             }]
         }, {
             "text": "Report",
@@ -201,7 +211,8 @@
                 "text": "Relation",
                 "link": "/data-v/relation",
                 "translate": "relation",
-                "target": "_blank"
+                "target": "_blank",
+                "shortcut": true
             }]
         }, {
             "text": "Pages",
