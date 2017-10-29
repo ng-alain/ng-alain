@@ -611,7 +611,7 @@ MIT
 MIT
 MIT
 
-ng-zorro-antd@0.5.3
+ng-zorro-antd@0.5.5
 MIT
 MIT
 
