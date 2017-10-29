@@ -74,7 +74,6 @@ export class HeaderComponent {
     }
 
     appChange() {
-        // bug: https://github.com/NG-ZORRO/ng-zorro-antd/issues/390
         setTimeout(() => this.appLoading = false, 500);
     }
 
