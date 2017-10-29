@@ -1,3 +1,9 @@
+# 0.1.2-beta.8
+
++ 增加快捷菜单，见 [menu.service.ts](./src/app/core/services/menu.service.ts)
++ 修复菜单小三角与菜单文本垂直问题
++ 移除 ng-zorro-antd 已知问题且修复的 bug 链接地址 `header.component.ts`。
+
 # 0.1.2-beta.7
 
 + 增加Docker部署

@@ -22,8 +22,9 @@ git clone --depth 1 https://github.com/cipchk/ng-alain.git
 cd ng-alain
 
 # install npm package
-# in china please use cnpm （https://github.com/cnpm/cnpm）
 npm install
+# in china please use cnpm （https://github.com/cnpm/cnpm）
+# cnpm install --by=npm
 
 # start the serve
 npm start
@@ -38,7 +39,7 @@ npm run serve:hmr
 
 | package | version |
 | ------- | ------- |
-| `ng-alain` | 0.1.2-beta.7 | 
+| `ng-alain` | 0.1.2-beta.8 | 
 | `ng-zorro-antd` | ^0.5.3 |
 | `@angular` | ^4.4.5 |
 | `@angular/cli` | ^1.4.7 |
