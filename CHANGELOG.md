@@ -1,3 +1,10 @@
+# 0.1.2-beta.9
+
++ 新增 ng-zorro-antd 组件的国际化，见 [translator.service](./src/app/core/translator/translator.service.ts)
+    + 当前 ng-zorro-antd 为 `rc` 版本，若遇到构建当中存在 `@angular/cdk` 问题，请手动安装。
+
+> 下周末将发布正式版，这段时间将不会再新增任何功能。
+
 # 0.1.2-beta.8
 
 + 增加快捷菜单，见 [menu.service.ts](./src/app/core/services/menu.service.ts)
