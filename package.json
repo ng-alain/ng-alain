@@ -1,6 +1,6 @@
 {
   "name": "ng-alain",
-  "version": "0.1.2-beta.9",
+  "version": "0.1.2-beta.10",
   "description": "ng-zorro-antd admin panel front-end framework",
   "author": "cipchk",
   "homepage": "https://cipchk.github.io/ng-alain/",
@@ -56,8 +56,8 @@
     "jquery-sparkline": "^2.4.0",
     "moment": "^2.18.1",
     "ng-tree-antd": "^1.0.0-bate",
-    "ng-zorro-antd": "^0.6.0-rc.2",
-    "@angular/cdk": "^2.0.0-beta.12",
+    "ng-zorro-antd": "^0.5.3",
+    "@angular/cdk": "2.0.0-beta.8",
     "ng2-charts": "^1.6.0",
     "ng2-dnd": "^4.2.0",
     "ng2-file-upload": "^1.2.1",

@@ -1,6 +1,7 @@
 import { Injectable, Inject, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { zhCN, enUS, NzLocaleService } from 'ng-zorro-antd';
+// bug: https://github.com/NG-ZORRO/ng-zorro-antd/issues/504
+// import { zhCN, enUS, NzLocaleService } from 'ng-zorro-antd';
 import { TranslateService } from '@ngx-translate/core';
 import { SettingsService } from '../services/settings.service';
 
@@ -15,7 +16,7 @@ export class TranslatorService {
     ];
 
     constructor(settings: SettingsService,
-        private nzLocalService: NzLocaleService,
+        // private nzLocalService: NzLocaleService,
         private translate: TranslateService,
         private injector: Injector) {
         this._default = settings.layout.lang || translate.getBrowserLang();
@@ -30,7 +31,7 @@ export class TranslatorService {
     use(lang: string = null, firstLoad = true) {
         lang = lang || this.translate.getDefaultLang();
         this.translate.use(lang);
-        this.nzLocalService.setLocale(lang === 'en' ? enUS : zhCN);
+        // this.nzLocalService.setLocale(lang === 'en' ? enUS : zhCN);
         // need reload router because of ng-zorro-antd local system
         if (!firstLoad) this.injector.get(Router).navigate([ '/' ]);
     }
