@@ -99,7 +99,32 @@
                 "text": "Colors",
                 "link": "/elements/colors",
                 "translate": "colors"
-            }]
+            }, {
+                "text": "Popover",
+                "link": "/elements/popover",
+                "translate": "popover"
+            }, {
+                "text": "Tooltip",
+                "link": "/elements/tooltip",
+                "translate": "tooltip"
+            }, {
+                "text": "Progress",
+                "link": "/elements/progress",
+                "translate": "progress"
+            }, {
+                "text": "Tab",
+                "link": "/elements/tab",
+                "translate": "tab"
+            }, {
+                "text": "List",
+                "link": "/elements/lists",
+                "translate": "list"
+            }, {
+                "text": "Nav",
+                "link": "/elements/nav",
+                "translate": "nav"
+            }
+            ]
         }, {
             "text": "表单",
             "translate": "forms",

@@ -1,0 +1,118 @@
+<div class="content__title">
+  <h1>
+      Progress | 进度条
+  </h1>
+</div>
+<div nz-row [nzGutter]="16">
+  <div  nz-col [nzMd]="12">
+    <nz-card>
+        <ng-template #title>Basic Progress</ng-template>
+        <ng-template #body>
+            <div class="mb-sm">
+                <nz-progress [ngModel]="30"></nz-progress>
+                <nz-progress [ngModel]="50" [nzStatus]="'active'"></nz-progress>
+                <nz-progress [ngModel]="70" [nzStatus]="'exception'"></nz-progress>
+                <nz-progress [ngModel]="100"></nz-progress>
+                <nz-progress [ngModel]="50" [nzShowInfo]="false"></nz-progress>
+            </div>
+            标准基础进度条
+        </ng-template>
+    </nz-card>
+  </div>
+
+  <div  nz-col [nzMd]="12">
+      <nz-card>
+          <ng-template #title>Circle Progress</ng-template>
+          <ng-template #body>
+              <div class="mb-sm">
+                  <nz-progress [ngModel]="75" [nzType]="'circle'"></nz-progress>
+                  <nz-progress [ngModel]="70" [nzType]="'circle'" [nzStatus]="'exception'"></nz-progress>
+                  <nz-progress [ngModel]="100" [nzType]="'circle'"></nz-progress>
+              </div>
+              圆圈进度条
+          </ng-template>
+      </nz-card>
+    </div>
+
+
+    <div  nz-col [nzMd]="12">
+        <nz-card>
+            <ng-template #title>Small Progress</ng-template>
+            <ng-template #body>
+                <div class="mb-sm">
+                    <div style="width: 170px;">
+                        <nz-progress [ngModel]="30" [nzStrokeWidth]="5"></nz-progress>
+                        <nz-progress [ngModel]="50" [nzStrokeWidth]="5" [nzStatus]="'active'"></nz-progress>
+                        <nz-progress [ngModel]="70" [nzStrokeWidth]="5" [nzStatus]="'exception'"></nz-progress>
+                        <nz-progress [ngModel]="100" [nzStrokeWidth]="5"></nz-progress>
+                        <nz-progress [ngModel]="50" [nzStrokeWidth]="5" [nzShowInfo]="false"></nz-progress>
+                    </div>
+                </div>
+                小型进度条
+            </ng-template>
+        </nz-card>
+      </div>
+
+
+
+
+      <div  nz-col [nzMd]="12">
+          <nz-card>
+              <ng-template #title>Small Circle Progress</ng-template>
+              <ng-template #body>
+                  <div class="mb-sm">
+                      <div style="width: 170px;">
+                          <nz-progress [ngModel]="75" [nzType]="'circle'" [nzWidth]="80"></nz-progress>
+                          <nz-progress [ngModel]="70" [nzType]="'circle'" [nzWidth]="80" [nzStatus]="'exception'"></nz-progress>
+                          <nz-progress [ngModel]="100" [nzType]="'circle'" [nzWidth]="80"></nz-progress>
+                      </div>
+                  </div>
+                  小型圈型进度条
+              </ng-template>
+          </nz-card>
+        </div>
+
+        <div  nz-col [nzMd]="12">
+            <nz-card>
+                <ng-template #title>Modify Circle Progress</ng-template>
+                <ng-template #body>
+                    <div class="mb-sm">
+                        <nz-progress [ngModel]="_percent" [nzType]="'circle'"></nz-progress>
+                        <nz-button-group>
+                          <button nz-button (click)="decline()" [nzType]="'ghost'"><i class="anticon anticon-minus"></i></button><button nz-button [nzType]="'ghost'" (click)="increase()"><i class="anticon anticon-plus"></i></button>
+                        </nz-button-group>
+                    </div>
+                    可调动态圈型进度条
+                </ng-template>
+            </nz-card>
+          </div>
+
+          <div  nz-col [nzMd]="12">
+              <nz-card>
+                  <ng-template #title>Text Circle Progress</ng-template>
+                  <ng-template #body>
+                      <div class="mb-sm">
+                          <nz-progress [ngModel]="75" [nzType]="'circle'" [nzFormat]="_formatOne"></nz-progress>
+                          <nz-progress [ngModel]="100" [nzType]="'circle'" [nzFormat]="_formatTwo"></nz-progress>
+                      </div>
+                      文字圈型进度条
+                  </ng-template>
+              </nz-card>
+            </div>
+
+            <div  nz-col [nzMd]="12">
+                <nz-card>
+                    <ng-template #title>Modify Basic Progress</ng-template>
+                    <ng-template #body>
+                        <div class="mb-sm">
+                            <nz-progress [ngModel]="_percent"></nz-progress>
+                            <nz-button-group>
+                              <button nz-button (click)="decline()" [nzType]="'ghost'"><i class="anticon anticon-minus"></i></button><button nz-button [nzType]="'ghost'" (click)="increase()"><i class="anticon anticon-plus"></i></button>
+                            </nz-button-group>
+                        </div>
+                        可调动态普通进度条
+                    </ng-template>
+                </nz-card>
+              </div>
+
+</div>
