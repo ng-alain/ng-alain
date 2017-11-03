@@ -24,7 +24,8 @@ export const routes = [
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
             { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
             { path: 'logics', loadChildren: './logics/logics.module#LogicsModule' },
-            { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' }
+            { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' },
+            { path: 'pro', loadChildren: './pro/pro.module#ProModule' }
         ]
     },
     // 全屏布局

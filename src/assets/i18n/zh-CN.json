@@ -67,5 +67,8 @@
     "post": "新建",
     "website": "前台（外链）",
     "helpcenter": "帮助中心",
-    "poi": "门店"
+    "poi": "门店",
+    "pro": "Ant Design Pro",
+    "form": "表单页",
+    "step-form": "分步表单"
 }

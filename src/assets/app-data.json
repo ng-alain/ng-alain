@@ -178,6 +178,21 @@
             }]
         }]
     }, {
+        "text": "Pro",
+        "translate": "pro",
+        "group": true,
+        "children": [{
+            "text": "Form Page",
+            "translate": "form",
+            "link": "/pro/form",
+            "icon": "icon-note",
+            "children": [{
+                "text": "Step Form",
+                "link": "/pro/form/step-form",
+                "translate": "step-form"
+            }]
+        }]
+    }, {
         "text": "More",
         "translate": "more",
         "group": true,
