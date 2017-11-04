@@ -6,6 +6,7 @@ import { TransferService } from './transfer.service';
     selector: 'app-step2',
     template: `
     <form nz-form [formGroup]="form" (ngSubmit)="_submitForm()">
+        <nz-alert class="pb-lg" [nzMessage]="'确认转账后，资金将直接打入对方账户，无法退回。'" [nzShowIcon]="true" [nzCloseable]="true"></nz-alert>
         <div nz-form-item nz-row class="mb-sm">
             <div nz-form-label nz-col [nzSm]="4"><label>付款账户</label></div>
             <div nz-form-control nz-col [nzSm]="20"><span nz-form-text>{{item.pay_account}}</span></div>

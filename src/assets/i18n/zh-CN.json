@@ -70,5 +70,6 @@
     "poi": "门店",
     "pro": "Ant Design Pro",
     "form": "表单页",
-    "step-form": "分步表单"
+    "step-form": "分步表单",
+    "advanced-form": "高级表单"
 }

@@ -190,6 +190,10 @@
                 "text": "Step Form",
                 "link": "/pro/form/step-form",
                 "translate": "step-form"
+            }, {
+                "text": "Advanced Form",
+                "link": "/pro/form/advanced-form",
+                "translate": "advanced-form"
             }]
         }]
     }, {

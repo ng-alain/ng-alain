@@ -20,7 +20,7 @@ import { TransferService } from './transfer.service';
             <div nz-form-label nz-col [nzSm]="4">
                 <label for="receiver_account" nz-form-item-required>收款账户</label>
             </div>
-            <div nz-form-control nz-col [nzSm]="20" nzHasFeedback [nzValidateStatus]="getFormControl('receiver_account')">
+            <div nz-form-control nz-col [nzSm]="20" nzHasFeedback [nzValidateStatus]="receiver_account">
                 <nz-input-group [nzCompact]="true">
                     <nz-select formControlName="receiver_type" nzSize="large" style="width: 25%;">
                         <nz-option [nzLabel]="'支付宝'" [nzValue]="'alipay'"></nz-option>
@@ -28,7 +28,7 @@ import { TransferService } from './transfer.service';
                     </nz-select>
                     <input formControlName="receiver_account" nzSize="large" id="'receiver_account'" nz-input style="width: 75%;">
                 </nz-input-group>
-                <p nz-form-explain *ngIf="getFormControl('receiver_account').invalid&&getFormControl('receiver_account').hasError('required')">
+                <p nz-form-explain *ngIf="receiver_account.invalid">
                     请输入收款账户
                 </p>
             </div>
@@ -37,24 +37,24 @@ import { TransferService } from './transfer.service';
             <div nz-form-label nz-col [nzSm]="4">
                 <label for="receiver_name" nz-form-item-required>收款姓名</label>
             </div>
-            <div nz-form-control nz-col [nzSm]="20" nzHasFeedback [nzValidateStatus]="getFormControl('receiver_name')">
+            <div nz-form-control nz-col [nzSm]="20" nzHasFeedback [nzValidateStatus]="receiver_name">
                 <nz-input formControlName="receiver_name" nzSize="large" [nzId]="'receiver_name'"></nz-input>
-                <p nz-form-explain *ngIf="getFormControl('receiver_name').invalid">收款姓名至少2个字符以上</p>
+                <p nz-form-explain *ngIf="receiver_name.invalid">收款姓名至少2个字符以上</p>
             </div>
         </div>
         <div nz-form-item nz-row>
             <div nz-form-label nz-col [nzSm]="4">
                 <label for="amount" nz-form-item-required>转账金额</label>
             </div>
-            <div nz-form-control nz-col [nzSm]="20" nzHasFeedback [nzValidateStatus]="getFormControl('amount')">
+            <div nz-form-control nz-col [nzSm]="20" nzHasFeedback [nzValidateStatus]="amount">
                 <nz-input formControlName="amount" nzSize="large" [nzId]="'amount'">
                     <ng-template #prefix>￥</ng-template>
                 </nz-input>
-                <p nz-form-explain *ngIf="getFormControl('amount').dirty">
-                    <span *ngIf="getFormControl('amount').hasError('required')">请输入转账金额</span>
-                    <span *ngIf="getFormControl('amount').hasError('pattern')">金额只能是正整数</span>
-                    <span *ngIf="getFormControl('amount').hasError('min')">金额最少1元以上</span>
-                    <span *ngIf="getFormControl('amount').hasError('max')">金额最多100万以内</span>
+                <p nz-form-explain *ngIf="amount.invalid">
+                    <span *ngIf="amount.errors.required">请输入转账金额</span>
+                    <span *ngIf="amount.errors.pattern">金额只能是正整数</span>
+                    <span *ngIf="amount.errors.min">金额最少1元以上</span>
+                    <span *ngIf="amount.errors.max">金额最多100万以内</span>
                 </p>
             </div>
         </div>
@@ -89,9 +89,13 @@ export class Step1Component implements OnInit {
         this.form.patchValue(this.item);
     }
 
-    getFormControl(name: string) {
-        return this.form.controls[name];
-    }
+    //#region get form fields
+    get pay_account() { return this.form.controls['pay_account']; }
+    get receiver_type() { return this.form.controls['receiver_type']; }
+    get receiver_account() { return this.form.controls['receiver_account']; }
+    get receiver_name() { return this.form.controls['receiver_name']; }
+    get amount() { return this.form.controls['amount']; }
+    //#endregion
 
     _submitForm() {
         this.item = Object.assign(this.item, this.form.value);

@@ -6,12 +6,14 @@ import { StepFormComponent } from './form/step-form/step-form.component';
 import { Step1Component } from './form/step-form/step1.component';
 import { Step2Component } from './form/step-form/step2.component';
 import { Step3Component } from './form/step-form/step3.component';
+import { AdvancedFormComponent } from './form/advanced-form/advanced-form.component';
 
 const routes: Routes = [
     {
         path: 'form',
         children: [
-            { path: 'step-form', component: StepFormComponent }
+            { path: 'step-form', component: StepFormComponent },
+            { path: 'advanced-form', component: AdvancedFormComponent }
         ]
     }
 ];
@@ -25,6 +27,7 @@ const COMPONENTS_NOROUNT = [ Step1Component, Step2Component, Step3Component ];
     ],
     declarations: [
         StepFormComponent,
+        AdvancedFormComponent,
         ...COMPONENTS_NOROUNT
     ],
     entryComponents: COMPONENTS_NOROUNT,
