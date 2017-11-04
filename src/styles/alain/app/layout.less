@@ -3,19 +3,19 @@ html {
     height: 100%; // http://updates.html5rocks.com/2013/12/300ms-tap-delay-gone-away
     touch-action: manipulation;
   }
-  
+
   html,
   body,
   app-root {
     // overflow-x: hidden;
     height: 100%;
   }
-  
+
   body {
       color: @text-color;
       background-color: @content-bg !important;
   }
-  
+
   .progress-bar-container {
       height: 10px;
       position: absolute;
@@ -24,14 +24,14 @@ html {
       left: 0;
       z-index: @zindex + 10;
   }
-  
+
   .wrapper {
       position: relative;
       width: 100%;
       height: auto;
       min-height: 100%;
       overflow-x: hidden;
-  
+
       .unwrap {
           margin-right: -@content-padding;
           margin-left: -@content-padding;
@@ -41,11 +41,11 @@ html {
           }
       }
   }
-  
+
   .content {
       margin: @header-hg @content-padding @content-padding @content-padding;
   }
-  
+
   .content__title {
       display: flex;
       align-items: center;
@@ -70,13 +70,13 @@ html {
           }
       }
   }
-  
+
   // Desktop
-  @media (min-width: @screen-md) {
+  @media (min-width: @screen-sm) {
       .content {
           margin-left: (@aside-wd + @content-padding);
       }
-  
+
       .aside-collapsed {
           .sidebar {
               width: @aside-collapsed-wd;
@@ -86,7 +86,7 @@ html {
           }
       }
   }
-  
+
   // @media (max-width: @screen-md-max) {
   //     .content {
   //         padding: 87px 15px 0;
@@ -96,4 +96,3 @@ html {
   //         margin-bottom: @content-padding;
   //     }
   // }
-  
