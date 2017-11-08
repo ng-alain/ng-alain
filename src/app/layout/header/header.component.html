@@ -31,130 +31,19 @@
             </div>
         </li>
     </ul>
-    <div class="header-search" [class.header-search__focus]="focus" [class.header-search__toggled]="searchToggled">
-        <nz-input #qIpt nzPlaceHolder='{{ "top-search-ph" | translate}}' [(ngModel)]="q"
-            (nzFocus)="qFocus()" (nzBlur)="qBlur()">
-            <ng-template #prefix>
-                <i class="anticon anticon-search"></i>
-            </ng-template>
-        </nz-input>
-    </div>
+    <header-search class="header-search"></header-search>
     <ul class="top-nav">
+        <!-- Notify -->
+        <li>
+            <header-notify [count]="12"></header-notify>
+        </li>
         <!-- Task -->
         <li>
-            <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" (nzVisibleChange)="appChange()">
-                <div class="item" nz-dropdown>
-                    <nz-badge [nzDot]="true">
-                        <ng-template #content>
-                            <i class="anticon anticon-bell"></i>
-                        </ng-template>
-                    </nz-badge>
-                </div>
-                <div nz-menu class="wd-lg">
-                    <nz-card [nzNoHovering]="true" [nzLoading]="appLoading" class="ant-card__body-nopadding">
-                        <ng-template #title>Notifications</ng-template>
-                        <ng-template #extra><i class="anticon anticon-plus"></i></ng-template>
-                        <ng-template #body>
-                            <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point">
-                                <div nz-col [nzSpan]="4" class="text-center">
-                                    <nz-avatar [nzSrc]="'./assets/img/1.png'" [nzSize]="'large'"></nz-avatar>
-                                </div>
-                                <div nz-col [nzSpan]="20">
-                                    <strong>cipchk</strong>
-                                    <p>Please tell me what happened in a few words, don't go into details.</p>
-                                </div>
-                            </div>
-                            <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point">
-                                <div nz-col [nzSpan]="4" class="text-center">
-                                    <nz-avatar [nzSrc]="'./assets/img/2.png'" [nzSize]="'large'"></nz-avatar>
-                                </div>
-                                <div nz-col [nzSpan]="20">
-                                    <strong>はなさき</strong>
-                                    <p>ハルカソラトキヘダツヒカリ </p>
-                                </div>
-                            </div>
-                            <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point">
-                                <div nz-col [nzSpan]="4" class="text-center">
-                                    <nz-avatar [nzSrc]="'./assets/img/3.png'" [nzSize]="'large'"></nz-avatar>
-                                </div>
-                                <div nz-col [nzSpan]="20">
-                                    <strong>苏先生</strong>
-                                    <p>请告诉我，我应该说点什么好？</p>
-                                </div>
-                            </div>
-                            <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point">
-                                <div nz-col [nzSpan]="4" class="text-center">
-                                    <nz-avatar [nzSrc]="'./assets/img/4.png'" [nzSize]="'large'"></nz-avatar>
-                                </div>
-                                <div nz-col [nzSpan]="20">
-                                    <strong>Kent</strong>
-                                    <p>Please tell me what happened in a few words, don't go into details.</p>
-                                </div>
-                            </div>
-                            <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point">
-                                <div nz-col [nzSpan]="4" class="text-center">
-                                    <nz-avatar [nzSrc]="'./assets/img/5.png'" [nzSize]="'large'"></nz-avatar>
-                                </div>
-                                <div nz-col [nzSpan]="20">
-                                    <strong>Jefferson</strong>
-                                    <p>Please tell me what happened in a few words, don't go into details.</p>
-                                </div>
-                            </div>
-                            <div nz-row class="pt-lg pb-lg">
-                                <div nz-col [nzSpan]="24" class="text-center text-grey point">
-                                    See All
-                                </div>
-                            </div>
-                        </ng-template>
-                    </nz-card>
-                </div>
-            </nz-dropdown>
+            <header-task></header-task>
         </li>
         <!-- App Icons -->
         <li class="hidden-xs">
-            <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" (nzVisibleChange)="appChange()">
-                <div class="item" nz-dropdown>
-                    <i class="anticon anticon-appstore-o"></i>
-                </div>
-                <div nz-menu class="wd-xl animated jello">
-                    <nz-spin [nzSpinning]="appLoading" [nzTip]="'正在读取数据...'">
-                        <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="app-icons">
-                            <div nz-col [nzSpan]="6">
-                                <i class="anticon anticon-calendar bg-error text-white"></i>
-                                <small>Calendar</small>
-                            </div>
-                            <div nz-col [nzSpan]="6">
-                                <i class="anticon anticon-file bg-teal text-white"></i>
-                                <small>Files</small>
-                            </div>
-                            <div nz-col [nzSpan]="6">
-                                <i class="anticon anticon-cloud bg-success text-white"></i>
-                                <small>Cloud</small>
-                            </div>
-                            <div nz-col [nzSpan]="6">
-                                <i class="anticon anticon-star-o bg-pink text-white"></i>
-                                <small>Star</small>
-                            </div>
-                            <div nz-col [nzSpan]="6">
-                                <i class="anticon anticon-team bg-purple text-white"></i>
-                                <small>Team</small>
-                            </div>
-                            <div nz-col [nzSpan]="6">
-                                <i class="anticon anticon-scan bg-warning text-white"></i>
-                                <small>QR</small>
-                            </div>
-                            <div nz-col [nzSpan]="6">
-                                <i class="anticon anticon-pay-circle-o bg-cyan text-white"></i>
-                                <small>Pay</small>
-                            </div>
-                            <div nz-col [nzSpan]="6">
-                                <i class="anticon anticon-printer bg-grey text-white"></i>
-                                <small>Print</small>
-                            </div>
-                        </div>
-                    </nz-spin>
-                </div>
-            </nz-dropdown>
+            <header-icon></header-icon>
         </li>
         <!-- Settings -->
         <li class="hidden-xs">
@@ -162,44 +51,20 @@
                 <div class="item" nz-dropdown>
                     <i class="anticon anticon-setting"></i>
                 </div>
-                <ul nz-menu class="pt-sm pb-sm" style="width:200px">
-                    <li nz-menu-item class="theme-switch">
-                        <strong>{{ 'theme-switch' | translate}}</strong>
-                        <div class="theme-icons">
-                            <label *ngFor="let item of themes" (click)="changeTheme(item.l)" [style.background]="item.bg">
-                                <i class="anticon anticon-check" *ngIf="item.l == settings.layout.theme"></i>
-                                <div class="areas">
-                                    <span class="nav" [style.background]="item.nav"></span>
-                                    <span class="con" [style.background]="item.con"></span>
-                                </div>
-                            </label>
-                        </div>
-                    </li>
-                    <li nz-menu-item (click)="toggleFullScreen()">
-                        <i class="anticon anticon-{{isFullscreen ? 'shrink' : 'arrows-alt'}}"></i>
-                        {{isFullscreen ? 'fullscreen-exit' : 'fullscreen' | translate }}
-                    </li>
-                    <li nz-menu-item (click)="clearStorage()">
-                        <i class="anticon anticon-tool"></i>
-                        {{ 'clear-local-storage' | translate}}
-                    </li>
-                    <li nz-menu-item>
-                        <div title>
-                            <nz-dropdown>
-                                <div nz-dropdown>
-                                    <i class="anticon anticon-edit"></i>
-                                    {{ 'language' | translate}}
-                                    <i class="anticon anticon-down"></i>
-                                </div>
-                                <ul nz-menu>
-                                    <li nz-menu-item *ngFor="let item of tsServ.langs"
-                                    [nzSelected]="item.code === settings.layout.lang"
-                                        (click)="changeLang(item.code)">{{item.text}}</li>
-                                </ul>
-                            </nz-dropdown>
-                        </div>
-                    </li>
-                </ul>
+                <div nz-menu class="pt-sm pb-sm" style="width:200px">
+                    <div nz-menu-item class="theme-switch">
+                        <header-theme></header-theme>
+                    </div>
+                    <div nz-menu-item>
+                        <header-fullscreen></header-fullscreen>
+                    </div>
+                    <div nz-menu-item>
+                        <header-storage></header-storage>
+                    </div>
+                    <div nz-menu-item>
+                        <header-langs></header-langs>
+                    </div>
+                </div>
             </nz-dropdown>
         </li>
     </ul>
