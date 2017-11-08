@@ -24,7 +24,7 @@ cd ng-alain
 # install npm package
 npm install
 # in china please use cnpm （https://github.com/cnpm/cnpm）
-# cnpm install --by=npm
+# cnpm install
 
 # start the serve
 npm start
