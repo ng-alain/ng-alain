@@ -14,6 +14,7 @@ import { HeaderIconComponent } from './header/components/icon.component';
 import { HeaderFullScreenComponent } from './header/components/fullscreen.component';
 import { HeaderLangsComponent } from './header/components/langs.component';
 import { HeaderStorageComponent } from './header/components/storage.component';
+import { HeaderUserComponent } from './header/components/user.component';
 
 const COMPONENTS = [
     LayoutComponent,
@@ -30,7 +31,8 @@ const HEADERCOMPONENTS = [
     HeaderFullScreenComponent,
     HeaderThemeComponent,
     HeaderLangsComponent,
-    HeaderStorageComponent
+    HeaderStorageComponent,
+    HeaderUserComponent
 ];
 
 @NgModule({
