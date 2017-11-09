@@ -1,83 +1,72 @@
+import { SettingsService } from './../../../core/services/settings.service';
+import { NzMessageService } from 'ng-zorro-antd';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/groupBy';
 import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/reduce';
 import 'rxjs/add/operator/delay';
-// import { groupBy, concatMap, mergeMap, reduce } from 'rxjs/operators';
+// import { groupBy, concatMap, mergeMap } from 'rxjs/operators';
 import * as moment from 'moment';
+import { NoticeItem } from '@shared/components/notice-icon/notice-item';
 
+/**
+ * 菜单通知
+ */
 @Component({
     selector: 'header-notify',
     template: `
-    <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" [nzClickHide]="false" (nzVisibleChange)="change($event)">
-        <div class="item" nz-dropdown>
-            <nz-badge [nzCount]="count">
-                <ng-template #content>
-                    <i class="anticon anticon-bell"></i>
-                </ng-template>
-            </nz-badge>
-        </div>
-        <div nz-menu class="wd-lg min-width-md">
-            <nz-card [nzNoHovering]="true" [nzLoading]="loading && isFirstLoading" class="ant-card__body-nopadding">
-                <ng-template #body>
-                    <nz-tabset>
-                        <nz-tab *ngFor="let tab of tabs">
-                            <ng-template #nzTabHeading>{{tab.key}}<span *ngIf="tab.count>0">({{tab.count}})</span></ng-template>
-                            <nz-spin [nzSpinning]="loading && !isFirstLoading">
-                                <ul class="list-group">
-                                    <li *ngFor="let i of tab.list" class="list-group-item">
-                                    </li>
-                                </ul>
-                                <p>sdf</p><p>sdf</p><p>sdf</p><p>sdf</p><p>sdf</p>
-                                <p>sdf</p><p>sdf</p><p>sdf</p><p>sdf</p>
-                            </nz-spin>
-                        </nz-tab>
-                    </nz-tabset>
-                </ng-template>
-            </nz-card>
-        </div>
-    </nz-dropdown>
+    <notice-icon
+        [data]="data"
+        [count]="count"
+        [loading]="loading"
+        (select)="select($event)"
+        (clear)="clear($event)"
+        (popupVisibleChange)="loadData($event)"></notice-icon>
     `
 })
 export class HeaderNotifyComponent implements OnInit {
 
+    data: NoticeItem[] = [
+        { title: '通知', list: [], emptyText: '你已查看所有通知', emptyImage: 'https://gw.alipayobjects.com/zos/rmsportal/wAhyIChODzsoKIOBHcBk.svg' },
+        { title: '消息', list: [], emptyText: '您已读完所有消息', emptyImage: 'https://gw.alipayobjects.com/zos/rmsportal/sAuJeJzSKbUmHfBQRzmZ.svg' },
+        { title: '待办', list: [], emptyText: '你已完成所有待办', emptyImage: 'https://gw.alipayobjects.com/zos/rmsportal/HsIsxMZiWKrNUavQUXqx.svg' }
+    ];
+    count = 0;
     loading = false;
-    isFirstLoading = true;
 
-    @Input() count = 0;
-    tabs = [];
+    constructor(private msg: NzMessageService, private settings: SettingsService) {}
+
+    ngOnInit() {
+        // mock data
+        this.count = this.settings.user.notifyCount || 12;
+    }
 
     private parseGroup(data: Observable<any[]>) {
         data.concatMap((i: any) => i)
             .map((i: any) => {
                 if (i.datetime) i.datetime = moment(i.datetime).fromNow();
+                // change to color
+                if (i.status) {
+                    i.color = ({
+                        todo: '',
+                        processing: 'blue',
+                        urgent: 'red',
+                        doing: 'gold',
+                      })[i.status];
+                }
                 return i;
             })
             .groupBy((x: any) => x.type)
             .flatMap(g$ => g$.toArray())
-            .map(ls => {
-                return {
-                    key: ls[0].type,
-                    count: ls.length,
-                    list: ls
-                };
+            .do(ls => {
+                this.data.find(w => w.title === ls[0].type).list = ls;
             })
-            .reduce((acc: any, value, index) => {
-                if (index === 1) acc = [ acc ];
-                acc.push(value);
-                return acc;
-            })
-            .subscribe(res => {
-                this.tabs = res;
-                this.loading = false;
-                this.isFirstLoading = false;
-            });
+            .subscribe(res => this.loading = false);
     }
 
-    change(res) {
-        if (!res) return;
+    loadData(res) {
+        if (!res || this.loading) return;
         this.loading = true;
         // region: mock http request
         this.parseGroup(Observable.of([{
@@ -165,6 +154,11 @@ export class HeaderNotifyComponent implements OnInit {
         // endregion
     }
 
-    ngOnInit() {
+    clear(type: string) {
+        this.msg.success(`清空了 ${type}`);
+    }
+
+    select(res: any) {
+        this.msg.success(`点击了 ${res.title} 的 ${res.item.title}`);
     }
 }

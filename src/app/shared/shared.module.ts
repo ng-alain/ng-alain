@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NzListModule } from 'ng-list-antd';
 import { TranslateModule } from '@ngx-translate/core';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AngularEchartsModule } from 'ngx-echarts';
@@ -21,6 +22,8 @@ import { KeysPipe } from './pipes/keys.pipe';
 import { YNPipe } from './pipes/yn.pipe';
 import { ModalHelper } from './helper/modal.helper';
 
+import { shared_entry_components, shared_components } from './components/index';
+
 const DIRECTIVES = [SparklineDirective, DownFileDirective, ImageDirective, FixedBtnsDirective, ErrorCollectComponent];
 const PIPES = [MomentDatePipe, CNCurrencyPipe, KeysPipe, YNPipe];
 const HELPERS = [ ModalHelper ];
@@ -33,11 +36,13 @@ const HELPERS = [ ModalHelper ];
         HttpClientModule,
         AngularWebStorageModule,
         NgZorroAntdModule.forRoot(),
+        NzListModule,
         ChartsModule,
         AngularEchartsModule
     ],
-    declarations: [...DIRECTIVES, ...PIPES],
+    declarations: [...shared_components, ...DIRECTIVES, ...PIPES],
     providers: [ ...HELPERS ],
+    entryComponents: [ ...shared_entry_components ],
     exports: [
         CommonModule,
         FormsModule,
@@ -49,6 +54,7 @@ const HELPERS = [ ModalHelper ];
         ChartsModule,
         AngularEchartsModule,
 
+        ...shared_components,
         ...DIRECTIVES,
         ...PIPES
     ]

@@ -2,7 +2,7 @@
 
 建议将项目中通用的组件放在该目录下。
 
-> 不要忘记在 `shared.module.ts` 中注册它。
+> 不要忘记在 `index.ts` 中导出它，这样 `share.module` 会自动注册它。
 
 # 关于组件 index.md 说明
 
@@ -14,6 +14,6 @@
 ---
 component: notice-icon （组件名）
 title: 通知菜单 （组件名称）
-cols: 1 （暂用栏数）
+cols: 1 （可选：占用栏数）
 ---
 ```

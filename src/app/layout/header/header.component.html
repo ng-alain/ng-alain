@@ -31,11 +31,11 @@
             </div>
         </li>
     </ul>
-    <header-search class="header-search"></header-search>
+    <header-search class="header-search" [toggleChange]="searchToggleStatus"></header-search>
     <ul class="top-nav">
         <!-- Notify -->
         <li>
-            <header-notify [count]="12"></header-notify>
+            <header-notify></header-notify>
         </li>
         <!-- Task -->
         <li>
