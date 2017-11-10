@@ -33,7 +33,6 @@ export class NoticeIconComponent {
     @Input() data: NoticeItem[] = [];
     @Input() count = 0;
     @Input() loading = false;
-    @Input() popupPlacement = 'topRight';
     @Output() select = new EventEmitter<any>();
     @Output() clear = new EventEmitter<string>();
     @Input() popoverVisible = false;
