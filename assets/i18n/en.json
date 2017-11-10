@@ -71,5 +71,7 @@
     "pro": "Ant Design Pro",
     "form": "Form Page",
     "step-form": "Step Form",
-    "advanced-form": "Advanced Form"
+    "advanced-form": "Advanced Form",
+    "pro-list": "List Page",
+    "pro-table-list": "Table List"
 }
