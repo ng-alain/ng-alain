@@ -8,6 +8,7 @@ import { Step2Component } from './form/step-form/step2.component';
 import { Step3Component } from './form/step-form/step3.component';
 import { AdvancedFormComponent } from './form/advanced-form/advanced-form.component';
 import { ProTableListComponent } from './list/table-list/table-list.component';
+import { ProBasicListComponent } from './list/basic-list/basic-list.component';
 
 const routes: Routes = [
     {
@@ -20,7 +21,8 @@ const routes: Routes = [
     {
         path: 'list',
         children: [
-            { path: 'table-list', component: ProTableListComponent }
+            { path: 'table-list', component: ProTableListComponent },
+            { path: 'basic-list', component: ProBasicListComponent }
         ]
     }
 ];
@@ -36,6 +38,7 @@ const COMPONENTS_NOROUNT = [ Step1Component, Step2Component, Step3Component ];
         StepFormComponent,
         AdvancedFormComponent,
         ProTableListComponent,
+        ProBasicListComponent,
         ...COMPONENTS_NOROUNT
     ],
     entryComponents: COMPONENTS_NOROUNT,

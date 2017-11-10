@@ -204,6 +204,10 @@
                 "text": "Table List",
                 "link": "/pro/list/table-list",
                 "translate": "pro-table-list"
+            }, {
+                "text": "Basic List",
+                "link": "/pro/list/basic-list",
+                "translate": "pro-basic-list"
             }]
         }]
     }, {

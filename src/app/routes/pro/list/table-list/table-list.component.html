@@ -154,7 +154,7 @@
     </ng-template>
 </nz-card>
 <nz-modal [nzVisible]="modalVisible" [nzTitle]="'新建规则'" [nzConfirmLoading]="loading" [nzContent]="modalContent"
-    (nzOnCancel)="modalVisible=false" (nzOnOk)="save($event)">
+    (nzOnCancel)="modalVisible=false" (nzOnOk)="save()">
     <ng-template #modalContent>
         <div nz-form-item class="d-flex">
             <div nz-form-label><label for="no">描述</label></div>
