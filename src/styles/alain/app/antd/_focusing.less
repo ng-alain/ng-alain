@@ -1,4 +1,5 @@
 .focusing-mixin(@enabled) when(@enabled = true) {
+    @base-font-size-line-height: @line-height-base * @nz-font-size;
 
     body {
         font-size: @nz-font-size !important;
@@ -16,9 +17,9 @@
         .ant-select,
         .ant-select-dropdown,
         .ant-menu-item-group-title,
-        .ant-menu-inline .ant-menu-item, 
-        .ant-menu-inline .ant-menu-submenu-title, 
-        .ant-menu-vertical .ant-menu-item, 
+        .ant-menu-inline .ant-menu-item,
+        .ant-menu-inline .ant-menu-submenu-title,
+        .ant-menu-vertical .ant-menu-item,
         .ant-menu-vertical .ant-menu-submenu-title,
         // Data Entry
         .ant-cascader-menus,
@@ -75,6 +76,10 @@
         }
         .ant-form-explain {
             font-size: 12px;
+        }
+        // alert
+        .ant-alert-icon {
+            top: @base-font-size-line-height - 8 - @border-width-base;
         }
     }
 
