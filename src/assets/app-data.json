@@ -195,6 +195,16 @@
                 "link": "/pro/form/advanced-form",
                 "translate": "advanced-form"
             }]
+        }, {
+            "text": "List",
+            "translate": "pro-list",
+            "link": "/pro/list",
+            "icon": "icon-grid",
+            "children": [{
+                "text": "Table List",
+                "link": "/pro/list/table-list",
+                "translate": "pro-table-list"
+            }]
         }]
     }, {
         "text": "More",

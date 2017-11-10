@@ -7,6 +7,7 @@ import { Step1Component } from './form/step-form/step1.component';
 import { Step2Component } from './form/step-form/step2.component';
 import { Step3Component } from './form/step-form/step3.component';
 import { AdvancedFormComponent } from './form/advanced-form/advanced-form.component';
+import { ProTableListComponent } from './list/table-list/table-list.component';
 
 const routes: Routes = [
     {
@@ -14,6 +15,12 @@ const routes: Routes = [
         children: [
             { path: 'step-form', component: StepFormComponent },
             { path: 'advanced-form', component: AdvancedFormComponent }
+        ]
+    },
+    {
+        path: 'list',
+        children: [
+            { path: 'table-list', component: ProTableListComponent }
         ]
     }
 ];
@@ -28,6 +35,7 @@ const COMPONENTS_NOROUNT = [ Step1Component, Step2Component, Step3Component ];
     declarations: [
         StepFormComponent,
         AdvancedFormComponent,
+        ProTableListComponent,
         ...COMPONENTS_NOROUNT
     ],
     entryComponents: COMPONENTS_NOROUNT,
