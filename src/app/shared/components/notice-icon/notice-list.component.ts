@@ -12,12 +12,7 @@ import { NoticeItem } from './notice-item';
         <nz-list [nzDataSource]="data.list">
             <ng-template #nzItem let-item>
                 <nz-list-item (click)="onSelect(item)">
-                    <nz-list-item-meta>
-                        <ng-container *ngIf="item.avatar">
-                            <ng-template #nzAvatar>
-                                <nz-avatar [nzSrc]="item.avatar"></nz-avatar>
-                            </ng-template>
-                        </ng-container>
+                    <nz-list-item-meta [nzTitle]="nzTitle" [nzDescription]="nzDescription" [nzAvatar]="item.avatar">
                         <ng-template #nzTitle>
                             {{item.title}}
                             <div class="extra" *ngIf="item.extra"><nz-tag [nzColor]="item.color">{{item.extra}}</nz-tag></div>

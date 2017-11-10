@@ -53,6 +53,7 @@ const HELPERS = [ ModalHelper ];
         TranslateModule,
         ChartsModule,
         AngularEchartsModule,
+        NzListModule,
 
         ...shared_components,
         ...DIRECTIVES,
