@@ -12,7 +12,7 @@ cols: 1
 ----|------|-----|------
 layout | 布局方式  | `horizontal,vertical` | `horizontal`
 col | 指定信息最多分几列展示，最终一行几列由 col 配置结合响应式规则决定 | `number(0 < col <= 4)` | `3`
-title | 列表标题  | `TemplateRef<any>` | -
+title | 列表标题  | `string, TemplateRef<any>` | -
 gutter | 列表项间距，单位为 `px`  | `number` | `32`
 size | 列表型号，可以设置为 `large` `small`  | `string` | -
 
