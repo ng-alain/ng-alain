@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, OnChanges, SimpleChanges, Renderer2 } from '@angular/core';
+import { Component, Input, ElementRef, OnChanges, SimpleChanges, Renderer2, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'standard-form-row',
@@ -6,7 +6,8 @@ import { Component, Input, ElementRef, OnChanges, SimpleChanges, Renderer2 } fro
     <div *ngIf="title" class="label"><span>{{title}}</span></div>
     <div class="control"><ng-content></ng-content></div>
     `,
-    styleUrls: [ './standard-form-row.less' ]
+    styleUrls: [ './standard-form-row.less' ],
+    encapsulation: ViewEncapsulation.None
 })
 export class StandardFormRowComponent implements OnChanges {
 

@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'tag-select',
@@ -6,7 +6,8 @@ import { Component, HostBinding, Input } from '@angular/core';
     <ng-content></ng-content>
     <a *ngIf="expandable" class="trigger" (click)="trigger()">{{expand ? '收起' : '展开'}}<i class="anticon anticon-{{expand ? 'up' : 'down'}} ml-sm"></i></a>
     `,
-    styleUrls: [ './tag-select.less' ]
+    styleUrls: [ './tag-select.less' ],
+    encapsulation: ViewEncapsulation.None
 })
 export class TagSelectComponent {
 
