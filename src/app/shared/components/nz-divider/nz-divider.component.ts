@@ -33,18 +33,19 @@ export class NzDividerComponent implements OnChanges, OnInit {
 
     // endregion
 
+    _classMap: string[] = [];
     setClass() {
-        this.renderer.removeAttribute(this.el.nativeElement, 'class');
+        this._classMap.forEach(cls => this.renderer.removeClass(this.el.nativeElement, cls));
 
-        const ls = [ 'ant-divider', `ant-divider-${this.nzType}` ];
+        this._classMap = [ 'ant-divider', `ant-divider-${this.nzType}` ];
 
         if (this.title)
-            ls.push(`ant-divider-with-text`);
+            this._classMap.push(`ant-divider-with-text`);
 
         if (typeof this.nzDashed !== 'undefined' && this.nzDashed !== false)
-            ls.push(`ant-divider-dashed`);
+            this._classMap.push(`ant-divider-dashed`);
 
-        ls.forEach(cls => this.renderer.addClass(this.el.nativeElement, cls));
+        this._classMap.forEach(cls => this.renderer.addClass(this.el.nativeElement, cls));
     }
 
     constructor(private el: ElementRef, private renderer: Renderer2) {}

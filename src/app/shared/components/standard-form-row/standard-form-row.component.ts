@@ -25,15 +25,16 @@ export class StandardFormRowComponent implements OnChanges {
         return typeof value !== 'undefined' && value !== false;
     }
 
+    _classMap: string[] = [];
     setClass() {
-        this.renderer.removeClass(this.el.nativeElement, 'class');
+        this._classMap.forEach(cls => this.renderer.removeClass(this.el.nativeElement, cls));
 
-        const list = [ `standard-form-row` ];
-        if (this.isValid(this.block)) list.push('block');
-        if (this.isValid(this.grid)) list.push('grid');
-        if (this.isValid(this.last)) list.push('last');
+        this._classMap = [ `standard-form-row` ];
+        if (this.isValid(this.block)) this._classMap.push('block');
+        if (this.isValid(this.grid)) this._classMap.push('grid');
+        if (this.isValid(this.last)) this._classMap.push('last');
 
-        list.forEach(v => this.renderer.addClass(this.el.nativeElement, v));
+        this._classMap.forEach(v => this.renderer.addClass(this.el.nativeElement, v));
     }
 
     ngOnChanges(changes: SimpleChanges): void {

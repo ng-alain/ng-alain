@@ -4,7 +4,10 @@ import { Component, Input, ViewChild, TemplateRef } from '@angular/core';
     selector: 'desc-list-item',
     template: `
     <ng-template #tpl>
-        <div class="term">{{term}}</div>
+        <div class="term" *ngIf="_term || _termTpl">
+            <ng-template #defaultTermContent>{{_term}}</ng-template>
+            <ng-template [ngTemplateOutlet]="_termTpl || defaultTermContent"></ng-template>
+        </div>
         <div class="detail"><ng-content></ng-content></div>
     </ng-template>
     `
@@ -13,7 +16,15 @@ export class DescListItemComponent {
 
     // region fields
 
-    @Input() term: string;
+    _term = '';
+    _termTpl: TemplateRef<any>;
+    @Input()
+    set term(value: string | TemplateRef<any>) {
+        if (value instanceof TemplateRef)
+            this._termTpl = value;
+        else
+            this._term = value;
+    }
 
     // endregion
 
