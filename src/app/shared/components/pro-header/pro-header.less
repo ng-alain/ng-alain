@@ -1,0 +1,154 @@
+@import "../../../../styles/alain/_antd-style/themes/default.less";
+
+.pro-header {
+	display: block;
+    background: @component-background;
+    padding-top: 16px;
+	padding-bottom: 0;
+	border-bottom-color: @border-color-split;
+    color: rgba(0, 0, 0, 0.65);
+
+	.detail {
+		display: flex;
+	}
+
+	.row {
+		display: flex;
+	}
+
+	.ant-breadcrumb {
+        margin-bottom: 16px;
+        > nz-breadcrumb-item:last-child {
+            font-weight: normal;
+        }
+	}
+
+	.tabs {
+		margin: 0 0 -17px -8px;
+
+		.ant-tabs-bar {
+			border-bottom: @border-width-base @border-style-base
+				@border-color-split;
+		}
+	}
+
+	.logo {
+		flex: 0 1 auto;
+		margin-right: 16px;
+		padding-top: 1px;
+		> img {
+			width: 28px;
+			height: 28px;
+			border-radius: @border-radius-base;
+			display: block;
+		}
+	}
+
+	.title {
+		font-size: 20px;
+		font-weight: 500;
+		color: @heading-color;
+	}
+
+	.action {
+		margin-left: 56px;
+		min-width: 266px;
+
+		.ant-btn-group:not(:last-child),
+		.ant-btn:not(:last-child) {
+			margin-right: 8px;
+		}
+
+		.ant-btn-group > .ant-btn {
+			margin-right: 0;
+		}
+	}
+
+	.title,
+	.action,
+	.desc,
+	.extra,
+	.main {
+		flex: auto;
+	}
+
+	.title,
+	.action {
+		margin-bottom: 16px;
+	}
+
+	.logo,
+	.desc,
+	.extra {
+		margin-bottom: 16px;
+	}
+
+	.action,
+	.extra {
+		text-align: right;
+	}
+
+	.extra {
+		margin-left: 88px;
+		min-width: 242px;
+    }
+
+    .ant-tabs-bar {
+        margin-bottom: 1px;
+        border-bottom: none;
+    }
+}
+
+@media screen and (max-width: @screen-xl) {
+	.pro-header {
+		.extra {
+			margin-left: 44px;
+		}
+	}
+}
+
+@media screen and (max-width: @screen-lg) {
+	.pro-header {
+		.extra {
+			margin-left: 20px;
+		}
+	}
+}
+
+@media screen and (max-width: @screen-md) {
+	.pro-header {
+		.row {
+			display: block;
+		}
+
+		.action,
+		.extra {
+			margin-left: 0;
+			text-align: left;
+		}
+	}
+}
+
+@media screen and (max-width: @screen-sm) {
+	.pro-header {
+		.detail {
+			display: block;
+		}
+	}
+}
+
+@media screen and (max-width: @screen-xs) {
+	.pro-header {
+		.action {
+			.ant-btn-group,
+			.ant-btn {
+				display: block;
+				margin-bottom: 8px;
+			}
+			.ant-btn-group > .ant-btn {
+				display: inline-block;
+				margin-bottom: 0;
+			}
+		}
+	}
+}
