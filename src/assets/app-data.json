@@ -208,6 +208,10 @@
                 "text": "Basic List",
                 "link": "/pro/list/basic-list",
                 "translate": "pro-basic-list"
+            }, {
+                "text": "Search",
+                "link": "/pro/list/search",
+                "translate": "pro-search"
             }]
         }]
     }, {
