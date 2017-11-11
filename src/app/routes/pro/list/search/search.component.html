@@ -1,6 +1,12 @@
-<div class="content__title">
-    <h1>搜索列表</h1>
-</div>
+<pro-header [title]="'搜索列表'">
+    <ng-template #breadcrumb>
+        <nz-breadcrumb>
+            <nz-breadcrumb-item><a [routerLink]="['/']">首页</a></nz-breadcrumb-item>
+            <nz-breadcrumb-item><a [routerLink]="['/']">列表页</a></nz-breadcrumb-item>
+            <nz-breadcrumb-item>搜索列表</nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </ng-template>
+</pro-header>
 <nz-card [nzBordered]="false" [nzNoHovering]="true">
     <ng-template #body>
         <form nz-form [nzLayout]="'inline'">

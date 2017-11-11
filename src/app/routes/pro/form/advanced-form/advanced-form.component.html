@@ -1,9 +1,13 @@
-<div class="content__title">
-    <h1>
-        高级表单
-        <small>高级表单常见于一次性输入和提交大批量数据的场景。（示例采用响应式表单，也可使用模板驱动方式）</small>
-    </h1>
-</div>
+<pro-header [title]="'高级表单'">
+    <ng-template #breadcrumb>
+        <nz-breadcrumb>
+            <nz-breadcrumb-item><a [routerLink]="['/']">首页</a></nz-breadcrumb-item>
+            <nz-breadcrumb-item><a [routerLink]="['/']">表单页</a></nz-breadcrumb-item>
+            <nz-breadcrumb-item>高级表单</nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </ng-template>
+    <ng-template #content>高级表单常见于一次性输入和提交大批量数据的场景。（示例采用响应式表单，也可使用模板驱动方式）</ng-template>
+</pro-header>
 <form nz-form [formGroup]="form" (ngSubmit)="_submitForm()" [nzLayout]="'vertical'">
     <nz-card [nzNoHovering]="true">
         <ng-template #title>仓库管理</ng-template>

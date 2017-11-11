@@ -1,6 +1,12 @@
-<div class="content__title">
-    <h1>标准列表</h1>
-</div>
+<pro-header>
+    <ng-template #breadcrumb>
+        <nz-breadcrumb>
+            <nz-breadcrumb-item><a [routerLink]="['/']">首页</a></nz-breadcrumb-item>
+            <nz-breadcrumb-item><a [routerLink]="['/']">列表页</a></nz-breadcrumb-item>
+            <nz-breadcrumb-item>标准列表</nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </ng-template>
+</pro-header>
 <nz-card [nzNoHovering]="true">
     <ng-template #body>
         <div nz-row>
