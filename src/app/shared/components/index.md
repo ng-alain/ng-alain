@@ -31,3 +31,4 @@ cols: 1 （可选：占用栏数）
 `pro-header` | Pro 专用标题
 `standard-form-row` | 标准表单行
 `tag-select` | 标签选择器
+`nz-divider` | 分割线
