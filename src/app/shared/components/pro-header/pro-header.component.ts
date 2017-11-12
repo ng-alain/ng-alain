@@ -1,4 +1,5 @@
-import { Component, Input, ViewEncapsulation, ElementRef, TemplateRef, ContentChild } from '@angular/core';
+import { Component, Input, ViewEncapsulation, ElementRef, TemplateRef, ContentChild, OnInit, AfterViewInit } from '@angular/core';
+import { TitleService } from '@core/services/title.service';
 
 @Component({
     selector: 'pro-header',
@@ -28,7 +29,7 @@ import { Component, Input, ViewEncapsulation, ElementRef, TemplateRef, ContentCh
         '[class.pro-header]': 'true'
     }
 })
-export class ProHeaderComponent {
+export class ProHeaderComponent implements AfterViewInit {
 
     // region fields
 
@@ -47,4 +48,14 @@ export class ProHeaderComponent {
     @ContentChild('tab') tab: TemplateRef<any>;
 
     // endregion
+
+    constructor(private titleSrv: TitleService) {}
+
+    ngAfterViewInit() {
+        let t = this.title;
+        // from breadcrumb
+        const el = document.querySelector('pro-header nz-breadcrumb-item:last-child .ant-breadcrumb-link');
+        if (el) t = el.firstChild.textContent.trim() || this.title;
+        this.titleSrv.setTitle(t);
+    }
 }
