@@ -55,7 +55,7 @@ export class ProHeaderComponent implements AfterViewInit {
         let t = this.title;
         // from breadcrumb
         const el = document.querySelector('pro-header nz-breadcrumb-item:last-child .ant-breadcrumb-link');
-        if (el) t = el.firstChild.textContent.trim() || this.title;
+        if (el) t = el.textContent.trim() || this.title;
         this.titleSrv.setTitle(t);
     }
 }
