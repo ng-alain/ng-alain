@@ -4,7 +4,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AngularWebStorageModule } from 'angular-web-storage';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NgZorroAntdExtraModule } from 'ng-zorro-antd-extra';
 import { TranslateModule } from '@ngx-translate/core';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -28,6 +27,109 @@ const DIRECTIVES = [SparklineDirective, DownFileDirective, ImageDirective, Fixed
 const PIPES = [MomentDatePipe, CNCurrencyPipe, KeysPipe, YNPipe];
 const HELPERS = [ ModalHelper ];
 
+// region: zorro modules
+
+import {
+    // LoggerModule,
+    // NzLocaleModule,
+    NzButtonModule,
+    NzAlertModule,
+    NzBadgeModule,
+    // NzCalendarModule,
+    NzCascaderModule,
+    NzCheckboxModule,
+    NzDatePickerModule,
+    NzFormModule,
+    NzInputModule,
+    NzInputNumberModule,
+    NzGridModule,
+    NzMessageModule,
+    NzModalModule,
+    NzNotificationModule,
+    NzPaginationModule,
+    NzPopconfirmModule,
+    NzPopoverModule,
+    NzRadioModule,
+    NzRateModule,
+    NzSelectModule,
+    NzSpinModule,
+    NzSliderModule,
+    NzSwitchModule,
+    NzProgressModule,
+    NzTableModule,
+    NzTabsModule,
+    NzTagModule,
+    NzTimePickerModule,
+    NzUtilModule,
+    NzStepsModule,
+    NzDropDownModule,
+    NzMenuModule,
+    NzBreadCrumbModule,
+    NzLayoutModule,
+    NzRootModule,
+    NzCarouselModule,
+    // NzCardModule,
+    NzCollapseModule,
+    NzTimelineModule,
+    NzToolTipModule,
+    // NzBackTopModule,
+    // NzAffixModule,
+    // NzAnchorModule,
+    NzAvatarModule,
+    // SERVICES
+    NzNotificationService,
+    NzMessageService
+} from 'ng-zorro-antd';
+const ZORROMODULES = [
+    // LoggerModule,
+    // NzLocaleModule,
+    NzButtonModule,
+    NzAlertModule,
+    NzBadgeModule,
+    // NzCalendarModule,
+    NzCascaderModule,
+    NzCheckboxModule,
+    NzDatePickerModule,
+    NzFormModule,
+    NzInputModule,
+    NzInputNumberModule,
+    NzGridModule,
+    NzMessageModule,
+    NzModalModule,
+    NzNotificationModule,
+    NzPaginationModule,
+    NzPopconfirmModule,
+    NzPopoverModule,
+    NzRadioModule,
+    NzRateModule,
+    NzSelectModule,
+    NzSpinModule,
+    NzSliderModule,
+    NzSwitchModule,
+    NzProgressModule,
+    NzTableModule,
+    NzTabsModule,
+    NzTagModule,
+    NzTimePickerModule,
+    NzUtilModule,
+    NzStepsModule,
+    NzDropDownModule,
+    NzMenuModule,
+    NzBreadCrumbModule,
+    NzLayoutModule,
+    NzRootModule,
+    NzCarouselModule,
+    // NzCardModule,
+    NzCollapseModule,
+    NzTimelineModule,
+    NzToolTipModule,
+    // NzBackTopModule,
+    // NzAffixModule,
+    // NzAnchorModule,
+    NzAvatarModule
+];
+// endregion
+
 @NgModule({
     imports: [
         CommonModule,
@@ -35,7 +137,7 @@ const HELPERS = [ ModalHelper ];
         ReactiveFormsModule,
         HttpClientModule,
         AngularWebStorageModule,
-        NgZorroAntdModule.forRoot(),
+        ...ZORROMODULES,
         NgZorroAntdExtraModule.forRoot(),
         ChartsModule,
         AngularEchartsModule
@@ -47,7 +149,7 @@ const HELPERS = [ ModalHelper ];
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        NgZorroAntdModule,
+        ...ZORROMODULES,
         RouterModule,
         AngularWebStorageModule,
         TranslateModule,
@@ -63,7 +165,12 @@ const HELPERS = [ ModalHelper ];
 export class SharedModule {
     static forRoot(): ModuleWithProviders {
         return {
-            ngModule: SharedModule
+            ngModule: SharedModule,
+            providers: [
+                // Services
+                NzNotificationService,
+                NzMessageService
+            ]
         };
     }
 }
