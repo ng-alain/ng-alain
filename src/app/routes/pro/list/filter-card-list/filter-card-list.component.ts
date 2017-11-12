@@ -1,26 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { APIService } from '_mock/api.service';
+import * as moment from 'moment';
 
 @Component({
     selector: 'pro-list-filter-card-list',
     templateUrl: './filter-card-list.component.html',
-    styles: [`
-    :host ::ng-deep .ant-card-meta-title {
-        margin-bottom: 4px;
-    }
-    :host ::ng-deep nz-list nz-card {
-        margin-bottom: 0 !important;
-    }
-    :host ::ng-deep .card-item-content {
-        display: flex;
-        margin-top: 16px;
-        margin-bottom: -4px;
-        line-height: 20px;
-        height: 20px;
-        justify-content: space-between;
-    }
-    `],
+    styleUrls: [ './filter-card-list.component.less' ],
     encapsulation: ViewEncapsulation.Emulated
 })
 export class ProFilterCardListComponent implements OnInit {
@@ -71,9 +57,24 @@ export class ProFilterCardListComponent implements OnInit {
         this.loading = true;
         setTimeout(() => {
             this.list = this.list.concat(this.apiSrv.getFakeList(this.q.ps)).map(item => {
+                if (item.updatedAt) item.updatedAt = moment(item.updatedAt).fromNow();
+                item.activeUser = this.formatWan(item.activeUser);
                 return item;
             });
             this.loading = false;
         }, 1000);
+    }
+
+
+    private formatWan(val) {
+        const v = val * 1;
+        if (!v || isNaN(v)) return '';
+
+        let result = val;
+        if (val > 10000) {
+            result = Math.floor(val / 10000);
+            result = `${result}<em>万</em>`;
+        }
+        return result;
     }
 }

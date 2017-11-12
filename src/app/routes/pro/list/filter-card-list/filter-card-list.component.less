@@ -1,0 +1,35 @@
+:host ::ng-deep {
+	nz-list nz-card {
+		margin-bottom: 0 !important;
+		width: 100%;
+	}
+	.card-info {
+		zoom: 1;
+		margin-top: 16px;
+		margin-left: 40px;
+		& > div {
+			position: relative;
+			text-align: left;
+			float: left;
+			width: 50%;
+			p {
+				line-height: 32px;
+				font-size: 24px;
+				em {
+					position: relative;
+					top: -2px;
+					font-size: 14px;
+					font-style: normal;
+					line-height: 20px;
+					margin-left: 2px;
+				}
+			}
+			p:first-child {
+                color: rgba(0, 0, 0, 0.45);
+				font-size: 12px;
+				line-height: 20px;
+				margin-bottom: 4px;
+			}
+		}
+	}
+}
