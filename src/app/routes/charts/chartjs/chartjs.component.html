@@ -8,86 +8,68 @@
 </div>
 <div nz-row [nzGutter]="16">
     <div nz-col [nzMd]="12">
-        <nz-card>
-            <ng-template #title>Line</ng-template>
-            <ng-template #body>
-                <div style="height:250px;">
-                    <canvas baseChart
-                        [datasets]="lineChartData"
-                        [labels]="lineChartLabels"
-                        [options]="{responsive: true}"
-                        [colors]="lineChartColors"
-                        [legend]="true"
-                        [chartType]="'line'"></canvas>
-                </div>
-            </ng-template>
-        </nz-card>
-    </div>
-    <div nz-col [nzMd]="12">
-        <nz-card>
-            <ng-template #title>Bar</ng-template>
-            <ng-template #body>
-                <div style="height:250px;">
-                    <canvas baseChart
-                        [datasets]="barChartData"
-                        [labels]="barChartLabels"
-                        [options]="{responsive: true, scaleShowVerticalLines: false}"
-                        [legend]="true"
-                        [chartType]="'bar'"></canvas>
-                </div>
-            </ng-template>
-        </nz-card>
-    </div>
-</div>
-<div nz-row [nzGutter]="16">
-    <div nz-col [nzMd]="12">
-        <nz-card>
-            <ng-template #title>Doughnut</ng-template>
-            <ng-template #body>
+        <nz-card nzTitle="Line">
+            <div style="height:250px;">
                 <canvas baseChart
-                    [data]="doughnutChartData"
-                    [labels]="doughnutChartLabels"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
                     [options]="{responsive: true}"
-                    [chartType]="'doughnut'"></canvas>
-            </ng-template>
-        </nz-card>
-    </div>
-    <div nz-col [nzMd]="12">
-        <nz-card>
-            <ng-template #title>Radar</ng-template>
-            <ng-template #body>
-                <canvas baseChart
-                    [datasets]="radarChartData"
-                    [labels]="radarChartLabels"
-                    [options]="{responsive: true}"
-                    [chartType]="'radar'"></canvas>
-            </ng-template>
-        </nz-card>
-    </div>
-</div>
-<div nz-row [nzGutter]="16">
-    <div nz-col [nzMd]="12">
-        <nz-card>
-            <ng-template #title>Pie</ng-template>
-            <ng-template #body>
-                <canvas baseChart
-                    [data]="pieChartData"
-                    [labels]="pieChartLabels"
-                    [options]="{responsive: true}"
-                    [chartType]="'pie'"></canvas>
-            </ng-template>
-        </nz-card>
-    </div>
-    <div nz-col [nzMd]="12">
-        <nz-card>
-            <ng-template #title>Polar Area</ng-template>
-            <ng-template #body>
-                <canvas baseChart
-                    [data]="polarAreaChartData"
-                    [labels]="polarAreaChartLabels"
+                    [colors]="lineChartColors"
                     [legend]="true"
-                    [chartType]="'polarArea'"></canvas>
-            </ng-template>
+                    [chartType]="'line'"></canvas>
+            </div>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="12">
+        <nz-card nzTitle="Bar">
+            <div style="height:250px;">
+                <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="{responsive: true, scaleShowVerticalLines: false}"
+                    [legend]="true"
+                    [chartType]="'bar'"></canvas>
+            </div>
+        </nz-card>
+    </div>
+</div>
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzMd]="12">
+        <nz-card nzTitle="Doughnut">
+            <canvas baseChart
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [options]="{responsive: true}"
+                [chartType]="'doughnut'"></canvas>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="12">
+        <nz-card nzTitle="Radar">
+            <canvas baseChart
+                [datasets]="radarChartData"
+                [labels]="radarChartLabels"
+                [options]="{responsive: true}"
+                [chartType]="'radar'"></canvas>
+        </nz-card>
+    </div>
+</div>
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzMd]="12">
+        <nz-card nzTitle="Pie">
+            <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [options]="{responsive: true}"
+                [chartType]="'pie'"></canvas>
+        </nz-card>
+    </div>
+    <div nz-col [nzMd]="12">
+        <nz-card nzTitle="Polar Area">
+            <canvas baseChart
+                [data]="polarAreaChartData"
+                [labels]="polarAreaChartLabels"
+                [legend]="true"
+                [chartType]="'polarArea'"></canvas>
         </nz-card>
     </div>
 </div>

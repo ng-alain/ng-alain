@@ -13,7 +13,7 @@ export class TableFullComponent implements OnInit {
     total = 200; // mock total
     list = [];
     loading = false;
-    args = {};
+    args: any = { };
     _indeterminate = false;
     _allChecked = false;
 

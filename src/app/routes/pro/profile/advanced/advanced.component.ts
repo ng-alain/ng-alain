@@ -7,7 +7,11 @@ import { ProfileService } from '_mock/profile.service';
     templateUrl: './advanced.component.html'
 })
 export class ProProfileAdvancedComponent implements OnInit {
-    data = {};
+    data = {
+        advancedOperation1: [],
+        advancedOperation2: [],
+        advancedOperation3: []
+    };
 
     constructor(private apiSrv: ProfileService, public msg: NzMessageService) {}
 

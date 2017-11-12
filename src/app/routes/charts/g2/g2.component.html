@@ -11,21 +11,15 @@
 </div>
 <div nz-row [nzGutter]="16">
     <div nz-col [nzMd]="12">
-        <nz-card>
-            <ng-template #title>Line</ng-template>
-            <ng-template #body>
-                <g2-chart [options]="lineOptions"
-                  (ready)="lineReady($event)"></g2-chart>
-            </ng-template>
+        <nz-card nzTitle="Line">
+            <g2-chart [options]="lineOptions"
+                (ready)="lineReady($event)"></g2-chart>
         </nz-card>
     </div>
     <div nz-col [nzMd]="12">
-        <nz-card>
-            <ng-template #title>Area</ng-template>
-            <ng-template #body>
-                <g2-chart [options]="areaOptions"
-                  (ready)="areaReady($event)"></g2-chart>
-            </ng-template>
+        <nz-card nzTitle="Area">
+            <g2-chart [options]="areaOptions"
+                (ready)="areaReady($event)"></g2-chart>
         </nz-card>
     </div>
 </div>

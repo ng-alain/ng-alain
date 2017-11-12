@@ -27,7 +27,7 @@
             <desc-list-item term="创建人">曲丽丽</desc-list-item>
             <desc-list-item term="订购产品">XX 服务</desc-list-item>
             <desc-list-item term="创建时间">2017-07-07</desc-list-item>
-            <desc-list-item term="关联单据"><a href="">12421</a></desc-list-item>
+            <desc-list-item term="关联单据"><a (click)="msg.success('yes')">12421</a></desc-list-item>
             <desc-list-item term="生效日期">2017-07-07 ~ 2017-08-08</desc-list-item>
             <desc-list-item term="备注">请于两个工作日内确认</desc-list-item>
         </desc-list>
@@ -51,7 +51,7 @@
         </nz-tabset>
     </ng-template>
 </pro-header>
-<nz-card-v3 nzBordered class="mb-lg" nzTitle="流程进度">
+<nz-card nzBordered class="mb-lg" nzTitle="流程进度">
     <nz-steps [nzCurrent]="1">
         <nz-step [nzTitle]="'创建项目'" nzdesc-list-item="曲丽丽"></nz-step>
         <nz-step [nzTitle]="'部门初审'" nzdesc-list-item="周毛毛"></nz-step>
@@ -59,8 +59,8 @@
         <nz-step [nzTitle]="'完成'"></nz-step>
     </nz-steps>
     <div class="steps-content"></div>
-</nz-card-v3>
-<nz-card-v3 nzBordered nzTitle="用户信息" class="mb-lg">
+</nz-card>
+<nz-card nzBordered nzTitle="用户信息" class="mb-lg">
     <desc-list class="mb-lg">
         <desc-list-item term="用户姓名">付小小</desc-list-item>
         <desc-list-item term="会员卡号">32943898021309809423</desc-list-item>
@@ -84,7 +84,7 @@
         <desc-list-item term="该数据更新时间">2017-08-08</desc-list-item>
     </desc-list>
     <h4 class="mb-md">信息组</h4>
-    <nz-card-v3 nzType="inner" nzTitle="多层级信息组">
+    <nz-card nzType="inner" nzTitle="多层级信息组">
         <desc-list size="small" title="组名称" class="mb-md">
             <desc-list-item term="负责人">林东东</desc-list-item>
             <desc-list-item term="角色码">1234567</desc-list-item>
@@ -103,14 +103,14 @@
             <desc-list-item term="负责人">付小小</desc-list-item>
             <desc-list-item term="角色码">1234568</desc-list-item>
         </desc-list>
-    </nz-card-v3>
-</nz-card-v3>
-<nz-card-v3 nzTitle="用户近半年来电记录" class="mb-lg">
+    </nz-card>
+</nz-card>
+<nz-card nzTitle="用户近半年来电记录" class="mb-lg">
     <div class="no-data">
         <i class="anticon anticon-frown-o"></i>暂无数据
     </div>
-</nz-card-v3>
-<nz-card-v3>
+</nz-card>
+<nz-card>
     <nz-card-tab nzTabHeading="操作日志一">
         <nz-table [nzDataSource]="data.advancedOperation1" [nzIsPagination]="false">
             <thead nz-thead>
@@ -186,4 +186,4 @@
             </tbody>
         </nz-table>
     </nz-card-tab>
-</nz-card-v3>
+</nz-card>

@@ -5,34 +5,25 @@
 </div>
 <div nz-row [nzGutter]="8">
     <div nz-col [nzSpan]="8">
-        <nz-card>
-            <ng-template #title>全量</ng-template>
-            <ng-template #body>
-                <button nz-button (click)="toggleFull()">
-                    <span>{{ full ? '离开' : '设置'}}权限</span>
-                </button>
-                <p class="pt-md">全量类指系统管理员角色，无任何受限。</p>
-            </ng-template>
+        <nz-card nzTitle="全量">
+            <button nz-button (click)="toggleFull()">
+                <span>{{ full ? '离开' : '设置'}}权限</span>
+            </button>
+            <p class="pt-md">全量类指系统管理员角色，无任何受限。</p>
         </nz-card>
     </div>
     <div nz-col [nzSpan]="8">
-        <nz-card>
-            <ng-template #title>角色[role-a]</ng-template>
-            <ng-template #body>
-                <button nz-button (click)="toggleRoleA()">
-                    <span>{{ roleA.length > 0 ? '离开' : '设置'}}权限</span>
-                </button>
-            </ng-template>
+        <nz-card nzTitle="角色[role-a]">
+            <button nz-button (click)="toggleRoleA()">
+                <span>{{ roleA.length > 0 ? '离开' : '设置'}}权限</span>
+            </button>
         </nz-card>
     </div>
     <div nz-col [nzSpan]="8">
-        <nz-card>
-            <ng-template #title>角色[role-b]</ng-template>
-            <ng-template #body>
-                <button nz-button (click)="toggleRoleB()">
-                    <span>{{ roleB.length > 0 ? '离开' : '设置'}}权限</span>
-                </button>
-            </ng-template>
+        <nz-card nzTitle="角色[role-b]">
+            <button nz-button (click)="toggleRoleB()">
+                <span>{{ roleB.length > 0 ? '离开' : '设置'}}权限</span>
+            </button>
         </nz-card>
     </div>
 </div>
