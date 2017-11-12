@@ -1,15 +1,10 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, Input, HostBinding, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'ellipsis',
     template: `<ng-content></ng-content>`,
-    styles: [ `
-    ellipsis {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-    }
-    `]
+    styleUrls: [ './ellipsis.less' ],
+    encapsulation: ViewEncapsulation.None
 })
 export class EllipsisComponent {
     @HostBinding('style.-webkit-line-clamp')
