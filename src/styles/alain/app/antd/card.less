@@ -2,6 +2,10 @@
     margin-bottom: @md;
 }
 
+nz-card {
+    margin-bottom: @md !important;
+}
+
 // 标题为图片
 .ant-card__title-img {
     .ant-card-head-title {
@@ -31,15 +35,19 @@
 
 // color
 .for-each(@colors, {
-    .ant-card__@{key} { 
+    .ant-card__@{key} {
         .ant-card-head {
-            background-color: extract(@item, @color-basic-position);
+            @tmpColor: extract(@item, @color-basic-position);
+            background-color: @tmpColor;
+            .ant-card-head-title {
+                .color-yiq(@tmpColor);
+            }
         }
     }
 });
 
 .for-each(@aliasColors, {
-    .ant-card__@{key} { 
+    .ant-card__@{key} {
         .ant-card-head {
             background-color: ~`getColor("@{colors}", "@{value}", @{color-basic-position})`;
         }
