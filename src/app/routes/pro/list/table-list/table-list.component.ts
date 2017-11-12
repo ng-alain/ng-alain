@@ -7,7 +7,7 @@ import { RuleService } from '_mock/rule.service';
     templateUrl: './table-list.component.html'
 })
 export class ProTableListComponent implements OnInit {
-    q = {
+    q: any = {
         pi: 1,
         ps: 10,
         sorter: '',
@@ -27,7 +27,7 @@ export class ProTableListComponent implements OnInit {
         { text: '已上线', value: false, type: 'success' },
         { text: '异常', value: false, type: 'error' }
     ];
-    sortMap = {};
+    sortMap: any = {};
     expandForm = false;
     modalVisible = false;
     description = '';

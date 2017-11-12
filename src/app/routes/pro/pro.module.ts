@@ -9,6 +9,9 @@ import { Step3Component } from './form/step-form/step3.component';
 import { AdvancedFormComponent } from './form/advanced-form/advanced-form.component';
 import { ProTableListComponent } from './list/table-list/table-list.component';
 import { ProBasicListComponent } from './list/basic-list/basic-list.component';
+import { ProCardListComponent } from './list/card-list/card-list.component';
+import { ProCoverCardListComponent } from './list/cover-card-list/cover-card-list.component';
+import { ProFilterCardListComponent } from './list/filter-card-list/filter-card-list.component';
 import { ProSearchComponent } from './list/search/search.component';
 import { ProProfileBaseComponent } from './profile/basic/basic.component';
 import { ProProfileAdvancedComponent } from './profile/advanced/advanced.component';
@@ -26,6 +29,9 @@ const routes: Routes = [
         children: [
             { path: 'table-list', component: ProTableListComponent },
             { path: 'basic-list', component: ProBasicListComponent },
+            { path: 'card-list', component: ProCardListComponent },
+            { path: 'cover-card-list', component: ProCoverCardListComponent },
+            { path: 'filter-card-list', component: ProFilterCardListComponent },
             { path: 'search', component: ProSearchComponent }
         ]
     },
@@ -50,6 +56,9 @@ const COMPONENTS_NOROUNT = [ Step1Component, Step2Component, Step3Component ];
         AdvancedFormComponent,
         ProTableListComponent,
         ProBasicListComponent,
+        ProCardListComponent,
+        ProCoverCardListComponent,
+        ProFilterCardListComponent,
         ProSearchComponent,
         ProProfileBaseComponent,
         ProProfileAdvancedComponent,

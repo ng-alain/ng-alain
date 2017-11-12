@@ -1,21 +1,38 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd';
 import { APIService } from '_mock/api.service';
 
 @Component({
-    selector: 'pro-list-search',
-    templateUrl: './search.component.html',
-    styleUrls: ['./search.component.less'],
+    selector: 'pro-list-filter-card-list',
+    templateUrl: './filter-card-list.component.html',
+    styles: [`
+    :host ::ng-deep .ant-card-meta-title {
+        margin-bottom: 4px;
+    }
+    :host ::ng-deep nz-list nz-card {
+        margin-bottom: 0 !important;
+    }
+    :host ::ng-deep .card-item-content {
+        display: flex;
+        margin-top: 16px;
+        margin-bottom: -4px;
+        line-height: 20px;
+        height: 20px;
+        justify-content: space-between;
+    }
+    `],
     encapsulation: ViewEncapsulation.Emulated
 })
-export class ProSearchComponent implements OnInit {
+export class ProFilterCardListComponent implements OnInit {
     q: any = {
-        ps: 5,
+        ps: 8,
         categories: [],
         owners: [ 'zxx' ]
     };
 
-    list: any[] = [];
-    loading = false;
+    list: any[] = [ ];
+
+    loading = true;
 
     // region: cateogry
     categories = [
@@ -40,39 +57,11 @@ export class ProSearchComponent implements OnInit {
         } else {
             this.categories[idx].value = status;
         }
+        this.getData();
     }
     // endregion
 
-    // region: owners
-    owners = [
-        {
-            id: 'wzj',
-            name: '我自己',
-        },
-        {
-            id: 'wjh',
-            name: '吴家豪',
-        },
-        {
-            id: 'zxx',
-            name: '周星星',
-        },
-        {
-            id: 'zly',
-            name: '赵丽颖',
-        },
-        {
-            id: 'ym',
-            name: '姚明',
-        }
-    ];
-
-    setOwner() {
-        this.q.owners = [`wzj`];
-    }
-    // endregion
-
-    constructor(private apiSrv: APIService) {}
+    constructor(private apiSrv: APIService, public msg: NzMessageService) {}
 
     ngOnInit() {
         this.getData();
@@ -81,8 +70,10 @@ export class ProSearchComponent implements OnInit {
     getData() {
         this.loading = true;
         setTimeout(() => {
-            this.list = this.list.concat(this.apiSrv.getFakeList(this.q.ps));
+            this.list = this.list.concat(this.apiSrv.getFakeList(this.q.ps)).map(item => {
+                return item;
+            });
             this.loading = false;
-        }, 500);
+        }, 1000);
     }
 }

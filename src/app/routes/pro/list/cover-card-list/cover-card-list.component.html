@@ -3,7 +3,7 @@
         <nz-breadcrumb>
             <nz-breadcrumb-item><a [routerLink]="['/']">首页</a></nz-breadcrumb-item>
             <nz-breadcrumb-item><a [routerLink]="['/']">列表页</a></nz-breadcrumb-item>
-            <nz-breadcrumb-item>搜索列表（文章）</nz-breadcrumb-item>
+            <nz-breadcrumb-item>搜索列表（项目）</nz-breadcrumb-item>
         </nz-breadcrumb>
     </ng-template>
     <ng-template #content>
@@ -12,7 +12,7 @@
         </div>
     </ng-template>
     <ng-template #tab>
-        <nz-tabset [nzSize]="default" [nzSelectedIndex]="0">
+        <nz-tabset [nzSize]="default" [nzSelectedIndex]="2">
             <nz-tab><ng-template #nzTabHeading><a [routerLink]="['/pro/list/search']">文章</a></ng-template></nz-tab>
             <nz-tab><ng-template #nzTabHeading><a [routerLink]="['/pro/list/filter-card-list']">应用</a></ng-template></nz-tab>
             <nz-tab><ng-template #nzTabHeading><a [routerLink]="['/pro/list/cover-card-list']">项目</a></ng-template></nz-tab>
@@ -29,16 +29,6 @@
                             {{i.text}}
                         </nz-checkable-tag>
                     </tag-select>
-                </div>
-            </div>
-        </standard-form-row>
-        <standard-form-row [title]="'owner'" grid>
-            <div nz-form-item>
-                <div nz-form-control>
-                    <nz-select [(ngModel)]="q.owners" name="owners" [nzSize]="'large'" [nzMode]="'tags'" style="width: 286px;">
-                        <nz-option *ngFor="let i of owners" [nzLabel]="i.name" [nzValue]="i.id"></nz-option>
-                    </nz-select>
-                    <a class="selfTrigger" (click)="setOwner()">只看自己的</a>
                 </div>
             </div>
         </standard-form-row>
@@ -68,40 +58,26 @@
         </standard-form-row>
     </form>
 </nz-card>
-<nz-card [nzBordered]="false">
-    <nz-list
-        nzSize="large"
-        nzItemLayout="vertical"
-        [nzLoading]="loading"
-        [nzDataSource]="list">
-        <ng-template #item let-item>
-            <nz-list-item [nzContent]="nzContent" [nzExtra]="nzExtra">
-                <nz-list-item-action><i class="anticon anticon-star-o mr-sm"></i>{{item.star}}</nz-list-item-action>
-                <nz-list-item-action><i class="anticon anticon-like-o mr-sm"></i>{{item.like}}</nz-list-item-action>
-                <nz-list-item-action><i class="anticon anticon-message mr-sm"></i>{{item.message}}</nz-list-item-action>
-                <ng-template #nzExtra><div style="width: 272px; height: 1px;"></div></ng-template>
-                <nz-list-item-meta [nzTitle]="nzTitle" [nzDescription]="nzDescription">
-                    <ng-template #nzTitle><a href="{{item.href}}" target="_blank">{{item.title}}</a></ng-template>
-                    <ng-template #nzDescription>
-                        <nz-tag>Alain</nz-tag><nz-tag>ng-zorro-antd</nz-tag><nz-tag>Ant Design</nz-tag>
-                    </ng-template>
-                </nz-list-item-meta>
-                <ng-template #nzContent>
-                    <p>{{item.content}}</p>
-                    <div class="mt-md d-flex">
-                        <nz-avatar [nzSrc]="item.avatar" [nzSize]="'small'" class="mr-sm"></nz-avatar>
-                        <a href="{{item.href}}" target="_blank">{{item.owner}}</a>
-                        <span class="px-sm">发布在</span>
-                        <a href="{{item.href}}" target="_blank">{{item.href}}</a>
-                        <time class="pl-md text-grey" title="{{item.updatedAt}}">{{item.updatedAt | _date}}</time>
-                    </div>
-                </ng-template>
-            </nz-list-item>
-        </ng-template>
-        <ng-template #loadMore>
-            <div class="text-center mt-md">
-                <button nz-button (click)="getData()" [nzLoading]="loading" [nzType]="'dashed'" [nzSize]="'large'" style="min-width:200px">加载更多</button>
-            </div>
-        </ng-template>
-    </nz-list>
-</nz-card>
+<nz-list [nzLoading]="loading" [nzDataSource]="list"
+         [nzGrid]="{gutter: 24, lg: 6, md: 8, sm: 12, xs: 24 }">
+    <ng-template #item let-item>
+        <nz-list-item>
+            <nz-card nzHoverable>
+                <ng-template #cover><img alt="{{item.title}}" src="{{item.cover}}"></ng-template>
+                <nz-card-meta
+                    [nzTitle]="nzTitle"
+                    [nzDescription]="item.subDescription">
+                    <ng-template #nzTitle><a (click)="msg.success('标题：' + item.id);">{{item.title}}</a></ng-template>
+                </nz-card-meta>
+                <div class="card-item-content">
+                    <span class="text-grey">{{item.updatedAt}}</span>
+                    <avatar-list size="mini">
+                        <avatar-list-item *ngFor="let m of item.members"
+                                            [src]="m.avatar"
+                                            [tips]="m.name"></avatar-list-item>
+                    </avatar-list>
+                </div>
+            </nz-card>
+        </nz-list-item>
+    </ng-template>
+</nz-list>

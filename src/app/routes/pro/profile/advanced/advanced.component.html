@@ -51,16 +51,16 @@
         </nz-tabset>
     </ng-template>
 </pro-header>
-<nz-card nzBordered class="mb-lg" nzTitle="流程进度">
+<nz-card [nzBordered]="false" class="mb-lg" nzTitle="流程进度">
     <nz-steps [nzCurrent]="1">
-        <nz-step [nzTitle]="'创建项目'" nzdesc-list-item="曲丽丽"></nz-step>
-        <nz-step [nzTitle]="'部门初审'" nzdesc-list-item="周毛毛"></nz-step>
+        <nz-step [nzTitle]="'创建项目'" nzDescription="曲丽丽"></nz-step>
+        <nz-step [nzTitle]="'部门初审'" nzDescription="周毛毛"></nz-step>
         <nz-step [nzTitle]="'财务复核'"></nz-step>
         <nz-step [nzTitle]="'完成'"></nz-step>
     </nz-steps>
     <div class="steps-content"></div>
 </nz-card>
-<nz-card nzBordered nzTitle="用户信息" class="mb-lg">
+<nz-card [nzBordered]="false" nzTitle="用户信息" class="mb-lg">
     <desc-list class="mb-lg">
         <desc-list-item term="用户姓名">付小小</desc-list-item>
         <desc-list-item term="会员卡号">32943898021309809423</desc-list-item>
@@ -105,12 +105,12 @@
         </desc-list>
     </nz-card>
 </nz-card>
-<nz-card nzTitle="用户近半年来电记录" class="mb-lg">
+<nz-card [nzBordered]="false" nzTitle="用户近半年来电记录" class="mb-lg">
     <div class="no-data">
         <i class="anticon anticon-frown-o"></i>暂无数据
     </div>
 </nz-card>
-<nz-card>
+<nz-card [nzBordered]="false">
     <nz-card-tab nzTabHeading="操作日志一">
         <nz-table [nzDataSource]="data.advancedOperation1" [nzIsPagination]="false">
             <thead nz-thead>

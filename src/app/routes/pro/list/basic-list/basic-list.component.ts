@@ -8,7 +8,7 @@ import { APIService } from '_mock/api.service';
     styleUrls: [ './basic-list.component.less' ]
 })
 export class ProBasicListComponent implements OnInit {
-    q = {
+    q: any = {
         status: 'all'
     };
     loading = false;

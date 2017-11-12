@@ -209,6 +209,18 @@
                 "link": "/pro/list/basic-list",
                 "translate": "pro-basic-list"
             }, {
+                "text": "Card List",
+                "link": "/pro/list/card-list",
+                "translate": "pro-card-list"
+            }, {
+                "text": "Cover Card List",
+                "link": "/pro/list/cover-card-list",
+                "translate": "pro-cover-card-list"
+            }, {
+                "text": "Filter Card List",
+                "link": "/pro/list/filter-card-list",
+                "translate": "pro-filter-card-list"
+            }, {
                 "text": "Search",
                 "link": "/pro/list/search",
                 "translate": "pro-search"
