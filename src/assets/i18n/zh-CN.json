@@ -75,5 +75,8 @@
     "pro-list": "列表页",
     "pro-table-list": "查询表格",
     "pro-basic-list": "标准列表",
-    "pro-search": "搜索列表（文章）"
+    "pro-search": "搜索列表（文章）",
+    "pro-profile": "详情页",
+    "pro-profile-basic": "基础详情页",
+    "pro-profile-advanced": "高级详情页"
 }

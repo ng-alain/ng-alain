@@ -10,7 +10,7 @@ import { NoticeItem } from './notice-item';
     </div>
     <ng-template #listTpl>
         <nz-list [nzDataSource]="data.list">
-            <ng-template #nzItem let-item>
+            <ng-template #item let-item>
                 <nz-list-item (click)="onSelect(item)">
                     <nz-list-item-meta [nzTitle]="nzTitle" [nzDescription]="nzDescription" [nzAvatar]="item.avatar">
                         <ng-template #nzTitle>

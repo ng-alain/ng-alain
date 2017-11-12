@@ -213,6 +213,20 @@
                 "link": "/pro/list/search",
                 "translate": "pro-search"
             }]
+        }, {
+            "text": "Profile",
+            "translate": "pro-profile",
+            "link": "/pro/profile",
+            "icon": "icon-book-open",
+            "children": [{
+                "text": "Basic",
+                "link": "/pro/profile/basic",
+                "translate": "pro-profile-basic"
+            }, {
+                "text": "Advanced",
+                "link": "/pro/profile/advanced",
+                "translate": "pro-profile-advanced"
+            }]
         }]
     }, {
         "text": "More",

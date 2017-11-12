@@ -10,6 +10,8 @@ import { AdvancedFormComponent } from './form/advanced-form/advanced-form.compon
 import { ProTableListComponent } from './list/table-list/table-list.component';
 import { ProBasicListComponent } from './list/basic-list/basic-list.component';
 import { ProSearchComponent } from './list/search/search.component';
+import { ProProfileBaseComponent } from './profile/basic/basic.component';
+import { ProProfileAdvancedComponent } from './profile/advanced/advanced.component';
 
 const routes: Routes = [
     {
@@ -25,6 +27,13 @@ const routes: Routes = [
             { path: 'table-list', component: ProTableListComponent },
             { path: 'basic-list', component: ProBasicListComponent },
             { path: 'search', component: ProSearchComponent }
+        ]
+    },
+    {
+        path: 'profile',
+        children: [
+            { path: 'basic', component: ProProfileBaseComponent },
+            { path: 'advanced', component: ProProfileAdvancedComponent }
         ]
     }
 ];
@@ -42,6 +51,8 @@ const COMPONENTS_NOROUNT = [ Step1Component, Step2Component, Step3Component ];
         ProTableListComponent,
         ProBasicListComponent,
         ProSearchComponent,
+        ProProfileBaseComponent,
+        ProProfileAdvancedComponent,
         ...COMPONENTS_NOROUNT
     ],
     entryComponents: COMPONENTS_NOROUNT,

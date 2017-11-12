@@ -50,7 +50,7 @@
             <i class="anticon anticon-plus"></i><span>添加</span>
         </button>
         <nz-list [nzDataSource]="data" [nzLoading]="loading">
-            <ng-template #nzItem let-item>
+            <ng-template #item let-item>
                 <nz-list-item [nzContent]="nzContent">
                     <nz-list-item-action><a (click)="msg.success('编辑：' + item.title)">编辑</a></nz-list-item-action>
                     <nz-list-item-action>

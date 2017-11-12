@@ -65,7 +65,7 @@
             nzItemLayout="vertical"
             [nzLoading]="loading"
             [nzDataSource]="list">
-            <ng-template #nzItem let-item>
+            <ng-template #item let-item>
                 <nz-list-item [nzContent]="nzContent" [nzExtra]="nzExtra">
                     <nz-list-item-action><i class="anticon anticon-star-o mr-sm"></i>{{item.star}}</nz-list-item-action>
                     <nz-list-item-action><i class="anticon anticon-like-o mr-sm"></i>{{item.like}}</nz-list-item-action>

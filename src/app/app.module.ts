@@ -20,7 +20,8 @@ import { TokenInterceptor } from '@core/net/token/token.interceptor';
 // mock services
 import { APIService } from '../_mock/api.service';
 import { RuleService } from '../_mock/rule.service';
-const MOCKSERVICES = [APIService, RuleService];
+import { ProfileService } from '../_mock/profile.service';
+const MOCKSERVICES = [APIService, RuleService, ProfileService];
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {

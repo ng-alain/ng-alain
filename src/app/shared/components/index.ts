@@ -3,7 +3,6 @@ import { StandardFormRowComponent } from './standard-form-row/index';
 import { TagSelectComponent } from './tag-select';
 import { ProHeaderComponent } from './pro-header';
 import { DescListComponent, DescListItemComponent } from './desc-list';
-import { NzDividerComponent } from './nz-divider';
 
 export const shared_entry_components = [
 ];
@@ -15,6 +14,5 @@ export const shared_components = [
     TagSelectComponent,
     ProHeaderComponent,
     DescListComponent,
-    DescListItemComponent,
-    NzDividerComponent
+    DescListItemComponent
 ];
