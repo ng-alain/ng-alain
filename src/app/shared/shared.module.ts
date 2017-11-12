@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { NzListModule } from 'ng-list-antd';
+import { NgZorroAntdExtraModule } from 'ng-zorro-antd-extra';
 import { TranslateModule } from '@ngx-translate/core';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AngularEchartsModule } from 'ngx-echarts';
@@ -36,7 +36,7 @@ const HELPERS = [ ModalHelper ];
         HttpClientModule,
         AngularWebStorageModule,
         NgZorroAntdModule.forRoot(),
-        NzListModule,
+        NgZorroAntdExtraModule.forRoot(),
         ChartsModule,
         AngularEchartsModule
     ],
@@ -53,7 +53,7 @@ const HELPERS = [ ModalHelper ];
         TranslateModule,
         ChartsModule,
         AngularEchartsModule,
-        NzListModule,
+        NgZorroAntdExtraModule,
 
         ...shared_components,
         ...DIRECTIVES,
