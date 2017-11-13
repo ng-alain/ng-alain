@@ -520,4 +520,12 @@
         }
     }
     .SLIDER-mixin();
+
+    .TABS-mixin() when(@focusing-full-color-enabled = true), (@focusing-tabs-color-enabled = true) {
+        @tabs-prefix-cls: ~"@{ant-prefix}-tabs";
+        .@{tabs-prefix-cls}-ink-bar {
+            background-color: @new-color;
+        }
+    }
+    .TABS-mixin();
 }
