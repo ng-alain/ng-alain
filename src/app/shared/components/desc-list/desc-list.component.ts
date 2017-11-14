@@ -15,7 +15,7 @@ import { DescListItemComponent } from './desc-list-item.component';
     </div>
     `,
     styleUrls: [ './desc-list.less' ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class DescListComponent implements OnChanges, OnInit {
 

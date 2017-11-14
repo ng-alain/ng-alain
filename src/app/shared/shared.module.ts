@@ -8,6 +8,7 @@ import { NgZorroAntdExtraModule } from 'ng-zorro-antd-extra';
 import { TranslateModule } from '@ngx-translate/core';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AngularEchartsModule } from 'ngx-echarts';
+import { CountdownModule } from 'ngx-countdown';
 
 import { SparklineDirective } from './directives/sparkline.directive';
 import { DownFileDirective } from './directives/down-file.directive';
@@ -140,7 +141,8 @@ const ZORROMODULES = [
         ...ZORROMODULES,
         NgZorroAntdExtraModule.forRoot(),
         ChartsModule,
-        AngularEchartsModule
+        AngularEchartsModule,
+        CountdownModule
     ],
     declarations: [...shared_components, ...DIRECTIVES, ...PIPES],
     providers: [ ...HELPERS ],
@@ -156,6 +158,7 @@ const ZORROMODULES = [
         ChartsModule,
         AngularEchartsModule,
         NgZorroAntdExtraModule,
+        CountdownModule,
 
         ...shared_components,
         ...DIRECTIVES,

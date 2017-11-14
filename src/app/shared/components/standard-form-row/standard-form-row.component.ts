@@ -1,4 +1,5 @@
 import { Component, Input, ElementRef, OnChanges, SimpleChanges, Renderer2, ViewEncapsulation } from '@angular/core';
+import { isTruth } from 'app/utils/utils';
 
 @Component({
     selector: 'standard-form-row',
@@ -21,18 +22,14 @@ export class StandardFormRowComponent implements OnChanges {
 
     constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-    private isValid(value: any): boolean {
-        return typeof value !== 'undefined' && value !== false;
-    }
-
     _classMap: string[] = [];
     setClass() {
         this._classMap.forEach(cls => this.renderer.removeClass(this.el.nativeElement, cls));
 
         this._classMap = [ `standard-form-row` ];
-        if (this.isValid(this.block)) this._classMap.push('block');
-        if (this.isValid(this.grid)) this._classMap.push('grid');
-        if (this.isValid(this.last)) this._classMap.push('last');
+        if (isTruth(this.block)) this._classMap.push('block');
+        if (isTruth(this.grid)) this._classMap.push('grid');
+        if (isTruth(this.last)) this._classMap.push('last');
 
         this._classMap.forEach(v => this.renderer.addClass(this.el.nativeElement, v));
     }

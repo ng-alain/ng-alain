@@ -33,3 +33,6 @@ cols: 1 （可选：占用栏数）
 `tag-select` | 标签选择器
 `ellipsis` | 一个简单的文本自动省略号
 `avatar-list` | 用户头像列表
+`trend` | 趋势标记
+`mini-area` | 趋势标记
+[charts](./charts/index.md) | 图表清单

@@ -5,7 +5,7 @@ import { AvatarListItemComponent } from './avatar-list-item.component';
     selector: 'avatar-list',
     template: `
     <ul>
-        <li *ngFor="let i of _items" class="avatar-item" [ngClass]="_size">
+        <li *ngFor="let i of _items" class="item" [ngClass]="_size">
             <nz-tooltip *ngIf="i.tips" [nzTitle]="i.tips">
                 <nz-avatar nz-tooltip [nzSrc]="i.src" [nzSize]="_avatarSize"></nz-avatar>
             </nz-tooltip>
@@ -14,7 +14,7 @@ import { AvatarListItemComponent } from './avatar-list-item.component';
     </ul>
     `,
     styleUrls: [ './avatar-list.less' ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class AvatarListComponent {
 

@@ -5,8 +5,7 @@ import { Component, Input, ViewChild, TemplateRef } from '@angular/core';
     template: `
     <ng-template #tpl>
         <div class="term" *ngIf="_term || _termTpl">
-            <ng-template #defaultTermContent>{{_term}}</ng-template>
-            <ng-template [ngTemplateOutlet]="_termTpl || defaultTermContent"></ng-template>
+            <ng-container *ngTemplateOutlet="_term || _termTpl">{{_term}}</ng-container>
         </div>
         <div class="detail"><ng-content></ng-content></div>
     </ng-template>

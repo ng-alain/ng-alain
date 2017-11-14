@@ -4,7 +4,7 @@ import { Component, Input, HostBinding, ViewEncapsulation } from '@angular/core'
     selector: 'ellipsis',
     template: `<ng-content></ng-content>`,
     styleUrls: [ './ellipsis.less' ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class EllipsisComponent {
     @HostBinding('style.-webkit-line-clamp')

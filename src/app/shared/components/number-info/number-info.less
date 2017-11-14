@@ -1,0 +1,63 @@
+@import "../../../../styles/alain/_antd-style/themes/default.less";
+
+.textOverflow() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	white-space: nowrap;
+}
+
+.number-info {
+    display: block;
+	.suffix {
+		color: @text-color;
+		font-size: 16px;
+		font-style: normal;
+		margin-left: 4px;
+    }
+    .title {
+		color: @text-color;
+		font-size: @font-size-lg;
+		margin-bottom: 16px;
+		transition: all 0.3s;
+    }
+    .sub-title {
+		color: @text-color-secondary;
+		font-size: @font-size-base;
+		height: 22px;
+		line-height: 22px;
+		.textOverflow();
+    }
+    .value {
+		margin-top: 4px;
+		font-size: 0;
+		.textOverflow();
+		& > span {
+			color: @heading-color;
+			display: inline-block;
+			line-height: 32px;
+			height: 32px;
+			font-size: 24px;
+			margin-right: 32px;
+		}
+		.sub-total {
+			color: @text-color-secondary;
+			font-size: @font-size-lg;
+			vertical-align: top;
+			margin-right: 0;
+			i {
+				font-size: 12px;
+				transform: scale(0.82);
+				margin-left: 4px;
+			}
+		}
+    }
+
+    &.light {
+        .value {
+            & > span {
+                color: @text-color;
+            }
+        }
+    }
+}
