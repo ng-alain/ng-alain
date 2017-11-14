@@ -21,6 +21,9 @@
             "styles.less"
         ],
         "scripts": [
+            "../node_modules/g2/index.js",
+            "../libs/g2-plugin-slider.js",
+            "../libs/g2-cloud.js",
             "../node_modules/jquery/dist/jquery.js",
             "../node_modules/jquery-sparkline/jquery.sparkline.js",
             "../node_modules/chart.js/dist/Chart.bundle.js",
