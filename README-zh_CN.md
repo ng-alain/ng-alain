@@ -56,7 +56,6 @@ npm run serve:hmr
 | `ng2-charts` | `chart.js` |  |
 | `d3` |  |  |
 | `g2-angular` | `g2` |  |
-| `jquery-sparkline` | `jquery` |  |
 | `ng2-file-upload` |  |  |
 | `ng2-img-cropper` |  |  |
 | `ngx-color-picker` |  |  |

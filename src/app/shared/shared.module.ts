@@ -10,7 +10,6 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AngularEchartsModule } from 'ngx-echarts';
 import { CountdownModule } from 'ngx-countdown';
 
-import { SparklineDirective } from './directives/sparkline.directive';
 import { DownFileDirective } from './directives/down-file.directive';
 import { ImageDirective } from './directives/image.directive';
 import { FixedBtnsDirective } from './directives/fixed-btns.directive';
@@ -24,7 +23,7 @@ import { ModalHelper } from './helper/modal.helper';
 
 import { shared_entry_components, shared_components } from './components/index';
 
-const DIRECTIVES = [SparklineDirective, DownFileDirective, ImageDirective, FixedBtnsDirective, ErrorCollectComponent];
+const DIRECTIVES = [ DownFileDirective, ImageDirective, FixedBtnsDirective, ErrorCollectComponent];
 const PIPES = [MomentDatePipe, CNCurrencyPipe, KeysPipe, YNPipe];
 const HELPERS = [ ModalHelper ];
 

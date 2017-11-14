@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div nz-col [nzSm]="5" [nzOffset]="2">
-                <button nz-button [nzType]="'primary'" (click)="load(1)" [nzLoading]="loading">Search</button>
+                <button nz-button [nzType]="'primary'" (click)="load(1)" [nzLoading]="loading" class="mr-sm"><span>Search</span></button>
                 <button nz-button (click)="clear()" [disabled]="loading">Clear</button>
             </div>
         </div>
@@ -133,10 +133,8 @@
                             <nz-tag *ngIf="data.gender=='male'" [nzColor]="'green'">male</nz-tag>
                         </td>
                         <td nz-td>{{data.email}}</td>
-                        <td nz-td>
-                            <div sparkline data-bar-color="#cfdbe2"
-                                data-height="20" data-bar-width="2" data-bar-spacing="2"
-                                values="1,0,4,6,5,7,8,3,5,7,8"></div>
+                        <td nz-td style="width: 90px">
+                            <mini-bar height="30" theme="mini" color="#999" borderWidth="3" [margin]="[36, 50, 30, 0]" [data]="events"></mini-bar>
                         </td>
                         <td nz-td>{{data.price | _currency}}</td>
                         <td nz-td>{{data.registered | _date: 'YYYY年MM月DD日'}}</td>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RandomUserService } from '../randomUser.service';
 import { NzMessageService } from 'ng-zorro-antd';
+import { getFakeChartData } from '_mock/chart.service';
 
 @Component({
     selector: 'app-table-full',
@@ -16,6 +17,11 @@ export class TableFullComponent implements OnInit {
     args: any = { };
     _indeterminate = false;
     _allChecked = false;
+
+    events = [...getFakeChartData.visitData.slice(0, 6)].map(item => {
+        item.x = item.x.substring(5);
+        return item;
+    });
 
     load(pi?: number) {
         if (typeof pi !== 'undefined') {

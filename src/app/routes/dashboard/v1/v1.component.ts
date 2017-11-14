@@ -1,5 +1,6 @@
 import { NzMessageService } from 'ng-zorro-antd';
 import { Component } from '@angular/core';
+import { getFakeChartData } from '_mock/chart.service';
 
 @Component({
     selector: 'app-dashboard-v1',
@@ -8,13 +9,6 @@ import { Component } from '@angular/core';
 export class DashboardV1Component {
 
     constructor(public msg: NzMessageService) {}
-
-    sparkOptions1 = {
-        barColor: '#fbfbfb',
-        height: 30,
-        barWidth: '3',
-        barSpacing: '2'
-    };
 
     todoData: any[] = [
         { completed: true, avatar: '1', name: '苏先生', content: `请告诉我，我应该说点什么好？` },
@@ -70,4 +64,6 @@ export class DashboardV1Component {
     ];
 
     quickMenu = false;
+
+    webSite = [ ...getFakeChartData.visitData.slice(0, 10) ];
 }

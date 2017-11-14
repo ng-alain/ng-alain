@@ -15,6 +15,10 @@ export class MiniBarComponent implements OnDestroy, OnChanges, AfterViewInit {
     @HostBinding('style.height.px')
     @Input() height = 0;
 
+    @Input() borderWidth = 5;
+
+    @Input() margin: number[] = [36, 5, 30, 5];
+
     @Input() data: any[];
 
     // endregion
@@ -49,7 +53,7 @@ export class MiniBarComponent implements OnDestroy, OnChanges, AfterViewInit {
                 forceFit: true,
                 height: +this.height + 54,
                 plotCfg: {
-                    margin: [36, 5, 30, 5],
+                    margin: this.margin
                 },
                 legend: null
             });
@@ -72,7 +76,7 @@ export class MiniBarComponent implements OnDestroy, OnChanges, AfterViewInit {
                     name: 'x'
                 }
             });
-            chart.interval().position('x*y').color(this.color);
+            chart.interval().position('x*y').size(this.borderWidth).color(this.color);
 
             chart.render();
 

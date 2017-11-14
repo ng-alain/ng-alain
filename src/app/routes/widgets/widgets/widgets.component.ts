@@ -1,5 +1,6 @@
 import { NzMessageService } from 'ng-zorro-antd';
 import { Component } from '@angular/core';
+import { getFakeChartData } from '_mock/chart.service';
 
 @Component({
     selector: 'app-widgets',
@@ -8,32 +9,8 @@ import { Component } from '@angular/core';
 })
 export class WidgetsComponent {
 
-    sparkOptions1 = {
-        barColor: '#fff',
-        height: 30,
-        barWidth: '3',
-        barSpacing: '2'
-    };
-
-    sparkOptions2 = {
-        type: 'line',
-        height: 80,
-        width: '100%',
-        lineWidth: 2,
-        lineColor: '#ececec',
-        highlightLineColor: '#fff',
-        spotColor: '#bbb',
-        spotRadius: 3,
-        fillColor: '',
-        resize: true
-    };
-
-    sparkOptions3 = {
-        barColor: '#fff',
-        height: 50,
-        barWidth: 6,
-        barSpacing: 6
-    };
+    webSite = [ ...getFakeChartData.visitData.slice(0, 10) ];
+    data = getFakeChartData;
 
     todoData: any[] = [
         { completed: true, avatar: '1', name: '苏先生', content: `请告诉我，我应该说点什么好？` },

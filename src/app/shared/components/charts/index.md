@@ -26,6 +26,8 @@ ng-alain 提供的业务中常用的图表类型，都是基于 [G2](https://ant
 | color | 图表颜色 | `string` | `#1890FF` |
 | height | 图表高度 | `number` | - |
 | data | 数据 | `array<{x, y}>` | - |
+| borderWidth | 线条粗细 | `number` | `5` |
+| margin | 图表内部间距 | `array` | `[36, 5, 30, 5]` |
 
 ### mini-area
 

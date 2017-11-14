@@ -53,8 +53,6 @@
     "font-awesome": "^4.7.0",
     "g2": "^2.3.12",
     "g2-angular": "1.0.0",
-    "jquery": "^3.2.1",
-    "jquery-sparkline": "^2.4.0",
     "moment": "^2.18.1",
     "ng-tree-antd": "1.0.0",
     "ng-zorro-antd": "~0.5.3",
