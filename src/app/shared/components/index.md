@@ -24,15 +24,14 @@ cols: 1 （可选：占用栏数）
 
 # 组件列表
 
-组件名 | 说明
-----|------
-`desc-list` | 描述列表
-`notice-icon` | 通知菜单
-`pro-header` | Pro 专用标题
-`standard-form-row` | 标准表单行
-`tag-select` | 标签选择器
-`ellipsis` | 一个简单的文本自动省略号
-`avatar-list` | 用户头像列表
-`trend` | 趋势标记
-`mini-area` | 趋势标记
-[charts](./charts/index.md) | 图表清单
+组件名 | API | 说明
+----|------|------
+`desc-list` | [API](./desc-list/index.md) | 描述列表
+`notice-icon` | [API](./notice-icon/index.md) | 通知菜单
+`pro-header` | [API](./pro-header/index.md) | Pro 专用标题
+`standard-form-row` | [API](./standard-form-row/index.md) | 标准表单行
+`tag-select` | [API](./tag-select/index.md) | 标签选择器
+`ellipsis` | [API](./ellipsis/index.md) | 一个简单的文本自动省略号
+`avatar-list` | [API](./avatar-list/index.md) | 用户头像列表
+`trend` | [API](./trend/index.md) | 趋势标记
+g2-charts | [API](./charts/index.md) | 图表清单
