@@ -8,6 +8,9 @@ import { MaintenanceComponent } from './pages/maintenance/maintenance.component'
 import { Page404Component } from './pages/404/404.component';
 import { Page500Component } from './pages/500/500.component';
 import { DashboardV1Component } from './dashboard/v1/v1.component';
+import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
+import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
+import { DashboardWorkplaceComponent } from './dashboard/workplace/workplace.component';
 
 export const routes = [
     {
@@ -17,6 +20,9 @@ export const routes = [
             { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
             { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
             { path: 'dashboard/v1', component: DashboardV1Component, data: { translate: 'dashboard_v1' } },
+            { path: 'dashboard/analysis', component: DashboardAnalysisComponent, data: { translate: 'dashboard_analysis' } },
+            { path: 'dashboard/monitor', component: DashboardMonitorComponent, data: { translate: 'dashboard_monitor' } },
+            { path: 'dashboard/workplace', component: DashboardWorkplaceComponent, data: { translate: 'dashboard_workplace' } },
             { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
             { path: 'elements', loadChildren: './elements/elements.module#ElementsModule' },
             { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },

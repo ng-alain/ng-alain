@@ -21,6 +21,18 @@
                 "text": "仪表盘V1",
                 "link": "/dashboard/v1",
                 "translate": "dashboard_v1"
+            }, {
+                "text": "分析页",
+                "link": "/dashboard/analysis",
+                "translate": "dashboard_analysis"
+            }, {
+                "text": "Monitor",
+                "link": "/dashboard/monitor",
+                "translate": "dashboard_monitor"
+            }, {
+                "text": "Workplace",
+                "link": "/dashboard/workplace",
+                "translate": "dashboard_workplace"
             }]
         }, {
             "text": "快捷菜单",

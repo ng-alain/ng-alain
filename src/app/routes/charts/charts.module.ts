@@ -20,9 +20,7 @@ const routes: Routes = [
         SharedModule,
         RouterModule.forChild(routes),
         NgxChartsModule,
-        G2ChartModule.forRoot({
-            js: 'https://a.alipayobjects.com/g/datavis/g2/2.3.9/index.js'
-        })
+        G2ChartModule.forRoot()
     ],
     declarations: [
         NgxChartsComponent,
