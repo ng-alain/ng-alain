@@ -78,11 +78,11 @@ export class MiniAreaComponent implements OnDestroy, OnChanges, AfterViewInit {
                 x: {
                     type: 'cat',
                     range: [0, 1],
-                    ...this.xAxis
+                    xAxis: this.xAxis
                 },
                 y: {
                     min: 0,
-                    ...this.yAxis
+                    yAxis: this.yAxis
                 }
             };
 

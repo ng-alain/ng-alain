@@ -53,8 +53,6 @@ npm run serve:hmr
 | `angular-baidu-maps` |  | BaidDu Map |
 | `angular-qq-maps` |  | QQ Map |
 | `angular-web-storage` |  | LocalStorage |
-| `ng2-charts` | `chart.js` |  |
-| `d3` |  |  |
 | `g2-angular` | `g2` |  |
 | `ng2-file-upload` |  |  |
 | `ng2-img-cropper` |  |  |

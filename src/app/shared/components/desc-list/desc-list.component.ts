@@ -5,8 +5,7 @@ import { DescListItemComponent } from './desc-list-item.component';
     selector: 'desc-list',
     template: `
     <div *ngIf="_title || _titleTpl" class="title">
-        <ng-template #defaultTitleContent>{{_title}}</ng-template>
-        <ng-template [ngTemplateOutlet]="_titleTpl || defaultTitleContent"></ng-template>
+        <ng-container *ngIf="_title; else _titleTpl">{{_title}}</ng-container>
     </div>
     <div nz-row [nzGutter]="gutter">
         <div nz-col [nzXs]="_xs" [nzSm]="_sm" [nzMd]="_md" *ngFor="let i of _items">

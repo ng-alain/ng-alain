@@ -6,8 +6,6 @@ import { RouterModule } from '@angular/router';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { NgZorroAntdExtraModule } from 'ng-zorro-antd-extra';
 import { TranslateModule } from '@ngx-translate/core';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { AngularEchartsModule } from 'ngx-echarts';
 import { CountdownModule } from 'ngx-countdown';
 
 import { DownFileDirective } from './directives/down-file.directive';
@@ -136,12 +134,11 @@ const ZORROMODULES = [
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        AngularWebStorageModule,
         ...ZORROMODULES,
         NgZorroAntdExtraModule.forRoot(),
-        ChartsModule,
-        AngularEchartsModule,
-        CountdownModule
+        // 第三方
+        CountdownModule,
+        AngularWebStorageModule
     ],
     declarations: [...shared_components, ...DIRECTIVES, ...PIPES],
     providers: [ ...HELPERS ],
@@ -150,15 +147,15 @@ const ZORROMODULES = [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        ...ZORROMODULES,
         RouterModule,
-        AngularWebStorageModule,
-        TranslateModule,
-        ChartsModule,
-        AngularEchartsModule,
+        ...ZORROMODULES,
         NgZorroAntdExtraModule,
+        // 第三方
+        AngularWebStorageModule,
         CountdownModule,
-
+        // 多语言
+        TranslateModule,
+        // 业务级
         ...shared_components,
         ...DIRECTIVES,
         ...PIPES

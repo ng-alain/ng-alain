@@ -23,10 +23,7 @@
         "scripts": [
             "../node_modules/g2/index.js",
             "../libs/g2-plugin-slider.js",
-            "../libs/g2-cloud.js",
-            "../node_modules/chart.js/dist/Chart.bundle.js",
-            "../node_modules/echarts/dist/echarts.js",
-            "../node_modules/echarts/theme/dark.js"
+            "../libs/g2-cloud.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {

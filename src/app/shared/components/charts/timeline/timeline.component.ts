@@ -66,7 +66,7 @@ export class TimelineComponent implements OnDestroy, OnChanges, AfterViewInit {
                 forceFit: true,
                 height: this.height,
                 plotCfg: {
-                    ...this.margin
+                    margin: this.margin
                 }
             });
 

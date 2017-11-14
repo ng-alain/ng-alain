@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { SharedModule } from '@shared/shared.module';
 
@@ -16,8 +15,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         SharedModule,
-        RouterModule.forChild(routes),
-        NgxChartsModule
+        RouterModule.forChild(routes)
     ],
     providers: [ RandomUserService ],
     declarations: [
