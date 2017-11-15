@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   @HostBinding('class.aside-collapsed') get isCollapsed() { return this.settings.layout.collapsed; }
 
   constructor(
-    private theme: ThemesService, 
+    private theme: ThemesService,
     private tsServ: TranslatorService,
     private settings: SettingsService,
     private activatedRoute: ActivatedRoute,

@@ -13,24 +13,26 @@ import { _HttpClient } from './services/http.client';
 import { TitleService } from '@core/services/title.service';
 
 @NgModule({
-  imports: [
-  ],
-  providers: [
-    ThemesService,
-    SettingsService,
-    MenuService,
-    TranslatorService,
-    ScrollService,
-    ColorsService,
-    ACLService,
-    TokenService,
-    _HttpClient,
-    TitleService
-  ],
-  declarations: [
-  ],
-  exports: [
-  ]
+    imports: [
+    ],
+    providers: [
+        SettingsService,
+        MenuService,
+        ScrollService,
+        ColorsService,
+        TitleService,
+        _HttpClient,
+        ThemesService,
+        // LEVEL: adjust
+        TokenService,
+        // LEVEL: optionals
+        TranslatorService,
+        ACLService
+    ],
+    declarations: [
+    ],
+    exports: [
+    ]
 })
 export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {

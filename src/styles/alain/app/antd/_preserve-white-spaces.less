@@ -1,0 +1,12 @@
+.preserve-white-spaces-mixin(@enabled) when(@enabled = true) {
+    @white-spacing: @layout-gutter;
+
+    // 表单
+    form {
+        // 按钮
+        .ant-btn + .ant-btn {
+            margin-left: @white-spacing;
+        }
+    }
+}
+.preserve-white-spaces-mixin(@preserve-white-spaces-enabled);
