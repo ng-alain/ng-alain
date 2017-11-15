@@ -39,8 +39,8 @@ npm run serve:hmr
 
 | package | version |
 | ------- | ------- |
-| `ng-alain` | 0.1.2-rc.2 | 
-| `ng-zorro-antd` | ^0.5.3 |
+| `ng-alain` | 0.1.2-rc.3 | 
+| `ng-zorro-antd` | ^0.6.0-rc.3 |
 | `@angular` | ^4.4.5 |
 | `@angular/cli` | ^1.4.7 |
 
