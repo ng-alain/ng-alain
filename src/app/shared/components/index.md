@@ -34,4 +34,5 @@ cols: 1 （可选：占用栏数）
 `ellipsis` | [API](./ellipsis/index.md) | 一个简单的文本自动省略号
 `avatar-list` | [API](./avatar-list/index.md) | 用户头像列表
 `trend` | [API](./trend/index.md) | 趋势标记
+`result` | [API](./result/index.md) | 处理结果
 g2-charts | [API](./charts/index.md) | 图表清单

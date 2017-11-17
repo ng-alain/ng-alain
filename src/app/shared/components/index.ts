@@ -12,6 +12,7 @@ import {
     WaterWaveComponent, G2RadarComponent
 } from './charts';
 import { NumberInfoComponent } from './number-info';
+import { ResultComponent } from './result';
 
 export const shared_entry_components = [
 ];
@@ -29,6 +30,7 @@ export const shared_components = [
     AvatarListItemComponent,
     TrendComponent,
     NumberInfoComponent,
+    ResultComponent,
     // charts
     ChartCardComponent,
     MiniAreaComponent,
