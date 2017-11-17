@@ -82,5 +82,8 @@
     "pro-search": "Search（Article）",
     "pro-profile": "Profile Page",
     "pro-profile-basic": "Basic",
-    "pro-profile-advanced": "Advanced"
+    "pro-profile-advanced": "Advanced",
+    "pro-result": "Result Page",
+    "pro-result-success": "Success",
+    "pro-result-fail": "Fail"
 }

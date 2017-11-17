@@ -82,5 +82,8 @@
     "pro-search": "搜索列表（文章）",
     "pro-profile": "详情页",
     "pro-profile-basic": "基础详情页",
-    "pro-profile-advanced": "高级详情页"
+    "pro-profile-advanced": "高级详情页",
+    "pro-result": "结果",
+    "pro-result-success": "成功",
+    "pro-result-fail": "失败"
 }

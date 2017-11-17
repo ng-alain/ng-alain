@@ -243,6 +243,20 @@
                 "link": "/pro/profile/advanced",
                 "translate": "pro-profile-advanced"
             }]
+        }, {
+            "text": "Result",
+            "translate": "pro-result",
+            "link": "/pro/result",
+            "icon": "icon-check",
+            "children": [{
+                "text": "Success",
+                "link": "/pro/result/success",
+                "translate": "pro-result-success"
+            }, {
+                "text": "Fail",
+                "link": "/pro/result/fail",
+                "translate": "pro-result-fail"
+            }]
         }]
     }, {
         "text": "More",

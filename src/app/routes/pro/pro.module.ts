@@ -15,6 +15,8 @@ import { ProFilterCardListComponent } from './list/filter-card-list/filter-card-
 import { ProSearchComponent } from './list/search/search.component';
 import { ProProfileBaseComponent } from './profile/basic/basic.component';
 import { ProProfileAdvancedComponent } from './profile/advanced/advanced.component';
+import { ProResultSuccessComponent } from 'app/routes/pro/result/success/success.component';
+import { ProResultFailComponent } from 'app/routes/pro/result/fail/fail.component';
 
 const routes: Routes = [
     {
@@ -41,6 +43,13 @@ const routes: Routes = [
             { path: 'basic', component: ProProfileBaseComponent },
             { path: 'advanced', component: ProProfileAdvancedComponent }
         ]
+    },
+    {
+        path: 'result',
+        children: [
+            { path: 'success', component: ProResultSuccessComponent },
+            { path: 'fail', component: ProResultFailComponent }
+        ]
     }
 ];
 
@@ -48,7 +57,7 @@ const COMPONENTS_NOROUNT = [ Step1Component, Step2Component, Step3Component ];
 
 @NgModule({
     imports: [
-        SharedModule,
+        SharedModule.forRoot(),
         RouterModule.forChild(routes)
     ],
     declarations: [
@@ -62,6 +71,8 @@ const COMPONENTS_NOROUNT = [ Step1Component, Step2Component, Step3Component ];
         ProSearchComponent,
         ProProfileBaseComponent,
         ProProfileAdvancedComponent,
+        ProResultSuccessComponent,
+        ProResultFailComponent,
         ...COMPONENTS_NOROUNT
     ],
     entryComponents: COMPONENTS_NOROUNT,
