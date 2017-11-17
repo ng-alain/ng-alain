@@ -85,5 +85,6 @@
     "pro-profile-advanced": "Advanced",
     "pro-result": "Result Page",
     "pro-result-success": "Success",
-    "pro-result-fail": "Fail"
+    "pro-result-fail": "Fail",
+    "pro-exception": "Exception"
 }

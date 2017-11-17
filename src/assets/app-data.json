@@ -257,6 +257,21 @@
                 "link": "/pro/result/fail",
                 "translate": "pro-result-fail"
             }]
+        }, {
+            "text": "Exception",
+            "translate": "pro-exception",
+            "link": "/pro/exception",
+            "icon": "icon-fire",
+            "children": [{
+                "text": "403",
+                "link": "/pro/exception/403"
+            }, {
+                "text": "404",
+                "link": "/pro/exception/404"
+            }, {
+                "text": "500",
+                "link": "/pro/exception/500"
+            }]
         }]
     }, {
         "text": "More",

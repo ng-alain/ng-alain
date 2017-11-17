@@ -85,5 +85,6 @@
     "pro-profile-advanced": "高级详情页",
     "pro-result": "结果",
     "pro-result-success": "成功",
-    "pro-result-fail": "失败"
+    "pro-result-fail": "失败",
+    "pro-exception": "异常"
 }

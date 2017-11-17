@@ -13,6 +13,7 @@ import {
 } from './charts';
 import { NumberInfoComponent } from './number-info';
 import { ResultComponent } from './result';
+import { ExceptionComponent } from './exception';
 
 export const shared_entry_components = [
 ];
@@ -31,6 +32,7 @@ export const shared_components = [
     TrendComponent,
     NumberInfoComponent,
     ResultComponent,
+    ExceptionComponent,
     // charts
     ChartCardComponent,
     MiniAreaComponent,
