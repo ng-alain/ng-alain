@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getFakeChartData } from '_mock/chart.service';
 import { getTimeDistance, yuan, fixedZero } from 'app/utils/utils';
+import { getFakeChartData } from '../../../../../_mock/chart.service';
 
 @Component({
     selector: 'app-dashboard-monitor',

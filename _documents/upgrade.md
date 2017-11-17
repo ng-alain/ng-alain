@@ -11,9 +11,9 @@
 ```
 _documents (允许删除)
 _screenshot (允许删除)
+_mock (允许删除：ng-alain示例所需要数据模拟)
 libs （一些无法通过 npm 安装使用的类库）
 src
-    _mock (允许删除：ng-alain示例所需要数据模拟)
     app
         core
             preloader

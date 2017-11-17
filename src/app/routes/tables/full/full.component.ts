@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RandomUserService } from '../randomUser.service';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getFakeChartData } from '_mock/chart.service';
+import { getFakeChartData } from '../../../../../_mock/chart.service';
 
 @Component({
     selector: 'app-table-full',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { ProfileService } from '_mock/profile.service';
+import { getProfileBasicData } from '../../../../../../_mock/profile.service';
 
 @Component({
     selector: 'pro-profile-basic',
@@ -13,10 +13,10 @@ export class ProProfileBaseComponent implements OnInit {
     amountNum = 0;
     data = {};
 
-    constructor(private apiSrv: ProfileService, public msg: NzMessageService) {}
+    constructor(public msg: NzMessageService) {}
 
     ngOnInit() {
-        this.data = this.apiSrv.getProfileBasicData();
+        this.data = getProfileBasicData();
         (<any>this.data).basicGoods.forEach(item => {
             this.basicNum += Number(item.num);
             this.amountNum += Number(item.amount);

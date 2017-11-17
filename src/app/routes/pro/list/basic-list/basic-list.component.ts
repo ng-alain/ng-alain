@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { APIService } from '_mock/api.service';
+import { getFakeList } from '../../../../../../_mock/api.service';
 
 @Component({
     selector: 'pro-basic-list',
@@ -14,7 +14,7 @@ export class ProBasicListComponent implements OnInit {
     loading = false;
     data: any[] = [];
 
-    constructor(private apiSrv: APIService, public msg: NzMessageService) {}
+    constructor(public msg: NzMessageService) {}
 
     ngOnInit() {
         this.getData();
@@ -23,7 +23,7 @@ export class ProBasicListComponent implements OnInit {
     getData() {
         this.loading = true;
         setTimeout(() => {
-            this.data = this.apiSrv.getFakeList(5);
+            this.data = getFakeList(5);
             this.loading = false;
         }, 1000);
     }

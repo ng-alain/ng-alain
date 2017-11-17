@@ -1,6 +1,6 @@
 import { NzMessageService } from 'ng-zorro-antd';
 import { Component } from '@angular/core';
-import { getFakeChartData } from '_mock/chart.service';
+import { getFakeChartData } from '../../../../../_mock/chart.service';
 
 @Component({
     selector: 'app-widgets',

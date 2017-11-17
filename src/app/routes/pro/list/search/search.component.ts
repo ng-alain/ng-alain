@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { APIService } from '_mock/api.service';
+import { getFakeList } from '../../../../../../_mock/api.service';
 
 @Component({
     selector: 'pro-list-search',
@@ -72,8 +72,6 @@ export class ProSearchComponent implements OnInit {
     }
     // endregion
 
-    constructor(private apiSrv: APIService) {}
-
     ngOnInit() {
         this.getData();
     }
@@ -81,7 +79,7 @@ export class ProSearchComponent implements OnInit {
     getData() {
         this.loading = true;
         setTimeout(() => {
-            this.list = this.list.concat(this.apiSrv.getFakeList(this.q.ps));
+            this.list = this.list.concat(getFakeList(this.q.ps));
             this.loading = false;
         }, 500);
     }

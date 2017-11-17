@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { RuleService } from '_mock/rule.service';
+import { getRule, saveRule, removeRule } from '../../../../../../_mock/rule.service';
 
 @Component({
     selector: 'pro-table-list',
@@ -32,7 +32,7 @@ export class ProTableListComponent implements OnInit {
     modalVisible = false;
     description = '';
 
-    constructor(private apiSrv: RuleService, public msg: NzMessageService) {}
+    constructor(public msg: NzMessageService) {}
 
     ngOnInit() {
         this.getData();
@@ -43,7 +43,7 @@ export class ProTableListComponent implements OnInit {
             this.q.statusList = this.status.map((i, index) => i.value ? index : -1).filter(w => w !== -1);
             if (this.q.status && this.q.status > -1) this.q.statusList.push(this.q.status);
             console.log(this.q);
-            this.data = this.apiSrv.get(this.q).map(i => {
+            this.data = getRule(this.q).map(i => {
                 const statusItem = this.status[i.status];
                 i.statusText = statusItem.text;
                 i.statusType = statusItem.type;
@@ -59,13 +59,13 @@ export class ProTableListComponent implements OnInit {
 
     save() {
         this.loading = true;
-        this.apiSrv.save(this.description);
+        saveRule(this.description);
         this.getData();
         setTimeout(() => this.modalVisible = false, 500);
     }
 
     remove() {
-        this.selectedRows.forEach(i => this.apiSrv.delete(i.no));
+        this.selectedRows.forEach(i => removeRule(i.no));
         this.getData();
         this.clear();
     }

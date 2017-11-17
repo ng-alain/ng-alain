@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { getTimeDistance, yuan, fixedZero } from 'app/utils/utils';
-import { APIService } from '_mock/api.service';
-import { getFakeChartData } from '_mock/chart.service';
+import { getNotice, getActivities } from '../../../../../_mock/api.service';
+import { getFakeChartData } from '../../../../../_mock/chart.service';
 
 @Component({
     selector: 'app-dashboard-workplace',
@@ -76,12 +76,12 @@ export class DashboardWorkplaceComponent implements OnInit, OnDestroy {
       ];
     // endregion
 
-    constructor(public msg: NzMessageService, private apiSrv: APIService) {}
+    constructor(public msg: NzMessageService) {}
 
     ngOnInit() {
         setTimeout(() => {
-            this.notice = this.apiSrv.getNotice();
-            this.activities = this.apiSrv.getActivities().map((item: any) => {
+            this.notice = getNotice();
+            this.activities = getActivities().map((item: any) => {
                 item.template = item.template.split(/@\{([^{}]*)\}/gi).map((key: string) => {
                     if (item[key]) return `<a>${item[key].name}</a>`;
                     return key;

@@ -17,12 +17,6 @@ import { TranslatorService } from './core/translator/translator.service';
 import { SettingsService } from './core/services/settings.service';
 import { TokenInterceptor } from '@core/net/token/token.interceptor';
 
-// mock services
-import { APIService } from '../_mock/api.service';
-import { RuleService } from '../_mock/rule.service';
-import { ProfileService } from '../_mock/profile.service';
-const MOCKSERVICES = [APIService, RuleService, ProfileService];
-
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, `assets/i18n/`, '.json');
@@ -62,8 +56,7 @@ export function StartupServiceFactory(startupService: StartupService): Function 
             useFactory: StartupServiceFactory,
             deps: [StartupService],
             multi: true
-        },
-        ...MOCKSERVICES
+        }
     ],
     bootstrap: [AppComponent]
 })
