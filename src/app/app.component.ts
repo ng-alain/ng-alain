@@ -1,9 +1,8 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { SettingsService } from './core/services/settings.service';
 import { ThemesService } from './core/services/themes.service';
-import { TranslatorService } from './core/translator/translator.service';
 import { TitleService } from '@core/services/title.service';
 
 @Component({
@@ -18,9 +17,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private theme: ThemesService,
-    private tsServ: TranslatorService,
     private settings: SettingsService,
-    private activatedRoute: ActivatedRoute,
     private router: Router,
     private titleSrv: TitleService) {
   }
@@ -29,23 +26,9 @@ export class AppComponent implements OnInit {
     this.router
         .events
         .filter(evt => evt instanceof NavigationEnd)
-        .map(() => this.activatedRoute)
-        .map(route => {
-          while (route.firstChild) {
-            route = route.firstChild;
-          }
-          return route;
-        })
-        .filter((route) => route.outlet === 'primary')
-        .mergeMap((route) => route.data)
-        .subscribe(event => {
-          let t = event['translate'];
-          if (t) {
-            t = this.tsServ.fanyi(t);
-          } else {
-            t = event['title'];
-          }
-          this.titleSrv.setTitle(t);
+        .map(() => this.router.url)
+        .subscribe(url => {
+            this.titleSrv.setTitleByUrl(url);
         });
   }
 }

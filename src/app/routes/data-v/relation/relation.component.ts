@@ -1,6 +1,5 @@
 import { Component, OnDestroy, ViewEncapsulation, OnInit } from '@angular/core';
 import { _HttpClient } from '@core/services/http.client';
-import { TitleService } from '@core/services/title.service';
 
 @Component({
     selector: 'app-data-v-relation',
@@ -125,14 +124,13 @@ export class RelationComponent implements OnInit, OnDestroy {
         }]
     };
 
-    constructor(private http: _HttpClient, private title: TitleService) { }
+    constructor(private http: _HttpClient) { }
 
     chartInit(ec) {
         this.ecIntance = ec;
     }
 
     ngOnInit() {
-        this.title.setTitle(this.options.title.text);
         window.addEventListener('resize', () => this.resize);
     }
 

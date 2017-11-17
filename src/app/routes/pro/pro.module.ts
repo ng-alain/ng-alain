@@ -18,8 +18,8 @@ import { ProProfileAdvancedComponent } from './profile/advanced/advanced.compone
 import { ProResultSuccessComponent } from 'app/routes/pro/result/success/success.component';
 import { ProResultFailComponent } from 'app/routes/pro/result/fail/fail.component';
 import { ProException403Component } from 'app/routes/pro/exception/403.component';
-import { ProException404Component } from 'app/routes/pro/exception/404.component.ts';
-import { ProException500Component } from 'app/routes/pro/exception/500.component.ts';
+import { ProException404Component } from 'app/routes/pro/exception/404.component';
+import { ProException500Component } from 'app/routes/pro/exception/500.component';
 
 const routes: Routes = [
     {

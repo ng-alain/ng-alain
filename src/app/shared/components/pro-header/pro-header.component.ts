@@ -1,6 +1,5 @@
 import { Component, Input, ViewEncapsulation, ElementRef, TemplateRef, ContentChild, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TitleService } from '@core/services/title.service';
 import { MenuService } from '@core/services/menu.service';
 import { TranslatorService } from '@core/translator/translator.service';
 
@@ -39,7 +38,7 @@ import { TranslatorService } from '@core/translator/translator.service';
         '[class.pro-header]': 'true'
     }
 })
-export class ProHeaderComponent implements OnInit, AfterViewInit {
+export class ProHeaderComponent implements OnInit {
 
     // region fields
 
@@ -67,7 +66,6 @@ export class ProHeaderComponent implements OnInit, AfterViewInit {
     // endregion
 
     constructor(
-        private titleSrv: TitleService,
         private route: Router,
         private menuSrv: MenuService,
         private translatorSrv: TranslatorService) {}
@@ -88,22 +86,9 @@ export class ProHeaderComponent implements OnInit, AfterViewInit {
             link: [ '/' ]
         });
         this.paths = paths;
-        // update document title
-        this.titleSrv.setTitle(paths[paths.length - 1].title);
     }
 
     ngOnInit() {
-    }
-
-    ngAfterViewInit() {
-        let t = this.title;
-        // from breadcrumb
-        const el = document.querySelector('pro-header nz-breadcrumb-item:last-child .ant-breadcrumb-link');
-        if (el) t = el.textContent.trim() || this.title;
-        this.titleSrv.setTitle(t);
-
         this.genBreadcrumb();
-        // 修复可能由于刷新后主菜单未渲染导致无法解析到菜单名问题
-        // setTimeout(() => this.genBreadcrumb(), 150);
     }
 }
