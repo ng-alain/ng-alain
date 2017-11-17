@@ -1,10 +1,20 @@
 import { Component, Input, ViewEncapsulation, ElementRef, TemplateRef, ContentChild, OnInit, AfterViewInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TitleService } from '@core/services/title.service';
+import { MenuService } from '@core/services/menu.service';
+import { TranslatorService } from '@core/translator/translator.service';
 
 @Component({
     selector: 'pro-header',
     template: `
-    <ng-template [ngTemplateOutlet]="breadcrumb"></ng-template>
+    <ng-container *ngIf="!breadcrumb; else breadcrumb">
+        <nz-breadcrumb>
+            <nz-breadcrumb-item *ngFor="let i of paths">
+                <ng-container *ngIf="i.link"><a [routerLink]="i.link">{{i.title}}</a></ng-container>
+                <ng-container *ngIf="!i.link">{{i.title}}</ng-container>
+            </nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </ng-container>
     <div class="detail">
         <div *ngIf="logo" class="logo"><ng-template [ngTemplateOutlet]="logo"></ng-template></div>
         <div class="main">
@@ -29,11 +39,18 @@ import { TitleService } from '@core/services/title.service';
         '[class.pro-header]': 'true'
     }
 })
-export class ProHeaderComponent implements AfterViewInit {
+export class ProHeaderComponent implements OnInit, AfterViewInit {
 
     // region fields
 
     @Input() title: string;
+
+    /**
+     * 自动生成导航，以当前路由从主菜单中定位
+     */
+    @Input() autoBreadcrumb = true;
+
+    paths: any[] = [];
 
     @ContentChild('breadcrumb') breadcrumb: TemplateRef<any>;
 
@@ -49,7 +66,34 @@ export class ProHeaderComponent implements AfterViewInit {
 
     // endregion
 
-    constructor(private titleSrv: TitleService) {}
+    constructor(
+        private titleSrv: TitleService,
+        private route: Router,
+        private menuSrv: MenuService,
+        private translatorSrv: TranslatorService) {}
+
+    private genBreadcrumb() {
+        if (this.breadcrumb || !this.autoBreadcrumb) return;
+        const menus = this.menuSrv.getPathByUrl(this.route.url);
+        if (menus.length <= 0) return ;
+        const paths: any[] = [];
+        menus.forEach(item => {
+            let title;
+            if (item.translate) title = this.translatorSrv.fanyi(item.translate);
+            paths.push({ title: title || item.text, link: item.link && [ item.link ] });
+        });
+        // add home
+        paths.splice(0, 0, {
+            title: this.translatorSrv.fanyi('home') || 'Home',
+            link: [ '/' ]
+        });
+        this.paths = paths;
+        // update document title
+        this.titleSrv.setTitle(paths[paths.length - 1].title);
+    }
+
+    ngOnInit() {
+    }
 
     ngAfterViewInit() {
         let t = this.title;
@@ -57,5 +101,9 @@ export class ProHeaderComponent implements AfterViewInit {
         const el = document.querySelector('pro-header nz-breadcrumb-item:last-child .ant-breadcrumb-link');
         if (el) t = el.textContent.trim() || this.title;
         this.titleSrv.setTitle(t);
+
+        this.genBreadcrumb();
+        // 修复可能由于刷新后主菜单未渲染导致无法解析到菜单名问题
+        // setTimeout(() => this.genBreadcrumb(), 150);
     }
 }

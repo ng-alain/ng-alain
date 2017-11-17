@@ -132,6 +132,7 @@ const ZORROMODULES = [
     imports: [
         CommonModule,
         FormsModule,
+        RouterModule,
         ReactiveFormsModule,
         HttpClientModule,
         ...ZORROMODULES,

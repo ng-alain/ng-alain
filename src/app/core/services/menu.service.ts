@@ -174,4 +174,27 @@ export class MenuService {
             findItem = findItem.__parent;
         } while (findItem);
     }
+
+    /**
+     * 根据url获取菜单列表
+     * @param url
+     */
+    getPathByUrl(url: string): Menu[] {
+        let item: Menu = null;
+        this.visit((i, parent, depth) => {
+            if (i.link === url) {
+                item = i;
+            }
+        });
+
+        const ret: Menu[] = [];
+        if (!item) return ret;
+
+        do {
+            ret.splice(0, 0, item);
+            item = item.__parent;
+        } while (item);
+
+        return ret;
+    }
 }
