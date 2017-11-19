@@ -39,9 +39,10 @@ export const routes = [
         path: 'data-v',
         component: LayoutFullScreenComponent,
         children: [
-            { path: '', loadChildren: './data-v/data-v.module#DataVModule' },
+            { path: '', loadChildren: './data-v/data-v.module#DataVModule' }
         ]
     },
+    // pro 单页
     // 单页不包裹Layout
     { path: 'register', component: RegisterComponent, data: { translate: 'register' } },
     { path: 'login', component: LoginComponent, data: { title: 'login' } },

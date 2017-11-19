@@ -15,11 +15,12 @@ import { ProFilterCardListComponent } from './list/filter-card-list/filter-card-
 import { ProSearchComponent } from './list/search/search.component';
 import { ProProfileBaseComponent } from './profile/basic/basic.component';
 import { ProProfileAdvancedComponent } from './profile/advanced/advanced.component';
-import { ProResultSuccessComponent } from 'app/routes/pro/result/success/success.component';
-import { ProResultFailComponent } from 'app/routes/pro/result/fail/fail.component';
-import { ProException403Component } from 'app/routes/pro/exception/403.component';
-import { ProException404Component } from 'app/routes/pro/exception/404.component';
-import { ProException500Component } from 'app/routes/pro/exception/500.component';
+import { ProResultSuccessComponent } from './result/success/success.component';
+import { ProResultFailComponent } from './result/fail/fail.component';
+import { ProException403Component } from './exception/403.component';
+import { ProException404Component } from './exception/404.component';
+import { ProException500Component } from './exception/500.component';
+import { ProUserLoginComponent } from './user/login/login.component';
 
 const routes: Routes = [
     {
@@ -61,6 +62,12 @@ const routes: Routes = [
             { path: '404', component: ProException404Component },
             { path: '500', component: ProException500Component }
         ]
+    },
+    {
+        path: 'user',
+        children: [
+            { path: 'login', component: ProUserLoginComponent }
+        ]
     }
 ];
 
@@ -87,6 +94,7 @@ const COMPONENTS_NOROUNT = [ Step1Component, Step2Component, Step3Component ];
         ProException403Component,
         ProException404Component,
         ProException500Component,
+        ProUserLoginComponent,
         ...COMPONENTS_NOROUNT
     ],
     entryComponents: COMPONENTS_NOROUNT,
