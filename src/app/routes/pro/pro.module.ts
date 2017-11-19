@@ -21,6 +21,7 @@ import { ProException403Component } from './exception/403.component';
 import { ProException404Component } from './exception/404.component';
 import { ProException500Component } from './exception/500.component';
 import { ProUserLoginComponent } from './user/login/login.component';
+import { ProUserLayoutComponent } from './user/layout/layout.component';
 
 const routes: Routes = [
     {
@@ -79,6 +80,7 @@ const COMPONENTS_NOROUNT = [ Step1Component, Step2Component, Step3Component ];
         RouterModule.forChild(routes)
     ],
     declarations: [
+        ProUserLayoutComponent,
         StepFormComponent,
         AdvancedFormComponent,
         ProTableListComponent,

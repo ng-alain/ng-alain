@@ -1,144 +1,50 @@
 import { Component } from '@angular/core';
-import swal from 'sweetalert';
+import swal, { SweetAlertType } from 'sweetalert2';
 
 @Component({
     selector: 'app-sweetalert',
     templateUrl: './sweetalert.component.html'
 })
 export class SweetAlertComponent {
-    alert1() {
-        swal(`Hello world!`);
+    types = [ 'success', 'error', 'warning', 'info', 'question' ];
+
+    alertType(type: SweetAlertType) {
+        swal(`Try me! Example: ${type} modal`, '', type);
     }
-    alert2() {
-        swal(`Here's the title!`, `...and here's the text!`);
-    }
-    alert3() {
-        swal(`Good job!`, `You clicked the button!`, `success`);
-    }
-    alert31() {
-        swal(`Oops`, `Something went wrong!`, `error`);
-    }
-    alert4() {
-        swal({
-            title: `Good job!`,
-            text: `You clicked the button!`,
-            icon: `success`,
-            button: `Aww yiss!`,
+
+    async alertText() {
+        const { value: name } = await swal({
+            title: 'What is your name?',
+            input: 'text',
+            inputPlaceholder: 'Enter your name or nickname',
+            showCancelButton: true,
+            inputValidator: function (value) {
+                return !value && 'You need to write something!';
+            }
         });
+
+        if (name) {
+            swal({type: 'success', title: 'Hi, ' + name});
+        }
     }
-    alert41() {
-        swal(`This modal will disappear soon!`, {
-            buttons: false,
-            timer: 3000,
+
+    async alertHtml() {
+        const {value: formValues} = await swal({
+            title: 'Multiple inputs',
+            html:
+              '<input id="swal-input1" class="swal2-input">' +
+              '<input id="swal-input2" class="swal2-input">',
+            focusConfirm: false,
+            preConfirm: function () {
+              return [
+                (document.querySelector('#swal-input1') as HTMLInputElement).value,
+                (document.querySelector('#swal-input2') as HTMLInputElement).value
+              ];
+            }
         });
-    }
-    alert5() {
-        swal(`Click on either the button or outside the modal.`)
-            .then((value) => {
-                swal(`The returned value is: ${value}`);
-            });
-    }
 
-    alert6() {
-        swal({
-            title: `Are you sure?`,
-            text: `Once deleted, you will not be able to recover this imaginary file!`,
-            icon: `warning`,
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    swal(`Poof! Your imaginary file has been deleted!`, {
-                        icon: `success`,
-                    });
-                } else {
-                    swal(`Your imaginary file is safe!`);
-                }
-            });
-    }
-
-    alert7() {
-        swal(`Are you sure you want to do this?`, {
-            buttons: ['Oh noez!', 'Aww yiss!'],
-        });
-    }
-
-    alert8() {
-        swal('A wild Pikachu appeared! What do you want to do?', {
-            buttons: {
-                cancel: 'Run away!',
-                catch: {
-                    text: 'Throw Pokéball!',
-                    value: 'catch',
-                },
-                defeat: true,
-            },
-        })
-            .then((value) => {
-                switch (value) {
-
-                    case 'defeat':
-                        swal('Pikachu fainted! You gained 500 XP!');
-                        break;
-
-                    case 'catch':
-                        swal('Gotcha!', 'Pikachu was caught!', 'success');
-                        break;
-
-                    default:
-                        swal('Got away safely!');
-                }
-            });
-    }
-
-    alert9() {
-        swal({
-            text: 'Search for a movie. e.g. "La La Land".',
-            content: 'input',
-            button: {
-                text: 'Search!',
-                closeModal: false,
-            },
-        })
-            .then(name => {
-                return fetch(`https://itunes.apple.com/search?term=${name}&entity=movie`);
-            })
-            .then(results => {
-                return results.json();
-            })
-            .then(json => {
-                const movie = json.results[0];
-
-                if (!movie) {
-                    return swal('No movie was found!');
-                }
-
-                const name = movie.trackName;
-                const imageURL = movie.artworkUrl100;
-
-                swal({
-                    title: 'Top result:',
-                    text: name,
-                    icon: imageURL,
-                });
-            })
-            .catch(err => {
-                if (err) {
-                    swal('Oh noes!', 'The AJAX request failed!', 'error');
-                } else {
-                    swal.stopLoading();
-                    swal.close();
-                }
-            });
-    }
-
-    alert10() {
-        swal('Write something here:', {
-            content: 'input',
-        })
-            .then((value) => {
-                swal(`You typed: ${value}`);
-            });
+        if (formValues) {
+            swal(JSON.stringify(formValues));
+        }
     }
 }
