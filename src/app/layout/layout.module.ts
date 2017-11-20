@@ -35,14 +35,24 @@ const HEADERCOMPONENTS = [
     HeaderUserComponent
 ];
 
+// pro
+import { ProUserLayoutComponent } from './pro/user/user.component';
+const PRO = [
+    ProUserLayoutComponent
+];
+
 @NgModule({
     imports: [SharedModule],
     providers: [],
     declarations: [
         SidebarNavComponent,
         ...COMPONENTS,
-        ...HEADERCOMPONENTS
+        ...HEADERCOMPONENTS,
+        ...PRO
     ],
-    exports: COMPONENTS
+    exports: [
+        ...COMPONENTS,
+        ...PRO
+    ]
 })
 export class LayoutModule { }

@@ -11,6 +11,11 @@ import { DashboardV1Component } from './dashboard/v1/v1.component';
 import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
 import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
 import { DashboardWorkplaceComponent } from './dashboard/workplace/workplace.component';
+// pro
+import { ProUserLayoutComponent } from '../layout/pro/user/user.component';
+import { ProUserLoginComponent } from './pro/user/login/login.component';
+import { ProUserRegisterComponent } from './pro/user/register/register.component';
+import { ProUserRegisterResultComponent } from './pro/user/register-result/register-result.component';
 
 export const routes = [
     {
@@ -42,7 +47,16 @@ export const routes = [
             { path: '', loadChildren: './data-v/data-v.module#DataVModule' }
         ]
     },
-    // pro 单页
+    // pro 单页，存在此原因是体验更好，这样不必在首次Angular运行后还需要下载模块文件才会渲染成功
+    {
+        path: 'pro/user',
+        component: ProUserLayoutComponent,
+        children: [
+            { path: 'login', component: ProUserLoginComponent },
+            { path: 'register', component: ProUserRegisterComponent },
+            { path: 'register-result', component: ProUserRegisterResultComponent }
+        ]
+    },
     // 单页不包裹Layout
     { path: 'register', component: RegisterComponent, data: { translate: 'register' } },
     { path: 'login', component: LoginComponent, data: { title: 'login' } },
