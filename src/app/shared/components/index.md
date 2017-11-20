@@ -36,4 +36,5 @@ cols: 1 （可选：占用栏数）
 `trend` | [API](./trend/index.md) | 趋势标记
 `result` | [API](./result/index.md) | 处理结果
 `exception` | [API](./exception/index.md) | 异常
+`global-footer` | [API](./global-footer/index.md) | 全局页脚
 g2-charts | [API](./charts/index.md) | 图表清单

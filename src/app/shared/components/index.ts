@@ -14,6 +14,7 @@ import {
 import { NumberInfoComponent } from './number-info';
 import { ResultComponent } from './result';
 import { ExceptionComponent } from './exception';
+import { GlobalFooterComponent } from './global-footer';
 
 export const shared_entry_components = [
 ];
@@ -33,6 +34,7 @@ export const shared_components = [
     NumberInfoComponent,
     ResultComponent,
     ExceptionComponent,
+    GlobalFooterComponent,
     // charts
     ChartCardComponent,
     MiniAreaComponent,
