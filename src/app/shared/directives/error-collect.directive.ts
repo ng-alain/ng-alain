@@ -63,7 +63,7 @@ export class ErrorCollectComponent implements OnInit, OnDestroy {
     private findParent(el: any, selector: string) {
         let retEl = null;
         while (el) {
-            if (el.matches(selector)) {
+            if (el.querySelector(selector)) {
                 retEl = el;
                 break;
             }
