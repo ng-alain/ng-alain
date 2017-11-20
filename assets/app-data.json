@@ -272,6 +272,24 @@
                 "text": "500",
                 "link": "/pro/exception/500"
             }]
+        }, {
+            "text": "User",
+            "translate": "pro-user",
+            "link": "/pro/user",
+            "icon": "icon-user",
+            "children": [{
+                "text": "login",
+                "link": "/pro/user/login",
+                "translate": "pro-login"
+            }, {
+                "text": "register",
+                "link": "/pro/user/register",
+                "translate": "pro-register"
+            }, {
+                "text": "register result",
+                "link": "/pro/user/register-result",
+                "translate": "pro-register-result"
+            }]
         }]
     }, {
         "text": "More",

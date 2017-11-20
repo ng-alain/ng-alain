@@ -86,5 +86,9 @@
     "pro-result": "Result Page",
     "pro-result-success": "Success",
     "pro-result-fail": "Fail",
-    "pro-exception": "Exception"
+    "pro-exception": "Exception",
+    "pro-user": "Account",
+    "pro-login": "Login",
+    "pro-register": "Register",
+    "pro-register-result": "Register Result"
 }

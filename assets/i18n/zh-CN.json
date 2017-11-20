@@ -86,5 +86,9 @@
     "pro-result": "结果",
     "pro-result-success": "成功",
     "pro-result-fail": "失败",
-    "pro-exception": "异常"
+    "pro-exception": "异常",
+    "pro-user": "账户",
+    "pro-login": "登录",
+    "pro-register": "注册",
+    "pro-register-result": "注册结果"
 }
