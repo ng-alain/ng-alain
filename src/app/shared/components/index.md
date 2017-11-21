@@ -20,7 +20,11 @@ cols: 1 （可选：占用栏数）
 
 # 样式
 
-每一个共享组件建议采用 `encapsulation: ViewEncapsulation.None` 封装策略，因为绝大部分情况下，我们是需要对 `ng-zorro-antd` 加以修饰，而只有 `None` 策略能正确的应用样式。
+有关细节可以参考 [关于Angular样式封装](https://zhuanlan.zhihu.com/p/31235358)。
+
+# 优化
+
+ng-alain 默认开启所有组件，若组件是你项目并不需要，可以在 `index.ts` 把 `shared_components` 相应的组件注释掉，这样有利于项目大小。
 
 # 组件列表
 

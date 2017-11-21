@@ -23,10 +23,10 @@
     "e2e": "ng e2e",
     "test": "ng test -sr",
     "test-coverage": "ng test -sr -cc",
+    "upgrade:style": "git subtree pull --prefix=src/styles/alain alain master",
     "chore.build": "ng build --prod --build-optimizer --bh ./",
     "chore.gh-pages": "run-s chore.build chore.deploy",
     "chore.deploy": "gh-pages -d dist",
-    "chore.alain.pull": "git subtree pull --prefix=src/styles/alain alain master",
     "chore.alain.push": "git subtree push --prefix=src/styles/alain alain master"
   },
   "dependencies": {

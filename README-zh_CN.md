@@ -30,6 +30,9 @@ npm start
 
 # use HMR
 npm run serve:hmr
+
+# upgrade `src/styles/alain` directory to laster version
+npm run upgrade:style
 ```
 
 > [vscode] 建议安装 [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) 插件，含 `nz-alain-*` 代码片断。
