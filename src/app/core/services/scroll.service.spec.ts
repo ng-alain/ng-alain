@@ -5,40 +5,39 @@ import { ScrollService } from './scroll.service';
 
 describe('Service: Scroll', () => {
 
-  const topOfPageElem = {} as Element;
-  let injector: ReflectiveInjector;
-  let document: MockDocument;
-  let location: MockPlatformLocation;
-  let scrollService: ScrollService;
+    const topOfPageElem = {} as Element;
+    let injector: ReflectiveInjector;
+    let document: MockDocument;
+    let location: MockPlatformLocation;
+    let scrollService: ScrollService;
 
-  class MockPlatformLocation {
-    hash: string;
-  }
+    class MockPlatformLocation {
+        hash: string;
+    }
 
-  class MockDocument {
-    body = new MockElement();
-    getElementById = jasmine.createSpy('Document getElementById').and.returnValue(topOfPageElem);
-    querySelector = jasmine.createSpy('Document querySelector');
-  }
+    class MockElement {
+        getBoundingClientRect = jasmine.createSpy('Element getBoundingClientRect').and.returnValue({ top: 0 });
+        scrollIntoView = jasmine.createSpy('Element scrollIntoView');
+    }
 
-  class MockElement {
-    getBoundingClientRect = jasmine.createSpy('Element getBoundingClientRect')
-      .and.returnValue({ top: 0 });
-    scrollIntoView = jasmine.createSpy('Element scrollIntoView');
-  }
+    class MockDocument {
+        body = new MockElement();
+        getElementById = jasmine.createSpy('Document getElementById').and.returnValue(topOfPageElem);
+        querySelector = jasmine.createSpy('Document querySelector');
+    }
 
-  beforeEach(() => {
-    spyOn(window, 'scrollBy');
-  });
+    beforeEach(() => {
+        spyOn(window, 'scrollBy');
+    });
 
-  beforeEach(() => {
-    injector = ReflectiveInjector.resolveAndCreate([
-      ScrollService,
-      { provide: DOCUMENT, useClass: MockDocument },
-      { provide: PlatformLocation, useClass: MockPlatformLocation }
-    ]);
-    location = injector.get(PlatformLocation);
-    document = injector.get(DOCUMENT);
-    scrollService = injector.get(ScrollService);
-  });
+    beforeEach(() => {
+        injector = ReflectiveInjector.resolveAndCreate([
+            ScrollService,
+            { provide: DOCUMENT, useClass: MockDocument },
+            { provide: PlatformLocation, useClass: MockPlatformLocation }
+        ]);
+        location = injector.get(PlatformLocation);
+        document = injector.get(DOCUMENT);
+        scrollService = injector.get(ScrollService);
+    });
 });

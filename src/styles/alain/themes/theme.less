@@ -15,7 +15,7 @@
 
 .dark-aside() {
     .aside {
-        background-color:rgb(64, 64, 64);
+        background-color: rgb(64, 64, 64);
     }
     .nav {
         >li {
@@ -43,7 +43,7 @@
 .focusing-color-mixin(@color-name) {
     @basic-color:   "@{color-name}-6";
     .get-color-mixin() when(iscolor(@color-name)) {
-        @new-color: @color-name
+        @new-color: @color-name;
     }
     .get-color-mixin() when(default()) {
         @new-color: @@basic-color;
@@ -114,8 +114,8 @@
             .button-disabled();
         }
 
-        .@{btn-prefix-cls}-default {
-        }
+        // .@{btn-prefix-cls}-default {
+        // }
 
         .@{btn-prefix-cls}-primary {
             background-color: @new-color;
@@ -134,8 +134,8 @@
             }
         }
 
-        .@{btn-prefix-cls}-dashed {
-        }
+        // .@{btn-prefix-cls}-dashed {
+        // }
 
         .@{btn-prefix-cls}-danger {
             .button-color(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
@@ -192,7 +192,6 @@
                 border-right-color: @new-active-color;
             }
         }
-
     }
     .BTN-mixin();
 
