@@ -57,6 +57,32 @@
     },
     "defaults": {
         "styleExt": "less",
-        "component": {}
+        "class": {
+            "spec": false
+        },
+        "component": {
+            "flat": false,
+            "spec": false,
+            "inlineStyle": true,
+            "inlineTemplate": false
+        },
+        "directive": {
+            "spec": false
+        },
+        "guard": {
+            "spec": false
+        },
+        "interface": {
+            "prefix": "I"
+        },
+        "module": {
+            "spec": false
+        },
+        "pipe": {
+            "spec": true
+        },
+        "service": {
+            "spec": false
+        }
     }
 }
