@@ -20,14 +20,24 @@
     }
     &-inner {
         overflow-x: hidden;
-        // overflow-y: scroll;
+        overflow-y: scroll;
         // margin-right: -17px;
         height: 100%;
         -webkit-overflow-scrolling: touch;
         // only desktop
-        @media (min-width: 1025px) {
-            margin-right: -17px;
-            overflow-y: scroll;
+        // @media (min-width: 1025px) {
+        //     margin-right: -17px;
+        //     overflow-y: scroll;
+        // }
+        &::-webkit-scrollbar {
+            height: @aside-scrollbar-width;
+            width: @aside-scrollbar-height;
+        }
+        &::-webkit-scrollbar-trac {
+            -webkit-box-shadow: inset 0 0 @aside-scrollbar-width rgba(0, 0, 0, 0.3);
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: @aside-scrollbar-thumb-color;
         }
     }
 }
