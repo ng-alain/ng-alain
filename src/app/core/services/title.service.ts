@@ -1,5 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Title, DOCUMENT } from '@angular/platform-browser';
+import { MenuService } from '@core/services/menu.service';
+import { TranslatorService } from '@core/translator/translator.service';
 
 /**
  * 设置标题（用法见 AppComponent）
@@ -9,7 +11,11 @@ import { Title, DOCUMENT } from '@angular/platform-browser';
  */
 @Injectable()
 export class TitleService {
-    constructor(private title: Title, @Inject(DOCUMENT) private doc: Document) { }
+    constructor(
+        private title: Title,
+        private menuSrv: MenuService,
+        private translatorSrv: TranslatorService,
+        @Inject(DOCUMENT) private doc: Document) { }
 
     private _prefix = '';
     private _suffix = '';
@@ -30,7 +36,7 @@ export class TitleService {
     set suffix(value: string) {
         this._suffix = value;
     }
-    
+
     /** 设置是否反转 */
     set reverse(value: boolean) {
         this._reverse = value;
@@ -70,5 +76,21 @@ export class TitleService {
             newTitles = newTitles.reverse();
         }
         this.title.setTitle(newTitles.join(this._separator));
+    }
+
+    /**
+     * 根据URL地址从 `MenuService` 中获取对应的标题
+     */
+    setTitleByUrl(url: string) {
+        const menus = this.menuSrv.getPathByUrl(url);
+        if (!menus || menus.length <= 0) {
+            this.setTitle();
+            return;
+        }
+
+        const item = menus[menus.length - 1];
+        let title;
+        if (item.translate) title = this.translatorSrv.fanyi(item.translate);
+        this.setTitle(title || item.text);
     }
 }

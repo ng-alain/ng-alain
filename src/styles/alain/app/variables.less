@@ -10,16 +10,14 @@
     sm @screen-sm,
     md @screen-md,
     lg @screen-lg,
-    xl @screen-xl,
-;
+    xl @screen-xl;
 
 // spaceing
 @spacings:
     0  0,
     sm @sm,
     md @md,
-    lg @lg
-;
+    lg @lg;
 
 // type
 @ul-ol-margin:      18px;
@@ -33,12 +31,16 @@
 @text-md:       @font-size-base + 2; // 14px
 @text-lg:       @font-size-base + 4; // 16px
 
+// icon
+@icon-sm:       @font-size-base * 2; // 24px
+@icon-md:       @font-size-base * 4; // 48px
+@icon-lg:       @font-size-base * 6; // 72px
+
 // 宽度
 @widths:
     sm @layout-gutter * 20, // 160px
     md @layout-gutter * 30, // 240px
-    lg @layout-gutter * 40  // 320px
-;
+    lg @layout-gutter * 40; // 320px
 
 // 圆角
 @border-radius-md:       @border-radius-base; // 4px
@@ -55,7 +57,7 @@
 @teal-3:  color(~`colorPalette("@{teal-6}", 3)`);
 @teal-4:  color(~`colorPalette("@{teal-6}", 4)`);
 @teal-5:  color(~`colorPalette("@{teal-6}", 5)`);
-@teal-6:  #20C997;
+@teal-6:  #20c997;
 @teal-7:  color(~`colorPalette("@{teal-6}", 7)`);
 @teal-8:  color(~`colorPalette("@{teal-6}", 8)`);
 @teal-9:  color(~`colorPalette("@{teal-6}", 9)`);
@@ -92,19 +94,22 @@
 // Grey patch
 @greyColorer:
     lighter @grey-3,
-    darker  @grey-9
-;
+    darker  @grey-9;
 
 // Alias
 @aliasColors:
     primary    blue,
     success    green,
     error      red,
-    warning    yellow
-;
+    warning    yellow;
 
 // masonry
 @masonry-column-gap:  @layout-gutter * 2;
+
+// scrollbar
+@scrollbar-width:           6px;
+@scrollbar-height:          6px;
+@scrollbar-thumb-color:     #6e6e6e;
 
 // type
 // ==========
@@ -169,8 +174,11 @@
 @header-search-enabled:     true;
 @header-search-height:      34px;
 
-@aside-wd:                  200px;
-@aside-bg:                  #fff;
+@aside-wd:                      200px;
+@aside-bg:                      #fff;
+@aside-scrollbar-width:         0;
+@aside-scrollbar-height:        0;
+@aside-scrollbar-thumb-color:   transparent;
 
 @aside-nav-fs:                              14px;
 @aside-nav-padding-top-bottom:              @layout-gutter;
@@ -184,7 +192,7 @@
 @aside-collapsed-nav-fs:                    24px;
 
 @content-heading-bg:                        #fafbfc;
-@content-heading-border:                    #DFE3E5;
+@content-heading-border:                    #efe3e5;
 @content-padding:                           @layout-gutter * 3;
 @content-bg:                                #f5f7fa;
 
@@ -222,7 +230,9 @@
 // =========Experimental=========
 // =========Experimental=========
 // =========Experimental=========
-// =========focusing ng-zorro-antd COMPONENTS=========
+// --preserveWhitespaces: false
+@preserve-white-spaces-enabled:     true;
+// --focusing ng-zorro-antd COMPONENTS
 @focusing-enabled:                  false;
 @nz-font-size:                      14px;
 @nz-patch-line-height:              1.6;
@@ -242,3 +252,4 @@
 @focusing-page-color-enabled:       false;
 @focusing-slider-color-enabled:     false;
 @focusing-spin-color-enabled:       false;
+@focusing-tabs-color-enabled:       false;

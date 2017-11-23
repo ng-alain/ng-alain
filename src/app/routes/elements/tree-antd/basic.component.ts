@@ -4,14 +4,11 @@ import { generateData } from './generate-data';
 @Component({
   selector: 'app-tree-antd-demo-basic',
   template: `
-  <nz-card>
-      <ng-template #title>Basic</ng-template>
-      <ng-template #body>
+    <nz-card nzTitle="Basic">
         <nz-tree [nzNodes]="nodes"
                 [nzCheckable]="true"
                 (nzEvent)="onEvent($event)"></nz-tree>
-      </ng-template>
-  </nz-card>
+    </nz-card>
   `
 })
 export class TreeAntdBasicComponent implements OnInit {

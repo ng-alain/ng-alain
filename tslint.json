@@ -12,7 +12,7 @@
     ],
     "curly": false,
     "eofline": true,
-    "forin": true,
+    "forin": false,
     "import-blacklist": [
       true,
       "rxjs"
@@ -25,12 +25,12 @@
     "interface-over-type-literal": true,
     "label-position": true,
     "max-line-length": [
-      true,
+      false,
       140
     ],
     "member-access": false,
     "member-ordering": [
-      true,
+      false,
       {
         "order": [
           "static-field",
@@ -41,7 +41,7 @@
       }
     ],
     "no-arg": true,
-    "no-bitwise": true,
+    "no-bitwise": false,
     "no-console": [
       true,
       "debug",
@@ -115,13 +115,13 @@
       "check-type"
     ],
     "directive-selector": [
-      true,
+      false,
       "attribute",
       "app",
       "camelCase"
     ],
     "component-selector": [
-      true,
+      false,
       "element",
       "app",
       "kebab-case"
@@ -129,8 +129,8 @@
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
-    "no-input-rename": true,
-    "no-output-rename": true,
+    "no-input-rename": false,
+    "no-output-rename": false,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,

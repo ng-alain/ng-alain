@@ -1,0 +1,31 @@
+@import "../../../../styles/alain/_antd-style/themes/default.less";
+@import "../../../../styles/alain/app/variables.less";
+
+trend {
+	display: inline-block;
+	font-size: @nz-font-size;
+	line-height: 22px;
+
+	.up,
+	.down {
+		margin-left: 4px;
+		position: relative;
+		top: 1px;
+		i {
+			font-size: 12px;
+			transform: scale(.83);
+		}
+	}
+	.up {
+		color: @red-6;
+	}
+	.down {
+		color: @green-6;
+		top: -1px;
+	}
+
+	&.grey .up,
+	&.grey .down {
+		color: @text-color;
+	}
+}

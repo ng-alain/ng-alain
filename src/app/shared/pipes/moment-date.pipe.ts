@@ -13,12 +13,17 @@ import * as moment from 'moment';
  *
  * {{ data | _data: 'YYYY年MM月DD日' }}
  * 2017年09月17
+ *
+ * {{ data | _data: 'fn' }}
+ * 10 秒前
  * ```
  */
 @Pipe({ name: '_date' })
 export class MomentDatePipe implements PipeTransform {
     transform(value: Date, formatString: string = 'YYYY-MM-DD HH:mm'): string {
         if (value) {
+            if (formatString === 'fn')
+                return moment(value).fromNow();
             return moment(value).format(formatString);
         } else {
             return '';

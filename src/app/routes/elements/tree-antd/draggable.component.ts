@@ -4,14 +4,11 @@ import { generateData } from './generate-data';
 @Component({
   selector: 'app-tree-antd-demo-draggable',
   template: `
-  <nz-card>
-      <ng-template #title>Draggable</ng-template>
-      <ng-template #body>
+    <nz-card nzTitle="Draggable">
         <nz-tree [nzNodes]="nodes"
                 [nzOptions]="options"
                 (nzEvent)="onEvent($event)"></nz-tree>
-      </ng-template>
-  </nz-card>
+    </nz-card>
   `
 })
 export class TreeAntdDraggableComponent implements OnInit {

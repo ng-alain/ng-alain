@@ -3,15 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-tree-antd-demo-async',
   template: `
-  <nz-card>
-      <ng-template #title>Async</ng-template>
-      <ng-template #body>
+    <nz-card nzTitle="Async">
         <nz-tree [nzNodes]="nodes"
                 [nzCheckable]="true"
                 [nzOptions]="options"
                 (nzEvent)="onEvent($event)"></nz-tree>
-      </ng-template>
-  </nz-card>
+    </nz-card>
   `
 })
 export class TreeAntdAsyncComponent {

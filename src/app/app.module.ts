@@ -17,6 +17,10 @@ import { TranslatorService } from './core/translator/translator.service';
 import { SettingsService } from './core/services/settings.service';
 import { TokenInterceptor } from '@core/net/token/token.interceptor';
 
+import { registerLocaleData } from '@angular/common';
+import localeZhHans from '@angular/common/locales/zh-Hans';
+registerLocaleData(localeZhHans);
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, `assets/i18n/`, '.json');
@@ -47,7 +51,6 @@ export function StartupServiceFactory(startupService: StartupService): Function 
         })
     ],
     providers: [
-        // code see: https://github.com/unicode-cldr/cldr-core/blob/master/availableLocales.json
         { provide: LOCALE_ID, useValue: 'zh-Hans' },
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
         StartupService,

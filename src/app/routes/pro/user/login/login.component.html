@@ -1,0 +1,81 @@
+<form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
+    <nz-tabset [nzAnimated]="false" class="tabs" (nzSelectChange)="switch($event)">
+        <nz-tab>
+            <ng-template #nzTabHeading>账户密码登录</ng-template>
+            <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
+            <div nz-form-item>
+                <div nz-form-control [nzValidateStatus]="userName">
+                    <nz-input formControlName="userName" [nzPlaceHolder]="'admin'" [nzSize]="'large'">
+                        <ng-template #prefix>
+                            <i class="anticon anticon-user"></i>
+                        </ng-template>
+                    </nz-input>
+                    <div nz-form-explain *ngIf="userName.dirty&&userName.errors?.required">请输入账户名！</div>
+                </div>
+            </div>
+            <div nz-form-item>
+                <div nz-form-control [nzValidateStatus]="password">
+                    <nz-input formControlName="password" [nzPlaceHolder]="'888888'" [nzType]="'password'" [nzSize]="'large'">
+                        <ng-template #prefix>
+                            <i class="anticon anticon-lock"></i>
+                        </ng-template>
+                    </nz-input>
+                    <div nz-form-explain *ngIf="password.dirty&&password.errors?.required">请输入密码！</div>
+                </div>
+            </div>
+        </nz-tab>
+        <nz-tab>
+            <ng-template #nzTabHeading>手机号登录</ng-template>
+            <div nz-form-item>
+                <div nz-form-control [nzValidateStatus]="mobile">
+                    <nz-input formControlName="mobile" [nzPlaceHolder]="'手机号'" [nzSize]="'large'">
+                        <ng-template #prefix>
+                            <i class="anticon anticon-user"></i>
+                        </ng-template>
+                    </nz-input>
+                    <div nz-form-explain *ngIf="mobile.dirty&&mobile.errors?.required">请输入手机号！</div>
+                    <div nz-form-explain *ngIf="mobile.dirty&&mobile.errors?.pattern">手机号格式错误！</div>
+                </div>
+            </div>
+            <div nz-form-item>
+                <div nz-form-control [nzValidateStatus]="captcha">
+                    <div nz-row [nzGutter]="8">
+                        <div nz-col [nzSpan]="16">
+                            <nz-input formControlName="captcha" [nzPlaceHolder]="'验证码'" [nzSize]="'large'">
+                                <ng-template #prefix>
+                                    <i class="anticon anticon-mail"></i>
+                                </ng-template>
+                            </nz-input>
+                        </div>
+                        <div nz-col [nzSpan]="8">
+                            <button nz-button (click)="getCaptcha()" [disabled]="count" [nzSize]="'large'" class="ant-btn__block">{{ count ? count + 's' : '获取验证码' }}</button>
+                        </div>
+                    </div>
+                    <div nz-form-explain *ngIf="mobile.dirty&&mobile.errors?.required">请输入验证码！</div>
+                </div>
+            </div>
+        </nz-tab>
+    </nz-tabset>
+    <div nz-form-item nz-row>
+        <div nz-col [nzSpan]="12">
+            <label nz-checkbox formControlName="remember">
+                <span>自动登录</span>
+            </label>
+        </div>
+        <div nz-col [nzSpan]="12" class="text-right">
+            <a class="forgot" (click)="msg.error('请找欧阳锋')">忘记密码？</a>
+        </div>
+    </div>
+    <div nz-form-item>
+        <button nz-button [nzType]="'primary'" [nzLoading]="loading" [nzSize]="'large'" class="ant-btn__block">
+            <span>登录</span>
+        </button>
+    </div>
+</form>
+<div class="other">
+    其他登录方式
+    <span class="icon-alipay"></span>
+    <span class="icon-taobao"></span>
+    <span class="icon-weibo"></span>
+    <a class="register" routerLink="/pro/user/register">注册账户</a>
+</div>

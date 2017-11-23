@@ -1,3 +1,7 @@
+# update no more, please to [release](https://github.com/cipchk/ng-alain/releases) page.
+
+-------------------
+
 # 0.1.2-beta.10
 
 + ng-zorro-antd 0.6.x 由于[#504](https://github.com/NG-ZORRO/ng-zorro-antd/issues/504)的原因回滚至最低版本，本次只对 ng-zorro-antd 组件国际化产生影响。

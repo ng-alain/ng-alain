@@ -1,0 +1,48 @@
+@import "../../../../../styles/alain/_antd-style/themes/default.less";
+
+:host ::ng-deep {
+    position: relative;
+    display: block;
+    .meta {
+        color: @text-color-secondary;
+        position: relative;
+        line-height: 22px;
+        height: 22px;
+    }
+    .action {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .total {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        white-space: nowrap;
+        color: @heading-color;
+        margin-top: 4px;
+        font-size: 30px;
+        line-height: 38px;
+        height: 38px;
+    }
+    .desc {
+        margin-bottom: 12px;
+        position: relative;
+        width: 100%;
+    }
+    .fixed {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    .footer {
+        border-top: 1px solid @border-color-split;
+        padding-top: 9px;
+        margin-top: 8px;
+        & > * {
+            position: relative;
+        }
+    }
+}

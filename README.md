@@ -24,13 +24,16 @@ cd ng-alain
 # install npm package
 npm install
 # in china please use cnpm （https://github.com/cnpm/cnpm）
-# cnpm install --by=npm
+# cnpm install
 
 # start the serve
 npm start
 
 # use HMR
 npm run serve:hmr
+
+# upgrade `src/styles/alain` directory to laster version
+npm run upgrade:style
 ```
 
 > [vscode] recommended install [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) plugins, that includes `nz-alain-*` snippets.
@@ -39,10 +42,10 @@ npm run serve:hmr
 
 | package | version |
 | ------- | ------- |
-| `ng-alain` | 0.1.2-beta.10 | 
-| `ng-zorro-antd` | ^0.5.3 |
-| `@angular` | ^4.4.5 |
-| `@angular/cli` | ^1.4.7 |
+| `ng-alain` | 0.1.4 | 
+| `ng-zorro-antd` | ^0.6.0 |
+| `@angular` | ^5.0.0 |
+| `@angular/cli` | ^1.5.2 |
 
 **Third Library[Optional]**
 
@@ -54,10 +57,7 @@ npm run serve:hmr
 | `angular-baidu-maps` |  | BaidDu Map |
 | `angular-qq-maps` |  | QQ Map |
 | `angular-web-storage` |  | LocalStorage |
-| `ng2-charts` | `chart.js` |  |
-| `d3` |  |  |
 | `g2-angular` | `g2` |  |
-| `jquery-sparkline` | `jquery` |  |
 | `ng2-file-upload` |  |  |
 | `ng2-img-cropper` |  |  |
 | `ngx-color-picker` |  |  |

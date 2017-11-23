@@ -1,0 +1,101 @@
+@import "../../../../styles/alain/_antd-style/themes/default.less";
+
+.notice-icon-popover {
+	width: 336px;
+	// bug: https://github.com/NG-ZORRO/ng-zorro-antd/issues/555
+	.ant-popover-title {
+		display: none;
+	}
+	.ant-popover-inner-content {
+		padding: 0;
+	}
+	.ant-tabs-bar {
+		margin-bottom: 4px;
+	}
+	.ant-tabs-nav-scroll {
+		text-align: center;
+	}
+	.ant-tabs-nav {
+		.ant-tabs-tab {
+			margin-right: 32px;
+			padding: 12px 16px;
+		}
+	}
+	.not-found {
+		text-align: center;
+		padding: 73px 0 88px 0;
+		color: @text-color-secondary;
+		img {
+			display: inline-block;
+			margin-bottom: 16px;
+			height: 76px;
+		}
+	}
+
+	.clear {
+		height: 46px;
+		line-height: 46px;
+		text-align: center;
+		color: @text-color;
+		border-radius: 0 0 @border-radius-base @border-radius-base;
+		border-top: 1px solid @border-color-split;
+		transition: all 0.3s;
+		cursor: pointer;
+
+		&:hover {
+			color: @heading-color;
+		}
+	}
+
+	.ant-list {
+		max-height: 400px;
+		overflow: auto;
+
+		.ant-list-item {
+			transition: all 0.3s;
+			overflow: hidden;
+			cursor: pointer;
+			padding-left: 24px;
+			padding-right: 24px;
+
+			.ant-list-item-meta {
+				width: 100%;
+			}
+
+			.ant-avatar {
+				background: #fff;
+				margin-top: 4px;
+			}
+
+			&.read {
+				opacity: 0.4;
+			}
+			&:last-child {
+				border-bottom: 0;
+			}
+			&:hover {
+				background: @primary-1;
+			}
+			.ant-list-item-meta-title {
+				font-weight: normal;
+				margin-bottom: 8px;
+			}
+			.description {
+				font-size: 12px;
+				line-height: @line-height-base;
+			}
+			.datetime {
+				font-size: 12px;
+				margin-top: 4px;
+				line-height: @line-height-base;
+			}
+			.extra {
+				float: right;
+				color: @text-color-secondary;
+				font-weight: normal;
+				margin-right: 0;
+				margin-top: -1.5px;
+			}
+		}
+	}
+}

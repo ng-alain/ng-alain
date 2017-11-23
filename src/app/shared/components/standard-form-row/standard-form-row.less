@@ -1,0 +1,63 @@
+@import "../../../../styles/alain/_antd-style/themes/default.less";
+
+.standard-form-row {
+	border-bottom: 1px dashed @border-color-split;
+	padding-bottom: 16px;
+	margin-bottom: 16px;
+	display: flex;
+	.ant-form-item {
+		margin-right: 24px;
+	}
+	.ant-form-item-label label {
+		color: @text-color;
+		margin-right: 0;
+	}
+	.ant-form-item-label {
+		padding: 0;
+		line-height: 32px;
+	}
+	.label {
+		color: @heading-color;
+		font-size: 14px;
+		margin-right: 24px;
+		flex: 0 0 auto;
+		text-align: right;
+		& > span {
+			display: inline-block;
+			height: 32px;
+			line-height: 32px;
+			&:after {
+				content: "：";
+			}
+		}
+	}
+	.control {
+		flex: 1 1 0;
+		.ant-form-item:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&.block {
+		.ant-form-item,
+		div.ant-form-item-control-wrapper {
+			display: block;
+		}
+	}
+
+	&.grid {
+		.ant-form-item,
+		div.ant-form-item-control-wrapper {
+			display: block;
+		}
+		.ant-form-item-label {
+			float: left;
+		}
+	}
+
+	&.last {
+		border: none;
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+}

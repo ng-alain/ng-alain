@@ -1,13 +1,15 @@
 import { CNCurrencyPipe } from '@shared/pipes/cn-currency.pipe';
 
+import { registerLocaleData } from '@angular/common';
+import localeZhHans from '@angular/common/locales/zh-Hans';
+registerLocaleData(localeZhHans);
+
 describe('Pipe: _currency', () => {
 
     let instance: CNCurrencyPipe = null;
     const date = new Date(2017, 9, 17, 15, 35, 59);
 
     beforeEach(() => {
-        // equar
-        // { provide: LOCALE_ID, useValue: 'zh-Hans' }
         instance = new CNCurrencyPipe('zh-Hans');
     });
 

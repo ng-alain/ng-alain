@@ -5,6 +5,14 @@ import { PagesModule } from './pages/pages.module';
 
 import { routes } from './routes';
 import { DashboardV1Component } from './dashboard/v1/v1.component';
+import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
+import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
+import { DashboardWorkplaceComponent } from './dashboard/workplace/workplace.component';
+
+// pro
+import { ProUserLoginComponent } from './pro/user/login/login.component';
+import { ProUserRegisterComponent } from './pro/user/register/register.component';
+import { ProUserRegisterResultComponent } from './pro/user/register-result/register-result.component';
 
 @NgModule({
     imports: [
@@ -13,7 +21,14 @@ import { DashboardV1Component } from './dashboard/v1/v1.component';
         PagesModule
     ],
     declarations: [
-        DashboardV1Component
+        DashboardV1Component,
+        DashboardAnalysisComponent,
+        DashboardMonitorComponent,
+        DashboardWorkplaceComponent,
+        // pro
+        ProUserLoginComponent,
+        ProUserRegisterComponent,
+        ProUserRegisterResultComponent
     ],
     exports: [
         RouterModule

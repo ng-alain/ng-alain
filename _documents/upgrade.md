@@ -11,6 +11,8 @@
 ```
 _documents (允许删除)
 _screenshot (允许删除)
+_mock (允许删除：ng-alain示例所需要数据模拟)
+libs （一些无法通过 npm 安装使用的类库）
 src
     app
         core
@@ -22,13 +24,16 @@ src
         layout
         routes
         shared
+            components (一个业务通用的组件库)
             directives (可选：若干自定义的指令)
             pipes
+        utils （一些常用工具集方法、样式等）
     assets
         i18n (可选：国际化)
         img  (可选：一些图片资源)
     styles
         alain
+            _antd-style （Antd Dsign原生样式目录）
         _alain-custom-variables.less
         index.less
 .angular-cli.json
@@ -69,4 +74,4 @@ core文件夹包括菜单配置、布局配置、颜色主题、国际化（可�
 
 ## 后续升级注意项
 
-除非在[更新日志](../CHANGELOG.md)中明确指出需要对DOM结构上有所调整以外，任何一次的版本升级（主要是修复一些兼容性问题）你可以直接将 `shared/styles` 覆盖你的老版本即可。
+除非在[更新日志](https://github.com/cipchk/ng-alain/releases)中明确指出需要对DOM结构上有所调整以外，任何一次的版本升级（主要是修复一些兼容性问题）你可以直接使用 `npm run upgrade:style` 更新样式目录或将 `src/styles/alain` 覆盖你的老版本即可。

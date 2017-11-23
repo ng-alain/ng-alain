@@ -1,0 +1,96 @@
+@import "../../../../styles/alain/_antd-style/themes/default.less";
+
+:host {
+	display: flex;
+	align-items: center;
+	height: 100%;
+
+	::ng-deep {
+		.img-block {
+			flex: 0 0 62.5%;
+			width: 62.5%;
+			padding-right: 152px;
+			zoom: 1;
+			&:before,
+			&:after {
+				content: " ";
+				display: table;
+			}
+			&:after {
+				clear: both;
+				visibility: hidden;
+				font-size: 0;
+				height: 0;
+			}
+		}
+
+		.img {
+			height: 360px;
+			width: 100%;
+			max-width: 430px;
+			float: right;
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+			background-size: 100% 100%;
+		}
+
+		.cont {
+			flex: auto;
+
+			h1 {
+				color: #434e59;
+				font-size: 72px;
+				font-weight: 600;
+				line-height: 72px;
+				margin-bottom: 24px;
+			}
+
+			.desc {
+				color: @text-color-secondary;
+				font-size: 20px;
+				line-height: 28px;
+				margin-bottom: 16px;
+			}
+
+			.actions {
+				button:not(:last-child) {
+					margin-right: 8px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: @screen-xl) {
+    :host {
+        ::ng-deep {
+            .img-block {
+                padding-right: 88px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: @screen-sm) {
+	:host {
+		display: block;
+		text-align: center;
+		::ng-deep {
+			.img-block {
+				padding-right: 0;
+				margin: 0 auto 24px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: @screen-xs) {
+    :host {
+        ::ng-deep {
+            .img-block {
+                margin-bottom: -24px;
+                overflow: hidden;
+            }
+        }
+    }
+}

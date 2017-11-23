@@ -17,7 +17,11 @@
 **别忘记在根模块中注册语言环境：**
 
 ```typescript
-// code see: https://github.com/unicode-cldr/cldr-core/blob/master/availableLocales.json
+import { registerLocaleData } from '@angular/common';
+import localeZhHans from '@angular/common/locales/zh-Hans';
+registerLocaleData(localeZhHans);
+
+
 { provide: LOCALE_ID, useValue: 'zh-Hans' }
 ```
 

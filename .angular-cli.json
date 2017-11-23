@@ -21,11 +21,9 @@
             "styles.less"
         ],
         "scripts": [
-            "../node_modules/jquery/dist/jquery.js",
-            "../node_modules/jquery-sparkline/jquery.sparkline.js",
-            "../node_modules/chart.js/dist/Chart.bundle.js",
-            "../node_modules/echarts/dist/echarts.js",
-            "../node_modules/echarts/theme/dark.js"
+            "../node_modules/g2/index.js",
+            "../libs/g2-plugin-slider.js",
+            "../libs/g2-cloud.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
@@ -59,6 +57,32 @@
     },
     "defaults": {
         "styleExt": "less",
-        "component": {}
+        "class": {
+            "spec": false
+        },
+        "component": {
+            "flat": false,
+            "spec": false,
+            "inlineStyle": true,
+            "inlineTemplate": false
+        },
+        "directive": {
+            "spec": false
+        },
+        "guard": {
+            "spec": false
+        },
+        "interface": {
+            "prefix": "I"
+        },
+        "module": {
+            "spec": false
+        },
+        "pipe": {
+            "spec": true
+        },
+        "service": {
+            "spec": false
+        }
     }
 }

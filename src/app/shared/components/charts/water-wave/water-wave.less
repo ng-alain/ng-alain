@@ -1,0 +1,30 @@
+@import "../../../../../styles/alain/_antd-style/themes/default.less";
+
+:host {
+    display: inline-block;
+    position: relative;
+    transform-origin: left;
+}
+:host ::ng-deep {
+	.text {
+		position: absolute;
+		left: 0;
+		top: 32px;
+		text-align: center;
+		width: 100%;
+		span {
+			color: @text-color-secondary;
+			font-size: 14px;
+			line-height: 22px;
+		}
+		h4 {
+			color: @heading-color;
+			line-height: 32px;
+			font-size: 24px;
+		}
+	}
+	.canvas-wrap {
+		transform: scale(0.5);
+		transform-origin: 0 0;
+	}
+}

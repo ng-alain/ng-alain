@@ -16,24 +16,24 @@
 }
 
 .grad(@hex) {
-    background: linear-gradient(
-        90deg,
-        fade(@hex,0) 0%,
-        @hex 30%,
-        @hex 50%,
-        @hex 70%,
-        fade(@hex,0) 100%
-    );
+    background:
+        linear-gradient(
+            90deg,
+            fade(@hex, 0) 0%,
+            @hex 30%,
+            @hex 50%,
+            @hex 70%,
+            fade(@hex, 0) 100%
+        );
 }
 
-
 @keyframes loadthird {
-    0%   { transform: translateX(-33.3vw); }
+      0% { transform: translateX(-33.3vw); }
     100% { transform: translateX(100vw); }
 }
 
 @keyframes gradcolours {
-    0%  { .grad(#e88098); }
+     0% { .grad(#e88098); }
     20% { .grad(#84bebe); }
     40% { .grad(#e98724); }
     60% { .grad(#afc94e); }

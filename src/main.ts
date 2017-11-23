@@ -13,7 +13,10 @@ if (environment.production) {
 }
 
 const bootstrap = () => {
-  return platformBrowserDynamic().bootstrapModule(AppModule, { defaultEncapsulation: ViewEncapsulation.None });
+    return platformBrowserDynamic().bootstrapModule(AppModule, {
+        defaultEncapsulation: ViewEncapsulation.Emulated,
+        preserveWhitespaces: false
+    });
 };
 
 if (environment.hmr) {
