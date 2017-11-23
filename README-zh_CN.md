@@ -41,7 +41,7 @@ npm run upgrade:style
 
 | 包 | 版本 |
 | ------- | ------- |
-| `ng-alain` | 0.1.3 | 
+| `ng-alain` | 0.1.4 | 
 | `ng-zorro-antd` | ^0.6.0 |
 | `@angular` | ^5.0.0 |
 | `@angular/cli` | ^1.5.2 |
