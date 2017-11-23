@@ -46,8 +46,18 @@
 </pro-header>
 <nz-card [nzBordered]="false" class="mb-lg" nzTitle="流程进度">
     <nz-steps [nzCurrent]="1">
-        <nz-step [nzTitle]="'创建项目'" nzDescription="曲丽丽"></nz-step>
-        <nz-step [nzTitle]="'部门初审'" nzDescription="周毛毛"></nz-step>
+        <nz-step [nzTitle]="'创建项目'" [nzDescription]="createDesc">
+            <ng-template #createDesc>
+                <p class="my-sm">曲丽丽<nz-icon nzType="dingding-o" class="ml-sm"></nz-icon></p>
+                <p>2016-12-12 12:32</p>
+            </ng-template>
+        </nz-step>
+        <nz-step [nzTitle]="'部门初审'" [nzDescription]="checkedDesc">
+            <ng-template #checkedDesc>
+                <p class="my-sm">周毛毛<nz-icon nzType="dingding-o" style="color: #00A0E9" class="ml-sm"></nz-icon></p>
+                <a (click)="msg.success('click')">催一下</a>
+            </ng-template>
+        </nz-step>
         <nz-step [nzTitle]="'财务复核'"></nz-step>
         <nz-step [nzTitle]="'完成'"></nz-step>
     </nz-steps>

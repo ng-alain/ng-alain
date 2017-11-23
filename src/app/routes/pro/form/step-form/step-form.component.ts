@@ -5,8 +5,7 @@ import { TransferService } from './transfer.service';
     selector: 'app-step-form',
     templateUrl: './step-form.component.html',
     styleUrls: [ './step-form.component.less' ],
-    providers: [ TransferService ],
-    encapsulation: ViewEncapsulation.None
+    providers: [ TransferService ]
 })
 export class StepFormComponent implements AfterViewInit {
 
