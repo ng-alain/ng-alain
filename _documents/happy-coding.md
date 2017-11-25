@@ -19,3 +19,9 @@ nz-button => 构建一个按钮
 nz-alain-content => 构建一个ng-alain页面标题
 nz-alain-pro.header => 构建一个pro版本的页面标题
 ```
+
+## pre commit
+
+`lint` 可以非常有效的帮助我们更早发现bug、更高的可读性；如果我们能够保证团队开发过程中每一次 commit 前都自动做一次 staged 中文件的 lint 的话，那不是非常酷吗？
+
+`ng-alain` 配置了每次对 staged 进行 commit 时会预先做 lint，若发现错误则无法提交。
