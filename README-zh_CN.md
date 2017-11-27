@@ -37,48 +37,12 @@ npm run upgrade:style
 
 > [vscode] 建议安装 [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) 插件，含 `nz-alain-*` 代码片断。
 
-## 环境
 
-| 包 | 版本 |
-| ------- | ------- |
-| `ng-alain` | 0.1.4 | 
-| `ng-zorro-antd` | ^0.6.0 |
-| `@angular` | ^5.0.0 |
-| `@angular/cli` | ^1.5.2 |
+## Links
 
-**第三方类型[可选]**
-
-| 包 | 额外依赖 | 说明 |
-| ------- | ------- | ------- |
-| `font-awesome` |  |  |
-| `simple-line-icons` |  |  |
-| `weather-icons` |  |  |
-| `angular-baidu-maps` |  | BaidDu Map |
-| `angular-qq-maps` |  | QQ Map |
-| `angular-web-storage` |  | LocalStorage |
-| `g2-angular` | `g2` |  |
-| `ng2-file-upload` |  |  |
-| `ng2-img-cropper` |  |  |
-| `ngx-color-picker` |  |  |
-| `ng-tree-antd` | `angular-tree-component` |  |
-| `ng2-dnd` |  |  |
-| `sweetalert` |  |  |
-| `file-saver` |  |  |
-
-## 指引文章
-
-`ng-alain` 非常单纯，整体的设计都基于 `ng-zorro-antd`。虽然 antd 的栅格、布局已经足够满足我们日常的需求，然而出于对企业后台在开发过程中总是需要一点微调，因此我独立构建了一套用作这类需求工具类样式。
-
-因此，在你开始ANTD之前最好先了解以下系列文章，他们会帮助你更好的理解 antd 是怎么一回事，以及为什么需要这一套工具类规则。
-
-+ [整个antd的指引文章（非常经典一定要细读）](https://ant.design/docs/spec/introduce-cn)
-+ [设计规则](_documents/layout.md)
-+ [CSS组件补丁类](_documents/component-patch.md)
-+ [工具类规则](_documents/utils.md)
-+ [接地气Pipe](_documents/pipe.md)
-+ [ACL访问控制](_documents/acl.md)
-+ [目录结构与版本升级说明](_documents/upgrade.md)
-+ 为了减少github的发布，后续有关 `ng-alain` 的文章，会一直发布在我的[SF专栏](https://segmentfault.com/blog/cipchk)当中。
++ [文档](http://ng-alain.com)
++ [@delon](https://github.com/cipchk/delon)
++ [DEMO](https://cipchk.github.io/ng-alain/)
 
 ## 特性
 

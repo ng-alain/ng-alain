@@ -1,14 +1,10 @@
-import { SettingsService } from './../../../core/services/settings.service';
 import { NzMessageService } from 'ng-zorro-antd';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/groupBy';
-import 'rxjs/add/operator/concatMap';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/delay';
-// import { groupBy, concatMap, mergeMap } from 'rxjs/operators';
+import { map, groupBy, concatMap, mergeMap, flatMap, delay, tap } from 'rxjs/operators';
 import * as moment from 'moment';
-import { NoticeItem } from '@shared/components/notice-icon/notice-item';
+import { NoticeItem } from '@delon/abc';
+import { SettingsService } from '@delon/theme';
 
 /**
  * 菜单通知
@@ -43,26 +39,27 @@ export class HeaderNotifyComponent implements OnInit {
     }
 
     private parseGroup(data: Observable<any[]>) {
-        data.concatMap((i: any) => i)
-            .map((i: any) => {
-                if (i.datetime) i.datetime = moment(i.datetime).fromNow();
-                // change to color
-                if (i.status) {
-                    i.color = ({
-                        todo: '',
-                        processing: 'blue',
-                        urgent: 'red',
-                        doing: 'gold',
-                      })[i.status];
-                }
-                return i;
-            })
-            .groupBy((x: any) => x.type)
-            .flatMap(g$ => g$.toArray())
-            .do(ls => {
-                this.data.find(w => w.title === ls[0].type).list = ls;
-            })
-            .subscribe(res => this.loading = false);
+        data.pipe(
+                concatMap((i: any) => i),
+                map((i: any) => {
+                    if (i.datetime) i.datetime = moment(i.datetime).fromNow();
+                    // change to color
+                    if (i.status) {
+                        i.color = ({
+                            todo: '',
+                            processing: 'blue',
+                            urgent: 'red',
+                            doing: 'gold',
+                        })[i.status];
+                    }
+                    return i;
+                }),
+                groupBy((x: any) => x.type),
+                flatMap(g$ => g$.toArray()),
+                tap((ls: any) => {
+                    this.data.find(w => w.title === ls[0].type).list = ls;
+                })
+            ).subscribe(res => this.loading = false);
     }
 
     loadData(res) {
@@ -150,7 +147,7 @@ export class HeaderNotifyComponent implements OnInit {
             status: 'processing',
             type: '待办',
           }
-        ]).delay(1000));
+        ]).pipe(delay(1000)));
         // endregion
     }
 

@@ -1,8 +1,8 @@
 import { NzModalSubject, NzMessageService } from 'ng-zorro-antd';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { _HttpClient } from '@core/services/http.client';
-import { ModalHelper } from '@shared/helper/modal.helper';
+import { _HttpClient } from '@delon/theme';
+import { ModalHelper } from '@delon/theme';
 
 @Component({
     selector: 'app-extras-poi-edit',

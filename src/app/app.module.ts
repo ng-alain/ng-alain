@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LocalStorageService } from 'angular-web-storage';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -12,10 +11,11 @@ import { AppComponent } from './app.component';
 import { RoutesModule } from './routes/routes.module';
 import { LayoutModule } from './layout/layout.module';
 import { StartupService } from './core/services/startup.service';
-import { MenuService } from './core/services/menu.service';
-import { TranslatorService } from './core/translator/translator.service';
-import { SettingsService } from './core/services/settings.service';
-import { TokenInterceptor } from '@core/net/token/token.interceptor';
+import { DefaultInterceptor } from '@core/net/default.interceptor';
+
+// i18n
+import { I18NService } from './core/i18n/i18n.service';
+import { ALAIN_I18N_TOKEN } from '@delon/theme';
 
 import { registerLocaleData } from '@angular/common';
 import localeZhHans from '@angular/common/locales/zh-Hans';
@@ -52,7 +52,8 @@ export function StartupServiceFactory(startupService: StartupService): Function 
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'zh-Hans' },
-        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+        { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true},
+        { provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false },
         StartupService,
         {
             provide: APP_INITIALIZER,

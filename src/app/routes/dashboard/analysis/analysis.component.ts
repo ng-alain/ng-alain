@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getTimeDistance, yuan } from 'app/utils/utils';
+import { getTimeDistance, yuan } from '@delon/abc';
 import { getFakeChartData } from '../../../../../_mock/chart.service';
 
 @Component({
@@ -29,13 +29,16 @@ export class DashboardAnalysisComponent implements OnInit {
 
     ngOnInit() {
         setTimeout(() => {
-            this.data = getFakeChartData;
+            this.data = Object.assign({}, getFakeChartData);
+            this.data.offlineData.forEach((item: any) => {
+                item.chart = Object.assign([], getFakeChartData.offlineChartData);
+            });
             this.loading = false;
             this.changeSaleType();
         }, 500);
     }
 
-    setDate(type: string) {
+    setDate(type: any) {
         const rank = getTimeDistance(type);
         this.q.start = rank[0];
         this.q.end = rank[1];

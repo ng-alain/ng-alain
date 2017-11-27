@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SettingsService } from '@core/services/settings.service';
+import { SettingsService } from '@delon/theme';
 
 @Component({
   selector: 'app-pages-register',

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NzModalSubject, NzModalService, NzMessageService } from 'ng-zorro-antd';
-import { ModalHelper } from '@shared/helper/modal.helper';
+import { ModalHelper } from '@delon/theme';
 
 @Component({
     selector: 'app-model-custom',

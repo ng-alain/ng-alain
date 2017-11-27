@@ -31,7 +31,7 @@
                     <div nz-form-item nz-row>
                         <div nz-form-label nz-col><label for="rate">作者</label></div>
                         <div nz-form-control nz-col nzXs="24" nzSm="24" nzMd="12">
-                            <nz-select [(ngModel)]="q.user" name="user" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" [nzSize]="'large'" style="max-width: 200px; width: 100%;">
+                            <nz-select [(ngModel)]="q.user" name="user" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" [nzSize]="'large'" style="width: 200px;">
                                 <nz-option [nzLabel]="'王昭君'" [nzValue]="'lisa'"></nz-option>
                                 <nz-option [nzLabel]="'李白'" [nzValue]="'libai'"></nz-option>
                                 <nz-option [nzLabel]="'妲己'" [nzValue]="'daji'"></nz-option>
@@ -43,7 +43,7 @@
                     <div nz-form-item nz-row>
                         <div nz-form-label nz-col><label for="rate">好评度</label></div>
                         <div nz-form-control nz-col nzXs="24" nzSm="24" nzMd="12">
-                            <nz-select [(ngModel)]="q.rate" name="rate" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" [nzSize]="'large'" style="max-width: 200px; width: 100%;">
+                            <nz-select [(ngModel)]="q.rate" name="rate" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" [nzSize]="'large'" style="width: 200px;">
                                 <nz-option [nzLabel]="'优秀'" [nzValue]="'good'"></nz-option>
                                 <nz-option [nzLabel]="'普通'" [nzValue]="'normal'"></nz-option>
                             </nz-select>

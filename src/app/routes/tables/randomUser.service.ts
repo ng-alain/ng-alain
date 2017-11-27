@@ -1,23 +1,16 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
+import { catchError } from 'rxjs/operators';
+import { _HttpClient } from '@delon/theme';
 
 @Injectable()
 export class RandomUserService {
     randomUserUrl = 'https://api.randomuser.me/';
 
     getUsers(PageIndex = 1, pageSize = 10, args?: any) {
-        // fix laster version
-        let param = new HttpParams().set('results', '' + pageSize).set('page', '' + PageIndex);
-        if (args) {
-            Object.keys(args).forEach(key => {
-                param = param.append(key, args[key]);
-            });
-        }
-
-        return this.http.get(this.randomUserUrl + '?' + param.toString())
-            .catch(this.handleError);
+        return this.http
+            .get(this.randomUserUrl, { results: pageSize, page: PageIndex, _allow_anonymous: true })
+            .pipe(catchError(this.handleError));
     }
 
     handleError(error: any) {
@@ -27,7 +20,7 @@ export class RandomUserService {
         return Observable.throw(errMsg);
     }
 
-    constructor(private http: HttpClient) {
+    constructor(private http: _HttpClient) {
     }
 
 

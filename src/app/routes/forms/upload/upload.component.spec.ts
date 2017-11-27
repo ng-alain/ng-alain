@@ -1,22 +1,18 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { setUpTestBed } from '../../../../testing/common.spec';
 
-import { SharedModule } from '@shared/shared.module';
 import { UploadComponent } from './upload.component';
-import { FormsModule } from './../forms.module';
+import { FileUploadModule } from 'ng2-file-upload';
 
 describe('Component: Upload', () => {
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            imports: [RouterTestingModule, SharedModule.forRoot(), FormsModule]
-        });
+    setUpTestBed(<TestModuleMetadata>{
+        declarations: [ UploadComponent ],
+        imports: [FileUploadModule]
     });
 
-    it('should create an instance', async(() => {
+    it('should create an instance', () => {
         const fixture = TestBed.createComponent(UploadComponent);
         const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
-    }));
+    });
 });

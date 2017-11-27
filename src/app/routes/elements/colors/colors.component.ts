@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ColorsService } from '@core/services/colors.service';
+import { ColorsService } from '@delon/theme';
 
 @Component({
     selector: 'app-colors',

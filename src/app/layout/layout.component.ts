@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd, RouteConfigLoadStart, NavigationError } from '@angular/router';
-
-import { SettingsService } from '@core/services/settings.service';
-import { MenuService } from '@core/services/menu.service';
-import { ScrollService } from '@core/services/scroll.service';
 import { NzMessageService } from 'ng-zorro-antd';
+import { ScrollService, MenuService, SettingsService } from '@delon/theme';
 
 @Component({
     selector: 'app-layout',

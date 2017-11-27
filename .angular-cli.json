@@ -21,9 +21,9 @@
             "styles.less"
         ],
         "scripts": [
-            "../node_modules/g2/index.js",
-            "../libs/g2-plugin-slider.js",
-            "../libs/g2-cloud.js"
+            "../node_modules/@antv/g2/dist/g2.min.js",
+            "../node_modules/@antv/data-set/dist/data-set.min.js",
+            "../node_modules/@antv/g2-plugin-slider/dist/g-2.0.0.min.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {

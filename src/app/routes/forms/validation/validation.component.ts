@@ -2,8 +2,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AsyncValidatorFn, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/debounceTime';
+import { map, delay, debounceTime } from 'rxjs/operators';
 
 const USERDATA = {
     nickname: 'test',
@@ -41,16 +40,16 @@ export class ValidationComponent implements OnInit {
     }
 
     nicknameValidator = (control: FormControl): Observable<any>  => {
-        return control
-                .valueChanges
-                .debounceTime(500)
-                .map((value) => {
-                    if (value !== 'cipchk') {
-                        control.setErrors({ checked: true, error: true });
-                        return ;
-                    }
-                    control.setErrors(null);
-                });
+        return control.valueChanges.pipe(
+            debounceTime(500),
+            map((value) => {
+                if (value !== 'cipchk') {
+                    control.setErrors({ checked: true, error: true });
+                    return ;
+                }
+                control.setErrors(null);
+            })
+        );
     }
 
     confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
@@ -84,8 +83,7 @@ export class ValidationComponent implements OnInit {
 
     loadData() {
         this.loading = true;
-        Observable.of(USERDATA)
-            .delay(1000)
+        Observable.of(USERDATA).pipe(delay(1000))
             .subscribe(data => {
                 this.loading = false;
                 this.form.reset(data);

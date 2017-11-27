@@ -161,7 +161,7 @@
             </div>
             <h4 class="py-sm">Circular</h4>
             <nz-progress [ngModel]="75" [nzType]="'circle'" [nzWidth]="80"></nz-progress>
-            <nz-progress [ngModel]="percent" [nzType]="'circle'" [nzWidth]="60" [nzStrokeWidth]="4" [nzStatus]="'exception'"></nz-progress>
+            <nz-progress [ngModel]="percent" [nzType]="'circle'" [nzWidth]="60" [nzStrokeWidth]="4" [nzStatus]="'exception'" class="mx-sm"></nz-progress>
             <nz-progress [ngModel]="percent" [nzType]="'circle'" [nzWidth]="40" [nzStrokeWidth]="2"></nz-progress>
             <nz-button-group class="ml-lg">
                 <button nz-button (click)="decline()" [nzType]="'ghost'"><i class="anticon anticon-minus"></i></button>
@@ -181,7 +181,7 @@
     <div nz-col [nzMd]="12">
         <nz-card nzTitle="Tooltip">
             <nz-tooltip [nzTitle]="'prompt text'">
-                <span nz-tooltip>Tooltip will show when mouse enter.</span>
+                <span nz-tooltip class="mr-sm">Tooltip will show when mouse enter.</span>
             </nz-tooltip>
             <nz-tooltip>
                 <button nz-button nz-tooltip>This Tooltip Have Icon</button>
@@ -201,7 +201,7 @@
                 </ng-template>
             </nz-popover>
             <nz-popover [nzTitle]="'Title'" [nzTrigger]="'click'">
-                <button nz-button nz-popover>Click me</button>
+                <button nz-button nz-popover class="ml-sm">Click me</button>
                 <ng-template #nzTemplate>
                     <p>Content</p>
                     <p>Content</p>
