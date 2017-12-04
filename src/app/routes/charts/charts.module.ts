@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { G2ChartModule } from 'g2-angular';
 
 import { SharedModule } from '@shared/shared.module';
 
@@ -13,8 +12,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         SharedModule,
-        RouterModule.forChild(routes),
-        G2ChartModule.forRoot()
+        RouterModule.forChild(routes)
     ],
     declarations: [
         G2Component
