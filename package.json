@@ -15,8 +15,8 @@
   "scripts": {
     "precommit": "npm run lint-staged",
     "ng": "ng",
-    "start": "ng serve",
-    "serve:hmr": "ng serve --hmr -e=hmr",
+    "start": "ng serve -o",
+    "serve:hmr": "ng serve -o --hmr -e=hmr",
     "build": "ng build --prod --build-optimizer",
     "lint": "run-s lint:ts lint:style",
     "lint:ts": "ng lint",
@@ -24,10 +24,7 @@
     "lint-staged": "lint-staged",
     "e2e": "ng e2e",
     "test": "ng test -sr",
-    "test-coverage": "ng test -sr -cc",
-    "chore.build": "ng build --prod --build-optimizer --bh ./",
-    "chore.gh-pages": "run-s chore.build chore.deploy",
-    "chore.deploy": "gh-pages -d dist"
+    "test-coverage": "ng test -sr -cc"
   },
   "dependencies": {
     "@angular/animations": "^5.0.0",
@@ -42,9 +39,9 @@
     "@antv/data-set": "^0.7.0",
     "@antv/g2": "^3.0.1",
     "@antv/g2-plugin-slider": "^2.0.0",
-    "@delon/abc": "^0.0.1-beta.2",
-    "@delon/acl": "^0.0.1-beta.2",
-    "@delon/theme": "^0.0.1-beta.2",
+    "@delon/abc": "^0.2.0-beta.1",
+    "@delon/acl": "^0.2.0-beta.1",
+    "@delon/theme": "^0.2.0-beta.1",
     "@ngx-translate/core": "^8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
     "angular-baidu-maps": "^1.0.1",
