@@ -16,10 +16,6 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
         start: null,
         end: null
     };
-    lastTotalConfig = {
-        leftTime: 30,
-        template: `$!h!:$!m!:$!s!`
-    };
 
     // from [http://jsfiddle.net/uTSqT/12/]
     tags = [

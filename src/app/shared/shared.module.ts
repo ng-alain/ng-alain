@@ -123,6 +123,7 @@ const ZORROMODULES = [
 import {
     AdAvatarListModule,
     AdChartsModule,
+    AdCountDownModule,
     AdDescListModule,
     AdEllipsisModule,
     AdErrorCollectModule,
@@ -144,6 +145,7 @@ import {
 const ABCMODULES = [
     AdAvatarListModule,
     AdChartsModule,
+    AdCountDownModule,
     AdDescListModule,
     AdEllipsisModule,
     AdErrorCollectModule,
