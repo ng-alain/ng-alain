@@ -18,6 +18,7 @@
     "start": "ng serve -o",
     "serve:hmr": "ng serve -o --hmr -e=hmr",
     "build": "ng build --prod --build-optimizer",
+    "analyze": "ng build --prod --build-optimizer --stats-json",
     "lint": "run-s lint:ts lint:style",
     "lint:ts": "ng lint",
     "lint:style": "stylelint \"{src}/**/*.less\" --syntax less",
