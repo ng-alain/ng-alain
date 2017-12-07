@@ -17,7 +17,7 @@ export class ProUserLoginComponent implements OnDestroy {
 
     constructor(fb: FormBuilder, private router: Router, public msg: NzMessageService) {
         this.form = fb.group({
-            userName: [null, [Validators.required]],
+            userName: [null, [Validators.required, Validators.minLength(5)]],
             password: [null, Validators.required],
             mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
             captcha: [null, [Validators.required]],

@@ -81,6 +81,22 @@ export class ValidationComponent implements OnInit {
         }, );
     }
 
+    //#region get form fields
+    get email() { return this.form.controls.email; }
+    get password() { return this.form.controls.password; }
+    get checkPassword() { return this.form.controls.checkPassword; }
+    get nickname() { return this.form.controls.nickname; }
+    get phoneNumberPrefix() { return this.form.controls.phoneNumberPrefix; }
+    get phoneNumber() { return this.form.controls.phoneNumber; }
+    get website() { return this.form.controls.website; }
+    get start() { return this.form.controls.start; }
+    get summary() { return this.form.controls.summary; }
+    get end() { return this.form.controls.end; }
+    get status() { return this.form.controls.status; }
+    get captcha() { return this.form.controls.captcha; }
+    get agree() { return this.form.controls.agree; }
+    //#endregion
+
     loadData() {
         this.loading = true;
         Observable.of(USERDATA).pipe(delay(1000))
