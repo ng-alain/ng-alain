@@ -65,7 +65,7 @@ export class DashboardAnalysisComponent implements OnInit {
         this.salesPieData = this.salesType === 'all' ? this.data.salesTypeData : (
             this.salesType === 'online' ? this.data.salesTypeDataOnline : this.data.salesTypeDataOffline
         );
-        this.salesTotal = this.salesPieData.reduce((pre, now) => now.y + pre, 0);
+        if (this.salesPieData) this.salesTotal = this.salesPieData.reduce((pre, now) => now.y + pre, 0);
     }
 
     handlePieValueFormat(value: any) {

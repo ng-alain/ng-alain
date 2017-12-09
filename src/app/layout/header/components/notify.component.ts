@@ -1,7 +1,8 @@
 import { NzMessageService } from 'ng-zorro-antd';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { map, groupBy, concatMap, mergeMap, flatMap, delay, tap } from 'rxjs/operators';
+import { ArrayObservable } from 'rxjs/observable/ArrayObservable';
+import { map, groupBy, concatMap, mergeMap, flatMap, delay, tap, toArray } from 'rxjs/operators';
 import * as moment from 'moment';
 import { NoticeItem } from '@delon/abc';
 import { SettingsService } from '@delon/theme';
@@ -39,6 +40,7 @@ export class HeaderNotifyComponent implements OnInit {
     }
 
     private parseGroup(data: Observable<any[]>) {
+        console.log('parseGroup');
         data.pipe(
                 concatMap((i: any) => i),
                 map((i: any) => {
@@ -55,7 +57,7 @@ export class HeaderNotifyComponent implements OnInit {
                     return i;
                 }),
                 groupBy((x: any) => x.type),
-                flatMap(g$ => g$.toArray()),
+                mergeMap(g => g.pipe(toArray())),
                 tap((ls: any) => {
                     this.data.find(w => w.title === ls[0].type).list = ls;
                 })
@@ -66,7 +68,7 @@ export class HeaderNotifyComponent implements OnInit {
         if (!res || this.loading) return;
         this.loading = true;
         // region: mock http request
-        this.parseGroup(Observable.of([{
+        this.parseGroup(ArrayObservable.of([{
             id: '000000001',
             avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png',
             title: '你收到了 14 份新周报',

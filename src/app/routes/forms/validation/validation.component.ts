@@ -2,6 +2,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AsyncValidatorFn, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { ArrayObservable } from 'rxjs/observable/ArrayObservable';
 import { map, delay, debounceTime } from 'rxjs/operators';
 
 const USERDATA = {
@@ -99,7 +100,7 @@ export class ValidationComponent implements OnInit {
 
     loadData() {
         this.loading = true;
-        Observable.of(USERDATA).pipe(delay(1000))
+        ArrayObservable.of(USERDATA).pipe(delay(1000))
             .subscribe(data => {
                 this.loading = false;
                 this.form.reset(data);
