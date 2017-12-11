@@ -27,7 +27,7 @@ export class ExtrasPoiEditComponent implements OnInit {
     save() {
         this.http.get('./assets/pois.json').subscribe(() => {
             this.msgSrv.success('保存成功，只是模拟，实际未变更');
-            this.subject.next(true);
+            this.subject.next('true');
             this.close();
         });
     }
