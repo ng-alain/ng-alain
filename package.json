@@ -75,7 +75,6 @@
     "@angularclass/hmr-loader": "^3.0.4",
     "@types/jasmine": "~2.6.0",
     "@types/jasminewd2": "~2.0.3",
-    "@types/moment": "^2.13.0",
     "@types/node": "~6.0.60",
     "codecov": "^3.0.0",
     "codelyzer": "~4.0.1",
