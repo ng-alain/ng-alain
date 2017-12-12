@@ -11,6 +11,7 @@ import { DashboardV1Component } from './dashboard/v1/v1.component';
 import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
 import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
 import { DashboardWorkplaceComponent } from './dashboard/workplace/workplace.component';
+import { CallbackComponent } from './callback/callback.component';
 // pro
 import { ProUserLayoutComponent } from '../layout/pro/user/user.component';
 import { ProUserLoginComponent } from './pro/user/login/login.component';
@@ -58,6 +59,7 @@ export const routes = [
         ]
     },
     // 单页不包裹Layout
+    { path: 'callback/:type', component: CallbackComponent },
     { path: 'register', component: RegisterComponent, data: { translate: 'register' } },
     { path: 'login', component: LoginComponent, data: { title: 'login' } },
     { path: 'forget', component: ForgetComponent, data: { translate: 'forget' } },

@@ -79,8 +79,14 @@
 </form>
 <div class="other">
     其他登录方式
-    <span class="icon-alipay"></span>
-    <span class="icon-taobao"></span>
-    <span class="icon-weibo"></span>
+    <nz-tooltip [nzTitle]="'in fact Auth0 via window'">
+        <span nz-tooltip class="icon-alipay" (click)="open('auth0', 'window')"></span>
+    </nz-tooltip>
+    <nz-tooltip [nzTitle]="'in fact Github via redirect'">
+        <span nz-tooltip class="icon-taobao" (click)="open('github')"></span>
+    </nz-tooltip>
+    <nz-tooltip [nzTitle]="'真的是微博'">
+        <span nz-tooltip class="icon-weibo" (click)="open('weibo', 'window')"></span>
+    </nz-tooltip>
     <a class="register" routerLink="/pro/user/register">注册账户</a>
 </div>

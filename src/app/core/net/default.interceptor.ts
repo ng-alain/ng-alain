@@ -2,7 +2,7 @@ import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpInterceptor, HttpRequest, HttpHandler,
          HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent,
-         HttpHeaders } from '@angular/common/http';
+       } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
@@ -24,18 +24,9 @@ export class DefaultInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler):
         Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-        let header: HttpHeaders = null;
-        // 过滤授权与多assets请求
-        if (!req.url.includes('auth/') && !req.url.includes('assets/') && !req.params.has('_allow_anonymous')) {
-            const access_token = `xxxxx`;
-            // 业务处理：无法获取授权，或授权已经过期时放弃当前请求
-            // if (!authData.access_token) {
-            //     this.goLogin();
-            //     return ErrorObservable.create({ status: 401 });
-            // }
-            // 正常token值放在请求header当中，具体格式以后端为准
-            header = req.headers.set('Authorization', `Bearer ${access_token}`);
-        }
+
+        // TIPS：原TOKEN信息已交由 `@delon/auth` 处理
+        // Document: http://ng-alain.com/docs/auth
 
         // 统一加上服务端前缀
         let url = req.url;
@@ -44,7 +35,6 @@ export class DefaultInterceptor implements HttpInterceptor {
         }
 
         const newReq = req.clone({
-            headers: header,
             url: url
         });
 
