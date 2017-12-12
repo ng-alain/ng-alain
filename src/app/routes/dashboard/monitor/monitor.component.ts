@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getTimeDistance, yuan, fixedZero } from 'app/utils/utils';
+import { getTimeDistance, yuan, fixedZero } from '@delon/abc';
 import { getFakeChartData } from '../../../../../_mock/chart.service';
 
 @Component({
@@ -15,10 +15,6 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     q: any = {
         start: null,
         end: null
-    };
-    lastTotalConfig = {
-        leftTime: 30,
-        template: `$!h!:$!m!:$!s!`
     };
 
     // from [http://jsfiddle.net/uTSqT/12/]
@@ -155,7 +151,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
         },
         {
             'name': '上海市',
-            'value': 50,
+            'value': 1050,
             'type': 1
         },
         {

@@ -1,23 +1,16 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-import { SharedModule } from '@shared/shared.module';
+import { TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { setUpTestBed } from '../../../../testing/common.spec';
 
 import { MaintenanceComponent } from './maintenance.component';
 
 describe('Pages: 404', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [RouterTestingModule, SharedModule.forRoot()],
-      declarations: [MaintenanceComponent]
+    setUpTestBed(<TestModuleMetadata>{
+        declarations: [ MaintenanceComponent ]
     });
-  });
 
-  it('should create an instance', async(() => {
-    const fixture = TestBed.createComponent(MaintenanceComponent);
-    const comp = fixture.debugElement.componentInstance;
-    expect(comp).toBeTruthy();
-  }));
+    it('should create an instance', () => {
+        const fixture = TestBed.createComponent(MaintenanceComponent);
+        const comp = fixture.debugElement.componentInstance;
+        expect(comp).toBeTruthy();
+    });
 });

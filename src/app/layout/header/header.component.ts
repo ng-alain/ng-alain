@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { SettingsService } from '@core/services/settings.service';
+import { SettingsService } from '@delon/theme';
 
 @Component({
     selector: 'app-header',

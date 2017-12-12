@@ -8,7 +8,9 @@ import { getFakeChartData } from '../../../../../_mock/chart.service';
 })
 export class DashboardV1Component {
 
-    constructor(public msg: NzMessageService) {}
+    constructor(public msg: NzMessageService) {
+        console.log(this.offlineChartData);
+    }
 
     todoData: any[] = [
         { completed: true, avatar: '1', name: '苏先生', content: `请告诉我，我应该说点什么好？` },
@@ -23,5 +25,5 @@ export class DashboardV1Component {
 
     webSite = [ ...getFakeChartData.visitData.slice(0, 10) ];
     salesData =  [...getFakeChartData.salesData];
-    offlineChartData = [...getFakeChartData.offlineChartData];
+    offlineChartData = Object.assign([], getFakeChartData.offlineChartData);
 }

@@ -23,7 +23,7 @@
          [nzGrid]="{gutter: 24, lg: 8, md: 12, sm: 24, xs: 24 }">
     <ng-template #item let-item>
         <nz-list-item>
-            <button *ngIf="item === null" nz-button (click)="msg.success('add')" [nzType]="'dashed'" style="width: 100%; height: 188px;">
+            <button *ngIf="item === null" nz-button (click)="msg.success('add')" [nzType]="'dashed'" style="width: 100%; height: 183px;">
                 <i class="anticon anticon-plus"></i><span>新增产品</span>
             </button>
             <nz-card nzHoverable *ngIf="item !== null">

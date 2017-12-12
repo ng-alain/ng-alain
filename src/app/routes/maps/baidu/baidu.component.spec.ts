@@ -1,22 +1,22 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { setUpTestBed } from '../../../../testing/common.spec';
 
-import { SharedModule } from '@shared/shared.module';
 import { MapsBaiduComponent } from './baidu.component';
-import { MapsModule } from '../maps.module';
+import { AbmModule } from 'angular-baidu-maps';
 
 describe('Component: MapsBaidu', () => {
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            imports: [RouterTestingModule, SharedModule.forRoot(), MapsModule]
-        });
+    setUpTestBed(<TestModuleMetadata>{
+        declarations: [ MapsBaiduComponent ],
+        imports: [
+            AbmModule.forRoot({
+                apiKey: 'p3HIQIqLqKVQOXao1IiLp5O0eTFakjEP' // app key为必选项
+            })
+        ]
     });
 
-    it('should create an instance', async(() => {
+    it('should create an instance', () => {
         const fixture = TestBed.createComponent(MapsBaiduComponent);
         const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
-    }));
+    });
 });

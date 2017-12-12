@@ -33,9 +33,12 @@ import { TransferService } from './transfer.service';
             <div nz-form-label nz-col [nzSm]="4">
                 <label for="password" nz-form-item-required>支付密码</label>
             </div>
-            <div nz-form-control nz-col [nzSm]="20" nzHasFeedback [nzValidateStatus]="getFormControl('password')">
+            <div nz-form-control nz-col [nzSm]="20" nzHasFeedback [nzValidateStatus]="password">
                 <nz-input formControlName="password" nzSize="large" nzType="password" nzId="password"></nz-input>
-                <p nz-form-explain *ngIf="getFormControl('password').invalid">请输入密码且至少6位数以上</p>
+                <ng-container *ngIf="password.dirty || password.touched">
+                    <p nz-form-explain *ngIf="password.errors?.required">请输入密码</p>
+                    <p nz-form-explain *ngIf="password.errors?.minlength">至少6位数以上</p>
+                </ng-container>
             </div>
         </div>
         <div nz-form-item nz-row>
@@ -60,9 +63,9 @@ export class Step2Component implements OnInit {
         this.form.patchValue(this.item);
     }
 
-    getFormControl(name: string) {
-        return this.form.controls[name];
-    }
+    //#region get form fields
+    get password() { return this.form.controls.password; }
+    //#endregion
 
     _submitForm() {
         this.loading = true;

@@ -1,0 +1,6 @@
+{
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    // 确保代码片断优先级高于内置
+    // https://github.com/cipchk/ng-zorro-vscode
+    "editor.snippetSuggestions": "top"
+}

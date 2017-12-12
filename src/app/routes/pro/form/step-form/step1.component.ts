@@ -28,7 +28,7 @@ import { TransferService } from './transfer.service';
                     </nz-select>
                     <input formControlName="receiver_account" nzSize="large" id="'receiver_account'" nz-input style="width: 75%;">
                 </nz-input-group>
-                <p nz-form-explain *ngIf="receiver_account.invalid">
+                <p nz-form-explain *ngIf="(receiver_account.dirty || receiver_account.touched) && receiver_account.errors?.required">
                     请输入收款账户
                 </p>
             </div>
@@ -39,7 +39,10 @@ import { TransferService } from './transfer.service';
             </div>
             <div nz-form-control nz-col [nzSm]="20" nzHasFeedback [nzValidateStatus]="receiver_name">
                 <nz-input formControlName="receiver_name" nzSize="large" [nzId]="'receiver_name'"></nz-input>
-                <p nz-form-explain *ngIf="receiver_name.invalid">收款姓名至少2个字符以上</p>
+                <ng-container *ngIf="receiver_name.dirty || receiver_name.touched">
+                    <p nz-form-explain *ngIf="receiver_name.errors?.required">请输入收款姓名</p>
+                    <p nz-form-explain *ngIf="receiver_name.errors?.minlength">至少2个字符以上</p>
+                </ng-container>
             </div>
         </div>
         <div nz-form-item nz-row>
@@ -50,12 +53,12 @@ import { TransferService } from './transfer.service';
                 <nz-input formControlName="amount" nzSize="large" [nzId]="'amount'">
                     <ng-template #prefix>￥</ng-template>
                 </nz-input>
-                <p nz-form-explain *ngIf="amount.invalid">
-                    <span *ngIf="amount.errors.required">请输入转账金额</span>
-                    <span *ngIf="amount.errors.pattern">金额只能是正整数</span>
-                    <span *ngIf="amount.errors.min">金额最少1元以上</span>
-                    <span *ngIf="amount.errors.max">金额最多100万以内</span>
-                </p>
+                <ng-container *ngIf="amount.dirty || amount.touched">
+                    <p nz-form-explain *ngIf="amount.errors?.required">请输入转账金额</p>
+                    <p nz-form-explain *ngIf="amount.errors?.pattern">金额只能是正整数</p>
+                    <p nz-form-explain *ngIf="amount.errors?.min">金额最少1元以上</p>
+                    <p nz-form-explain *ngIf="amount.errors?.max">金额最多100万以内</p>
+                </ng-container>
             </div>
         </div>
         <div nz-form-item nz-row>

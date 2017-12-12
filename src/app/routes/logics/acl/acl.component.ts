@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MenuService } from '@core/services/menu.service';
-import { ACLService } from '@core/acl/acl.service';
+import { ACLService } from '@delon/acl';
+import { MenuService } from '@delon/theme';
 
 @Component({
     selector: 'app-acl',
@@ -16,10 +16,16 @@ export class ACLComponent {
         private aclService: ACLService,
         private menuSrv: MenuService) { }
 
+    private reMenu() {
+        this.menuSrv.resume((item) => {
+            item.hide = item.acl && !this.aclService.can(item.acl);
+        });
+    }
+
     toggleFull() {
         this.full = !this.full;
         this.aclService.setFull(this.full);
-        this.menuSrv.resume();
+        this.reMenu();
     }
 
     toggleRoleA() {
@@ -27,7 +33,7 @@ export class ACLComponent {
         this.roleA = this.roleA.length > 0 ? '' : 'role-a';
         this.aclService.setFull(this.full);
         this.aclService.setRole([this.roleA]);
-        this.menuSrv.resume();
+        this.reMenu();
     }
 
     toggleRoleB() {
@@ -35,6 +41,6 @@ export class ACLComponent {
         this.roleB = this.roleB.length > 0 ? '' : 'role-b';
         this.aclService.setFull(this.full);
         this.aclService.setRole([this.roleB]);
-        this.menuSrv.resume();
+        this.reMenu();
     }
 }

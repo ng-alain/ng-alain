@@ -1,22 +1,16 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { setUpTestBed } from '../../../../testing/common.spec';
 
-import { SharedModule } from '@shared/shared.module';
 import { ValidationComponent } from './validation.component';
-import { FormsModule } from '../forms.module';
 
 describe('Component: Validation', () => {
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            imports: [RouterTestingModule, SharedModule.forRoot(), FormsModule]
-        });
+    setUpTestBed(<TestModuleMetadata>{
+        declarations: [ ValidationComponent ]
     });
 
-    it('should create an instance', async(() => {
+    it('should create an instance', () => {
         const fixture = TestBed.createComponent(ValidationComponent);
         const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
-    }));
+    });
 });

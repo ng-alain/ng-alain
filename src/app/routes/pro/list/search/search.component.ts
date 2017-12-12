@@ -4,8 +4,7 @@ import { getFakeList } from '../../../../../../_mock/api.service';
 @Component({
     selector: 'pro-list-search',
     templateUrl: './search.component.html',
-    styleUrls: ['./search.component.less'],
-    encapsulation: ViewEncapsulation.Emulated
+    styleUrls: ['./search.component.less']
 })
 export class ProSearchComponent implements OnInit {
     q: any = {

@@ -10,7 +10,10 @@
                             <i class="anticon anticon-user"></i>
                         </ng-template>
                     </nz-input>
-                    <div nz-form-explain *ngIf="userName.dirty&&userName.errors?.required">请输入账户名！</div>
+                    <ng-container *ngIf="userName.dirty || userName.touched">
+                        <p nz-form-explain *ngIf="userName.errors?.required">请输入账户名！</p>
+                        <p nz-form-explain *ngIf="userName.errors?.minlength">至少五个字符</p>
+                    </ng-container>
                 </div>
             </div>
             <div nz-form-item>
@@ -20,7 +23,7 @@
                             <i class="anticon anticon-lock"></i>
                         </ng-template>
                     </nz-input>
-                    <div nz-form-explain *ngIf="password.dirty&&password.errors?.required">请输入密码！</div>
+                    <div nz-form-explain *ngIf="(password.dirty || password.touched) && password.errors?.required">请输入密码！</div>
                 </div>
             </div>
         </nz-tab>
@@ -33,8 +36,10 @@
                             <i class="anticon anticon-user"></i>
                         </ng-template>
                     </nz-input>
-                    <div nz-form-explain *ngIf="mobile.dirty&&mobile.errors?.required">请输入手机号！</div>
-                    <div nz-form-explain *ngIf="mobile.dirty&&mobile.errors?.pattern">手机号格式错误！</div>
+                    <ng-container *ngIf="mobile.dirty || mobile.touched">
+                        <p nz-form-explain *ngIf="mobile.errors?.required">请输入手机号！</p>
+                        <p nz-form-explain *ngIf="mobile.errors?.pattern">手机号格式错误！</p>
+                    </ng-container>
                 </div>
             </div>
             <div nz-form-item>
@@ -51,7 +56,7 @@
                             <button nz-button (click)="getCaptcha()" [disabled]="count" [nzSize]="'large'" class="ant-btn__block">{{ count ? count + 's' : '获取验证码' }}</button>
                         </div>
                     </div>
-                    <div nz-form-explain *ngIf="mobile.dirty&&mobile.errors?.required">请输入验证码！</div>
+                    <div nz-form-explain *ngIf="(mobile.dirty || mobile.touched) && mobile.errors?.required">请输入验证码！</div>
                 </div>
             </div>
         </nz-tab>

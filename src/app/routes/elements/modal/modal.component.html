@@ -13,19 +13,19 @@
         </ng-template>
         <nz-card nzTitle="Basic">
             <div class="pb-md">
-                <button nz-button (click)="basicModel(modelContent)">Open</button>
+                <button nz-button (click)="basicModel(modelContent)" class="mr-sm">Open</button>
                 <button nz-button (click)="confirmModel(modelContent)">Confirm</button>
             </div>
-            <button nz-button (click)="showModel('info')">Info</button>
-            <button nz-button (click)="showModel('success')">Success</button>
-            <button nz-button (click)="showModel('error')">Error</button>
+            <button nz-button (click)="showModel('info')" class="mr-sm">Info</button>
+            <button nz-button (click)="showModel('success')" class="mr-sm">Success</button>
+            <button nz-button (click)="showModel('error')" class="mr-sm">Error</button>
             <button nz-button (click)="showModel('warning')">Warning</button>
         </nz-card>
     </div>
     <div nz-col [nzMd]="12">
         <nz-card nzTitle="Custom Component">
-            <button nz-button (click)="customCompModel()">Default</button>
-            <button nz-button (click)="customCompModel('sm')">Small</button>
+            <button nz-button (click)="customCompModel()" class="mr-sm">Default</button>
+            <button nz-button (click)="customCompModel('sm')" class="mr-sm">Small</button>
             <button nz-button (click)="customCompModel('lg')">Large</button>
             <div class="mt-sm">
                 <pre [innerHTML]="options | json"></pre>

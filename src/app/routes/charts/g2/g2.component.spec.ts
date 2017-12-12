@@ -1,22 +1,16 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { setUpTestBed } from '../../../../testing/common.spec';
 
-import { SharedModule } from '@shared/shared.module';
 import { G2Component } from './g2.component';
 
 describe('Component: Chart.js', () => {
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            imports: [RouterTestingModule, SharedModule.forRoot()],
-            declarations: [G2Component]
-        });
+    setUpTestBed(<TestModuleMetadata>{
+        declarations: [ G2Component ]
     });
 
-    it('should create an instance', async(() => {
+    it('should create an instance', () => {
         const fixture = TestBed.createComponent(G2Component);
         const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
-    }));
+    });
 });

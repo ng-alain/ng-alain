@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { ModalHelper } from '@shared/helper/modal.helper';
-import { _HttpClient } from '@core/services/http.client';
+import { ModalHelper } from '@delon/theme';
+import { _HttpClient } from '@delon/theme';
 import { ExtrasPoiEditComponent } from './edit/edit.component';
 
 @Component({

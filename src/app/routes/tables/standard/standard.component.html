@@ -7,7 +7,7 @@
 <div nz-row [nzGutter]="16">
     <div nz-col [nzMd]="12">
         <nz-card nzTitle="Basic">
-            <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10">
+            <nz-table [nzDataSource]="data" [nzPageSize]="10">
                 <thead nz-thead>
                     <tr>
                         <th nz-th><span>Name</span></th>
@@ -17,7 +17,7 @@
                     </tr>
                 </thead>
                 <tbody nz-tbody>
-                    <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+                    <tr nz-tbody-tr *ngFor="let data of data">
                         <td nz-td>{{data.name}}</td>
                         <td nz-td>{{data.age}}</td>
                         <td nz-td>{{data.address}}</td>
@@ -46,7 +46,7 @@
     </div>
     <div nz-col [nzMd]="12">
         <nz-card nzTitle="Sort">
-            <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10">
+            <nz-table [nzDataSource]="data" [nzPageSize]="10">
                 <thead nz-thead>
                     <tr>
                         <th nz-th><span>Name</span></th>
@@ -55,7 +55,7 @@
                     </tr>
                 </thead>
                 <tbody nz-tbody>
-                    <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+                    <tr nz-tbody-tr *ngFor="let data of data">
                         <td nz-td>{{data.name}}</td>
                         <td nz-td>{{data.age}}</td>
                         <td nz-td>{{data.address}}</td>
@@ -68,7 +68,7 @@
 <div nz-row [nzGutter]="16">
     <div nz-col [nzMd]="12">
         <nz-card nzTitle="Selection">
-            <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()" (nzPageSizeChange)="_refreshStatus()">
+            <nz-table [nzDataSource]="data" [nzPageSize]="10" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()" (nzPageSizeChange)="_refreshStatus()">
                 <thead nz-thead>
                     <tr>
                         <th nz-th [nzCheckbox]="true">
@@ -81,7 +81,7 @@
                     </tr>
                 </thead>
                 <tbody nz-tbody>
-                    <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+                    <tr nz-tbody-tr *ngFor="let data of data">
                         <td nz-td [nzCheckbox]="true">
                             <label nz-checkbox [(ngModel)]="data.checked" (ngModelChange)="_refreshStatus($event)">
                             </label>

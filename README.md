@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/cipchk/ng-alain.svg?branch=master)](https://travis-ci.org/cipchk/ng-alain)
 [![Dependency Status](https://david-dm.org/cipchk/ng-alain/status.svg)](https://david-dm.org/cipchk/ng-alain)
+[![NPM version](https://img.shields.io/npm/v/ng-alain.svg)](https://www.npmjs.com/package/ng-alain)
 
 # ng-alain
 
@@ -31,47 +32,18 @@ npm start
 
 # use HMR
 npm run serve:hmr
+
+# upgrade `src/styles/alain` directory to laster version
+npm run upgrade:style
 ```
 
 > [vscode] recommended install [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) plugins, that includes `nz-alain-*` snippets.
 
-## Environment
+## Links
 
-| package | version |
-| ------- | ------- |
-| `ng-alain` | 0.1.3 | 
-| `ng-zorro-antd` | ^0.6.0 |
-| `@angular` | ^5.0.0 |
-| `@angular/cli` | ^1.5.2 |
-
-**Third Library[Optional]**
-
-| package | dependencie | remark |
-| ------- | ------- | ------- |
-| `font-awesome` |  |  |
-| `simple-line-icons` |  |  |
-| `weather-icons` |  |  |
-| `angular-baidu-maps` |  | BaidDu Map |
-| `angular-qq-maps` |  | QQ Map |
-| `angular-web-storage` |  | LocalStorage |
-| `g2-angular` | `g2` |  |
-| `ng2-file-upload` |  |  |
-| `ng2-img-cropper` |  |  |
-| `ngx-color-picker` |  |  |
-| `ng-tree-antd` | `angular-tree-component` |  |
-| `ng2-dnd` |  |  |
-| `sweetalert` |  |  |
-| `file-saver` |  |  |
-
-## Guide Lines
-
-+ [antd gruid lines](https://ant.design/docs/spec/introduce)
-+ [`ng-alain` Layout Rule](_documents/layout.md)
-+ [CSS Component Patch](_documents/component-patch.md)
-+ [CSS Utility Rule](_documents/utils.md)
-+ [Pipe](_documents/pipe.md)
-+ [ACL](_documents/acl.md)
-+ [Upgrade](_documents/upgrade.md)
++ [Home Page](http://ng-alain.com)
++ [@delon](https://github.com/cipchk/delon)
++ [DEMO](https://cipchk.github.io/ng-alain/)
 
 ## Features
 

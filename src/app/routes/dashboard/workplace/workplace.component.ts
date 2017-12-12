@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getTimeDistance, yuan, fixedZero } from 'app/utils/utils';
+import { getTimeDistance, yuan, fixedZero } from '@delon/abc';
 import { getNotice, getActivities } from '../../../../../_mock/api.service';
 import { getFakeChartData } from '../../../../../_mock/chart.service';
 
