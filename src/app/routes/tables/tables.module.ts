@@ -6,10 +6,12 @@ import { SharedModule } from '@shared/shared.module';
 import { TableStandardComponent } from './standard/standard.component';
 import { RandomUserService } from './randomUser.service';
 import { TableFullComponent } from './full/full.component';
+import { DemoSimpleTableComponent } from './simple-table/simple-table.component';
 
 const routes: Routes = [
     { path: 'standard', component: TableStandardComponent },
-    { path: 'full', component: TableFullComponent }
+    { path: 'full', component: TableFullComponent },
+    { path: 'simple-table', component: DemoSimpleTableComponent }
 ];
 
 @NgModule({
@@ -20,7 +22,8 @@ const routes: Routes = [
     providers: [ RandomUserService ],
     declarations: [
         TableStandardComponent,
-        TableFullComponent
+        TableFullComponent,
+        DemoSimpleTableComponent
     ],
     exports: [
         RouterModule

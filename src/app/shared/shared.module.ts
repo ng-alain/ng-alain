@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { NgZorroAntdExtraModule } from 'ng-zorro-antd-extra';
 import { AlainThemeModule } from '@delon/theme';
-import { AlainABCModule } from '@delon/abc';
+import { AlainABCModule, SimpleTableConfig } from '@delon/abc';
 import { AlainACLModule } from '@delon/acl';
 
 // third libs
@@ -121,6 +121,7 @@ const ZORROMODULES = [
 
 // region: @delon/abc modules
 import {
+    AdSimpleTableModule,
     AdAvatarListModule,
     AdChartsModule,
     AdCountDownModule,
@@ -143,6 +144,7 @@ import {
     AdUtilsModule
 } from '@delon/abc';
 const ABCMODULES = [
+    AdSimpleTableModule,
     AdAvatarListModule,
     AdChartsModule,
     AdCountDownModule,
@@ -204,7 +206,9 @@ export class SharedModule {
             providers: [
                 // ng-zorro-antd Services
                 NzNotificationService,
-                NzMessageService
+                NzMessageService,
+                // @delon/abc
+                SimpleTableConfig
             ]
         };
     }

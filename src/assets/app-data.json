@@ -164,6 +164,9 @@
                 "text": "Full",
                 "link": "/tables/full",
                 "translate": "full"
+            }, {
+                "text": "Simple Table",
+                "link": "/tables/simple-table"
             }]
         }, {
             "text": "地图",
