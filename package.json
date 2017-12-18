@@ -24,8 +24,8 @@
     "lint:style": "stylelint \"{src}/**/*.less\" --syntax less",
     "lint-staged": "lint-staged",
     "e2e": "ng e2e",
-    "test": "ng test -sr",
-    "test-coverage": "ng test -sr -cc"
+    "test": "ng test -sr -sm=false",
+    "test-coverage": "ng test -sr -cc -sm=false"
   },
   "dependencies": {
     "@angular/animations": "^5.0.0",
