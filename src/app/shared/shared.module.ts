@@ -2,11 +2,11 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouteReuseStrategy } from '@angular/router';
 
 import { NgZorroAntdExtraModule } from 'ng-zorro-antd-extra';
 import { AlainThemeModule } from '@delon/theme';
-import { AlainABCModule, SimpleTableConfig } from '@delon/abc';
+import { AlainABCModule, SimpleTableConfig, ReuseTabService, ReuseTabStrategy } from '@delon/abc';
 import { AlainACLModule } from '@delon/acl';
 
 // third libs
@@ -122,6 +122,7 @@ const ZORROMODULES = [
 // region: @delon/abc modules
 import {
     AdSimpleTableModule,
+    AdReuseTabModule,
     AdAvatarListModule,
     AdChartsModule,
     AdCountDownModule,
@@ -145,6 +146,7 @@ import {
 } from '@delon/abc';
 const ABCMODULES = [
     AdSimpleTableModule,
+    AdReuseTabModule,
     AdAvatarListModule,
     AdChartsModule,
     AdCountDownModule,
@@ -208,7 +210,10 @@ export class SharedModule {
                 NzNotificationService,
                 NzMessageService,
                 // @delon/abc
-                SimpleTableConfig
+                SimpleTableConfig,
+                // reuse-tab
+                ReuseTabService,
+                { provide: RouteReuseStrategy, useClass: ReuseTabStrategy, deps: [ ReuseTabService ] }
             ]
         };
     }
