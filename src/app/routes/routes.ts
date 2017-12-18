@@ -32,6 +32,7 @@ export const routes = [
             { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
             { path: 'elements', loadChildren: './elements/elements.module#ElementsModule' },
             { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
+            { path: 'editor', loadChildren: './editor/editor.module#EditorModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
             { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },

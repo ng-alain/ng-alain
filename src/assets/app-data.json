@@ -141,6 +141,15 @@
                 "translate": "cropper"
             }]
         }, {
+            "text": "编辑器",
+            "translate": "editor",
+            "link": "/editor",
+            "icon": "icon-pencil",
+            "children": [{
+                "text": "UEditor",
+                "link": "/editor/ueditor"
+            }]
+        }, {
             "text": "Charts",
             "translate": "charts",
             "link": "/charts",

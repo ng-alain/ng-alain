@@ -1,0 +1,9 @@
+<div class="content__title">
+    <h1>UEditor<small>Dependencies <a href="//github.com/cipchk/ngx-ueditor" target="_blank">ngx-ueditor</a></small></h1>
+</div>
+
+<nz-card>
+    <ueditor [(ngModel)]="html"
+        [config]="{ initialFrameHeight: 300 }"
+        [loadingTip]="'加载中……'"></ueditor>
+</nz-card>
