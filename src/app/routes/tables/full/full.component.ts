@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RandomUserService } from '../randomUser.service';
 import { NzMessageService } from 'ng-zorro-antd';
+import { map } from 'rxjs/operators';
+import { RandomUserService } from '../randomUser.service';
 import { getFakeChartData } from '../../../../../_mock/chart.service';
 
 @Component({
@@ -32,13 +33,15 @@ export class TableFullComponent implements OnInit {
         this._allChecked = false;
         this._indeterminate = false;
         this._randomUser.getUsers(this.pi, this.ps, this.args)
-            .map(data => {
-                data.results.forEach(item => {
-                    item.checked = false;
-                    item.price = +((Math.random() * (10000000 - 100)) + 100).toFixed(2);
-                });
-                return data;
-            })
+            .pipe(
+                map(data => {
+                    data.results.forEach(item => {
+                        item.checked = false;
+                        item.price = +((Math.random() * (10000000 - 100)) + 100).toFixed(2);
+                    });
+                    return data;
+                })
+            )
             .subscribe(data => {
                 this.loading = false;
                 this.list = data.results;
