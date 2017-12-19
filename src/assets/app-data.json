@@ -148,6 +148,9 @@
             "children": [{
                 "text": "UEditor",
                 "link": "/editor/ueditor"
+            }, {
+                "text": "Tinymce",
+                "link": "/editor/tinymce"
             }]
         }, {
             "text": "Charts",

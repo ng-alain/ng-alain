@@ -1,0 +1,9 @@
+<div class="content__title">
+    <h1>Tinymce<small>Dependencies <a href="//github.com/cipchk/ngx-tinymce" target="_blank">ngx-tinymce</a></small></h1>
+</div>
+<nz-card nzTitle="Basic">
+    <tinymce [(ngModel)]="html" [config]="config" loading="加载中……"></tinymce>
+</nz-card>
+<nz-card nzTitle="Classic">
+    <tinymce [(ngModel)]="html" [config]="config_classic" loading="loading……"></tinymce>
+</nz-card>
