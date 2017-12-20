@@ -48,6 +48,7 @@
     "@ngx-translate/http-loader": "^2.0.0",
     "angular-baidu-maps": "^1.0.1",
     "angular-qq-maps": "^1.0.1",
+    "angular-split": "^1.0.0-rc.0",
     "angular-tree-component": "^6.1.0",
     "core-js": "^2.5.1",
     "file-saver": "^1.3.3",

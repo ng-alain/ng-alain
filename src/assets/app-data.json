@@ -113,6 +113,16 @@
                 "translate": "colors"
             }]
         }, {
+            "text": "Other",
+            "translate": "other",
+            "link": "/other",
+            "icon": "icon-pencil",
+            "children": [{
+                "text": "Split",
+                "link": "/other/split",
+                "translate": "split"
+            }]
+        }, {
             "text": "表单",
             "translate": "forms",
             "link": "/forms",
