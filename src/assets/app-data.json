@@ -116,11 +116,15 @@
             "text": "Other",
             "translate": "other",
             "link": "/other",
-            "icon": "icon-pencil",
+            "icon": "icon-magic-wand",
             "children": [{
                 "text": "Split",
                 "link": "/other/split",
                 "translate": "split"
+            }, {
+                "text": "Clipboard",
+                "link": "/other/clipboard",
+                "translate": "clipboard"
             }]
         }, {
             "text": "表单",

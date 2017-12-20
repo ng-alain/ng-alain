@@ -1,0 +1,41 @@
+<div class="content__title">
+    <h1>Clipboard<small>Dependencies <a href="//github.com/cipchk/ng-clipboard-antd" target="_blank">ng-clipboard-antd</a></small></h1>
+</div>
+<nz-card style="margin-top: 24px">
+    <ng-template #title>DIRECTIVE</ng-template>
+    <ng-template #body>
+        <div nz-row [nzGutter]="32">
+            <div nz-col [nzSpan]="12">
+                <button nz-button [nz-clipboard]="'Content from ng-clipboard-antd'">Copy</button>
+                <p>a basic copy.</p>
+            </div>
+            <div nz-col [nzSpan]="12">
+                <nz-input [(ngModel)]="content" [nzType]="'textarea'" [nzRows]="'4'"></nz-input>
+                <button nz-button [nz-clipboard]="content" style="margin-top:8px">Copy</button>
+                <p>copy from ngModel dynamic text.</p>
+            </div>
+        </div>
+        <div nz-row [nzGutter]="32" style="margin-top: 16px">
+            <div nz-col [nzSpan]="12">
+                <nz-input ngModel="text" #input>
+                    <ng-template #addOnAfter>
+                        <i nz-clipboard [nzTarget]="input" [nzSuccessText]="'copied success!'" (nzSuccess)="messageSrv.success('success callback')" class="anticon anticon-copy"></i>
+                    </ng-template>
+                </nz-input>
+                <p>appoint <code>[nzSuccessText]</code>、<code>(nzSuccess)</code></p>
+            </div>
+            <div nz-col [nzSpan]="12">
+                <nz-input-number #number [ngModel]="1" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>
+                <button nz-button nz-clipboard [nzTarget]="number" class="ml-sm">Copy Number</button>
+                <p>copy from nz-input-number text.</p>
+            </div>
+        </div>
+    </ng-template>
+</nz-card>
+<nz-card style="margin-top: 24px">
+    <ng-template #title>SERVICES</ng-template>
+    <ng-template #body>
+        <button nz-button (click)="copy()">Copy</button>
+        <p>copy by NzClipboardService.</p>
+    </ng-template>
+</nz-card>
