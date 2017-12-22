@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
-
 import { SharedModule } from '@shared/shared.module';
-import { LayoutComponent } from './layout.component';
+
+import { LayoutDefaultComponent } from './default/default.component';
 import { LayoutFullScreenComponent } from './fullscreen/fullscreen.component';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { HeaderSearchComponent } from './header/components/search.component';
-import { HeaderThemeComponent } from './header/components/theme.component';
-import { HeaderNotifyComponent } from './header/components/notify.component';
-import { HeaderTaskComponent } from './header/components/task.component';
-import { HeaderIconComponent } from './header/components/icon.component';
-import { HeaderFullScreenComponent } from './header/components/fullscreen.component';
-import { HeaderLangsComponent } from './header/components/langs.component';
-import { HeaderStorageComponent } from './header/components/storage.component';
-import { HeaderUserComponent } from './header/components/user.component';
+import { HeaderComponent } from './default/header/header.component';
+import { SidebarComponent } from './default/sidebar/sidebar.component';
+import { HeaderSearchComponent } from './default/header/components/search.component';
+import { HeaderThemeComponent } from './default/header/components/theme.component';
+import { HeaderNotifyComponent } from './default/header/components/notify.component';
+import { HeaderTaskComponent } from './default/header/components/task.component';
+import { HeaderIconComponent } from './default/header/components/icon.component';
+import { HeaderFullScreenComponent } from './default/header/components/fullscreen.component';
+import { HeaderLangsComponent } from './default/header/components/langs.component';
+import { HeaderStorageComponent } from './default/header/components/storage.component';
+import { HeaderUserComponent } from './default/header/components/user.component';
 
 const COMPONENTS = [
-    LayoutComponent,
+    LayoutDefaultComponent,
     LayoutFullScreenComponent,
     HeaderComponent,
     SidebarComponent
@@ -34,10 +34,10 @@ const HEADERCOMPONENTS = [
     HeaderUserComponent
 ];
 
-// pro
-import { ProUserLayoutComponent } from './pro/user/user.component';
-const PRO = [
-    ProUserLayoutComponent
+// passport
+import { LayoutPassportComponent } from './passport/passport.component';
+const PASSPORT = [
+    LayoutPassportComponent
 ];
 
 @NgModule({
@@ -46,11 +46,11 @@ const PRO = [
     declarations: [
         ...COMPONENTS,
         ...HEADERCOMPONENTS,
-        ...PRO
+        ...PASSPORT
     ],
     exports: [
         ...COMPONENTS,
-        ...PRO
+        ...PASSPORT
     ]
 })
 export class LayoutModule { }

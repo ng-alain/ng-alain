@@ -7,8 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 import { map, mergeMap } from 'rxjs/operators';
-
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 
 /**
  * 默认HTTP拦截器，其注册细节见 `app.module.ts`

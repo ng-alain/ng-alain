@@ -1,0 +1,74 @@
+<div class="logo">
+    <a [routerLink]="['/']">
+        <img class="expanded" src="./assets/img/logo-full.svg" alt="{{settings.app.name}}" style="max-height:40px;" />
+        <img class="collapsed" src="./assets/img/logo.svg" alt="{{settings.app.name}}" style="max-height:30px;" />
+    </a>
+</div>
+<div class="top-nav-wrap">
+    <ul class="top-nav">
+        <!-- Menu -->
+        <li>
+            <div class="item" (click)="toggleCollapsedSideabar()">
+                <i class="anticon anticon-menu-{{settings.layout.collapsed ? 'unfold' : 'fold'}}"></i>
+            </div>
+        </li>
+        <!-- Github Page -->
+        <li>
+            <a class="item" href="//github.com/cipchk/ng-alain" target="_blank">
+                <i class="anticon anticon-github"></i>
+            </a>
+        </li>
+        <!-- Lock Page -->
+        <li class="hidden-xs">
+            <div class="item" [routerLink]="['/lock']">
+                <i class="anticon anticon-lock"></i>
+            </div>
+        </li>
+        <!-- Search Button -->
+        <li class="header-search__btn" (click)="searchToggleChange()">
+            <div class="item">
+                <i class="anticon anticon-search"></i>
+            </div>
+        </li>
+    </ul>
+    <header-search class="header-search" [toggleChange]="searchToggleStatus"></header-search>
+    <ul class="top-nav">
+        <!-- Notify -->
+        <li>
+            <header-notify></header-notify>
+        </li>
+        <!-- Task -->
+        <li class="hidden-xs">
+            <header-task></header-task>
+        </li>
+        <!-- App Icons -->
+        <li class="hidden-xs">
+            <header-icon></header-icon>
+        </li>
+        <!-- Settings -->
+        <li class="hidden-xs">
+            <nz-dropdown nzTrigger="click" nzPlacement="bottomRight">
+                <div class="item" nz-dropdown>
+                    <i class="anticon anticon-setting"></i>
+                </div>
+                <div nz-menu style="width:200px">
+                    <div nz-menu-item class="theme-switch">
+                        <header-theme></header-theme>
+                    </div>
+                    <div nz-menu-item>
+                        <header-fullscreen></header-fullscreen>
+                    </div>
+                    <div nz-menu-item>
+                        <header-storage></header-storage>
+                    </div>
+                    <div nz-menu-item>
+                        <header-langs></header-langs>
+                    </div>
+                </div>
+            </nz-dropdown>
+        </li>
+        <li class="hidden-xs">
+            <header-user></header-user>
+        </li>
+    </ul>
+</div>

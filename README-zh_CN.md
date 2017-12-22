@@ -17,8 +17,10 @@
 `ng-alain` 本身并非组件库，只是一个单纯的企业后台模板，你可以**直接克隆**到你的本地，然后立即进入实际开发。
 
 ```bash
-# clone ng-alain repo
-# --depth 1 removes all but one .git commit history
+# clone a blank ng-alain repo, just only basic function
+#   --depth 1 removes all but one .git commit history
+git clone -b blank --depth 1 https://github.com/cipchk/ng-alain.git
+# or full master branch
 git clone --depth 1 https://github.com/cipchk/ng-alain.git
 
 # change directory

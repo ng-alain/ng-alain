@@ -13,9 +13,6 @@ import { ProProfileBaseComponent } from './profile/basic/basic.component';
 import { ProProfileAdvancedComponent } from './profile/advanced/advanced.component';
 import { ProResultSuccessComponent } from './result/success/success.component';
 import { ProResultFailComponent } from './result/fail/fail.component';
-import { ProException403Component } from './exception/403.component';
-import { ProException404Component } from './exception/404.component';
-import { ProException500Component } from './exception/500.component';
 
 const routes: Routes = [
     {
@@ -48,14 +45,6 @@ const routes: Routes = [
         children: [
             { path: 'success', component: ProResultSuccessComponent },
             { path: 'fail', component: ProResultFailComponent }
-        ]
-    },
-    {
-        path: 'exception',
-        children: [
-            { path: '403', component: ProException403Component },
-            { path: '404', component: ProException404Component },
-            { path: '500', component: ProException500Component }
         ]
     }
 ];

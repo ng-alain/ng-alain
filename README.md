@@ -15,8 +15,10 @@
 Make sure you have Node version >= 6.9.0 and NPM >= 3 or higher.
 
 ```bash
-# clone ng-alain repo
-# --depth 1 removes all but one .git commit history
+# clone a blank ng-alain repo, just only basic function
+#   --depth 1 removes all but one .git commit history
+git clone -b blank --depth 1 https://github.com/cipchk/ng-alain.git
+# or full master branch
 git clone --depth 1 https://github.com/cipchk/ng-alain.git
 
 # change directory

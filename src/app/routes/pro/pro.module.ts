@@ -19,9 +19,6 @@ import { ProProfileBaseComponent } from './profile/basic/basic.component';
 import { ProProfileAdvancedComponent } from './profile/advanced/advanced.component';
 import { ProResultSuccessComponent } from './result/success/success.component';
 import { ProResultFailComponent } from './result/fail/fail.component';
-import { ProException403Component } from './exception/403.component';
-import { ProException404Component } from './exception/404.component';
-import { ProException500Component } from './exception/500.component';
 
 const COMPONENTS_NOROUNT = [ Step1Component, Step2Component, Step3Component ];
 
@@ -42,9 +39,6 @@ const COMPONENTS_NOROUNT = [ Step1Component, Step2Component, Step3Component ];
         ProProfileAdvancedComponent,
         ProResultSuccessComponent,
         ProResultFailComponent,
-        ProException403Component,
-        ProException404Component,
-        ProException500Component,
         ...COMPONENTS_NOROUNT
     ],
     entryComponents: COMPONENTS_NOROUNT

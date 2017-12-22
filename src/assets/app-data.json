@@ -289,35 +289,41 @@
         }, {
             "text": "Exception",
             "translate": "pro-exception",
-            "link": "/pro/exception",
+            "link": "/",
             "icon": "icon-fire",
             "children": [{
                 "text": "403",
-                "link": "/pro/exception/403"
+                "link": "/403",
+                "reuse": false
             }, {
                 "text": "404",
-                "link": "/pro/exception/404"
+                "link": "/404",
+                "reuse": false
             }, {
                 "text": "500",
-                "link": "/pro/exception/500"
+                "link": "/500",
+                "reuse": false
             }]
         }, {
             "text": "User",
             "translate": "pro-user",
-            "link": "/pro/user",
+            "link": "/passport",
             "icon": "icon-user",
             "children": [{
                 "text": "login",
-                "link": "/pro/user/login",
-                "translate": "pro-login"
+                "link": "/passport/login",
+                "translate": "pro-login",
+                "reuse": false
             }, {
                 "text": "register",
-                "link": "/pro/user/register",
-                "translate": "pro-register"
+                "link": "/passport/register",
+                "translate": "pro-register",
+                "reuse": false
             }, {
                 "text": "register result",
-                "link": "/pro/user/register-result",
-                "translate": "pro-register-result"
+                "link": "/passport/register-result",
+                "translate": "pro-register-result",
+                "reuse": false
             }]
         }]
     }, {
@@ -354,8 +360,8 @@
                 "text": "Relation",
                 "link": "/data-v/relation",
                 "translate": "relation",
-                "target": "_blank",
-                "shortcut": true
+                "shortcut": true,
+                "reuse": false
             }]
         }, {
             "text": "Pages",
@@ -365,30 +371,37 @@
             "acl": "admin",
             "children": [{
                 "text": "Login",
-                "link": "/login",
-                "translate": "m-login"
+                "link": "/pages/login",
+                "translate": "m-login",
+                "reuse": false
             }, {
                 "text": "Register",
-                "link": "/register",
-                "translate": "m-register"
+                "link": "/pages/register",
+                "translate": "m-register",
+                "reuse": false
             }, {
                 "text": "Forget",
-                "link": "/forget",
-                "translate": "m-forget"
+                "link": "/pages/forget",
+                "translate": "m-forget",
+                "reuse": false
             }, {
                 "text": "Lock",
-                "link": "/lock",
-                "translate": "m-lock"
+                "link": "/pages/lock",
+                "translate": "m-lock",
+                "reuse": false
             }, {
                 "text": "404",
-                "link": "/404"
+                "link": "/pages/404",
+                "reuse": false
             }, {
                 "text": "500",
-                "link": "/500"
+                "link": "/pages/500",
+                "reuse": false
             }, {
                 "text": "Maintenance",
-                "link": "/maintenance",
-                "translate": "maintenance"
+                "link": "/pages/maintenance",
+                "translate": "maintenance",
+                "reuse": false
             }]
         }, {
             "text": "Extras",
