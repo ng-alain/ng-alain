@@ -4,6 +4,8 @@ import { HttpInterceptor, HttpRequest, HttpHandler,
          HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent,
        } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 import { map, mergeMap } from 'rxjs/operators';
@@ -45,7 +47,7 @@ export class DefaultInterceptor implements HttpInterceptor {
                             // return ErrorObservable.create(event);
                         }
                         // 若一切都正常，则后续操作
-                        return Observable.create(observer => observer.next(event));
+                        return Observable.of(event);
                     }),
                     catchError((res: HttpResponse<any>) => {
                         // 业务处理：一些通用操作
@@ -62,7 +64,7 @@ export class DefaultInterceptor implements HttpInterceptor {
                                 break;
                         }
                         // 以错误的形式结束本次请求
-                        return ErrorObservable.create(event);
+                        return ErrorObservable.of(event);
                     })
                 );
     }
