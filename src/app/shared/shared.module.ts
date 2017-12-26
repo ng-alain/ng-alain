@@ -6,7 +6,7 @@ import { RouterModule, RouteReuseStrategy } from '@angular/router';
 
 import { NgZorroAntdExtraModule } from 'ng-zorro-antd-extra';
 import { AlainThemeModule } from '@delon/theme';
-import { AlainABCModule, SimpleTableConfig, ReuseTabService, ReuseTabStrategy } from '@delon/abc';
+import { AlainABCModule, SimpleTableConfig, ReuseTabService, ReuseTabStrategy, FullContentService } from '@delon/abc';
 import { AlainACLModule } from '@delon/acl';
 
 // third libs
@@ -142,7 +142,8 @@ import {
     AdTrendModule,
     AdDownFileModule,
     AdImageModule,
-    AdUtilsModule
+    AdUtilsModule,
+    AdFullContentModule
 } from '@delon/abc';
 const ABCMODULES = [
     AdSimpleTableModule,
@@ -166,7 +167,8 @@ const ABCMODULES = [
     AdTrendModule,
     AdDownFileModule,
     AdImageModule,
-    AdUtilsModule
+    AdUtilsModule,
+    AdFullContentModule
 ];
 // endregion
 
@@ -211,6 +213,7 @@ export class SharedModule {
                 NzMessageService,
                 // @delon/abc
                 SimpleTableConfig,
+                FullContentService,
                 // reuse-tab
                 ReuseTabService,
                 { provide: RouteReuseStrategy, useClass: ReuseTabStrategy, deps: [ ReuseTabService ] }

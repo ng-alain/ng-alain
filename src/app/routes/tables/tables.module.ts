@@ -7,6 +7,7 @@ import { TablesRoutingModule } from './tables-routing.module';
 import { RandomUserService } from './randomUser.service';
 import { TableFullComponent } from './full/full.component';
 import { DemoSimpleTableComponent } from './simple-table/simple-table.component';
+import { FSTableComponent } from './fs-table/fs-table.component';
 
 import { TableStandardComponent } from './standard/standard.component';
 
@@ -16,7 +17,8 @@ import { TableStandardComponent } from './standard/standard.component';
     declarations: [
         TableStandardComponent,
         TableFullComponent,
-        DemoSimpleTableComponent
+        DemoSimpleTableComponent,
+        FSTableComponent
     ]
 })
 export class TablesModule { }

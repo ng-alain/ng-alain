@@ -1,0 +1,66 @@
+<div class="content__title">
+    <h1>
+        Fullscreen Table
+        <small>使用 <a href="//ng-alain.com/components/full-content" target="_blank">full-content</a> 组件，由于 nz-table 固定表头暂不支持自适应，因此表格的展示并未达到预期。</small>
+    </h1>
+</div>
+<nz-card>
+    <form nz-form>
+        <div nz-row nz-form-item [nzGutter]="16" class="mb0">
+            <div nz-form-label nz-col [nzSm]="2">
+                <label for="userid">User ID</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="5">
+                <nz-input [(ngModel)]="args.userid" name="userid" [nzId]="'userid'" [nzPlaceHolder]="'placeholder'"></nz-input>
+            </div>
+            <div nz-form-label nz-col [nzSm]="2">
+                <label>Modified</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="8">
+                <div nz-row>
+                    <div nz-form-control nz-col [nzSpan]="11">
+                        <nz-datepicker [(ngModel)]="args.modified_begin" name="modified_begin" [nzPlaceHolder]="'begin'"></nz-datepicker>
+                    </div>
+                    <div nz-col [nzSpan]="1">
+                        <p nz-form-split>-</p>
+                    </div>
+                    <div nz-form-control nz-col [nzSpan]="11">
+                        <nz-datepicker [(ngModel)]="args.modified_end" name="modified_end" [nzPlaceHolder]="'end'"></nz-datepicker>
+                    </div>
+                </div>
+            </div>
+            <div nz-col [nzSm]="5" [nzOffset]="2">
+                <button nz-button [nzType]="'primary'" (click)="st.load()" [nzLoading]="st.loading"><span>Search</span></button>
+                <button nz-button (click)="args = {_allow_anonymous: true}; st.load()" [disabled]="st.loading">Clear</button>
+            </div>
+        </div>
+    </form>
+</nz-card>
+<full-content>
+    <div nz-row [nzGutter]="16">
+        <div nz-col [nzMd]="24">
+            <nz-card>
+                <div class="mb-sm text-right">
+                    <nz-dropdown>
+                        <button nz-button nz-dropdown>
+                            <span>Export</span> <i class="anticon anticon-down"></i>
+                        </button>
+                        <ul nz-menu>
+                            <li nz-menu-item>Excel</li>
+                            <li nz-menu-item>JSON</li>
+                            <li nz-menu-item>PNG</li>
+                        </ul>
+                    </nz-dropdown>
+                    <button nz-button [nzType]="'default'" full-toggle class="ml-sm">Full</button>
+                </div>
+                <simple-table #st
+                    [url]="url" [extraParams]="args" [resReName]="{list: 'results' }"
+                    [total]="total" [ps]="ps" [columns]="columns" [scroll]="{y: 300}">
+                    <ng-template st-row="events" let-item let-index="index">
+                        <mini-bar height="15" theme="mini" color="#999" borderWidth="3" [padding]="[0, 0, 0, 0]" [data]="events"></mini-bar>
+                    </ng-template>
+                </simple-table>
+            </nz-card>
+        </div>
+    </div>
+</full-content>

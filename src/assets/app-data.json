@@ -193,6 +193,10 @@
             }, {
                 "text": "Simple Table",
                 "link": "/tables/simple-table"
+            }, {
+                "text": "Fullscreen Table",
+                "link": "/tables/fs-table",
+                "translate": "fs-table"
             }]
         }, {
             "text": "地图",
