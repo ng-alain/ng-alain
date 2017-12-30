@@ -61,6 +61,11 @@ npm run serve:hmr
 | @delon/abc | [![NPM version](https://img.shields.io/npm/v/@delon/abc.svg)](https://www.npmjs.com/package/@delon/abc) | [![NPM version](https://img.shields.io/npm/v/@delon/abc/next.svg)](https://www.npmjs.com/package/@delon/abc) |
 | @delon/acl | [![NPM version](https://img.shields.io/npm/v/@delon/acl.svg)](https://www.npmjs.com/package/@delon/acl) | [![NPM version](https://img.shields.io/npm/v/@delon/acl/next.svg)](https://www.npmjs.com/package/@delon/acl) |
 | @delon/auth | [![NPM version](https://img.shields.io/npm/v/@delon/auth.svg)](https://www.npmjs.com/package/@delon/auth) | [![NPM version](https://img.shields.io/npm/v/@delon/auth/next.svg)](https://www.npmjs.com/package/@delon/auth) |
+| @delon/mock | - | [![NPM version](https://img.shields.io/npm/v/@delon/mock/next.svg)](https://www.npmjs.com/package/@delon/mock) |
+
+## Architecture
+
+![Architecture](https://github.com/cipchk/delon/blob/master/_screenshot/architecture.png)
 
 ## Features
 
@@ -79,9 +84,9 @@ npm run serve:hmr
 
 ## App Shots
 
-![desktop](_screenshot/desktop.png)
-![ipad](_screenshot/ipad.png)
-![iphone](_screenshot/iphone.png)
+![desktop](https://github.com/cipchk/delon/blob/master/_screenshot/desktop.png)
+![ipad](https://github.com/cipchk/delon/blob/master/_screenshot/ipad.png)
+![iphone](https://github.com/cipchk/delon/blob/master/_screenshot/iphone.png)
 
 ## Troubleshooting
 

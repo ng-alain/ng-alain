@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getFakeList } from '../../../../../../_mock/api.service';
+import { _HttpClient } from '@delon/theme';
 
 @Component({
     selector: 'pro-basic-list',
@@ -14,17 +14,16 @@ export class ProBasicListComponent implements OnInit {
     loading = false;
     data: any[] = [];
 
-    constructor(public msg: NzMessageService) {}
+    constructor(private http: _HttpClient, public msg: NzMessageService) {}
 
     ngOnInit() {
-        this.getData();
     }
 
     getData() {
         this.loading = true;
-        setTimeout(() => {
-            this.data = getFakeList(5);
+        this.http.get('/api/list', { count: 5 }).subscribe((res: any) => {
+            this.data = res;
             this.loading = false;
-        }, 1000);
+        });
     }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { map } from 'rxjs/operators';
-import { RandomUserService } from '../randomUser.service';
 import { SimpleTableChange, SimpleTableColumn, SimpleTableButton } from '@delon/abc';
-import { getFakeChartData } from '../../../../../_mock/chart.service';
+import { _HttpClient } from '@delon/theme';
+import { RandomUserService } from '../randomUser.service';
 
 @Component({
     selector: 'app-fs-table',
@@ -15,10 +15,7 @@ export class FSTableComponent implements OnInit {
     total = 200; // mock total
     args: any = { _allow_anonymous: true };
     url = `https://api.randomuser.me/?results=10`;
-    events = [...getFakeChartData.visitData.slice(0, 6)].map(item => {
-        item.x = item.x.substring(5);
-        return item;
-    });
+    events: any[] = [];
     columns: SimpleTableColumn[] = [
         { title: 'id', index: 'id.value', type: 'checkbox' },
         { title: 'Avatar', index: 'picture.thumbnail', type: 'img', width: '60px' },
@@ -44,9 +41,10 @@ export class FSTableComponent implements OnInit {
         }
     ];
 
-    constructor(private _randomUser: RandomUserService, private message: NzMessageService) {
+    constructor(private _randomUser: RandomUserService, private http: _HttpClient, private message: NzMessageService) {
     }
 
     ngOnInit(): void {
+        this.http.get('/chart/visit').subscribe((res: any[]) => this.events = res.slice(0, 8));
     }
 }

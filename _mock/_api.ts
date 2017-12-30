@@ -1,3 +1,6 @@
+import { MockRequest } from '@delon/mock';
+// region: mock data
+
 const titles = [
     'Alipay',
     'Angular',
@@ -48,7 +51,9 @@ const user = [
     '仲尼'
 ];
 
-export function getFakeList(count: number = 20): any[] {
+// endregion
+
+function getFakeList(count: number = 20): any[] {
     const list = [];
     for (let i = 0; i < count; i += 1) {
         list.push({
@@ -91,7 +96,7 @@ export function getFakeList(count: number = 20): any[] {
     return list;
 }
 
-export function getNotice(): any[] {
+function getNotice(): any[] {
     return [
         {
           id: 'xxx1',
@@ -156,7 +161,7 @@ export function getNotice(): any[] {
       ];
 }
 
-export function getActivities(): any[] {
+function getActivities(): any[] {
     return  [
         {
           id: 'trend-1',
@@ -258,3 +263,9 @@ export function getActivities(): any[] {
         },
       ];
 }
+
+export const APIS = {
+    '/api/list': (req: MockRequest) => getFakeList(req.queryString.count),
+    '/api/notice': () => getNotice(),
+    '/api/activities': () => getActivities()
+};

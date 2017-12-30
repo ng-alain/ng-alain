@@ -1,8 +1,9 @@
 // tslint:disable
-
+import * as Mock from 'mockjs';
 import * as moment from "moment";
 
-// mock data
+// region: mock data
+
 const visitData = [];
 const beginDay = new Date().getTime();
 
@@ -185,19 +186,23 @@ radarOriginData.forEach(item => {
 	});
 });
 
-export const getFakeChartData = {
-	visitData,
-	visitData2,
-	salesData,
-	searchData,
-	offlineData,
-	offlineChartData,
-	salesTypeData,
-	salesTypeDataOnline,
-	salesTypeDataOffline,
-	radarData
-};
+// endregion
 
-export default {
-	getFakeChartData
+export const CHARTS = {
+    '/chart': Object.assign({}, {
+        visitData,
+        visitData2,
+        salesData,
+        searchData,
+        offlineData,
+        offlineChartData,
+        salesTypeData,
+        salesTypeDataOnline,
+        salesTypeDataOffline,
+        radarData
+    }),
+    '/chart/visit': Object.assign([], visitData),
+    '/chart/tags': Mock.mock({
+        'list|100': [{ name: '@city', 'value|1-100': 150, 'type|0-2': 1 }]
+    })
 };

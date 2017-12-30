@@ -1,8 +1,8 @@
+import { zip } from 'rxjs/observable/zip';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { getTimeDistance, yuan, fixedZero } from '@delon/abc';
-import { getNotice, getActivities } from '../../../../../_mock/api.service';
-import { getFakeChartData } from '../../../../../_mock/chart.service';
+import { _HttpClient } from '@delon/theme';
 
 @Component({
     selector: 'app-dashboard-workplace',
@@ -76,21 +76,25 @@ export class DashboardWorkplaceComponent implements OnInit, OnDestroy {
       ];
     // endregion
 
-    constructor(public msg: NzMessageService) {}
+    constructor(private http: _HttpClient, public msg: NzMessageService) {}
 
     ngOnInit() {
-        setTimeout(() => {
-            this.notice = getNotice();
-            this.activities = getActivities().map((item: any) => {
+        zip(
+            this.http.get('/chart'),
+            this.http.get('/api/notice'),
+            this.http.get('/api/activities')
+        ).subscribe(([ chart, notice, activities ]) => {
+            this.radarData = chart.radarData;
+            this.notice = notice;
+            this.activities = activities.map((item: any) => {
                 item.template = item.template.split(/@\{([^{}]*)\}/gi).map((key: string) => {
                     if (item[key]) return `<a>${item[key].name}</a>`;
                     return key;
                 });
                 return item;
             });
-            this.radarData = getFakeChartData.radarData;
             this.loading = false;
-        }, 500);
+        });
     }
 
     ngOnDestroy(): void {

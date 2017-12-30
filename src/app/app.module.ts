@@ -14,6 +14,13 @@ import { StartupService } from './core/services/startup.service';
 import { DefaultInterceptor } from '@core/net/default.interceptor';
 import { AlainAuthModule, SimpleInterceptor } from '@delon/auth';
 
+// mock
+import { DelonMockModule } from '@delon/mock';
+import * as MOCKDATA from '../../_mock';
+import { environment } from '../environments/environment';
+const MOCKMODULE = !environment.production || environment.chore === true ?
+                    [ DelonMockModule.forRoot({ data: MOCKDATA }) ] : [];
+
 // i18n
 import { I18NService } from './core/i18n/i18n.service';
 import { ALAIN_I18N_TOKEN } from '@delon/theme';
@@ -42,6 +49,8 @@ export function StartupServiceFactory(startupService: StartupService): Function 
         CoreModule,
         LayoutModule,
         RoutesModule,
+        // mock
+        ...MOCKMODULE,
         // auth
         AlainAuthModule.forRoot({
             login_url: `/passport/login`

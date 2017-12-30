@@ -1,6 +1,6 @@
 import { NzMessageService } from 'ng-zorro-antd';
 import { Component } from '@angular/core';
-import { getFakeChartData } from '../../../../../_mock/chart.service';
+import { _HttpClient } from '@delon/theme';
 
 @Component({
     selector: 'app-widgets',
@@ -9,8 +9,8 @@ import { getFakeChartData } from '../../../../../_mock/chart.service';
 })
 export class WidgetsComponent {
 
-    webSite = [ ...getFakeChartData.visitData.slice(0, 10) ];
-    data = getFakeChartData;
+    data = [];
+    smallData = [];
 
     todoData: any[] = [
         { completed: true, avatar: '1', name: '苏先生', content: `请告诉我，我应该说点什么好？` },
@@ -25,7 +25,10 @@ export class WidgetsComponent {
 
     dislike = false;
 
-    constructor(public msg: NzMessageService) {
-
+    constructor(public msg: NzMessageService, private http: _HttpClient) {
+        this.http.get('/chart/visit').subscribe((res: any[]) => {
+            this.data = res;
+            this.smallData = res.slice(0, 6);
+        });
     }
 }

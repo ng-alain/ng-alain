@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import * as moment from 'moment';
-import { getFakeList } from '../../../../../../_mock/api.service';
+import { _HttpClient } from '@delon/theme';
 
 @Component({
     selector: 'pro-list-filter-card-list',
@@ -47,7 +47,7 @@ export class ProFilterCardListComponent implements OnInit {
     }
     // endregion
 
-    constructor(public msg: NzMessageService) {}
+    constructor(private http: _HttpClient, public msg: NzMessageService) {}
 
     ngOnInit() {
         this.getData();
@@ -55,14 +55,14 @@ export class ProFilterCardListComponent implements OnInit {
 
     getData() {
         this.loading = true;
-        setTimeout(() => {
-            this.list = this.list.concat(getFakeList(this.q.ps)).map(item => {
+        this.http.get('/api/list', { count: this.q.ps }).subscribe((res: any) => {
+            this.list = res.map(item => {
                 if (item.updatedAt) item.updatedAt = moment(item.updatedAt).fromNow();
                 item.activeUser = this.formatWan(item.activeUser);
                 return item;
             });
             this.loading = false;
-        }, 1000);
+        });
     }
 
 

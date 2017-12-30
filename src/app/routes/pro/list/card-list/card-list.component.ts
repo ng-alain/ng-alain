@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getFakeList } from '../../../../../../_mock/api.service';
+import { _HttpClient } from '@delon/theme';
 
 @Component({
     selector: 'pro-list-card-list',
@@ -18,12 +18,13 @@ export class ProCardListComponent implements OnInit {
 
     loading = true;
 
-    constructor(public msg: NzMessageService) {}
+    constructor(private http: _HttpClient, public msg: NzMessageService) {}
 
     ngOnInit() {
-        setTimeout(() => {
-            this.list = this.list.concat(getFakeList(8));
+        this.loading = true;
+        this.http.get('/api/list', { count: 8 }).subscribe((res: any) => {
+            this.list = this.list.concat(res);
             this.loading = false;
-        }, 1000);
+        });
     }
 }

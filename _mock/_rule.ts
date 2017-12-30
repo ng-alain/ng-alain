@@ -1,3 +1,6 @@
+import { HttpRequest } from '@angular/common/http';
+import { MockRequest } from '@delon/mock';
+
 const list = [];
 
 for (let i = 0; i < 46; i += 1) {
@@ -18,7 +21,7 @@ for (let i = 0; i < 46; i += 1) {
     });
 }
 
-export function getRule(params: any) {
+function getRule(params: any) {
     let ret = [...list];
     if (params.sorter) {
         const s = params.sorter.split('_');
@@ -38,16 +41,15 @@ export function getRule(params: any) {
     return ret;
 }
 
-export function removeRule(no: string): boolean {
-    const idx = list.findIndex(w => w.no === no);
-    if (idx !== -1) {
-        list.splice(idx, 1);
-        return true;
-    }
-    return false;
+function removeRule(nos: string): boolean {
+    nos.split(',').forEach(no => {
+        const idx = list.findIndex(w => w.no === no);
+        if (idx !== -1) list.splice(idx, 1);
+    });
+    return true;
 }
 
-export function saveRule(description: string) {
+function saveRule(description: string) {
     const i = Math.ceil(Math.random() * 10000);
     list.unshift({
       key: i,
@@ -64,3 +66,9 @@ export function saveRule(description: string) {
       progress: Math.ceil(Math.random() * 100),
     });
 }
+
+export const RULES = {
+    '/rule': (req: MockRequest) => getRule(req.queryString),
+    'DELETE /rule': (req: MockRequest) => removeRule(req.queryString.nos),
+    'POST /rule': (req: MockRequest) => saveRule(req.body.description)
+};

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { getTimeDistance, yuan } from '@delon/abc';
-import { getFakeChartData } from '../../../../../_mock/chart.service';
+import { _HttpClient } from '@delon/theme';
 
 @Component({
     selector: 'app-dashboard-analysis',
@@ -25,17 +25,17 @@ export class DashboardAnalysisComponent implements OnInit {
         };
     });
 
-    constructor(public msg: NzMessageService) {}
+    constructor(private http: _HttpClient, public msg: NzMessageService) {}
 
     ngOnInit() {
-        setTimeout(() => {
-            this.data = Object.assign({}, getFakeChartData);
-            this.data.offlineData.forEach((item: any) => {
-                item.chart = Object.assign([], getFakeChartData.offlineChartData);
+        this.http.get('/chart').subscribe((res: any) => {
+            res.offlineData.forEach((item: any) => {
+                item.chart = Object.assign([], res.offlineChartData);
             });
+            this.data = res;
             this.loading = false;
             this.changeSaleType();
-        }, 500);
+        });
     }
 
     setDate(type: any) {

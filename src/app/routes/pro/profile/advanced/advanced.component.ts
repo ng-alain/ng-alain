@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getProfileAdvancedData } from '../../../../../../_mock/profile.service';
+import { _HttpClient } from '@delon/theme';
 
 @Component({
     selector: 'pro-profile-advanced',
@@ -13,9 +13,9 @@ export class ProProfileAdvancedComponent implements OnInit {
         advancedOperation3: []
     };
 
-    constructor(public msg: NzMessageService) {}
+    constructor(public msg: NzMessageService, private http: _HttpClient) {}
 
     ngOnInit() {
-        this.data = getProfileAdvancedData();
+        this.http.get('/profile/advanced').subscribe(res => this.data = res);
     }
 }

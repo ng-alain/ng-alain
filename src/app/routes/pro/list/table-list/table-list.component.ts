@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getRule, saveRule, removeRule } from '../../../../../../_mock/rule.service';
+import { _HttpClient } from '@delon/theme';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'pro-table-list',
@@ -11,7 +12,7 @@ export class ProTableListComponent implements OnInit {
         pi: 1,
         ps: 10,
         sorter: '',
-        status: -1,
+        status: null,
         statusList: []
     };
     data: any[] = [];
@@ -32,7 +33,7 @@ export class ProTableListComponent implements OnInit {
     modalVisible = false;
     description = '';
 
-    constructor(public msg: NzMessageService) {}
+    constructor(private http: _HttpClient, public msg: NzMessageService) {}
 
     ngOnInit() {
         this.getData();
@@ -41,14 +42,17 @@ export class ProTableListComponent implements OnInit {
     getData() {
         this.pageChange(1).then(() => {
             this.q.statusList = this.status.map((i, index) => i.value ? index : -1).filter(w => w !== -1);
-            if (this.q.status && this.q.status > -1) this.q.statusList.push(this.q.status);
-            console.log(this.q);
-            this.data = getRule(this.q).map(i => {
-                const statusItem = this.status[i.status];
-                i.statusText = statusItem.text;
-                i.statusType = statusItem.type;
-                return i;
-            });
+            if (this.q.status !== null && this.q.status > -1) this.q.statusList.push(this.q.status);
+            this.http.get('/rule', this.q).pipe(
+                tap(list => {
+                    return list.map(i => {
+                        const statusItem = this.status[i.status];
+                        i.statusText = statusItem.text;
+                        i.statusType = statusItem.type;
+                        return i;
+                    });
+                })
+            ).subscribe(res => this.data = res);
         });
     }
 
@@ -59,15 +63,17 @@ export class ProTableListComponent implements OnInit {
 
     save() {
         this.loading = true;
-        saveRule(this.description);
-        this.getData();
-        setTimeout(() => this.modalVisible = false, 500);
+        this.http.post('/rule', { description: this.description }).subscribe(() => {
+            this.getData();
+            setTimeout(() => this.modalVisible = false, 500);
+        });
     }
 
     remove() {
-        this.selectedRows.forEach(i => removeRule(i.no));
-        this.getData();
-        this.clear();
+        this.http.delete('/rule', { nos: this.selectedRows.map(i => i.no).join(',') }).subscribe(() => {
+            this.getData();
+            this.clear();
+        });
     }
 
     approval() {

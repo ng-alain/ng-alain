@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { map } from 'rxjs/operators';
+import { _HttpClient } from '@delon/theme';
 import { RandomUserService } from '../randomUser.service';
-import { getFakeChartData } from '../../../../../_mock/chart.service';
 
 @Component({
     selector: 'app-table-full',
@@ -19,10 +19,7 @@ export class TableFullComponent implements OnInit {
     _indeterminate = false;
     _allChecked = false;
 
-    events = [...getFakeChartData.visitData.slice(0, 6)].map(item => {
-        item.x = item.x.substring(5);
-        return item;
-    });
+    events: any[] = [];
 
     load(pi?: number) {
         if (typeof pi !== 'undefined') {
@@ -63,11 +60,12 @@ export class TableFullComponent implements OnInit {
         this._indeterminate = this._allChecked ? false : checkedCount > 0;
     }
 
-    constructor(private _randomUser: RandomUserService, private message: NzMessageService) {
+    constructor(private _randomUser: RandomUserService, private http: _HttpClient, private message: NzMessageService) {
     }
 
     ngOnInit() {
         this.load();
+        this.http.get('/chart/visit').subscribe(res => this.events = res);
     }
 
     showMsg(msg: string) {

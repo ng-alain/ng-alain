@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { getFakeList } from '../../../../../../_mock/api.service';
+import { _HttpClient } from '@delon/theme';
 
 @Component({
     selector: 'pro-list-search',
@@ -71,15 +71,17 @@ export class ProSearchComponent implements OnInit {
     }
     // endregion
 
+    constructor(private http: _HttpClient) {}
+
     ngOnInit() {
         this.getData();
     }
 
     getData() {
         this.loading = true;
-        setTimeout(() => {
-            this.list = this.list.concat(getFakeList(this.q.ps));
+        this.http.get('/api/list', { count: this.q.ps }).subscribe((res: any) => {
+            this.list = res;
             this.loading = false;
-        }, 500);
+        });
     }
 }

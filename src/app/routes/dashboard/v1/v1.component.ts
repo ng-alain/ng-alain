@@ -1,16 +1,14 @@
 import { NzMessageService } from 'ng-zorro-antd';
-import { Component } from '@angular/core';
-import { getFakeChartData } from '../../../../../_mock/chart.service';
+import { Component, OnInit } from '@angular/core';
+import { _HttpClient } from '@delon/theme';
 
 @Component({
     selector: 'app-dashboard-v1',
     templateUrl: './v1.component.html'
 })
-export class DashboardV1Component {
+export class DashboardV1Component implements OnInit {
 
-    constructor(public msg: NzMessageService) {
-        console.log(this.offlineChartData);
-    }
+    constructor(private http: _HttpClient, public msg: NzMessageService) { }
 
     todoData: any[] = [
         { completed: true, avatar: '1', name: '苏先生', content: `请告诉我，我应该说点什么好？` },
@@ -23,7 +21,15 @@ export class DashboardV1Component {
 
     quickMenu = false;
 
-    webSite = [ ...getFakeChartData.visitData.slice(0, 10) ];
-    salesData =  [...getFakeChartData.salesData];
-    offlineChartData = Object.assign([], getFakeChartData.offlineChartData);
+    webSite: any[] = [ ];
+    salesData: any[] =  [ ];
+    offlineChartData: any[] = [];
+
+    ngOnInit() {
+        this.http.get('/chart').subscribe((res: any) => {
+            this.webSite = res.visitData.slice(0, 10);
+            this.salesData = res.salesData;
+            this.offlineChartData = res.offlineChartData;
+        });
+    }
 }

@@ -141,24 +141,8 @@ const advancedOperation3 = [
     },
 ];
 
-export function getProfileBasicData() {
-    return {
-        basicGoods: basicGoods,
-        basicProgress: basicProgress
-    };
-}
-
-export function getProfileAdvancedData() {
-    return {
-        advancedOperation1: advancedOperation1,
-        advancedOperation2: advancedOperation2,
-        advancedOperation3: advancedOperation3
-    };
-}
-
-export function getProfileDefault() {
-    return {
-        getProfileBasicData: getProfileBasicData,
-        getProfileAdvancedData: getProfileAdvancedData
-    };
-}
+export const PROFILES = {
+    'GET /profile/progress': basicProgress,
+    'GET /profile/goods': basicGoods,
+    'GET /profile/advanced': { advancedOperation1, advancedOperation2, advancedOperation3 }
+};
