@@ -10,6 +10,7 @@ import { CanLeaveProvide } from './guard/can-leave.provide';
 import { GuardLeaveComponent } from './guard/leave.component';
 import { ACLComponent } from './acl/acl.component';
 import { DownFileComponent } from './downfile/downfile.component';
+import { XlsxComponent } from './xlsx/xlsx.component';
 
 const routes: Routes = [
     {
@@ -22,7 +23,8 @@ const routes: Routes = [
         ]
     },
     { path: 'acl', component: ACLComponent },
-    { path: 'downfile', component: DownFileComponent }
+    { path: 'downfile', component: DownFileComponent },
+    { path: 'xlsx', component: XlsxComponent }
 ];
 
 @NgModule({

@@ -14,6 +14,7 @@ import { GuardAuthComponent } from './guard/auth.component';
 import { GuardLeaveComponent } from './guard/leave.component';
 import { ACLComponent } from './acl/acl.component';
 import { DownFileComponent } from 'app/routes/logics/downfile/downfile.component';
+import { XlsxComponent } from './xlsx/xlsx.component';
 
 @NgModule({
     imports: [ SharedModule, LogicsRoutingModule ],
@@ -24,7 +25,8 @@ import { DownFileComponent } from 'app/routes/logics/downfile/downfile.component
         GuardAdminComponent,
         GuardAuthComponent,
         ACLComponent,
-        DownFileComponent
+        DownFileComponent,
+        XlsxComponent
     ]
 })
 export class LogicsModule { }

@@ -355,6 +355,10 @@
                 "link": "/logics/downfile",
                 "translate": "downfile",
                 "shortcut": true
+            },
+            {
+                "text": "Xlsx",
+                "link": "/logics/xlsx"
             }]
         }, {
             "text": "Report",

@@ -6,7 +6,7 @@ import { RouterModule, RouteReuseStrategy } from '@angular/router';
 
 import { NgZorroAntdExtraModule } from 'ng-zorro-antd-extra';
 import { AlainThemeModule } from '@delon/theme';
-import { AlainABCModule, SimpleTableConfig, ReuseTabService, ReuseTabStrategy, FullContentService } from '@delon/abc';
+import { AlainABCModule, SimpleTableConfig, ReuseTabService, ReuseTabStrategy, FullContentService, XlsxService, DA_XLSX_CONFIG, LazyService } from '@delon/abc';
 import { AlainACLModule } from '@delon/acl';
 
 // third libs
@@ -143,7 +143,8 @@ import {
     AdDownFileModule,
     AdImageModule,
     AdUtilsModule,
-    AdFullContentModule
+    AdFullContentModule,
+    AdXlsxModule
 } from '@delon/abc';
 const ABCMODULES = [
     AdSimpleTableModule,
@@ -168,7 +169,8 @@ const ABCMODULES = [
     AdDownFileModule,
     AdImageModule,
     AdUtilsModule,
-    AdFullContentModule
+    AdFullContentModule,
+    AdXlsxModule
 ];
 // endregion
 
@@ -216,7 +218,12 @@ export class SharedModule {
                 FullContentService,
                 // reuse-tab
                 ReuseTabService,
-                { provide: RouteReuseStrategy, useClass: ReuseTabStrategy, deps: [ ReuseTabService ] }
+                { provide: RouteReuseStrategy, useClass: ReuseTabStrategy, deps: [ ReuseTabService ] },
+                // xlsx
+                XlsxService,
+                { provide: DA_XLSX_CONFIG, useValue: {} },
+                // utils
+                LazyService
             ]
         };
     }
