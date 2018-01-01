@@ -1,6 +1,6 @@
 {
   "name": "ng-alain",
-  "version": "0.5.0-rc.4",
+  "version": "0.5.0-rc.5",
   "description": "ng-zorro-antd admin panel front-end framework",
   "author": "cipchk",
   "homepage": "https://cipchk.github.io/ng-alain/",
@@ -40,11 +40,11 @@
     "@antv/data-set": "^0.7.0",
     "@antv/g2": "^3.0.1",
     "@antv/g2-plugin-slider": "^2.0.0",
-    "@delon/abc": "^0.5.0-rc.4",
-    "@delon/acl": "^0.5.0-rc.4",
-    "@delon/auth": "^0.5.0-rc.4",
-    "@delon/theme": "^0.5.0-rc.4",
-    "@delon/mock": "^0.5.0-rc.4",
+    "@delon/abc": "^0.5.0-rc.5",
+    "@delon/acl": "^0.5.0-rc.5",
+    "@delon/auth": "^0.5.0-rc.5",
+    "@delon/theme": "^0.5.0-rc.5",
+    "@delon/mock": "^0.5.0-rc.5",
     "@ngx-translate/core": "^9.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
     "angular-baidu-maps": "^1.0.1",
@@ -105,7 +105,8 @@
     "typescript": "~2.5.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "mockjs": "^1.0.1-beta3",
-    "@types/mockjs": "^1.0.0"
+    "@types/mockjs": "^1.0.0",
+    "xlsx": "^0.11.16"
   },
   "lint-staged": {
     "src/**/*.ts": "lint:ts",
