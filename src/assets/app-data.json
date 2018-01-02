@@ -359,6 +359,10 @@
             {
                 "text": "Xlsx",
                 "link": "/logics/xlsx"
+            },
+            {
+                "text": "Zip",
+                "link": "/logics/zip"
             }]
         }, {
             "text": "Report",
