@@ -13,35 +13,32 @@ export class ACLComponent {
     roleB = '';
 
     constructor(
-        private aclService: ACLService,
+        private aclSrv: ACLService,
         private menuSrv: MenuService) { }
 
     private reMenu() {
-        this.menuSrv.resume((item) => {
-            if (item.hide !== true && item.acl)
-                item.hide = !this.aclService.can(item.acl);
-        });
+        this.menuSrv.resume();
     }
 
     toggleFull() {
         this.full = !this.full;
-        this.aclService.setFull(this.full);
+        this.aclSrv.setFull(this.full);
         this.reMenu();
     }
 
     toggleRoleA() {
         this.full = false;
         this.roleA = this.roleA.length > 0 ? '' : 'role-a';
-        this.aclService.setFull(this.full);
-        this.aclService.setRole([this.roleA]);
+        this.aclSrv.setFull(this.full);
+        this.aclSrv.setRole([this.roleA]);
         this.reMenu();
     }
 
     toggleRoleB() {
         this.full = false;
         this.roleB = this.roleB.length > 0 ? '' : 'role-b';
-        this.aclService.setFull(this.full);
-        this.aclService.setRole([this.roleB]);
+        this.aclSrv.setFull(this.full);
+        this.aclSrv.setRole([this.roleB]);
         this.reMenu();
     }
 }

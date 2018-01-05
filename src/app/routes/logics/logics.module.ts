@@ -6,9 +6,6 @@ import { LogicsRoutingModule } from './logics-routing.module';
 
 import { GuardComponent } from './guard/guard.component';
 import { CanLeaveProvide } from './guard/can-leave.provide';
-import { UserService } from './guard/user.service';
-import { CanAuthProvide } from './guard/can-auth.provide';
-import { CanAdminProvide } from './guard/can-admin.provide';
 import { GuardAdminComponent } from './guard/admin.component';
 import { GuardAuthComponent } from './guard/auth.component';
 import { GuardLeaveComponent } from './guard/leave.component';
@@ -19,7 +16,7 @@ import { ZipComponent } from './zip/zip.component';
 
 @NgModule({
     imports: [ SharedModule, LogicsRoutingModule ],
-    providers: [ UserService, CanLeaveProvide, CanAuthProvide, CanAdminProvide ],
+    providers: [ CanLeaveProvide ],
     declarations: [
         GuardComponent,
         GuardLeaveComponent,
