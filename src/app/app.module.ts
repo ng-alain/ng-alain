@@ -53,6 +53,7 @@ export function StartupServiceFactory(startupService: StartupService): Function 
         ...MOCKMODULE,
         // auth
         AlainAuthModule.forRoot({
+            // ignores: [ `\\/login`, `assets\\/` ],
             login_url: `/passport/login`
         }),
         // i18n
