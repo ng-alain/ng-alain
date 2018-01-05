@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '@shared/shared.module';
 import { NzTreeModule } from 'ng-tree-antd';
 import { DndModule } from 'ng2-dnd';
+
+import { ElementsRoutingModule } from './elements-routing.module';
 
 import { ButtonsComponent } from './buttons/buttons.component';
 import { NotificationComponent } from './notification/notification.component';
@@ -18,22 +19,6 @@ import { ColorsComponent } from './colors/colors.component';
 import { TreeAntdComponent } from './tree-antd/tree-antd.component';
 import { DemoSortableComponent } from './sortable/sortable.component';
 import { SweetAlertComponent } from './sweetalert/sweetalert.component';
-
-const routes: Routes = [
-    { path: 'buttons', component: ButtonsComponent },
-    { path: 'notification', component: NotificationComponent },
-    { path: 'modal', component: ModalComponent },
-    { path: 'sweetalert', component: SweetAlertComponent },
-    { path: 'spin', component: SpinComponent },
-    { path: 'dropdown', component: DropdownComponent },
-    { path: 'tree-antd', component: TreeAntdComponent },
-    { path: 'sortable', component: DemoSortableComponent },
-    { path: 'grid', component: GridComponent },
-    { path: 'gridmasonry', component: GridMasonryComponent },
-    { path: 'typography', component: TypographyComponent },
-    { path: 'iconsfont', component: IconsFontComponent },
-    { path: 'colors', component: ColorsComponent }
-];
 
 import { TreeAntdBasicComponent } from './tree-antd/basic.component';
 import { TreeAntdAsyncComponent } from './tree-antd/async.component';
@@ -52,9 +37,9 @@ const TreeAntdDemoComponentes = [
 @NgModule({
     imports: [
         SharedModule,
+        ElementsRoutingModule,
         NzTreeModule,
-        DndModule.forRoot(),
-        RouterModule.forChild(routes)
+        DndModule.forRoot()
     ],
     declarations: [
         ButtonsComponent,
@@ -72,9 +57,6 @@ const TreeAntdDemoComponentes = [
         ...TreeAntdDemoComponentes,
         DemoSortableComponent,
         SweetAlertComponent
-    ],
-    exports: [
-        RouterModule
     ],
     entryComponents: [
         ModelCustomComponent

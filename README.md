@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/cipchk/ng-alain.svg?branch=master)](https://travis-ci.org/cipchk/ng-alain)
 [![Dependency Status](https://david-dm.org/cipchk/ng-alain/status.svg)](https://david-dm.org/cipchk/ng-alain)
+[![NPM version](https://img.shields.io/npm/v/ng-alain.svg)](https://www.npmjs.com/package/ng-alain)
 
 # ng-alain
 
@@ -14,8 +15,10 @@
 Make sure you have Node version >= 6.9.0 and NPM >= 3 or higher.
 
 ```bash
-# clone ng-alain repo
-# --depth 1 removes all but one .git commit history
+# clone a blank ng-alain repo, just only basic function
+#   --depth 1 removes all but one .git commit history
+git clone -b blank --depth 1 https://github.com/cipchk/ng-alain.git
+# or full master branch
 git clone --depth 1 https://github.com/cipchk/ng-alain.git
 
 # change directory
@@ -24,7 +27,7 @@ cd ng-alain
 # install npm package
 npm install
 # in china please use cnpm （https://github.com/cnpm/cnpm）
-# cnpm install --by=npm
+# cnpm install
 
 # start the serve
 npm start
@@ -35,46 +38,34 @@ npm run serve:hmr
 
 > [vscode] recommended install [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) plugins, that includes `nz-alain-*` snippets.
 
-## Environment
+## Links
 
-| package | version |
-| ------- | ------- |
-| `ng-alain` | 0.1.2-beta.9 | 
-| `ng-zorro-antd` | ^0.5.3 |
-| `@angular` | ^4.4.5 |
-| `@angular/cli` | ^1.4.7 |
++ [Document](http://ng-alain.com)
++ [@delon](https://github.com/cipchk/delon)
++ [DEMO](https://cipchk.github.io/ng-alain/)
 
-**Third Library[Optional]**
+## Delon
 
-| package | dependencie | remark |
-| ------- | ------- | ------- |
-| `font-awesome` |  |  |
-| `simple-line-icons` |  |  |
-| `weather-icons` |  |  |
-| `angular-baidu-maps` |  | BaidDu Map |
-| `angular-qq-maps` |  | QQ Map |
-| `angular-web-storage` |  | LocalStorage |
-| `ng2-charts` | `chart.js` |  |
-| `d3` |  |  |
-| `g2-angular` | `g2` |  |
-| `jquery-sparkline` | `jquery` |  |
-| `ng2-file-upload` |  |  |
-| `ng2-img-cropper` |  |  |
-| `ngx-color-picker` |  |  |
-| `ng-tree-antd` | `angular-tree-component` |  |
-| `ng2-dnd` |  |  |
-| `sweetalert` |  |  |
-| `file-saver` |  |  |
+[delong](https://github.com/cipchk/delon) is a production-ready solution for admin business components packages, Built on the design principles developed by Ant Design.
 
-## Guide Lines
+[![Build Status](https://travis-ci.org/cipchk/delon.svg?branch=master)](https://travis-ci.org/cipchk/delon)
+[![Dependency Status](https://david-dm.org/cipchk/delon/status.svg)](https://david-dm.org/cipchk/delon)
+[![DevDependency Status](https://david-dm.org/cipchk/delon/dev-status.svg)](https://david-dm.org/cipchk/delon?type=dev)
 
-+ [antd gruid lines](https://ant.design/docs/spec/introduce)
-+ [`ng-alain` Layout Rule](_documents/layout.md)
-+ [CSS Component Patch](_documents/component-patch.md)
-+ [CSS Utility Rule](_documents/utils.md)
-+ [Pipe](_documents/pipe.md)
-+ [ACL](_documents/acl.md)
-+ [Upgrade](_documents/upgrade.md)
+[![npm](https://img.shields.io/npm/l/@delon/theme.svg)](https://www.npmjs.com/package/@delon/theme)
+[![npm](https://img.shields.io/npm/dm/@delon/theme.svg)](https://www.npmjs.com/package/@delon/theme)
+
+| package name | version | next version |
+| ------------ |:-----:|:----------:|
+| @delon/theme | [![NPM version](https://img.shields.io/npm/v/@delon/theme.svg)](https://www.npmjs.com/package/@delon/theme) | [![NPM version](https://img.shields.io/npm/v/@delon/theme/next.svg)](https://www.npmjs.com/package/@delon/theme) |
+| @delon/abc | [![NPM version](https://img.shields.io/npm/v/@delon/abc.svg)](https://www.npmjs.com/package/@delon/abc) | [![NPM version](https://img.shields.io/npm/v/@delon/abc/next.svg)](https://www.npmjs.com/package/@delon/abc) |
+| @delon/acl | [![NPM version](https://img.shields.io/npm/v/@delon/acl.svg)](https://www.npmjs.com/package/@delon/acl) | [![NPM version](https://img.shields.io/npm/v/@delon/acl/next.svg)](https://www.npmjs.com/package/@delon/acl) |
+| @delon/auth | [![NPM version](https://img.shields.io/npm/v/@delon/auth.svg)](https://www.npmjs.com/package/@delon/auth) | [![NPM version](https://img.shields.io/npm/v/@delon/auth/next.svg)](https://www.npmjs.com/package/@delon/auth) |
+| @delon/mock | [![NPM version](https://img.shields.io/npm/v/@delon/mock.svg)](https://www.npmjs.com/package/@delon/mock) | [![NPM version](https://img.shields.io/npm/v/@delon/mock/next.svg)](https://www.npmjs.com/package/@delon/mock) |
+
+## Architecture
+
+![Architecture](https://github.com/cipchk/delon/blob/master/_screenshot/architecture.png)
 
 ## Features
 
@@ -93,9 +84,9 @@ npm run serve:hmr
 
 ## App Shots
 
-![desktop](_screenshot/desktop.png)
-![ipad](_screenshot/ipad.png)
-![iphone](_screenshot/iphone.png)
+![desktop](https://github.com/cipchk/delon/blob/master/_screenshot/desktop.png)
+![ipad](https://github.com/cipchk/delon/blob/master/_screenshot/ipad.png)
+![iphone](https://github.com/cipchk/delon/blob/master/_screenshot/iphone.png)
 
 ## Troubleshooting
 

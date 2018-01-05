@@ -6,14 +6,18 @@ import { environment } from './environments/environment';
 
 import { hmrBootstrap } from './hmr';
 
-import './app/core/preloader/preloader';
+import { preloaderFinished } from '@delon/theme';
+preloaderFinished();
 
 if (environment.production) {
   enableProdMode();
 }
 
 const bootstrap = () => {
-  return platformBrowserDynamic().bootstrapModule(AppModule, { defaultEncapsulation: ViewEncapsulation.None });
+    return platformBrowserDynamic().bootstrapModule(AppModule, {
+        defaultEncapsulation: ViewEncapsulation.Emulated,
+        preserveWhitespaces: false
+    });
 };
 
 if (environment.hmr) {

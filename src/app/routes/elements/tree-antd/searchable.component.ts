@@ -5,16 +5,13 @@ import { NzTreeComponent } from 'ng-tree-antd';
 @Component({
   selector: 'app-tree-antd-demo-searchable',
   template: `
-  <nz-card>
-      <ng-template #title>Searchable</ng-template>
-      <ng-template #body>
+    <nz-card nzTitle="Searchable">
         <nz-input [nzType]="'search'" [nzPlaceHolder]="'input search text'" [(ngModel)]="q" (ngModelChange)="filterNodes()"></nz-input>
         <nz-tree #tree [nzNodes]="nodes"
                 [nzOptions]="options"
                 [nzCheckable]="true"
                 (nzEvent)="onEvent($event)"></nz-tree>
-      </ng-template>
-  </nz-card>
+    </nz-card>
   `
 })
 export class TreeAntdSearchableComponent implements OnInit {

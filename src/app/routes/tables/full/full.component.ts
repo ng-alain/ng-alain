@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RandomUserService } from '../randomUser.service';
 import { NzMessageService } from 'ng-zorro-antd';
+import { map } from 'rxjs/operators';
+import { _HttpClient } from '@delon/theme';
+import { RandomUserService } from '../randomUser.service';
 
 @Component({
     selector: 'app-table-full',
@@ -13,9 +15,11 @@ export class TableFullComponent implements OnInit {
     total = 200; // mock total
     list = [];
     loading = false;
-    args = {};
+    args: any = { };
     _indeterminate = false;
     _allChecked = false;
+
+    events: any[] = [];
 
     load(pi?: number) {
         if (typeof pi !== 'undefined') {
@@ -26,13 +30,15 @@ export class TableFullComponent implements OnInit {
         this._allChecked = false;
         this._indeterminate = false;
         this._randomUser.getUsers(this.pi, this.ps, this.args)
-            .map(data => {
-                data.results.forEach(item => {
-                    item.checked = false;
-                    item.price = +((Math.random() * (10000000 - 100)) + 100).toFixed(2);
-                });
-                return data;
-            })
+            .pipe(
+                map(data => {
+                    data.results.forEach(item => {
+                        item.checked = false;
+                        item.price = +((Math.random() * (10000000 - 100)) + 100).toFixed(2);
+                    });
+                    return data;
+                })
+            )
             .subscribe(data => {
                 this.loading = false;
                 this.list = data.results;
@@ -54,11 +60,12 @@ export class TableFullComponent implements OnInit {
         this._indeterminate = this._allChecked ? false : checkedCount > 0;
     }
 
-    constructor(private _randomUser: RandomUserService, private message: NzMessageService) {
+    constructor(private _randomUser: RandomUserService, private http: _HttpClient, private message: NzMessageService) {
     }
 
     ngOnInit() {
         this.load();
+        this.http.get('/chart/visit').subscribe(res => this.events = res);
     }
 
     showMsg(msg: string) {

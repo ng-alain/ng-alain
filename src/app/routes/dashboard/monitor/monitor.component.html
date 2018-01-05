@@ -1,0 +1,98 @@
+<div nz-row [nzGutter]="24" class="pt-lg">
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="18">
+        <nz-card nzTitle="活动实时交易情况" [nzBordered]="false" class="mb-lg">
+            <div nz-row>
+                <div nz-col nzXs="24" nzSm="12" nzMd="6">
+                    <number-info subTitle="今日交易总额" [total]="'124,543,233'" suffix="元"></number-info>
+                </div>
+                <div nz-col nzXs="24" nzSm="12" nzMd="6">
+                    <number-info subTitle="销售目标完成率" [total]="'92%'"></number-info>
+                </div>
+                <div nz-col nzXs="24" nzSm="12" nzMd="6">
+                    <number-info subTitle="活动剩余时间" [total]="lastTotalTime">
+                        <ng-template #lastTotalTime><count-down [target]="30"></count-down></ng-template>
+                    </number-info>
+                </div>
+                <div nz-col nzXs="24" nzSm="12" nzMd="6">
+                    <number-info subTitle="每秒交易总额" [total]="234" suffix="元"></number-info>
+                </div>
+            </div>
+            <div class="map-chart">
+                <nz-tooltip [nzTitle]="'等待后期实现'">
+                    <img nz-tooltip src="https://gw.alipayobjects.com/zos/rmsportal/HBWnDEUXCnGnGrRfrpKa.png" alt="map" />
+                </nz-tooltip>
+            </div>
+        </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="6">
+        <nz-card nzTitle="活动情况预测" [nzBordered]="false" class="mb-lg">
+            <div class="active-chart">
+                <number-info subTitle="目标评估" total="有望达到预期"></number-info>
+                <mini-area [animate]="false"
+                        [line]="true"
+                        [borderWidth]="2"
+                        [height]="84"
+                        [yAxis]="activeYAxis"
+                        [data]="activeData"></mini-area>
+                <ng-container *ngIf="activeData?.length > 0">
+                    <div class="active-grid">
+                        <p>{{activeStat.max}} 亿元</p>
+                        <p>{{activeStat.min}} 亿元</p>
+                    </div>
+                    <div class="active-legend">
+                        <span>00:00</span>
+                        <span>{{activeStat.t1}}</span>
+                        <span>{{activeStat.t2}}</span>
+                    </div>
+                </ng-container>
+            </div>
+        </nz-card>
+        <nz-card nzTitle="券核效率" [nzBordered]="false" [nzBodyStyle]="{'text-align': 'center'}" class="mb-lg">
+            <gauge [title]="'跳出率'" [height]="180" [percent]="87" [format]="couponFormat"></gauge>
+        </nz-card>
+    </div>
+</div>
+<div nz-row [nzGutter]="24">
+    <div nz-col nzXs="24" nzSm="24" nzLg="12" class="mb-lg">
+        <nz-card nzTitle="各品类占比" [nzBordered]="false" class="pie-card">
+            <div nz-row [nzGutter]="4" style="padding:16px 0">
+                <div nz-col [nzSpan]="8">
+                    <pie [animate]="false"
+                         [percent]="28"
+                         subTitle="中式快餐"
+                         total="28%"
+                         [height]="128"
+                         [lineWidth]="2"></pie>
+                </div>
+                <div nz-col [nzSpan]="8">
+                    <pie [animate]="false"
+                         color="#5DDECF"
+                         [percent]="22"
+                         subTitle="西餐"
+                         total="22%"
+                         [height]="128"
+                         [lineWidth]="2"></pie>
+                </div>
+                <div nz-col [nzSpan]="8">
+                    <pie [animate]="false"
+                         color="#2FC25B"
+                         [percent]="32"
+                         subTitle="火锅"
+                         total="32%"
+                         [height]="128"
+                         [lineWidth]="2"></pie>
+                </div>
+            </div>
+        </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzLg="6" class="mb-lg">
+        <nz-card nzTitle="热门搜索" [nzBordered]="false" [nzBodyStyle]="{'overflow': 'hidden'}">
+            <tag-cloud [data]="tags" [height]="165"></tag-cloud>
+        </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzLg="6" class="mb-lg">
+        <nz-card nzTitle="资源剩余" [nzBordered]="false" [nzBodyStyle]="{'overflow': 'hidden'}">
+            <water-wave [title]="'补贴资金剩余'" [percent]="34" [height]="165"></water-wave>
+        </nz-card>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+<pro-header></pro-header>
+<nz-card [nzBordered]="false">
+    <div nz-row>
+        <div nz-col [nzXs]="24" [nzSm]="8" class="header-info">
+            <p class="text-grey-dark">我的待办</p>
+            <p class="display-2">8个任务</p>
+            <em></em>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="8" class="header-info">
+            <p class="text-grey-dark">本周任务平均处理时间</p>
+            <p class="display-2">32分钟</p>
+            <em></em>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="8" class="header-info">
+            <p class="text-grey-dark">本周完成任务数</p>
+            <p class="display-2">24个任务</p>
+        </div>
+    </div>
+</nz-card>
+<nz-card [nzBordered]="false">
+    <div class="d-flex align-items-center mb-lg">
+        <h3 class="flex-1 text-lg">标准列表</h3>
+        <div>
+            <nz-radio-group [(ngModel)]="q.status" [nzSize]="'large'" class="mr-md">
+                <label nz-radio-button [nzValue]="'all'">
+                    <span>全部</span>
+                </label>
+                <label nz-radio-button [nzValue]="'progress'">
+                    <span>进行中</span>
+                </label>
+                <label nz-radio-button [nzValue]="'waiting'">
+                    <span>等待中</span>
+                </label>
+            </nz-radio-group>
+            <nz-input [nzType]="'search'" [nzPlaceHolder]="'请输入'" [(ngModel)]="q.q" [nzSize]="'large'" style="width: 272px"></nz-input>
+        </div>
+    </div>
+    <button nz-button (click)="msg.success('add')" [nzType]="'dashed'" [nzSize]="'large'" class="ant-btn__block mb-sm">
+        <i class="anticon anticon-plus"></i><span>添加</span>
+    </button>
+    <nz-list [nzDataSource]="data" [nzLoading]="loading">
+        <ng-template #item let-item>
+            <nz-list-item [nzContent]="nzContent">
+                <nz-list-item-action><a (click)="msg.success('编辑：' + item.title)">编辑</a></nz-list-item-action>
+                <nz-list-item-action>
+                    <nz-dropdown>
+                        <a class="ant-dropdown-link" nz-dropdown>
+                            编辑 <i class="anticon anticon-down"></i>
+                        </a>
+                        <ul nz-menu>
+                            <li nz-menu-item (click)="msg.success('编辑：' + item.title)">编辑</li>
+                            <li nz-menu-item (click)="msg.success('删除：' + item.title)">删除</li>
+                        </ul>
+                    </nz-dropdown>
+                </nz-list-item-action>
+                <nz-list-item-meta
+                    [nzTitle]="nzTitle"
+                    [nzDescription]="item.subDescription"
+                    [nzAvatar]="nzAvatar">
+                    <ng-template #nzTitle>
+                        <a href="{{item.href" target="_blank">{{item.title}}</a>
+                    </ng-template>
+                    <ng-template #nzAvatar>
+                        <nz-avatar [nzSrc]="item.logo" [nzSize]="'large'" [nzShape]="'square'"></nz-avatar>
+                    </ng-template>
+                </nz-list-item-meta>
+                <ng-template #nzContent>
+                    <div class="width-md">
+                        <div class="d-flex text-grey-dark">
+                            <div class="flex-1">
+                                Owner
+                                <p>{{item.owner}}</p>
+                            </div>
+                            <div class="text-right">
+                                开始时间
+                                <p>{{item.createdAt | _date}}</p>
+                            </div>
+                        </div>
+                        <nz-progress [ngModel]="item.percent" [nzStatus]="item.status" [nzStrokeWidth]="6"></nz-progress>
+                    </div>
+                </ng-template>
+            </nz-list-item>
+        </ng-template>
+        <ng-template #pagination>
+            <nz-pagination [nzTotal]="50" [nzPageSize]="5" [nzSize]="'large'" (nzPageIndexChange)="getData()"></nz-pagination>
+        </ng-template>
+    </nz-list>
+</nz-card>

@@ -21,17 +21,16 @@
             "styles.less"
         ],
         "scripts": [
-            "../node_modules/jquery/dist/jquery.js",
-            "../node_modules/jquery-sparkline/jquery.sparkline.js",
-            "../node_modules/chart.js/dist/Chart.bundle.js",
-            "../node_modules/echarts/dist/echarts.js",
-            "../node_modules/echarts/theme/dark.js"
+            "../node_modules/@antv/g2/dist/g2.min.js",
+            "../node_modules/@antv/data-set/dist/data-set.min.js",
+            "../node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
             "dev": "environments/environment.ts",
             "prod": "environments/environment.prod.ts",
-            "hmr": "environments/environment.hmr.ts"
+            "hmr": "environments/environment.hmr.ts",
+            "chore": "environments/environment.chore.ts"
         }
     }],
     "e2e": {
@@ -59,6 +58,32 @@
     },
     "defaults": {
         "styleExt": "less",
-        "component": {}
+        "class": {
+            "spec": false
+        },
+        "component": {
+            "flat": false,
+            "spec": false,
+            "inlineStyle": true,
+            "inlineTemplate": false
+        },
+        "directive": {
+            "spec": false
+        },
+        "guard": {
+            "spec": false
+        },
+        "interface": {
+            "prefix": "I"
+        },
+        "module": {
+            "spec": false
+        },
+        "pipe": {
+            "spec": true
+        },
+        "service": {
+            "spec": false
+        }
     }
 }

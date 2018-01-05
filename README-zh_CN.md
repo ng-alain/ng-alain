@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/cipchk/ng-alain.svg?branch=master)](https://travis-ci.org/cipchk/ng-alain)
+[![Dependency Status](https://david-dm.org/cipchk/ng-alain/status.svg)](https://david-dm.org/cipchk/ng-alain)
+[![NPM version](https://img.shields.io/npm/v/ng-alain.svg)](https://www.npmjs.com/package/ng-alain)
+
 # ng-alain
 
 一套基于 [Ng-zorro-antd](https://github.com/NG-ZORRO/ng-zorro-antd)【ANT DESIGN】 的企业后台模板。
@@ -13,8 +17,10 @@
 `ng-alain` 本身并非组件库，只是一个单纯的企业后台模板，你可以**直接克隆**到你的本地，然后立即进入实际开发。
 
 ```bash
-# clone ng-alain repo
-# --depth 1 removes all but one .git commit history
+# clone a blank ng-alain repo, just only basic function
+#   --depth 1 removes all but one .git commit history
+git clone -b blank --depth 1 https://github.com/cipchk/ng-alain.git
+# or full master branch
 git clone --depth 1 https://github.com/cipchk/ng-alain.git
 
 # change directory
@@ -23,7 +29,7 @@ cd ng-alain
 # install npm package
 npm install
 # in china please use cnpm （https://github.com/cnpm/cnpm）
-# cnpm install --by=npm
+# cnpm install
 
 # start the serve
 npm start
@@ -34,51 +40,35 @@ npm run serve:hmr
 
 > [vscode] 建议安装 [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) 插件，含 `nz-alain-*` 代码片断。
 
-## 环境
 
-| 包 | 版本 |
-| ------- | ------- |
-| `ng-alain` | 0.1.2-beta.9 | 
-| `ng-zorro-antd` | ^0.5.3 |
-| `@angular` | ^4.4.5 |
-| `@angular/cli` | ^1.4.7 |
+## Links
 
-**第三方类型[可选]**
++ [文档](http://ng-alain.com)
++ [@delon](https://github.com/cipchk/delon)
++ [DEMO](https://cipchk.github.io/ng-alain/)
 
-| 包 | 额外依赖 | 说明 |
-| ------- | ------- | ------- |
-| `font-awesome` |  |  |
-| `simple-line-icons` |  |  |
-| `weather-icons` |  |  |
-| `angular-baidu-maps` |  | BaidDu Map |
-| `angular-qq-maps` |  | QQ Map |
-| `angular-web-storage` |  | LocalStorage |
-| `ng2-charts` | `chart.js` |  |
-| `d3` |  |  |
-| `g2-angular` | `g2` |  |
-| `jquery-sparkline` | `jquery` |  |
-| `ng2-file-upload` |  |  |
-| `ng2-img-cropper` |  |  |
-| `ngx-color-picker` |  |  |
-| `ng-tree-antd` | `angular-tree-component` |  |
-| `ng2-dnd` |  |  |
-| `sweetalert` |  |  |
-| `file-saver` |  |  |
+## Delon
 
-## 指引文章
+[delong](https://github.com/cipchk/delon) 是基于 Ant Design 设计理念的企业级中后台前端业务型组件库。
 
-`ng-alain` 非常单纯，整体的设计都基于 `ng-zorro-antd`。虽然 antd 的栅格、布局已经足够满足我们日常的需求，然而出于对企业后台在开发过程中总是需要一点微调，因此我独立构建了一套用作这类需求工具类样式。
+[![Build Status](https://travis-ci.org/cipchk/delon.svg?branch=master)](https://travis-ci.org/cipchk/delon)
+[![Dependency Status](https://david-dm.org/cipchk/delon/status.svg)](https://david-dm.org/cipchk/delon)
+[![DevDependency Status](https://david-dm.org/cipchk/delon/dev-status.svg)](https://david-dm.org/cipchk/delon?type=dev)
 
-因此，在你开始ANTD之前最好先了解以下系列文章，他们会帮助你更好的理解 antd 是怎么一回事，以及为什么需要这一套工具类规则。
+[![npm](https://img.shields.io/npm/l/@delon/theme.svg)](https://www.npmjs.com/package/@delon/theme)
+[![npm](https://img.shields.io/npm/dm/@delon/theme.svg)](https://www.npmjs.com/package/@delon/theme)
 
-+ [整个antd的指引文章（非常经典一定要细读）](https://ant.design/docs/spec/introduce-cn)
-+ [设计规则](_documents/layout.md)
-+ [CSS组件补丁类](_documents/component-patch.md)
-+ [工具类规则](_documents/utils.md)
-+ [接地气Pipe](_documents/pipe.md)
-+ [ACL访问控制](_documents/acl.md)
-+ [目录结构与版本升级说明](_documents/upgrade.md)
-+ 为了减少github的发布，后续有关 `ng-alain` 的文章，会一直发布在我的[SF专栏](https://segmentfault.com/blog/cipchk)当中。
+| package name | version | next version |
+| ------------ |:-----:|:----------:|
+| @delon/theme | [![NPM version](https://img.shields.io/npm/v/@delon/theme.svg)](https://www.npmjs.com/package/@delon/theme) | [![NPM version](https://img.shields.io/npm/v/@delon/theme/next.svg)](https://www.npmjs.com/package/@delon/theme) |
+| @delon/abc | [![NPM version](https://img.shields.io/npm/v/@delon/abc.svg)](https://www.npmjs.com/package/@delon/abc) | [![NPM version](https://img.shields.io/npm/v/@delon/abc/next.svg)](https://www.npmjs.com/package/@delon/abc) |
+| @delon/acl | [![NPM version](https://img.shields.io/npm/v/@delon/acl.svg)](https://www.npmjs.com/package/@delon/acl) | [![NPM version](https://img.shields.io/npm/v/@delon/acl/next.svg)](https://www.npmjs.com/package/@delon/acl) |
+| @delon/auth | [![NPM version](https://img.shields.io/npm/v/@delon/auth.svg)](https://www.npmjs.com/package/@delon/auth) | [![NPM version](https://img.shields.io/npm/v/@delon/auth/next.svg)](https://www.npmjs.com/package/@delon/auth) |
+| @delon/mock | [![NPM version](https://img.shields.io/npm/v/@delon/mock.svg)](https://www.npmjs.com/package/@delon/mock) | [![NPM version](https://img.shields.io/npm/v/@delon/mock/next.svg)](https://www.npmjs.com/package/@delon/mock) |
+
+## Architecture
+
+![Architecture](https://github.com/cipchk/delon/blob/master/_screenshot/architecture.png)
 
 ## 特性
 
@@ -97,9 +87,9 @@ npm run serve:hmr
 
 ## 应用截图
 
-![desktop](_screenshot/desktop.png)
-![ipad](_screenshot/ipad.png)
-![iphone](_screenshot/iphone.png)
+![desktop](https://github.com/cipchk/delon/blob/master/_screenshot/desktop.png)
+![ipad](https://github.com/cipchk/delon/blob/master/_screenshot/ipad.png)
+![iphone](https://github.com/cipchk/delon/blob/master/_screenshot/iphone.png)
 
 ## Troubleshooting
 

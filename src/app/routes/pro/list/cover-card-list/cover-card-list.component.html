@@ -1,0 +1,76 @@
+<pro-header [title]="'搜索列表'">
+    <ng-template #content>
+        <div class="text-center">
+            <nz-input [nzType]="'search'" [nzSize]="'large'" [nzPlaceHolder]="'请输入'" style="width: 520px;"></nz-input>
+        </div>
+    </ng-template>
+    <ng-template #tab>
+        <nz-tabset [nzSize]="'default'" [nzSelectedIndex]="2">
+            <nz-tab><ng-template #nzTabHeading><a [routerLink]="['/pro/list/search']">文章</a></ng-template></nz-tab>
+            <nz-tab><ng-template #nzTabHeading><a [routerLink]="['/pro/list/filter-card-list']">应用</a></ng-template></nz-tab>
+            <nz-tab><ng-template #nzTabHeading><a [routerLink]="['/pro/list/cover-card-list']">项目</a></ng-template></nz-tab>
+        </nz-tabset>
+    </ng-template>
+</pro-header>
+<nz-card [nzBordered]="false">
+    <form nz-form [nzLayout]="'inline'">
+        <standard-form-row [title]="'所属类目'" block style="padding-bottom: 11px">
+            <div nz-form-item>
+                <div nz-form-control>
+                    <tag-select>
+                        <nz-checkable-tag *ngFor="let i of categories; let idx = index" [nzChecked]="i.value" (nzChange)="changeCategory($event, idx)">
+                            {{i.text}}
+                        </nz-checkable-tag>
+                    </tag-select>
+                </div>
+            </div>
+        </standard-form-row>
+        <standard-form-row [title]="'其它选项'" grid last>
+            <div nz-row [nzGutter]="16">
+                <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="10" nzXl="8">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col><label for="rate">活跃用户</label></div>
+                        <div nz-form-control nz-col nzXs="24" nzSm="24" nzMd="12">
+                            <nz-select [(ngModel)]="q.user" name="user" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" [nzSize]="'large'" style="width: 200px;">
+                                <nz-option [nzLabel]="'李三'" [nzValue]="'lisa'"></nz-option>
+                            </nz-select>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="10" nzXl="8">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col><label for="rate">好评度</label></div>
+                        <div nz-form-control nz-col nzXs="24" nzSm="24" nzMd="12">
+                            <nz-select [(ngModel)]="q.rate" name="rate" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" [nzSize]="'large'" style="width: 200px;">
+                                <nz-option [nzLabel]="'优秀'" [nzValue]="'good'"></nz-option>
+                            </nz-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </standard-form-row>
+    </form>
+</nz-card>
+<nz-list [nzLoading]="loading" [nzDataSource]="list"
+         [nzGrid]="{gutter: 24, lg: 6, md: 8, sm: 12, xs: 24 }">
+    <ng-template #item let-item>
+        <nz-list-item>
+            <nz-card nzHoverable>
+                <ng-template #cover><img alt="{{item.title}}" src="{{item.cover}}"></ng-template>
+                <nz-card-meta
+                    [nzTitle]="nzTitle"
+                    [nzDescription]="item.subDescription">
+                    <ng-template #nzTitle><a (click)="msg.success('标题：' + item.id);">{{item.title}}</a></ng-template>
+                </nz-card-meta>
+                <div class="card-item-content">
+                    <span class="text-grey">{{item.updatedAt}}</span>
+                    <avatar-list size="mini">
+                        <avatar-list-item *ngFor="let m of item.members"
+                                            [src]="m.avatar"
+                                            [tips]="m.name"></avatar-list-item>
+                    </avatar-list>
+                </div>
+            </nz-card>
+        </nz-list-item>
+    </ng-template>
+</nz-list>

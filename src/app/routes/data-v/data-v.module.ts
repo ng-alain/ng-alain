@@ -1,23 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '@shared/shared.module';
 
+import { DataVRoutingModule } from './data-v-routing.module';
 import { RelationComponent } from './relation/relation.component';
 
-const routes: Routes = [
-    { path: 'relation', component: RelationComponent }
-];
-
 @NgModule({
-    imports: [
-        SharedModule,
-        RouterModule.forChild(routes)
-    ],
-    declarations: [
-        RelationComponent
-    ],
-    exports: [
-        RouterModule
-    ]
+    imports: [ SharedModule, DataVRoutingModule ],
+    declarations: [ RelationComponent ]
 })
 export class DataVModule { }

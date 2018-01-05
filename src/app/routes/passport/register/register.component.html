@@ -1,0 +1,94 @@
+<h3>注册</h3>
+<form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
+    <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
+    <div nz-form-item>
+        <div nz-form-control [nzValidateStatus]="mail">
+            <nz-input formControlName="mail" [nzPlaceHolder]="'邮箱'" [nzSize]="'large'">
+                <ng-template #prefix>
+                    <i class="anticon anticon-user"></i>
+                </ng-template>
+            </nz-input>
+            <ng-container *ngIf="mail.dirty || mail.touched">
+                <p nz-form-explain *ngIf="mail.errors?.required">请输入邮箱地址！</p>
+                <p nz-form-explain *ngIf="mail.errors?.email">邮箱地址格式错误！</p>
+            </ng-container>
+        </div>
+    </div>
+    <div nz-form-item>
+        <div nz-form-control [nzValidateStatus]="password">
+            <nz-popover [nzPlacement]="'right'" [nzTrigger]="'focus'" [(nzVisible)]="visible" nzOverlayClassName="register-password-cdk" [nzOverlayStyle]="{'width.px': 240}">
+                <nz-input nz-popover formControlName="password" [nzPlaceHolder]="'至少6位密码，区分大小写'" [nzType]="'password'" [nzSize]="'large'">
+                    <ng-template #prefix>
+                        <i class="anticon anticon-lock"></i>
+                    </ng-template>
+                </nz-input>
+                <div nz-form-explain *ngIf="(password.dirty || password.touched) && password.errors?.required">请输入密码！</div>
+                <ng-template #nzTemplate>
+                    <div style="padding: 4px 0">
+                        <ng-container [ngSwitch]="status">
+                            <div *ngSwitchCase="'ok'" class="success">强度：强</div>
+                            <div *ngSwitchCase="'pass'" class="warning">强度：中</div>
+                            <div *ngSwitchDefault class="error">强度：太短</div>
+                        </ng-container>
+                        <div class="progress-{{status}}">
+                            <nz-progress
+                                [(ngModel)]="progress" [ngModelOptions]="{standalone: true}"
+                                [nzStatus]="passwordProgressMap[status]"
+                                [nzStrokeWidth]="6"
+                                [nzShowInfo]="false"></nz-progress>
+                        </div>
+                        <p class="mt-sm">请至少输入 6 个字符。请不要使用容易被猜到的密码。</p>
+                    </div>
+                </ng-template>
+            </nz-popover>
+        </div>
+    </div>
+    <div nz-form-item>
+        <div nz-form-control [nzValidateStatus]="confirm">
+            <nz-input formControlName="confirm" [nzPlaceHolder]="'确认密码'" [nzType]="'password'" [nzSize]="'large'">
+                <ng-template #prefix>
+                    <i class="anticon anticon-lock"></i>
+                </ng-template>
+            </nz-input>
+            <ng-container *ngIf="confirm.dirty || confirm.touched">
+                <p nz-form-explain *ngIf="confirm.errors?.required">请确认密码！</p>
+                <p nz-form-explain *ngIf="confirm.errors?.equar">两次输入的密码不匹配！</p>
+            </ng-container>
+        </div>
+    </div>
+    <div nz-form-item>
+        <div nz-form-control [nzValidateStatus]="mobile">
+            <nz-input-group [nzSize]="'large'" [nzCompact]="true">
+                <nz-select formControlName="mobilePrefix" style="width: 25%;">
+                    <nz-option [nzLabel]="'+86'" [nzValue]="'+86'"></nz-option>
+                    <nz-option [nzLabel]="'+87'" [nzValue]="'+87'"></nz-option>
+                </nz-select>
+                <input formControlName="mobile" id="'11位手机号码'" nz-input style="width: 75%;">
+            </nz-input-group>
+            <div nz-form-explain *ngIf="(mobile.dirty || mobile.touched) && mobile.errors?.required">请输入手机号！</div>
+        </div>
+    </div>
+    <div nz-form-item>
+        <div nz-form-control [nzValidateStatus]="captcha">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="16">
+                    <nz-input formControlName="captcha" [nzPlaceHolder]="'验证码'" [nzSize]="'large'">
+                        <ng-template #prefix>
+                            <i class="anticon anticon-mail"></i>
+                        </ng-template>
+                    </nz-input>
+                </div>
+                <div nz-col [nzSpan]="8">
+                    <button nz-button (click)="getCaptcha()" [disabled]="count" [nzSize]="'large'" class="ant-btn__block">{{ count ? count + 's' : '获取验证码' }}</button>
+                </div>
+            </div>
+            <div nz-form-explain *ngIf="(captcha.dirty || captcha.touched) && captcha.errors?.required">请输入验证码！</div>
+        </div>
+    </div>
+    <div nz-form-item>
+        <button nz-button [nzType]="'primary'" [nzLoading]="loading" [nzSize]="'large'" class="submit">
+            <span>注册</span>
+        </button>
+        <a class="login" routerLink="/passport/login">使用已有账户登录</a>
+    </div>
+</form>

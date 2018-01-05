@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from '@shared/shared.module';
+import { PagesRoutingModule } from './pages-routing.module';
 
 import { LoginComponent } from './login/login.component';
 import { LockComponent } from './lock/lock.component';
@@ -12,9 +13,7 @@ import { Page404Component } from './404/404.component';
 import { Page500Component } from './500/500.component';
 
 @NgModule({
-  imports: [
-    SharedModule
-  ],
+  imports: [ SharedModule, PagesRoutingModule ],
   declarations: [
     LoginComponent,
     LockComponent,

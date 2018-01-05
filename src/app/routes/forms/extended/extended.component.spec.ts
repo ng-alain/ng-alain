@@ -1,22 +1,18 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { setUpTestBed } from '../../../../testing/common.spec';
 
-import { SharedModule } from '@shared/shared.module';
 import { ExtendedComponent } from './extended.component';
-import { FormsModule } from './../forms.module';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 describe('Component: FormsExtended', () => {
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            imports: [RouterTestingModule, SharedModule.forRoot(), FormsModule]
-        });
+    setUpTestBed(<TestModuleMetadata>{
+        declarations: [ ExtendedComponent ],
+        imports: [ColorPickerModule]
     });
 
-    it('should create an instance', async(() => {
+    it('should create an instance', () => {
         const fixture = TestBed.createComponent(ExtendedComponent);
         const comp = fixture.debugElement.componentInstance;
         expect(comp).toBeTruthy();
-    }));
+    });
 });

@@ -1,0 +1,75 @@
+@import '~@delon/theme/styles/antd/themes/default.less';
+
+:host {
+	display: block;
+	width: 368px;
+	margin: 0 auto;
+
+	::ng-deep {
+		.tabs {
+			padding: 0 2px;
+			margin: 0 -2px;
+			.ant-tabs-tab {
+				font-size: 16px;
+				line-height: 24px;
+			}
+			.ant-input-affix-wrapper .ant-input:not(:first-child) {
+				padding-left: 34px;
+			}
+		}
+
+		.ant-tabs .ant-tabs-bar {
+			border-bottom: 0;
+			margin-bottom: 24px;
+			text-align: center;
+		}
+
+		.ant-form-item {
+			margin-bottom: 24px;
+        }
+
+        .icon-alipay, .icon-taobao, .icon-weibo {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: url('https://gw.alipayobjects.com/zos/rmsportal/itDzjUnkelhQNsycranf.svg');
+            margin-left: 16px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .icon-alipay {
+            background-position: -24px 0;
+
+            &:hover {
+                background-position: 0 0;
+            }
+        }
+
+        .icon-taobao {
+            background-position: -24px -24px;
+
+            &:hover {
+                background-position: 0 -24px;
+            }
+        }
+
+        .icon-weibo {
+            background-position: -24px -48px;
+
+            &:hover {
+                background-position: 0 -48px;
+            }
+        }
+
+        .other {
+            text-align: left;
+            margin-top: 24px;
+            line-height: 22px;
+
+            .register {
+            float: right;
+            }
+        }
+	}
+}

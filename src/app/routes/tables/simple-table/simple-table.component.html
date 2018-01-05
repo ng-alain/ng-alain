@@ -1,0 +1,11 @@
+<div class="content__title">
+    <h1>简易表格<small>基于配置快速构建表格数据，更多示例见<a href="//ng-alain.com/components/simple-table" target="_blank">ng-alain.com</a></small></h1>
+</div>
+<nz-card nzTitle="Demo">
+    <ng-template #extra>
+        <button nz-button (click)="st.export()" [nzSize]="'small'" class="mr-sm">Export</button>
+        <button nz-button (click)="st.export('https://randomuser.me/api/?results=100', { filename: 'all.xlsx' })" [nzSize]="'small'">Export All Page</button>
+    </ng-template>
+    <simple-table #st [url]="url" [extraParams]="params" [total]="total" [columns]="columns"
+                  [resReName]="{list: 'results' }"></simple-table>
+</nz-card>

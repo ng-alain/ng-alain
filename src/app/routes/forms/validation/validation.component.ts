@@ -2,8 +2,8 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AsyncValidatorFn, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/debounceTime';
+import { ArrayObservable } from 'rxjs/observable/ArrayObservable';
+import { map, delay, debounceTime } from 'rxjs/operators';
 
 const USERDATA = {
     nickname: 'test',
@@ -41,16 +41,16 @@ export class ValidationComponent implements OnInit {
     }
 
     nicknameValidator = (control: FormControl): Observable<any>  => {
-        return control
-                .valueChanges
-                .debounceTime(500)
-                .map((value) => {
-                    if (value !== 'cipchk') {
-                        control.setErrors({ checked: true, error: true });
-                        return ;
-                    }
-                    control.setErrors(null);
-                });
+        return control.valueChanges.pipe(
+            debounceTime(500),
+            map((value) => {
+                if (value !== 'cipchk') {
+                    control.setErrors({ checked: true, error: true });
+                    return ;
+                }
+                control.setErrors(null);
+            })
+        );
     }
 
     confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
@@ -82,10 +82,25 @@ export class ValidationComponent implements OnInit {
         }, );
     }
 
+    //#region get form fields
+    get email() { return this.form.controls.email; }
+    get password() { return this.form.controls.password; }
+    get checkPassword() { return this.form.controls.checkPassword; }
+    get nickname() { return this.form.controls.nickname; }
+    get phoneNumberPrefix() { return this.form.controls.phoneNumberPrefix; }
+    get phoneNumber() { return this.form.controls.phoneNumber; }
+    get website() { return this.form.controls.website; }
+    get start() { return this.form.controls.start; }
+    get summary() { return this.form.controls.summary; }
+    get end() { return this.form.controls.end; }
+    get status() { return this.form.controls.status; }
+    get captcha() { return this.form.controls.captcha; }
+    get agree() { return this.form.controls.agree; }
+    //#endregion
+
     loadData() {
         this.loading = true;
-        Observable.of(USERDATA)
-            .delay(1000)
+        ArrayObservable.of(USERDATA).pipe(delay(1000))
             .subscribe(data => {
                 this.loading = false;
                 this.form.reset(data);

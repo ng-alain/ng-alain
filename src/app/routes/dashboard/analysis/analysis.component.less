@@ -1,0 +1,149 @@
+@import '~@delon/theme/styles/antd/themes/default.less';
+
+:host ::ng-deep {
+	.icon-group {
+		transition: color 0.32s;
+		color: @text-color-secondary;
+		cursor: pointer;
+		margin-left: 16px;
+		&:hover {
+			color: @text-color;
+		}
+	}
+
+	.rank-list {
+		padding: 0px 32px 32px 72px;
+		ul {
+			margin-top: 25px;
+		}
+		li {
+			zoom: 1;
+			margin-top: 16px;
+			display: flex;
+			justify-content: space-between;
+			.icon {
+				background-color: #f5f5f5;
+				border-radius: 20px;
+				display: inline-block;
+				font-size: 12px;
+				font-weight: 600;
+				margin-right: 24px;
+				height: 20px;
+				line-height: 20px;
+				width: 20px;
+				text-align: center;
+			}
+			.active {
+				background-color: #314659;
+				color: #fff;
+			}
+		}
+	}
+
+	.sales-extra {
+		display: inline-block;
+		margin-right: 24px;
+		a {
+			margin-left: 24px;
+        }
+	}
+
+	.sales-card {
+        .bar {
+            padding: 0px 0px 32px 32px;
+        }
+        .rank {
+            padding: 0 32px 32px 72px;
+        }
+		.ant-tabs-tab {
+			padding-top: 16px;
+            padding-bottom: 14px;
+            line-height: 24px;
+        }
+
+        .ant-tabs-extra-content {
+            padding-right: 24px;
+            line-height: 55px;
+        }
+
+		.ant-card-head {
+			position: relative;
+		}
+    }
+
+    .sales-card-extra {
+        height: 68px;
+    }
+
+    .sales-type-radio {
+        position: absolute;
+        left: 24px;
+        bottom: 15px;
+    }
+
+    .offline-card {
+        .ant-tabs-ink-bar {
+            bottom: auto;
+        }
+        .ant-tabs-bar {
+            border-bottom: none;
+        }
+        .ant-tabs-nav-container-scrolling {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .ant-tabs-tab-prev-icon:before {
+            position: relative;
+            left: 6px;
+        }
+        .ant-tabs-tab-next-icon:before {
+            position: relative;
+            right: 6px;
+        }
+    }
+
+    .trend-text {
+        margin-left: 8px;
+        color: @heading-color;
+    }
+
+    @media screen and (max-width: @screen-lg) {
+        .sales-extra {
+            display: none;
+        }
+
+        .rank-list {
+            li {
+                span:first-child {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: @screen-md) {
+        .rank-title {
+            margin-top: 16px;
+        }
+
+        .sales-card .bar {
+            padding: 16px;
+        }
+    }
+
+    @media screen and (max-width: @screen-sm) {
+        .sales-extra-wrap {
+            display: none;
+        }
+
+        .sales-card {
+            .ant-tabs-content {
+              padding-top: 30px;
+            }
+        }
+    }
+
+	.ant-table-pagination {
+		margin-bottom: 0;
+	}
+}

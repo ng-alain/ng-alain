@@ -4,19 +4,15 @@ import { AbmModule } from 'angular-baidu-maps';
 import { AqmModule } from 'angular-qq-maps';
 
 import { SharedModule } from '@shared/shared.module';
+import { MapsRoutingModule } from './maps-routing.module';
 
 import { MapsQQComponent } from './qq/qq.component';
 import { MapsBaiduComponent } from './baidu/baidu.component';
 
-const routes: Routes = [
-    { path: 'qq', component: MapsQQComponent },
-    { path: 'baidu', component: MapsBaiduComponent }
-];
-
 @NgModule({
     imports: [
         SharedModule,
-        RouterModule.forChild(routes),
+        MapsRoutingModule,
         AbmModule.forRoot({
             apiKey: 'p3HIQIqLqKVQOXao1IiLp5O0eTFakjEP' // app key为必选项
         }),
@@ -27,12 +23,6 @@ const routes: Routes = [
     declarations: [
         MapsQQComponent,
         MapsBaiduComponent
-    ],
-    exports: [
-        RouterModule
-    ],
-    entryComponents: [
-
     ]
 })
 export class MapsModule { }
