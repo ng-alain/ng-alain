@@ -13,6 +13,13 @@ import { LayoutModule } from './layout/layout.module';
 import { StartupService } from './core/services/startup.service';
 import { DefaultInterceptor } from '@core/net/default.interceptor';
 import { AlainAuthModule, SimpleInterceptor } from '@delon/auth';
+<<<<<<< HEAD
+=======
+// acl
+import { AlainACLModule } from '@delon/acl';
+// cache
+import { DelonCacheModule } from '@delon/cache';
+>>>>>>> f4278f4... feat: add cache demo page
 
 // mock
 import { DelonMockModule } from '@delon/mock';
@@ -56,6 +63,13 @@ export function StartupServiceFactory(startupService: StartupService): Function 
             // ignores: [ `\\/login`, `assets\\/` ],
             login_url: `/passport/login`
         }),
+<<<<<<< HEAD
+=======
+        // acl
+        AlainACLModule.forRoot(),
+        // cache
+        DelonCacheModule.forRoot(),
+>>>>>>> f4278f4... feat: add cache demo page
         // i18n
         TranslateModule.forRoot({
             loader: {

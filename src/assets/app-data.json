@@ -350,6 +350,11 @@
                 "translate": "guard"
             },
             {
+                "text": "Cache",
+                "link": "/logics/cache",
+                "translate": "cache"
+            },
+            {
                 "text": "Down File",
                 "link": "/logics/downfile",
                 "translate": "downfile",

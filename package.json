@@ -45,6 +45,7 @@
     "@delon/auth": "^0.5.0",
     "@delon/theme": "^0.5.0",
     "@delon/mock": "^0.5.0",
+    "@delon/cache": "^0.5.0",
     "@ngx-translate/core": "^9.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
     "angular-baidu-maps": "^1.0.1",

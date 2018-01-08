@@ -11,6 +11,7 @@ import { ACLComponent } from './acl/acl.component';
 import { DownFileComponent } from './downfile/downfile.component';
 import { XlsxComponent } from './xlsx/xlsx.component';
 import { ZipComponent } from './zip/zip.component';
+import { CacheComponent } from './cache/cache.component';
 
 const routes: Routes = [
     {
@@ -25,7 +26,8 @@ const routes: Routes = [
     { path: 'acl', component: ACLComponent },
     { path: 'downfile', component: DownFileComponent },
     { path: 'xlsx', component: XlsxComponent },
-    { path: 'zip', component: ZipComponent }
+    { path: 'zip', component: ZipComponent },
+    { path: 'cache', component: CacheComponent }
 ];
 
 @NgModule({

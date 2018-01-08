@@ -13,6 +13,7 @@ import { ACLComponent } from './acl/acl.component';
 import { DownFileComponent } from 'app/routes/logics/downfile/downfile.component';
 import { XlsxComponent } from './xlsx/xlsx.component';
 import { ZipComponent } from './zip/zip.component';
+import { CacheComponent } from './cache/cache.component';
 
 @NgModule({
     imports: [ SharedModule, LogicsRoutingModule ],
@@ -25,7 +26,8 @@ import { ZipComponent } from './zip/zip.component';
         ACLComponent,
         DownFileComponent,
         XlsxComponent,
-        ZipComponent
+        ZipComponent,
+        CacheComponent
     ]
 })
 export class LogicsModule { }
