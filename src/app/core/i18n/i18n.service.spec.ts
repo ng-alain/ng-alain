@@ -1,4 +1,3 @@
-import { SharedModule } from '@shared/shared.module';
 import { TestBed, async, inject } from '@angular/core/testing';
 import { TranslateService, TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -6,13 +5,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { I18NService } from './i18n.service';
 import { HttpLoaderFactory } from '../../app.module';
 import { SettingsService } from '@delon/theme';
+import { DelonModule } from '../../delon.module';
+import { SharedModule } from '@shared/shared.module';
 
 describe('Service: I18n', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
                 HttpClientModule,
-                SharedModule.forRoot(),
+                DelonModule,
+                SharedModule,
                 TranslateModule.forRoot({
                     loader: {
                         provide: TranslateLoader,

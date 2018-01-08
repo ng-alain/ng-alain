@@ -1,15 +1,13 @@
 import { TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { APP_BASE_HREF } from '@angular/common';
 import { setUpTestBed } from '@testing/common.spec';
 
 import { AppComponent } from './app.component';
-import { APP_BASE_HREF } from '@angular/common';
-import { ThemesService, TitleService } from '@delon/theme';
 
 describe('Component: App', () => {
     setUpTestBed(<TestModuleMetadata>{
         declarations: [ AppComponent ],
         providers: [
-            ThemesService, TitleService,
             { provide: APP_BASE_HREF, useValue: '/' }
         ]
     });
