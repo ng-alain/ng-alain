@@ -56,6 +56,7 @@
     "baidu": "百度",
     "logics": "常用逻辑",
     "guard": "路由守卫",
+    "cache": "字典缓存",
     "acl": "基于角色访问控制",
     "downfile": "下载文件",
     "report": "报表",
