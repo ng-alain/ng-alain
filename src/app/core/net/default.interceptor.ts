@@ -4,9 +4,9 @@ import { HttpInterceptor, HttpRequest, HttpHandler,
          HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent,
        } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { of } from 'rxjs/observable/of';
 import { catchError } from 'rxjs/operators';
-import { map, mergeMap } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
 import { environment } from '@env/environment';
 
 /**
@@ -24,9 +24,6 @@ export class DefaultInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler):
         Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
 
-        // TIPS：原TOKEN信息已交由 `@delon/auth` 处理
-        // Document: http://ng-alain.com/docs/auth
-
         // 统一加上服务端前缀
         let url = req.url;
         if (!url.startsWith('https://') && !url.startsWith('http://')) {
@@ -41,11 +38,11 @@ export class DefaultInterceptor implements HttpInterceptor {
                     mergeMap((event: any) => {
                         // 允许统一对请求错误处理，这是因为一个请求若是业务上错误的情况下其HTTP请求的状态是200的情况下需要
                         if (event instanceof HttpResponse && event.status !== 200) {
-                            // 业务处理：observer.error 会跳转至后面的 `catch`
-                            // return ErrorObservable.create(event);
+                            // 业务错误处理，ng-alain
+                            // return of(<any>{ status: 1 });
                         }
                         // 若一切都正常，则后续操作
-                        return Observable.create(observer => observer.next(event));
+                        return of(event);
                     }),
                     catchError((res: HttpResponse<any>) => {
                         // 业务处理：一些通用操作
@@ -61,8 +58,8 @@ export class DefaultInterceptor implements HttpInterceptor {
                                 // 404
                                 break;
                         }
-                        // 以错误的形式结束本次请求
-                        return ErrorObservable.create(event);
+                        // 返回错误状态码
+                        return of(<any>{ status: res.status });
                     })
                 );
     }
