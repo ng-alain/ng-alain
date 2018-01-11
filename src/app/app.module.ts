@@ -39,7 +39,7 @@ export function StartupServiceFactory(startupService: StartupService): Function 
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        DelonModule,
+        DelonModule.forRoot(),
         CoreModule,
         SharedModule,
         LayoutModule,
