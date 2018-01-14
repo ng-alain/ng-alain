@@ -103,7 +103,7 @@
     "stylelint-config-standard": "^17.0.0",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
-    "typescript": "~2.5.0",
+    "typescript": "~2.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "mockjs": "^1.0.1-beta3",
     "@types/mockjs": "^1.0.0",

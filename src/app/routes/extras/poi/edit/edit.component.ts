@@ -20,7 +20,7 @@ export class ExtrasPoiEditComponent implements OnInit {
 
     ngOnInit() {
         if (this.i.id > 0) {
-            this.http.get('./assets/pois.json').subscribe(res => this.i = res.data[0]);
+            this.http.get('./assets/pois.json').subscribe((res: any) => this.i = res.data[0]);
         }
     }
 

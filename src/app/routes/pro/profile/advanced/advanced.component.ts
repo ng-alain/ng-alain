@@ -16,6 +16,6 @@ export class ProProfileAdvancedComponent implements OnInit {
     constructor(public msg: NzMessageService, private http: _HttpClient) {}
 
     ngOnInit() {
-        this.http.get('/profile/advanced').subscribe(res => this.data = res);
+        this.http.get('/profile/advanced').subscribe((res: any) => this.data = res);
     }
 }

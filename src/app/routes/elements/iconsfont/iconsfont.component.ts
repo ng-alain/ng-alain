@@ -16,7 +16,7 @@ export class IconsFontComponent implements OnInit {
         @Inject(DOCUMENT) private dom: Document, private _el: ElementRef) { }
 
     ngOnInit(): void {
-        this.http.get('./assets/iconsfont.json').subscribe(res => this.data = res);
+        this.http.get('./assets/iconsfont.json').subscribe((res: any) => this.data = res);
     }
 
     copy(group: any, item: any) {

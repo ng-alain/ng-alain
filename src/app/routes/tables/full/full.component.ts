@@ -65,7 +65,7 @@ export class TableFullComponent implements OnInit {
 
     ngOnInit() {
         this.load();
-        this.http.get('/chart/visit').subscribe(res => this.events = res);
+        this.http.get('/chart/visit').subscribe((res: any) => this.events = res);
     }
 
     showMsg(msg: string) {
