@@ -44,7 +44,7 @@ export class ProTableListComponent implements OnInit {
             this.q.statusList = this.status.map((i, index) => i.value ? index : -1).filter(w => w !== -1);
             if (this.q.status !== null && this.q.status > -1) this.q.statusList.push(this.q.status);
             this.http.get('/rule', this.q).pipe(
-                tap(list => {
+                tap((list: any[]) => {
                     return list.map(i => {
                         const statusItem = this.status[i.status];
                         i.statusText = statusItem.text;

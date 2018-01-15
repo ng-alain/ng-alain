@@ -13,7 +13,7 @@ export class ProProfileBaseComponent {
     basicNum = 0;
     amountNum = 0;
     goods = this.http.get('/profile/goods').pipe(
-        tap(list => {
+        tap((list: any[]) => {
             list.forEach(item => {
                 this.basicNum += Number(item.num);
                 this.amountNum += Number(item.amount);

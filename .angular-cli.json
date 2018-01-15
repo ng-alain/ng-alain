@@ -57,6 +57,9 @@
         }
     },
     "defaults": {
+        "schematics": {
+          "collection": "@delon/cli"
+        },
         "styleExt": "less",
         "class": {
             "spec": false
