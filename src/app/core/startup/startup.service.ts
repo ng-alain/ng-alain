@@ -6,6 +6,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { MenuService, SettingsService, TitleService } from '@delon/theme';
 import { ACLService } from '@delon/acl';
 import { I18NService } from '../i18n/i18n.service';
+import { CommonResult } from 'app/model/common/common-result';
+import { HttpHeaders } from '@angular/common/http/src/headers';
 
 /**
  * 用于应用启动时
@@ -29,7 +31,8 @@ export class StartupService {
         return new Promise((resolve, reject) => {
             zip(
                 this.httpClient.get(`assets/i18n/${this.i18n.defaultLang}.json`),
-                this.httpClient.get('assets/app-data.json')
+                this.httpClient.get('assets/app-data.json'),
+                // this.httpClient.post('sys/menu/ajaxList', {}, { headers: new HttpHeaders().set('Authorization', 'my-auth-token') })
             ).subscribe(([langData, appData]) => {
                 // setting language data
                 this.translate.setTranslation(this.i18n.defaultLang, langData);

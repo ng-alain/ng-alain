@@ -1,11 +1,11 @@
 {
-  "name": "ng-alain",
-  "version": "0.6.0",
+  "name": "ada-platform",
+  "version": "1.0.0",
   "description": "ng-zorro-antd admin panel front-end framework",
   "author": "cipchk",
-  "homepage": "https://cipchk.github.io/ng-alain/",
+  "homepage": "",
   "bugs": {
-    "url": "https://github.com/cipchk/ng-alain/issues"
+    "url": ""
   },
   "engines": {
     "node": ">= 4.2.1",
@@ -16,7 +16,7 @@
     "precommit": "npm run lint-staged",
     "ng": "ng",
     "start": "ng serve -o",
-    "serve:hmr": "ng serve -o --hmr -e=hmr",
+    "serve:hmr": "ng serve --proxy-config proxy.conf.json -o --hmr -e=hmr",
     "build": "ng build --prod --build-optimizer",
     "analyze": "ng build --prod --build-optimizer --stats-json",
     "lint": "run-s lint:ts lint:style",

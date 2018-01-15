@@ -1,6 +1,9 @@
 import { NzMessageService } from 'ng-zorro-antd';
 import { Component, OnInit } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
+import { CommonResult } from 'app/model/common/common-result';
 
 @Component({
     selector: 'app-dashboard-v1',
@@ -8,7 +11,11 @@ import { _HttpClient } from '@delon/theme';
 })
 export class DashboardV1Component implements OnInit {
 
-    constructor(private http: _HttpClient, public msg: NzMessageService) { }
+    constructor(
+        private http: _HttpClient,
+        public msg: NzMessageService,
+        private _http: HttpClient
+    ) { }
 
     todoData: any[] = [
         { completed: true, avatar: '1', name: '苏先生', content: `请告诉我，我应该说点什么好？` },
@@ -21,8 +28,8 @@ export class DashboardV1Component implements OnInit {
 
     quickMenu = false;
 
-    webSite: any[] = [ ];
-    salesData: any[] =  [ ];
+    webSite: any[] = [];
+    salesData: any[] = [];
     offlineChartData: any[] = [];
 
     ngOnInit() {
