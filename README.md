@@ -12,22 +12,30 @@
 
 ## Quick start
 
-Make sure you have Node version >= 6.9.0 and NPM >= 3 or higher.
+There are two ways to install:
+
+### Use the Command Line
+
+Depend on `@delon/cli`, [How install?](http://ng-alain.com/docs/cli)
+
+```bash
+ng new -c=@delon/cli my-app
+```
+
+### Clone the Git Repository
 
 ```bash
 # clone a blank ng-alain repo, just only basic function
 #   --depth 1 removes all but one .git commit history
-git clone -b blank --depth 1 https://github.com/cipchk/ng-alain.git
-# or full master branch
-git clone --depth 1 https://github.com/cipchk/ng-alain.git
+git clone -b blank --depth 1 https://github.com/cipchk/ng-alain.git my-project
+# Or Master
+$ git clone --depth=1 https://github.com/cipchk/ng-alain.git my-project
 
 # change directory
-cd ng-alain
+cd my-project
 
 # install npm package
 npm install
-# in china please use cnpm （https://github.com/cnpm/cnpm）
-# cnpm install
 
 # start the serve
 npm start
