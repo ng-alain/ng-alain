@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpInterceptor, HttpRequest, HttpHandler,
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse,
          HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent,
        } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
