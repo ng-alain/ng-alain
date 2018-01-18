@@ -57,7 +57,7 @@
     "font-awesome": "^4.7.0",
     "moment": "^2.19.3",
     "ng-clipboard-antd": "^2.0.1",
-    "ng-tree-antd": "^2.0.0",
+    "ng-tree-antd": "^2.2.2",
     "ng-zorro-antd": "^0.6.5",
     "ng-zorro-antd-extra": "^1.1.6",
     "ng2-dnd": "^5.0.0",

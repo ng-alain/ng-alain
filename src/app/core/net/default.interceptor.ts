@@ -1,3 +1,4 @@
+import { NzMessageService } from 'ng-zorro-antd';
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse,
@@ -15,6 +16,10 @@ import { environment } from '@env/environment';
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
     constructor(private injector: Injector) {}
+
+    get msg(): NzMessageService {
+        return this.injector.get(NzMessageService);
+    }
 
     private goLogin() {
         const router = this.injector.get(Router);
@@ -52,10 +57,11 @@ export class DefaultInterceptor implements HttpInterceptor {
                                 break;
                             case 200:
                                 // 业务层级错误处理
-                                console.log('业务错误');
+                                this.msg.error('业务错误');
                                 break;
                             case 404:
                                 // 404
+                                this.msg.error('无效请求');
                                 break;
                         }
                         // 返回错误状态码
