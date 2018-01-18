@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpInterceptor, HttpRequest, HttpHandler,
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse,
          HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent,
        } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -44,7 +44,7 @@ export class DefaultInterceptor implements HttpInterceptor {
                         // 若一切都正常，则后续操作
                         return of(event);
                     }),
-                    catchError((res: HttpResponse<any>) => {
+                    catchError((res: HttpErrorResponse) => {
                         // 业务处理：一些通用操作
                         switch (res.status) {
                             case 401: // 未登录状态码
