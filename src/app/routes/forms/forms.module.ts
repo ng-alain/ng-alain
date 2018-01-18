@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FileUploadModule } from 'ng2-file-upload';
 import { ColorPickerModule, ColorPickerService } from 'ngx-color-picker';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { SharedModule } from '@shared/shared.module';
@@ -17,7 +16,6 @@ import { ValidationComponent } from './validation/validation.component';
         SharedModule,
         FormsRoutingModule,
         ColorPickerModule,
-        FileUploadModule,
         ImageCropperModule
     ],
     declarations: [

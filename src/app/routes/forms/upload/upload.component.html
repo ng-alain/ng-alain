@@ -1,91 +1,11 @@
 <div class="content__title">
     <h1>File Upload</h1>
 </div>
-<div nz-row [nzGutter]="16">
-    <div nz-col [nzMd]="6">
-        <nz-card nzTitle="Select files">
-            <div ng2FileDrop [ngClass]="{'bg-grey-lighter': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader"
-                class="box-placeholder">
-                Base drop zone
-            </div>
-            <div ng2FileDrop [ngClass]="{'bg-grey-lighter': hasAnotherDropZoneOver}" (fileOver)="fileOverAnother($event)" [uploader]="uploader"
-                class="box-placeholder">
-                Another drop zone
-            </div>
-            <h3 class="text-md">Upload options</h3>
-            <button nz-button class="ant-btn__block file-upload mt-sm">
-                <input id="file1" accept type="file" ng2FileSelect [uploader]="uploader" multiple />
-                <i class="anticon anticon-upload"></i><span>Multiple</span>
-            </button>
-            <button nz-button class="ant-btn__block file-upload mt-sm">
-                <input id="file1" accept type="file" ng2FileSelect [uploader]="uploader" />
-                <i class="anticon anticon-upload"></i><span>Single</span>
-            </button>
-        </nz-card>
-    </div>
-    <div nz-col [nzMd]="18">
-        <div nz-row>
-            <div nz-col [nzSpan]="24">
-                <nz-card nzTitle="Upload queue">
-                    <nz-table #nzTable [nzDataSource]="files" [nzCustomNoResult]="true" [nzIsPagination]="false">
-                        <div noResult>Please choose file to upload.</div>
-                        <thead nz-thead>
-                            <tr>
-                                <th nz-th><span>Name</span></th>
-                                <th nz-th><span>Size</span></th>
-                                <th nz-th><span>Progress</span></th>
-                                <th nz-th><span>Status</span></th>
-                                <th nz-th><span>Actions</span></th>
-                            </tr>
-                        </thead>
-                        <tbody nz-tbody>
-                            <tr nz-tbody-tr *ngFor="let item of nzTable.data">
-                                <td nz-td><strong>{{ item?.file?.name }}</strong></td>
-                                <td nz-td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
-                                <td nz-td *ngIf="uploader.options.isHTML5">
-                                    <nz-progress [ngModel]="item.progress" [nzStrokeWidth]="5"></nz-progress>
-                                </td>
-                                <td nz-td class="text-center">
-                                    <span *ngIf="item.isSuccess"><nz-tag [nzColor]="'green'"></nz-tag></span>
-                                    <span *ngIf="item.isCancel" class="mr-md"><nz-tag [nzColor]="'orange'"></nz-tag></span>
-                                    <span *ngIf="item.isError"><nz-tag [nzColor]="'red'"></nz-tag></span>
-                                </td>
-                                <td nz-td nowrap>
-                                    <nz-button-group>
-                                        <button nz-button (click)="item.upload()" [nzType]="'primary'" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                                            <i class="anticon anticon-upload"></i>
-                                        </button>
-                                        <button nz-button (click)="item.cancel()" [disabled]="!item.isUploading">
-                                            <i class="anticon anticon-close"></i>
-                                        </button>
-                                        <button nz-button (click)="item.remove()">
-                                            <i class="anticon anticon-delete"></i>
-                                        </button>
-                                    </nz-button-group>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </nz-table>
-                </nz-card>
-            </div>
-        </div>
-        <div nz-row>
-            <div nz-col [nzSpan]="24">
-                <nz-card>
-                    <nz-progress [ngModel]="uploader.progress" [nzStrokeWidth]="5"></nz-progress>
-                    <nz-button-group class="mt-md d-block">
-                        <button nz-button (click)="uploader.uploadAll()" [nzType]="'primary'" [nzLoading]="uploader.isUploading" [disabled]="!uploader.getNotUploadedItems().length">
-                            <i class="anticon anticon-upload"></i><span>Upload All</span>
-                        </button>
-                        <button nz-button (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-                            <i class="anticon anticon-close"></i><span>Cancel All</span>
-                        </button>
-                        <button nz-button (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-                            <i class="anticon anticon-delete"></i><span>Remove All</span>
-                        </button>
-                    </nz-button-group>
-                </nz-card>
-            </div>
-        </div>
-    </div>
-</div>
+<nz-card nzTitle="Select files">
+    <nz-upload
+      nzAction="https://jsonplaceholder.typicode.com/posts/">
+      <button nz-button>
+        <i class="anticon anticon-upload"></i><span>Click to Upload</span>
+      </button>
+    </nz-upload>
+</nz-card>
