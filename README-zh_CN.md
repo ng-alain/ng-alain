@@ -89,7 +89,8 @@ npm run serve:hmr
 + 良好的目录组织结构
 + 简单升级
 + 模块热替换
-+ 支持[Docker](_documents/docker.md)部署
++ 支持Docker部署
++ 支持[Electron](http://ng-alain.com/docs/cli#electron)打包（限cli构建）
 
 ## 应用截图
 
