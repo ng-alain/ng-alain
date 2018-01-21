@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { ThemesService, SettingsService, TitleService } from '@delon/theme';
-import { filter, map } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -21,12 +21,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events.pipe(
-            filter(evt => evt instanceof NavigationEnd),
-            map(() => this.router.url)
-        )
-        .subscribe(url => {
-            this.titleSrv.setTitleByUrl(url);
-        });
+    this.router.events
+        .pipe(filter(evt => evt instanceof NavigationEnd))
+        .subscribe(() => this.titleSrv.setTitle());
   }
 }
