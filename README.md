@@ -25,10 +25,7 @@ ng new -c=@delon/cli my-app
 ### Clone the Git Repository
 
 ```bash
-# clone a blank ng-alain repo, just only basic function
-#   --depth 1 removes all but one .git commit history
-git clone -b blank --depth 1 https://github.com/cipchk/ng-alain.git my-project
-# Or Master
+# --depth 1 removes all but one .git commit history
 $ git clone --depth=1 https://github.com/cipchk/ng-alain.git my-project
 
 # change directory

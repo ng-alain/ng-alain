@@ -25,9 +25,6 @@ ng new -c=@delon/cli my-app
 ### 直接 clone git 仓库
 
 ```bash
-# 基础版（只包括最基本功能）
-git clone -b blank --depth 1 https://github.com/cipchk/ng-alain.git my-project
-# 或完整版（含所有示例）
 $ git clone --depth=1 https://github.com/cipchk/ng-alain.git my-project
 
 cd my-project
