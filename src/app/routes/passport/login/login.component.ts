@@ -1,9 +1,10 @@
 import { SettingsService } from '@delon/theme';
-import { Component, OnDestroy, Inject } from '@angular/core';
+import { Component, OnDestroy, Inject, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { SocialService, SocialOpenType, ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
+import { ReuseTabService } from '@delon/abc';
 import { environment } from '@env/environment';
 
 @Component({
@@ -25,6 +26,7 @@ export class UserLoginComponent implements OnDestroy {
         public msg: NzMessageService,
         private settingsService: SettingsService,
         private socialService: SocialService,
+        @Optional() @Inject(ReuseTabService) private reuseTabService: ReuseTabService,
         @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService) {
         this.form = fb.group({
             userName: [null, [Validators.required, Validators.minLength(5)]],
@@ -86,6 +88,8 @@ export class UserLoginComponent implements OnDestroy {
                 }
             }
 
+            // 清空路由复用信息
+            this.reuseTabService.clear();
             this.tokenService.set({
                 token: '123456789',
                 name: this.userName.value,
