@@ -21,11 +21,9 @@ export class I18NService implements AlainI18NService {
         private translate: TranslateService,
         private injector: Injector
     ) {
-        this._default = settings.layout.lang || translate.getBrowserLang();
+        const defaultLan = settings.layout.lang || translate.getBrowserLang();
         const lans = this._langs.map(item => item.code);
-        if (!lans.includes(this._default)) {
-            this._default = lans[0];
-        }
+        this._default = lans.includes(defaultLan) ? defaultLan : lans[0];
         translate.addLangs(lans);
     }
 
