@@ -153,6 +153,10 @@
                 "text": "图片裁剪",
                 "link": "/forms/cropper",
                 "translate": "cropper"
+            }, {
+                "text": "Dynamic Form",
+                "link": "/forms/json-schema",
+                "translate": "json-schema"
             }]
         }, {
             "text": "编辑器",

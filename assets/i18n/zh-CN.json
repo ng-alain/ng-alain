@@ -47,6 +47,7 @@
     "validation": "校验",
     "upload": "上传",
     "cropper": "图片裁剪",
+    "json-schema": "动态表单",
     "editor": "编辑器",
     "charts": "图表",
     "tables": "表格",
