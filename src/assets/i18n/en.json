@@ -47,6 +47,7 @@
     "validation": "Validation",
     "upload": "Upload",
     "cropper": "Image Crop",
+    "json-schema": "Dynamic Form",
     "editor": "Editor",
     "charts": "Charts",
     "tables": "Tables",

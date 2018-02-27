@@ -10,6 +10,7 @@ import { ExtendedComponent } from './extended/extended.component';
 import { UploadComponent } from './upload/upload.component';
 import { CropperComponent } from './cropper/cropper.component';
 import { ValidationComponent } from './validation/validation.component';
+import { JSONSchemaComponent } from './json-schema/json-schema.component';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import { ValidationComponent } from './validation/validation.component';
         ExtendedComponent,
         UploadComponent,
         CropperComponent,
-        ValidationComponent
+        ValidationComponent,
+        JSONSchemaComponent
     ]
 })
 export class FormsModule { }

@@ -6,13 +6,15 @@ import { ExtendedComponent } from './extended/extended.component';
 import { UploadComponent } from './upload/upload.component';
 import { CropperComponent } from './cropper/cropper.component';
 import { ValidationComponent } from './validation/validation.component';
+import { JSONSchemaComponent } from './json-schema/json-schema.component';
 
 const routes: Routes = [
     { path: 'standard', component: StandardComponent },
     { path: 'extended', component: ExtendedComponent },
     { path: 'upload', component: UploadComponent },
     { path: 'cropper', component: CropperComponent },
-    { path: 'validation', component: ValidationComponent }
+    { path: 'validation', component: ValidationComponent },
+    { path: 'json-schema', component: JSONSchemaComponent }
 ];
 
 @NgModule({
