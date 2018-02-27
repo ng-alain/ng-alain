@@ -4,6 +4,15 @@
     </h1>
 </div>
 <div nz-row [nzGutter]="8">
+    <div nz-col [nzSpan]="24">
+        <nz-card nzTitle="按钮粒度">
+            ACL原始数据：{{ aclSrv.data | json }}
+            <button nz-button [acl]="'role-a'">role-a</button>
+            <button nz-button [acl]="'role-b'" class="ml-sm">role-b</button>
+        </nz-card>
+    </div>
+</div>
+<div nz-row [nzGutter]="8">
     <div nz-col [nzSpan]="8">
         <nz-card nzTitle="全量">
             <button nz-button (click)="toggleFull()">
@@ -27,4 +36,3 @@
         </nz-card>
     </div>
 </div>
-

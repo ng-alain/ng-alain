@@ -56,6 +56,7 @@ const DIRECTIVES = [];
         NgZorroAntdExtraModule,
         AlainThemeModule,
         ...ABCMODULES,
+        AlainACLModule,
         // i18n
         TranslateModule,
         // third libs

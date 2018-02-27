@@ -13,7 +13,7 @@ export class ACLComponent {
     roleB = '';
 
     constructor(
-        private aclSrv: ACLService,
+        public aclSrv: ACLService,
         private menuSrv: MenuService) { }
 
     private reMenu() {
@@ -28,7 +28,7 @@ export class ACLComponent {
 
     toggleRoleA() {
         this.full = false;
-        this.roleA = this.roleA.length > 0 ? '' : 'role-a';
+        this.roleA = this.roleA === 'role-a' ? '' : 'role-a';
         this.aclSrv.setFull(this.full);
         this.aclSrv.setRole([this.roleA]);
         this.reMenu();
@@ -36,7 +36,7 @@ export class ACLComponent {
 
     toggleRoleB() {
         this.full = false;
-        this.roleB = this.roleB.length > 0 ? '' : 'role-b';
+        this.roleB = this.roleB === 'role-b' ? '' : 'role-b';
         this.aclSrv.setFull(this.full);
         this.aclSrv.setRole([this.roleB]);
         this.reMenu();
