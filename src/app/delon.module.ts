@@ -179,7 +179,7 @@ import { DelonMockModule } from '@delon/mock';
 import * as MOCKDATA from '../../_mock';
 import { environment } from '@env/environment';
 const MOCKMODULE = !environment.production || environment.chore === true ?
-                    [ DelonMockModule.forRoot({ data: MOCKDATA }) ] : [];
+                    [ DelonMockModule.forRoot({ data: MOCKDATA, force: false }) ] : [];
 
 // region: global config functions
 
@@ -204,7 +204,7 @@ const MOCKMODULE = !environment.production || environment.chore === true ?
         AdReuseTabModule.forRoot(), AdFullContentModule.forRoot(), AdXlsxModule.forRoot(), AdZipModule.forRoot(),
         // auth
         AlainAuthModule.forRoot({
-            // ignores: [ `\\/login`, `assets\\/` ],
+            ignores: [ `auth/authenticate` ],
             login_url: `/passport/login`
         }),
         // acl
