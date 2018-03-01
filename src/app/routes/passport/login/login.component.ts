@@ -1,11 +1,12 @@
-import { SettingsService } from '@delon/theme';
+import {_HttpClient, SettingsService} from '@delon/theme';
 import { Component, OnDestroy, Inject, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
-import { SocialService, SocialOpenType, ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
+import {SocialService, SocialOpenType, ITokenService, DA_SERVICE_TOKEN, JWTTokenModel} from '@delon/auth';
 import { ReuseTabService } from '@delon/abc';
 import { environment } from '@env/environment';
+import {StartupService} from '@core/startup/startup.service';
 
 @Component({
     selector: 'passport-login',
@@ -26,6 +27,8 @@ export class UserLoginComponent implements OnDestroy {
         public msg: NzMessageService,
         private settingsService: SettingsService,
         private socialService: SocialService,
+        private http: _HttpClient,
+        private startupService: StartupService,
         @Optional() @Inject(ReuseTabService) private reuseTabService: ReuseTabService,
         @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService) {
         this.form = fb.group({
@@ -82,22 +85,25 @@ export class UserLoginComponent implements OnDestroy {
         setTimeout(() => {
             this.loading = false;
             if (this.type === 0) {
-                if (this.userName.value !== 'admin' || this.password.value !== '888888') {
-                    this.error = `账户或密码错误`;
-                    return;
-                }
+                // if (this.userName.value !== 'admin' || this.password.value !== '888888') {
+                //     this.error = `账户或密码错误`;
+                //     return;
+                // }
+
+                this.http.post('auth/authenticate', {username: this.userName.value, password: this.password.value}).subscribe(account => {
+                    const user: any = account;
+                    const jwt = new JWTTokenModel();
+                    jwt.token = user.id_token;
+                    this.tokenService.set(jwt);
+                    // 清空路由复用信息
+                    this.reuseTabService.clear();
+                    this.startupService.load().then(data => {
+                        this.loading = false;
+                        this.router.navigate(['/']);
+                    });
+                });
             }
 
-            // 清空路由复用信息
-            this.reuseTabService.clear();
-            this.tokenService.set({
-                token: '123456789',
-                name: this.userName.value,
-                email: `cipchk@qq.com`,
-                id: 10000,
-                time: +new Date
-            });
-            this.router.navigate(['/']);
         }, 1000);
     }
 
