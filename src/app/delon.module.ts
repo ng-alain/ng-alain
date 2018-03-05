@@ -170,7 +170,6 @@ export const ABCMODULES = [
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NgZorroAntdExtraModule } from 'ng-zorro-antd-extra';
 import { AlainThemeModule } from '@delon/theme';
-import { AlainABCModule } from '@delon/abc';
 import { AlainAuthModule } from '@delon/auth';
 import { AlainACLModule } from '@delon/acl';
 import { DelonCacheModule } from '@delon/cache';
@@ -204,6 +203,7 @@ const MOCKMODULE = !environment.production || environment.chore === true ?
         AdReuseTabModule.forRoot(), AdFullContentModule.forRoot(), AdXlsxModule.forRoot(), AdZipModule.forRoot(),
         // auth
         AlainAuthModule.forRoot({
+            // 受限于 https://github.com/cipchk/ng-alain/issues/246， 只支持字符串形式
             // ignores: [ `\\/login`, `assets\\/` ],
             login_url: `/passport/login`
         }),
