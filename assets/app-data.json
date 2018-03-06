@@ -10,157 +10,157 @@
     },
     "menu": [{
         "text": "主导航",
-        "translate": "main_navigation",
+        "i18n": "main_navigation",
         "group": true,
         "children": [{
             "text": "仪表盘",
-            "translate": "dashboard",
+            "i18n": "dashboard",
             "link": "/dashboard",
             "icon": "icon-speedometer",
             "children": [{
                 "text": "仪表盘V1",
                 "link": "/dashboard/v1",
-                "translate": "dashboard_v1"
+                "i18n": "dashboard_v1"
             }, {
                 "text": "分析页",
                 "link": "/dashboard/analysis",
-                "translate": "dashboard_analysis"
+                "i18n": "dashboard_analysis"
             }, {
                 "text": "Monitor",
                 "link": "/dashboard/monitor",
-                "translate": "dashboard_monitor"
+                "i18n": "dashboard_monitor"
             }, {
                 "text": "Workplace",
                 "link": "/dashboard/workplace",
-                "translate": "dashboard_workplace"
+                "i18n": "dashboard_workplace"
             }]
         }, {
             "text": "快捷菜单",
-            "translate": "shortcut",
+            "i18n": "shortcut",
             "icon": "icon-rocket",
             "shortcut_root": true,
             "children": []
         }, {
             "text": "小部件",
-            "translate": "widgets",
+            "i18n": "widgets",
             "link": "/widgets",
             "icon": "icon-grid",
             "badge": 2
         }]
     }, {
         "text": "组件",
-        "translate": "component",
+        "i18n": "component",
         "group": true,
         "children": [{
             "text": "基础元素",
-            "translate": "elements",
+            "i18n": "elements",
             "link": "/elements",
             "icon": "icon-chemistry",
             "acl": "user1",
             "children": [{
                 "text": "按钮",
                 "link": "/elements/buttons",
-                "translate": "buttons",
+                "i18n": "buttons",
                 "shortcut": true
             }, {
                 "text": "Notification",
                 "link": "/elements/notification",
-                "translate": "notification",
+                "i18n": "notification",
                 "shortcut": true
             }, {
                 "text": "Modal",
                 "link": "/elements/modal",
-                "translate": "modal"
+                "i18n": "modal"
             }, {
                 "text": "SweetAlert",
                 "link": "/elements/sweetalert",
-                "translate": "sweetalert"
+                "i18n": "sweetalert"
             }, {
                 "text": "Tree Antd",
                 "link": "/elements/tree-antd",
-                "translate": "tree-antd"
+                "i18n": "tree-antd"
             }, {
                 "text": "Sortable",
                 "link": "/elements/sortable",
-                "translate": "sortable"
+                "i18n": "sortable"
             }, {
                 "text": "Spin",
                 "link": "/elements/spin",
-                "translate": "spin"
+                "i18n": "spin"
             }, {
                 "text": "Dropdown",
                 "link": "/elements/dropdown",
-                "translate": "dropdown"
+                "i18n": "dropdown"
             }, {
                 "text": "Grid",
                 "link": "/elements/grid",
-                "translate": "grid"
+                "i18n": "grid"
             }, {
                 "text": "Grid Masonry",
                 "link": "/elements/gridmasonry",
-                "translate": "gridmasonry"
+                "i18n": "gridmasonry"
             }, {
                 "text": "Typography",
                 "link": "/elements/typography",
-                "translate": "typography"
+                "i18n": "typography"
             }, {
                 "text": "Font Icons",
                 "link": "/elements/iconsfont",
-                "translate": "iconsfont"
+                "i18n": "iconsfont"
             }, {
                 "text": "Colors",
                 "link": "/elements/colors",
-                "translate": "colors"
+                "i18n": "colors"
             }]
         }, {
             "text": "Other",
-            "translate": "other",
+            "i18n": "other",
             "link": "/other",
             "icon": "icon-magic-wand",
             "children": [{
                 "text": "Split",
                 "link": "/other/split",
-                "translate": "split"
+                "i18n": "split"
             }, {
                 "text": "Clipboard",
                 "link": "/other/clipboard",
-                "translate": "clipboard"
+                "i18n": "clipboard"
             }]
         }, {
             "text": "表单",
-            "translate": "forms",
+            "i18n": "forms",
             "link": "/forms",
             "icon": "icon-note",
             "acl": "user1",
             "children": [{
                 "text": "标准",
                 "link": "/forms/standard",
-                "translate": "standard"
+                "i18n": "standard"
             }, {
                 "text": "扩展",
                 "link": "/forms/extended",
-                "translate": "extended"
+                "i18n": "extended"
             }, {
                 "text": "校验",
                 "link": "/forms/validation",
-                "translate": "validation"
+                "i18n": "validation"
             }, {
                 "text": "上传",
                 "link": "/forms/upload",
-                "translate": "upload",
+                "i18n": "upload",
                 "shortcut": true
             }, {
                 "text": "图片裁剪",
                 "link": "/forms/cropper",
-                "translate": "cropper"
+                "i18n": "cropper"
             }, {
                 "text": "Dynamic Form",
                 "link": "/forms/json-schema",
-                "translate": "json-schema"
+                "i18n": "json-schema"
             }]
         }, {
             "text": "编辑器",
-            "translate": "editor",
+            "i18n": "editor",
             "link": "/editor",
             "icon": "icon-pencil",
             "children": [{
@@ -172,7 +172,7 @@
             }]
         }, {
             "text": "Charts",
-            "translate": "charts",
+            "i18n": "charts",
             "link": "/charts",
             "icon": "icon-graph",
             "acl": "user1",
@@ -182,121 +182,121 @@
             }]
         }, {
             "text": "表格",
-            "translate": "tables",
+            "i18n": "tables",
             "link": "/tables",
             "icon": "icon-grid",
             "acl": "user2",
             "children": [{
                 "text": "标准",
                 "link": "/tables/standard",
-                "translate": "standard"
+                "i18n": "standard"
             }, {
                 "text": "Full",
                 "link": "/tables/full",
-                "translate": "full"
+                "i18n": "full"
             }, {
                 "text": "Simple Table",
                 "link": "/tables/simple-table"
             }, {
                 "text": "Fullscreen Table",
                 "link": "/tables/fs-table",
-                "translate": "fs-table"
+                "i18n": "fs-table"
             }]
         }, {
             "text": "地图",
-            "translate": "maps",
+            "i18n": "maps",
             "link": "/maps",
             "icon": "icon-map",
             "acl": "user2",
             "children": [{
                 "text": "QQ",
                 "link": "/maps/qq",
-                "translate": "qq"
+                "i18n": "qq"
             }, {
                 "text": "Baidu",
                 "link": "/maps/baidu",
-                "translate": "baidu"
+                "i18n": "baidu"
             }]
         }]
     }, {
         "text": "Pro",
-        "translate": "pro",
+        "i18n": "pro",
         "group": true,
         "children": [{
             "text": "Form Page",
-            "translate": "form",
+            "i18n": "form",
             "link": "/pro/form",
             "icon": "icon-note",
             "children": [{
                 "text": "Step Form",
                 "link": "/pro/form/step-form",
-                "translate": "step-form"
+                "i18n": "step-form"
             }, {
                 "text": "Advanced Form",
                 "link": "/pro/form/advanced-form",
-                "translate": "advanced-form"
+                "i18n": "advanced-form"
             }]
         }, {
             "text": "List",
-            "translate": "pro-list",
+            "i18n": "pro-list",
             "link": "/pro/list",
             "icon": "icon-grid",
             "children": [{
                 "text": "Table List",
                 "link": "/pro/list/table-list",
-                "translate": "pro-table-list"
+                "i18n": "pro-table-list"
             }, {
                 "text": "Basic List",
                 "link": "/pro/list/basic-list",
-                "translate": "pro-basic-list"
+                "i18n": "pro-basic-list"
             }, {
                 "text": "Card List",
                 "link": "/pro/list/card-list",
-                "translate": "pro-card-list"
+                "i18n": "pro-card-list"
             }, {
                 "text": "Cover Card List",
                 "link": "/pro/list/cover-card-list",
-                "translate": "pro-cover-card-list"
+                "i18n": "pro-cover-card-list"
             }, {
                 "text": "Filter Card List",
                 "link": "/pro/list/filter-card-list",
-                "translate": "pro-filter-card-list"
+                "i18n": "pro-filter-card-list"
             }, {
                 "text": "Search",
                 "link": "/pro/list/search",
-                "translate": "pro-search"
+                "i18n": "pro-search"
             }]
         }, {
             "text": "Profile",
-            "translate": "pro-profile",
+            "i18n": "pro-profile",
             "link": "/pro/profile",
             "icon": "icon-book-open",
             "children": [{
                 "text": "Basic",
                 "link": "/pro/profile/basic",
-                "translate": "pro-profile-basic"
+                "i18n": "pro-profile-basic"
             }, {
                 "text": "Advanced",
                 "link": "/pro/profile/advanced",
-                "translate": "pro-profile-advanced"
+                "i18n": "pro-profile-advanced"
             }]
         }, {
             "text": "Result",
-            "translate": "pro-result",
+            "i18n": "pro-result",
             "link": "/pro/result",
             "icon": "icon-check",
             "children": [{
                 "text": "Success",
                 "link": "/pro/result/success",
-                "translate": "pro-result-success"
+                "i18n": "pro-result-success"
             }, {
                 "text": "Fail",
                 "link": "/pro/result/fail",
-                "translate": "pro-result-fail"
+                "i18n": "pro-result-fail"
             }]
         }, {
             "text": "Exception",
-            "translate": "pro-exception",
+            "i18n": "pro-exception",
             "link": "/",
             "icon": "icon-fire",
             "children": [{
@@ -314,54 +314,54 @@
             }]
         }, {
             "text": "User",
-            "translate": "pro-user",
+            "i18n": "pro-user",
             "link": "/passport",
             "icon": "icon-user",
             "children": [{
                 "text": "login",
                 "link": "/passport/login",
-                "translate": "pro-login",
+                "i18n": "pro-login",
                 "reuse": false
             }, {
                 "text": "register",
                 "link": "/passport/register",
-                "translate": "pro-register",
+                "i18n": "pro-register",
                 "reuse": false
             }, {
                 "text": "register result",
                 "link": "/passport/register-result",
-                "translate": "pro-register-result",
+                "i18n": "pro-register-result",
                 "reuse": false
             }]
         }]
     }, {
         "text": "More",
-        "translate": "more",
+        "i18n": "more",
         "group": true,
         "children": [{
             "text": "Common Logics",
-            "translate": "logics",
+            "i18n": "logics",
             "link": "/logics",
             "icon": "icon-compass",
             "children": [{
                 "text": "ACL",
                 "link": "/logics/acl",
-                "translate": "acl"
+                "i18n": "acl"
             },
             {
                 "text": "Route Guard",
                 "link": "/logics/guard",
-                "translate": "guard"
+                "i18n": "guard"
             },
             {
                 "text": "Cache",
                 "link": "/logics/cache",
-                "translate": "cache"
+                "i18n": "cache"
             },
             {
                 "text": "Down File",
                 "link": "/logics/downfile",
-                "translate": "downfile",
+                "i18n": "downfile",
                 "shortcut": true
             },
             {
@@ -374,40 +374,40 @@
             }]
         }, {
             "text": "Report",
-            "translate": "report",
+            "i18n": "report",
             "icon": "anticon anticon-cloud-o",
             "children": [{
                 "text": "Relation",
                 "link": "/data-v/relation",
-                "translate": "relation",
+                "i18n": "relation",
                 "shortcut": true,
                 "reuse": false
             }]
         }, {
             "text": "Pages",
-            "translate": "pages",
+            "i18n": "pages",
             "link": "/pages",
             "icon": "icon-doc",
             "acl": "admin",
             "children": [{
                 "text": "Login",
                 "link": "/pages/login",
-                "translate": "m-login",
+                "i18n": "m-login",
                 "reuse": false
             }, {
                 "text": "Register",
                 "link": "/pages/register",
-                "translate": "m-register",
+                "i18n": "m-register",
                 "reuse": false
             }, {
                 "text": "Forget",
                 "link": "/pages/forget",
-                "translate": "m-forget",
+                "i18n": "m-forget",
                 "reuse": false
             }, {
                 "text": "Lock",
                 "link": "/pages/lock",
-                "translate": "m-lock",
+                "i18n": "m-lock",
                 "reuse": false
             }, {
                 "text": "404",
@@ -420,50 +420,50 @@
             }, {
                 "text": "Maintenance",
                 "link": "/pages/maintenance",
-                "translate": "maintenance",
+                "i18n": "maintenance",
                 "reuse": false
             }]
         }, {
             "text": "Extras",
-            "translate": "extras",
+            "i18n": "extras",
             "link": "/extras",
             "icon": "icon-cup",
             "children": [{
                 "text": "Blog",
                 "link": "/extras/blog",
-                "translate": "blog",
+                "i18n": "blog",
                 "children": [{
                     "text": "List",
                     "link": "/extras/blog/list",
-                    "translate": "list",
+                    "i18n": "list",
                     "badge": 1,
                     "badge_dot": true
                 },{
                     "text": "Comment",
                     "link": "/extras/blog/comment",
-                    "translate": "comment"
+                    "i18n": "comment"
                 },{
                     "text": "Post",
                     "link": "/extras/blog/post",
-                    "translate": "post"
+                    "i18n": "post"
                 },{
                     "text": "WebSite",
                     "externalLink": "//github.com/cipchk/ng-alain",
                     "target": "_blank",
-                    "translate": "website"
+                    "i18n": "website"
                 }]
             }, {
                 "text": "Help Center",
                 "link": "/extras/helpcenter",
-                "translate": "helpcenter"
+                "i18n": "helpcenter"
             }, {
                 "text": "Settings",
                 "link": "/extras/settings",
-                "translate": "settings"
+                "i18n": "settings"
             }, {
                 "text": "Poi",
                 "link": "/extras/poi",
-                "translate": "poi"
+                "i18n": "poi"
             }]
         }]
     }]
