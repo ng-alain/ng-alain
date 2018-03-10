@@ -19,7 +19,7 @@ import { SettingsService } from '@delon/theme';
         [loading]="loading"
         (select)="select($event)"
         (clear)="clear($event)"
-        (popupVisibleChange)="loadData($event)"></notice-icon>
+        (popoverVisibleChange)="loadData($event)"></notice-icon>
     `
 })
 export class HeaderNotifyComponent implements OnInit {
@@ -40,7 +40,6 @@ export class HeaderNotifyComponent implements OnInit {
     }
 
     private parseGroup(data: Observable<any[]>) {
-        console.log('parseGroup');
         data.pipe(
                 concatMap((i: any) => i),
                 map((i: any) => {
