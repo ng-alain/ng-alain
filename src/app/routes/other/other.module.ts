@@ -7,6 +7,7 @@ import { NzClipboardModule } from 'ng-clipboard-antd';
 import { OtherRoutingModule } from './other-routing.module';
 import { SplitComponent } from './split/split.component';
 import { ClipboardComponent } from './clipboard/clipboard.component';
+import { PrintComponent } from './print/print.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { ClipboardComponent } from './clipboard/clipboard.component';
     AngularSplitModule,
     NzClipboardModule.forRoot()
   ],
-  declarations: [SplitComponent, ClipboardComponent]
+  declarations: [SplitComponent, ClipboardComponent, PrintComponent]
 })
 export class OtherModule { }

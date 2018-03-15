@@ -125,6 +125,10 @@
                 "text": "Clipboard",
                 "link": "/other/clipboard",
                 "i18n": "clipboard"
+            }, {
+                "text": "Print",
+                "link": "/other/print",
+                "i18n": "print"
             }]
         }, {
             "text": "表单",

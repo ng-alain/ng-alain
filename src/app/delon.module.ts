@@ -137,7 +137,8 @@ import {
     AdFullContentModule,
     AdXlsxModule,
     AdZipModule,
-    AdNumberToChineseModule
+    AdNumberToChineseModule,
+    AdLodopModule
 } from '@delon/abc';
 export const ABCMODULES = [
     AdSimpleTableModule,
@@ -165,7 +166,8 @@ export const ABCMODULES = [
     AdFullContentModule,
     AdXlsxModule,
     AdZipModule,
-    AdNumberToChineseModule
+    AdNumberToChineseModule,
+    AdLodopModule
 ];
 // endregion
 
@@ -202,7 +204,7 @@ const MOCKMODULE = !environment.production || environment.chore === true ?
         AdAvatarListModule.forRoot(), AdDescListModule.forRoot(), AdEllipsisModule.forRoot(), AdExceptionModule.forRoot(), AdExceptionModule.forRoot(),
         AdNoticeIconModule.forRoot(), AdNumberInfoModule.forRoot(), AdProHeaderModule.forRoot(), AdResultModule.forRoot(), AdStandardFormRowModule.forRoot(),
         AdTagSelectModule.forRoot(), AdTrendModule.forRoot(), AdUtilsModule.forRoot(), AdChartsModule.forRoot(), AdCountDownModule.forRoot(), AdSimpleTableModule.forRoot(),
-        AdReuseTabModule.forRoot(), AdFullContentModule.forRoot(), AdXlsxModule.forRoot(), AdZipModule.forRoot(), AdNumberToChineseModule.forRoot(),
+        AdReuseTabModule.forRoot(), AdFullContentModule.forRoot(), AdXlsxModule.forRoot(), AdZipModule.forRoot(), AdNumberToChineseModule.forRoot(), AdLodopModule.forRoot(),
         // auth
         AlainAuthModule.forRoot({
             // 受限于 https://github.com/cipchk/ng-alain/issues/246， 只支持字符串形式
