@@ -4,7 +4,7 @@ import { SocialService } from '@delon/auth';
 
 @Component({
     selector: 'app-callback',
-    templateUrl: './callback.component.html',
+    template: ``,
     providers: [ SocialService ]
 })
 export class CallbackComponent implements OnInit {

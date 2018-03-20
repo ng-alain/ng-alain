@@ -1,0 +1,59 @@
+<form nz-form [formGroup]="form" (ngSubmit)="_submitForm()">
+    <nz-form-item>
+        <nz-form-label nzSpan="5" nzRequired>付款账户</nz-form-label>
+        <nz-form-control [nzSpan]="19">
+            <nz-select formControlName="pay_account">
+                <nz-option [nzLabel]="item.pay_account" [nzValue]="item.pay_account"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label nzSpan="5" nzRequired nzFor="receiver_account">收款账户</nz-form-label>
+        <nz-form-control nzSpan="19">
+            <nz-input-group nzCompact>
+                <nz-select formControlName="receiver_type" style="width: 100px;">
+                    <nz-option [nzLabel]="'支付宝'" [nzValue]="'alipay'"></nz-option>
+                    <nz-option [nzLabel]="'银行账号'" [nzValue]="'bank'"></nz-option>
+                </nz-select>
+                <input formControlName="receiver_account" id="receiver_account" nz-input style="width: calc(100% - 100px);">
+            </nz-input-group>
+            <nz-form-explain *ngIf="(receiver_account.dirty || receiver_account.touched) && receiver_account.errors?.required">
+                请输入收款账户
+            </nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label nzSpan="5" nzRequired nzFor="receiver_name">收款姓名</nz-form-label>
+        <nz-form-control nzSpan="19">
+            <input nz-input formControlName="receiver_name" id="receiver_name">
+            <ng-container *ngIf="receiver_name.dirty || receiver_name.touched">
+                <nz-form-explain *ngIf="receiver_name.errors?.required">请输入收款姓名</nz-form-explain>
+                <nz-form-explain *ngIf="receiver_name.errors?.minlength">至少2个字符以上</nz-form-explain>
+            </ng-container>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label nzSpan="5" nzRequired nzFor="amount">转账金额</nz-form-label>
+        <nz-form-control nzSpan="19">
+            <input nz-input formControlName="amount" id="amount" nzAddonAfter="￥">
+            <ng-container *ngIf="amount.dirty || amount.touched">
+                <nz-form-explain *ngIf="amount.errors?.required">请输入转账金额</nz-form-explain>
+                <nz-form-explain *ngIf="amount.errors?.pattern">金额只能是正整数</nz-form-explain>
+                <nz-form-explain *ngIf="amount.errors?.min">金额最少1元以上</nz-form-explain>
+                <nz-form-explain *ngIf="amount.errors?.max">金额最多100万以内</nz-form-explain>
+            </ng-container>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control nzSpan="19" nzOffset="5">
+            <button nz-button nzType="primary" [disabled]="form.invalid">下一步</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>
+<div class="border-top-1 mt-lg px-lg text-grey-dark">
+    <h3 class="h3 my-md">说明</h3>
+    <h4 class="h4 mb-sm">转账到支付宝账户</h4>
+    <p class="mb-sm">如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。</p>
+    <h4 class="h4 mb-sm">转账到银行卡</h4>
+    <p>如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。</p>
+</div>

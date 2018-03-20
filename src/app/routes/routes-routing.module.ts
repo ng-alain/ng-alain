@@ -16,6 +16,7 @@ import { UserRegisterComponent } from './passport/register/register.component';
 import { UserRegisterResultComponent } from './passport/register-result/register-result.component';
 // single pages
 import { CallbackComponent } from './callback/callback.component';
+import { UserLockComponent } from './passport/lock/lock.component';
 import { Exception403Component } from './exception/403.component';
 import { Exception404Component } from './exception/404.component';
 import { Exception500Component } from './exception/500.component';
@@ -32,15 +33,8 @@ const routes: Routes = [
             { path: 'dashboard/monitor', component: DashboardMonitorComponent },
             { path: 'dashboard/workplace', component: DashboardWorkplaceComponent },
             { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
-            { path: 'elements', loadChildren: './elements/elements.module#ElementsModule' },
-            { path: 'other', loadChildren: './other/other.module#OtherModule' },
-            { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
-            { path: 'editor', loadChildren: './editor/editor.module#EditorModule' },
-            { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
-            { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
-            { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
-            { path: 'pages', loadChildren: './pages/pages.module#PagesModule' },
-            { path: 'logics', loadChildren: './logics/logics.module#LogicsModule' },
+            { path: 'style', loadChildren: './style/style.module#StyleModule' },
+            { path: 'delon', loadChildren: './delon/delon.module#DelonModule' },
             { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' },
             { path: 'pro', loadChildren: './pro/pro.module#ProModule' }
         ]
@@ -65,6 +59,7 @@ const routes: Routes = [
     },
     // 单页不包裹Layout
     { path: 'callback/:type', component: CallbackComponent },
+    { path: 'lock', component: UserLockComponent, data: { title: '锁屏', titleI18n: 'lock' } },
     { path: '403', component: Exception403Component },
     { path: '404', component: Exception404Component },
     { path: '500', component: Exception500Component },

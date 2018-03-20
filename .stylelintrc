@@ -17,6 +17,7 @@
     "selector-pseudo-element-colon-notation": null,
     "unit-no-unknown": null,
     "value-list-max-empty-lines": null,
+    "string-no-newline": null,
     "selector-type-no-unknown": null,
     "selector-pseudo-element-no-unknown": [
         true,

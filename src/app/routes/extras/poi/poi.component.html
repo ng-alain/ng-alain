@@ -1,10 +1,10 @@
 <div class="content__title">
-    <h1>门店<small>使用 <code>.simple-table</code> 风格的一个实际项目示例。</small></h1>
-    <button nz-button (click)="edit({id:0})" [nzType]="'primary'">添加</button>
+    <h1>门店<small>使用 <code>.simple-table</code> 样式风格的一个实际项目示例。</small></h1>
+    <button nz-button (click)="add()" [nzType]="'primary'">添加</button>
 </div>
 <form nz-form [nzLayout]="'inline'" class="search-form">
-    <div nz-form-item>
-        <div nz-form-control>
+    <nz-form-item>
+        <nz-form-control>
             <nz-select [(ngModel)]="s.s" name="s" [nzAllowClear]="false">
                 <nz-option nzValue="" nzLabel="状态不限"></nz-option>
                 <nz-option nzValue="1" nzLabel="正常"></nz-option>
@@ -13,55 +13,22 @@
                 <nz-option nzValue="10" nzLabel="待提交"></nz-option>
                 <nz-option nzValue="11" nzLabel="待审核"></nz-option>
             </nz-select>
-        </div>
-    </div>
-    <div nz-form-item>
-        <div nz-form-control>
-            <nz-input [(ngModel)]="s.user_id" name="user_id" nzPlaceHolder="用户编号"></nz-input>
-        </div>
-    </div>
-    <div nz-form-item>
-        <div nz-form-control>
-            <nz-input [(ngModel)]="s.q" name="q" nzPlaceHolder="门店、分店名称"></nz-input>
-        </div>
-    </div>
-    <div nz-form-item>
-        <div nz-form-control>
-            <button nz-button (click)="load(true)">搜索</button>
-        </div>
-    </div>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control>
+            <input nz-input [(ngModel)]="s.user_id" name="user_id" nzPlaceHolder="用户编号">
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control>
+            <input nz-input [(ngModel)]="s.q" name="q" nzPlaceHolder="门店、分店名称">
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control>
+            <button nz-button (click)="st.reset(s)">搜索</button>
+        </nz-form-control>
+    </nz-form-item>
 </form>
-<nz-table #nzTable class="simple-table"
-    [nzAjaxData]="list"
-    [nzLoading]="http.loading"
-    [nzTotal]="total"
-    [(nzPageIndex)]="s.pi"
-    [(nzPageSize)]="s.ps"
-    (nzPageIndexChange)="load()"
-    [nzBordered]="true"
-    [nzSize]="'middle'">
-    <thead nz-thead>
-        <tr>
-            <th nz-th [nzWidth]="'100px'">编号</th>
-            <th nz-th>门店名称</th>
-            <th nz-th>分店名</th>
-            <th nz-th [nzWidth]="'100px'">状态</th>
-            <th nz-th [nzWidth]="'180px'"></th>
-        </tr>
-    </thead>
-    <tbody nz-tbody>
-        <tr nz-tbody-tr *ngFor="let i of nzTable.data">
-            <td>{{i.id}}</td>
-            <td>{{i.name}}</td>
-            <td>{{i.branch_name}}</td>
-            <td>{{i.status_str}}</td>
-            <td>
-                <a (click)="edit(i)">编辑</a>
-                <span nz-table-divider></span>
-                <a (click)="photo(i)">图片</a>
-                <span nz-table-divider></span>
-                <a (click)="sku(i)">经营SKU</a>
-            </td>
-        </tr>
-    </tbody>
-</nz-table>
+<simple-table #st class="simple-table" [columns]="columns" [data]="url" [extraParams]="s"></simple-table>

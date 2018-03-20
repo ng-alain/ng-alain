@@ -1,92 +1,70 @@
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
     <nz-tabset [nzAnimated]="false" class="tabs" (nzSelectChange)="switch($event)">
-        <nz-tab>
-            <ng-template #nzTabHeading>账户密码登录</ng-template>
+        <nz-tab nzTitle="账户密码登录">
             <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
-            <div nz-form-item>
-                <div nz-form-control [nzValidateStatus]="userName">
-                    <nz-input formControlName="userName" [nzPlaceHolder]="'admin'" [nzSize]="'large'">
-                        <ng-template #prefix>
-                            <i class="anticon anticon-user"></i>
-                        </ng-template>
-                    </nz-input>
-                    <ng-container *ngIf="userName.dirty || userName.touched">
-                        <p nz-form-explain *ngIf="userName.errors?.required">请输入账户名！</p>
-                        <p nz-form-explain *ngIf="userName.errors?.minlength">至少五个字符</p>
-                    </ng-container>
-                </div>
-            </div>
-            <div nz-form-item>
-                <div nz-form-control [nzValidateStatus]="password">
-                    <nz-input formControlName="password" [nzPlaceHolder]="'888888'" [nzType]="'password'" [nzSize]="'large'">
-                        <ng-template #prefix>
-                            <i class="anticon anticon-lock"></i>
-                        </ng-template>
-                    </nz-input>
-                    <div nz-form-explain *ngIf="(password.dirty || password.touched) && password.errors?.required">请输入密码！</div>
-                </div>
-            </div>
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-user">
+                        <input nz-input formControlName="userName" placeholder="admin">
+                    </nz-input-group>
+                    <nz-form-explain *ngIf="userName.dirty && userName.errors">请输入账户名且至少五个字符！</nz-form-explain>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-lock">
+                        <input nz-input type="password" formControlName="password" placeholder="888888">
+                    </nz-input-group>
+                    <nz-form-explain *ngIf="password.dirty && password.errors">
+                        请输入密码！
+                    </nz-form-explain>
+                </nz-form-control>
+            </nz-form-item>
         </nz-tab>
-        <nz-tab>
-            <ng-template #nzTabHeading>手机号登录</ng-template>
-            <div nz-form-item>
-                <div nz-form-control [nzValidateStatus]="mobile">
-                    <nz-input formControlName="mobile" [nzPlaceHolder]="'手机号'" [nzSize]="'large'">
-                        <ng-template #prefix>
-                            <i class="anticon anticon-user"></i>
-                        </ng-template>
-                    </nz-input>
-                    <ng-container *ngIf="mobile.dirty || mobile.touched">
-                        <p nz-form-explain *ngIf="mobile.errors?.required">请输入手机号！</p>
-                        <p nz-form-explain *ngIf="mobile.errors?.pattern">手机号格式错误！</p>
-                    </ng-container>
-                </div>
-            </div>
-            <div nz-form-item>
-                <div nz-form-control [nzValidateStatus]="captcha">
-                    <div nz-row [nzGutter]="8">
-                        <div nz-col [nzSpan]="16">
-                            <nz-input formControlName="captcha" [nzPlaceHolder]="'验证码'" [nzSize]="'large'">
-                                <ng-template #prefix>
-                                    <i class="anticon anticon-mail"></i>
-                                </ng-template>
-                            </nz-input>
-                        </div>
-                        <div nz-col [nzSpan]="8">
-                            <button nz-button (click)="getCaptcha()" [disabled]="count" [nzSize]="'large'" class="ant-btn__block">{{ count ? count + 's' : '获取验证码' }}</button>
-                        </div>
-                    </div>
-                    <div nz-form-explain *ngIf="(mobile.dirty || mobile.touched) && mobile.errors?.required">请输入验证码！</div>
-                </div>
-            </div>
+        <nz-tab nzTitle="手机号登录">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-user">
+                        <input nz-input formControlName="mobile" placeholder="手机号">
+                    </nz-input-group>
+                    <nz-form-explain *ngIf="mobile.dirty && mobile.errors">请输入手机号且至少五个字符！</nz-form-explain>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-row [nzGutter]="8">
+                        <nz-col [nzSpan]="16">
+                            <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-mail">
+                                <input nz-input formControlName="captcha" placeholder="验证码">
+                            </nz-input-group>
+                            <nz-form-explain *ngIf="mobile.dirty && mobile.errors">
+                                请输入验证码！
+                            </nz-form-explain>
+                        </nz-col>
+                        <nz-col [nzSpan]="8">
+                            <button nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count" class="ant-btn__block">{{ count ? count + 's' : '获取验证码' }}</button>
+                        </nz-col>
+                    </nz-row>
+                </nz-form-control>
+            </nz-form-item>
         </nz-tab>
     </nz-tabset>
-    <div nz-form-item nz-row>
-        <div nz-col [nzSpan]="12">
-            <label nz-checkbox formControlName="remember">
-                <span>自动登录</span>
-            </label>
-        </div>
-        <div nz-col [nzSpan]="12" class="text-right">
+    <nz-form-item>
+        <nz-col [nzSpan]="12">
+            <label nz-checkbox formControlName="remember">自动登录</label>
+        </nz-col>
+        <nz-col [nzSpan]="12" class="text-right">
             <a class="forgot" (click)="msg.error('请找欧阳锋')">忘记密码？</a>
-        </div>
-    </div>
-    <div nz-form-item>
-        <button nz-button [nzType]="'primary'" [nzLoading]="loading" [nzSize]="'large'" class="ant-btn__block">
-            <span>登录</span>
-        </button>
-    </div>
+        </nz-col>
+    </nz-form-item>
+    <nz-form-item>
+        <button nz-button type="submit" nzType="primary" nzSize="large" [nzLoading]="loading" class="ant-btn__block">登录</button>
+    </nz-form-item>
 </form>
 <div class="other">
     其他登录方式
-    <nz-tooltip [nzTitle]="'in fact Auth0 via window'">
-        <span nz-tooltip class="icon-alipay" (click)="open('auth0', 'window')"></span>
-    </nz-tooltip>
-    <nz-tooltip [nzTitle]="'in fact Github via redirect'">
-        <span nz-tooltip class="icon-taobao" (click)="open('github')"></span>
-    </nz-tooltip>
-    <nz-tooltip [nzTitle]="'真的是微博'">
-        <span nz-tooltip class="icon-weibo" (click)="open('weibo', 'window')"></span>
-    </nz-tooltip>
+    <i title="in fact Auth0 via window" (click)="open('auth0', 'window')" class="anticon anticon-alipay-circle icon"></i>
+    <i title="in fact Github via redirect" (click)="open('taobao')" class="anticon anticon-taobao-circle icon"></i>
+    <i title="真的是微博" (click)="open('weibo', 'window')" class="anticon anticon-weibo-circle icon"></i>
     <a class="register" routerLink="/passport/register">注册账户</a>
 </div>

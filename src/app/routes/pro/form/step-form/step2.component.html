@@ -1,0 +1,41 @@
+<form nz-form [formGroup]="form" (ngSubmit)="_submitForm()">
+    <nz-alert class="pb-lg" [nzMessage]="'确认转账后，资金将直接打入对方账户，无法退回。'" [nzShowIcon]="true" [nzCloseable]="true"></nz-alert>
+    <nz-form-item>
+        <nz-form-label nzSpan="5">付款账户</nz-form-label>
+        <nz-form-control nzSpan="19"><nz-form-text>{{item.pay_account}}</nz-form-text></nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label nzSpan="5">账户类型</nz-form-label>
+        <nz-form-control nzSpan="19"><nz-form-text>{{item.receiver_type==='alipay' ? '支付宝' : '银行'}}</nz-form-text></nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label nzSpan="5">收款账户</nz-form-label>
+        <nz-form-control nzSpan="19"><nz-form-text>{{item.receiver_account}}</nz-form-text></nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label nzSpan="5">收款人姓名</nz-form-label>
+        <nz-form-control nzSpan="19"><nz-form-text>{{item.receiver_name}}</nz-form-text></nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label nzSpan="5">转账金额</nz-form-label>
+        <nz-form-control nzSpan="19">
+            <nz-form-text><strong class="text-lg">{{item.amount}}</strong></nz-form-text>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item class="border-top-1 mt-lg pt-lg">
+        <nz-form-label nzSpan="5" nzRequired nzFor="password">支付密码</nz-form-label>
+        <nz-form-control nzSpan="19">
+            <input nz-input formControlName="password" type="password" id="password">
+            <ng-container *ngIf="password.dirty || password.touched">
+                <nz-form-explain *ngIf="password.errors?.required">请输入密码</nz-form-explain>
+                <nz-form-explain *ngIf="password.errors?.minlength">至少6位数以上</nz-form-explain>
+            </ng-container>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control [nzSpan]="19" [nzOffset]="5">
+            <button nz-button [nzType]="'primary'" [nzLoading]="loading" [disabled]="form.invalid">提交</button>
+            <button nz-button (click)="prev()">上一步</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

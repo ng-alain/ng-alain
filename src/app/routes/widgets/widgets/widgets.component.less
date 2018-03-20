@@ -1,5 +1,12 @@
-nz-carousel {
-    .slick-dots {
-        bottom: -10px !important;
+@import '~@delon/theme/styles/default';
+
+:host ::ng-deep {
+    .ant-carousel {
+        .slick-dots {
+            bottom: -10px;
+            li.slick-active button {
+                background: @primary-color;
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
 import { TestBed, TestModuleMetadata } from '@angular/core/testing';
-import { setUpTestBed } from '../../../../testing/common.spec';
+import { setUpTestBed } from '@testing/common.spec';
 
 import { DashboardV1Component } from './v1.component';
 

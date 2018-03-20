@@ -6,12 +6,12 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-import { ALAIN_I18N_TOKEN, ColorsService, SettingsService, MenuService, ScrollService, _HttpClient, ALAIN_THEME_OPTIONS } from '@delon/theme';
+import { ALAIN_I18N_TOKEN, SettingsService, MenuService, ScrollService, _HttpClient } from '@delon/theme';
+import { DelonModule } from '../app/delon.module';
+import { DelonAuthModule } from '@delon/auth';
 import { I18NService } from '@core/i18n/i18n.service';
 import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
-import { DelonModule } from '../app/delon.module';
-import { AlainAuthModule } from '@delon/auth';
 import { HttpLoaderFactory } from '../app/app.module';
 
 const resetTestingModule = TestBed.resetTestingModule,
@@ -35,9 +35,7 @@ export const setUpTestBed = (moduleDef: TestModuleMetadata) => {
         moduleDef.imports.push(DelonModule);
         moduleDef.imports.push(SharedModule);
         // auth
-        moduleDef.imports.push(AlainAuthModule.forRoot({
-            login_url: `/passport/login`
-        }));
+        moduleDef.imports.push(DelonAuthModule.forRoot());
         moduleDef.imports.push(TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -49,10 +47,9 @@ export const setUpTestBed = (moduleDef: TestModuleMetadata) => {
 
         // region: providers
         if (!moduleDef.providers) moduleDef.providers = [];
-        moduleDef.providers.push({ provide: ALAIN_THEME_OPTIONS, useValue: {} });
         moduleDef.providers.push({ provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false });
         // load full services
-        [ SettingsService, MenuService, ScrollService, ColorsService, _HttpClient ].forEach((item: any) => {
+        [ SettingsService, MenuService, ScrollService, _HttpClient ].forEach((item: any) => {
             if (moduleDef.providers.includes(item)) return;
             moduleDef.providers.push(item);
         });

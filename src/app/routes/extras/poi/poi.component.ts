@@ -1,54 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ModalHelper } from '@delon/theme';
-import { _HttpClient } from '@delon/theme';
+import { SimpleTableComponent, SimpleTableColumn } from '@delon/abc';
 import { ExtrasPoiEditComponent } from './edit/edit.component';
 
 @Component({
     selector: 'app-extras-poi',
     templateUrl: './poi.component.html'
 })
-export class ExtrasPoiComponent implements OnInit {
-
-    list: any[] = [];
+export class ExtrasPoiComponent {
+    @ViewChild('st') st: SimpleTableComponent;
     s: any = {
         pi: 1,
         ps: 10,
         s: ''
     };
-    total = 0;
-
-    constructor(
-        public http: _HttpClient,
-        public msgSrv: NzMessageService,
-        private modalHelper: ModalHelper) { }
-
-    ngOnInit() {
-        this.load();
-    }
-
-    load(reload: boolean = false) {
-        if (reload) {
-            this.s.pi = 1;
+    url = '/pois';
+    columns: SimpleTableColumn[] = [
+        { title: '编号', index: 'id', width: '100px' },
+        { title: '门店名称', index: 'name' },
+        { title: '分店名', index: 'branch_name' },
+        { title: '状态', index: 'status_str', width: '100px' },
+        {
+            title: '操作',
+            width: '180px',
+            buttons: [
+                {
+                    text: '编辑',
+                    type: 'modal',
+                    component: ExtrasPoiEditComponent,
+                    paramName: 'i',
+                    click: () => this.msg.info('回调，重新发起列表刷新')
+                },
+                { text: '图片', click: () => this.msg.info('click photo') },
+                { text: '经营SKU', click: () => this.msg.info('click sku') }
+            ]
         }
-        this.http.get('./assets/pois.json', this.s).subscribe((res: any) => {
-            this.list = res.data;
-            this.total = res.total;
+    ];
+
+    constructor(public msg: NzMessageService, private modal: ModalHelper) { }
+
+    add() {
+        this.modal.static(ExtrasPoiEditComponent, { i: { id: 0 } }).subscribe(() => {
+            this.st.load();
+            this.msg.info('回调，重新发起列表刷新');
         });
-    }
-
-    edit(i) {
-        this.modalHelper.static(ExtrasPoiEditComponent, { i }).subscribe(() => {
-            this.load();
-            this.msgSrv.info('回调，重新发起列表刷新');
-        });
-    }
-
-    photo(i) {
-        this.msgSrv.success('click photo');
-    }
-
-    sku(i) {
-        this.msgSrv.success('click sku');
     }
 }

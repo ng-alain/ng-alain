@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { ThemesService, SettingsService, TitleService } from '@delon/theme';
+import { SettingsService, TitleService } from '@delon/theme';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   @HostBinding('class.aside-collapsed') get isCollapsed() { return this.settings.layout.collapsed; }
 
   constructor(
-    private theme: ThemesService,
     private settings: SettingsService,
     private router: Router,
     private titleSrv: TitleService) {

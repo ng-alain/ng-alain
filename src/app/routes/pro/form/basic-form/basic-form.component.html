@@ -1,0 +1,77 @@
+<page-header [title]="'基础表单'">
+    将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。
+</page-header>
+<nz-card [nzBordered]="false">
+    <form nz-form [formGroup]="form" (ngSubmit)="submit()">
+        <nz-form-item>
+            <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="title">标题</nz-form-label>
+            <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+                <input nz-input formControlName="title" id="title" placeholder="给目标起个名字">
+                <nz-form-explain *ngIf="form.get('title').dirty && form.get('title').errors">请输入标题</nz-form-explain>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="title">起止日期</nz-form-label>
+            <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="goal">目标描述</nz-form-label>
+            <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+                <textarea nz-input formControlName="goal" id="goal" [nzAutosize]="{minRows: 4}" placeholder="请输入你的阶段性工作目标"></textarea>
+                <nz-form-explain *ngIf="form.get('goal').dirty && form.get('goal').errors">请输入目标描述</nz-form-explain>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="standard">衡量标准</nz-form-label>
+            <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+                <textarea nz-input formControlName="standard" id="standard" [nzAutosize]="{minRows: 4}" placeholder="请输入衡量标准"></textarea>
+                <nz-form-explain *ngIf="form.get('standard').dirty && form.get('standard').errors">请输入衡量标准</nz-form-explain>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzXs="24" nzSm="7" nzFor="client">
+                客户
+                <em>
+                    <nz-tooltip nzTitle="目标的服务对象">
+                        <i nz-tooltip class="anticon anticon-info-circle-o"></i>
+                    </nz-tooltip>
+                </em>
+            </nz-form-label>
+            <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+                <input nz-input formControlName="client" id="client" placeholder="请描述你服务的客户，内部客户直接 @姓名／工号">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzXs="24" nzSm="7" nzFor="invites">邀评人</nz-form-label>
+            <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+                <input nz-input formControlName="invites" id="invites" placeholder="请直接 @姓名／工号，最多可邀请 5 人">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzXs="24" nzSm="7" nzFor="weight">权重</nz-form-label>
+            <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+                <nz-input-number formControlName="weight" id="weight" placeholder="请输入"></nz-input-number>
+                <em>%</em>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzXs="24" nzSm="7" nzFor="public">目标公开</nz-form-label>
+            <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+                <nz-radio-group formControlName="public">
+                    <label nz-radio [nzValue]="1">公开</label>
+                    <label nz-radio [nzValue]="2">部分公开</label>
+                    <label nz-radio [nzValue]="3">不公开</label>
+                </nz-radio-group>
+                <input *ngIf="form.value.public === 2" nz-input formControlName="publicUsers" placeholder="公开给">
+                <nz-form-explain>客户、邀评人默认被分享</nz-form-explain>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 10, offset: 7 }">
+                <button nz-button nzType="primary" type="submit" [nzLoading]="submitting">提交</button>
+                <button nz-button class="ml-sm">保存</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-card>

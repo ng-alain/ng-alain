@@ -1,4 +1,4 @@
-<pro-header></pro-header>
+<page-header></page-header>
 <nz-card [nzBordered]="false">
     <result
         type="error"
@@ -8,14 +8,14 @@
         <ng-template #resultExtra>
             <div class="mb-md text-lg">您提交的内容有如下错误：</div>
             <div class="mb-md">
-                <nz-icon class="text-error pr-sm" nzType="close-circle-o"></nz-icon>您的账户已被冻结
-                <a class="ml-md">立即解冻 <nz-icon class="pl-sm" nzType="right"></nz-icon></a>
+                <i class="anticon anticon-close-circle-o text-error pr-sm"></i>您的账户已被冻结
+                <a class="ml-md">立即解冻<i class="anticon anticon-right pl-sm"></i></a>
             </div>
             <div>
-                <nz-icon class="text-error pr-sm" nzType="close-circle-o"></nz-icon>您的账户还不具备申请资格
-                <a class="ml-md">立即升级<nz-icon class="pl-sm" nzType="right"></nz-icon></a>
+                <i class="anticon anticon-close-circle-o text-error pr-sm"></i>您的账户还不具备申请资格
+                <a class="ml-md">立即升级<i class="anticon anticon-right pl-sm"></i></a>
             </div>
         </ng-template>
-        <button nz-button [nzType]="'primary'" [nzSize]="'large'">返回修改</button>
+        <button nz-button [nzType]="'primary'">返回修改</button>
     </result>
 </nz-card>

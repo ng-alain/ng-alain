@@ -19,8 +19,6 @@ export class DashboardV1Component implements OnInit {
         { completed: false, avatar: '6', name: 'Forever', content: `Walking through green fields ，sunshine in my eyes.` }
     ];
 
-    quickMenu = false;
-
     webSite: any[] = [ ];
     salesData: any[] =  [ ];
     offlineChartData: any[] = [];

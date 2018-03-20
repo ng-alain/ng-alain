@@ -1,11 +1,11 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable, Injector, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { zip } from 'rxjs/observable/zip';
 import { catchError } from 'rxjs/operators';
-import { TranslateService } from '@ngx-translate/core';
-import { MenuService, SettingsService, TitleService } from '@delon/theme';
+import { MenuService, SettingsService, TitleService, ALAIN_I18N_TOKEN } from '@delon/theme';
 import { ACLService } from '@delon/acl';
+import { TranslateService } from '@ngx-translate/core';
 import { I18NService } from '../i18n/i18n.service';
 
 /**
@@ -17,7 +17,7 @@ export class StartupService {
     constructor(
         private menuService: MenuService,
         private translate: TranslateService,
-        private i18n: I18NService,
+        @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
         private settingService: SettingsService,
         private aclService: ACLService,
         private titleService: TitleService,

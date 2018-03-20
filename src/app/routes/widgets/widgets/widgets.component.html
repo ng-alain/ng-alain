@@ -1,57 +1,55 @@
 <div class="content__title">
-    <h1>
-        Widgets
-    </h1>
+    <h1>Widgets</h1>
 </div>
 <div nz-row [nzGutter]="16">
     <div nz-col [nzXs]="24" [nzSm]="8">
         <nz-card>
-            <div class="text-right text-grey"><i class="fa fa-gamepad fa-2x"></i></div>
+            <div class="text-right text-grey"><i class="anticon anticon-pay-circle display-2"></i></div>
             <h3 class="h3">99.999</h3>
-            <p class="text-grey">Games played last month</p>
-            <nz-progress [nzStatus]="'active'" [ngModel]="60" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
+            <div class="text-grey">Games played last month</div>
+            <nz-progress [nzStatus]="'active'" [nzPercent]="60" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
         </nz-card>
     </div>
     <div nz-col [nzXs]="24" [nzSm]="8">
         <nz-card>
-            <div class="text-right text-grey"><i class="fa fa-coffee fa-2x"></i></div>
+            <div class="text-right text-grey"><i class="anticon anticon-pie-chart display-2"></i></div>
             <h3 class="h3">300</h3>
-            <p class="text-grey">Coffee cups per day</p>
-            <nz-progress [nzStatus]="'success'" [ngModel]="30" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
+            <div class="text-grey">Coffee cups per day</div>
+            <nz-progress [nzStatus]="'success'" [nzPercent]="30" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
         </nz-card>
     </div>
     <div nz-col [nzXs]="24" [nzSm]="8">
         <nz-card>
-            <div class="text-right text-grey"><i class="fa fa-upload fa-2x"></i></div>
+            <div class="text-right text-grey"><i class="anticon anticon-cloud display-2"></i></div>
             <h3 class="h3">1000 Gb</h3>
-            <p class="text-grey">Average Monthly Uploads</p>
-            <nz-progress [nzStatus]="'exception'" [ngModel]="10" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
+            <div class="text-grey">Average Monthly Uploads</div>
+            <nz-progress [nzStatus]="'exception'" [nzPercent]="10" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
         </nz-card>
     </div>
 </div>
 <div nz-row [nzGutter]="16">
     <div nz-col [nzXs]="24" [nzSm]="8">
-        <nz-card nzNoPadding>
+        <nz-card class="ant-card__body-nopadding">
             <div nz-row>
                 <div nz-col [nzSpan]="12" class="border-right-1 border-bottom-1">
                     <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
                         <div nz-col [nzSpan]="12" class="text-center text-red">
-                            <i class="fa fa-users fa-2x"></i>
+                            <i class="anticon anticon-user display-2"></i>
                         </div>
                         <div nz-col [nzSpan]="12" class="py-md">
                             <h4 class="h4">10k</h4>
-                            <p class="text-grey">VISITORS</p>
+                            <div class="text-grey">VISITORS</div>
                         </div>
                     </div>
                 </div>
                 <div nz-col [nzSpan]="12" class="border-bottom-1">
                     <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
                         <div nz-col [nzSpan]="12" class="text-center text-pink">
-                            <i class="fa fa-music fa-2x"></i>
+                            <i class="anticon anticon-sound display-2"></i>
                         </div>
                         <div nz-col [nzSpan]="12" class="py-md">
                             <h4 class="h4">100%</h4>
-                            <p class="text-grey">VOLUME</p>
+                            <div class="text-grey">VOLUME</div>
                         </div>
                     </div>
                 </div>
@@ -60,48 +58,48 @@
                 <div nz-col [nzSpan]="12" class="border-right-1">
                     <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
                         <div nz-col [nzSpan]="12" class="text-center text-grey">
-                            <i class="fa fa-code-fork fa-2x"></i>
+                            <i class="anticon anticon-fork display-2"></i>
                         </div>
                         <div nz-col [nzSpan]="12" class="py-md">
                             <h4 class="h4">150</h4>
-                            <p class="text-grey">FORKS</p>
+                            <div class="text-grey">FORKS</div>
                         </div>
                     </div>
                 </div>
                 <div nz-col [nzSpan]="12">
                     <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
                         <div nz-col [nzSpan]="12" class="text-center text-green">
-                            <i class="fa fa-inbox fa-2x"></i>
+                            <i class="anticon anticon-message display-2"></i>
                         </div>
                         <div nz-col [nzSpan]="12" class="py-md">
                             <h4 class="h4">10</h4>
-                            <p class="text-grey">MESSAGES</p>
+                            <div class="text-grey">MESSAGES</div>
                         </div>
                     </div>
                 </div>
             </div>
         </nz-card>
-        <nz-card nzNoPadding>
+        <nz-card class="ant-card__body-nopadding">
             <div nz-row>
                 <div nz-col [nzSpan]="12" class="border-right-1 border-bottom-1">
                     <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
                         <div nz-col [nzSpan]="12" class="text-center">
-                            <mini-bar height="35" color="#999" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="smallData"></mini-bar>
+                            <g2-mini-bar height="35" color="#999" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="smallData"></g2-mini-bar>
                         </div>
                         <div nz-col [nzSpan]="12" class="py-md">
                             <h4 class="h4">10k</h4>
-                            <p class="text-grey">VISITORS</p>
+                            <div class="text-grey">VISITORS</div>
                         </div>
                     </div>
                 </div>
                 <div nz-col [nzSpan]="12" class="border-bottom-1">
                     <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
                         <div nz-col [nzSpan]="12" class="text-center">
-                            <mini-bar height="35" color="#999" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="smallData"></mini-bar>
+                            <g2-mini-bar height="35" color="#999" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="smallData"></g2-mini-bar>
                         </div>
                         <div nz-col [nzSpan]="12" class="py-md">
                             <h4 class="h4">100%</h4>
-                            <p class="text-grey">VOLUME</p>
+                            <div class="text-grey">VOLUME</div>
                         </div>
                     </div>
                 </div>
@@ -110,22 +108,22 @@
                 <div nz-col [nzSpan]="12" class="border-right-1">
                     <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
                         <div nz-col [nzSpan]="12" class="text-center">
-                            <mini-bar height="35" color="#999" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="smallData"></mini-bar>
+                            <g2-mini-bar height="35" color="#999" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="smallData"></g2-mini-bar>
                         </div>
                         <div nz-col [nzSpan]="12" class="py-md">
                             <h4 class="h4">150</h4>
-                            <p class="text-grey">FORKS</p>
+                            <div class="text-grey">FORKS</div>
                         </div>
                     </div>
                 </div>
                 <div nz-col [nzSpan]="12">
                     <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
                         <div nz-col [nzSpan]="12" class="text-center">
-                            <mini-bar height="35" color="#999" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="smallData"></mini-bar>
+                            <g2-mini-bar height="35" color="#999" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="smallData"></g2-mini-bar>
                         </div>
                         <div nz-col [nzSpan]="12" class="py-md">
                             <h4 class="h4">10</h4>
-                            <p class="text-grey">MESSAGES</p>
+                            <div class="text-grey">MESSAGES</div>
                         </div>
                     </div>
                 </div>
@@ -133,7 +131,7 @@
         </nz-card>
     </div>
     <div nz-col [nzXs]="24" [nzSm]="8">
-        <nz-card nzNoPadding>
+        <nz-card class="ant-card__body-nopadding">
             <div class="half-float half-float-md">
                 <img src="./assets/img/half-float-bg-1.jpg">
                 <div class="half-float-bottom rounded-circle bg-grey-lighter">
@@ -142,36 +140,36 @@
             </div>
             <div class="text-center">
                 <h3 class="h3">cipchk</h3>
-                <p class="text-grey">Lead director</p>
-                <p class="p-sm">Voluptate velit id mollit ex. Anim labore non dolore ad cupidatat aute reprehenderit ullamco culpa esse. Esse exercitation laboris culpa ipsum pariatur mollit minim culpa magna.</p>
+                <div class="text-grey">Lead director</div>
+                <div class="p-sm">Voluptate velit id mollit ex. Anim labore non dolore ad cupidatat aute reprehenderit ullamco culpa esse. Esse exercitation laboris culpa ipsum pariatur mollit minim culpa magna.</div>
             </div>
             <div class="text-center bg-grey-darker text-white">
                 <div nz-row>
                     <div nz-col [nzSpan]="8" class="py-sm">
-                        <h3 class="text-white">400</h3>
-                        <p>Photos</p>
+                        <h3 class="text-white mb0">400</h3>
+                        <div>Photos</div>
                     </div>
                     <div nz-col [nzSpan]="8" class="py-sm">
-                        <h3 class="text-white">2000</h3>
-                        <p>Likes</p>
+                        <h3 class="text-white mb0">2000</h3>
+                        <div>Likes</div>
                     </div>
                     <div nz-col [nzSpan]="8" class="py-sm">
-                        <h3 class="text-white">500</h3>
-                        <p>Following</p>
+                        <h3 class="text-white mb0">500</h3>
+                        <div>Following</div>
                     </div>
                 </div>
             </div>
         </nz-card>
     </div>
     <div nz-col [nzXs]="24" [nzSm]="8">
-        <nz-card nzNoPadding>
-            <div class="text-center bg-center py-lg text-white" style="background-image: url('./assets/img/bg9.jpg')">
-                <nz-avatar [nzSrc]="'./assets/img/1.png'" [nzSize]="'large'"></nz-avatar>
+        <nz-card class="ant-card__body-nopadding">
+            <div class="text-center bg-center py-lg text-white" style="background-image: url('./assets/img/bg9.jpg');">
+                <nz-avatar [nzSrc]="'./assets/img/1.png'"></nz-avatar>
                 <h3 class="text-white">cipchk</h3>
-                <p>
+                <div>
                     <i class="fa fa-github fa-fw"></i>
                     @cipchk
-                </p>
+                </div>
             </div>
             <div class="text-center bg-grey-darker text-white">
                 <div nz-row>
@@ -222,10 +220,10 @@
         <div nz-row nzType="flex" nzAlign="middle" class="bg-primary rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">123,456</div>
-                <p class="text-nowrap">Website Traffics</p>
+                <div class="text-nowrap">Website Traffics</div>
             </div>
             <div nz-col nzSpan="12">
-                <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="data"></mini-bar>
+                <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="data"></g2-mini-bar>
             </div>
         </div>
     </div>
@@ -233,10 +231,10 @@
         <div nz-row nzType="flex" nzAlign="middle" class="bg-success rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">234,567K</div>
-                <p class="text-nowrap">Website Impressions</p>
+                <div class="text-nowrap">Website Impressions</div>
             </div>
             <div nz-col nzSpan="12">
-                <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="data"></mini-bar>
+                <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="data"></g2-mini-bar>
             </div>
         </div>
     </div>
@@ -244,21 +242,21 @@
         <div nz-row nzType="flex" nzAlign="middle" class="bg-orange rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">$458,778</div>
-                <p class="text-nowrap">Total Sales</p>
+                <div class="text-nowrap">Total Sales</div>
             </div>
             <div nz-col nzSpan="12">
-                <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="data"></mini-bar>
+                <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="data"></g2-mini-bar>
             </div>
         </div>
     </div>
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
-        <div nz-row nzType="flex" nzAlign="middle" class="bg-pink rounded-md">
+        <div nz-row nzType="flex" nzAlign="middle" class="bg-magenta rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">456</div>
-                <p class="text-nowrap">Support Tickets</p>
+                <div class="text-nowrap">Support Tickets</div>
             </div>
             <div nz-col nzSpan="12">
-                <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="data"></mini-bar>
+                <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="data"></g2-mini-bar>
             </div>
         </div>
     </div>
@@ -267,44 +265,44 @@
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-primary text-center rounded-md">
             <div nz-col nzSpan="8" class="p-md text-white">
-                <i class="fa fa-users fa-2x"></i>
+                <i class="anticon anticon-user display-2"></i>
             </div>
             <div nz-col nzSpan="16" class="bg-white py-md">
-                <h3 class="h3">10k</h3>
-                <p class="text-grey-dark">VISITORS</p>
+                <h3 class="h3 mb0">10k</h3>
+                <div class="text-grey-dark">VISITORS</div>
             </div>
         </div>
     </div>
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
-        <div nz-row nzType="flex" nzAlign="middle" class="bg-pink text-center rounded-md">
+        <div nz-row nzType="flex" nzAlign="middle" class="bg-magenta text-center rounded-md">
             <div nz-col nzSpan="8" class="p-md text-white">
-                <i class="fa fa-music fa-2x"></i>
+                <i class="anticon anticon-sound display-2"></i>
             </div>
             <div nz-col nzSpan="16" class="bg-white py-md">
-                <h3 class="h3">100%</h3>
-                <p class="text-grey-dark">VOLUME</p>
+                <h3 class="h3 mb0">100%</h3>
+                <div class="text-grey-dark">VOLUME</div>
             </div>
         </div>
     </div>
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-grey-darker text-center rounded-md">
             <div nz-col nzSpan="8" class="p-md text-white">
-                <i class="fa fa-code-fork fa-2x"></i>
+                <i class="anticon anticon-fork display-2"></i>
             </div>
             <div nz-col nzSpan="16" class="bg-white py-md">
-                <h3 class="h3">150</h3>
-                <p class="text-grey-dark">FORKS</p>
+                <h3 class="h3 mb0">150</h3>
+                <div class="text-grey-dark">FORKS</div>
             </div>
         </div>
     </div>
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-green text-center rounded-md">
             <div nz-col nzSpan="8" class="p-md text-white">
-                <i class="fa fa-inbox fa-2x"></i>
+                <i class="anticon anticon-message display-2"></i>
             </div>
             <div nz-col nzSpan="16" class="bg-white py-md">
-                <h3 class="h3">10</h3>
-                <p class="text-grey-dark">NEW MESSAGES</p>
+                <h3 class="h3 mb0">10</h3>
+                <div class="text-grey-dark">NEW MESSAGES</div>
             </div>
         </div>
     </div>
@@ -313,33 +311,33 @@
     <div nz-col nzXs="24" nzSm="12" nzMd="8" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-green-dark text-white rounded-md">
             <div nz-col nzSpan="8" class="p-md text-center">
-                <i class="icon-share fa-3x"></i>
+                <i class="icon-share display-1"></i>
             </div>
             <div nz-col nzSpan="16" class="bg-green-light p-md">
-                <h2 class="h2 text-white">150</h2>
-                <p class="text-lg text-uppercase">New connections</p>
+                <h2 class="h2 text-white mb0">150</h2>
+                <div class="text-lg text-uppercase">New connections</div>
             </div>
         </div>
     </div>
     <div nz-col nzXs="24" nzSm="12" nzMd="8" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-red-dark text-white rounded-md">
             <div nz-col nzSpan="8" class="p-md text-center">
-                <i class="icon-star fa-3x"></i>
+                <i class="icon-star display-1"></i>
             </div>
             <div nz-col nzSpan="16" class="bg-red-light p-md">
-                <h2 class="h2 text-white">7000</h2>
-                <p class="text-lg text-uppercase">RATINGS RECEIVED</p>
+                <h2 class="h2 text-white mb0">7000</h2>
+                <div class="text-lg text-uppercase">RATINGS RECEIVED</div>
             </div>
         </div>
     </div>
     <div nz-col nzXs="24" nzSm="12" nzMd="8" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-warning-dark text-white rounded-md">
             <div nz-col nzSpan="8" class="p-md text-center">
-                <i class="icon-trophy fa-3x"></i>
+                <i class="icon-trophy display-1"></i>
             </div>
             <div nz-col nzSpan="16" class="bg-warning-light p-md">
-                <h2 class="h2 text-white">15</h2>
-                <p class="text-lg text-uppercase">ACHIEVEMENTS</p>
+                <h2 class="h2 text-white mb0">15</h2>
+                <div class="text-lg text-uppercase">ACHIEVEMENTS</div>
             </div>
         </div>
     </div>
@@ -348,11 +346,11 @@
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-green text-white text-center rounded-md">
             <div nz-col nzSpan="10" class="p-md">
-                <i class="fa fa-tasks fa-5x"></i>
+                <i class="anticon anticon-book display-1"></i>
             </div>
             <div nz-col nzSpan="14" class="py-md">
-                <h1 class="text-white">120</h1>
-                <p>New Tasks!</p>
+                <h1 class="text-white mb0">120</h1>
+                <div>New Tasks!</div>
             </div>
             <a nz-col nzSpan="24" (click)="msg.info('view')" class="d-block p-sm bg-grey-darker text-white">
                 <div class="float-left">View Details</div>
@@ -363,11 +361,11 @@
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-primary text-white text-center rounded-md">
             <div nz-col nzSpan="10" class="p-md">
-                <i class="fa fa-comments fa-5x"></i>
+                <i class="anticon anticon-message display-1"></i>
             </div>
             <div nz-col nzSpan="14" class="py-md">
-                <h1 class="text-white">36</h1>
-                <p>New Comments!</p>
+                <h1 class="text-white mb0">36</h1>
+                <div>New Comments!</div>
             </div>
             <a nz-col nzSpan="24" (click)="msg.info('view')" class="d-block p-sm bg-grey-darker text-white">
                 <div class="float-left">View Details</div>
@@ -378,11 +376,11 @@
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-warning text-white text-center rounded-md">
             <div nz-col nzSpan="10" class="p-md">
-                <i class="fa fa-shopping-cart fa-5x"></i>
+                <i class="anticon anticon-shopping-cart display-1"></i>
             </div>
             <div nz-col nzSpan="14" class="py-md">
-                <h1 class="text-white">110</h1>
-                <p>New Orders!</p>
+                <h1 class="text-white mb0">110</h1>
+                <div>New Orders!</div>
             </div>
             <a nz-col nzSpan="24" (click)="msg.info('view')" class="d-block p-sm bg-grey-darker text-white">
                 <div class="float-left">View Details</div>
@@ -393,11 +391,11 @@
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-red text-white text-center rounded-md">
             <div nz-col nzSpan="10" class="p-md">
-                <i class="fa fa-support fa-5x"></i>
+                <i class="anticon anticon-customer-service display-1"></i>
             </div>
             <div nz-col nzSpan="14" class="py-md">
-                <h1 class="text-white">19</h1>
-                <p>Support Tickets!</p>
+                <h1 class="text-white mb0">19</h1>
+                <div>Support Tickets!</div>
             </div>
             <a nz-col nzSpan="24" (click)="msg.info('view')" class="d-block p-sm bg-grey-darker text-white">
                 <div class="float-left">View Details</div>
@@ -408,7 +406,7 @@
 </div>
 <div nz-row [nzGutter]="16">
     <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
-        <nz-card nzTitle="服务">
+        <nz-card nzTitle="服务" [nzExtra]="extra">
             <ng-template #extra><a (click)="msg.info('更多服务')">更多服务</a></ng-template>
             <div class="pb-md">
                 <i class="anticon anticon-check-circle-o text-green"></i> 已开通 16 个
@@ -423,8 +421,8 @@
                                     <i class="anticon anticon-laptop display-2 text-blue"></i>
                                 </div>
                                 <div nz-col [nzSpan]="16">
-                                    <h4 class="fs-md text-blue">服务注册中心</h4>
-                                    <p class="text-grey">Register Server</p>
+                                    <h4 class="fs-md text-blue mb0">服务注册中心</h4>
+                                    <div class="text-grey">Register Server</div>
                                 </div>
                             </div>
                         </div>
@@ -434,8 +432,8 @@
                                     <i class="anticon anticon-rocket display-2 text-red"></i>
                                 </div>
                                 <div nz-col [nzSpan]="16">
-                                    <h4 class="fs-md text-blue">可靠消息</h4>
-                                    <p class="text-grey">Msg Broker</p>
+                                    <h4 class="fs-md text-blue mb0">可靠消息</h4>
+                                    <div class="text-grey">Msg Broker</div>
                                 </div>
                             </div>
                         </div>
@@ -447,8 +445,8 @@
                                     <i class="anticon anticon-usb display-2 text-purple"></i>
                                 </div>
                                 <div nz-col [nzSpan]="16">
-                                    <h4 class="fs-md text-blue">分布式资源管理</h4>
-                                    <p class="text-grey">DRM</p>
+                                    <h4 class="fs-md text-blue mb0">分布式资源管理</h4>
+                                    <div class="text-grey">DRM</div>
                                 </div>
                             </div>
                         </div>
@@ -458,8 +456,8 @@
                                     <i class="anticon anticon-fork display-2 text-pink"></i>
                                 </div>
                                 <div nz-col [nzSpan]="16">
-                                    <h4 class="fs-md text-blue">分布式数据管理</h4>
-                                    <p class="text-grey">ZDC</p>
+                                    <h4 class="fs-md text-blue mb0">分布式数据管理</h4>
+                                    <div class="text-grey">ZDC</div>
                                 </div>
                             </div>
                         </div>
@@ -473,8 +471,8 @@
                                     <i class="anticon anticon-laptop display-2 text-blue"></i>
                                 </div>
                                 <div nz-col [nzSpan]="16">
-                                    <h4 class="fs-md text-blue">服务注册中心</h4>
-                                    <p class="text-grey">Register Server</p>
+                                    <h4 class="fs-md text-blue mb0">服务注册中心</h4>
+                                    <div class="text-grey">Register Server</div>
                                 </div>
                             </div>
                         </div>
@@ -484,8 +482,8 @@
                                     <i class="anticon anticon-rocket display-2 text-red"></i>
                                 </div>
                                 <div nz-col [nzSpan]="16">
-                                    <h4 class="fs-md text-blue">可靠消息</h4>
-                                    <p class="text-grey">Msg Broker</p>
+                                    <h4 class="fs-md text-blue mb0">可靠消息</h4>
+                                    <div class="text-grey">Msg Broker</div>
                                 </div>
                             </div>
                         </div>
@@ -498,7 +496,7 @@
                                 </div>
                                 <div nz-col [nzSpan]="16">
                                     <h4 class="fs-md text-blue">分布式资源管理</h4>
-                                    <p class="text-grey">DRM</p>
+                                    <div class="text-grey">DRM</div>
                                 </div>
                             </div>
                         </div>
@@ -509,7 +507,7 @@
                                 </div>
                                 <div nz-col [nzSpan]="16">
                                     <h4 class="fs-md text-blue">分布式数据管理</h4>
-                                    <p class="text-grey">ZDC</p>
+                                    <div class="text-grey">ZDC</div>
                                 </div>
                             </div>
                         </div>
@@ -525,14 +523,14 @@
                     <i class="anticon anticon-database display-1"></i>
                 </div>
                 <div nz-col [nzSpan]="15">
-                    <h3 class="font-weight-bold">暂无服务器</h3>
+                    <h3 class="font-weight-bold mb0">暂无服务器</h3>
                     <div class="pt-sm text-grey-dark">
                         <nz-badge [nzStatus]="'error'"></nz-badge>
                         服务器申请失败
                     </div>
                 </div>
                 <div nz-col [nzSpan]="5" class="text-right">
-                    <button nz-button (click)="msg.info('Apply')" [nzType]="'default'" [nzSize]="'large'">
+                    <button nz-button (click)="msg.info('Apply')" [nzType]="'default'">
                         <span>申请</span>
                     </button>
                 </div>
@@ -540,7 +538,7 @@
         </nz-card>
     </div>
     <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
-        <nz-card nzTitle="华东 1" nzNoPadding>
+        <nz-card nzTitle="华东 1" class="ant-card__body-nopadding" [nzExtra]="extra">
             <ng-template #extra>
                 <nz-tooltip [nzTitle]="'购买实例'">
                     <span nz-tooltip><i class="anticon anticon-shopping-cart display-3"></i></span>
@@ -593,7 +591,7 @@
             </div>
             <div nz-col [nzSpan]="6">
                 <strong class="display-2">10</strong> 个
-                <p class="text-grey">运行测压任务</p>
+                <div class="text-grey">运行测压任务</div>
             </div>
             <div nz-col [nzSpan]="5">
                 <nz-badge [nzStatus]="'success'"></nz-badge>
@@ -622,7 +620,7 @@
                     [nzTitle]="'喜欢就开启此内容提醒吧！'"
                     [nzOkText]="'立即开启'" [nzCancelText]="'下次再说'"
                     (nzOnConfirm)="msg.success('开启提醒')" (nzOnCancel)="msg.error('取消提醒')"
-                    style="display:inline-block;padding-top:15px;">
+                    style="display:inline-block; padding-top:15px;">
                     <span nz-popconfirm></span>
                 </nz-popconfirm>
                 <span class="pr-lg">
@@ -635,59 +633,59 @@
 </div>
 <div nz-row [nzGutter]="16">
     <div nz-col nzXs="24" nzSm="12" nzMd="8" class="mb-md">
-        <nz-card nzNoPadding class="bg-green rounded-md">
+        <nz-card class="ant-card__body-nopadding bg-green rounded-md">
             <div class="p-md">
                 <div class="h5 pb-sm text-white">Received all time</div>
-                <mini-area
+                <g2-mini-area
                     color="#fff"
                     height="46"
-                    [data]="data"></mini-area>
+                    [data]="data"></g2-mini-area>
             </div>
             <div class="text-center bg-grey-darker text-white">
                 <div nz-row>
                     <div nz-col [nzSpan]="8" class="py-sm">
-                        <h3 class="text-white">400</h3>
-                        <p>Photos</p>
+                        <h3 class="text-white mb0">400</h3>
+                        <div>Photos</div>
                     </div>
                     <div nz-col [nzSpan]="8" class="py-sm">
-                        <h3 class="text-white">2000</h3>
-                        <p>Likes</p>
+                        <h3 class="text-white mb0">2000</h3>
+                        <div>Likes</div>
                     </div>
                     <div nz-col [nzSpan]="8" class="py-sm">
-                        <h3 class="text-white">500</h3>
-                        <p>Following</p>
+                        <h3 class="text-white mb0">500</h3>
+                        <div>Following</div>
                     </div>
                 </div>
             </div>
         </nz-card>
     </div>
     <div nz-col nzXs="24" nzSm="12" nzMd="8" class="mb-md">
-        <nz-card nzNoPadding class="bg-green rounded-md">
+        <nz-card class="ant-card__body-nopadding bg-green rounded-md">
             <div class="p-md">
                 <div class="h5 pb-sm text-white">Monthly incomes</div>
-                <mini-area
+                <g2-mini-area
                     color="#fff"
                     height="46"
-                    [data]="data"></mini-area>
+                    [data]="data"></g2-mini-area>
             </div>
             <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="bg-grey-darker py-sm text-center">
                 <div nz-col [nzSpan]="16">
-                    <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="data"></mini-bar>
+                    <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="data"></g2-mini-bar>
                 </div>
                 <div nz-col [nzSpan]="8">
-                    <p class="text-white">+150</p>
-                    <p class="text-grey">From last month</p>
+                    <div class="text-white">+150</div>
+                    <div class="text-grey">From last month</div>
                 </div>
             </div>
             <div class="py-sm text-center bg-white text-grey">
                 <div nz-row>
                     <div nz-col [nzSpan]="12">
-                        <p class="text-grey-dark">Gross income</p>
-                        <h4 class="h4">12000</h4>
+                        <div class="text-grey-dark">Gross income</div>
+                        <h4 class="h4 mb0">12000</h4>
                     </div>
                     <div nz-col [nzSpan]="12">
-                        <p class="text-grey-dark">Net income</p>
-                        <h4 class="h4">5100</h4>
+                        <div class="text-grey-dark">Net income</div>
+                        <h4 class="h4 mb0">5100</h4>
                     </div>
                 </div>
             </div>
@@ -699,8 +697,8 @@
                 <img class="img-fluid align-middle" src="./assets/img/bg1.jpg" alt="" />
             </div>
             <div nz-col nzSpan="8" class="text-white text-center">
-                <h2 class="h1 text-white">11°</h2>
-                <p class="py-sm">Cold</p>
+                <h2 class="h1 text-white mb0">11°</h2>
+                <div class="py-sm">Cold</div>
                 <i class="fa fa-sun-o fa-2x"></i>
             </div>
         </div>
@@ -711,21 +709,21 @@
         <nz-card class="ant-card__img">
             <img class="img" src="//os.alipayobjects.com/rmsportal/GhjqstwSgxBXrZS.png">
             <div class="p-md">
-                <h3 class="h3">ANT DESIGN</h3>
-                <p class="text-grey">A UI Design Language</p>
+                <h3 class="h3 mb0">ANT DESIGN</h3>
+                <div class="text-grey">A UI Design Language</div>
                 <ol class="list-styled text-lg pt-md">
                     <li>Designed by experienced team, and showcase dozens of inspiring projects.</li>
                     <li>Provide solutions for usual problems that may be encountered while developing enterprise-like complex UIs.</li>
                     <li>Dozens of flexible and practical reusable components that increase your productivity.</li>
                 </ol>
-                <p class="pt-md">
+                <div class="pt-md">
                     <a class="text-grey" href="//ng.ant.design" target="_blank">View Site...</a>
-                </p>
+                </div>
             </div>
         </nz-card>
     </div>
     <div nz-col nzXs="24" nzMd="12">
-        <nz-card [nzTitle]="nzTitle" nzNoPadding>
+        <nz-card [nzTitle]="nzTitle" class="ant-card__body-nopadding" [nzTitle]="nzTitle">
             <ng-template #nzTitle>
                 Recent Posts
                 <small class="text-sm font-weight-normal">Venenatis portauam Inceptos ameteiam</small>
@@ -733,25 +731,25 @@
             <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point"
                 *ngFor="let item of todoData">
                 <div nz-col [nzSpan]="4" class="text-center">
-                    <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'" [nzSize]="'large'"></nz-avatar>
+                    <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'"></nz-avatar>
                 </div>
                 <div nz-col [nzSpan]="20">
                     <strong>{{item.name}}</strong>
-                    <p>{{item.content}}</p>
+                    <div>{{item.content}}</div>
                 </div>
             </div>
         </nz-card>
     </div>
     <div nz-col nzXs="24" nzMd="12">
-        <nz-card nzTitle="Todo lists" nzNoPadding>
+        <nz-card nzTitle="Todo lists" class="ant-card__body-nopadding">
             <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point"
                 *ngFor="let item of todoData">
                 <div nz-col [nzSpan]="4" class="text-center">
-                    <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'" [nzSize]="'large'"></nz-avatar>
+                    <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'"></nz-avatar>
                 </div>
                 <div nz-col [nzSpan]="18">
                     <strong>{{item.name}}</strong>
-                    <p [class.text-deleted]="item.completed">{{item.content}}</p>
+                    <div [class.text-deleted]="item.completed">{{item.content}}</div>
                 </div>
                 <div nz-col [nzSpan]="2" class="text-right pr-md">
                     <nz-dropdown [nzPlacement]="'topRight'">
@@ -762,7 +760,6 @@
                             <li nz-menu-item (click)="todoData.splice(todoData.indexOf(item), 1)">Delted</li>
                         </ul>
                     </nz-dropdown>
-
                 </div>
             </div>
         </nz-card>

@@ -18,8 +18,8 @@ export class HeaderStorageComponent {
     @HostListener('click')
     _click() {
         this.confirmServ.confirm({
-            title: 'Make sure clear all local storage?',
-            onOk: () => {
+            nzTitle: 'Make sure clear all local storage?',
+            nzOnOk: () => {
                 localStorage.clear();
                 this.messageServ.success('Clear Finished!');
             }

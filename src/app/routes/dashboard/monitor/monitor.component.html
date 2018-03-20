@@ -28,12 +28,12 @@
         <nz-card nzTitle="活动情况预测" [nzBordered]="false" class="mb-lg">
             <div class="active-chart">
                 <number-info subTitle="目标评估" total="有望达到预期"></number-info>
-                <mini-area [animate]="false"
+                <g2-mini-area [animate]="false"
                         [line]="true"
                         [borderWidth]="2"
                         [height]="84"
                         [yAxis]="activeYAxis"
-                        [data]="activeData"></mini-area>
+                        [data]="activeData"></g2-mini-area>
                 <ng-container *ngIf="activeData?.length > 0">
                     <div class="active-grid">
                         <p>{{activeStat.max}} 亿元</p>
@@ -48,7 +48,7 @@
             </div>
         </nz-card>
         <nz-card nzTitle="券核效率" [nzBordered]="false" [nzBodyStyle]="{'text-align': 'center'}" class="mb-lg">
-            <gauge [title]="'跳出率'" [height]="180" [percent]="87" [format]="couponFormat"></gauge>
+            <g2-gauge [title]="'跳出率'" [height]="180" [percent]="87" [format]="couponFormat"></g2-gauge>
         </nz-card>
     </div>
 </div>
@@ -57,42 +57,42 @@
         <nz-card nzTitle="各品类占比" [nzBordered]="false" class="pie-card">
             <div nz-row [nzGutter]="4" style="padding:16px 0">
                 <div nz-col [nzSpan]="8">
-                    <pie [animate]="false"
+                    <g2-pie [animate]="false"
                          [percent]="28"
                          subTitle="中式快餐"
                          total="28%"
                          [height]="128"
-                         [lineWidth]="2"></pie>
+                         [lineWidth]="2"></g2-pie>
                 </div>
                 <div nz-col [nzSpan]="8">
-                    <pie [animate]="false"
+                    <g2-pie [animate]="false"
                          color="#5DDECF"
                          [percent]="22"
                          subTitle="西餐"
                          total="22%"
                          [height]="128"
-                         [lineWidth]="2"></pie>
+                         [lineWidth]="2"></g2-pie>
                 </div>
                 <div nz-col [nzSpan]="8">
-                    <pie [animate]="false"
+                    <g2-pie [animate]="false"
                          color="#2FC25B"
                          [percent]="32"
                          subTitle="火锅"
                          total="32%"
                          [height]="128"
-                         [lineWidth]="2"></pie>
+                         [lineWidth]="2"></g2-pie>
                 </div>
             </div>
         </nz-card>
     </div>
     <div nz-col nzXs="24" nzSm="24" nzLg="6" class="mb-lg">
         <nz-card nzTitle="热门搜索" [nzBordered]="false" [nzBodyStyle]="{'overflow': 'hidden'}">
-            <tag-cloud [data]="tags" [height]="165"></tag-cloud>
+            <g2-tag-cloud [data]="tags" [height]="165"></g2-tag-cloud>
         </nz-card>
     </div>
     <div nz-col nzXs="24" nzSm="24" nzLg="6" class="mb-lg">
         <nz-card nzTitle="资源剩余" [nzBordered]="false" [nzBodyStyle]="{'overflow': 'hidden'}">
-            <water-wave [title]="'补贴资金剩余'" [percent]="34" [height]="165"></water-wave>
+            <g2-water-wave [title]="'补贴资金剩余'" [percent]="34" [height]="165"></g2-water-wave>
         </nz-card>
     </div>
 </div>

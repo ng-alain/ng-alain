@@ -1,10 +1,10 @@
 <div class="aside-inner">
-    <nz-dropdown nzTrigger="click" class="user-block clearfix">
+    <nz-dropdown nzTrigger="click" class="user-block">
         <div nz-dropdown class="user-block-dropdown">
-            <nz-avatar class="avatar" [nzIcon]="'user'" [nzSize]="'large'"></nz-avatar>
+            <nz-avatar class="avatar" [nzSrc]="settings.user.avatar"></nz-avatar>
             <div class="info">
                 <strong>{{settings.user.name}}</strong>
-                <p class="text-truncate">{{settings.user.email}}</p>
+                <p class="text-truncate mb0">{{settings.user.email}}</p>
             </div>
         </div>
         <ul nz-menu>

@@ -1,0 +1,82 @@
+<nz-card [nzBordered]="false">
+    <form nz-form [nzLayout]="'inline'">
+        <standard-form-row [title]="'所属类目'" block style="padding-bottom: 11px;">
+            <nz-form-item>
+                <nz-form-control>
+                    <tag-select>
+                        <nz-tag *ngFor="let i of categories; let idx = index" nzMode="checkable" [nzChecked]="i.value" (nzCheckedChange)="changeCategory($event, idx)">
+                            {{i.text}}
+                        </nz-tag>
+                    </tag-select>
+                </nz-form-control>
+            </nz-form-item>
+        </standard-form-row>
+        <standard-form-row [title]="'其它选项'" grid last>
+            <nz-row [nzGutter]="16">
+                <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="10" nzXl="8">
+                    <nz-form-item>
+                        <nz-form-label nzFor="rate">作者</nz-form-label>
+                        <nz-form-control nzXs="24" nzSm="24" nzMd="12">
+                            <nz-select [(ngModel)]="q.user" name="user" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" style="width: 200px;">
+                                <nz-option [nzLabel]="'王昭君'" [nzValue]="'lisa'"></nz-option>
+                                <nz-option [nzLabel]="'李白'" [nzValue]="'libai'"></nz-option>
+                                <nz-option [nzLabel]="'妲己'" [nzValue]="'daji'"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </nz-col>
+                <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="10" nzXl="8">
+                    <nz-form-item>
+                        <nz-form-label nzFor="rate">好评度</nz-form-label>
+                        <nz-form-control nzXs="24" nzSm="24" nzMd="12">
+                            <nz-select [(ngModel)]="q.rate" name="rate" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" style="width: 200px;">
+                                <nz-option [nzLabel]="'优秀'" [nzValue]="'good'"></nz-option>
+                                <nz-option [nzLabel]="'普通'" [nzValue]="'normal'"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </nz-col>
+            </nz-row>
+        </standard-form-row>
+    </form>
+</nz-card>
+<nz-list [nzLoading]="loading" [nzDataSource]="list"
+         [nzRenderItem]="item"
+         [nzGrid]="{ gutter: 24, xl: 6, lg: 8, md: 8, sm: 12, xs: 24 }">
+    <ng-template #item let-item>
+        <nz-list-item>
+            <nz-card nzHoverable [nzActions]="[op1,op2,op3,op4]">
+                <ng-template #op1>
+                    <nz-tooltip [nzTitle]="'下载'"><i nz-tooltip class="anticon anticon-download"></i></nz-tooltip>
+                </ng-template>
+                <ng-template #op2>
+                    <nz-tooltip [nzTitle]="'编辑'"><i nz-tooltip class="anticon anticon-edit"></i></nz-tooltip>
+                </ng-template>
+                <ng-template #op3>
+                    <nz-tooltip [nzTitle]="'分享'"><i nz-tooltip class="anticon anticon-share-alt"></i></nz-tooltip>
+                </ng-template>
+                <ng-template #op4>
+                    <nz-dropdown [nzPlacement]="'bottomLeft'">
+                        <i nz-dropdown class="anticon anticon-ellipsis"></i>
+                        <ul nz-menu>
+                            <li nz-menu-item>1st menu item</li>
+                            <li nz-menu-item>2st menu item</li>
+                            <li nz-menu-item>3st menu item</li>
+                        </ul>
+                    </nz-dropdown>
+                </ng-template>
+                <div nz-card-meta
+                    [nzTitle]="item.title"
+                    [nzAvatar]="nzAvatar">
+                    <ng-template #nzAvatar>
+                        <nz-avatar nzSize="small" [nzSrc]="item.avatar"></nz-avatar>
+                    </ng-template>
+                </div>
+                <div class="card-info d-flex">
+                    <div><p>活跃用户</p><p>{{item.activeUser}}<em class="wan">万</em></p></div>
+                    <div><p>新增用户</p><p>{{item.newUser | number: '3.'}}</p></div>
+                </div>
+            </nz-card>
+        </nz-list-item>
+    </ng-template>
+</nz-list>

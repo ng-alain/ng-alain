@@ -17,6 +17,7 @@ export class ProBasicListComponent implements OnInit {
     constructor(private http: _HttpClient, public msg: NzMessageService) {}
 
     ngOnInit() {
+        this.getData();
     }
 
     getData() {

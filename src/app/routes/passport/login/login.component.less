@@ -1,64 +1,34 @@
-@import '~@delon/theme/styles/antd/themes/default.less';
+@import '~@delon/theme/styles/default';
 
 :host {
-	display: block;
-	width: 368px;
-	margin: 0 auto;
+    display: block;
+    width: 368px;
+    margin: 0 auto;
 
 	::ng-deep {
-		.tabs {
-			padding: 0 2px;
-			margin: 0 -2px;
-			.ant-tabs-tab {
-				font-size: 16px;
-				line-height: 24px;
-			}
-			.ant-input-affix-wrapper .ant-input:not(:first-child) {
-				padding-left: 34px;
-			}
-		}
-
-		.ant-tabs .ant-tabs-bar {
-			border-bottom: 0;
-			margin-bottom: 24px;
-			text-align: center;
-		}
-
-		.ant-form-item {
-			margin-bottom: 24px;
+        .ant-tabs .ant-tabs-bar {
+          border-bottom: 0;
+          margin-bottom: 24px;
+          text-align: center;
+        }
+        .ant-tabs-tab {
+            font-size: 16px;
+            line-height: 24px;
+        }
+        .ant-input-affix-wrapper .ant-input:not(:first-child) {
+            padding-left: 34px;
         }
 
-        .icon-alipay, .icon-taobao, .icon-weibo {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            background: url('https://gw.alipayobjects.com/zos/rmsportal/itDzjUnkelhQNsycranf.svg');
+        .icon {
+            font-size: 24px;
+            color: rgba(0, 0, 0, 0.2);
             margin-left: 16px;
             vertical-align: middle;
             cursor: pointer;
-        }
-
-        .icon-alipay {
-            background-position: -24px 0;
+            transition: color .3s;
 
             &:hover {
-                background-position: 0 0;
-            }
-        }
-
-        .icon-taobao {
-            background-position: -24px -24px;
-
-            &:hover {
-                background-position: 0 -24px;
-            }
-        }
-
-        .icon-weibo {
-            background-position: -24px -48px;
-
-            &:hover {
-                background-position: 0 -48px;
+                color: @primary-color;
             }
         }
 
@@ -67,8 +37,12 @@
             margin-top: 24px;
             line-height: 22px;
 
+            nz-tooltip {
+                vertical-align: middle;
+            }
+
             .register {
-            float: right;
+                float: right;
             }
         }
 	}

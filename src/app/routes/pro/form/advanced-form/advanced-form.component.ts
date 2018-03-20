@@ -118,9 +118,9 @@ export class AdvancedFormComponent implements OnInit {
     }
 
     _submitForm() {
-        console.log(this.form.value);
         for (const i in this.form.controls) {
             this.form.controls[ i ].markAsDirty();
+            this.form.controls[ i ].updateValueAndValidity();
         }
         if (this.form.invalid) return ;
     }

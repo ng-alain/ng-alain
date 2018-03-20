@@ -3,12 +3,10 @@ import { Component, HostBinding, ViewChild, Input, OnInit, ElementRef, AfterView
 @Component({
     selector: 'header-search',
     template: `
-    <nz-input nzPlaceHolder='{{ "top-search-ph" | translate}}' [(ngModel)]="q"
-        (nzFocus)="qFocus()" (nzBlur)="qBlur()">
-        <ng-template #prefix>
-            <i class="anticon anticon-search"></i>
-        </ng-template>
-    </nz-input>
+    <nz-input-group nzAddOnBeforeIcon="anticon anticon-search">
+        <input nz-input [(ngModel)]="q" (focus)="qFocus()" (blur)="qBlur()"
+            [placeholder]="'top-search-ph' | translate">
+    </nz-input-group>
     `
 })
 export class HeaderSearchComponent implements AfterViewInit {
@@ -26,7 +24,6 @@ export class HeaderSearchComponent implements AfterViewInit {
     @Input()
     set toggleChange(value: boolean) {
         if (typeof value === 'undefined') return;
-        console.log('toggleChange', value);
         this.searchToggled = true;
         this.focus = true;
         setTimeout(() => this.qIpt.focus(), 300);

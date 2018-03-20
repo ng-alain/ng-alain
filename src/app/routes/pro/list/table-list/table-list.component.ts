@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
+import { SimpleTableComponent, SimpleTableColumn, SimpleTableData } from '@delon/abc';
 
 @Component({
     selector: 'pro-table-list',
@@ -17,62 +18,73 @@ export class ProTableListComponent implements OnInit {
     };
     data: any[] = [];
     loading = false;
-    selectedRows: any[] = [];
-    curRows: any[] = [];
-    totalCallNo = 0;
-    allChecked = false;
-    indeterminate = false;
     status = [
-        { text: '关闭', value: false, type: 'default' },
-        { text: '运行中', value: false, type: 'processing' },
-        { text: '已上线', value: false, type: 'success' },
-        { text: '异常', value: false, type: 'error' }
+        { index: 0, text: '关闭', value: false, type: 'default', checked: false },
+        { index: 1, text: '运行中', value: false, type: 'processing', checked: false },
+        { index: 2, text: '已上线', value: false, type: 'success', checked: false },
+        { index: 3, text: '异常', value: false, type: 'error', checked: false }
     ];
-    sortMap: any = {};
-    expandForm = false;
-    modalVisible = false;
+    @ViewChild('st') st: SimpleTableComponent;
+    columns: SimpleTableColumn[] = [
+        { title: '', index: 'key', type: 'checkbox' },
+        { title: '规则编号', index: 'no' },
+        { title: '描述', index: 'description' },
+        {
+            title: '服务调用次数', index: 'callNo', type: 'number', format: (item: any) => `${item.callNo} 万`,
+            sorter: (a: any, b: any) => a.callNo - b.callNo
+        },
+        {
+            title: '状态', index: 'status', render: 'status',
+            filters: this.status,
+            filter: () => true
+        },
+        {
+            title: '更新时间', index: 'updatedAt', type: 'date',
+            sorter: (a: any, b: any) => a.updatedAt - b.updatedAt
+        },
+        {
+            title: '操作',
+            buttons: [
+                { text: '配置', click: (item: any) => this.msg.success(`配置${item.no}`) },
+                { text: '订阅警报', click: (item: any) => this.msg.success(`订阅警报${item.no}`) }
+            ]
+        }
+    ];
+    selectedRows: SimpleTableData[] = [];
     description = '';
+    totalCallNo = 0;
+    expandForm = false;
 
-    constructor(private http: _HttpClient, public msg: NzMessageService) {}
+    constructor(private http: _HttpClient, public msg: NzMessageService, private modalSrv: NzModalService) {}
 
     ngOnInit() {
         this.getData();
     }
 
     getData() {
-        this.pageChange(1).then(() => {
-            this.q.statusList = this.status.map((i, index) => i.value ? index : -1).filter(w => w !== -1);
-            if (this.q.status !== null && this.q.status > -1) this.q.statusList.push(this.q.status);
-            this.http.get('/rule', this.q).pipe(
-                tap((list: any[]) => {
-                    return list.map(i => {
-                        const statusItem = this.status[i.status];
-                        i.statusText = statusItem.text;
-                        i.statusType = statusItem.type;
-                        return i;
-                    });
-                })
-            ).subscribe(res => this.data = res);
-        });
-    }
-
-    add() {
-        this.modalVisible = true;
-        this.description = '';
-    }
-
-    save() {
         this.loading = true;
-        this.http.post('/rule', { description: this.description }).subscribe(() => {
-            this.getData();
-            setTimeout(() => this.modalVisible = false, 500);
-        });
+        this.q.statusList = this.status.filter(w => w.checked).map(item => item.index);
+        if (this.q.status !== null && this.q.status > -1) this.q.statusList.push(this.q.status);
+        this.http.get('/rule', this.q).pipe(
+            map((list: any[]) => list.map(i => {
+                const statusItem = this.status[i.status];
+                i.statusText = statusItem.text;
+                i.statusType = statusItem.type;
+                return i;
+            })),
+            tap(() => this.loading = false)
+        ).subscribe(res => this.data = res);
+    }
+
+    checkboxChange(list: SimpleTableData[]) {
+        this.selectedRows = list;
+        this.totalCallNo = this.selectedRows.reduce((total, cv) => total + cv.callNo, 0);
     }
 
     remove() {
         this.http.delete('/rule', { nos: this.selectedRows.map(i => i.no).join(',') }).subscribe(() => {
             this.getData();
-            this.clear();
+            this.st.clearCheck();
         });
     }
 
@@ -80,49 +92,16 @@ export class ProTableListComponent implements OnInit {
         this.msg.success(`审批了 ${this.selectedRows.length} 笔`);
     }
 
-    clear() {
-        this.selectedRows = [];
-        this.totalCallNo = 0;
-        this.data.forEach(i => i.checked = false);
-        this.refreshStatus();
-    }
-
-    checkAll(value: boolean) {
-        this.curRows.forEach(i => {
-            if (!i.disabled) i.checked = value;
-        });
-        this.refreshStatus();
-    }
-
-    refreshStatus() {
-        const allChecked = this.curRows.every(value => value.disabled || value.checked);
-        const allUnChecked = this.curRows.every(value => value.disabled || !value.checked);
-        this.allChecked = allChecked;
-        this.indeterminate = (!allChecked) && (!allUnChecked);
-        this.selectedRows = this.data.filter(value => value.checked);
-        this.totalCallNo = this.selectedRows.reduce((total, cv) => total + cv.callNo, 0);
-    }
-
-    sort(field: string, value: any) {
-        this.sortMap = {};
-        this.sortMap[field] = value;
-        this.q.sorter = value ? `${field}_${value}` : '';
-        this.getData();
-    }
-
-    dataChange(res: any) {
-        this.curRows = res;
-        this.refreshStatus();
-    }
-
-    pageChange(pi: number): Promise<any> {
-        this.q.pi = pi;
-        this.loading = true;
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                this.loading = false;
-                resolve();
-            }, 500);
+    add(tpl: TemplateRef<{}>) {
+        this.modalSrv.create({
+            nzTitle: '新建规则',
+            nzContent: tpl,
+            nzOnOk: () => {
+                this.loading = true;
+                this.http.post('/rule', { description: this.description }).subscribe(() => {
+                    this.getData();
+                });
+            }
         });
     }
 

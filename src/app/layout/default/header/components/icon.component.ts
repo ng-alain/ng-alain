@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
                         <small>Cloud</small>
                     </div>
                     <div nz-col [nzSpan]="6">
-                        <i class="anticon anticon-star-o bg-pink text-white"></i>
+                        <i class="anticon anticon-star-o bg-magenta text-white"></i>
                         <small>Star</small>
                     </div>
                     <div nz-col [nzSpan]="6">

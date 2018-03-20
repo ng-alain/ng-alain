@@ -1,32 +1,27 @@
 <div class="content__title">
     <h1>
         Dashboard
-        <small class="text-sm hidden-xs">Welcome !</small>
+        <small>Welcome !</small>
     </h1>
 </div>
-<div class="quick-menu" [class.show]="quickMenu" (click)="quickMenu=!quickMenu">
-    <div class="quick-menu-inner">
-        <div class="settings-ctrl">
-            <i class="anticon anticon-question-circle-o"></i>
-        </div>
-        <div class="list-group list-group-flush">
-            <a (click)="msg.info('item 1')" class="list-group-item">How do i create account?</a>
-            <a (click)="msg.info('item 2')" class="list-group-item">How do i create account?</a>
-            <a (click)="msg.info('item 3')" class="list-group-item">How do i create account?</a>
-            <a (click)="msg.info('item 4')" class="list-group-item">How do i create account?</a>
-            <a (click)="msg.info('item 5')" class="list-group-item">How do i create account?</a>
-        </div>
-    </div>
-</div>
+<quick-menu>
+    <nz-list [nzBordered]="false" [nzSplit]="false">
+        <nz-list-item><a routerLink="/">Home</a></nz-list-item>
+        <nz-list-item><a routerLink="/widgets">Widgets</a></nz-list-item>
+        <nz-list-item><a routerLink="/style/typography">typography</a></nz-list-item>
+        <nz-list-item><a routerLink="/style/gridmasonry">gridmasonry</a></nz-list-item>
+        <nz-list-item><a routerLink="/pro/result/success">success result</a></nz-list-item>
+    </nz-list>
+</quick-menu>
 <div nz-row nzGutter="16">
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
         <div nz-row nzType="flex" nzAlign="middle" class="bg-primary rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">123,456</div>
-                <p class="text-nowrap">Website Traffics</p>
+                <p class="text-nowrap mb0">Website Traffics</p>
             </div>
             <div nz-col nzSpan="12">
-                <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></mini-bar>
+                <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
             </div>
         </div>
     </div>
@@ -34,10 +29,10 @@
         <div nz-row nzType="flex" nzAlign="middle" class="bg-success rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">234,567K</div>
-                <p class="text-nowrap">Website Impressions</p>
+                <p class="text-nowrap mb0">Website Impressions</p>
             </div>
             <div nz-col nzSpan="12">
-                <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></mini-bar>
+                <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
             </div>
         </div>
     </div>
@@ -45,45 +40,45 @@
         <div nz-row nzType="flex" nzAlign="middle" class="bg-orange rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">$458,778</div>
-                <p class="text-nowrap">Total Sales</p>
+                <p class="text-nowrap mb0">Total Sales</p>
             </div>
             <div nz-col nzSpan="12">
-                <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></mini-bar>
+                <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
             </div>
         </div>
     </div>
     <div nz-col nzXs="24" nzSm="12" nzMd="6" class="mb-md">
-        <div nz-row nzType="flex" nzAlign="middle" class="bg-pink rounded-md">
+        <div nz-row nzType="flex" nzAlign="middle" class="bg-magenta rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">456</div>
-                <p class="text-nowrap">Support Tickets</p>
+                <p class="text-nowrap mb0">Support Tickets</p>
             </div>
             <div nz-col nzSpan="12">
-                <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></mini-bar>
+                <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
             </div>
         </div>
     </div>
 </div>
 <div nz-row nzGutter="16">
     <div nz-col nzXs="24" nzMd="12">
-        <nz-card [nzBordered]="false">
+        <nz-card [nzBordered]="false" [nzTitle]="title">
             <ng-template #title>
                 Sales Statistics
                 <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
             </ng-template>
-            <bar
+            <g2-bar
                 height="275"
-                [data]="salesData"></bar>
+                [data]="salesData"></g2-bar>
         </nz-card>
     </div>
     <div nz-col nzXs="24" nzMd="12">
-        <nz-card [nzTitle]="nzTitle" [nzBordered]="false">
-            <ng-template #nzTitle>
+        <nz-card [nzTitle]="title" [nzBordered]="false">
+            <ng-template #title>
                 Growth Rate
                 <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
             </ng-template>
-            <timeline [data]="offlineChartData" [height]="239" [padding]="[0, 0, 0, 0]"
-                      [titleMap]="{ y1: '客流量', y2: '支付笔数' }"></timeline>
+            <g2-timeline [data]="offlineChartData" [height]="239" [padding]="[0, 0, 0, 0]"
+                      [titleMap]="{ y1: '客流量', y2: '支付笔数' }"></g2-timeline>
         </nz-card>
     </div>
 </div>
@@ -106,33 +101,33 @@
         </nz-card>
     </div>
     <div nz-col nzXs="24" nzMd="12">
-        <nz-card [nzTitle]="nzTitle" [nzBordered]="false" nzNoPadding>
-            <ng-template #nzTitle>
+        <nz-card [nzTitle]="title" [nzBordered]="false" class="ant-card__body-nopadding">
+            <ng-template #title>
                 Recent Posts
                 <small class="text-sm font-weight-normal">Venenatis portauam Inceptos ameteiam</small>
             </ng-template>
             <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point"
                 *ngFor="let item of todoData">
                 <div nz-col [nzSpan]="4" class="text-center">
-                    <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'" [nzSize]="'large'"></nz-avatar>
+                    <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'"></nz-avatar>
                 </div>
                 <div nz-col [nzSpan]="20">
                     <strong>{{item.name}}</strong>
-                    <p>{{item.content}}</p>
+                    <p class="mb0">{{item.content}}</p>
                 </div>
             </div>
         </nz-card>
     </div>
     <div nz-col nzXs="24" nzMd="12">
-        <nz-card nzTitle="Todo lists" [nzBordered]="false" nzNoPadding>
+        <nz-card nzTitle="Todo lists" [nzBordered]="false" class="ant-card__body-nopadding">
             <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point"
                 *ngFor="let item of todoData">
                 <div nz-col [nzSpan]="4" class="text-center">
-                    <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'" [nzSize]="'large'"></nz-avatar>
+                    <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'"></nz-avatar>
                 </div>
                 <div nz-col [nzSpan]="18">
                     <strong>{{item.name}}</strong>
-                    <p [class.text-deleted]="item.completed">{{item.content}}</p>
+                    <p [class.text-deleted]="item.completed" class="mb0">{{item.content}}</p>
                 </div>
                 <div nz-col [nzSpan]="2" class="text-right pr-md">
                     <nz-dropdown [nzPlacement]="'topRight'">

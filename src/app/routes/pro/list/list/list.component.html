@@ -1,0 +1,18 @@
+<page-header #ph [title]="'搜索列表'">
+    <div class="text-center">
+        <nz-input-group nzSearch nzSize="large" [nzSuffix]="suffixButton" style="width: 520px;">
+            <input type="text" nz-input placeholder="请输入">
+            <ng-template #suffixButton>
+                <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
+            </ng-template>
+        </nz-input-group>
+    </div>
+    <ng-template #tab>
+        <nz-tabset [nzSelectedIndex]="pos">
+            <nz-tab *ngFor="let i of tabs" [nzTitle]="nzTitle">
+                <ng-template #nzTitle><div (click)="to(i)">{{i.tab}}</div></ng-template>
+            </nz-tab>
+        </nz-tabset>
+    </ng-template>
+</page-header>
+<router-outlet></router-outlet>

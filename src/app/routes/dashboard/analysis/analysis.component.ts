@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getTimeDistance, yuan } from '@delon/abc';
+import { getTimeDistance, yuan, SimpleTableColumn } from '@delon/abc';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
@@ -24,6 +24,12 @@ export class DashboardAnalysisComponent implements OnInit {
             total: 323234
         };
     });
+    searchColumn: SimpleTableColumn[] = [
+        { title: '排名', index: 'index' },
+        { title: '搜索关键词', index: 'keyword', click: (item: any) => this.msg.success(item.keyword) },
+        { type: 'number', title: '用户数', index: 'count', sorter: (a, b) => a.count - b.count },
+        { type: 'number', title: '周涨幅', index: 'range', render: 'range', sorter: (a, b) => a.range - b.range }
+    ];
 
     constructor(private http: _HttpClient, public msg: NzMessageService) {}
 
@@ -42,20 +48,6 @@ export class DashboardAnalysisComponent implements OnInit {
         const rank = getTimeDistance(type);
         this.q.start = rank[0];
         this.q.end = rank[1];
-    }
-
-    sort(sortName, sortValue) {
-        this.data.searchData = [
-            ...(<any[]>this.data.searchData).sort((a, b) => {
-                if (a[ sortName ] > b[ sortName ]) {
-                    return (sortValue === 'ascend') ? 1 : -1;
-                } else if (a[ sortName ] < b[ sortName ]) {
-                    return (sortValue === 'ascend') ? -1 : 1;
-                } else {
-                    return 0;
-                }
-            })
-        ];
     }
 
     salesType = 'all';
