@@ -12,7 +12,8 @@ export class HeaderFullScreenComponent {
 
     status = false;
 
-    @HostListener('window:resize') onResize() {
+    @HostListener('window:resize')
+    _resize() {
         this.status = screenfull.isFullscreen;
     }
 
