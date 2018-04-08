@@ -9,9 +9,7 @@
     </div>
     <ng-template #tab>
         <nz-tabset [nzSelectedIndex]="pos">
-            <nz-tab *ngFor="let i of tabs" [nzTitle]="nzTitle">
-                <ng-template #nzTitle><div (click)="to(i)">{{i.tab}}</div></ng-template>
-            </nz-tab>
+            <nz-tab *ngFor="let i of tabs" [nzTitle]="i.tab" (nzClick)="to(i)"></nz-tab>
         </nz-tabset>
     </ng-template>
 </page-header>
