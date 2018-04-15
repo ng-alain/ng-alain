@@ -6,7 +6,10 @@ import * as screenfull from 'screenfull';
     template: `
     <i class="anticon anticon-{{status ? 'shrink' : 'arrows-alt'}}"></i>
     {{(status ? 'fullscreen-exit' : 'fullscreen') | translate }}
-    `
+    `,
+    host: {
+        '[class.d-block]': 'true'
+    }
 })
 export class HeaderFullScreenComponent {
 
