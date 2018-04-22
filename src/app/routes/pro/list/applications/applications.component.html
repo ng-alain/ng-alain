@@ -65,13 +65,13 @@
                         </ul>
                     </nz-dropdown>
                 </ng-template>
-                <div nz-card-meta
+                <nz-card-meta
                     [nzTitle]="item.title"
                     [nzAvatar]="nzAvatar">
                     <ng-template #nzAvatar>
                         <nz-avatar nzSize="small" [nzSrc]="item.avatar"></nz-avatar>
                     </ng-template>
-                </div>
+                </nz-card-meta>
                 <div class="card-info d-flex">
                     <div><p>活跃用户</p><p>{{item.activeUser}}<em class="wan">万</em></p></div>
                     <div><p>新增用户</p><p>{{item.newUser | number: '3.'}}</p></div>

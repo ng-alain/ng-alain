@@ -27,7 +27,7 @@
             <nz-card nzHoverable *ngIf="item !== null" [nzActions]="[op1, op2]">
                 <ng-template #op1><a (click)="msg.success('操作一：' + item.id);">操作一</a></ng-template>
                 <ng-template #op2><a (click)="msg.success('操作二：' + item.id);">操作二</a></ng-template>
-                <div nz-card-meta
+                <nz-card-meta
                     [nzAvatar]="nzAvatar"
                     [nzTitle]="nzTitle"
                     [nzDescription]="nzDescription">
@@ -38,7 +38,7 @@
                     <ng-template #nzDescription>
                         <ellipsis>{{item.description}}</ellipsis>
                     </ng-template>
-                </div>
+                </nz-card-meta>
             </nz-card>
         </nz-list-item>
     </ng-template>

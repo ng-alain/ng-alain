@@ -40,14 +40,14 @@
             </ng-template>
             <div *ngFor="let item of notice" nz-card-grid class="project-grid">
                 <nz-card [nzBordered]="false" class="ant-card__body-nopadding mb0">
-                    <div nz-card-meta [nzTitle]="noticeTitle" [nzDescription]="item.description">
+                    <nz-card-meta [nzTitle]="noticeTitle" [nzDescription]="item.description">
                         <ng-template #noticeTitle>
                             <div class="card-title">
                                 <nz-avatar [nzSrc]="item.logo" [nzSize]="'small'"></nz-avatar>
                                 <a (click)="msg.info('to' + item.href)">{{item.title}}</a>
                             </div>
                         </ng-template>
-                    </div>
+                    </nz-card-meta>
                     <div class="project-item">
                         <a (click)="msg.info('show user: ' + item.member)">{{item.member}}</a>
                         <span *ngIf="item.updatedAt" class="datetime" title="{{item.updatedAt}}">

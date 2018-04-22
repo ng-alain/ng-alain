@@ -52,7 +52,7 @@
     "angular-qq-maps": "^1.0.1",
     "core-js": "^2.5.1",
     "file-saver": "^1.3.3",
-    "ng-zorro-antd": "^0.7.0-beta.2",
+    "ng-zorro-antd": "^0.7.0-beta.4",
     "ngx-countdown": "^2.0.0",
     "ngx-tinymce": "^1.0.1",
     "ngx-ueditor": "^1.1.0",

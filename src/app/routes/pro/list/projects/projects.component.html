@@ -46,11 +46,11 @@
         <nz-list-item>
             <nz-card nzHoverable [nzCover]="cover">
                 <ng-template #cover><img alt="{{item.title}}" src="{{item.cover}}"></ng-template>
-                <div nz-card-meta
+                <nz-card-meta
                     [nzTitle]="nzTitle"
                     [nzDescription]="item.subDescription">
                     <ng-template #nzTitle><a (click)="msg.success('标题：' + item.id);">{{item.title}}</a></ng-template>
-                </div>
+                </nz-card-meta>
                 <div class="card-item-content">
                     <span class="text-grey">{{item.updatedAt | _date:'fn'}}</span>
                     <avatar-list size="mini">
