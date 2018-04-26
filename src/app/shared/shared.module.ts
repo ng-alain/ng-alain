@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AlainThemeModule } from '@delon/theme';
 import { DelonABCModule } from '@delon/abc';
 import { DelonACLModule } from '@delon/acl';
+import { DelonFormModule } from '@delon/form';
 // i18n
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -14,13 +15,12 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { CountdownModule } from 'ngx-countdown';
 import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';
-// import { NzSchemaFormModule } from 'nz-schema-form';
+
 const THIRDMODULES = [
     NgZorroAntdModule,
     CountdownModule,
     UEditorModule,
-    NgxTinymceModule,
-    // NzSchemaFormModule
+    NgxTinymceModule
 ];
 // endregion
 
@@ -38,6 +38,7 @@ const DIRECTIVES = [];
         AlainThemeModule.forChild(),
         DelonABCModule,
         DelonACLModule,
+        DelonFormModule,
         // third libs
         ...THIRDMODULES
     ],
@@ -54,6 +55,7 @@ const DIRECTIVES = [];
         AlainThemeModule,
         DelonABCModule,
         DelonACLModule,
+        DelonFormModule,
         // i18n
         TranslateModule,
         // third libs

@@ -17,6 +17,7 @@ import { CacheComponent } from './cache/cache.component';
 import { DownFileComponent } from './downfile/downfile.component';
 import { XlsxComponent } from './xlsx/xlsx.component';
 import { ZipComponent } from './zip/zip.component';
+import { DelonFormComponent } from './form/form.component';
 
 const COMPONENTS = [
     SimpleTableComponent,
@@ -30,7 +31,8 @@ const COMPONENTS = [
     CacheComponent,
     DownFileComponent,
     XlsxComponent,
-    ZipComponent
+    ZipComponent,
+    DelonFormComponent
 ];
 
 @NgModule({

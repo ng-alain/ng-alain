@@ -15,6 +15,7 @@ import { CacheComponent } from './cache/cache.component';
 import { DownFileComponent } from './downfile/downfile.component';
 import { XlsxComponent } from './xlsx/xlsx.component';
 import { ZipComponent } from './zip/zip.component';
+import { DelonFormComponent } from './form/form.component';
 
 const routes: Routes = [
     { path: 'simple-table', component: SimpleTableComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
     { path: 'cache', component: CacheComponent },
     { path: 'downfile', component: DownFileComponent },
     { path: 'xlsx', component: XlsxComponent },
-    { path: 'zip', component: ZipComponent }
+    { path: 'zip', component: ZipComponent },
+    { path: 'form', component: DelonFormComponent }
 ];
 
 @NgModule({

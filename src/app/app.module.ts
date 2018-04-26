@@ -24,8 +24,8 @@ import { I18NService } from '@core/i18n/i18n.service';
 // third
 import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';
-// JSON-Schema form
-// import { JsonSchemaModule } from '@shared/json-schema/json-schema.module';
+// @delon/form: JSON Schema form
+import { JsonSchemaModule } from '@shared/json-schema/json-schema.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -70,8 +70,8 @@ export function StartupServiceFactory(startupService: StartupService): Function 
         NgxTinymceModule.forRoot({
             baseURL: '//cdn.bootcss.com/tinymce/4.7.4/'
         }),
-        // // JSON-Schema form
-        // JsonSchemaModule
+        // JSON-Schema form
+        JsonSchemaModule
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'zh-Hans' },

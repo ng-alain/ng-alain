@@ -1,0 +1,15 @@
+<div class="content__title">
+    <h1>
+        @delon/form, <a href="http://ng-alain.com/form" target="_blank">Document</a>
+    </h1>
+</div>
+<nz-card nzTitle="登录">
+    <sf
+        [schema]="schema"
+        [ui]="uiSchema"
+        [formData]="formData"
+        (formSubmit)="submit($event)"
+        (formChange)="change($event)"
+        (formError)="error($event)">
+    </sf>
+</nz-card>
