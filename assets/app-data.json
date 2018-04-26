@@ -78,6 +78,10 @@
             "i18n": "delon",
             "icon": "icon-magic-wand",
             "children": [{
+                "text": "Dynamic Form",
+                "link": "/delon/form",
+                "i18n": "dynamic-form"
+            }, {
                 "text": "Simple Table",
                 "link": "/delon/simple-table",
                 "i18n": "simple-table"
