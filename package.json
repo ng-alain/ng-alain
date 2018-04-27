@@ -108,8 +108,18 @@
       "editorconfig-tools fix",
       "git add"
     ],
-    "*.ts": ["npm run lint:ts", "git add"],
-    "src/**/*.less": ["npm run lint:style", "git add"]
+    "*.ts": [
+      "npm run lint:ts",
+      "git add"
+    ],
+    "src/**/*.less": [
+      "npm run lint:style",
+      "git add"
+    ]
   },
-  "browserslist": ["> 1%", "last 2 versions", "not ie <= 10"]
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
 }
