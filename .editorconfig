@@ -11,3 +11,6 @@ trim_trailing_whitespace = true
 [*.md]
 max_line_length = off
 trim_trailing_whitespace = false
+
+[*.{cmd,html,json,md,sh,txt,xml,yml}]
+indent_size = 2
