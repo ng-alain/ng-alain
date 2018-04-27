@@ -79,6 +79,8 @@
     "@types/z-schema": "^3.16.32",
     "codecov": "^3.0.0",
     "codelyzer": "~4.0.1",
+    "editorconfig-tools": "^0.1.1",
+    "husky": "^0.14.3",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
@@ -89,7 +91,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-remap-istanbul": "^0.6.0",
     "karma-sauce-launcher": "^1.2.0",
-    "lint-staged": "^5.0.0",
+    "lint-staged": "^7.0.5",
     "mockjs": "^1.0.1-beta3",
     "npm-run-all": "^4.1.1",
     "protractor": "~5.1.2",
@@ -102,8 +104,18 @@
     "xlsx": "^0.11.16"
   },
   "lint-staged": {
-    "src/**/*.ts": "lint:ts",
-    "src/**/*.less": "lint:style"
+    "*.{cmd,html,json,md,sh,txt,xml,yml}": [
+      "editorconfig-tools fix",
+      "git add"
+    ],
+    "*.ts": [
+      "npm run lint:ts",
+      "git add"
+    ],
+    "src/**/*.less": [
+      "npm run lint:style",
+      "git add"
+    ]
   },
   "browserslist": [
     "> 1%",
