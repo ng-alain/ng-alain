@@ -17,10 +17,10 @@ import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';
 
 const THIRDMODULES = [
-    NgZorroAntdModule,
-    CountdownModule,
-    UEditorModule,
-    NgxTinymceModule
+  NgZorroAntdModule,
+  CountdownModule,
+  UEditorModule,
+  NgxTinymceModule,
 ];
 // endregion
 
@@ -30,39 +30,39 @@ const DIRECTIVES = [];
 // endregion
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        RouterModule,
-        ReactiveFormsModule,
-        AlainThemeModule.forChild(),
-        DelonABCModule,
-        DelonACLModule,
-        DelonFormModule,
-        // third libs
-        ...THIRDMODULES
-    ],
-    declarations: [
-        // your components
-        ...COMPONENTS,
-        ...DIRECTIVES
-    ],
-    exports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        RouterModule,
-        AlainThemeModule,
-        DelonABCModule,
-        DelonACLModule,
-        DelonFormModule,
-        // i18n
-        TranslateModule,
-        // third libs
-        ...THIRDMODULES,
-        // your components
-        ...COMPONENTS,
-        ...DIRECTIVES
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule,
+    AlainThemeModule.forChild(),
+    DelonABCModule,
+    DelonACLModule,
+    DelonFormModule,
+    // third libs
+    ...THIRDMODULES,
+  ],
+  declarations: [
+    // your components
+    ...COMPONENTS,
+    ...DIRECTIVES,
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    AlainThemeModule,
+    DelonABCModule,
+    DelonACLModule,
+    DelonFormModule,
+    // i18n
+    TranslateModule,
+    // third libs
+    ...THIRDMODULES,
+    // your components
+    ...COMPONENTS,
+    ...DIRECTIVES,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

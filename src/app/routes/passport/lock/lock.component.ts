@@ -5,27 +5,31 @@ import { SettingsService } from '@delon/theme';
 
 @Component({
   selector: 'app-user-lock',
-  templateUrl: './lock.component.html'
+  templateUrl: './lock.component.html',
 })
 export class UserLockComponent {
   f: FormGroup;
 
-  constructor(public settings: SettingsService, fb: FormBuilder, private router: Router) {
+  constructor(
+    public settings: SettingsService,
+    fb: FormBuilder,
+    private router: Router,
+  ) {
     this.f = fb.group({
-        password: [null, Validators.required]
+      password: [null, Validators.required],
     });
   }
 
   submit() {
     // tslint:disable-next-line:forin
     for (const i in this.f.controls) {
-        this.f.controls[i].markAsDirty();
-        this.f.controls[i].updateValueAndValidity();
+      this.f.controls[i].markAsDirty();
+      this.f.controls[i].updateValueAndValidity();
     }
     if (this.f.valid) {
-        console.log('Valid!');
-        console.log(this.f.value);
-        this.router.navigate(['dashboard']);
+      console.log('Valid!');
+      console.log(this.f.value);
+      this.router.navigate(['dashboard']);
     }
   }
 }

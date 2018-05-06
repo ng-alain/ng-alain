@@ -1,50 +1,32 @@
-import { Component } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
-import { SFUISchema, SFSchema } from '@delon/form';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { _HttpClient } from '@delon/theme';
+import { SimpleTableColumn, SimpleTableComponent } from '@delon/abc';
+import { SFSchema } from '@delon/form';
 
 @Component({
-    selector: 'app-delon-form',
-    templateUrl: './form.component.html'
+  selector: 'app-delon-form',
+  templateUrl: './form.component.html',
 })
-export class DelonFormComponent {
-    formData: any = {
-        id: 1,
-        other: 'test'
-    };
-    uiSchema: SFUISchema = {};
-    schema: SFSchema = {
-        properties: {
-            type: { type: 'string', enum: ['mobile', 'name'], default: 'mobile' },
-            name: { type: 'string' },
-            pwd: { type: 'string' },
-            mobile: { type: 'string' },
-            code: { type: 'string' }
-        },
-        required: ['type'],
-        if: {
-            properties: { type: { enum: ['mobile'] } }
-        },
-        then: {
-            required: ['mobile', 'code']
-        },
-        else: {
-            required: ['name', 'pwd']
-        }
-    };
+export class DelonFormComponent implements OnInit {
+  params: any = {};
+  url = `/user`;
+  @ViewChild('st') st: SimpleTableComponent;
+  searchSchema: SFSchema = {
+    properties: {
+      no: {
+        type: 'string',
+        title: '编号',
+      },
+    },
+  };
+  columns: SimpleTableColumn[] = [
+    { title: '编号', index: 'no' },
+    { title: '调用次数', type: 'number', index: 'callNo' },
+    { title: '头像', type: 'img', width: '50px', index: 'avatar' },
+    { title: '时间', type: 'date', index: 'updatedAt' },
+  ];
 
-    constructor(private msg: NzMessageService) {
-    }
+  constructor(private http: _HttpClient) {}
 
-    submit(value: any) {
-        this.msg.success(JSON.stringify(value));
-    }
-
-    change(value: any) {
-        // console.log('change', value);
-    }
-
-    error(value: any) {
-        // console.log('error', value);
-    }
-
+  ngOnInit() {}
 }

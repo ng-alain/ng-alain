@@ -19,29 +19,28 @@ import { XlsxComponent } from './xlsx/xlsx.component';
 import { ZipComponent } from './zip/zip.component';
 import { DelonFormComponent } from './form/form.component';
 
-const COMPONENTS = [
-    SimpleTableComponent,
-    ClipboardComponent,
-    PrintComponent,
-    ACLComponent,
-    GuardComponent,
-    GuardLeaveComponent,
-    GuardAdminComponent,
-    GuardAuthComponent,
-    CacheComponent,
-    DownFileComponent,
-    XlsxComponent,
-    ZipComponent,
-    DelonFormComponent
+const COMPONENT = [
+  SimpleTableComponent,
+  ClipboardComponent,
+  PrintComponent,
+  ACLComponent,
+  GuardComponent,
+  GuardLeaveComponent,
+  GuardAdminComponent,
+  GuardAuthComponent,
+  CacheComponent,
+  DownFileComponent,
+  XlsxComponent,
+  ZipComponent,
+  DelonFormComponent,
 ];
 
+const COMPONENT_NOROUNT = [];
+
 @NgModule({
-    imports: [
-        CommonModule,
-        SharedModule,
-        DelonRoutingModule
-    ],
-    providers: [ CanLeaveProvide ],
-    declarations: COMPONENTS
+  imports: [CommonModule, SharedModule, DelonRoutingModule],
+  providers: [CanLeaveProvide],
+  declarations: [...COMPONENT, ...COMPONENT_NOROUNT],
+  entryComponents: COMPONENT_NOROUNT,
 })
-export class DelonModule { }
+export class DelonModule {}

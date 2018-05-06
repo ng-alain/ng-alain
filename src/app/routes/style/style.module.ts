@@ -10,18 +10,13 @@ import { IconsFontComponent } from './iconsfont/iconsfont.component';
 import { ColorsComponent } from './colors/colors.component';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        StyleRoutingModule
-    ],
-    declarations: [
-        GridMasonryComponent,
-        TypographyComponent,
-        IconsFontComponent,
-        ColorsComponent
-    ],
-    providers: [
-        ColorService
-    ]
+  imports: [SharedModule, StyleRoutingModule],
+  declarations: [
+    GridMasonryComponent,
+    TypographyComponent,
+    IconsFontComponent,
+    ColorsComponent,
+  ],
+  providers: [ColorService],
 })
-export class StyleModule { }
+export class StyleModule {}

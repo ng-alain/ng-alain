@@ -53,9 +53,9 @@ Before you submit your Pull Request (PR) consider the following guidelines:
   that relates to your submission. You don't want to duplicate effort.
 * Make your changes in a new git branch:
 
-     ```shell
-     git checkout -b my-fix-branch master
-     ```
+  ```shell
+  git checkout -b my-fix-branch master
+  ```
 
 * Create your patch, **including appropriate test cases**.
 * Follow our [Coding Rules](#rules).
@@ -64,16 +64,17 @@ Before you submit your Pull Request (PR) consider the following guidelines:
   [commit message conventions](#commit). Adherence to these conventions
   is necessary because release notes are automatically generated from these messages.
 
-     ```shell
-     git commit -a
-     ```
+  ```shell
+  git commit -a
+  ```
+
   Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
 
 * Push your branch to GitHub:
 
-    ```shell
-    git push origin my-fix-branch
-    ```
+  ```shell
+  git push origin my-fix-branch
+  ```
 
 * In GitHub, send a pull request to `ng-alain:master`.
 * If we suggest changes then:
@@ -81,10 +82,10 @@ Before you submit your Pull Request (PR) consider the following guidelines:
   * Re-run the ng-alain test suites to ensure tests are still passing.
   * Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
-    ```shell
-    git rebase master -i
-    git push -f
-    ```
+  ```shell
+  git rebase master -i
+  git push -f
+  ```
 
 That's it! Thank you for your contribution!
 
@@ -95,27 +96,27 @@ from the main (upstream) repository:
 
 * Delete the remote branch on GitHub either through the GitHub web UI or your local shell as follows:
 
-    ```shell
-    git push origin --delete my-fix-branch
-    ```
+  ```shell
+  git push origin --delete my-fix-branch
+  ```
 
 * Check out the master branch:
 
-    ```shell
-    git checkout master -f
-    ```
+  ```shell
+  git checkout master -f
+  ```
 
 * Delete the local branch:
 
-    ```shell
-    git branch -D my-fix-branch
-    ```
+  ```shell
+  git branch -D my-fix-branch
+  ```
 
 * Update your master with the latest upstream version:
 
-    ```shell
-    git pull --ff upstream master
-    ```
+  ```shell
+  git pull --ff upstream master
+  ```
 
 ## <a name="rules"></a> Coding Rules
 To ensure consistency throughout the source code, keep these rules in mind as you are working:
@@ -153,6 +154,7 @@ Samples: (even more [samples](https://github.com/cipchk/ng-alain/commits/master)
 ```
 docs(changelog): update change log to beta.5
 ```
+
 ```
 fix(release): need to depend on latest rxjs and zone.js
 
@@ -193,7 +195,6 @@ reference GitHub issues that this commit **Closes**.
 **Breaking Changes** should start with the word `BREAKING CHANGE:` with a space or two newlines. The rest of the commit message is then used for this.
 
 A detailed explanation can be found in this [document][commit-message-format].
-
 
 [commit-message-format]: https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#
 [github]: https://github.com/cipchk/ng-alain

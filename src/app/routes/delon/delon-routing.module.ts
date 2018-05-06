@@ -18,28 +18,42 @@ import { ZipComponent } from './zip/zip.component';
 import { DelonFormComponent } from './form/form.component';
 
 const routes: Routes = [
-    { path: 'simple-table', component: SimpleTableComponent },
-    { path: 'clipboard', component: ClipboardComponent },
-    { path: 'print', component: PrintComponent },
-    { path: 'acl', component: ACLComponent },
-    {
-        path: 'guard',
-        component: GuardComponent,
-        children: [
-            { path: 'leave', component: GuardLeaveComponent, canDeactivate: [ CanLeaveProvide ] },
-            { path: 'auth', component: GuardAuthComponent, canActivate: [ ACLGuard ], data: { guard: 'user1' } },
-            { path: 'admin', component: GuardAdminComponent, canActivate: [ ACLGuard ], data: { guard: 'admin' } }
-        ]
-    },
-    { path: 'cache', component: CacheComponent },
-    { path: 'downfile', component: DownFileComponent },
-    { path: 'xlsx', component: XlsxComponent },
-    { path: 'zip', component: ZipComponent },
-    { path: 'form', component: DelonFormComponent }
+  { path: 'simple-table', component: SimpleTableComponent },
+  { path: 'clipboard', component: ClipboardComponent },
+  { path: 'print', component: PrintComponent },
+  { path: 'acl', component: ACLComponent },
+  {
+    path: 'guard',
+    component: GuardComponent,
+    children: [
+      {
+        path: 'leave',
+        component: GuardLeaveComponent,
+        canDeactivate: [CanLeaveProvide],
+      },
+      {
+        path: 'auth',
+        component: GuardAuthComponent,
+        canActivate: [ACLGuard],
+        data: { guard: 'user1' },
+      },
+      {
+        path: 'admin',
+        component: GuardAdminComponent,
+        canActivate: [ACLGuard],
+        data: { guard: 'admin' },
+      },
+    ],
+  },
+  { path: 'cache', component: CacheComponent },
+  { path: 'downfile', component: DownFileComponent },
+  { path: 'xlsx', component: XlsxComponent },
+  { path: 'zip', component: ZipComponent },
+  { path: 'form', component: DelonFormComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DelonRoutingModule { }
+export class DelonRoutingModule {}
