@@ -1,5 +1,8 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": [
+    "stylelint-config-standard",
+    "./node_modules/prettier-stylelint/config.js"
+  ],
   "rules": {
     "comment-empty-line-before": null,
     "declaration-empty-line-before": null,
