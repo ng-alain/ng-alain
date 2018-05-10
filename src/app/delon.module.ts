@@ -8,11 +8,12 @@ import {
   SkipSelf,
   ModuleWithProviders,
 } from '@angular/core';
+import { RouteReuseStrategy } from '@angular/router';
 import { throwIfAlreadyLoaded } from '@core/module-import-guard';
 
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { AlainThemeModule } from '@delon/theme';
-import { DelonABCModule } from '@delon/abc';
+import { DelonABCModule, ReuseTabService, ReuseTabStrategy } from '@delon/abc';
 import { DelonAuthModule } from '@delon/auth';
 import { DelonACLModule } from '@delon/acl';
 import { DelonCacheModule } from '@delon/cache';
@@ -65,6 +66,11 @@ export class DelonModule {
     return {
       ngModule: DelonModule,
       providers: [
+        {
+          provide: RouteReuseStrategy,
+          useClass: ReuseTabStrategy,
+          deps: [ReuseTabService],
+        },
         // TIPS：@delon/abc 有大量的全局配置信息，例如设置所有 `simple-table` 的页码默认为 `20` 行
         // { provide: SimpleTableConfig, useFactory: simpleTableConfig }
         { provide: AdPageHeaderConfig, useFactory: pageHeaderConfig },
