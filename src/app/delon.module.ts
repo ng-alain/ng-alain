@@ -17,6 +17,7 @@ import { DelonABCModule, ReuseTabService, ReuseTabStrategy } from '@delon/abc';
 import { DelonAuthModule } from '@delon/auth';
 import { DelonACLModule } from '@delon/acl';
 import { DelonCacheModule } from '@delon/cache';
+import { DelonUtilModule } from '@delon/util';
 // mock
 import { DelonMockModule } from '@delon/mock';
 import * as MOCKDATA from '../../_mock';
@@ -49,6 +50,7 @@ export function delonAuthConfig(): DelonAuthConfig {
     DelonAuthModule.forRoot(),
     DelonACLModule.forRoot(),
     DelonCacheModule.forRoot(),
+    DelonUtilModule.forRoot(),
     // mock
     ...MOCKMODULE,
   ],

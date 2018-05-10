@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
-import { copy } from '@delon/abc';
+import { copy } from '@delon/util';
 
 @Component({
   selector: 'app-iconsfont',

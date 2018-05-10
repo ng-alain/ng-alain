@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ACLGuard } from '@delon/acl';
 
 import { SimpleTableComponent } from './simple-table/simple-table.component';
-import { ClipboardComponent } from './clipboard/clipboard.component';
+import { UtilComponent } from './util/util.component';
 import { PrintComponent } from './print/print.component';
 import { ACLComponent } from './acl/acl.component';
 import { GuardComponent } from './guard/guard.component';
@@ -19,7 +19,7 @@ import { DelonFormComponent } from './form/form.component';
 
 const routes: Routes = [
   { path: 'simple-table', component: SimpleTableComponent },
-  { path: 'clipboard', component: ClipboardComponent },
+  { path: 'util', component: UtilComponent },
   { path: 'print', component: PrintComponent },
   { path: 'acl', component: ACLComponent },
   {

@@ -28,7 +28,7 @@
   "delon": "@Delon",
   "dynamic-form": "动态表单",
   "simple-table": "简易表格",
-  "clipboard": "剪贴板",
+  "util": "工具集",
   "print": "打印",
   "guard": "路由守卫",
   "cache": "字典缓存",

@@ -5,7 +5,7 @@ import { SharedModule } from '@shared/shared.module';
 import { DelonRoutingModule } from './delon-routing.module';
 
 import { SimpleTableComponent } from './simple-table/simple-table.component';
-import { ClipboardComponent } from './clipboard/clipboard.component';
+import { UtilComponent } from './util/util.component';
 import { PrintComponent } from './print/print.component';
 import { ACLComponent } from './acl/acl.component';
 import { CanLeaveProvide } from './guard/can-leave.provide';
@@ -21,7 +21,7 @@ import { DelonFormComponent } from './form/form.component';
 
 const COMPONENT = [
   SimpleTableComponent,
-  ClipboardComponent,
+  UtilComponent,
   PrintComponent,
   ACLComponent,
   GuardComponent,

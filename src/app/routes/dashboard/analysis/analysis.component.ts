@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getTimeDistance, yuan, SimpleTableColumn } from '@delon/abc';
+import { SimpleTableColumn } from '@delon/abc';
+import { getTimeDistance, yuan } from '@delon/util';
 import { _HttpClient } from '@delon/theme';
 
 @Component({

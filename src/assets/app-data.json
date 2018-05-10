@@ -107,9 +107,9 @@
               "i18n": "simple-table"
             },
             {
-              "text": "Clipboard",
-              "link": "/delon/clipboard",
-              "i18n": "clipboard",
+              "text": "Util",
+              "link": "/delon/util",
+              "i18n": "util",
               "acl": "role-a"
             },
             {

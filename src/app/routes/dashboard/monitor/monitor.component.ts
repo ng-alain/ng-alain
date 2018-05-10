@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { zip } from 'rxjs/observable/zip';
-import { getTimeDistance, yuan, fixedZero } from '@delon/abc';
+import { getTimeDistance, yuan } from '@delon/util';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
@@ -62,7 +62,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     const activeData = [];
     for (let i = 0; i < 24; i += 1) {
       activeData.push({
-        x: `${fixedZero(i)}:00`,
+        x: `${i.toString().padStart(2, '0')}:00`,
         y: i * 50 + Math.floor(Math.random() * 200),
       });
     }
