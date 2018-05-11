@@ -119,6 +119,11 @@
               "acl": "role-b"
             },
             {
+              "text": "QR",
+              "link": "/delon/qr",
+              "i18n": "qr"
+            },
+            {
               "text": "ACL",
               "link": "/delon/acl",
               "i18n": "acl"

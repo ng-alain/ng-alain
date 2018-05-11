@@ -16,6 +16,7 @@ import { DownFileComponent } from './downfile/downfile.component';
 import { XlsxComponent } from './xlsx/xlsx.component';
 import { ZipComponent } from './zip/zip.component';
 import { DelonFormComponent } from './form/form.component';
+import { QRComponent } from './qr/qr.component';
 
 const routes: Routes = [
   { path: 'simple-table', component: SimpleTableComponent },
@@ -46,6 +47,7 @@ const routes: Routes = [
     ],
   },
   { path: 'cache', component: CacheComponent },
+  { path: 'qr', component: QRComponent },
   { path: 'downfile', component: DownFileComponent },
   { path: 'xlsx', component: XlsxComponent },
   { path: 'zip', component: ZipComponent },

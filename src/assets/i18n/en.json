@@ -32,6 +32,7 @@
   "print": "Print",
   "guard": "Route Guard",
   "cache": "Cache",
+  "qr": "QR",
   "acl": "ACL",
   "downfile": "Down File",
   "xlsx": "Excel",

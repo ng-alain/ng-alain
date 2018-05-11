@@ -32,6 +32,7 @@
   "print": "打印",
   "guard": "路由守卫",
   "cache": "字典缓存",
+  "qr": "二维码",
   "acl": "基于角色访问控制",
   "downfile": "下载文件",
   "xlsx": "Excel操作",

@@ -18,6 +18,7 @@ import { DownFileComponent } from './downfile/downfile.component';
 import { XlsxComponent } from './xlsx/xlsx.component';
 import { ZipComponent } from './zip/zip.component';
 import { DelonFormComponent } from './form/form.component';
+import { QRComponent } from './qr/qr.component';
 
 const COMPONENT = [
   SimpleTableComponent,
@@ -33,6 +34,7 @@ const COMPONENT = [
   XlsxComponent,
   ZipComponent,
   DelonFormComponent,
+  QRComponent,
 ];
 
 const COMPONENT_NOROUNT = [];
