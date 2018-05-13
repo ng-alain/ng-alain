@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { GuardComponent } from './guard.component';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { NzModalService } from 'ng-zorro-antd';
 
 @Injectable()

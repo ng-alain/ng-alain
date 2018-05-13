@@ -80,11 +80,6 @@
               "i18n": "gridmasonry"
             },
             {
-              "text": "Font Icons",
-              "link": "/style/iconsfont",
-              "i18n": "iconsfont"
-            },
-            {
               "text": "Colors",
               "link": "/style/colors",
               "i18n": "colors"

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { zip } from 'rxjs/observable/zip';
+import { zip } from 'rxjs';
 import { getTimeDistance, yuan } from '@delon/util';
 import { _HttpClient } from '@delon/theme';
 

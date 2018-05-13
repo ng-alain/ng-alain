@@ -6,7 +6,6 @@ import { ColorService } from './color.service';
 
 import { GridMasonryComponent } from './gridmasonry/gridmasonry.component';
 import { TypographyComponent } from './typography/typography.component';
-import { IconsFontComponent } from './iconsfont/iconsfont.component';
 import { ColorsComponent } from './colors/colors.component';
 
 @NgModule({
@@ -14,7 +13,6 @@ import { ColorsComponent } from './colors/colors.component';
   declarations: [
     GridMasonryComponent,
     TypographyComponent,
-    IconsFontComponent,
     ColorsComponent,
   ],
   providers: [ColorService],
