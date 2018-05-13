@@ -19,7 +19,7 @@ install:
   - npm install
 
 script:
-  - npm run test
+  - npm run fix-v6
   - npm run test-coverage
 
 after_success:
