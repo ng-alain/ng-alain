@@ -13,11 +13,11 @@ import {
   ScrollService,
   _HttpClient,
 } from '@delon/theme';
-import { DelonModule } from '../app/delon.module';
 import { DelonAuthModule } from '@delon/auth';
 import { I18NService } from '@core/i18n/i18n.service';
 import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
+import { DelonModule } from '../app/delon.module';
 import { HttpLoaderFactory } from '../app/app.module';
 
 const resetTestingModule = TestBed.resetTestingModule,
@@ -33,12 +33,16 @@ export const setUpTestBed = (moduleDef: TestModuleMetadata) => {
       preventAngularFromResetting();
 
       // region: schemas
-      if (!moduleDef.schemas) moduleDef.schemas = [];
+      if (!moduleDef.schemas) {
+        moduleDef.schemas = [];
+      }
       moduleDef.schemas.push(CUSTOM_ELEMENTS_SCHEMA);
       // endregion
 
       // region: imports
-      if (!moduleDef.imports) moduleDef.imports = [];
+      if (!moduleDef.imports) {
+        moduleDef.imports = [];
+      }
       moduleDef.imports.push(RouterTestingModule);
       moduleDef.imports.push(HttpClientModule);
       moduleDef.imports.push(DelonModule);
@@ -57,7 +61,9 @@ export const setUpTestBed = (moduleDef: TestModuleMetadata) => {
       // endregion
 
       // region: providers
-      if (!moduleDef.providers) moduleDef.providers = [];
+      if (!moduleDef.providers) {
+        moduleDef.providers = [];
+      }
       moduleDef.providers.push({
         provide: ALAIN_I18N_TOKEN,
         useClass: I18NService,
@@ -66,7 +72,9 @@ export const setUpTestBed = (moduleDef: TestModuleMetadata) => {
       // load full services
       [SettingsService, MenuService, ScrollService, _HttpClient].forEach(
         (item: any) => {
-          if (moduleDef.providers.includes(item)) return;
+          if (moduleDef.providers.includes(item)) {
+            return;
+          }
           moduleDef.providers.push(item);
         },
       );

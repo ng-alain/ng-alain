@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-user-lock',
+  selector: 'passport-lock',
   templateUrl: './lock.component.html',
 })
 export class UserLockComponent {

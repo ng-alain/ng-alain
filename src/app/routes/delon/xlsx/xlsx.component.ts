@@ -9,7 +9,7 @@ export class XlsxComponent {
   constructor(private xlsx: XlsxService) {}
   data: any;
   url() {
-    this.xlsx.import(`./assets/demo.xlsx`).then(res => (this.data = res));
+    this.xlsx.import(`./assets/_/demo.xlsx`).then(res => (this.data = res));
   }
 
   change(e: Event) {

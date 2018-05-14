@@ -66,6 +66,7 @@ export class DelonModule {
     return {
       ngModule: DelonModule,
       providers: [
+        // TIPS：若不需要路由复用需要移除以下代码及模板`<reuse-tab></reuse-tab>`
         {
           provide: RouteReuseStrategy,
           useClass: ReuseTabStrategy,

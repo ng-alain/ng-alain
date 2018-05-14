@@ -115,15 +115,15 @@
       "check-type"
     ],
     "directive-selector": [
-      false,
+      true,
       "attribute",
-      "app",
+      ["app", "passport", "exception", "layout", "header"],
       "camelCase"
     ],
     "component-selector": [
-      false,
+      true,
       "element",
-      "app",
+      ["app", "passport", "exception", "layout", "header"],
       "kebab-case"
     ],
     "use-input-property-decorator": true,

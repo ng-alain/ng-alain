@@ -115,7 +115,7 @@
       </ng-template>
       <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point" *ngFor="let item of todoData">
         <div nz-col [nzSpan]="4" class="text-center">
-          <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'"></nz-avatar>
+          <nz-avatar [nzSrc]="'./assets/_/img/' + item.avatar + '.png'"></nz-avatar>
         </div>
         <div nz-col [nzSpan]="20">
           <strong>{{item.name}}</strong>
@@ -128,7 +128,7 @@
     <nz-card nzTitle="Todo lists" [nzBordered]="false" class="ant-card__body-nopadding">
       <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point" *ngFor="let item of todoData">
         <div nz-col [nzSpan]="4" class="text-center">
-          <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'"></nz-avatar>
+          <nz-avatar [nzSrc]="'./assets/_/img/' + item.avatar + '.png'"></nz-avatar>
         </div>
         <div nz-col [nzSpan]="18">
           <strong>{{item.name}}</strong>
