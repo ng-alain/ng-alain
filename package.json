@@ -25,8 +25,7 @@
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "e2e": "ng e2e",
     "test": "ng test --watch",
-    "test-coverage": "ng test --code-coverage --watch=false",
-    "fix-v6": "node fix-v6"
+    "test-coverage": "ng test --code-coverage --watch=false"
   },
   "dependencies": {
     "@angular/animations": "^6.0.0",
@@ -99,7 +98,8 @@
     "stylelint": "^9.2.0",
     "stylelint-config-standard": "^18.2.0",
     "webpack-bundle-analyzer": "^2.11.2",
-    "xlsx": "^0.12.12"
+    "xlsx": "^0.12.12",
+    "less": "~2.7.0"
   },
   "lint-staged": {
     "*.{cmd,html,json,md,sh,txt,xml,yml}": [

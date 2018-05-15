@@ -18,7 +18,6 @@ install:
   - npm install
 
 script:
-  - npm run fix-v6
   - npm run test-coverage
 
 after_success:
