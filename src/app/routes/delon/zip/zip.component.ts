@@ -27,7 +27,7 @@ export class ZipComponent {
   }
 
   url() {
-    this.zip.read(`./assets/_/demo.zip`).then(res => this.format(res));
+    this.zip.read(`./assets/tmp/demo.zip`).then(res => this.format(res));
   }
 
   change(e: Event) {
@@ -42,10 +42,6 @@ export class ZipComponent {
   instance: JSZip = null;
   data: { path: string; url: string }[] = [
     { path: 'demo.docx', url: 'http://ng-alain.com/assets/demo.docx' },
-    {
-      path: 'img/zorro.svg',
-      url: 'https://ng.ant.design/assets/_/img/zorro.svg',
-    },
     {
       path: '小程序标志.zip',
       url: 'https://wximg.gtimg.com/shake_tv/mina/standard_logo.zip',

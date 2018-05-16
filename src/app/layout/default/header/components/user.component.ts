@@ -35,7 +35,7 @@ export class HeaderUserComponent implements OnInit {
     const token = this.tokenService.get() || {
       token: 'nothing',
       name: 'Admin',
-      avatar: './assets/_/img/zorro.svg',
+      avatar: './assets/logo-color.svg',
       email: 'cipchk@qq.com',
     };
     this.tokenService.set(token);
