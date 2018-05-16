@@ -5,7 +5,7 @@
   },
   "user": {
     "name": "Admin",
-    "avatar": "./assets/img/avatar.jpg",
+    "avatar": "./assets/_/img/avatar.jpg",
     "email": "cipchk@qq.com"
   },
   "menu": [
