@@ -15,10 +15,7 @@ export class DashboardAnalysisComponent implements OnInit {
     offlineData: [],
   };
   loading = true;
-  q: any = {
-    start: null,
-    end: null,
-  };
+  date_range: Date[] = [];
   rankingListData: any[] = Array(7)
     .fill({})
     .map((item, i) => {
@@ -63,9 +60,7 @@ export class DashboardAnalysisComponent implements OnInit {
   }
 
   setDate(type: any) {
-    const rank = getTimeDistance(type);
-    this.q.start = rank[0];
-    this.q.end = rank[1];
+    this.date_range = getTimeDistance(type);
   }
 
   salesType = 'all';

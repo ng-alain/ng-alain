@@ -127,6 +127,7 @@
           <a (click)="setDate('month')">本月</a>
           <a (click)="setDate('year')">全年</a>
         </div>
+        <nz-range-picker [(ngModel)]="date_range" style="display:inline-block; width: 256px;"></nz-range-picker>
       </div>
     </ng-template>
   </nz-tabset>

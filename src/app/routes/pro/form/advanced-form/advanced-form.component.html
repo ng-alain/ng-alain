@@ -6,9 +6,9 @@
     <nz-row nzGutter="16">
       <nz-col nzLg="6" nzMd="12" nzSm="24">
         <nz-form-item>
-          <nz-form-label>仓库名</nz-form-label>
+          <nz-form-label nzFor="name">仓库名</nz-form-label>
           <nz-form-control>
-            <input nz-input formControlName="name" placeholder="请输入仓库名称">
+            <input nz-input formControlName="name" id="name" placeholder="请输入仓库名称">
             <nz-form-explain *ngIf="(name.dirty || name.touched) && name.errors?.required">
               请输入仓库名称
             </nz-form-explain>
@@ -61,6 +61,7 @@
         <nz-form-item>
           <nz-form-label>生效日期</nz-form-label>
           <nz-form-control>
+            <nz-range-picker formControlName="date_range" [nzStyle]="{width: '100%'}"></nz-range-picker>
           </nz-form-control>
         </nz-form-item>
       </nz-col>
@@ -137,6 +138,7 @@
         <nz-form-item>
           <nz-form-label>生效时间</nz-form-label>
           <nz-form-control>
+            <nz-time-picker formControlName="time"></nz-time-picker>
           </nz-form-control>
         </nz-form-item>
       </nz-col>
