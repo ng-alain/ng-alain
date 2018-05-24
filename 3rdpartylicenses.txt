@@ -62,11 +62,11 @@ MIT
 date-fns is licensed under the [MIT license](http://kossnocorp.mit-license.org).
 Read more about MIT at [TLDRLegal](https://tldrlegal.com/license/mit-license).
 
-@angular/core@6.0.2
+@angular/core@6.0.3
 MIT
 MIT
 
-@angular/platform-browser@6.0.2
+@angular/platform-browser@6.0.3
 MIT
 MIT
 
@@ -128,11 +128,11 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-@angular/common@6.0.2
+@angular/common@6.0.3
 MIT
 MIT
 
-rxjs@6.1.0
+rxjs@6.2.0
 Apache-2.0
 Apache License
                          Version 2.0, January 2004
@@ -488,11 +488,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-@ngx-translate/core@10.0.1
-MIT
-MIT
-
-ngx-ueditor@2.0.1
+ngx-ueditor@2.1.0
 MIT
 MIT
 
@@ -500,15 +496,19 @@ ngx-tinymce@2.0.1
 MIT
 MIT
 
-@angular/animations@6.0.2
+@angular/animations@6.0.3
 MIT
 MIT
 
-@angular/forms@6.0.2
+@angular/forms@6.0.3
 MIT
 MIT
 
-@angular/router@6.0.2
+@angular/router@6.0.3
+MIT
+MIT
+
+@ngx-translate/core@10.0.2
 MIT
 MIT
 
