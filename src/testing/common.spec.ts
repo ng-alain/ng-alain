@@ -2,10 +2,8 @@
 
 import { TestBed, async, TestModuleMetadata } from '@angular/core/testing';
 import { Type, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-
 import {
   ALAIN_I18N_TOKEN,
   SettingsService,
@@ -14,11 +12,14 @@ import {
   _HttpClient,
 } from '@delon/theme';
 import { DelonAuthModule } from '@delon/auth';
-import { I18NService } from '@core/i18n/i18n.service';
 import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { I18NService } from '@core/i18n/i18n.service';
+import { I18nHttpLoaderFactory } from '../app/app.module';
+
 import { DelonModule } from '../app/delon.module';
-import { HttpLoaderFactory } from '../app/app.module';
 
 const resetTestingModule = TestBed.resetTestingModule,
   preventAngularFromResetting = () =>
@@ -49,11 +50,12 @@ export const setUpTestBed = (moduleDef: TestModuleMetadata) => {
       moduleDef.imports.push(SharedModule);
       // auth
       moduleDef.imports.push(DelonAuthModule.forRoot());
+      // i18n
       moduleDef.imports.push(
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
+            useFactory: I18nHttpLoaderFactory,
             deps: [HttpClient],
           },
         }),
@@ -64,6 +66,7 @@ export const setUpTestBed = (moduleDef: TestModuleMetadata) => {
       if (!moduleDef.providers) {
         moduleDef.providers = [];
       }
+      // i18n
       moduleDef.providers.push({
         provide: ALAIN_I18N_TOKEN,
         useClass: I18NService,

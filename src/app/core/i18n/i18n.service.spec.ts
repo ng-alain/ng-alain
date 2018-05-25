@@ -7,7 +7,7 @@ import {
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { I18NService } from './i18n.service';
-import { HttpLoaderFactory } from '../../app.module';
+import { I18nHttpLoaderFactory } from '../../app.module';
 import { SettingsService } from '@delon/theme';
 import { DelonModule } from '../../delon.module';
 import { SharedModule } from '@shared/shared.module';
@@ -22,7 +22,7 @@ describe('Service: I18n', () => {
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
+            useFactory: I18nHttpLoaderFactory,
             deps: [HttpClient],
           },
         }),

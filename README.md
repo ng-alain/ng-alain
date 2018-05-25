@@ -25,7 +25,7 @@ ng add ng-alain
 ng serve
 ```
 
-Please refer to [Cli] (http://ng-alain.com/docs/cli) for more details.
+Please refer to [Cli] (http://ng-alain.com/cli) for more details.
 
 ### Clone the Git Repository
 
@@ -94,7 +94,7 @@ npm run serve:hmr
 + Simple upgrade
 + Hot Module Replacement
 + Support Docker deploy
-+ Support [Electron](http://ng-alain.com/docs/cli#electron) packager(just via @delon/cli)
++ Support [Electron](http://ng-alain.com/cli#electron) packager(just via @delon/cli)
 
 ## App Shots
 

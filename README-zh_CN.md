@@ -24,7 +24,7 @@ ng add ng-alain
 ng serve
 ```
 
-请参考[命令行工具](http://ng-alain.com/docs/cli)了解更多细节。
+请参考[命令行工具](http://ng-alain.com/cli)了解更多细节。
 
 ### 直接 clone git 仓库
 
@@ -92,7 +92,7 @@ npm run serve:hmr
 + 简单升级
 + 模块热替换
 + 支持Docker部署
-+ 支持[Electron](http://ng-alain.com/docs/cli#electron)打包（限cli构建）
++ 支持[Electron](http://ng-alain.com/cli#electron)打包（限cli构建）
 
 ## 应用截图
 
