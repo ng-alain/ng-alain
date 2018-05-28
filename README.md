@@ -85,16 +85,14 @@ npm run serve:hmr
 + `ng-zorro-antd` based
 + Responsive Layout
 + I18n
-+ ACL
++ [@delon](https://github.com/cipchk/delon)
 + Lazy load Assets
 + UI Router States
-+ Multiple color options
++ Customize Theme
 + Less preprocessor
 + Well organized & commented code
 + Simple upgrade
-+ Hot Module Replacement
 + Support Docker deploy
-+ Support [Electron](http://ng-alain.com/cli#electron) packager(just via @delon/cli)
 
 ## App Shots
 
