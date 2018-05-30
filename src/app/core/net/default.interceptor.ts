@@ -94,7 +94,11 @@ export class DefaultInterceptor implements HttpInterceptor {
     // 统一加上服务端前缀
     let url = req.url;
     if (!url.startsWith('https://') && !url.startsWith('http://')) {
-      url = environment.SERVER_URL + url;
+      if (url.startsWith('/') || url.startsWith('\\')) {
+        url = environment.SERVER_URL + url;
+      } else {
+        url = './' + url;
+      }
     }
 
     const newReq = req.clone({
