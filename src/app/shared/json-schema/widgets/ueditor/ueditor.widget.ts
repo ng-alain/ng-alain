@@ -9,7 +9,7 @@ import { ControlWidget } from '@delon/form';
       [ngModel]="value"
       [config]="config"
       [loadingTip]="loading"
-      (onContentChange)="change($event)">
+      (ngModelChange)="change($event)">
     </ueditor>
   </sf-item-wrap>
   `,
