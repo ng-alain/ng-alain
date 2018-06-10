@@ -38,6 +38,6 @@ export class ProListLayoutComponent implements OnInit {
   to(item: any) {
     this.router
       .navigateByUrl(`/pro/list/${item.key}`)
-      .then(() => (this.ph.title = '搜索列表'));
+      .then(() => this.ph.refresh());
   }
 }
