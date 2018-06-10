@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PageHeaderComponent } from '@delon/abc';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'pro-list-layout',
   templateUrl: './list.component.html',
 })
@@ -37,6 +38,6 @@ export class ProListLayoutComponent implements OnInit {
   to(item: any) {
     this.router
       .navigateByUrl(`/pro/list/${item.key}`)
-      .then(() => this.ph.genBreadcrumb());
+      .then(() => (this.ph.title = '搜索列表'));
   }
 }
