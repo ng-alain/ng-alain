@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ACLGuard } from '@delon/acl';
 
 import { SimpleTableComponent } from './simple-table/simple-table.component';
-import { ClipboardComponent } from './clipboard/clipboard.component';
+import { UtilComponent } from './util/util.component';
 import { PrintComponent } from './print/print.component';
 import { ACLComponent } from './acl/acl.component';
 import { GuardComponent } from './guard/guard.component';
@@ -15,29 +15,47 @@ import { CacheComponent } from './cache/cache.component';
 import { DownFileComponent } from './downfile/downfile.component';
 import { XlsxComponent } from './xlsx/xlsx.component';
 import { ZipComponent } from './zip/zip.component';
+import { DelonFormComponent } from './form/form.component';
+import { QRComponent } from './qr/qr.component';
 
 const routes: Routes = [
-    { path: 'simple-table', component: SimpleTableComponent },
-    { path: 'clipboard', component: ClipboardComponent },
-    { path: 'print', component: PrintComponent },
-    { path: 'acl', component: ACLComponent },
-    {
-        path: 'guard',
-        component: GuardComponent,
-        children: [
-            { path: 'leave', component: GuardLeaveComponent, canDeactivate: [ CanLeaveProvide ] },
-            { path: 'auth', component: GuardAuthComponent, canActivate: [ ACLGuard ], data: { guard: 'user1' } },
-            { path: 'admin', component: GuardAdminComponent, canActivate: [ ACLGuard ], data: { guard: 'admin' } }
-        ]
-    },
-    { path: 'cache', component: CacheComponent },
-    { path: 'downfile', component: DownFileComponent },
-    { path: 'xlsx', component: XlsxComponent },
-    { path: 'zip', component: ZipComponent }
+  { path: 'simple-table', component: SimpleTableComponent },
+  { path: 'util', component: UtilComponent },
+  { path: 'print', component: PrintComponent },
+  { path: 'acl', component: ACLComponent },
+  {
+    path: 'guard',
+    component: GuardComponent,
+    children: [
+      {
+        path: 'leave',
+        component: GuardLeaveComponent,
+        canDeactivate: [CanLeaveProvide],
+      },
+      {
+        path: 'auth',
+        component: GuardAuthComponent,
+        canActivate: [ACLGuard],
+        data: { guard: 'user1' },
+      },
+      {
+        path: 'admin',
+        component: GuardAdminComponent,
+        canActivate: [ACLGuard],
+        data: { guard: 'admin' },
+      },
+    ],
+  },
+  { path: 'cache', component: CacheComponent },
+  { path: 'qr', component: QRComponent },
+  { path: 'downfile', component: DownFileComponent },
+  { path: 'xlsx', component: XlsxComponent },
+  { path: 'zip', component: ZipComponent },
+  { path: 'form', component: DelonFormComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DelonRoutingModule { }
+export class DelonRoutingModule {}

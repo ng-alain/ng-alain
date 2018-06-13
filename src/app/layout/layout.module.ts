@@ -15,40 +15,31 @@ import { HeaderStorageComponent } from './default/header/components/storage.comp
 import { HeaderUserComponent } from './default/header/components/user.component';
 
 const COMPONENTS = [
-    LayoutDefaultComponent,
-    LayoutFullScreenComponent,
-    HeaderComponent,
-    SidebarComponent
+  LayoutDefaultComponent,
+  LayoutFullScreenComponent,
+  HeaderComponent,
+  SidebarComponent,
 ];
 
 const HEADERCOMPONENTS = [
-    HeaderSearchComponent,
-    HeaderNotifyComponent,
-    HeaderTaskComponent,
-    HeaderIconComponent,
-    HeaderFullScreenComponent,
-    HeaderI18nComponent,
-    HeaderStorageComponent,
-    HeaderUserComponent
+  HeaderSearchComponent,
+  HeaderNotifyComponent,
+  HeaderTaskComponent,
+  HeaderIconComponent,
+  HeaderFullScreenComponent,
+  HeaderI18nComponent,
+  HeaderStorageComponent,
+  HeaderUserComponent,
 ];
 
 // passport
 import { LayoutPassportComponent } from './passport/passport.component';
-const PASSPORT = [
-    LayoutPassportComponent
-];
+const PASSPORT = [LayoutPassportComponent];
 
 @NgModule({
-    imports: [SharedModule],
-    providers: [],
-    declarations: [
-        ...COMPONENTS,
-        ...HEADERCOMPONENTS,
-        ...PASSPORT
-    ],
-    exports: [
-        ...COMPONENTS,
-        ...PASSPORT
-    ]
+  imports: [SharedModule],
+  providers: [],
+  declarations: [...COMPONENTS, ...HEADERCOMPONENTS, ...PASSPORT],
+  exports: [...COMPONENTS, ...PASSPORT],
 })
-export class LayoutModule { }
+export class LayoutModule {}

@@ -1,9 +1,9 @@
 <div class="wrapper">
-    <div class="router-progress-bar" *ngIf="isFetching"></div>
-    <app-header class="header"></app-header>
-    <app-sidebar class="aside"></app-sidebar>
-    <section class="content">
-        <reuse-tab></reuse-tab>
-        <router-outlet></router-outlet>
-    </section>
+  <div class="router-progress-bar" *ngIf="isFetching"></div>
+  <layout-header class="header"></layout-header>
+  <layout-sidebar class="aside"></layout-sidebar>
+  <section class="content">
+    <reuse-tab></reuse-tab>
+    <router-outlet></router-outlet>
+  </section>
 </div>

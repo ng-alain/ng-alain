@@ -5,14 +5,14 @@ import { TypographyComponent } from './typography.component';
 import { ColorService } from '../color.service';
 
 describe('Component: Typography', () => {
-    setUpTestBed(<TestModuleMetadata>{
-        declarations: [ TypographyComponent ],
-        providers: [ ColorService ]
-    });
+  setUpTestBed(<TestModuleMetadata>{
+    declarations: [TypographyComponent],
+    providers: [ColorService],
+  });
 
-    it('should create an instance', () => {
-        const fixture = TestBed.createComponent(TypographyComponent);
-        const comp = fixture.debugElement.componentInstance;
-        expect(comp).toBeTruthy();
-    });
+  it('should create an instance', () => {
+    const fixture = TestBed.createComponent(TypographyComponent);
+    const comp = fixture.debugElement.componentInstance;
+    expect(comp).toBeTruthy();
+  });
 });

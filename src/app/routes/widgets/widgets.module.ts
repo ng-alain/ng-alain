@@ -7,9 +7,7 @@ import { WidgetsRoutingModule } from './widgets-routing.module';
 import { WidgetsComponent } from './widgets/widgets.component';
 
 @NgModule({
-  imports: [ SharedModule, WidgetsRoutingModule ],
-  declarations: [
-    WidgetsComponent
-  ]
+  imports: [SharedModule, WidgetsRoutingModule],
+  declarations: [WidgetsComponent],
 })
-export class WidgetsModule { }
+export class WidgetsModule {}

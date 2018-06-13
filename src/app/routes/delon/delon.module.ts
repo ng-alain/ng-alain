@@ -5,7 +5,7 @@ import { SharedModule } from '@shared/shared.module';
 import { DelonRoutingModule } from './delon-routing.module';
 
 import { SimpleTableComponent } from './simple-table/simple-table.component';
-import { ClipboardComponent } from './clipboard/clipboard.component';
+import { UtilComponent } from './util/util.component';
 import { PrintComponent } from './print/print.component';
 import { ACLComponent } from './acl/acl.component';
 import { CanLeaveProvide } from './guard/can-leave.provide';
@@ -17,29 +17,32 @@ import { CacheComponent } from './cache/cache.component';
 import { DownFileComponent } from './downfile/downfile.component';
 import { XlsxComponent } from './xlsx/xlsx.component';
 import { ZipComponent } from './zip/zip.component';
+import { DelonFormComponent } from './form/form.component';
+import { QRComponent } from './qr/qr.component';
 
-const COMPONENTS = [
-    SimpleTableComponent,
-    ClipboardComponent,
-    PrintComponent,
-    ACLComponent,
-    GuardComponent,
-    GuardLeaveComponent,
-    GuardAdminComponent,
-    GuardAuthComponent,
-    CacheComponent,
-    DownFileComponent,
-    XlsxComponent,
-    ZipComponent
+const COMPONENT = [
+  SimpleTableComponent,
+  UtilComponent,
+  PrintComponent,
+  ACLComponent,
+  GuardComponent,
+  GuardLeaveComponent,
+  GuardAdminComponent,
+  GuardAuthComponent,
+  CacheComponent,
+  DownFileComponent,
+  XlsxComponent,
+  ZipComponent,
+  DelonFormComponent,
+  QRComponent,
 ];
 
+const COMPONENT_NOROUNT = [];
+
 @NgModule({
-    imports: [
-        CommonModule,
-        SharedModule,
-        DelonRoutingModule
-    ],
-    providers: [ CanLeaveProvide ],
-    declarations: COMPONENTS
+  imports: [CommonModule, SharedModule, DelonRoutingModule],
+  providers: [CanLeaveProvide],
+  declarations: [...COMPONENT, ...COMPONENT_NOROUNT],
+  entryComponents: COMPONENT_NOROUNT,
 })
-export class DelonModule { }
+export class DelonModule {}

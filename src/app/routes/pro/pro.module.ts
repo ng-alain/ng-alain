@@ -22,31 +22,27 @@ import { ProProfileAdvancedComponent } from './profile/advanced/advanced.compone
 import { ProResultSuccessComponent } from './result/success/success.component';
 import { ProResultFailComponent } from './result/fail/fail.component';
 
-const COMPONENTS_NOROUNT = [
-    Step1Component, Step2Component, Step3Component
-];
+const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component];
 
 @NgModule({
-    imports: [
-        SharedModule, ProRoutingModule
-    ],
-    declarations: [
-        BasicFormComponent,
-        StepFormComponent,
-        AdvancedFormComponent,
-        ProTableListComponent,
-        ProBasicListComponent,
-        ProCardListComponent,
-        ProListLayoutComponent,
-        ProListArticlesComponent,
-        ProListProjectsComponent,
-        ProListApplicationsComponent,
-        ProProfileBaseComponent,
-        ProProfileAdvancedComponent,
-        ProResultSuccessComponent,
-        ProResultFailComponent,
-        ...COMPONENTS_NOROUNT
-    ],
-    entryComponents: COMPONENTS_NOROUNT
+  imports: [SharedModule, ProRoutingModule],
+  declarations: [
+    BasicFormComponent,
+    StepFormComponent,
+    AdvancedFormComponent,
+    ProTableListComponent,
+    ProBasicListComponent,
+    ProCardListComponent,
+    ProListLayoutComponent,
+    ProListArticlesComponent,
+    ProListProjectsComponent,
+    ProListApplicationsComponent,
+    ProProfileBaseComponent,
+    ProProfileAdvancedComponent,
+    ProResultSuccessComponent,
+    ProResultFailComponent,
+    ...COMPONENTS_NOROUNT,
+  ],
+  entryComponents: COMPONENTS_NOROUNT,
 })
-export class ProModule { }
+export class ProModule {}

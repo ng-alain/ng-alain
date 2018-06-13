@@ -17,49 +17,49 @@ import { ProResultFailComponent } from './result/fail/fail.component';
 import { ProListLayoutComponent } from './list/list/list.component';
 
 const routes: Routes = [
-    {
-        path: 'form',
+  {
+    path: 'form',
+    children: [
+      { path: 'basic-form', component: BasicFormComponent },
+      { path: 'step-form', component: StepFormComponent },
+      { path: 'advanced-form', component: AdvancedFormComponent },
+    ],
+  },
+  {
+    path: 'list',
+    children: [
+      { path: 'table-list', component: ProTableListComponent },
+      { path: 'basic-list', component: ProBasicListComponent },
+      { path: 'card-list', component: ProCardListComponent },
+      {
+        path: '',
+        component: ProListLayoutComponent,
         children: [
-            { path: 'basic-form', component: BasicFormComponent },
-            { path: 'step-form', component: StepFormComponent },
-            { path: 'advanced-form', component: AdvancedFormComponent }
-        ]
-    },
-    {
-        path: 'list',
-        children: [
-            { path: 'table-list', component: ProTableListComponent },
-            { path: 'basic-list', component: ProBasicListComponent },
-            { path: 'card-list', component: ProCardListComponent },
-            {
-                path: '',
-                component: ProListLayoutComponent,
-                children: [
-                    { path: 'articles', component: ProListArticlesComponent },
-                    { path: 'projects', component: ProListProjectsComponent },
-                    { path: 'applications', component: ProListApplicationsComponent }
-                ]
-            }
-        ]
-    },
-    {
-        path: 'profile',
-        children: [
-            { path: 'basic', component: ProProfileBaseComponent },
-            { path: 'advanced', component: ProProfileAdvancedComponent }
-        ]
-    },
-    {
-        path: 'result',
-        children: [
-            { path: 'success', component: ProResultSuccessComponent },
-            { path: 'fail', component: ProResultFailComponent }
-        ]
-    }
+          { path: 'articles', component: ProListArticlesComponent },
+          { path: 'projects', component: ProListProjectsComponent },
+          { path: 'applications', component: ProListApplicationsComponent },
+        ],
+      },
+    ],
+  },
+  {
+    path: 'profile',
+    children: [
+      { path: 'basic', component: ProProfileBaseComponent },
+      { path: 'advanced', component: ProProfileAdvancedComponent },
+    ],
+  },
+  {
+    path: 'result',
+    children: [
+      { path: 'success', component: ProResultSuccessComponent },
+      { path: 'fail', component: ProResultFailComponent },
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class ProRoutingModule { }
+export class ProRoutingModule {}

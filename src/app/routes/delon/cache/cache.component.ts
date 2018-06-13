@@ -3,23 +3,22 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { CacheService } from '@delon/cache';
 
 @Component({
-    selector: 'app-cache',
-    templateUrl: './cache.component.html',
-    styles: []
+  selector: 'app-cache',
+  templateUrl: './cache.component.html',
+  styles: [],
 })
 export class CacheComponent implements OnInit {
+  KEY = 'user';
 
-    KEY = 'user';
+  constructor(public cache: CacheService, public msg: NzMessageService) {}
 
-    constructor(public cache: CacheService, public msg: NzMessageService) {}
+  ngOnInit() {}
 
-    ngOnInit() {}
+  set() {
+    this.cache.set(this.KEY, +new Date());
+  }
 
-    set() {
-        this.cache.set(this.KEY, +new Date());
-    }
-
-    get() {
-        this.msg.success(this.cache.getNone(this.KEY));
-    }
+  get() {
+    this.msg.success(this.cache.getNone(this.KEY));
+  }
 }
