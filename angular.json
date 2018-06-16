@@ -49,6 +49,14 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "hmr": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hmr.ts"
+                }
+              ]
             }
           }
         },
@@ -60,6 +68,10 @@
           "configurations": {
             "production": {
               "browserTarget": "ng-alain:build:production"
+            },
+            "hmr": {
+              "browserTarget": "ng-alain:build:hmr",
+              "hmr": true
             }
           }
         },
