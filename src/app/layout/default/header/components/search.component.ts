@@ -22,7 +22,6 @@ import { DomSanitizer } from '@angular/platform-browser';
   <nz-autocomplete #searchResult>
         <nz-auto-optgroup *ngFor="let group of qResultGroups" [nzLabel]="group.title">
           <nz-auto-option *ngFor="let option of group.children" [nzValue]="option.value" [routerLink]="option.link">
-            
             <a [innerHtml]="sanitizer.bypassSecurityTrustHtml(option.title)"></a>
           </nz-auto-option>
         </nz-auto-optgroup>
