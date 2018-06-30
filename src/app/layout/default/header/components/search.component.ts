@@ -1,12 +1,9 @@
 import {
   Component,
   HostBinding,
-  ViewChild,
   Input,
-  OnInit,
   ElementRef,
   AfterViewInit,
-  ViewEncapsulation,
 } from '@angular/core';
 import { MenuService, Menu } from '@delon/theme';
 import { DomSanitizer } from '@angular/platform-browser';
