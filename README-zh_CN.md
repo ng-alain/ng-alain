@@ -13,10 +13,6 @@
 
 ## 快速入门
 
-有二种方式进行安装：
-
-### 命令行工具
-
 ```bash
 ng new demo --style less
 cd demo
@@ -26,24 +22,7 @@ ng serve
 
 请参考[命令行工具](http://ng-alain.com/cli)了解更多细节。
 
-### 直接 clone git 仓库
-
-```bash
-$ git clone --depth=1 https://github.com/cipchk/ng-alain.git my-project
-
-cd my-project
-
-# 安装依赖包
-npm install
-
-# 启动
-npm start
-
-# 使用HMR启动
-npm run serve:hmr
-```
-
-> [vscode] 建议安装 [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) 插件，含 `nz-alain-*` 代码片断。
+> [vscode] 建议安装 [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) 和 [ng-alain-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-alain-vscode) 插件，开发更爽。
 
 
 ## Links
@@ -76,7 +55,7 @@ npm run serve:hmr
 
 ## Architecture
 
-![Architecture](https://github.com/cipchk/delon/blob/master/_screenshot/architecture.png)
+![Architecture](https://raw.githubusercontent.com/cipchk/delon/master/_screenshot/architecture.png)
 
 ## 特性
 
@@ -94,9 +73,9 @@ npm run serve:hmr
 
 ## 应用截图
 
-![desktop](https://github.com/cipchk/delon/blob/master/_screenshot/desktop.png)
-![ipad](https://github.com/cipchk/delon/blob/master/_screenshot/ipad.png)
-![iphone](https://github.com/cipchk/delon/blob/master/_screenshot/iphone.png)
+![desktop](https://raw.githubusercontent.com/cipchk/delon/master/_screenshot/desktop.png)
+![ipad](https://raw.githubusercontent.com/cipchk/delon/master/_screenshot/ipad.png)
+![iphone](https://raw.githubusercontent.com/cipchk/delon/master/_screenshot/iphone.png)
 
 ## Troubleshooting
 
