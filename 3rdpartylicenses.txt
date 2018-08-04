@@ -62,11 +62,11 @@ MIT
 date-fns is licensed under the [MIT license](http://kossnocorp.mit-license.org).
 Read more about MIT at [TLDRLegal](https://tldrlegal.com/license/mit-license).
 
-@angular/core@6.1.0
+@angular/core@6.1.1
 MIT
 MIT
 
-@angular/platform-browser@6.1.0
+@angular/platform-browser@6.1.1
 MIT
 MIT
 
@@ -128,7 +128,7 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-@angular/common@6.1.0
+@angular/common@6.1.1
 MIT
 MIT
 
@@ -336,7 +336,7 @@ Apache License
  See the License for the specific language governing permissions and
  limitations under the License.
 
-ng-zorro-antd@1.2.0
+ng-zorro-antd@1.3.0
 MIT
 MIT
 
@@ -352,11 +352,11 @@ ngx-tinymce@2.0.2
 MIT
 MIT
 
-@angular/router@6.1.0
+@angular/router@6.1.1
 MIT
 MIT
 
-@delon/form@1.1.5
+@delon/form@1.3.0
 MIT
 MIT License
 
@@ -380,11 +380,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-@angular/animations@6.1.0
+@angular/animations@6.1.1
 MIT
 MIT
 
-@angular/cdk@6.4.0
+@angular/cdk@6.4.2
 MIT
 The MIT License
 
@@ -408,7 +408,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-@delon/abc@1.1.5
+@delon/abc@1.3.0
 MIT
 MIT License
 
@@ -432,7 +432,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-@delon/util@1.1.5
+@delon/util@1.3.0
 MIT
 MIT License
 
@@ -456,7 +456,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-@delon/acl@1.1.5
+@delon/acl@1.3.0
 MIT
 MIT License
 
@@ -480,7 +480,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-@delon/cache@1.1.5
+@delon/cache@1.3.0
 MIT
 MIT License
 
@@ -602,7 +602,7 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@delon/theme@1.1.5
+@delon/theme@1.3.0
 MIT
 MIT License
 
@@ -830,7 +830,7 @@ Apache License
    See the License for the specific language governing permissions and
    limitations under the License.
 
-@angular/forms@6.1.0
+@angular/forms@6.1.1
 MIT
 MIT
 
