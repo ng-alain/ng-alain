@@ -21,7 +21,6 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "node_modules/simple-line-icons/css/simple-line-icons.css",
               "src/styles.less"
             ],
             "scripts": [

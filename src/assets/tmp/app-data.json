@@ -18,7 +18,7 @@
         {
           "text": "仪表盘",
           "i18n": "dashboard",
-          "icon": "icon-speedometer",
+          "icon": "anticon antanticon anticon-dashboard",
           "children": [
             {
               "text": "仪表盘V1",
@@ -45,7 +45,7 @@
         {
           "text": "快捷菜单",
           "i18n": "shortcut",
-          "icon": "icon-rocket",
+          "icon": "anticon antanticon anticon-rocket",
           "shortcut_root": true,
           "children": []
         },
@@ -53,7 +53,7 @@
           "text": "小部件",
           "i18n": "widgets",
           "link": "/widgets",
-          "icon": "icon-grid",
+          "icon": "anticon antanticon anticon-appstore",
           "badge": 2
         }
       ]
@@ -66,7 +66,7 @@
         {
           "text": "样式",
           "i18n": "style",
-          "icon": "icon-chemistry",
+          "icon": "anticon anticon-info",
           "children": [
             {
               "text": "Typography",
@@ -89,7 +89,7 @@
         {
           "text": "Delon",
           "i18n": "delon",
-          "icon": "icon-magic-wand",
+          "icon": "anticon anticon-bulb",
           "children": [
             {
               "text": "Dynamic Form",
@@ -162,7 +162,7 @@
           "text": "Form Page",
           "i18n": "form",
           "link": "/pro/form",
-          "icon": "icon-note",
+          "icon": "anticon anticon-edit",
           "hideInBreadcrumb": true,
           "children": [
             {
@@ -186,7 +186,7 @@
         {
           "text": "List",
           "i18n": "pro-list",
-          "icon": "icon-grid",
+          "icon": "anticon antanticon anticon-appstore-o",
           "hideInBreadcrumb": true,
           "children": [
             {
@@ -229,7 +229,7 @@
         {
           "text": "Profile",
           "i18n": "pro-profile",
-          "icon": "icon-book-open",
+          "icon": "anticon anticon-profile",
           "hideInBreadcrumb": true,
           "children": [
             {
@@ -248,7 +248,7 @@
         {
           "text": "Result",
           "i18n": "pro-result",
-          "icon": "icon-check",
+          "icon": "anticon anticon-check-circle-o",
           "hideInBreadcrumb": true,
           "children": [
             {
@@ -267,7 +267,7 @@
           "text": "Exception",
           "i18n": "pro-exception",
           "link": "/",
-          "icon": "icon-fire",
+          "icon": "anticon anticon-exception",
           "children": [
             {
               "text": "403",
@@ -289,7 +289,7 @@
         {
           "text": "User",
           "i18n": "pro-user",
-          "icon": "icon-user",
+          "icon": "anticon anticon-user",
           "children": [
             {
               "text": "login",
@@ -322,7 +322,7 @@
         {
           "text": "Report",
           "i18n": "report",
-          "icon": "anticon anticon-cloud-o",
+          "icon": "anticon antanticon anticon-cloud-o",
           "children": [
             {
               "text": "Relation",
@@ -336,7 +336,7 @@
           "text": "Extras",
           "i18n": "extras",
           "link": "/extras",
-          "icon": "icon-cup",
+          "icon": "anticon anticon-link",
           "children": [
             {
               "text": "Help Center",

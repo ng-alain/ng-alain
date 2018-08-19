@@ -69,7 +69,6 @@
     "ngx-tinymce": "^2.0.0",
     "ngx-ueditor": "^2.0.0",
     "screenfull": "^3.3.1",
-    "simple-line-icons": "^2.4.1",
     "qrious": "^4.0.2"
   },
   "devDependencies": {
