@@ -1,9 +1,9 @@
 <page-header></page-header>
-<div nz-row [nzGutter]="24" class="pt-lg">
+<div nz-row [nzGutter]="24">
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <g2-card [title]="'总销售额'" total="¥ 126,560" contentHeight="44px" [action]="action1" [footer]="footer1">
       <ng-template #action1>
-        <nz-tooltip [nzTitle]="'指标说明'">
+        <nz-tooltip nzTitle="指标说明">
           <i nz-tooltip class="anticon anticon-info-circle-o"></i>
         </nz-tooltip>
       </ng-template>
@@ -23,7 +23,7 @@
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <g2-card [title]="'访问量'" total="8,848" contentHeight="46px" [action]="action2" [footer]="footer2">
       <ng-template #action2>
-        <nz-tooltip [nzTitle]="'指标说明'">
+        <nz-tooltip nzTitle="指标说明">
           <i nz-tooltip class="anticon anticon-info-circle-o"></i>
         </nz-tooltip>
       </ng-template>
@@ -38,7 +38,7 @@
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <g2-card [title]="'支付笔数'" total="6,560" contentHeight="46px" [action]="action3" [footer]="footer3">
       <ng-template #action3>
-        <nz-tooltip [nzTitle]="'指标说明'">
+        <nz-tooltip nzTitle="指标说明">
           <i nz-tooltip class="anticon anticon-info-circle-o"></i>
         </nz-tooltip>
       </ng-template>
@@ -53,7 +53,7 @@
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <g2-card [title]="'运营活动效果'" total="78%" contentHeight="46px" [action]="action4" [footer]="footer4">
       <ng-template #action4>
-        <nz-tooltip [nzTitle]="'指标说明'">
+        <nz-tooltip nzTitle="指标说明">
           <i nz-tooltip class="anticon anticon-info-circle-o"></i>
         </nz-tooltip>
       </ng-template>
@@ -149,7 +149,7 @@
           <number-info total="12,321" subTotal="17.1" status="up" [subTitle]="subTitle">
             <ng-template #subTitle>
               搜索用户数
-              <nz-tooltip [nzTitle]="'指标文案'">
+              <nz-tooltip nzTitle="指标文案">
                 <i nz-tooltip class="anticon anticon-info-circle-o ml-sm"></i>
               </nz-tooltip>
             </ng-template>
@@ -161,13 +161,13 @@
           <g2-mini-area [line]="true" height="45" [data]="data.visitData2"></g2-mini-area>
         </div>
       </div>
-      <simple-table [data]="data.searchData" [columns]="searchColumn" size="small" ps="5" [toTopInChange]="false">
+      <st [data]="data.searchData" [columns]="searchColumn" size="small" ps="5" [page]="{toTopInChange:false}">
         <ng-template st-row="range" let-i>
           <trend [flag]="i.status === 1 ? 'down' : 'up'">
             <span>{{i.range}}%</span>
           </trend>
         </ng-template>
-      </simple-table>
+      </st>
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12">

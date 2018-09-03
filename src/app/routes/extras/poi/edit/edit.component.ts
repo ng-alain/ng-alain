@@ -19,14 +19,12 @@ export class ExtrasPoiEditComponent implements OnInit {
 
   ngOnInit() {
     if (this.i.id > 0) {
-      this.http
-        .get('./assets/tmp/pois.json')
-        .subscribe((res: any) => (this.i = res.data[0]));
+      this.http.get('/pois').subscribe((res: any) => (this.i = res.list[0]));
     }
   }
 
   save() {
-    this.http.get('./assets/tmp/pois.json').subscribe(() => {
+    this.http.get('/pois').subscribe(() => {
       this.msgSrv.success('保存成功，只是模拟，实际未变更');
       this.modal.close(true);
       this.close();
