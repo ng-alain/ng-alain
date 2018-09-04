@@ -64,7 +64,7 @@
     "@ngx-translate/http-loader": "^3.0.1",
     "ajv": "^6.4.0",
     "file-saver": "^1.3.8",
-    "ng-zorro-antd": "^1.2.0",
+    "ng-zorro-antd": "^1.4.1",
     "ngx-countdown": "^3.0.0",
     "ngx-tinymce": "^2.0.0",
     "ngx-ueditor": "^2.0.0",
@@ -73,9 +73,9 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "^6.1.0",
-    "@angular-devkit/build-angular": "~0.7.0",
+    "@angular-devkit/build-angular": "^0.7.0",
     "typescript": "2.9.x",
-    "@angular/cli": "~6.1.1",
+    "@angular/cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
@@ -107,7 +107,6 @@
     "stylelint-config-standard": "^18.2.0",
     "webpack-bundle-analyzer": "^2.11.2",
     "xlsx": "^0.12.12",
-    "less": "~2.7.0",
     "@angularclass/hmr": "^2.1.3",
     "ng-alain": "^1.1.5"
   },
