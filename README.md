@@ -23,23 +23,23 @@ ng serve
 npm run hmr
 ```
 
-Please refer to [Cli](http://ng-alain.com/cli) for more details.
+Please refer to [Cli](https://ng-alain.com/cli) for more details.
 
 > [vscode] recommended install [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) & [ng-alain-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-alain-vscode) plugins.
 
 ## Links
 
-+ [Document](http://ng-alain.com)
-+ [@delon](https://github.com/cipchk/delon)
++ [Document](https://ng-alain.com)
++ [@delon](https://github.com/ng-alain/delon)
 + [DEMO](https://cipchk.github.io/ng-alain/)
 
 ## Delon
 
-[delong](https://github.com/cipchk/delon) is a production-ready solution for admin business components packages, Built on the design principles developed by Ant Design.
+[delong](https://github.com/ng-alain/delon) is a production-ready solution for admin business components packages, Built on the design principles developed by Ant Design.
 
-[![Build Status](https://travis-ci.org/cipchk/delon.svg?branch=master)](https://travis-ci.org/cipchk/delon)
-[![Dependency Status](https://david-dm.org/cipchk/delon/status.svg)](https://david-dm.org/cipchk/delon)
-[![DevDependency Status](https://david-dm.org/cipchk/delon/dev-status.svg)](https://david-dm.org/cipchk/delon?type=dev)
+[![Build Status](https://travis-ci.org/ng-alain/delon.svg?branch=master)](https://travis-ci.org/ng-alain/delon)
+[![Dependency Status](https://david-dm.org/ng-alain/delon/status.svg)](https://david-dm.org/ng-alain/delon)
+[![DevDependency Status](https://david-dm.org/ng-alain/delon/dev-status.svg)](https://david-dm.org/ng-alain/delon?type=dev)
 
 | package name | npm version | npm next version | taobao version |
 | ------------ |:-----:|:----------:|:----------:|
@@ -56,14 +56,14 @@ Please refer to [Cli](http://ng-alain.com/cli) for more details.
 
 ## Architecture
 
-![Architecture](https://raw.githubusercontent.com/cipchk/delon/master/_screenshot/architecture.png)
+![Architecture](https://raw.githubusercontent.com/ng-alain/delon/master/_screenshot/architecture.png)
 
 ## Features
 
 + `ng-zorro-antd` based
 + Responsive Layout
 + I18n
-+ [@delon](https://github.com/cipchk/delon)
++ [@delon](https://github.com/ng-alain/delon)
 + Lazy load Assets
 + UI Router States
 + Customize Theme
@@ -74,9 +74,9 @@ Please refer to [Cli](http://ng-alain.com/cli) for more details.
 
 ## App Shots
 
-![desktop](https://raw.githubusercontent.com/cipchk/delon/master/_screenshot/desktop.png)
-![ipad](https://raw.githubusercontent.com/cipchk/delon/master/_screenshot/ipad.png)
-![iphone](https://raw.githubusercontent.com/cipchk/delon/master/_screenshot/iphone.png)
+![desktop](https://raw.githubusercontent.com/ng-alain/delon/master/_screenshot/desktop.png)
+![ipad](https://raw.githubusercontent.com/ng-alain/delon/master/_screenshot/ipad.png)
+![iphone](https://raw.githubusercontent.com/ng-alain/delon/master/_screenshot/iphone.png)
 
 ## Troubleshooting
 
