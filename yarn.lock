@@ -413,6 +413,10 @@
   version "2.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/@delon/cache/-/cache-2.0.0-beta.0.tgz#d6e0e289aaa1f8a381672f92271a299ee778b80c"
 
+"@delon/chart@^2.0.0-beta.0":
+  version "2.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@delon/chart/-/chart-2.0.0-beta.0.tgz#5c478c900795f0a7d6b5f25d2c350e00159e871e"
+
 "@delon/form@^2.0.0-beta.0":
   version "2.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/@delon/form/-/form-2.0.0-beta.0.tgz#6d81fbfe96040139fda2ab843893f4aaf312ce19"

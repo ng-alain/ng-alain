@@ -95,11 +95,9 @@
               "node_modules/qrious/dist/qrious.min.js"
             ],
             "styles": [
-              "src/styles.less"
             ],
             "assets": [
-              "src/assets",
-              "src/favicon.ico"
+              "src/assets"
             ]
           }
         },

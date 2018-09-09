@@ -49,6 +49,7 @@
     "@delon/acl": "^2.0.0-beta.0",
     "@delon/auth": "^2.0.0-beta.0",
     "@delon/cache": "^2.0.0-beta.0",
+    "@delon/chart": "^2.0.0-beta.0",
     "@delon/form": "^2.0.0-beta.0",
     "@delon/mock": "^2.0.0-beta.0",
     "@delon/theme": "^2.0.0-beta.0",

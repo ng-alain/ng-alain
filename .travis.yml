@@ -18,6 +18,8 @@ install:
   - yarn
 
 script:
+  - npm run build
+  - npm run lint
   - npm run test-coverage
 
 after_success:
