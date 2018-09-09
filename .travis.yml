@@ -29,6 +29,6 @@ env:
   - TASK=lint
   - TASK=test-coverage
 
-after_success:
-  - ./node_modules/.bin/codecov
+script:
+  - npm run $TASK
 
