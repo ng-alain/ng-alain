@@ -3,28 +3,12 @@
 </div>
 <h1 class="h2 pt-md">操作成功</h1>
 <p class="pt-md text-grey">预计两小时内到账</p>
-<div class="extra mt-md">
-  <div nz-row class="mb-md">
-    <div nz-col [nzSm]="8" class="text-right">付款账户：</div>
-    <div nz-col [nzSm]="16">{{item.pay_account}}</div>
-  </div>
-  <div nz-row class="mb-md">
-    <div nz-col [nzSm]="8" class="text-right">账户类型：</div>
-    <div nz-col [nzSm]="16">{{item.receiver_type_str}}</div>
-  </div>
-  <div nz-row class="mb-md">
-    <div nz-col [nzSm]="8" class="text-right">收款账户：</div>
-    <div nz-col [nzSm]="16">{{item.receiver_account}}</div>
-  </div>
-  <div nz-row class="mb-md">
-    <div nz-col [nzSm]="8" class="text-right">收款人姓名：</div>
-    <div nz-col [nzSm]="16">{{item.receiver_name}}</div>
-  </div>
-  <div nz-row>
-    <div nz-col [nzSm]="8" class="text-right">转账金额：</div>
-    <div nz-col [nzSm]="16">
-      <strong class="text-lg pr-sm">{{item.amount}}</strong>元</div>
-  </div>
+<div sv-container col="1" labelWidth="150" class="extra">
+  <sv label="付款账户">{{item.pay_account}}</sv>
+  <sv label="账户类型">{{item.receiver_type_str}}</sv>
+  <sv label="收款账户">{{item.receiver_account}}</sv>
+  <sv label="收款人姓名">{{item.receiver_name}}</sv>
+  <sv label="转账金额"><strong class="text-lg pr-sm">{{item.amount}}</strong>元</sv>
 </div>
 <div nz-row class="my-md py-md">
   <div nz-col>

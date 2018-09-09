@@ -1,6 +1,7 @@
 // tslint:disable
 import * as Mock from 'mockjs';
 import { format } from 'date-fns';
+import { deepCopy } from '@delon/util';
 
 // region: mock data
 
@@ -185,23 +186,20 @@ radarOriginData.forEach(item => {
 // endregion
 
 export const CHARTS = {
-  '/chart': Object.assign(
-    {},
-    {
-      visitData,
-      visitData2,
-      salesData,
-      searchData,
-      offlineData,
-      offlineChartData,
-      salesTypeData,
-      salesTypeDataOnline,
-      salesTypeDataOffline,
-      radarData,
-    },
-  ),
-  '/chart/visit': Object.assign([], visitData),
+  '/chart': deepCopy({
+    visitData,
+    visitData2,
+    salesData,
+    searchData,
+    offlineData,
+    offlineChartData,
+    salesTypeData,
+    salesTypeDataOnline,
+    salesTypeDataOffline,
+    radarData,
+  }),
+  '/chart/visit': deepCopy(visitData),
   '/chart/tags': Mock.mock({
-    'list|100': [{ name: '@city', 'value|1-100': 150, 'type|0-2': 1 }],
+    'list|100': [{ x: '@city', 'value|1-100': 150, 'category|0-2': 1 }],
   }),
 };

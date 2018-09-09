@@ -1,9 +1,7 @@
 import {
   Component,
   HostBinding,
-  ViewChild,
   Input,
-  OnInit,
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
@@ -22,9 +20,11 @@ export class HeaderSearchComponent implements AfterViewInit {
 
   qIpt: HTMLInputElement;
 
-  @HostBinding('class.header-search__focus') focus = false;
+  @HostBinding('class.alain-default__search-focus')
+  focus = false;
 
-  @HostBinding('class.header-search__toggled') searchToggled = false;
+  @HostBinding('class.alain-default__search-toggled')
+  searchToggled = false;
 
   @Input()
   set toggleChange(value: boolean) {

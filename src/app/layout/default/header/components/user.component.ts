@@ -7,7 +7,7 @@ import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
   selector: 'header-user',
   template: `
   <nz-dropdown nzPlacement="bottomRight">
-    <div class="item d-flex align-items-center px-sm" nz-dropdown>
+    <div class="alain-default__nav-item d-flex align-items-center px-sm" nz-dropdown>
       <nz-avatar [nzSrc]="settings.user.avatar" nzSize="small" class="mr-sm"></nz-avatar>
       {{settings.user.name}}
     </div>

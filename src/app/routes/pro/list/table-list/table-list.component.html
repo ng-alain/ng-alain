@@ -92,11 +92,11 @@
       </ng-template>
     </nz-alert>
   </div>
-  <simple-table #st [columns]="columns" [data]="data" [loading]="loading" (checkboxChange)="checkboxChange($event)" (filterChange)="getData()">
+  <st #st [columns]="columns" [data]="data" [loading]="loading" (checkboxChange)="checkboxChange($event)" (filterChange)="getData()">
     <ng-template st-row="status" let-i>
       <nz-badge [nzStatus]="i.statusType" [nzText]="i.statusText"></nz-badge>
     </ng-template>
-  </simple-table>
+  </st>
 </nz-card>
 <ng-template #modalContent>
   <nz-form-item>

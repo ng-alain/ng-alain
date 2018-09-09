@@ -1,4 +1,3 @@
-import { NzMessageService } from 'ng-zorro-antd';
 import { Component, OnInit } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 
@@ -7,7 +6,7 @@ import { _HttpClient } from '@delon/theme';
   templateUrl: './v1.component.html',
 })
 export class DashboardV1Component implements OnInit {
-  constructor(private http: _HttpClient, public msg: NzMessageService) {}
+  constructor(private http: _HttpClient) {}
 
   todoData: any[] = [
     {

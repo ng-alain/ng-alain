@@ -1,8 +1,5 @@
-<div class="content__title">
-  <h1>门店
-    <small>使用
-      <code>.simple-table</code> 样式风格的一个实际项目示例。</small>
-  </h1>
+<div class="alain-default__content-title">
+  <h1>门店</h1>
   <button nz-button (click)="add()" [nzType]="'primary'">添加</button>
 </div>
 <form nz-form [nzLayout]="'inline'" class="search-form">
@@ -34,4 +31,4 @@
     </nz-form-control>
   </nz-form-item>
 </form>
-<simple-table #st class="simple-table" [columns]="columns" [data]="url" [extraParams]="s"></simple-table>
+<st #st class="bg-white" [columns]="columns" [data]="url" [req]="{params: s}"></st>

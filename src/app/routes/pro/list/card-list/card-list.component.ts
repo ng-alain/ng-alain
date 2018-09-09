@@ -3,13 +3,13 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
-  selector: 'pro-list-card-list',
+  selector: 'app-list-card-list',
   templateUrl: './card-list.component.html',
   styles: [
     `
-    :host ::ng-deep .ant-card-meta-title {
-      margin-bottom: 12px;
-    }
+      :host ::ng-deep .ant-card-meta-title {
+        margin-bottom: 12px;
+      }
     `,
   ],
   encapsulation: ViewEncapsulation.Emulated,

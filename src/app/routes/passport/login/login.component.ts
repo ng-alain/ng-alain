@@ -139,7 +139,7 @@ export class UserLoginComponent implements OnDestroy {
     let url = ``;
     let callback = ``;
     if (environment.production)
-      callback = 'https://cipchk.github.io/ng-alain/callback/' + type;
+      callback = 'https://ng-alain.github.io/ng-alain/callback/' + type;
     else callback = 'http://localhost:4200/callback/' + type;
     switch (type) {
       case 'auth0':

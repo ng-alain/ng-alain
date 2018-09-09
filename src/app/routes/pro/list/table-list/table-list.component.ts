@@ -2,14 +2,10 @@ import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { tap, map } from 'rxjs/operators';
-import {
-  SimpleTableComponent,
-  SimpleTableColumn,
-  SimpleTableData,
-} from '@delon/abc';
+import { STComponent, STColumn, STData } from '@delon/abc';
 
 @Component({
-  selector: 'pro-table-list',
+  selector: 'app-table-list',
   templateUrl: './table-list.component.html',
 })
 export class ProTableListComponent implements OnInit {
@@ -34,8 +30,9 @@ export class ProTableListComponent implements OnInit {
     { index: 2, text: '已上线', value: false, type: 'success', checked: false },
     { index: 3, text: '异常', value: false, type: 'error', checked: false },
   ];
-  @ViewChild('st') st: SimpleTableComponent;
-  columns: SimpleTableColumn[] = [
+  @ViewChild('st')
+  st: STComponent;
+  columns: STColumn[] = [
     { title: '', index: 'key', type: 'checkbox' },
     { title: '规则编号', index: 'no' },
     { title: '描述', index: 'description' },
@@ -50,14 +47,17 @@ export class ProTableListComponent implements OnInit {
       title: '状态',
       index: 'status',
       render: 'status',
-      filters: this.status,
-      filter: () => true,
+      filter: {
+        menus: this.status,
+      },
     },
     {
       title: '更新时间',
       index: 'updatedAt',
       type: 'date',
-      sorter: (a: any, b: any) => a.updatedAt - b.updatedAt,
+      sort: {
+        compare: (a: any, b: any) => a.updatedAt - b.updatedAt,
+      },
     },
     {
       title: '操作',
@@ -73,7 +73,7 @@ export class ProTableListComponent implements OnInit {
       ],
     },
   ];
-  selectedRows: SimpleTableData[] = [];
+  selectedRows: STData[] = [];
   description = '';
   totalCallNo = 0;
   expandForm = false;
@@ -111,7 +111,7 @@ export class ProTableListComponent implements OnInit {
       .subscribe(res => (this.data = res));
   }
 
-  checkboxChange(list: SimpleTableData[]) {
+  checkboxChange(list: STData[]) {
     this.selectedRows = list;
     this.totalCallNo = this.selectedRows.reduce(
       (total, cv) => total + cv.callNo,

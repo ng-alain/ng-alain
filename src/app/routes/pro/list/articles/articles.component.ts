@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
-  selector: 'pro-list-articles',
+  selector: 'app-list-articles',
   templateUrl: './articles.component.html',
 })
 export class ProListArticlesComponent implements OnInit {

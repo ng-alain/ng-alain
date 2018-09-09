@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ComponentFactoryResolver,
+  ViewContainerRef,
+  AfterViewInit,
+} from '@angular/core';
 import {
   Router,
   NavigationEnd,
@@ -9,17 +15,27 @@ import {
 import { NzMessageService } from 'ng-zorro-antd';
 import { ScrollService, MenuService, SettingsService } from '@delon/theme';
 
+import { environment } from '@env/environment';
+import { SettingDrawerComponent } from './setting-drawer/setting-drawer.component';
+
 @Component({
   selector: 'layout-default',
   templateUrl: './default.component.html',
+  preserveWhitespaces: false,
+  host: {
+    '[class.alain-default]': 'true',
+  },
 })
-export class LayoutDefaultComponent {
+export class LayoutDefaultComponent implements AfterViewInit {
   isFetching = false;
+  @ViewChild('settingHost', { read: ViewContainerRef })
+  settingHost: ViewContainerRef;
 
   constructor(
     router: Router,
     scroll: ScrollService,
     _message: NzMessageService,
+    private resolver: ComponentFactoryResolver,
     public menuSrv: MenuService,
     public settings: SettingsService,
   ) {
@@ -43,5 +59,17 @@ export class LayoutDefaultComponent {
         this.isFetching = false;
       }, 100);
     });
+  }
+
+  ngAfterViewInit(): void {
+    // Setting componet for only developer
+    if (!environment.production) {
+      setTimeout(() => {
+        const settingFactory = this.resolver.resolveComponentFactory(
+          SettingDrawerComponent,
+        );
+        this.settingHost.createComponent(settingFactory);
+      }, 22);
+    }
   }
 }

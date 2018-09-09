@@ -1,4 +1,4 @@
-<div class="content__title">
+<div class="alain-default__content-title">
   <h1>
     Dashboard
     <small>Welcome !</small>
@@ -71,8 +71,8 @@
 </div>
 <div nz-row nzGutter="16">
   <div nz-col nzXs="24" nzMd="12">
-    <nz-card [nzBordered]="false" [nzTitle]="title">
-      <ng-template #title>
+    <nz-card [nzBordered]="false" [nzTitle]="salesTitle">
+      <ng-template #salesTitle>
         Sales Statistics
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
@@ -80,8 +80,8 @@
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzMd="12">
-    <nz-card [nzTitle]="title" [nzBordered]="false">
-      <ng-template #title>
+    <nz-card [nzTitle]="growthTitle" [nzBordered]="false">
+      <ng-template #growthTitle>
         Growth Rate
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
@@ -108,8 +108,8 @@
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzMd="12">
-    <nz-card [nzTitle]="title" [nzBordered]="false" class="ant-card__body-nopadding">
-      <ng-template #title>
+    <nz-card [nzTitle]="recentTitle" [nzBordered]="false" class="ant-card__body-nopadding">
+      <ng-template #recentTitle>
         Recent Posts
         <small class="text-sm font-weight-normal">Venenatis portauam Inceptos ameteiam</small>
       </ng-template>

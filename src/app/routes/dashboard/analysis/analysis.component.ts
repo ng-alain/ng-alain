@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { SimpleTableColumn } from '@delon/abc';
+import { STColumn } from '@delon/abc';
 import { getTimeDistance, yuan } from '@delon/util';
 import { _HttpClient } from '@delon/theme';
 
@@ -24,7 +24,7 @@ export class DashboardAnalysisComponent implements OnInit {
         total: 323234,
       };
     });
-  searchColumn: SimpleTableColumn[] = [
+  searchColumn: STColumn[] = [
     { title: '排名', index: 'index' },
     {
       title: '搜索关键词',
