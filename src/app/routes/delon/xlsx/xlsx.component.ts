@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { XlsxService, SimpleTableColumn } from '@delon/abc';
+import { XlsxService, STColumn } from '@delon/abc';
 
 @Component({
   selector: 'app-xlsx',
@@ -27,7 +27,7 @@ export class XlsxComponent {
       };
     });
 
-  columns: SimpleTableColumn[] = [
+  columns: STColumn[] = [
     { title: '编号', index: 'id', type: 'checkbox' },
     { title: '姓名', index: 'name' },
     { title: '年龄', index: 'age' },

@@ -27,11 +27,6 @@ export class BasicFormComponent implements OnInit {
   }
 
   submit() {
-    for (const i in this.form.controls) {
-      this.form.controls[i].markAsDirty();
-      this.form.controls[i].updateValueAndValidity();
-    }
-    if (this.form.invalid) return;
     this.submitting = true;
     setTimeout(() => {
       this.submitting = false;

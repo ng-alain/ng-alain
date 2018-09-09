@@ -46,7 +46,7 @@
           "text": "快捷菜单",
           "i18n": "shortcut",
           "icon": "anticon antanticon anticon-rocket",
-          "shortcut_root": true,
+          "shortcutRoot": true,
           "children": []
         },
         {

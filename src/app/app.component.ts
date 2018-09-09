@@ -9,7 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { SettingsService, TitleService } from '@delon/theme';
 import { VERSION as VERSION_ALAIN } from '@delon/theme';
-import { VERSION as VERSION_ZORRO } from 'ng-zorro-antd';
+import { VERSION as VERSION_ZORRO, NzModalService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +28,10 @@ export class AppComponent implements OnInit {
   get isCollapsed() {
     return this.settings.layout.collapsed;
   }
+  @HostBinding('class.color-weak')
+  get isColorWeak() {
+    return this.settings.layout.colorWeak;
+  }
 
   constructor(
     el: ElementRef,
@@ -35,6 +39,7 @@ export class AppComponent implements OnInit {
     private settings: SettingsService,
     private router: Router,
     private titleSrv: TitleService,
+    private modalSrv: NzModalService,
   ) {
     renderer.setAttribute(
       el.nativeElement,
@@ -51,6 +56,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.router.events
       .pipe(filter(evt => evt instanceof NavigationEnd))
-      .subscribe(() => this.titleSrv.setTitle());
+      .subscribe(() => {
+        this.titleSrv.setTitle();
+        this.modalSrv.closeAll();
+      });
   }
 }

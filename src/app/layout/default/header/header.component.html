@@ -1,54 +1,54 @@
-<div class="logo">
-  <a [routerLink]="['/']">
-    <img class="expanded" src="./assets/logo-full.svg" alt="{{settings.app.name}}" style="max-height:40px;" />
-    <img class="collapsed" src="./assets/logo.svg" alt="{{settings.app.name}}" style="max-height:30px;" />
+<div class="alain-default__header-logo">
+  <a [routerLink]="['/']" class="alain-default__header-logo-link">
+    <img class="alain-default__header-logo-expanded" src="./assets/logo-full.svg" alt="{{settings.app.name}}" style="max-height:40px;" />
+    <img class="alain-default__header-logo-collapsed" src="./assets/logo.svg" alt="{{settings.app.name}}" style="max-height:30px;" />
   </a>
 </div>
-<div class="top-nav-wrap">
-  <ul class="top-nav">
+<div class="alain-default__nav-wrap">
+  <ul class="alain-default__nav">
     <!-- Menu -->
     <li>
-      <div class="item" (click)="toggleCollapsedSidebar()">
+      <div class="alain-default__nav-item" (click)="toggleCollapsedSidebar()">
         <i class="anticon anticon-menu-{{settings.layout.collapsed ? 'unfold' : 'fold'}}"></i>
       </div>
     </li>
     <!-- Github Page -->
     <li>
-      <a class="item" href="//github.com/cipchk/ng-alain" target="_blank">
+      <a class="alain-default__nav-item" href="//github.com/ng-alain/ng-alain" target="_blank">
         <i class="anticon anticon-github"></i>
       </a>
     </li>
     <!-- Lock Page -->
-    <li class="hidden-xs">
-      <div class="item" [routerLink]="['/lock']">
+    <li class="hidden-mobile">
+      <div class="alain-default__nav-item" [routerLink]="['/lock']">
         <i class="anticon anticon-lock"></i>
       </div>
     </li>
     <!-- Search Button -->
     <li class="header-search__btn" (click)="searchToggleChange()">
-      <div class="item">
+      <div class="alain-default__nav-item">
         <i class="anticon anticon-search"></i>
       </div>
     </li>
   </ul>
-  <header-search class="header-search" [toggleChange]="searchToggleStatus"></header-search>
-  <ul class="top-nav">
+  <header-search class="alain-default__search" [toggleChange]="searchToggleStatus"></header-search>
+  <ul class="alain-default__nav">
     <!-- Notify -->
     <li>
       <header-notify></header-notify>
     </li>
     <!-- Task -->
-    <li class="hidden-xs">
+    <li class="hidden-mobile">
       <header-task></header-task>
     </li>
     <!-- App Icons -->
-    <li class="hidden-xs">
+    <li class="hidden-mobile">
       <header-icon></header-icon>
     </li>
     <!-- Settings -->
-    <li class="hidden-xs">
+    <li class="hidden-mobile">
       <nz-dropdown nzTrigger="click" nzPlacement="bottomRight">
-        <div class="item" nz-dropdown>
+        <div class="alain-default__nav-item" nz-dropdown>
           <i class="anticon anticon-setting"></i>
         </div>
         <div nz-menu style="width:200px;">
@@ -64,7 +64,7 @@
         </div>
       </nz-dropdown>
     </li>
-    <li class="hidden-xs">
+    <li class="hidden-mobile">
       <header-user></header-user>
     </li>
   </ul>

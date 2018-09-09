@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
-import { SimpleTableColumn } from '@delon/abc';
+import { STColumn } from '@delon/abc';
 import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'pro-profile-basic',
+  selector: 'app-profile-basic',
   templateUrl: './basic.component.html',
 })
 export class ProProfileBaseComponent {
@@ -19,7 +19,7 @@ export class ProProfileBaseComponent {
       });
     }),
   );
-  goodsColumns: SimpleTableColumn[] = [
+  goodsColumns: STColumn[] = [
     {
       title: '商品编号',
       index: 'id',
@@ -33,7 +33,7 @@ export class ProProfileBaseComponent {
     { title: '金额', index: 'amount', type: 'currency' },
   ];
   progress = this.http.get('/profile/progress');
-  progressColumns: SimpleTableColumn[] = [
+  progressColumns: STColumn[] = [
     { title: '时间', index: 'time' },
     { title: '当前进度', index: 'rate' },
     { title: '状态', render: 'status' },

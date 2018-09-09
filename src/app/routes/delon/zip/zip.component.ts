@@ -41,7 +41,7 @@ export class ZipComponent {
 
   instance: JSZip = null;
   data: { path: string; url: string }[] = [
-    { path: 'demo.docx', url: 'http://ng-alain.com/assets/demo.docx' },
+    { path: 'demo.docx', url: 'https://ng-alain.com/assets/demo.docx' },
     {
       path: '小程序标志.zip',
       url: 'https://wximg.gtimg.com/shake_tv/mina/standard_logo.zip',

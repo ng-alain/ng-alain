@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService, NzTabChangeEvent } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
-import { SimpleTableColumn } from '@delon/abc';
+import { STColumn } from '@delon/abc';
 
 @Component({
-  selector: 'pro-profile-advanced',
+  selector: 'app-profile-advanced',
   templateUrl: './advanced.component.html',
   styleUrls: ['./advanced.component.less'],
 })
@@ -17,7 +17,7 @@ export class ProProfileAdvancedComponent implements OnInit {
     advancedOperation3: [],
   };
 
-  opColumns: SimpleTableColumn[] = [
+  opColumns: STColumn[] = [
     { title: '操作类型', index: 'type' },
     { title: '操作人', index: 'name' },
     { title: '执行结果', index: 'status', render: 'status' },

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
-import { SimpleTableColumn, SimpleTableComponent } from '@delon/abc';
+import { STColumn, STComponent } from '@delon/abc';
 import { SFSchema } from '@delon/form';
 
 @Component({
@@ -10,7 +10,8 @@ import { SFSchema } from '@delon/form';
 export class DelonFormComponent implements OnInit {
   params: any = {};
   url = `/user`;
-  @ViewChild('st') st: SimpleTableComponent;
+  @ViewChild('st')
+  st: STComponent;
   searchSchema: SFSchema = {
     properties: {
       no: {
@@ -19,7 +20,7 @@ export class DelonFormComponent implements OnInit {
       },
     },
   };
-  columns: SimpleTableColumn[] = [
+  columns: STColumn[] = [
     { title: '编号', index: 'no' },
     { title: '调用次数', type: 'number', index: 'callNo' },
     { title: '头像', type: 'img', width: '50px', index: 'avatar' },
