@@ -243,7 +243,7 @@ export class SettingDrawerComponent {
   private loadLess(): Promise<void> {
     if (this.loadedLess) return Promise.resolve();
     return this.lazy
-      .loadStyle('/assets/alain-default.less', 'stylesheet/less')
+      .loadStyle('./assets/alain-default.less', 'stylesheet/less')
       .then(() => {
         const lessConfigNode = this.doc.createElement('script');
         lessConfigNode.innerHTML = `
