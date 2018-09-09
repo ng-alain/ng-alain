@@ -3,7 +3,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
-  selector: 'pro-list-projects',
+  selector: 'app-list-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.less'],
 })

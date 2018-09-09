@@ -3,7 +3,7 @@ import { Router, ActivationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-pro-list-layout',
+  selector: 'app-list-layout',
   templateUrl: './list.component.html',
 })
 export class ProListLayoutComponent implements OnInit {

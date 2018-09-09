@@ -5,7 +5,7 @@ import { tap, map } from 'rxjs/operators';
 import { STComponent, STColumn, STData } from '@delon/abc';
 
 @Component({
-  selector: 'app-pro-table-list',
+  selector: 'app-table-list',
   templateUrl: './table-list.component.html',
 })
 export class ProTableListComponent implements OnInit {
