@@ -23,7 +23,7 @@ interface LangData {
   text: string;
   ng: any;
   zorro: any;
-  date: any;
+  dateFns: any;
   delon: any;
 }
 
@@ -33,14 +33,14 @@ const LANGS: { [key: string]: LangData } = {
     text: '中文',
     ng: ngZh,
     zorro: zh_CN,
-    date: df_zh_cn,
+    dateFns: df_zh_cn,
     delon: delonZhCn,
   },
   en: {
     text: 'English',
     ng: ngEn,
     zorro: en_US,
-    date: df_en,
+    dateFns: df_en,
     delon: delonEnUS,
   },
 };
@@ -73,7 +73,7 @@ export class I18NService implements AlainI18NService {
     const item = LANGS[lang];
     registerLocaleData(item.ng);
     this.nzI18nService.setLocale(item.zorro);
-    (window as any).__locale__ = item.date;
+    (window as any).__locale__ = item.dateFns;
     this.delonLocaleService.setLocale(item.delon);
   }
 
