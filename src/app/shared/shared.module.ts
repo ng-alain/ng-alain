@@ -2,33 +2,40 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-// delon
+
 import { AlainThemeModule } from '@delon/theme';
-import { DelonABCModule } from '@delon/abc';
-import { DelonChartModule } from '@delon/chart';
+// import { DelonABCModule } from '@delon/abc';
+// import { DelonChartModule } from '@delon/chart';
+// performance modes
+import {
+  ABC_MODULES,
+  CHART_MODULES,
+  ZORRO_MODULES,
+} from '../delon-perf.module';
 import { DelonACLModule } from '@delon/acl';
 import { DelonFormModule } from '@delon/form';
-// i18n
-import { TranslateModule } from '@ngx-translate/core';
 
-// region: third libs
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+// #region third libs
+import { TranslateModule } from '@ngx-translate/core';
 import { CountdownModule } from 'ngx-countdown';
 import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';
 
-const THIRDMODULES = [
-  NgZorroAntdModule,
+const THIRD_MODULES = [
+  // NgZorroAntdModule,
+  // performance modes
+  ...ZORRO_MODULES,
+  TranslateModule,
   CountdownModule,
   UEditorModule,
   NgxTinymceModule,
 ];
-// endregion
+// #endregion
 
-// region: your componets & directives
+// #region your componets & directives
 const COMPONENTS = [];
 const DIRECTIVES = [];
-// endregion
+// #endregion
 
 @NgModule({
   imports: [
@@ -37,12 +44,12 @@ const DIRECTIVES = [];
     RouterModule,
     ReactiveFormsModule,
     AlainThemeModule.forChild(),
-    DelonABCModule,
-    DelonChartModule,
+    ...ABC_MODULES,
+    ...CHART_MODULES,
     DelonACLModule,
     DelonFormModule,
     // third libs
-    ...THIRDMODULES,
+    ...THIRD_MODULES,
   ],
   declarations: [
     // your components
@@ -55,14 +62,12 @@ const DIRECTIVES = [];
     ReactiveFormsModule,
     RouterModule,
     AlainThemeModule,
-    DelonABCModule,
-    DelonChartModule,
+    ...ABC_MODULES,
+    ...CHART_MODULES,
     DelonACLModule,
     DelonFormModule,
-    // i18n
-    TranslateModule,
     // third libs
-    ...THIRDMODULES,
+    ...THIRD_MODULES,
     // your components
     ...COMPONENTS,
     ...DIRECTIVES,
