@@ -11,7 +11,7 @@ import { DelonFormModule } from '@delon/form';
 // i18n
 import { TranslateModule } from '@ngx-translate/core';
 
-// region: third libs
+// #region third libs
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { CountdownModule } from 'ngx-countdown';
 import { UEditorModule } from 'ngx-ueditor';
@@ -23,12 +23,12 @@ const THIRDMODULES = [
   UEditorModule,
   NgxTinymceModule,
 ];
-// endregion
+// #endregion
 
-// region: your componets & directives
+// #region your componets & directives
 const COMPONENTS = [];
 const DIRECTIVES = [];
-// endregion
+// #endregion
 
 @NgModule({
   imports: [
