@@ -1,45 +1,80 @@
-import { Injectable, Inject, Injector } from '@angular/core';
-import { Router } from '@angular/router';
+// 请参考：https://ng-alain.com/docs/i18n
+import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
+
+import { registerLocaleData } from '@angular/common';
+import ngZh from '@angular/common/locales/zh';
+import ngEn from '@angular/common/locales/en';
 
 import { en_US, zh_CN, NzI18nService } from 'ng-zorro-antd';
 import * as df_en from 'date-fns/locale/en';
 import * as df_zh_cn from 'date-fns/locale/zh_cn';
 import { TranslateService } from '@ngx-translate/core';
-import { SettingsService, AlainI18NService } from '@delon/theme';
+import {
+  SettingsService,
+  AlainI18NService,
+  DelonLocaleService,
+  en_US as delonEnUS,
+  zh_CN as delonZhCn,
+} from '@delon/theme';
+
+interface LangData {
+  text: string;
+  ng: any;
+  zorro: any;
+  dateFns: any;
+  delon: any;
+}
+
+const DEFAULT = 'zh-CN';
+const LANGS: { [key: string]: LangData } = {
+  'zh-CN': {
+    text: '中文',
+    ng: ngZh,
+    zorro: zh_CN,
+    dateFns: df_zh_cn,
+    delon: delonZhCn,
+  },
+  en: {
+    text: 'English',
+    ng: ngEn,
+    zorro: en_US,
+    dateFns: df_en,
+    delon: delonEnUS,
+  },
+};
 
 @Injectable()
 export class I18NService implements AlainI18NService {
-  private _default = 'zh-CN';
+  private _default = DEFAULT;
   private change$ = new BehaviorSubject<string>(null);
 
-  private _langs = [
-    { code: 'en', text: 'English' },
-    { code: 'zh-CN', text: '中文' },
-  ];
+  private _langs = Object.keys(LANGS).map(code => {
+    return { code, text: LANGS[code].text };
+  });
 
   constructor(
     settings: SettingsService,
     private nzI18nService: NzI18nService,
+    private delonLocaleService: DelonLocaleService,
     private translate: TranslateService,
-    private injector: Injector,
   ) {
     const defaultLan = settings.layout.lang || translate.getBrowserLang();
+    // `@ngx-translate/core` 预先知道支持哪些语言
     const lans = this._langs.map(item => item.code);
-    this._default = lans.includes(defaultLan) ? defaultLan : lans[0];
     translate.addLangs(lans);
-    this.setZorro(this._default).setDateFns(this._default);
+
+    this._default = lans.includes(defaultLan) ? defaultLan : lans[0];
+    this.updateLangData(this._default);
   }
 
-  setZorro(lang: string): this {
-    this.nzI18nService.setLocale(lang === 'en' ? en_US : zh_CN);
-    return this;
-  }
-
-  setDateFns(lang: string): this {
-    (window as any).__locale__ = lang === 'en' ? df_en : df_zh_cn;
-    return this;
+  private updateLangData(lang: string) {
+    const item = LANGS[lang];
+    registerLocaleData(item.ng);
+    this.nzI18nService.setLocale(item.zorro);
+    (window as any).__locale__ = item.dateFns;
+    this.delonLocaleService.setLocale(item.delon);
   }
 
   get change(): Observable<string> {
@@ -49,7 +84,7 @@ export class I18NService implements AlainI18NService {
   use(lang: string): void {
     lang = lang || this.translate.getDefaultLang();
     if (this.currentLang === lang) return;
-    this.setZorro(lang).setDateFns(lang);
+    this.updateLangData(lang);
     this.translate.use(lang).subscribe(() => this.change$.next(lang));
   }
   /** 获取语言列表 */
