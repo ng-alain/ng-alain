@@ -287,6 +287,23 @@
           ]
         },
         {
+          "text": "Account",
+          "i18n": "pro-account",
+          "icon": "anticon anticon-user",
+          "children": [
+            {
+              "text": "center",
+              "link": "/pro/account/center",
+              "i18n": "pro-account-center"
+            },
+            {
+              "text": "settings",
+              "link": "/pro/account/settings",
+              "i18n": "pro-account-settings"
+            }
+          ]
+        },
+        {
           "text": "User",
           "i18n": "pro-user",
           "icon": "anticon anticon-user",
