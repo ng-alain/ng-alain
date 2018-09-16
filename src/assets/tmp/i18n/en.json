@@ -61,8 +61,11 @@
   "pro-result-success": "Success",
   "pro-result-fail": "Fail",
   "pro-exception": "Exception",
-  "pro-user": "Account",
+  "pro-user": "User",
   "pro-login": "Login",
   "pro-register": "Register",
-  "pro-register-result": "Register Result"
+  "pro-register-result": "Register Result",
+  "pro-account": "Account",
+  "pro-account-center": "Account Center",
+  "pro-account-settings": "Account Settings"
 }
