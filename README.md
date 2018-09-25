@@ -8,13 +8,14 @@
 
 [Ng-zorro-antd](https://github.com/NG-ZORRO/ng-zorro-antd) admin panel front-end framework.
 
-更多信息见[中文 README](README-zh_CN.md)
+[中文版](README-zh_CN.md)
 
 [DEMO](https://ng-alain.github.io/ng-alain/)
 
 ## Quick start
 
 ```bash
+# Make sure you are using the latest version of Angular cli
 ng new demo --style less
 cd demo
 ng add ng-alain

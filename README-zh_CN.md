@@ -7,13 +7,14 @@
 
 一套基于 [Ng-zorro-antd](https://github.com/NG-ZORRO/ng-zorro-antd)【ANT DESIGN】 的企业后台模板。
 
-[README in English](README.md)
+[English](README.md)
 
 [DEMO](https://ng-alain.github.io/ng-alain/)
 
 ## 快速入门
 
 ```bash
+# 确保使用的是最新版本 Angular cli
 ng new demo --style less
 cd demo
 ng add ng-alain
