@@ -42,7 +42,7 @@
               </nz-form-explain>
             </nz-col>
             <nz-col [nzSpan]="8">
-              <button nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count" class="ant-btn__block">{{ count ? count + 's' : '获取验证码' }}</button>
+              <button nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count" nzBlock>{{ count ? count + 's' : '获取验证码' }}</button>
             </nz-col>
           </nz-row>
         </nz-form-control>
@@ -58,7 +58,7 @@
     </nz-col>
   </nz-form-item>
   <nz-form-item>
-    <button nz-button type="submit" nzType="primary" nzSize="large" [nzLoading]="loading" class="ant-btn__block">登录</button>
+    <button nz-button type="submit" nzType="primary" nzSize="large" [nzLoading]="loading" nzBlock>登录</button>
   </nz-form-item>
 </form>
 <div class="other">
