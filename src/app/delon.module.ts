@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import { throwIfAlreadyLoaded } from '@core/module-import-guard';
 
-import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { AlainThemeModule } from '@delon/theme';
 import { DelonABCModule } from '@delon/abc';
 import { DelonChartModule } from '@delon/chart';
@@ -76,7 +75,6 @@ const GLOBAL_CONFIG_PROVIDES = [
 
 @NgModule({
   imports: [
-    NgZorroAntdModule.forRoot(),
     AlainThemeModule.forRoot(),
     DelonABCModule.forRoot(),
     DelonChartModule.forRoot(),
