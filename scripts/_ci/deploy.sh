@@ -4,6 +4,12 @@ set -u -e -o pipefail
 
 cd $(dirname $0)/../..
 
+if [ -z ${NG_ALAIN_BUILDS_TOKEN} ]; then
+  echo "Error: No access token for GitHub could be found." \
+       "Please set the environment variable 'NG_ALAIN_BUILDS_TOKEN'."
+  exit 1
+fi
+
 ROOT_DIR="$(pwd)"
 DIST_DIR="$(pwd)/dist"
 
@@ -29,6 +35,6 @@ cp -f ${DIST_DIR}/index.html ${DIST_DIR}/404.html
 echo ""
 echo "Deploy by gh-pages"
 echo ""
-$(npm bin)/gh-pages -d dist
+$(npm bin)/gh-pages -d dist -r "https://${NG_ALAIN_BUILDS_TOKEN}@github.com/ng-alain/ng-alain.git"
 
 echo "Finished"
