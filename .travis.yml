@@ -1,7 +1,9 @@
 sudo: required
+dist: trusty
 language: node_js
+
 node_js:
-  - "8.11"
+  - '8.12.0'
 
 addons:
   apt:
@@ -14,21 +16,27 @@ addons:
 git:
   depth: 1
 
-cache:
-  yarn: true
-  directories:
-     - ./node_modules
+jobs:
+  include:
+    - env: "MODE=build"
+    - env: "MODE=lint"
+    - env: "MODE=test-coverage"
+    - env: "DEPLOY_MODE=artifacts"
+      if: branch = master AND type = push
 
 before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
-env:
-  - TASK=build
-  - TASK=lint
-  - TASK=test-coverage
+install:
+  - chmod +x -R scripts
+  - yarn
 
 script:
-  - npm run $TASK
+  - ./scripts/_ci/travis.sh
 
+cache:
+  yarn: true
+  directories:
+    - ./node_modules/
