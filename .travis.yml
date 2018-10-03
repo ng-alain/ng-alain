@@ -22,7 +22,7 @@ jobs:
     - env: "MODE=lint"
     - env: "MODE=test-coverage"
     - env: "DEPLOY_MODE=artifacts"
-      # if: branch = master AND type = push
+      if: branch = master AND type = push
 
 before_install:
   - export CHROME_BIN=chromium-browser
