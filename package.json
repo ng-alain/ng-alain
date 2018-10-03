@@ -30,7 +30,8 @@
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "e2e": "ng e2e",
     "test": "ng test --watch",
-    "test-coverage": "ng test --code-coverage --watch=false"
+    "test-coverage": "ng test --code-coverage --watch=false",
+    "color-less": "node scripts/color-less.js"
   },
   "dependencies": {
     "@angular/animations": "^6.1.0",
@@ -98,6 +99,7 @@
     "husky": "^0.14.3",
     "gh-pages": "^1.1.0",
     "lint-staged": "^7.1.0",
+    "less-bundle-promise": "^1.0.7",
     "mockjs": "^1.0.1-beta3",
     "prettier": "^1.12.1",
     "prettier-stylelint": "^0.4.2",
@@ -121,6 +123,7 @@
       "npm run lint:style",
       "prettier --write",
       "git add"
-    ]
+    ],
+    "ignore": [ "src/assets/*" ]
   }
 }
