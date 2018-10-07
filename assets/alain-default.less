@@ -21720,9 +21720,7 @@ g2-gauge,
 g2-mini-area,
 g2-mini-bar,
 g2-tag-cloud,
-g2-timeline,
-g2,
-g2-custom {
+g2-timeline {
   display: block;
 }
 
@@ -21828,6 +21826,71 @@ g2-tag-cloud {
         top: auto;
         bottom: 0;
       }
+    }
+  }
+}
+
+@number-info-prefix: ~'.number-info';
+@{number-info-prefix} {
+  display: block;
+  &__title {
+    color: @text-color;
+    font-size: @font-size-lg;
+    margin-bottom: 16px;
+    transition: all 0.3s;
+    &-sub {
+      color: @text-color-secondary;
+      font-size: @font-size-base;
+      height: 22px;
+      line-height: 22px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      white-space: nowrap;
+    }
+  }
+  &__value {
+    margin-top: 4px;
+    font-size: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+    &-suffix {
+      color: @text-color;
+      font-size: 16px;
+      font-style: normal;
+      margin-left: 4px;
+    }
+    &-text {
+      color: @heading-color;
+      display: inline-block;
+      line-height: 32px;
+      height: 32px;
+      font-size: 24px;
+      margin-right: 32px;
+    }
+    &-sub {
+      color: @text-color-secondary;
+      font-size: @font-size-lg;
+      vertical-align: top;
+      margin-right: 0;
+      .anticon {
+        font-size: 12px;
+        transform: scale(0.82);
+        margin-left: 4px;
+      }
+      .anticon-caret-up {
+        color: @red-6;
+      }
+      .anticon-caret-down {
+        color: @green-6;
+      }
+    }
+  }
+  &__light {
+    @{number-info-prefix}__value-text {
+      color: @text-color;
     }
   }
 }
@@ -21972,100 +22035,6 @@ g2-tag-cloud {
   }
 }
 
-@g2-water-wave-prefix: ~'.g2-water-wave';
-
-@{g2-water-wave-prefix} {
-  display: inline-block;
-  position: relative;
-  transform-origin: left;
-  &__desc {
-    position: absolute;
-    left: 0;
-    top: 32px;
-    text-align: center;
-    width: 100%;
-    &-title {
-      color: @text-color-secondary;
-      font-size: 14px;
-      line-height: 22px;
-    }
-    &-percent {
-      color: @heading-color;
-      line-height: 32px;
-      font-size: 24px;
-    }
-  }
-  &__canvas {
-    transform: scale(0.5);
-    transform-origin: 0 0;
-  }
-}
-
-@number-info-prefix: ~'.number-info';
-@{number-info-prefix} {
-  display: block;
-  &__title {
-    color: @text-color;
-    font-size: @font-size-lg;
-    margin-bottom: 16px;
-    transition: all 0.3s;
-    &-sub {
-      color: @text-color-secondary;
-      font-size: @font-size-base;
-      height: 22px;
-      line-height: 22px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      word-break: break-all;
-      white-space: nowrap;
-    }
-  }
-  &__value {
-    margin-top: 4px;
-    font-size: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-all;
-    white-space: nowrap;
-    &-suffix {
-      color: @text-color;
-      font-size: 16px;
-      font-style: normal;
-      margin-left: 4px;
-    }
-    &-text {
-      color: @heading-color;
-      display: inline-block;
-      line-height: 32px;
-      height: 32px;
-      font-size: 24px;
-      margin-right: 32px;
-    }
-    &-sub {
-      color: @text-color-secondary;
-      font-size: @font-size-lg;
-      vertical-align: top;
-      margin-right: 0;
-      .anticon {
-        font-size: 12px;
-        transform: scale(0.82);
-        margin-left: 4px;
-      }
-      .anticon-caret-up {
-        color: @red-6;
-      }
-      .anticon-caret-down {
-        color: @green-6;
-      }
-    }
-  }
-  &__light {
-    @{number-info-prefix}__value-text {
-      color: @text-color;
-    }
-  }
-}
-
 @trend-prefix: ~'.trend';
 
 @{trend-prefix} {
@@ -22102,6 +22071,35 @@ g2-tag-cloud {
     @{trend-prefix}__down {
       color: @red-6;
     }
+  }
+}
+
+@g2-water-wave-prefix: ~'.g2-water-wave';
+
+@{g2-water-wave-prefix} {
+  display: inline-block;
+  position: relative;
+  transform-origin: left;
+  &__desc {
+    position: absolute;
+    left: 0;
+    top: 32px;
+    text-align: center;
+    width: 100%;
+    &-title {
+      color: @text-color-secondary;
+      font-size: 14px;
+      line-height: 22px;
+    }
+    &-percent {
+      color: @heading-color;
+      line-height: 32px;
+      font-size: 24px;
+    }
+  }
+  &__canvas {
+    transform: scale(0.5);
+    transform-origin: 0 0;
   }
 }
 
