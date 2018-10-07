@@ -34,14 +34,17 @@ sed -i "s/const MOCK_MODULES = !environment.production/const MOCK_MODULES = true
 sed -i "s/if (!environment.production)/if (true)/g" ${ROOT_DIR}/src/app/layout/default/default.component.ts
 
 if [[ ${DAY_RELEASE} == true ]]; then
+  NG_ALAIN_VERSION=$(node -p "require('./node_modules/ng-alain/package.json').version")
+  echo "Current ng-alain version: ${NG_ALAIN_VERSION}"
   echo ""
   echo "Day Build, Muse be download @delon build packages"
   git clone --depth 1 https://github.com/ng-alain/delon-builds.git
   rm -rf node_modules/@delon
   rm -rf node_modules/ng-alain
-  rsync -a delon-builds node_modules
-  DAY_VERSION=$(node -p "require('node_modules/ng-alain/package.json').version")
-  echo "Current day version: ${DAY_VERSION}"
+  echo "Copies"
+  rsync -am delon-builds/ node_modules/
+  NG_ALAIN_VERSION=$(node -p "require('./node_modules/ng-alain/package.json').version")
+  echo "After ng-alain version: ${NG_ALAIN_VERSION}"
 fi
 
 echo ""

@@ -8,6 +8,7 @@
 # dependencies
 /node_modules
 # /package-lock.json
+/yarn-taobao.lock
 /yarn.lock
 
 # IDEs and editors
