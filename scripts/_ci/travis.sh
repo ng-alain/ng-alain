@@ -12,5 +12,9 @@ if [[ "${MODE}" ]]; then
 
   npm run ${MODE}
 elif [[ "${DEPLOY_MODE}" ]]; then
-  ./deploy.sh -gh
+  if [[ "${DEPLOY_MODE}" = day-release ]]; then
+    ./deploy.sh -gh -dr
+  else
+    ./deploy.sh -gh
+  fi
 fi
