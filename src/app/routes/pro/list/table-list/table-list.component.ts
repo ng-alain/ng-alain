@@ -49,6 +49,7 @@ export class ProTableListComponent implements OnInit {
       render: 'status',
       filter: {
         menus: this.status,
+        fn: (filter: any, record: any) => record.status === filter.index,
       },
     },
     {
