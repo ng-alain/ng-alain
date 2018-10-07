@@ -18952,7 +18952,9 @@ span.@{radio-prefix-cls} + * {
   .ant-btn + .ant-btn,
   .ant-btn + nz-popconfirm,
   nz-popconfirm + .ant-btn,
-  nz-popconfirm + nz-popconfirm {
+  nz-popconfirm + nz-popconfirm,
+  .ant-btn + nz-button-group,
+  nz-popconfirm + nz-button-group {
     margin-left: @button-and-button-white-spacing;
   }
   .ant-btn-group {
@@ -21405,12 +21407,17 @@ body {
 
 @page-header-prefix: ~'.page-header';
 @page-header-bg: #fff;
+@page-header-wide: 1200px;
 
 @{page-header-prefix} {
   display: block;
   background-color: @page-header-bg;
   padding: 16px 32px 0 32px;
   border-bottom: @border-width-base @border-style-base @border-color-split;
+  &__wide {
+    max-width: @page-header-wide;
+    margin: auto;
+  }
   .ant-breadcrumb {
     margin-bottom: 16px;
   }
@@ -21451,14 +21458,6 @@ body {
   &__action {
     margin-left: 56px;
     min-width: 266px;
-    nz-popconfirm:not(:last-child),
-    .ant-btn-group:not(:last-child),
-    .ant-btn:not(:last-child) {
-      margin-right: 8px;
-    }
-    .ant-btn-group > .ant-btn {
-      margin-right: 0;
-    }
   }
 
   &__title,
