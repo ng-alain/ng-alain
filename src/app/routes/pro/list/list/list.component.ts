@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-layout',
   templateUrl: './list.component.html',
 })
-export class ProListLayoutComponent implements OnInit {
+export class ProListLayoutComponent implements OnInit, OnDestroy {
+  private router$: Subscription;
   tabs: any[] = [
     {
       key: 'articles',
@@ -33,7 +35,7 @@ export class ProListLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.events
+    this.router$ = this.router.events
       .pipe(filter(e => e instanceof ActivationEnd))
       .subscribe(() => this.setActive());
     this.setActive();
@@ -41,5 +43,9 @@ export class ProListLayoutComponent implements OnInit {
 
   to(item: any) {
     this.router.navigateByUrl(`/pro/list/${item.key}`);
+  }
+
+  ngOnDestroy() {
+    this.router$.unsubscribe();
   }
 }

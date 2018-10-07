@@ -5,11 +5,12 @@ import {
   ChangeDetectorRef,
   ViewChild,
   ElementRef,
+  OnDestroy,
 } from '@angular/core';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { _HttpClient } from '@delon/theme';
-import { zip } from 'rxjs';
+import { zip, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-account-center',
@@ -17,7 +18,8 @@ import { zip } from 'rxjs';
   styleUrls: ['./center.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProAccountCenterComponent implements OnInit {
+export class ProAccountCenterComponent implements OnInit, OnDestroy {
+  private router$: Subscription;
   user: any;
   notice: any;
   tabs: any[] = [
@@ -57,7 +59,7 @@ export class ProAccountCenterComponent implements OnInit {
         this.cd.detectChanges();
       },
     );
-    this.router.events
+    this.router$ = this.router.events
       .pipe(filter(e => e instanceof ActivationEnd))
       .subscribe(() => this.setActive());
     this.setActive();
@@ -92,5 +94,9 @@ export class ProAccountCenterComponent implements OnInit {
 
   tagEnter(e: KeyboardEvent) {
     if (e.keyCode === 13) this.tagBlur();
+  }
+
+  ngOnDestroy() {
+    this.router$.unsubscribe();
   }
 }

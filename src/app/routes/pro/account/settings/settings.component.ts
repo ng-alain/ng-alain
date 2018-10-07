@@ -19,6 +19,7 @@ import { _HttpClient } from '@delon/theme';
 })
 export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
   private resize$: Subscription;
+  private router$: Subscription;
   mode = 'inline';
   title: string;
   user: any;
@@ -45,7 +46,7 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
     private cd: ChangeDetectorRef,
     private el: ElementRef,
   ) {
-    this.router.events
+    this.router$ = this.router.events
       .pipe(filter(e => e instanceof ActivationEnd))
       .subscribe(() => this.setActive());
   }
@@ -84,5 +85,6 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.resize$.unsubscribe();
+    this.router$.unsubscribe();
   }
 }
