@@ -32,7 +32,11 @@ sed -i "s/if (!environment.production)/if (true)/g" ${ROOT_DIR}/src/app/layout/d
 echo ""
 echo "Build angular"
 echo ""
-$(npm bin)/ng build --prod --build-optimizer --base-href /ng-alain/
+if [[ ${GH} == true ]]; then
+  $(npm bin)/ng build --prod --build-optimizer --base-href /ng-alain/
+else
+  $(npm bin)/ng build --prod --build-optimizer
+fi
 cp -f ${DIST_DIR}/index.html ${DIST_DIR}/404.html
 
 if [[ ${GH} == true ]]; then
