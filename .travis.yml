@@ -21,8 +21,10 @@ jobs:
     - env: "MODE=build"
     - env: "MODE=lint"
     - env: "MODE=test-coverage"
+    - env: "DEPLOY_MODE=pre-publish-release"
+      if: commit_message =~ release && type = push
     - env: "DEPLOY_MODE=artifacts"
-      if: branch = master AND type = push
+      if: (!(commit_message =~ release) && branch = master)
 
 before_install:
   - export CHROME_BIN=chromium-browser
