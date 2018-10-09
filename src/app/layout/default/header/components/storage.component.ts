@@ -5,7 +5,7 @@ import { NzModalService, NzMessageService } from 'ng-zorro-antd';
   selector: 'header-storage',
   template: `
   <i class="anticon anticon-tool"></i>
-  {{ 'clear-local-storage' | translate}}
+  {{ 'menu.clear.local.storage' | translate}}
   `,
   host: {
     '[class.d-block]': 'true',

@@ -11,7 +11,7 @@ import {
   template: `
   <nz-input-group nzAddOnBeforeIcon="anticon anticon-search">
     <input nz-input [(ngModel)]="q" (focus)="qFocus()" (blur)="qBlur()"
-      [placeholder]="'top-search-ph' | translate">
+      [placeholder]="'menu.search.placeholder' | translate">
   </nz-input-group>
   `,
 })

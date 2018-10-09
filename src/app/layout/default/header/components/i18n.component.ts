@@ -1,11 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import {
-  SettingsService,
-  MenuService,
-  TitleService,
-  ALAIN_I18N_TOKEN,
-} from '@delon/theme';
+import { SettingsService, ALAIN_I18N_TOKEN } from '@delon/theme';
 import { I18NService } from '@core/i18n/i18n.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'header-i18n',
@@ -13,7 +9,7 @@ import { I18NService } from '@core/i18n/i18n.service';
   <nz-dropdown>
     <div nz-dropdown>
       <i class="anticon anticon-edit"></i>
-      {{ 'language' | translate}}
+      {{ 'menu.lang' | translate}}
       <i class="anticon anticon-down"></i>
     </div>
     <ul nz-menu>
@@ -30,6 +26,7 @@ export class HeaderI18nComponent {
   constructor(
     public settings: SettingsService,
     @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
+    @Inject(DOCUMENT) private doc: any,
   ) {
     this.langs = this.i18n.getLangs();
   }
@@ -37,5 +34,6 @@ export class HeaderI18nComponent {
   change(lang: string) {
     this.i18n.use(lang);
     this.settings.setLayout('lang', lang);
+    setTimeout(() => this.doc.location.reload(), 100);
   }
 }
