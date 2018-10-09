@@ -6,10 +6,12 @@ import { filter } from 'rxjs/operators';
 import { registerLocaleData } from '@angular/common';
 import ngZh from '@angular/common/locales/zh';
 import ngEn from '@angular/common/locales/en';
+import ngZhTw from '@angular/common/locales/zh-Hant';
 
-import { en_US, zh_CN, NzI18nService } from 'ng-zorro-antd';
+import { en_US, zh_CN, zh_TW, NzI18nService } from 'ng-zorro-antd';
 import * as df_en from 'date-fns/locale/en';
 import * as df_zh_cn from 'date-fns/locale/zh_cn';
+import * as df_zh_tw from 'date-fns/locale/zh_tw';
 import { TranslateService } from '@ngx-translate/core';
 import {
   SettingsService,
@@ -17,6 +19,7 @@ import {
   DelonLocaleService,
   en_US as delonEnUS,
   zh_CN as delonZhCn,
+  zh_TW as delonZhTw,
 } from '@delon/theme';
 
 interface LangData {
@@ -30,13 +33,20 @@ interface LangData {
 const DEFAULT = 'zh-CN';
 const LANGS: { [key: string]: LangData } = {
   'zh-CN': {
-    text: '中文',
+    text: '简体中文',
     ng: ngZh,
     zorro: zh_CN,
     dateFns: df_zh_cn,
     delon: delonZhCn,
   },
-  en: {
+  'zh-TW': {
+    text: '繁体中文',
+    ng: ngZhTw,
+    zorro: zh_TW,
+    dateFns: df_zh_tw,
+    delon: delonZhTw,
+  },
+  'en-US': {
     text: 'English',
     ng: ngEn,
     zorro: en_US,
@@ -45,7 +55,7 @@ const LANGS: { [key: string]: LangData } = {
   },
 };
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class I18NService implements AlainI18NService {
   private _default = DEFAULT;
   private change$ = new BehaviorSubject<string>(null);
@@ -92,8 +102,8 @@ export class I18NService implements AlainI18NService {
     return this._langs;
   }
   /** 翻译 */
-  fanyi(key: string) {
-    return this.translate.instant(key);
+  fanyi(key: string, interpolateParams?: Object) {
+    return this.translate.instant(key, interpolateParams);
   }
   /** 默认语言 */
   get defaultLang() {

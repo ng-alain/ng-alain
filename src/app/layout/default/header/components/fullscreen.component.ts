@@ -5,7 +5,7 @@ import * as screenfull from 'screenfull';
   selector: 'header-fullscreen',
   template: `
     <i class="anticon anticon-{{status ? 'shrink' : 'arrows-alt'}}"></i>
-    {{(status ? 'fullscreen-exit' : 'fullscreen') | translate }}
+    {{(status ? 'menu.fullscreen.exit' : 'menu.fullscreen') | translate }}
   `,
   host: {
     '[class.d-block]': 'true',
