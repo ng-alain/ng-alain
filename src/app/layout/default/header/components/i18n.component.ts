@@ -32,8 +32,13 @@ export class HeaderI18nComponent {
   }
 
   change(lang: string) {
+    const spinEl = this.doc.createElement('div');
+    spinEl.setAttribute('class', `page-loading ant-spin ant-spin-lg ant-spin-spinning`);
+    spinEl.innerHTML = `<span class="ant-spin-dot ant-spin-dot-spin"><i></i><i></i><i></i><i></i></span>`;
+    this.doc.body.appendChild(spinEl);
+
     this.i18n.use(lang);
     this.settings.setLayout('lang', lang);
-    setTimeout(() => this.doc.location.reload(), 100);
+    setTimeout(() => this.doc.location.reload());
   }
 }
