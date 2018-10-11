@@ -17,7 +17,6 @@
     "scaffold"
   ],
   "scripts": {
-    "precommit": "npm run lint-staged",
     "ng": "ng",
     "start": "ng serve -o",
     "hmr": "ng serve -c=hmr",
@@ -96,7 +95,7 @@
     "tslint-language-service": "^0.9.9",
     "typescript": "~2.9.2",
     "editorconfig-tools": "^0.1.1",
-    "husky": "^0.14.3",
+    "husky": "^1.1.0",
     "gh-pages": "^1.1.0",
     "lint-staged": "^7.1.0",
     "less-bundle-promise": "^1.0.7",
@@ -109,6 +108,11 @@
     "xlsx": "^0.12.12",
     "ng-alain": "^2.0.0-beta.0"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{cmd,html,json,md,sh,txt,xml,yml}": [
       "editorconfig-tools fix",
@@ -119,7 +123,7 @@
       "prettier --write",
       "git add"
     ],
-    "src/**/*.less": [
+    "*.less": [
       "npm run lint:style",
       "prettier --write",
       "git add"
