@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
             <small>Calendar</small>
           </div>
           <div nz-col [nzSpan]="6">
-            <i class="anticon anticon-file bg-teal text-white"></i>
+            <i class="anticon anticon-file bg-geekblue text-white"></i>
             <small>Files</small>
           </div>
           <div nz-col [nzSpan]="6">

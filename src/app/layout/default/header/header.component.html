@@ -9,25 +9,25 @@
     <!-- Menu -->
     <li>
       <div class="alain-default__nav-item" (click)="toggleCollapsedSidebar()">
-        <i class="anticon anticon-menu-{{settings.layout.collapsed ? 'unfold' : 'fold'}}"></i>
+        <i nz-icon type="menu-{{settings.layout.collapsed ? 'unfold' : 'fold'}}"></i>
       </div>
     </li>
     <!-- Github Page -->
     <li>
       <a class="alain-default__nav-item" href="//github.com/ng-alain/ng-alain" target="_blank">
-        <i class="anticon anticon-github"></i>
+        <i nz-icon type="github"></i>
       </a>
     </li>
     <!-- Lock Page -->
     <li class="hidden-mobile">
       <div class="alain-default__nav-item" [routerLink]="['/lock']">
-        <i class="anticon anticon-lock"></i>
+        <i nz-icon type="lock"></i>
       </div>
     </li>
     <!-- Search Button -->
-    <li class="header-search__btn" (click)="searchToggleChange()">
+    <li class="hidden-pc" (click)="searchToggleChange()">
       <div class="alain-default__nav-item">
-        <i class="anticon anticon-search"></i>
+        <i nz-icon type="search"></i>
       </div>
     </li>
   </ul>
@@ -49,7 +49,7 @@
     <li class="hidden-mobile">
       <nz-dropdown nzTrigger="click" nzPlacement="bottomRight">
         <div class="alain-default__nav-item" nz-dropdown>
-          <i class="anticon anticon-setting"></i>
+          <i nz-icon type="setting"></i>
         </div>
         <div nz-menu style="width:200px;">
           <div nz-menu-item>
