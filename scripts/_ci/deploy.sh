@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -u -e -o pipefail
+set -e
 
 GH=false
 DAY_RELEASE=false
@@ -61,7 +61,7 @@ if [[ ${GH} == true ]]; then
   if [ -z ${NG_ALAIN_BUILDS_TOKEN} ]; then
     echo "Error: No access token for GitHub could be found." \
         "Please set the environment variable 'NG_ALAIN_BUILDS_TOKEN'."
-    exit 1
+    exit 0
   fi
 
   echo ""
