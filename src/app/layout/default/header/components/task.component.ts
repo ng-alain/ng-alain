@@ -6,12 +6,12 @@ import { Component } from '@angular/core';
   <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" (nzVisibleChange)="change()">
     <div class="alain-default__nav-item" nz-dropdown>
       <nz-badge [nzDot]="true">
-        <i class="anticon anticon-bell"></i>
+        <i nz-icon type="bell" class="alain-default__nav-item-icon"></i>
       </nz-badge>
     </div>
     <div nz-menu class="wd-lg">
       <nz-card nzTitle="Notifications" [nzLoading]="loading" nzBordered="false" class="ant-card__body-nopadding">
-        <ng-template #extra><i class="anticon anticon-plus"></i></ng-template>
+        <ng-template #extra><i nz-icon type="plus"></i></ng-template>
         <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point">
           <div nz-col [nzSpan]="4" class="text-center">
             <nz-avatar [nzSrc]="'./assets/tmp/img/1.png'"></nz-avatar>

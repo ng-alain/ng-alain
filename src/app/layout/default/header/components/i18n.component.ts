@@ -8,9 +8,9 @@ import { DOCUMENT } from '@angular/common';
   template: `
   <nz-dropdown>
     <div nz-dropdown>
-      <i class="anticon anticon-edit"></i>
+      <i nz-icon type="global"></i>
       {{ 'menu.lang' | translate}}
-      <i class="anticon anticon-down"></i>
+      <i nz-icon type="down"></i>
     </div>
     <ul nz-menu>
       <li nz-menu-item *ngFor="let item of langs"

@@ -4,7 +4,7 @@ import * as screenfull from 'screenfull';
 @Component({
   selector: 'header-fullscreen',
   template: `
-    <i class="anticon anticon-{{status ? 'shrink' : 'arrows-alt'}}"></i>
+    <i nz-icon [type]="status ? 'fullscreen' : 'fullscreen-exit'"></i>
     {{(status ? 'menu.fullscreen.exit' : 'menu.fullscreen') | translate }}
   `,
   host: {

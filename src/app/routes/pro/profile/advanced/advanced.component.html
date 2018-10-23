@@ -9,7 +9,7 @@
     </nz-button-group>
     <nz-dropdown class="mx-sm">
       <button nz-button nz-dropdown>
-        <i class="anticon anticon-ellipsis"></i>
+        <i nz-icon type="ellipsis"></i>
       </button>
       <ul nz-menu>
         <li nz-menu-item>选项一</li>
@@ -53,8 +53,9 @@
     <nz-step [nzTitle]="'创建项目'" [nzDescription]="createDesc">
       <ng-template #createDesc>
         <div class="desc">
-          <div class="my-sm">曲丽丽
-            <i class="anticon anticon-dingding-o ml-sm"></i>
+          <div class="my-sm">
+            曲丽丽
+            <i nz-icon type="dingding" class="ml-sm"></i>
           </div>
           <div>2016-12-12 12:32</div>
         </div>
@@ -63,8 +64,9 @@
     <nz-step [nzTitle]="'部门初审'" [nzDescription]="checkedDesc">
       <ng-template #checkedDesc>
         <div class="desc">
-          <div class="my-sm">周毛毛
-            <i class="anticon anticon-dingding-o ml-sm" style="color: #00a0e9;"></i>
+          <div class="my-sm">
+            周毛毛
+            <i nz-icon type="dingding" class="ml-sm" style="color: #00a0e9;"></i>
           </div>
           <a (click)="msg.success('click')">催一下</a>
         </div>
@@ -92,7 +94,7 @@
         某某数据
         <nz-tooltip [nzTitle]="'数据说明'">
           <span nz-tooltip>
-            <i class="anticon anticon-info-circle-o"></i>
+            <i nz-icon type="info-circle"></i>
           </span>
         </nz-tooltip>
       </ng-template>
@@ -124,7 +126,7 @@
 </nz-card>
 <nz-card [nzBordered]="false" nzTitle="用户近半年来电记录" class="mb-lg">
   <div class="no-data">
-    <i class="anticon anticon-frown-o"></i>暂无数据
+    <i nz-icon type="frown"></i>暂无数据
   </div>
 </nz-card>
 <nz-card [nzBordered]="false">

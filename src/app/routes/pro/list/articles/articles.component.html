@@ -40,11 +40,11 @@
     <ng-template #item let-item>
       <nz-list-item [nzContent]="nzContent" [nzExtra]="nzExtra" [nzActions]="[op1,op2,op3]">
         <ng-template #op1>
-          <i class="anticon anticon-star-o mr-sm"></i>{{item.star}}</ng-template>
+          <i nz-icon type="star" class="mr-sm"></i>{{item.star}}</ng-template>
         <ng-template #op2>
-          <i class="anticon anticon-like-o mr-sm"></i>{{item.like}}</ng-template>
+          <i nz-icon type="like" class="mr-sm"></i>{{item.like}}</ng-template>
         <ng-template #op3>
-          <i class="anticon anticon-message mr-sm"></i>{{item.message}}</ng-template>
+          <i nz-icon type="message" class="mr-sm"></i>{{item.message}}</ng-template>
         <ng-template #nzExtra>
           <div style="width: 272px; height: 1px;"></div>
         </ng-template>

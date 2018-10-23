@@ -15,10 +15,6 @@ if [[ "${MODE}" ]]; then
 
 elif [[ "${DEPLOY_MODE}" ]]; then
 
-  if [[ "${DEPLOY_MODE}" = "pre-publish-release" ]]; then
-    ./deploy.sh -gh -dr
-  else
-    ./deploy.sh -gh
-  fi
+  ./deploy.sh -gh -dr
 
 fi
