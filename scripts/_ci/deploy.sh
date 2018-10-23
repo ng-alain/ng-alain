@@ -2,13 +2,6 @@
 
 set -e
 
-commitAuthorName=$(git --no-pager show -s --format='%an' HEAD)
-
-if [ ${commitAuthorName} != '卡色' ]; then
-  echo "Warning: Just only 卡色 user (current: ${commitAuthorName})"
-  exit 0
-fi
-
 GH=false
 DAY_RELEASE=false
 for ARG in "$@"; do
