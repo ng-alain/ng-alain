@@ -38,7 +38,7 @@
     </div>
   </div>
   <button nz-button (click)="msg.success('add')" [nzType]="'dashed'" nzBlock class="mb-sm">
-    <i class="anticon anticon-plus"></i>
+    <i nz-icon type="plus"></i>
     <span>添加</span>
   </button>
   <nz-list [nzDataSource]="data" [nzLoading]="loading" [nzRenderItem]="item" [nzPagination]="pagination">
@@ -51,7 +51,7 @@
           <nz-dropdown>
             <a class="ant-dropdown-link" nz-dropdown>
               编辑
-              <i class="anticon anticon-down"></i>
+              <i nz-icon type="down"></i>
             </a>
             <ul nz-menu>
               <li nz-menu-item (click)="msg.success('编辑：' + item.title)">编辑</li>

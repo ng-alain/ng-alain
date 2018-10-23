@@ -13,6 +13,100 @@ import { ACLService } from '@delon/acl';
 import { TranslateService } from '@ngx-translate/core';
 import { I18NService } from '../i18n/i18n.service';
 
+// #region static loading icons
+// @see http://ng.ant.design/components/icon/zh#%E9%9D%99%E6%80%81%E5%8A%A0%E8%BD%BD%E4%B8%8E%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD
+
+import { NzIconService } from 'ng-zorro-antd';
+import {
+  PayCircleOutline,
+  PieChartOutline,
+  CloudOutline,
+  SoundOutline,
+  ForkOutline,
+  MessageOutline,
+  ShareAltOutline,
+  StarOutline,
+  TrophyOutline,
+  BookOutline,
+  TeamOutline,
+  ScanOutline,
+  PrinterOutline,
+  ToolOutline,
+  DashboardOutline,
+  RocketOutline,
+  InfoOutline,
+  BulbOutline,
+  EditOutline,
+  ProfileOutline,
+  ExceptionOutline,
+  LinkOutline,
+  LikeOutline,
+  DislikeOutline,
+  ShoppingCartOutline,
+  CustomerServiceOutline,
+  LaptopOutline,
+  UsbOutline,
+  DatabaseOutline,
+  FileOutline,
+  DownloadOutline,
+  DingdingOutline,
+  FrownOutline,
+  TaobaoOutline,
+  AlipayCircleOutline,
+  HddOutline,
+  ApiOutline,
+  CopyrightOutline,
+  TaobaoCircleOutline,
+  WeiboCircleOutline,
+  MailOutline,
+} from '@ant-design/icons-angular/icons';
+
+const ICONS = [
+  PayCircleOutline,
+  PieChartOutline,
+  CloudOutline,
+  SoundOutline,
+  ForkOutline,
+  MessageOutline,
+  ShareAltOutline,
+  StarOutline,
+  TrophyOutline,
+  BookOutline,
+  TeamOutline,
+  ScanOutline,
+  PrinterOutline,
+  ToolOutline,
+  DashboardOutline,
+  RocketOutline,
+  InfoOutline,
+  BulbOutline,
+  EditOutline,
+  ProfileOutline,
+  ExceptionOutline,
+  LinkOutline,
+  LikeOutline,
+  DislikeOutline,
+  ShoppingCartOutline,
+  CustomerServiceOutline,
+  LaptopOutline,
+  UsbOutline,
+  DatabaseOutline,
+  FileOutline,
+  DownloadOutline,
+  DingdingOutline,
+  FrownOutline,
+  TaobaoOutline,
+  AlipayCircleOutline,
+  HddOutline,
+  ApiOutline,
+  CopyrightOutline,
+  TaobaoCircleOutline,
+  WeiboCircleOutline,
+  MailOutline,
+];
+
+// #endregion
+
 /**
  * 用于应用启动时
  * 一般用来获取应用所需要的基础数据等
@@ -20,6 +114,7 @@ import { I18NService } from '../i18n/i18n.service';
 @Injectable()
 export class StartupService {
   constructor(
+    iconSrv: NzIconService,
     private menuService: MenuService,
     private translate: TranslateService,
     @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
@@ -28,7 +123,9 @@ export class StartupService {
     private titleService: TitleService,
     private httpClient: HttpClient,
     private injector: Injector,
-  ) {}
+  ) {
+    iconSrv.addIcon(...ICONS);
+  }
 
   load(): Promise<any> {
     // only works with promises

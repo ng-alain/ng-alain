@@ -39,6 +39,7 @@ import {
   LogoutOutline,
   EllipsisOutline,
   GlobalOutline,
+  ArrowDownOutline,
   // Optional
   GithubOutline,
   AppstoreOutline,
@@ -58,6 +59,7 @@ const ICONS = [
   LogoutOutline,
   EllipsisOutline,
   GlobalOutline,
+  ArrowDownOutline,
   // Optional
   GithubOutline,
   AppstoreOutline,

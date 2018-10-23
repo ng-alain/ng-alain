@@ -66,7 +66,7 @@
     </nz-row>
   </form>
   <button nz-button (click)="add(modalContent)" [nzType]="'primary'">
-    <i class="anticon anticon-plus"></i>
+    <i nz-icon type="plus"></i>
     <span>新建</span>
   </button>
   <ng-container *ngIf="selectedRows.length > 0">
@@ -74,7 +74,7 @@
     <nz-dropdown [nzPlacement]="'bottomLeft'">
       <button nz-button nz-dropdown class="ml-sm">
         更多操作
-        <i class="anticon anticon-down"></i>
+        <i nz-icon type="down"></i>
       </button>
       <ul nz-menu>
         <li nz-menu-item (click)="remove()">删除</li>

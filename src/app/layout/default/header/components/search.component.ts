@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'header-search',
   template: `
-  <nz-input-group nzAddOnBeforeIcon="anticon anticon-search">
+  <nz-input-group [nzAddOnBeforeIcon]="focus ? 'anticon anticon-arrow-down' : 'anticon anticon-search'">
     <input nz-input [(ngModel)]="q" (focus)="qFocus()" (blur)="qBlur()"
       [placeholder]="'menu.search.placeholder' | translate">
   </nz-input-group>

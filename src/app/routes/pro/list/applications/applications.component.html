@@ -35,22 +35,22 @@
       <nz-card nzHoverable [nzActions]="[op1,op2,op3,op4]">
         <ng-template #op1>
           <nz-tooltip [nzTitle]="'下载'">
-            <i nz-tooltip class="anticon anticon-download"></i>
+            <i nz-tooltip nz-icon type="download"></i>
           </nz-tooltip>
         </ng-template>
         <ng-template #op2>
           <nz-tooltip [nzTitle]="'编辑'">
-            <i nz-tooltip class="anticon anticon-edit"></i>
+            <i nz-tooltip nz-icon type="edit"></i>
           </nz-tooltip>
         </ng-template>
         <ng-template #op3>
           <nz-tooltip [nzTitle]="'分享'">
-            <i nz-tooltip class="anticon anticon-share-alt"></i>
+            <i nz-tooltip nz-icon type="share-alt"></i>
           </nz-tooltip>
         </ng-template>
         <ng-template #op4>
           <nz-dropdown [nzPlacement]="'bottomLeft'">
-            <i nz-dropdown class="anticon anticon-ellipsis"></i>
+            <i nz-dropdown nz-icon type="ellipsis"></i>
             <ul nz-menu>
               <li nz-menu-item>1st menu item</li>
               <li nz-menu-item>2st menu item</li>

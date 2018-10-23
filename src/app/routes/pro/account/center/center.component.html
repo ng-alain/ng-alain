@@ -21,7 +21,7 @@
           <div class="tagsTitle">标签</div>
           <nz-tag *ngFor="let t of user.tags">{{t.label}}</nz-tag>
           <nz-tag *ngIf="!taging" (click)="tagShowIpt()" class="ant-tag__plus">
-            <i class="anticon anticon-plus"></i>
+            <i nz-icon type="plus"></i>
           </nz-tag>
           <input *ngIf="taging" #tagInput nz-input [(ngModel)]="tagValue" (blur)="tagBlur()"
                  (keydown)="tagEnter($event)" nzSize="small" type="text" style="width: 78px">
