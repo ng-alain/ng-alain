@@ -1,4 +1,4 @@
-<page-header></page-header>
+<page-header [title]="null"></page-header>
 <nz-card [nzBordered]="false">
   <div nz-row>
     <div nz-col [nzXs]="24" [nzSm]="8" class="header-info">
@@ -37,7 +37,7 @@
       </nz-input-group>
     </div>
   </div>
-  <button nz-button (click)="msg.success('add')" [nzType]="'dashed'" nzBlock class="mb-sm">
+  <button nz-button (click)="openEdit()" [nzType]="'dashed'" nzBlock class="mb-sm">
     <i nz-icon type="plus"></i>
     <span>添加</span>
   </button>
@@ -45,16 +45,16 @@
     <ng-template #item let-item>
       <nz-list-item [nzContent]="nzContent" [nzActions]="[edit, op]">
         <ng-template #edit>
-          <a (click)="msg.success('编辑：' + item.title)">编辑</a>
+          <a (click)="openEdit(item)">编辑</a>
         </ng-template>
         <ng-template #op>
           <nz-dropdown>
             <a class="ant-dropdown-link" nz-dropdown>
-              编辑
+              更多
               <i nz-icon type="down"></i>
             </a>
             <ul nz-menu>
-              <li nz-menu-item (click)="msg.success('编辑：' + item.title)">编辑</li>
+              <li nz-menu-item (click)="edit('编辑：' + item.title)">编辑</li>
               <li nz-menu-item (click)="msg.success('删除：' + item.title)">删除</li>
             </ul>
           </nz-dropdown>
