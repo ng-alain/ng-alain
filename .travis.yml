@@ -22,7 +22,6 @@ jobs:
     - env: "MODE=lint"
     - env: "MODE=test-coverage"
     - env: "DEPLOY_MODE=artifacts"
-      if: branch = master
 
 matrix:
   allow_failures:
