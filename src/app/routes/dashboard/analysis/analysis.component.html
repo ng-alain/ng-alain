@@ -90,15 +90,13 @@
           </div>
         </div>
         <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8">
-          <div class="rank-list">
-            <h4 class="rank-title">{{ 'app.analysis.sales-ranking' | translate}}</h4>
-            <ul>
+          <div class="rank">
+            <h4 class="ranking-title">{{ 'app.analysis.sales-ranking' | translate}}</h4>
+            <ul class="rank-list">
               <li *ngFor="let i of rankingListData; let idx = index">
-                <div>
-                  <span class="icon" [ngClass]="{'active': idx < 3}">{{idx+1}}</span>
-                  {{i.title}}
-                </div>
-                <span>{{i.total | number: '3.0'}}</span>
+                <span class="number" [ngClass]="{'active': idx < 3}">{{idx+1}}</span>
+                <span class="title">{{i.title}}</span>
+                <span class="value">{{i.total | number: '3.0'}}</span>
               </li>
             </ul>
           </div>
@@ -113,15 +111,13 @@
           </div>
         </div>
         <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8">
-          <div class="rank-list">
-            <h4 class="rank-title">{{'app.analysis.visits-ranking' | translate}}</h4>
-            <ul>
+          <div class="rank">
+            <h4 class="ranking-title">{{ 'app.analysis.visits-ranking' | translate}}</h4>
+            <ul class="rank-list">
               <li *ngFor="let i of rankingListData; let idx = index">
-                <div>
-                  <span class="icon" [ngClass]="{'active': idx < 3}">{{idx+1}}</span>
-                  {{i.title}}
-                </div>
-                <span>{{i.total | number: '3.0'}}</span>
+                <span class="number" [ngClass]="{'active': idx < 3}">{{idx+1}}</span>
+                <span class="title">{{i.title}}</span>
+                <span class="value">{{i.total | number: '3.0'}}</span>
               </li>
             </ul>
           </div>
@@ -143,9 +139,9 @@
 </nz-card>
 <div nz-row [nzGutter]="24">
   <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12">
-    <nz-card [nzLoading]="loading" [nzBordered]="false" [nzTitle]="'app.analysis.online-top-search' | translate" [nzExtra]="extraOp">
+    <nz-card [nzLoading]="loading" [nzBordered]="false" [nzTitle]="'app.analysis.online-top-search' | translate" [nzExtra]="extraOp" class="mb-0">
       <ng-template #extraOp>
-        <nz-dropdown>
+        <nz-dropdown class="icon-group">
           <i nz-dropdown nz-icon type="ellipsis"></i>
           <ul nz-menu>
             <li nz-menu-item>操作一</li>
@@ -181,10 +177,10 @@
   </div>
   <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12">
     <nz-card [nzLoading]="loading" [nzBordered]="false" [nzTitle]="'app.analysis.the-proportion-of-sales' | translate" [nzBodyStyle]="{'padding.px': 24}" [nzExtra]="extra"
-      class="sales-card" style="min-height: 482px;">
+      class="sales-card mb-0" style="min-height: 502.5px">
       <ng-template #extra>
         <div class="sales-card-extra">
-          <nz-dropdown>
+          <nz-dropdown class="icon-group">
             <i nz-dropdown nz-icon type="ellipsis"></i>
             <ul nz-menu>
               <li nz-menu-item>操作一</li>
@@ -222,7 +218,8 @@
             <number-info [title]="tab.name" [subTitle]="'app.analysis.conversion-rate' | translate" gap="2" [total]="(tab.cvr * 100) + '%'" [theme]="i !== _activeTab && 'light'"></number-info>
           </div>
           <div nz-col [nzSpan]="12" style="padding-top: 36px;">
-            <g2-pie [animate]="false" [color]="i !== _activeTab && '#BDE4FF'" [inner]="0.55" [tooltip]="false"
+            <g2-pie [animate]="false" [color]="i !== _activeTab && '#BDE4FF'"
+              [inner]="0.55" [tooltip]="false"
               [padding]="[0, 0, 0, 0]" [percent]="tab.cvr * 100" [height]="64">
             </g2-pie>
           </div>

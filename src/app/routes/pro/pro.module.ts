@@ -30,8 +30,10 @@ import { ProAccountSettingsBaseComponent } from './account/settings/base/base.co
 import { ProAccountSettingsSecurityComponent } from './account/settings/security/security.component';
 import { ProAccountSettingsBindingComponent } from './account/settings/binding/binding.component';
 import { ProAccountSettingsNotificationComponent } from './account/settings/notification/notification.component';
+import { ProBasicListEditComponent } from './list/basic-list/edit/edit.component';
 
-const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component];
+const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component,
+  ProBasicListEditComponent];
 
 @NgModule({
   imports: [SharedModule, ProRoutingModule],
