@@ -1,7 +1,9 @@
 [![Build Status](https://travis-ci.org/ng-alain/ng-alain.svg?branch=master)](https://travis-ci.org/ng-alain/ng-alain)
 [![Dependency Status](https://david-dm.org/ng-alain/ng-alain/status.svg)](https://david-dm.org/ng-alain/ng-alain)
 [![NPM version](https://img.shields.io/npm/v/ng-alain.svg)](https://www.npmjs.com/package/ng-alain)
+[![NPM version](https://img.shields.io/npm/v/ng-alain/next.svg)](https://www.npmjs.com/package/ng-alain)
 [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io/)
+[![extension-for-VSCode](https://img.shields.io/badge/extension%20for-VSCode-blue.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-alain-vscode)
 
 # ng-alain
 
