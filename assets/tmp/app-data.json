@@ -164,6 +164,7 @@
           "i18n": "menu.form",
           "link": "/pro/form",
           "icon": "anticon anticon-edit",
+          "hideInBreadcrumb": true,
           "children": [
             {
               "text": "Basic Form",
@@ -187,6 +188,7 @@
           "text": "List",
           "i18n": "menu.list",
           "icon": "anticon anticon-appstore-o",
+          "hideInBreadcrumb": true,
           "children": [
             {
               "text": "Table List",
@@ -229,6 +231,7 @@
           "text": "Profile",
           "i18n": "menu.profile",
           "icon": "anticon anticon-profile",
+          "hideInBreadcrumb": true,
           "children": [
             {
               "text": "Basic",
@@ -247,6 +250,7 @@
           "text": "Result",
           "i18n": "menu.result",
           "icon": "anticon anticon-check-circle-o",
+          "hideInBreadcrumb": true,
           "children": [
             {
               "text": "Success",
