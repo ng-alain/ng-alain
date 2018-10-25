@@ -1,5 +1,4 @@
-import { Injectable, Injector, Inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { zip } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -13,99 +12,9 @@ import { ACLService } from '@delon/acl';
 import { TranslateService } from '@ngx-translate/core';
 import { I18NService } from '../i18n/i18n.service';
 
-// #region static loading icons
-// @see http://ng.ant.design/components/icon/zh#%E9%9D%99%E6%80%81%E5%8A%A0%E8%BD%BD%E4%B8%8E%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD
-
 import { NzIconService } from 'ng-zorro-antd';
-import {
-  PayCircleOutline,
-  PieChartOutline,
-  CloudOutline,
-  SoundOutline,
-  ForkOutline,
-  MessageOutline,
-  ShareAltOutline,
-  StarOutline,
-  TrophyOutline,
-  BookOutline,
-  TeamOutline,
-  ScanOutline,
-  PrinterOutline,
-  ToolOutline,
-  DashboardOutline,
-  RocketOutline,
-  InfoOutline,
-  BulbOutline,
-  EditOutline,
-  ProfileOutline,
-  ExceptionOutline,
-  LinkOutline,
-  LikeOutline,
-  DislikeOutline,
-  ShoppingCartOutline,
-  CustomerServiceOutline,
-  LaptopOutline,
-  UsbOutline,
-  DatabaseOutline,
-  FileOutline,
-  DownloadOutline,
-  DingdingOutline,
-  FrownOutline,
-  TaobaoOutline,
-  AlipayCircleOutline,
-  HddOutline,
-  ApiOutline,
-  CopyrightOutline,
-  TaobaoCircleOutline,
-  WeiboCircleOutline,
-  MailOutline,
-} from '@ant-design/icons-angular/icons';
-
-const ICONS = [
-  PayCircleOutline,
-  PieChartOutline,
-  CloudOutline,
-  SoundOutline,
-  ForkOutline,
-  MessageOutline,
-  ShareAltOutline,
-  StarOutline,
-  TrophyOutline,
-  BookOutline,
-  TeamOutline,
-  ScanOutline,
-  PrinterOutline,
-  ToolOutline,
-  DashboardOutline,
-  RocketOutline,
-  InfoOutline,
-  BulbOutline,
-  EditOutline,
-  ProfileOutline,
-  ExceptionOutline,
-  LinkOutline,
-  LikeOutline,
-  DislikeOutline,
-  ShoppingCartOutline,
-  CustomerServiceOutline,
-  LaptopOutline,
-  UsbOutline,
-  DatabaseOutline,
-  FileOutline,
-  DownloadOutline,
-  DingdingOutline,
-  FrownOutline,
-  TaobaoOutline,
-  AlipayCircleOutline,
-  HddOutline,
-  ApiOutline,
-  CopyrightOutline,
-  TaobaoCircleOutline,
-  WeiboCircleOutline,
-  MailOutline,
-];
-
-// #endregion
+import { ICONS_AUTO } from '../../../style-icons-auto';
+import { ICONS } from '../../../style-icons';
 
 /**
  * 用于应用启动时
@@ -122,9 +31,8 @@ export class StartupService {
     private aclService: ACLService,
     private titleService: TitleService,
     private httpClient: HttpClient,
-    private injector: Injector,
   ) {
-    iconSrv.addIcon(...ICONS);
+    iconSrv.addIcon(...ICONS_AUTO, ...ICONS);
   }
 
   load(): Promise<any> {
