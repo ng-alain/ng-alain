@@ -66,7 +66,7 @@ export function fnDelonAuthConfig(): DelonAuthConfig {
 
 export function fnSTConfig(): STConfig {
   return Object.assign(new STConfig(), <STConfig>{
-    modal: { paramsName: 'i', size: 'lg' },
+    modal: { size: 'lg' },
   });
 }
 
