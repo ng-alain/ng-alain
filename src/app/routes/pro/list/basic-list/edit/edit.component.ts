@@ -7,7 +7,7 @@ import { SFSchema } from '@delon/form';
   templateUrl: './edit.component.html',
 })
 export class ProBasicListEditComponent {
-  i: any = {};
+  record: any = {};
   schema: SFSchema = {
     properties: {
       title: { type: 'string', title: '任务名称', maxLength: 50 },
