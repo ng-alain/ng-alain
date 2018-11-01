@@ -2231,16 +2231,16 @@ this.tinycolor = tinycolor;
 @black:     #000;
 
 // grey
-@grey-1:  color(~`colorPalette("@{grey-6}", 1)`);
-@grey-2:  color(~`colorPalette("@{grey-6}", 2)`);
-@grey-3:  color(~`colorPalette("@{grey-6}", 3)`);
-@grey-4:  color(~`colorPalette("@{grey-6}", 4)`);
-@grey-5:  color(~`colorPalette("@{grey-6}", 5)`);
+@grey-1:  #ffffff;
+@grey-2:  #fafafa;
+@grey-3:  #f5f5f5;
+@grey-4:  #e8e8e8;
+@grey-5:  #d9d9d9;
 @grey-6:  #bfbfbf;
-@grey-7:  color(~`colorPalette("@{grey-6}", 7)`);
-@grey-8:  color(~`colorPalette("@{grey-6}", 8)`);
-@grey-9:  color(~`colorPalette("@{grey-6}", 9)`);
-@grey-10: color(~`colorPalette("@{grey-6}", 10)`);
+@grey-7:  #8c8c8c;
+@grey-8:  #595959;
+@grey-9:  #262626;
+@grey-10: #000000;
 
 @color-light-position:      2;
 @color-basic-position:      3;
@@ -19236,15 +19236,13 @@ fieldset {
 }
 
 .form-state-visual-feedback-mixin(@enabled) when(@enabled = true) {
-  .ng-invalid:not(form) {
-    input {
-      &:focus {
-        box-shadow: 0 0 @outline-blur-size @outline-width fade-out(@error-color, .8);
-      }
-      &,
-      &:hover {
-        border-color: @error-color;
-      }
+  .ng-invalid {
+    &:focus {
+      box-shadow: 0 0 @outline-blur-size @outline-width fade-out(@error-color, .8);
+    }
+    &,
+    &:hover {
+      border-color: @error-color;
     }
   }
 }
@@ -19507,6 +19505,11 @@ fieldset {
       > .ant-form-item-control-wrapper {
         flex: 1 0 0;
       }
+    }
+  }
+  &__no-error {
+    .ant-form-item {
+      margin-bottom: 8px;
     }
   }
 }
@@ -20798,7 +20801,7 @@ body {
 }
 
 @sv-prefix: ~'.sv';
-@sv-label-color: @heading-color;
+@sv-label-color: rgba(0, 0, 0, 0.5);
 @sv-detail-color: @text-color;
 @sv-type-primary-color: @primary-color;
 @sv-type-success-color: @success-color;
@@ -20813,7 +20816,7 @@ body {
     margin-top: @sv-bottom;
   }
   &__container {
-    display: inline-block;
+    display: block;
     // offset the padding-bottom of last row
     .ant-row {
       margin-bottom: -@sv-bottom;
