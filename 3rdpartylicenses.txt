@@ -1,4 +1,4 @@
-webpack@4.23.1
+webpack@4.24.0
 MIT
 Copyright JS Foundation and other contributors
 
@@ -294,7 +294,7 @@ Apache License
  See the License for the specific language governing permissions and
  limitations under the License.
 
-@delon/acl@2.0.0-rc.2
+@delon/acl@2.0.0-rc.2-3cab3bb
 MIT
 MIT License
 
@@ -641,7 +641,7 @@ ng-zorro-antd@1.8.0
 MIT
 MIT
 
-@delon/util@2.0.0-rc.2
+@delon/util@2.0.0-rc.2-3cab3bb
 MIT
 MIT License
 
@@ -690,7 +690,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@delon/abc@2.0.0-rc.2
+@delon/abc@2.0.0-rc.2-3cab3bb
 MIT
 MIT License
 
@@ -730,7 +730,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 MIT
 MIT
 
-@delon/chart@2.0.0-rc.2
+@delon/chart@2.0.0-rc.2-3cab3bb
 MIT
 MIT License
 
@@ -768,7 +768,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   [1]: http://eligrey.com
 
-@delon/theme@2.0.0-rc.2
+@delon/theme@2.0.0-rc.2-3cab3bb
 MIT
 MIT License
 
@@ -840,7 +840,7 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@delon/form@2.0.0-rc.2
+@delon/form@2.0.0-rc.2-3cab3bb
 MIT
 MIT License
 
@@ -864,7 +864,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-@delon/cache@2.0.0-rc.2
+@delon/cache@2.0.0-rc.2-3cab3bb
 MIT
 MIT License
 
