@@ -18,9 +18,9 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
-    "hmr": "ng serve -c=hmr",
-    "build": "ng build --prod --build-optimizer",
+    "start": "npm run color-less && ng serve -o",
+    "hmr": "npm run color-less && ng serve -c=hmr",
+    "build": "npm run color-less && ng build --prod --build-optimizer",
     "analyze": "ng build --prod --build-optimizer --stats-json",
     "lint": "npm run lint:ts && npm run lint:style",
     "lint:ts": "tslint -p src/tsconfig.app.json -c tslint.json 'src/**/*.ts'",
