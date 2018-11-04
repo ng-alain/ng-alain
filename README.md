@@ -4,6 +4,8 @@
 [![NPM version](https://img.shields.io/npm/v/ng-alain/next.svg)](https://www.npmjs.com/package/ng-alain)
 [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io/)
 [![extension-for-VSCode](https://img.shields.io/badge/extension%20for-VSCode-blue.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-alain-vscode)
+[![Backers on Open Collective](https://opencollective.com/ng-alain/backers/badge.svg)](#backers) 
+[![Sponsors on Open Collective](https://opencollective.com/ng-alain/sponsors/badge.svg)](#sponsors) 
 
 # ng-alain
 
@@ -88,6 +90,36 @@ Please follow this guidelines when reporting bugs and feature requests:
 2. Please **always** write steps to reproduce the error. That way we can focus on fixing the bug, not scratching our heads trying to reproduce it.
 
 Thanks for understanding!
+
+## Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/ng-alain/ng-alain/contributors"><img src="https://opencollective.com/ng-alain/contributors.svg?width=890&button=false" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/ng-alain#backer)]
+
+<a href="https://opencollective.com/ng-alain#backers" target="_blank"><img src="https://opencollective.com/ng-alain/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/ng-alain#sponsor)]
+
+<a href="https://opencollective.com/ng-alain/sponsor/0/website" target="_blank"><img src="https://opencollective.com/ng-alain/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/ng-alain/sponsor/1/website" target="_blank"><img src="https://opencollective.com/ng-alain/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/ng-alain/sponsor/2/website" target="_blank"><img src="https://opencollective.com/ng-alain/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/ng-alain/sponsor/3/website" target="_blank"><img src="https://opencollective.com/ng-alain/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/ng-alain/sponsor/4/website" target="_blank"><img src="https://opencollective.com/ng-alain/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/ng-alain/sponsor/5/website" target="_blank"><img src="https://opencollective.com/ng-alain/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/ng-alain/sponsor/6/website" target="_blank"><img src="https://opencollective.com/ng-alain/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/ng-alain/sponsor/7/website" target="_blank"><img src="https://opencollective.com/ng-alain/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/ng-alain/sponsor/8/website" target="_blank"><img src="https://opencollective.com/ng-alain/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/ng-alain/sponsor/9/website" target="_blank"><img src="https://opencollective.com/ng-alain/sponsor/9/avatar.svg"></a>
+
+
 
 ### License
 
