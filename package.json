@@ -68,8 +68,7 @@
     "qrious": "^4.0.2",
     "rxjs": "^6.0.0",
     "screenfull": "^3.3.1",
-    "zone.js": "^0.8.26",
-    "opencollective": "^1.0.3"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
