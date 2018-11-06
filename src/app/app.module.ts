@@ -54,7 +54,7 @@ const I18NSERVICE_PROVIDES = [
 // #region global third module
 import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';
-const GLOBAL_THIRD_MDOULES = [
+const GLOBAL_THIRD_MODULES = [
   UEditorModule.forRoot({
     // **注：** 建议使用本地路径；以下为了减少 ng-alain 脚手架的包体大小引用了CDN，可能会有部分功能受影响
     js: [
@@ -123,7 +123,7 @@ import { LayoutModule } from './layout/layout.module';
     LayoutModule,
     RoutesModule,
     ...I18NSERVICE_MODULES,
-    ...GLOBAL_THIRD_MDOULES,
+    ...GLOBAL_THIRD_MODULES,
     ...FORM_MODULES,
   ],
   providers: [
