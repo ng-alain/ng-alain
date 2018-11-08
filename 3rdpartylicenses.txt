@@ -1,4 +1,4 @@
-webpack@4.24.0
+webpack
 MIT
 Copyright JS Foundation and other contributors
 
@@ -21,7 +21,8 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-tslib@1.9.3
+
+tslib
 Apache-2.0
 Apache License
 
@@ -79,20 +80,15 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-date-fns@1.29.0
-MIT
-# License
 
-date-fns is licensed under the [MIT license](http://kossnocorp.mit-license.org).
-Read more about MIT at [TLDRLegal](https://tldrlegal.com/license/mit-license).
+undefined
 
-@angular/core@6.1.10
-MIT
+@angular/core
 MIT
 
-rxjs@6.3.3
+rxjs
 Apache-2.0
-Apache License
+                               Apache License
                          Version 2.0, January 2004
                       http://www.apache.org/licenses/
 
@@ -293,8 +289,10 @@ Apache License
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
+ 
 
-@delon/acl@2.0.0-rc.2-3cab3bb
+
+@delon/acl
 MIT
 MIT License
 
@@ -318,15 +316,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-@angular/common@6.1.10
-MIT
+
+@angular/common
 MIT
 
-@angular/platform-browser@6.1.10
-MIT
+@angular/platform-browser
 MIT
 
-@angular/cdk@6.4.7
+@angular/cdk
 MIT
 The MIT License
 
@@ -350,15 +347,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-@ant-design/icons-angular@1.0.1
-MIT
+
+@ant-design/icons-angular
 MIT
 
-ant-design-palettes@1.1.3
-MIT
+ant-design-palettes
 MIT
 
-tinycolor2@1.4.1
+tinycolor2
 MIT
 Copyright (c), Brian Grinstead, http://briangrinstead.com
 
@@ -381,13 +377,12 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@angular/animations@6.1.10
-MIT
+@angular/animations
 MIT
 
-@angularclass/hmr@2.1.3
+@angularclass/hmr
 Apache-2.0
-Apache License
+                                 Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -589,7 +584,8 @@ Apache License
    See the License for the specific language governing permissions and
    limitations under the License.
 
-ngx-ueditor@2.1.3
+
+ngx-ueditor
 MIT
 MIT License
 
@@ -613,7 +609,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-ngx-tinymce@2.1.1
+
+ngx-tinymce
 MIT
 MIT License
 
@@ -637,11 +634,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-ng-zorro-antd@1.8.0
-MIT
+
+ng-zorro-antd
 MIT
 
-@delon/util@2.0.0-rc.2-3cab3bb
+@delon/util
 MIT
 MIT License
 
@@ -665,7 +662,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-extend@3.0.2
+
+extend
 MIT
 The MIT License (MIT)
 
@@ -690,7 +688,9 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@delon/abc@2.0.0-rc.2-3cab3bb
+
+
+@delon/abc
 MIT
 MIT License
 
@@ -714,7 +714,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-screenfull@3.3.3
+
+screenfull
 MIT
 MIT License
 
@@ -726,11 +727,15 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@angular/router@6.1.10
-MIT
+
+@angular/router
 MIT
 
-@delon/chart@2.0.0-rc.2-3cab3bb
+@delon/abc/quick-menu
+
+@delon/chart/mini-bar
+
+@delon/chart
 MIT
 MIT License
 
@@ -754,7 +759,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-file-saver@1.3.8
+
+@delon/chart/mini-area
+
+@delon/abc/table
+
+file-saver
 MIT
 The MIT License
 
@@ -768,7 +778,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   [1]: http://eligrey.com
 
-@delon/theme@2.0.0-rc.2-3cab3bb
+
+@delon/theme
 MIT
 MIT License
 
@@ -792,7 +803,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-ngx-countdown@3.1.0
+
+ngx-countdown
 MIT
 MIT License
 
@@ -816,7 +828,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-mockjs@1.0.1-beta3
+
+@delon/abc/page-header
+
+@delon/abc/result
+
+mockjs
 MIT
 The MIT License (MIT)
 
@@ -840,7 +857,18 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@delon/form@2.0.0-rc.2-3cab3bb
+
+date-fns
+MIT
+# License
+
+date-fns is licensed under the [MIT license](http://kossnocorp.mit-license.org).
+Read more about MIT at [TLDRLegal](https://tldrlegal.com/license/mit-license).
+
+
+@delon/abc/reuse-tab
+
+@delon/form
 MIT
 MIT License
 
@@ -864,7 +892,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-@delon/cache@2.0.0-rc.2-3cab3bb
+
+@delon/cache
 MIT
 MIT License
 
@@ -888,15 +917,99 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-@ngx-translate/core@10.0.2
-MIT
+
+@ngx-translate/http-loader
 MIT
 
-@angular/forms@6.1.10
+@delon/auth
 MIT
+MIT License
+
+Copyright (c) 2017-present 卡色<cipchk@qq.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+@delon/abc/notice-icon
+
+@delon/abc/sidebar-nav
+
+@delon/chart/bar
+
+@delon/chart/timeline
+
+@delon/chart/trend
+
+@delon/chart/number-info
+
+@delon/chart/pie
+
+@delon/chart/card
+
+@delon/chart/mini-progress
+
+@delon/abc/count-down
+
+@delon/chart/gauge
+
+@delon/chart/tag-cloud
+
+@delon/chart/water-wave
+
+@delon/chart/radar
+
+@delon/abc/global-footer
+
+@delon/abc/exception
+
+@delon/mock
+MIT
+MIT License
+
+Copyright (c) 2017-present 卡色<cipchk@qq.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+@angular/forms
 MIT
 
-core-js@2.5.7
+@ngx-translate/core
+MIT
+
+core-js
 MIT
 Copyright (c) 2014-2018 Denis Pushkarev
 
@@ -918,7 +1031,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-zone.js@0.8.26
+
+zone.js
 MIT
 The MIT License
 
@@ -941,3 +1055,22 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
+@delon/abc/full-content
+
+@delon/abc/qr
+
+@delon/abc/edit
+
+@delon/abc/view
+
+@delon/abc/error-collect
+
+@delon/abc/footer-toolbar
+
+@delon/abc/ellipsis
+
+@delon/abc/tag-select
+
+@delon/abc/avatar-list
