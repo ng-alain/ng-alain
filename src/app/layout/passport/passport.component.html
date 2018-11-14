@@ -1,17 +1,15 @@
-<div class="container">
-  <div class="wrap">
-    <div class="top">
-      <div class="head">
-        <img class="logo" src="./assets/logo-color.svg">
-        <span class="title">ng-alain</span>
+<div id="particles">
+  <div class="login-page">
+    <div class="login-content">
+      <div class="login-title">
+          <img class="login-logo" src="./assets/tmp/img/logo_plan2.png">
+          <div class="login-title1">打造最具价值工业互联APP</div>
+          <div class="login-title2">count for more</div>
       </div>
-      <div class="desc">武林中最有影响力的《葵花宝典》；欲练神功，挥刀自宫</div>
+        <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
-    <global-footer [links]="links">
-      Copyright
-      <i class="anticon anticon-copyright"></i> 2017
-      <a href="//github.com/cipchk" target="_blank">卡色</a>出品
-    </global-footer>
+    <div class="login-copyright">
+      Copyright <i class="fa fa-copyright"></i> 微茗智能科技有限公司
+    </div>
   </div>
 </div>

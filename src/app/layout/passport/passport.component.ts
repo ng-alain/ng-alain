@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'layout-passport',
@@ -6,18 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./passport.component.less'],
 })
 export class LayoutPassportComponent {
-  links = [
-    {
-      title: '帮助',
-      href: '',
-    },
-    {
-      title: '隐私',
-      href: '',
-    },
-    {
-      title: '条款',
-      href: '',
-    },
-  ];
+  ngOnInit(){
+    $('#particles').particleground({
+      dotColor: '#d0ded9',
+      lineColor: '#d0ded9'
+    });
+  }
 }

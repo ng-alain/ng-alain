@@ -24,7 +24,6 @@ export class UserLoginComponent implements OnDestroy {
   error = '';
   type = 0;
   loading = false;
-
   constructor(
     fb: FormBuilder,
     private router: Router,
@@ -41,8 +40,7 @@ export class UserLoginComponent implements OnDestroy {
     this.form = fb.group({
       userName: [null, [Validators.required, Validators.minLength(5)]],
       password: [null, Validators.required],
-      mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
-      captcha: [null, [Validators.required]],
+      company: [null, [Validators.required]],
       remember: [true],
     });
     modalSrv.closeAll();
@@ -56,11 +54,8 @@ export class UserLoginComponent implements OnDestroy {
   get password() {
     return this.form.controls.password;
   }
-  get mobile() {
-    return this.form.controls.mobile;
-  }
-  get captcha() {
-    return this.form.controls.captcha;
+  get company() {
+    return this.form.controls.company;
   }
 
   // endregion
@@ -74,31 +69,18 @@ export class UserLoginComponent implements OnDestroy {
   count = 0;
   interval$: any;
 
-  getCaptcha() {
-    this.count = 59;
-    this.interval$ = setInterval(() => {
-      this.count -= 1;
-      if (this.count <= 0) clearInterval(this.interval$);
-    }, 1000);
-  }
 
   // endregion
 
   submit() {
     this.error = '';
-    if (this.type === 0) {
-      this.userName.markAsDirty();
-      this.userName.updateValueAndValidity();
-      this.password.markAsDirty();
-      this.password.updateValueAndValidity();
-      if (this.userName.invalid || this.password.invalid) return;
-    } else {
-      this.mobile.markAsDirty();
-      this.mobile.updateValueAndValidity();
-      this.captcha.markAsDirty();
-      this.captcha.updateValueAndValidity();
-      if (this.mobile.invalid || this.captcha.invalid) return;
-    }
+    this.userName.markAsDirty();
+    this.userName.updateValueAndValidity();
+    this.password.markAsDirty();
+    this.password.updateValueAndValidity();
+    this.company.markAsDirty();
+    this.company.updateValueAndValidity();
+    if (this.userName.invalid || this.password.invalid) return;
 
     // **注：** DEMO中使用 `setTimeout` 来模拟 http
     // 默认配置中对所有HTTP请求都会强制[校验](https://ng-alain.com/auth/getting-started) 用户 Token
@@ -109,7 +91,7 @@ export class UserLoginComponent implements OnDestroy {
       if (this.type === 0) {
         if (
           this.userName.value !== 'admin' ||
-          this.password.value !== '888888'
+          this.password.value !== '123qwe'
         ) {
           this.error = `账户或密码错误`;
           return;
@@ -129,7 +111,7 @@ export class UserLoginComponent implements OnDestroy {
       // 重新获取 StartupService 内容，若其包括 User 有关的信息的话
       // this.startupSrv.load().then(() => this.router.navigate(['/']));
       // 否则直接跳转
-      this.router.navigate(['/']);
+      this.router.navigate(['/dashboard']);
     }, 1000);
   }
 
