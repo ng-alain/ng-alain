@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { STColumn } from '@delon/abc';
 import { getTimeDistance, yuan } from '@delon/util';
@@ -9,6 +14,7 @@ import { I18NService } from '@core/i18n/i18n.service';
   selector: 'app-dashboard-analysis',
   templateUrl: './analysis.component.html',
   styleUrls: ['./analysis.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardAnalysisComponent implements OnInit {
   data: any = {
@@ -58,6 +64,7 @@ export class DashboardAnalysisComponent implements OnInit {
     private http: _HttpClient,
     public msg: NzMessageService,
     private i18n: I18NService,
+    private cd: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -73,6 +80,7 @@ export class DashboardAnalysisComponent implements OnInit {
 
   setDate(type: any) {
     this.date_range = getTimeDistance(type);
+    setTimeout(() => this.cd.detectChanges());
   }
 
   salesType = 'all';
@@ -83,10 +91,12 @@ export class DashboardAnalysisComponent implements OnInit {
       this.salesType === 'all'
         ? this.data.salesTypeData
         : this.salesType === 'online'
-          ? this.data.salesTypeDataOnline
-          : this.data.salesTypeDataOffline;
-    if (this.salesPieData)
+        ? this.data.salesTypeDataOnline
+        : this.data.salesTypeDataOffline;
+    if (this.salesPieData) {
       this.salesTotal = this.salesPieData.reduce((pre, now) => now.y + pre, 0);
+    }
+    this.cd.detectChanges();
   }
 
   handlePieValueFormat(value: any) {
@@ -94,6 +104,5 @@ export class DashboardAnalysisComponent implements OnInit {
   }
 
   _activeTab = 0;
-  _tabChange(value: any) {
-  }
+  _tabChange(value: any) {}
 }
