@@ -1,17 +1,19 @@
-import { Component, Inject } from '@angular/core';
-import { SettingsService, ALAIN_I18N_TOKEN } from '@delon/theme';
-import { I18NService } from '@core/i18n/i18n.service';
+import { Component, Inject, Input } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { SettingsService, ALAIN_I18N_TOKEN } from '@delon/theme';
+
+import { I18NService } from '@core/i18n/i18n.service';
 
 @Component({
   selector: 'header-i18n',
   template: `
-  <nz-dropdown>
-    <div nz-dropdown>
+  <nz-dropdown nzPlacement="bottomRight">
+    <div *ngIf="showLang" nz-dropdown>
       <i nz-icon type="global"></i>
       {{ 'menu.lang' | translate}}
       <i nz-icon type="down"></i>
     </div>
+    <i *ngIf="!showLang" nz-dropdown nz-icon type="global"></i>
     <ul nz-menu>
       <li nz-menu-item *ngFor="let item of langs"
         [nzSelected]="item.code === settings.layout.lang"
@@ -22,6 +24,8 @@ import { DOCUMENT } from '@angular/common';
 })
 export class HeaderI18nComponent {
   langs: any[];
+
+  @Input() showLang = true;
 
   constructor(
     public settings: SettingsService,
