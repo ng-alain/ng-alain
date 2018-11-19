@@ -51,7 +51,9 @@
               </nz-form-explain>
             </nz-col>
             <nz-col [nzSpan]="8">
-              <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count" nzBlock [nzLoading]="http.loading">{{ count ? count + 's' : 'app.register.get-verification-code' | translate }}</button>
+              <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count" nzBlock [nzLoading]="http.loading">
+                {{ count ? count + 's' : 'app.register.get-verification-code' | translate }}
+              </button>
             </nz-col>
           </nz-row>
         </nz-form-control>

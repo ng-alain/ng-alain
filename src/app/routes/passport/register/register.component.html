@@ -80,12 +80,13 @@
           <nz-input-group nzSize="large" nzAddonBeforeIcon="anticon anticon-mail">
             <input nz-input formControlName="captcha" placeholder="Captcha">
           </nz-input-group>
-          <nz-form-explain *ngIf="captcha.dirty && captcha.errors">{{ 'validation.verification-code.required' |
-            translate }}</nz-form-explain>
+          <nz-form-explain *ngIf="captcha.dirty && captcha.errors">
+            {{ 'validation.verification-code.required' | translate }}
+          </nz-form-explain>
         </nz-col>
         <nz-col [nzSpan]="8">
-          <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count" nzBlock [nzLoading]="http.loading">{{
-            count ? count + 's' : 'app.register.get-verification-code' | translate }}</button>
+          <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count" nzBlock [nzLoading]="http.loading">
+            {{ count ? count + 's' : 'app.register.get-verification-code' | translate }}</button>
         </nz-col>
       </nz-row>
     </nz-form-control>
