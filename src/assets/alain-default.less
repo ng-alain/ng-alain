@@ -2277,6 +2277,7 @@ darker  @grey-9;
 // Layout Gutter
 @layout-gutter: 8px;
 
+@xs:    @layout-gutter / 2;
 @sm:    @layout-gutter;
 @md:    @layout-gutter * 2;
 @lg:    @layout-gutter * 3;
@@ -2289,11 +2290,12 @@ darker  @grey-9;
     xl @screen-xl;
 
 @mobile-min: @screen-md-min;
-@mobile-max: @screen-md;
+@mobile-max: @screen-md-min - 1px;
 
 // spaceing
 @spacings:
     0  0,
+    xs @xs,
     sm @sm,
     md @md,
     lg @lg;
@@ -2306,10 +2308,15 @@ darker  @grey-9;
 @zindex-fixed:      @zindex-base;
 @zindex:            @zindex-base;
 
+@overflows:     auto, hidden;
+@positions:     static, relative, absolute, fixed, sticky;
+
 // 文本
+@text-xs:       @font-size-base - 2; // 12px
 @text-sm:       @font-size-base + 0; // 14px
 @text-md:       @font-size-base + 2; // 16px
 @text-lg:       @font-size-base + 4; // 18px
+@text-xl:       @font-size-base + 8; // 22px
 
 // icon
 @icon-sm:       @font-size-base * 2; // 24px
@@ -18843,7 +18850,20 @@ span.@{radio-prefix-cls} + * {
     }
 }
 
-// antd patch
+// Angular
+// router ant
+@router-animation-name:     antFadeIn;
+@router-animation-duration: 1s;
+
+// https://github.com/angular/angular/issues/9845
+// 一种路由切换动画的简单实现
+app-layout router-outlet + * {
+  display: block;
+  animation-duration: @router-animation-duration;
+  // animation-fill-mode: both;
+	animation-name: @router-animation-name; // fadeIn;
+}
+
 .preserve-white-spaces-mixin(@enabled) when(@enabled=true) {
   // 搜索框与表格
   @sf-and-st-white-spacing: @layout-gutter * 2;
@@ -18872,6 +18892,22 @@ span.@{radio-prefix-cls} + * {
 
 .preserve-white-spaces-mixin(@preserve-white-spaces-enabled);
 
+@form-state-visual-feedback-enabled: false;
+
+.form-state-visual-feedback-mixin(@enabled) when(@enabled = true) {
+  .ng-invalid {
+    &:focus {
+      box-shadow: 0 0 @outline-blur-size @outline-width fade-out(@error-color, .8);
+    }
+    &,
+    &:hover {
+      border-color: @error-color;
+    }
+  }
+}
+.form-state-visual-feedback-mixin(@form-state-visual-feedback-enabled);
+
+// Antd patch
 .ant-card {
   margin-bottom: @md;
 }
@@ -19091,11 +19127,16 @@ span.@{radio-prefix-cls} + * {
         }
         > td {
           width: 100%;
-          display: block;
+          display: flex;
+          align-items: center;
           text-align: left !important;
           border-bottom: none;
           padding: @nz-table-rep-padding-vertical
             @nz-table-rep-padding-horizontal;
+
+          .ant-table-rep__title + *:not(.ant-avatar) {
+            flex: 1;
+          }
         }
       }
     }
@@ -19111,6 +19152,7 @@ span.@{radio-prefix-cls} + * {
   }
 }
 
+<<<<<<< HEAD
 // Core CSS
 // https://github.com/angular/angular/issues/9845
 // 一种路由切换动画的简单实现
@@ -19119,8 +19161,17 @@ app-layout router-outlet + * {
   animation-duration: @router-animation-duration;
   // animation-fill-mode: both;
 	animation-name: @router-animation-name; // fadeIn;
+=======
+// issues: https://github.com/ant-design/ant-design/issues/13091
+.ant-dropdown {
+  &-trigger .anticon:not(.anticon-ellipsis),
+  &-link .anticon:not(.anticon-ellipsis) {
+    font-size: inherit !important;
+  }
+>>>>>>> master
 }
 
+// Core CSS
 .h1,
 .h2,
 .h3 {
@@ -19152,7 +19203,7 @@ app-layout router-outlet + * {
   list-style: inherit;
 }
 
-.link-unstyled {
+.list-unstyled {
   padding-left: 0;
   list-style: none;
 }
@@ -19176,6 +19227,7 @@ fieldset {
 }
 
 // widgets
+<<<<<<< HEAD
 .badge {
   display: inline-block;
   padding: @badge-padding;
@@ -19186,6 +19238,40 @@ fieldset {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: @border-radius-base;
+=======
+// 中心元素
+@abs-enabled: true;
+
+.widget-abs-mixin(@enabled) when(@enabled=true) {
+
+  .abs-center-container {
+    position: relative;
+  }
+
+  .abs-center {
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    &.abs-fixed {
+      position: fixed;
+      z-index: 999;
+    }
+    &.abs-right {
+      left: auto;
+      right: 20px;
+      text-align: right;
+    }
+    &.abs-left {
+      right: auto;
+      left: 20px;
+      text-align: left;
+    }
+  }
+>>>>>>> master
 
   // Empty badges collapse automatically
   &:empty {
@@ -19196,7 +19282,23 @@ fieldset {
     font-style: normal;
   }
 
+<<<<<<< HEAD
   &-dot {
+=======
+}
+
+.widget-abs-mixin(@abs-enabled);
+
+// Badges
+@badge-enabled:      true;
+@badge-color:        @white;
+@badge-font-size:    @font-size-base;
+@badge-padding:      0 8px;
+
+.widget-badge-mixin(@enabled) when(@enabled=true) {
+
+  .badge {
+>>>>>>> master
     display: inline-block;
     width: @layout-gutter;
     height: @layout-gutter;
@@ -19226,27 +19328,66 @@ fieldset {
         .badge-variant(color(@aliasColor))
     }
 });
+  });
 
-.search-form {
-  background: @search-form-bg;
-  padding: @layout-gutter;
-  border: @border-width-base @border-style-base @border-color-split;
-  border-radius: @search-form-radius;
-  margin-bottom: @layout-gutter * 2;
+  .for-each(@aliasColors, {
+      @aliasColor: ~`getColor("@{colors}", "@{adValue}", @{color-basic-position})`;
+      .badge-@{adKey} {
+          .badge-variant(color(@aliasColor))
+      }
+  });
+
 }
 
-.form-state-visual-feedback-mixin(@enabled) when(@enabled = true) {
-  .ng-invalid {
-    &:focus {
-      box-shadow: 0 0 @outline-blur-size @outline-width fade-out(@error-color, .8);
-    }
-    &,
-    &:hover {
-      border-color: @error-color;
+.widget-badge-mixin(@badge-enabled);
+
+@search-form-enabled:   false;
+@search-form-bg:        #fbfbfb;
+@search-form-radius:    4px;
+
+@search__form-enabled:   true;
+
+.search-form-mixin(@enabled) when(@enabled = true) {
+  .search-form {
+    background: @search-form-bg;
+    padding: @layout-gutter;
+    border: @border-width-base @border-style-base @border-color-split;
+    border-radius: @search-form-radius;
+    margin-bottom: @layout-gutter * 2;
+  }
+}
+.search-form-mixin(@search-form-enabled);
+
+.search__form-mixin(@enabled) when(@enabled = true) {
+  .search {
+    &__form {
+      // BUG: https://github.com/NG-ZORRO/ng-zorro-antd/issues/1202
+      &.ant-form-inline {
+        .ant-form-item-label,
+        .ant-form-item-control-wrapper {
+          padding: 0 !important;
+        }
+      }
+      .ant-form-item {
+        margin-bottom: 24px;
+        margin-right: 0;
+        display: flex;
+        > .ant-form-item-label {
+          width: auto;
+          line-height: 32px;
+          padding-right: 8px;
+        }
+        .ant-form-item-control {
+          line-height: 32px;
+        }
+      }
+      .ant-form-item-control-wrapper {
+        flex: 1;
+      }
     }
   }
 }
-.form-state-visual-feedback-mixin(@form-state-visual-feedback-enabled);
+.search__form-mixin(@search__form-enabled);
 
 @hafl-float-size:
   sm @layout-gutter * 8,
@@ -19309,32 +19450,42 @@ fieldset {
   }
 });
 
-.no-data {
-  color: rgba(0, 0, 0, 0.25);
-  text-align: center;
-  line-height: 64px;
-  font-size: 16px;
-  i {
-    font-size: 24px;
-    margin-right: 16px;
-    position: relative;
-    top: 3px;
+.scrollbar-style-mixin(@element-name) {
+  @{element-name} {
+    &::-webkit-scrollbar {
+      height: @scrollbar-width;
+      width: @scrollbar-height;
+    }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 @scrollbar-width @scrollbar-track-color;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: @scrollbar-thumb-color;
+      outline: 1px solid #333;
+    }
   }
 }
 
+// body scrollbar
 .scrollbar-mixin(@enabled) when(@enabled=true) {
-  body::-webkit-scrollbar {
-    height: @scrollbar-width;
-    width: @scrollbar-height;
-  }
+  .scrollbar-style-mixin(body);
+}
+.scrollbar-mixin(@scrollbar-enabled);
 
-  body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 @scrollbar-width @scrollbar-track-color;
-  }
+// 自定义div scrollbar
+@scrollbar-prefix: ~'.scrollbar';
 
-  body::-webkit-scrollbar-thumb {
-    background-color: @scrollbar-thumb-color;
-    outline: 1px solid #333;
+.scrollbar-style-mixin(@scrollbar-prefix);
+@{scrollbar-prefix} {
+  overflow: auto;
+
+  &-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  &-y {
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 }
 
@@ -19342,6 +19493,11 @@ fieldset {
 
 @setting-drawer-prefix: ~'.setting-drawer';
 @setting-drawer-width: 500px;
+@setting-drawer-enabled:    true;
+@setting-drawer-prefix:     ~'.setting-drawer';
+@setting-drawer-width:      500px;
+
+.widget-setting-drawer-mixin(@enabled) when(@enabled=true) {
 
 @{setting-drawer-prefix} {
   &__content {
@@ -19416,6 +19572,7 @@ fieldset {
   filter: invert(80%);
   display: block;
 }
+.widget-setting-drawer-mixin(@setting-drawer-enabled);
 
 // @delon
 .sf {
@@ -19588,6 +19745,7 @@ fieldset {
   }
 }
 
+// Utils
 .align-baseline    { vertical-align: baseline !important; } // Browser default
 .align-top         { vertical-align: top !important; }
 .align-middle      { vertical-align: middle !important; }
@@ -19666,7 +19824,9 @@ code {
 
 // color
 .bg-white         { background-color: #fff !important; }
+.bg-transparent   { background-color: transparent !important; }
 .text-white       { color: #fff !important; }
+.text-hover:hover { color: @primary-color !important; }
 
 .for-each(@colors, {
   .bg-@{adKey}-light       { background-color: extract(@adItem, @color-light-position) !important; }
@@ -19754,6 +19914,14 @@ code {
 .align-self-stretch      { align-self: stretch !important; }
 
 .flex-1 { flex: 1 !important; }
+.flex-column { flex-direction: column !important; }
+.flex-column-reverse { flex-direction: column-reverse !important; }
+.flex-wrap { flex-wrap: wrap !important; }
+.flex-nowrap { flex-wrap: nowrap !important; }
+.flex-shrink-0 { flex-shrink: 0 !important; }
+.flex-shrink-1 { flex-shrink: 1 !important; }
+.flex-grow-0 { flex-grow: 0 !important; }
+.flex-grow-1 { flex-grow: 1 !important; }
 
 .float-none  { float:none !important; }
 .float-left  { float:left !important; }
@@ -19780,10 +19948,24 @@ code {
   cursor: pointer;
 }
 
-.no-resize {
-  resize: none;
-  max-width: 100%;
-  min-width: 100%;
+.no {
+  &-resize {
+    resize: none;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  &-data {
+    color: rgba(0, 0, 0, 0.25);
+    text-align: center;
+    line-height: 64px;
+    font-size: 16px;
+    i {
+      font-size: 24px;
+      margin-right: 16px;
+      position: relative;
+      top: 3px;
+    }
+  }
 }
 
 .block-center {
@@ -19808,6 +19990,15 @@ code {
   text-align: center;
 }
 
+.color-weak {
+  filter: invert(80%);
+  display: block;
+}
+
+.for-each(@positions, {
+  .position-@{adKey}    { position: @adKey !important; }
+});
+
 .fixed-top {
   position: fixed;
   top: 0;
@@ -19823,6 +20014,10 @@ code {
   left: 0;
   z-index: @zindex-fixed;
 }
+
+.for-each(@overflows, {
+  .overflow-@{adKey}    { overflow: @adKey !important; }
+});
 
 @media (max-width: @screen-xs-max) {
   .hidden-xs {
@@ -19930,15 +20125,25 @@ code {
 .font-italic        { font-style: italic; }
 
 // Sizing
+.text-xs { font-size: @text-xs !important; }
 .text-sm { font-size: @text-sm !important; }
 .text-md { font-size: @text-md !important; }
 .text-lg { font-size: @text-lg !important; }
+.text-xl { font-size: @text-xl !important; }
 
 .for-each(@widths, {
   .width-@{adKey}  { width: @adValue !important; }
   .max-width-@{adKey}  { max-width: @adValue !important; }
   .min-width-@{adKey}  { min-width: @adValue !important; }
 });
+
+@media (max-width: @mobile-max) {
+  .width-sm,
+  .max-width-sm,
+  .min-width-sm {
+    width: 100% !important;
+  }
+}
 
 @alain-default-prefix:                ~'.alain-default';
 @alain-default-zindex:                @zindex-base;
@@ -19958,6 +20163,7 @@ code {
 
 @alain-default-aside-nav-fs:                   14px;
 @alain-default-aside-nav-icon-width:           14px;
+@alain-default-aside-nav-img-wh:               14px;
 @alain-default-aside-nav-padding-top-bottom:   @layout-gutter;
 @alain-default-aside-nav-text-color:           @text-color;
 @alain-default-aside-nav-text-hover-color:     @primary-color;
@@ -19967,6 +20173,7 @@ code {
 @alain-default-aside-nav-item-height:          38px;
 @alain-default-aside-collapsed-wd:             @layout-gutter * 8;
 @alain-default-aside-collapsed-nav-fs:         24px;
+@alain-default-aside-collapsed-nav-img-wh:     24px;
 
 @alain-default-content-heading-bg:             #fafbfc;
 @alain-default-content-heading-border:         #efe3e5;
@@ -20419,7 +20626,7 @@ body {
 }
 
 // Main Nav
-@sidebar-nav-prefix-cls: sidebar-nav;
+@sidebar-nav-prefix-cls:      sidebar-nav;
 
 .@{sidebar-nav-prefix-cls} {
   display: block;
@@ -20432,13 +20639,14 @@ body {
     transition: border-left-color 0.4s ease;
     &-link {
       color: @alain-default-aside-nav-text-color;
-      text-decoration: none;
+      text-decoration: none !important;
       padding: @alain-default-aside-nav-padding-top-bottom @layout-gutter * 2;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       position: relative;
-      display: block;
+      display: flex;
+      align-items: center;
       user-select: none;
       &:hover {
         color: @alain-default-aside-nav-text-hover-color;
@@ -20449,6 +20657,10 @@ body {
       display: inline-block;
       margin-right: @layout-gutter;
       transition: font-size 0.15s @ease-out, margin 0.3s @ease-in-out;
+    }
+    &-img {
+      height: @alain-default-aside-nav-img-wh;
+      width: @alain-default-aside-nav-img-wh;
     }
     &-text {
       transition: opacity 0.3s @ease-in-out, width 0.3s @ease-in-out;
@@ -20603,13 +20815,17 @@ body {
       .@{sidebar-nav-prefix-cls}__item {
         border: none;
         &-link {
-          text-align: center;
+          justify-content: center;
           padding: (@layout-gutter * 3) 0;
-          i {
+          .@{sidebar-nav-prefix-cls}__item-icon {
             margin-right: 0;
             font-size: @alain-default-aside-collapsed-nav-fs;
           }
-          > span {
+          .@{sidebar-nav-prefix-cls}__item-img {
+            width: @alain-default-aside-collapsed-nav-img-wh;
+            height: @alain-default-aside-collapsed-nav-img-wh;
+          }
+          .@{sidebar-nav-prefix-cls}__item-text {
             opacity: 0;
             display: none;
           }
@@ -20697,6 +20913,8 @@ body {
   }
 }
 
+@alain-default-reuse-tab-gutter: 24px;
+
 @{reuse-tab-prefix} {
   margin: 0 -@alain-default-content-padding 0 -@alain-default-content-padding;
 }
@@ -20705,8 +20923,15 @@ body {
   @{reuse-tab-prefix} {
     position: fixed;
     top: @alain-default-header-hg;
-    width: 100%;
+    left: @alain-default-aside-wd + @alain-default-reuse-tab-gutter;
+    right: @alain-default-reuse-tab-gutter;
     z-index: @zindex-fixed + 1;
+  }
+}
+
+@{alain-default-prefix}__collapsed {
+  @{reuse-tab-prefix} {
+    left: @alain-default-aside-collapsed-wd + @alain-default-reuse-tab-gutter;
   }
 }
 
@@ -21448,6 +21673,11 @@ body {
       .ant-btn {
         display: block;
         margin-bottom: 8px;
+      }
+      .ant-input-search-enter-button {
+        .ant-btn {
+          margin-bottom: 0;
+        }
       }
       .ant-btn-group > .ant-btn {
         display: inline-block;

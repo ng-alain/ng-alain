@@ -1,13 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { zip } from 'rxjs';
-import { getTimeDistance, yuan } from '@delon/util';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
   selector: 'app-dashboard-monitor',
   templateUrl: './monitor.component.html',
   styleUrls: ['./monitor.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardMonitorComponent implements OnInit, OnDestroy {
   data: any = {};
@@ -18,7 +24,11 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     end: null,
   };
 
-  constructor(private http: _HttpClient, public msg: NzMessageService) {}
+  constructor(
+    private http: _HttpClient,
+    public msg: NzMessageService,
+    private cd: ChangeDetectorRef,
+  ) {}
 
   ngOnInit() {
     zip(this.http.get('/chart'), this.http.get('/chart/tags')).subscribe(
@@ -29,12 +39,13 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
         ].value = 1000;
         this.tags = tags.list;
         this.loading = false;
+        this.cd.detectChanges();
       },
     );
 
     // active chart
     this.genActiveData();
-    this.activeTime$ = setInterval(() => this.genActiveData(), 1000);
+    this.activeTime$ = setInterval(() => this.genActiveData(), 1000 * 2);
   }
 
   // region: active chart
@@ -74,6 +85,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     ].y;
     this.activeStat.t1 = activeData[Math.floor(activeData.length / 2)].x;
     this.activeStat.t2 = activeData[activeData.length - 1].x;
+    this.cd.detectChanges();
   }
 
   // endregion

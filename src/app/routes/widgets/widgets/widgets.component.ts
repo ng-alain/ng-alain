@@ -1,13 +1,19 @@
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnInit,
+} from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { Component } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
   selector: 'app-widgets',
   templateUrl: './widgets.component.html',
   styleUrls: ['./widgets.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WidgetsComponent {
+export class WidgetsComponent implements OnInit {
   data = [];
   smallData = [];
 
@@ -54,10 +60,17 @@ export class WidgetsComponent {
 
   dislike = false;
 
-  constructor(public msg: NzMessageService, private http: _HttpClient) {
+  constructor(
+    public msg: NzMessageService,
+    private http: _HttpClient,
+    private cd: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit() {
     this.http.get('/chart/visit').subscribe((res: any[]) => {
       this.data = res;
       this.smallData = res.slice(0, 6);
+      this.cd.detectChanges();
     });
   }
 }
