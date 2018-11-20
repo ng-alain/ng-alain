@@ -2290,7 +2290,7 @@ darker  @grey-9;
     xl @screen-xl;
 
 @mobile-min: @screen-md-min;
-@mobile-max: @screen-md;
+@mobile-max: @screen-md-min - 1px;
 
 // spaceing
 @spacings:
@@ -18822,7 +18822,20 @@ span.@{radio-prefix-cls} + * {
     }
 }
 
-// antd patch
+// Angular
+// router ant
+@router-animation-name:     antFadeIn;
+@router-animation-duration: 1s;
+
+// https://github.com/angular/angular/issues/9845
+// 一种路由切换动画的简单实现
+app-layout router-outlet + * {
+  display: block;
+  animation-duration: @router-animation-duration;
+  // animation-fill-mode: both;
+	animation-name: @router-animation-name; // fadeIn;
+}
+
 .preserve-white-spaces-mixin(@enabled) when(@enabled=true) {
 
   sf + st {
@@ -18846,6 +18859,22 @@ span.@{radio-prefix-cls} + * {
 
 .preserve-white-spaces-mixin(@preserve-white-spaces-enabled);
 
+@form-state-visual-feedback-enabled: false;
+
+.form-state-visual-feedback-mixin(@enabled) when(@enabled = true) {
+  .ng-invalid {
+    &:focus {
+      box-shadow: 0 0 @outline-blur-size @outline-width fade-out(@error-color, .8);
+    }
+    &,
+    &:hover {
+      border-color: @error-color;
+    }
+  }
+}
+.form-state-visual-feedback-mixin(@form-state-visual-feedback-enabled);
+
+// Antd patch
 .ant-card {
   margin-bottom: @md;
 }
@@ -19067,6 +19096,7 @@ span.@{radio-prefix-cls} + * {
         > td {
           width: 100%;
           display: flex;
+          align-items: center;
           text-align: left !important;
           border-bottom: none;
           padding: @nz-table-rep-padding-vertical
@@ -19091,19 +19121,6 @@ span.@{radio-prefix-cls} + * {
 }
 
 // Core CSS
-// router ant
-@router-animation-name:     antFadeIn;
-@router-animation-duration: 1s;
-
-// https://github.com/angular/angular/issues/9845
-// 一种路由切换动画的简单实现
-app-layout router-outlet + * {
-  display: block;
-  animation-duration: @router-animation-duration;
-  // animation-fill-mode: both;
-	animation-name: @router-animation-name; // fadeIn;
-}
-
 .h1,
 .h2,
 .h3 {
@@ -19271,30 +19288,53 @@ fieldset {
 
 .widget-badge-mixin(@badge-enabled);
 
-@form-state-visual-feedback-enabled: false;
+@search-form-enabled:   false;
 @search-form-bg:        #fbfbfb;
 @search-form-radius:    4px;
 
-.search-form {
-  background: @search-form-bg;
-  padding: @layout-gutter;
-  border: @border-width-base @border-style-base @border-color-split;
-  border-radius: @search-form-radius;
-  margin-bottom: @layout-gutter * 2;
-}
+@search__form-enabled:   true;
 
-.form-state-visual-feedback-mixin(@enabled) when(@enabled = true) {
-  .ng-invalid {
-    &:focus {
-      box-shadow: 0 0 @outline-blur-size @outline-width fade-out(@error-color, .8);
-    }
-    &,
-    &:hover {
-      border-color: @error-color;
+.search-form-mixin(@enabled) when(@enabled = true) {
+  .search-form {
+    background: @search-form-bg;
+    padding: @layout-gutter;
+    border: @border-width-base @border-style-base @border-color-split;
+    border-radius: @search-form-radius;
+    margin-bottom: @layout-gutter * 2;
+  }
+}
+.search-form-mixin(@search-form-enabled);
+
+.search__form-mixin(@enabled) when(@enabled = true) {
+  .search {
+    &__form {
+      // BUG: https://github.com/NG-ZORRO/ng-zorro-antd/issues/1202
+      &.ant-form-inline {
+        .ant-form-item-label,
+        .ant-form-item-control-wrapper {
+          padding: 0 !important;
+        }
+      }
+      .ant-form-item {
+        margin-bottom: 24px;
+        margin-right: 0;
+        display: flex;
+        > .ant-form-item-label {
+          width: auto;
+          line-height: 32px;
+          padding-right: 8px;
+        }
+        .ant-form-item-control {
+          line-height: 32px;
+        }
+      }
+      .ant-form-item-control-wrapper {
+        flex: 1;
+      }
     }
   }
 }
-.form-state-visual-feedback-mixin(@form-state-visual-feedback-enabled);
+.search__form-mixin(@search__form-enabled);
 
 @hafl-enabled:      true;
 @hafl-float-size:
@@ -19373,19 +19413,6 @@ fieldset {
 }
 
 .widget-masonry-mixin(@masonry-enabled);
-
-.no-data {
-  color: rgba(0, 0, 0, 0.25);
-  text-align: center;
-  line-height: 64px;
-  font-size: 16px;
-  i {
-    font-size: 24px;
-    margin-right: 16px;
-    position: relative;
-    top: 3px;
-  }
-}
 
 .scrollbar-style-mixin(@element-name) {
   @{element-name} {
@@ -19505,11 +19532,6 @@ fieldset {
 
 .widget-setting-drawer-mixin(@setting-drawer-enabled);
 
-.color-weak {
-  filter: invert(80%);
-  display: block;
-}
-
 // @delon
 .sf {
   display: block;
@@ -19611,35 +19633,7 @@ fieldset {
   display: none !important;
 }
 
-.search {
-  &__form {
-    // BUG: https://github.com/NG-ZORRO/ng-zorro-antd/issues/1202
-    &.ant-form-inline {
-      .ant-form-item-label,
-      .ant-form-item-control-wrapper {
-        padding: 0 !important;
-      }
-    }
-    .ant-form-item {
-      margin-bottom: 24px;
-      margin-right: 0;
-      display: flex;
-      > .ant-form-item-label {
-        width: auto;
-        line-height: 32px;
-        padding-right: 8px;
-      }
-      .ant-form-item-control {
-        line-height: 32px;
-      }
-    }
-    .ant-form-item-control-wrapper {
-      flex: 1;
-    }
-  }
-}
-
-// Other
+// Utils
 .align-baseline    { vertical-align: baseline !important; } // Browser default
 .align-top         { vertical-align: top !important; }
 .align-middle      { vertical-align: middle !important; }
@@ -19842,10 +19836,24 @@ code {
   cursor: pointer;
 }
 
-.no-resize {
-  resize: none;
-  max-width: 100%;
-  min-width: 100%;
+.no {
+  &-resize {
+    resize: none;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  &-data {
+    color: rgba(0, 0, 0, 0.25);
+    text-align: center;
+    line-height: 64px;
+    font-size: 16px;
+    i {
+      font-size: 24px;
+      margin-right: 16px;
+      position: relative;
+      top: 3px;
+    }
+  }
 }
 
 .block-center {
@@ -19868,6 +19876,11 @@ code {
   bottom: 0;
   padding-top: 200px;
   text-align: center;
+}
+
+.color-weak {
+  filter: invert(80%);
+  display: block;
 }
 
 .for-each(@positions, {
@@ -20512,6 +20525,8 @@ body {
     position: relative;
     border-left: 3px solid transparent;
     transition: border-left-color 0.4s ease;
+    display: flex;
+    flex-direction: column;
     &-link {
       color: @alain-default-aside-nav-text-color;
       text-decoration: none !important;
@@ -20788,6 +20803,8 @@ body {
   }
 }
 
+@alain-default-reuse-tab-gutter: 24px;
+
 @{reuse-tab-prefix} {
   margin: 0 -@alain-default-content-padding 0 -@alain-default-content-padding;
 }
@@ -20796,8 +20813,15 @@ body {
   @{reuse-tab-prefix} {
     position: fixed;
     top: @alain-default-header-hg;
-    width: 100%;
+    left: @alain-default-aside-wd + @alain-default-reuse-tab-gutter;
+    right: @alain-default-reuse-tab-gutter;
     z-index: @zindex-fixed + 1;
+  }
+}
+
+@{alain-default-prefix}__collapsed {
+  @{reuse-tab-prefix} {
+    left: @alain-default-aside-collapsed-wd + @alain-default-reuse-tab-gutter;
   }
 }
 
