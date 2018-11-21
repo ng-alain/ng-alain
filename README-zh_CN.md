@@ -83,6 +83,8 @@ ng-alain是MIT协议的开源项目。为了项目能够更好的持续的发展
 - [paypal](https://www.paypal.me/cipchk)
 - [支付宝或微信](https://ng-alain.com/assets/donate.png)
 
+或购买我们 [商品主题](https://e.ng-alain.com/)。
+
 ## Backers
 
 Thank you to all our backers! 🙏

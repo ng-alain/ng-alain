@@ -83,6 +83,8 @@ ng-alain is an MIT-licensed open source project. In order to achieve better and 
 - [paypal](https://www.paypal.me/cipchk)
 - [支付宝或微信](https://ng-alain.com/assets/donate.png)
 
+Or purchasing our [business theme](https://e.ng-alain.com/).
+
 ## Backers
 
 Thank you to all our backers! 🙏
