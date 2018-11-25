@@ -18870,12 +18870,22 @@ app-layout router-outlet + * {
     margin-top: @preserve-sf-and-st-spaces;
   }
 
+  // button + button
   .ant-btn + .ant-btn,
+  // button + popconfirm
   .ant-btn + nz-popconfirm,
   nz-popconfirm + .ant-btn,
+  // popconfirm + popconfirm
   nz-popconfirm + nz-popconfirm,
+  // button + button group
   .ant-btn + nz-button-group,
-  nz-popconfirm + nz-button-group {
+  nz-button-group + .ant-btn,
+  // dropdown + button
+  .ant-btn + nz-dropdown,
+  nz-dropdown +.ant-btn,
+  // popconfirm + button group
+  nz-popconfirm + nz-button-group,
+  nz-button-group + nz-popconfirm {
     margin-left: @preserve-buttons-spaces;
   }
   .ant-btn-group {
@@ -19742,7 +19752,10 @@ code {
 .bg-white         { background-color: #fff !important; }
 .bg-transparent   { background-color: transparent !important; }
 .text-white       { color: #fff !important; }
-.text-hover:hover { color: @primary-color !important; }
+.text-hover {
+  cursor: pointer;
+  &:hover { color: @primary-color !important; }
+}
 
 .for-each(@colors, {
   .bg-@{adKey}-light       { background-color: extract(@adItem, @color-light-position) !important; }
