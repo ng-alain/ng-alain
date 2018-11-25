@@ -1556,6 +1556,7 @@ this.tinycolor = tinycolor;
 @heading-color-dark     : fade(#fff, 100%);
 @text-color-dark        : fade(#fff, 85%);
 @text-color-secondary-dark: fade(#fff, 65%);
+@font-variant-base      : tabular-nums;
 @font-size-base         : 14px;
 @font-size-lg           : @font-size-base + 2px;
 @font-size-sm           : 12px;
@@ -1819,6 +1820,7 @@ this.tinycolor = tinycolor;
 
 // Modal
 // --
+@modal-header-bg: @component-background;
 @modal-mask-bg: rgba(0, 0, 0, 0.65);
 
 // Progress
@@ -1833,6 +1835,7 @@ this.tinycolor = tinycolor;
 @menu-item-height: 40px;
 @menu-collapsed-width: 80px;
 @menu-bg: @component-background;
+@menu-popup-bg: @component-background;
 @menu-item-color: @text-color;
 @menu-highlight-color: @primary-color;
 @menu-item-active-bg: @item-active-bg;
@@ -2040,21 +2043,6 @@ this.tinycolor = tinycolor;
 @list-item-meta-avatar-margin-right:         @padding-md;
 @list-item-meta-title-margin-bottom:         @padding-sm;
 
-// Menu
-@menu-dark-item-selected-bg: @menu-dark-item-active-bg;
-
-// Tabs
-@tab-bar-margin: @tabs-bar-margin;
-@tab-horizontal-margin: @tabs-horizontal-margin;
-@tab-vertical-margin: @tabs-vertical-margin;
-@tab-horizontal-padding: @tabs-horizontal-padding;
-@tab-vertical-padding: @tabs-vertical-padding;
-@tab-scrolling-size: @tabs-scrolling-size;
-@tab-highlight-color: @tabs-highlight-color;
-@tab-hover-color: @tabs-hover-color;
-@tab-active-color: @tabs-active-color;
-@tabs-ink-bar-bg-color: @tabs-ink-bar-color;
-
 // Mixins
 // --------------------------------------------------
 // Sizing shortcuts
@@ -2136,7 +2124,7 @@ this.tinycolor = tinycolor;
   @font-scale: unit(@size / 12px);
   font-size: 12px;
   // IE9
-  font-size: ~"@{size} \9"; // lesshint duplicateProperty: false
+  font-size: ~"@{size} \9";
   transform: scale(@font-scale) rotate(@rotate);
   :root & {
     font-size: @font-size-sm; // reset IE9 and above
@@ -3967,6 +3955,7 @@ this.tinycolor = tinycolor;
 @heading-color-dark     : fade(#fff, 100%);
 @text-color-dark        : fade(#fff, 85%);
 @text-color-secondary-dark: fade(#fff, 65%);
+@font-variant-base      : tabular-nums;
 @font-size-base         : 14px;
 @font-size-lg           : @font-size-base + 2px;
 @font-size-sm           : 12px;
@@ -4230,6 +4219,7 @@ this.tinycolor = tinycolor;
 
 // Modal
 // --
+@modal-header-bg: @component-background;
 @modal-mask-bg: rgba(0, 0, 0, 0.65);
 
 // Progress
@@ -4244,6 +4234,7 @@ this.tinycolor = tinycolor;
 @menu-item-height: 40px;
 @menu-collapsed-width: 80px;
 @menu-bg: @component-background;
+@menu-popup-bg: @component-background;
 @menu-item-color: @text-color;
 @menu-highlight-color: @primary-color;
 @menu-item-active-bg: @item-active-bg;
@@ -4451,21 +4442,6 @@ this.tinycolor = tinycolor;
 @list-item-meta-avatar-margin-right:         @padding-md;
 @list-item-meta-title-margin-bottom:         @padding-sm;
 
-// Menu
-@menu-dark-item-selected-bg: @menu-dark-item-active-bg;
-
-// Tabs
-@tab-bar-margin: @tabs-bar-margin;
-@tab-horizontal-margin: @tabs-horizontal-margin;
-@tab-vertical-margin: @tabs-vertical-margin;
-@tab-horizontal-padding: @tabs-horizontal-padding;
-@tab-vertical-padding: @tabs-vertical-padding;
-@tab-scrolling-size: @tabs-scrolling-size;
-@tab-highlight-color: @tabs-highlight-color;
-@tab-hover-color: @tabs-hover-color;
-@tab-active-color: @tabs-active-color;
-@tabs-ink-bar-bg-color: @tabs-ink-bar-color;
-
 // Mixins
 // --------------------------------------------------
 // Sizing shortcuts
@@ -4547,7 +4523,7 @@ this.tinycolor = tinycolor;
   @font-scale: unit(@size / 12px);
   font-size: 12px;
   // IE9
-  font-size: ~"@{size} \9"; // lesshint duplicateProperty: false
+  font-size: ~"@{size} \9";
   transform: scale(@font-scale) rotate(@rotate);
   :root & {
     font-size: @font-size-sm; // reset IE9 and above
@@ -5274,7 +5250,7 @@ mark {
 
 [ant-click-animating-without-extra-node]:after,
 .ant-click-animating-node {
-  content: '';
+  content: "";
   position: absolute;
   top: -1px;
   left: -1px;
@@ -5680,7 +5656,6 @@ mark {
   .col(1); // kickstart it
 }
 
-// lesshint false
 .loop-grid-columns(@index, @class) when (@index > 0) {
   .@{ant-prefix}-col@{class}-@{index} {
     display: block;
@@ -6144,6 +6119,12 @@ mark {
     line-height: @size;
   }
 
+  &-string {
+    position: absolute;
+    left: 50%;
+    transform-origin: 0 center;
+  }
+
   &.@{avatar-prefix-cls}-icon {
     font-size: @font-size;
   }
@@ -6221,6 +6202,7 @@ mark {
     font-weight: @badge-font-weight;
     white-space: nowrap;
     box-shadow: 0 0 0 1px #fff;
+    z-index: 10;
     a,
     a:hover {
       color: #fff;
@@ -6276,7 +6258,7 @@ mark {
         height: 100%;
         border-radius: 50%;
         border: 1px solid @processing-color;
-        content: '';
+        content: "";
         animation: antStatusProcessing 1.2s infinite ease-in-out;
       }
     }
@@ -6432,7 +6414,7 @@ mark {
 .button-variant-primary(@color; @background) {
   .button-color(@color; @background; @background);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, .035);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .045);
 
   &:hover,
   &:focus {
@@ -6508,7 +6490,7 @@ mark {
   > a:only-child {
     color: currentColor;
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -6525,7 +6507,6 @@ mark {
   > .@{btnClassName},
   > span > .@{btnClassName} {
     position: relative;
-    line-height: @btn-height-base - 2px;
 
     &:hover,
     &:focus,
@@ -6589,7 +6570,6 @@ mark {
 
   &:not([disabled]):active {
     outline: 0;
-    transition: none;
     box-shadow: none;
   }
 
@@ -6757,7 +6737,10 @@ mark {
 // Button styles
 // -----------------------------
 .@{btn-prefix-cls} {
-  line-height: @line-height-base;
+  // Fixing https://github.com/ant-design/ant-design/issues/12978
+  // It is a render problem of chrome, which is only happened in the codesandbox demo
+  // 0.001px solution works and I don't why
+  line-height: @line-height-base - 0.001;
   .btn;
   .btn-default;
 
@@ -6766,6 +6749,7 @@ mark {
   > i,
   > span {
     pointer-events: none;
+    display: inline-block;
   }
 
   &-primary {
@@ -6823,7 +6807,7 @@ mark {
     right: -1px;
     background: #fff;
     opacity: 0.35;
-    content: '';
+    content: "";
     border-radius: inherit;
     z-index: 1;
     transition: opacity .2s;
@@ -6894,7 +6878,7 @@ mark {
     letter-spacing: .34em;
   }
 
-  &-two-chinese-chars > * {
+  &-two-chinese-chars > *:not(.@{iconfont-css-prefix}) {
     letter-spacing: .34em;
     margin-right: -.34em;
   }
@@ -6904,7 +6888,7 @@ mark {
   }
 
   .christmas&-primary:before {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: -6px;
@@ -6921,6 +6905,11 @@ mark {
 
   .christmas&-primary&-sm:before {
     background-size: 56px;
+  }
+
+  // https://github.com/ant-design/ant-design/issues/12681
+  &:empty {
+    vertical-align: top;
   }
 }
 
@@ -7236,6 +7225,7 @@ a.@{btn-prefix-cls} {
 
     &-wrapper {
       display: flex;
+      align-items: center;
     }
 
     &-title {
@@ -7243,9 +7233,8 @@ a.@{btn-prefix-cls} {
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-      display: flex;
-      align-items: center;
       flex: 1;
+      display: inline-block;
     }
 
     .@{ant-prefix}-tabs {
@@ -7824,7 +7813,7 @@ a.@{btn-prefix-cls} {
 
     // Reset Select's style in addon
     .@{ant-prefix}-select {
-      margin: -(@input-padding-vertical-base + 1px) (-@input-padding-horizontal-base);  // lesshint spaceAroundOperator: false
+      margin: -(@input-padding-vertical-base + 1px) (-@input-padding-horizontal-base);
 
       .@{ant-prefix}-select-selection {
         background-color: inherit;
@@ -7845,7 +7834,7 @@ a.@{btn-prefix-cls} {
     // https://github.com/ant-design/ant-design/issues/3714
     > i:only-child:after {
       position: absolute;
-      content: '';
+      content: "";
       top: 0;
       left: 0;
       right: 0;
@@ -8304,7 +8293,7 @@ a.@{btn-prefix-cls} {
       height: 100%;
       border-radius: @border-radius-sm;
       border: 1px solid @checkbox-color;
-      content: '';
+      content: "";
       animation: antCheckboxEffect 0.36s ease-in-out;
       animation-fill-mode: both;
       visibility: hidden;
@@ -8326,6 +8315,9 @@ a.@{btn-prefix-cls} {
       border-radius: @border-radius-sm;
       background-color: @checkbox-check-color;
       transition: all .3s;
+      // Fix IE checked style
+      // https://github.com/ant-design/ant-design/issues/12597
+      border-collapse: separate;
 
       &:after {
         @check-width: (@checkbox-size / 14) * 5px;
@@ -8358,25 +8350,6 @@ a.@{btn-prefix-cls} {
       width: 100%;
       height: 100%;
     }
-  }
-
-  // 半选状态
-  .@{checkbox-prefix-cls}-indeterminate .@{checkbox-inner-prefix-cls}:after {
-    @indeterminate-width: @checkbox-size - 8px;
-    @indeterminate-height: @checkbox-size - 8px;
-    content: ' ';
-    transform: translate(-50%, -50%) scale(1);
-    border: 0;
-    left: 50%;
-    top: 50%;
-    width: @indeterminate-width;
-    height: @indeterminate-height;
-    background-color: @checkbox-color;
-    opacity: 1;
-  }
-
-  .@{checkbox-prefix-cls}-indeterminate.@{checkbox-prefix-cls}-disabled .@{checkbox-inner-prefix-cls}:after {
-    border-color: @disabled-color;
   }
 
   // 选中状态
@@ -8457,6 +8430,32 @@ a.@{btn-prefix-cls} {
     }
     &-item + &-item {
       margin-left: 0;
+    }
+  }
+
+  // 半选状态
+  .@{checkbox-prefix-cls}-indeterminate {
+    .@{checkbox-inner-prefix-cls} {
+      background-color: #fff;
+      border-color: @border-color-base;
+    }
+    .@{checkbox-inner-prefix-cls}:after {
+      @indeterminate-width: @checkbox-size - 8px;
+      @indeterminate-height: @checkbox-size - 8px;
+      content: ' ';
+      transform: translate(-50%, -50%) scale(1);
+      border: 0;
+      left: 50%;
+      top: 50%;
+      width: @indeterminate-width;
+      height: @indeterminate-height;
+      background-color: @checkbox-color;
+      opacity: 1;
+    }
+
+    &.@{checkbox-prefix-cls}-disabled .@{checkbox-inner-prefix-cls}:after {
+      border-color: @disabled-color;
+      background-color: @disabled-color;
     }
   }
 }
@@ -8757,6 +8756,7 @@ a.@{btn-prefix-cls} {
     display: block;
     height: 1px;
     width: 100%;
+    min-width: 100%; // Fix https://github.com/ant-design/ant-design/issues/10914
     margin: 24px 0;
     clear: both;
   }
@@ -8774,7 +8774,7 @@ a.@{btn-prefix-cls} {
     margin: 16px 0;
     &:before,
     &:after {
-      content: '';
+      content: "";
       display: table-cell;
       position: relative;
       top: 50%;
@@ -8888,6 +8888,10 @@ a.@{btn-prefix-cls} {
     &-submenu-popup {
       position: absolute;
       z-index: @zindex-dropdown;
+
+      > .@{dropdown-prefix-cls}-menu {
+        transform-origin: 0 0;
+      }
     }
 
     &-item,
@@ -9016,7 +9020,7 @@ a.@{btn-prefix-cls} {
 
 .@{dropdown-prefix-cls}-trigger,
 .@{dropdown-prefix-cls}-link {
-  .@{iconfont-css-prefix}:not(.@{iconfont-css-prefix}-ellipsis) {
+  > .@{iconfont-css-prefix}:not(.@{iconfont-css-prefix}-ellipsis) {
     .iconfont-size-under-12px(10px);
   }
 }
@@ -9152,7 +9156,7 @@ a.@{btn-prefix-cls} {
   input[type="radio"]:focus,
   input[type="checkbox"]:focus {
     outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color; // lesshint duplicateProperty: false
+    outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
   }
 
@@ -9292,7 +9296,9 @@ input[type="checkbox"] {
 .@{form-prefix-cls}-explain,
 .@{form-prefix-cls}-extra {
   color: @text-color-secondary;
-  line-height: @line-height-base;
+  // Magic tweak pixel number to float line-height diff in windows
+  // Fix https://github.com/ant-design/ant-design/issues/12803
+  line-height: @line-height-base + 0.024;
   transition: color .3s @ease-out; // sync input color transition
   margin-top: @form-help-margin-top;
   clear: both;
@@ -9542,9 +9548,10 @@ form {
       margin-bottom: 24px;
     }
 
-    > .@{form-prefix-cls}-item-control-wrapper, > .@{form-prefix-cls}-item-label {
+    > .@{form-prefix-cls}-item-control-wrapper,
+    > .@{form-prefix-cls}-item-label {
       display: inline-block;
-      vertical-align: middle;
+      vertical-align: top;
     }
   }
 
@@ -9554,11 +9561,6 @@ form {
 
   .has-feedback {
     display: inline-block;
-  }
-
-  // Fix https://github.com/ant-design/ant-design/issues/1040
-  .@{form-prefix-cls}-explain {
-    position: absolute;
   }
 }
 
@@ -10303,9 +10305,6 @@ form {
     }
     &-meta {
       margin-bottom: @list-item-meta-margin-bottom;
-      &-avatar {
-        display: none;
-      }
       &-title {
         color: @heading-color;
         margin-bottom: @list-item-meta-title-margin-bottom;
@@ -10493,7 +10492,7 @@ form {
       left: 0;
       bottom: 0;
       right: 0;
-      content: '';
+      content: "";
     }
   }
 
@@ -10606,6 +10605,7 @@ form {
       position: absolute;
       border-radius: @border-radius-base;
       z-index: @zindex-dropdown;
+      background: @menu-popup-bg;
 
       .submenu-title-wrapper {
         padding-right: 20px;
@@ -10642,7 +10642,7 @@ form {
         width: 10px;
         &:before,
         &:after {
-          content: '';
+          content: "";
           position: absolute;
           vertical-align: baseline;
           background: #fff;
@@ -11022,7 +11022,7 @@ form {
 
   &&-dark &-item-selected,
   &-submenu-popup&-dark &-item-selected {
-    background-color: @menu-dark-item-selected-bg;
+    background-color: @menu-dark-item-active-bg;
   }
 
   // Disabled state sets text to dark gray and nukes hover/tab effects
@@ -11323,7 +11323,7 @@ form {
   &-header {
     padding: 16px 24px;
     border-radius: @border-radius-base @border-radius-base 0 0;
-    background: @component-background;
+    background: @modal-header-bg;
     color: @text-color;
     border-bottom: @border-width-base @border-style-base @border-color-split;
   }
@@ -11360,7 +11360,7 @@ form {
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: @modal-mask-bg; // lesshint duplicateProperty: false
+    background-color: @modal-mask-bg;
     height: 100%;
     z-index: @zindex-modal-mask;
     filter: ~"alpha(opacity=50)";
@@ -11378,7 +11378,7 @@ form {
 .@{dialog-prefix-cls}-centered {
   text-align: center;
   &:before {
-    content: '';
+    content: "";
     display: inline-block;
     height: 100%;
     vertical-align: middle;
@@ -11534,7 +11534,7 @@ form {
         display: block;
         max-width: 4px;
         &:before {
-          content: '';
+          content: "";
           display: block;
         }
       }
@@ -12325,8 +12325,8 @@ form {
     left: 0;
     margin: 0;
     color: @progress-text-color;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    padding: 0 6px;
 
     .@{iconfont-css-prefix} {
       font-size: 14 / 12em;
@@ -12405,7 +12405,7 @@ form {
     height: 100%;
     border-radius: 50%;
     border: 1px solid @radio-dot-color;
-    content: '';
+    content: "";
     animation: antRadioEffect 0.36s ease-in-out;
     animation-fill-mode: both;
     visibility: hidden;
@@ -13281,6 +13281,7 @@ span.@{radio-prefix-cls} + * {
 
   &&--multiple {
     .@{select-prefix-cls}-dropdown-menu-item {
+      padding-right: @control-padding-horizontal + 20;
       & .@{select-prefix-cls}-selected-icon {
         color: transparent;
         .iconfont-size-under-12px(10px);
@@ -13326,6 +13327,7 @@ span.@{radio-prefix-cls} + * {
   padding: 4px 0;
   height: 12px;
   cursor: pointer;
+  touch-action: none;
 
   .vertical();
 
@@ -13592,7 +13594,7 @@ span.@{radio-prefix-cls} + * {
     filter: ~"progid\:DXImageTransform\.Microsoft\.Blur(PixelRadius\=1, MakeShadow\=false)";
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       right: 0;
@@ -13790,7 +13792,7 @@ span.@{radio-prefix-cls} + * {
     top: 12px;
     padding: 0 10px;
     &:after {
-      content: '';
+      content: "";
       display: inline-block;
       background: @border-color-split;
       height: 1px;
@@ -13807,7 +13809,7 @@ span.@{radio-prefix-cls} + * {
     position: relative;
     line-height: @steps-icon-size;
     &:after {
-      content: '';
+      content: "";
       height: 1px;
       width: 9999px;
       background: @wait-tail-color;
@@ -14301,6 +14303,8 @@ span.@{radio-prefix-cls} + * {
 
 @table-prefix-cls: ~"@{ant-prefix}-table";
 @table-header-icon-color: #bfbfbf;
+@table-header-sort-active-bg: darken(@table-header-bg, 3%);
+@table-header-filter-active-bg: darken(@table-header-sort-active-bg, 5%);
 
 .@{table-prefix-cls}-wrapper {
   .clearfix;
@@ -14394,13 +14398,14 @@ span.@{radio-prefix-cls} + * {
 
     &.@{table-prefix-cls}-column-has-actions {
       position: relative;
+      background-clip: padding-box; // For Firefox background bug, https://github.com/ant-design/ant-design/issues/12628
 
       &.@{table-prefix-cls}-column-has-filters {
         .@{iconfont-css-prefix}-filter,
         .@{table-prefix-cls}-filter-icon {
           &.@{table-prefix-cls}-filter-open {
             color: @text-color-secondary;
-            background: #ebebeb;
+            background: @table-header-filter-active-bg;
           }
         }
         // Very complicated styles logic but neccessary
@@ -14409,7 +14414,7 @@ span.@{radio-prefix-cls} + * {
           .@{table-prefix-cls}-filter-icon {
             &:hover {
               color: @text-color-secondary;
-              background: #ebebeb;
+              background: @table-header-filter-active-bg;
             }
             &:active {
               color: @text-color;
@@ -14421,10 +14426,10 @@ span.@{radio-prefix-cls} + * {
       &.@{table-prefix-cls}-column-has-sorters {
         cursor: pointer;
         &:hover {
-          background: #f5f5f5;
+          background: @table-header-sort-active-bg;
           .@{iconfont-css-prefix}-filter,
           .@{table-prefix-cls}-filter-icon {
-            background: #f5f5f5;
+            background: @table-header-sort-active-bg;
           }
         }
         &:active {
@@ -14435,24 +14440,21 @@ span.@{radio-prefix-cls} + * {
         }
       }
 
-      // Repeat the class selector for prority
-      // https://github.com/ant-design/ant-design/commit/55a13a11fcea23fc4b5694cad7e2c32edc9128ee#r30842052
-      &.@{table-prefix-cls}-align-right.@{table-prefix-cls}-align-right {
-        &.@{table-prefix-cls}-column-has-sorters,
-        &.@{table-prefix-cls}-column-has-filters {
-          padding-right: 30px;
-        }
+      // https://github.com/ant-design/ant-design/issues/12650
+      &.@{table-prefix-cls}-column-has-sorters,
+      &.@{table-prefix-cls}-column-has-filters {
+        padding-right: 30px !important;
+      }
 
-        &.@{table-prefix-cls}-column-has-sorters.@{table-prefix-cls}-column-has-filters {
-          padding-right: 54px;
-        }
+      &.@{table-prefix-cls}-column-has-sorters.@{table-prefix-cls}-column-has-filters {
+        padding-right: 54px !important;
       }
     }
 
     .@{table-prefix-cls}-column-sorters {
       &:before {
         position: absolute;
-        content: '';
+        content: "";
         top: 0;
         left: 0;
         right: 0;
@@ -14500,7 +14502,7 @@ span.@{radio-prefix-cls} + * {
     transition: all .3s, height 0s;
     &.@{table-prefix-cls}-row-hover,
     &:hover {
-      & > td {
+      &:not(.@{table-prefix-cls}-expanded-row) > td {
         background: @table-row-hover-bg;
       }
     }
@@ -14517,7 +14519,7 @@ span.@{radio-prefix-cls} + * {
     position: relative;
     border-top: @border-width-base @border-style-base @border-color-split;
     &:before {
-      content: '';
+      content: "";
       height: 1px;
       background: @table-header-bg;
       position: absolute;
@@ -14583,8 +14585,9 @@ span.@{radio-prefix-cls} + * {
   }
 
   &-thead > tr > th.@{table-prefix-cls}-selection-column-custom {
-    padding-left: 16px;
-    padding-right: 0;
+    .@{table-prefix-cls}-selection {
+      margin-right: -15px;
+    }
   }
 
   &-thead > tr > th.@{table-prefix-cls}-selection-column,
@@ -14841,6 +14844,10 @@ span.@{radio-prefix-cls} + * {
     &:hover {
       background: @table-expanded-row-bg;
     }
+
+    td > .@{table-prefix-cls}-wrapper {
+      margin: -@table-padding-vertical -@table-padding-horizontal -@table-padding-vertical - 1px;
+    }
   }
 
   .@{table-prefix-cls}-row-indent + .@{table-prefix-cls}-row-expand-icon {
@@ -14946,10 +14953,15 @@ span.@{radio-prefix-cls} + * {
   }
 }
 
+@table-padding-vertical-md: @table-padding-vertical * 3 / 4;
+@table-padding-horizontal-md: @table-padding-horizontal / 2;
+@table-padding-vertical-sm: @table-padding-vertical / 2;
+@table-padding-horizontal-sm: @table-padding-horizontal / 2;
+
 .@{table-prefix-cls}-middle {
   > .@{table-prefix-cls}-title,
   > .@{table-prefix-cls}-footer {
-    padding: @table-padding-vertical*3/4 @table-padding-horizontal/2;
+    padding: @table-padding-vertical-md @table-padding-horizontal-md;
   }
   > .@{table-prefix-cls}-content {
     > .@{table-prefix-cls}-header > table,
@@ -14962,9 +14974,13 @@ span.@{radio-prefix-cls} + * {
     > .@{table-prefix-cls}-fixed-right > .@{table-prefix-cls}-body-outer > .@{table-prefix-cls}-body-inner > table {
       > .@{table-prefix-cls}-thead > tr > th,
       > .@{table-prefix-cls}-tbody > tr > td {
-        padding: @table-padding-vertical*3/4 @table-padding-horizontal/2;
+        padding: @table-padding-vertical-md @table-padding-horizontal-md;
       }
     }
+  }
+
+  tr.@{table-prefix-cls}-expanded-row td > .@{table-prefix-cls}-wrapper {
+    margin: -@table-padding-vertical-md -@table-padding-horizontal -@table-padding-vertical-md - 1px;
   }
 }
 
@@ -14974,7 +14990,7 @@ span.@{radio-prefix-cls} + * {
 
   > .@{table-prefix-cls}-title,
   > .@{table-prefix-cls}-footer {
-    padding: @table-padding-vertical/2 @table-padding-horizontal/2;
+    padding: @table-padding-vertical-sm @table-padding-horizontal-sm;
   }
 
   > .@{table-prefix-cls}-title {
@@ -14984,7 +15000,7 @@ span.@{radio-prefix-cls} + * {
 
   > .@{table-prefix-cls}-content {
     > .@{table-prefix-cls}-body {
-      margin: 0 @table-padding-horizontal/2;
+      margin: 0 @table-padding-horizontal-sm;
     }
 
     > .@{table-prefix-cls}-header > table,
@@ -14998,14 +15014,14 @@ span.@{radio-prefix-cls} + * {
       border: 0;
       > .@{table-prefix-cls}-thead > tr > th,
       > .@{table-prefix-cls}-tbody > tr > td {
-        padding: @table-padding-vertical/2 @table-padding-horizontal/2;
+        padding: @table-padding-vertical-sm @table-padding-horizontal-sm;
       }
       > .@{table-prefix-cls}-thead > tr > th {
-        background: @component-background;
+        background-color: @component-background;
         border-bottom: @border-width-base @border-style-base @border-color-split;
       }
       > .@{table-prefix-cls}-thead > tr > th.@{table-prefix-cls}-column-sort {
-        background: @table-body-sort-bg;
+        background-color: @table-body-sort-bg;
       }
     }
 
@@ -15019,7 +15035,7 @@ span.@{radio-prefix-cls} + * {
     }
 
     .@{table-prefix-cls}-header {
-      background: @component-background;
+      background-color: @component-background;
     }
 
     .@{table-prefix-cls}-placeholder,
@@ -15053,6 +15069,7 @@ span.@{radio-prefix-cls} + * {
     .@{table-prefix-cls}-placeholder {
       border-left: 0;
       border-bottom: 0;
+      border-right: 0;
     }
 
     .@{table-prefix-cls}-thead > tr > th:last-child,
@@ -15068,8 +15085,13 @@ span.@{radio-prefix-cls} + * {
     }
 
     .@{table-prefix-cls}-fixed-right {
+      border-left: @border-width-base @border-style-base @border-color-split;
       border-right: @border-width-base @border-style-base @border-color-split;
     }
+  }
+
+  tr.@{table-prefix-cls}-expanded-row td > .@{table-prefix-cls}-wrapper {
+    margin: -@table-padding-vertical-sm -@table-padding-horizontal -@table-padding-vertical-sm - 1px;
   }
 }
 
@@ -15243,13 +15265,13 @@ span.@{radio-prefix-cls} + * {
     bottom: 1px;
     box-sizing: border-box;
     height: 2px;
-    background-color: @tabs-ink-bar-bg-color;
+    background-color: @tabs-ink-bar-color;
     transform-origin: 0 0;
   }
 
   &-bar {
     border-bottom: @border-width-base @border-style-base @border-color-split;
-    margin: @tab-bar-margin;
+    margin: @tabs-bar-margin;
     outline: none;
     transition: padding .3s @ease-in-out;
   }
@@ -15266,8 +15288,8 @@ span.@{radio-prefix-cls} + * {
     .clearfix;
 
     &-scrolling {
-      padding-left: @tab-scrolling-size;
-      padding-right: @tab-scrolling-size;
+      padding-left: @tabs-scrolling-size;
+      padding-right: @tabs-scrolling-size;
     }
   }
 
@@ -15305,7 +15327,7 @@ span.@{radio-prefix-cls} + * {
 
     &.@{tab-prefix-cls}-tab-arrow-show {
       opacity: 1;
-      width: @tab-scrolling-size;
+      width: @tabs-scrolling-size;
       height: 100%;
       pointer-events: auto;
     }
@@ -15391,8 +15413,8 @@ span.@{radio-prefix-cls} + * {
     .@{tab-prefix-cls}-tab {
       display: inline-block;
       height: 100%;
-      margin: @tab-horizontal-margin;
-      padding: @tab-horizontal-padding;
+      margin: @tabs-horizontal-margin;
+      padding: @tabs-horizontal-padding;
       box-sizing: border-box;
       position: relative;
 
@@ -15405,11 +15427,11 @@ span.@{radio-prefix-cls} + * {
       text-decoration: none;
 
       &:hover {
-        color: @tab-hover-color;
+        color: @tabs-hover-color;
       }
 
       &:active {
-        color: @tab-active-color;
+        color: @tabs-active-color;
       }
 
       .@{iconfont-css-prefix} {
@@ -15418,7 +15440,7 @@ span.@{radio-prefix-cls} + * {
     }
 
     .@{tab-prefix-cls}-tab-active {
-      color: @tab-highlight-color;
+      color: @tabs-highlight-color;
       font-weight: 500;
     }
   }
@@ -15479,20 +15501,20 @@ span.@{radio-prefix-cls} + * {
       border-bottom: 0;
       height: 100%;
       &-tab-prev, &-tab-next {
-        width: @tab-scrolling-size;
+        width: @tabs-scrolling-size;
         height: 0;
         transition: height .3s @ease-in-out, opacity .3s @ease-in-out, color .3s @ease-in-out;
       }
       &-tab-prev.@{tab-prefix-cls}-tab-arrow-show,
       &-tab-next.@{tab-prefix-cls}-tab-arrow-show {
         width: 100%;
-        height: @tab-scrolling-size;
+        height: @tabs-scrolling-size;
       }
 
       .@{tab-prefix-cls}-tab {
         float: none;
-        margin: @tab-vertical-margin;
-        padding: @tab-vertical-padding;
+        margin: @tabs-vertical-margin;
+        padding: @tabs-vertical-padding;
         display: block;
 
         &:last-child {
@@ -15517,7 +15539,7 @@ span.@{radio-prefix-cls} + * {
         margin-bottom: 0;
 
         &.@{tab-prefix-cls}-nav-container-scrolling {
-          padding: @tab-scrolling-size 0;
+          padding: @tabs-scrolling-size 0;
         }
       }
 
@@ -15531,21 +15553,22 @@ span.@{radio-prefix-cls} + * {
 
       .@{tab-prefix-cls}-ink-bar {
         width: 2px;
+        top: 0;
         left: auto;
         height: auto;
-        top: 0;
+        bottom: auto;
       }
 
       .@{tab-prefix-cls}-tab-next {
         width: 100%;
         bottom: 0;
-        height: @tab-scrolling-size;
+        height: @tabs-scrolling-size;
       }
 
       .@{tab-prefix-cls}-tab-prev {
         top: 0;
         width: 100%;
-        height: @tab-scrolling-size;
+        height: @tabs-scrolling-size;
       }
     }
 
@@ -15611,12 +15634,12 @@ span.@{radio-prefix-cls} + * {
 
 .@{tab-prefix-cls}-top .@{tab-prefix-cls}-ink-bar-animated,
 .@{tab-prefix-cls}-bottom .@{tab-prefix-cls}-ink-bar-animated {
-  transition: transform .3s @ease-in-out, width .3s @ease-in-out;
+  transition: transform .3s @ease-in-out, width .3s @ease-in-out, left .3s @ease-in-out;
 }
 
 .@{tab-prefix-cls}-left .@{tab-prefix-cls}-ink-bar-animated,
 .@{tab-prefix-cls}-right .@{tab-prefix-cls}-ink-bar-animated {
-  transition: transform .3s @ease-in-out, height .3s @ease-in-out;
+  transition: transform .3s @ease-in-out, height .3s @ease-in-out, top .3s @ease-in-out;
 }
 
 .no-flex,
@@ -15769,7 +15792,6 @@ span.@{radio-prefix-cls} + * {
     border-radius: @border-radius-base;
     box-shadow: @box-shadow-base;
     background-clip: padding-box;
-    overflow: hidden;
     left: -2px;
   }
 
@@ -15780,6 +15802,7 @@ span.@{radio-prefix-cls} + * {
     max-width: @time-picker-panel-column-width * 3 - @control-padding-horizontal - 2px;
     cursor: auto;
     outline: 0;
+    line-height: normal;
 
     .placeholder;
 
@@ -17077,7 +17100,7 @@ span.@{radio-prefix-cls} + * {
           }
 
           &:before {
-            content: '';
+            content: "";
             position: absolute;
             left: 0;
             right: 0;
@@ -17405,6 +17428,11 @@ span.@{radio-prefix-cls} + * {
 
   &-input {
     outline: none;
+  }
+
+  &-input.@{ant-prefix}-input-sm {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   &:hover &-input:not(.@{ant-prefix}-input-disabled) {
@@ -17938,7 +17966,7 @@ span.@{radio-prefix-cls} + * {
       z-index: 1;
     }
     &:before {
-      content: '';
+      content: "";
       display: block;
       background: @item-active-bg;
       border-radius: 0;
@@ -18118,7 +18146,7 @@ span.@{radio-prefix-cls} + * {
     }
 
     li:last-child:after {
-      content: '';
+      content: "";
       height: 202px;
       display: block;
     }
