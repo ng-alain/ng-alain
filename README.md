@@ -21,8 +21,6 @@ Ng Alain
   [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/ng-alain/ng-alain/blob/master/LICENSE)
   [![Gitter](https://img.shields.io/gitter/room/ng-alain/ng-alain.svg?style=flat-square)](https://gitter.im/ng-alain/ng-alain)
   [![extension-for-VSCode](https://img.shields.io/badge/extension%20for-VSCode-blue.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-alain-vscode)
-  [![Backers on Open Collective](https://opencollective.com/ng-alain/backers/badge.svg)](#backers) 
-  [![Sponsors on Open Collective](https://opencollective.com/ng-alain/sponsors/badge.svg)](#sponsors) 
 
 </div>
 
@@ -79,6 +77,7 @@ npm run hmr
 
 ng-alain is an MIT-licensed open source project. In order to achieve better and sustainable development of the project, we expect to gain more backers. You can support us in any of the following ways:
 
+- [patreon](https://www.patreon.com/cipchk)
 - [opencollective](https://opencollective.com/ng-alain)
 - [paypal](https://www.paypal.me/cipchk)
 - [支付宝或微信](https://ng-alain.com/assets/donate.png)
