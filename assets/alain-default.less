@@ -1673,6 +1673,7 @@ this.tinycolor = tinycolor;
 @checkbox-size          : 16px;
 @checkbox-color         : @primary-color;
 @checkbox-check-color   : #fff;
+@checkbox-border-width  : @border-width-base;
 
 // Radio
 @radio-size             : 16px;
@@ -4072,6 +4073,7 @@ this.tinycolor = tinycolor;
 @checkbox-size          : 16px;
 @checkbox-color         : @primary-color;
 @checkbox-check-color   : #fff;
+@checkbox-border-width  : @border-width-base;
 
 // Radio
 @radio-size             : 16px;
@@ -7472,6 +7474,14 @@ a.@{btn-prefix-cls} {
     &.dragging {
       cursor: pointer;
     }
+
+    .slick-slide {
+      pointer-events: none;
+
+      &.slick-active {
+        pointer-events: auto;
+      }
+    }
   }
   .slick-slider .slick-track,
   .slick-slider .slick-list {
@@ -8311,7 +8321,7 @@ a.@{btn-prefix-cls} {
       display: block;
       width: @checkbox-size;
       height: @checkbox-size;
-      border: @border-width-base @border-style-base @border-color-base;
+      border: @checkbox-border-width @border-style-base @border-color-base;
       border-radius: @border-radius-sm;
       background-color: @checkbox-check-color;
       transition: all .3s;
@@ -14285,8 +14295,11 @@ span.@{radio-prefix-cls} + * {
 
   &-loading,
   &-disabled {
-    pointer-events: none;
+    cursor: not-allowed;
     opacity: @switch-disabled-opacity;
+    * {
+      cursor: not-allowed;
+    }
   }
 }
 
@@ -15796,6 +15809,7 @@ span.@{radio-prefix-cls} + * {
   }
 
   &-input {
+    width: 100%;
     margin: 0;
     padding: 0;
     border: 0;
