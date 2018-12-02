@@ -114,6 +114,7 @@
   "app.monitor.popular-searches": "Popular Searches",
   "app.monitor.resource-surplus": "Resource Surplus",
   "app.monitor.fund-surplus": "Fund Surplus",
+  "app.lock": "Lock",
   "app.login.message-invalid-credentials": "Invalid username or password（admin/ant.design）",
   "app.login.message-invalid-verification-code": "Invalid verification code",
   "app.login.tab-login-credentials": "Credentials",

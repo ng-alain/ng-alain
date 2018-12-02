@@ -6,13 +6,14 @@ import { SettingsService } from '@delon/theme';
 @Component({
   selector: 'passport-lock',
   templateUrl: './lock.component.html',
+  styleUrls: [ './lock.component.less' ]
 })
 export class UserLockComponent {
   f: FormGroup;
 
   constructor(
-    public settings: SettingsService,
     fb: FormBuilder,
+    public settings: SettingsService,
     private router: Router,
   ) {
     this.f = fb.group({

@@ -114,6 +114,7 @@
   "app.monitor.popular-searches": "熱門搜索",
   "app.monitor.resource-surplus": "資源剩余",
   "app.monitor.fund-surplus": "補貼資金剩余",
+  "app.lock": "鎖屏",
   "app.login.message-invalid-credentials": "賬戶或密碼錯誤（admin/ant.design）",
   "app.login.message-invalid-verification-code": "驗證碼錯誤",
   "app.login.tab-login-credentials": "賬戶密碼登錄",
