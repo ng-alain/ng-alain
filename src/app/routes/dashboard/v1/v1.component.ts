@@ -51,9 +51,9 @@ export class DashboardV1Component implements OnInit {
     },
   ];
 
-  webSite: any[] = [];
-  salesData: any[] = [];
-  offlineChartData: any[] = [];
+  webSite: any[];
+  salesData: any[];
+  offlineChartData: any[];
 
   constructor(private http: _HttpClient, private cd: ChangeDetectorRef) {}
 

@@ -18,54 +18,10 @@ import {
   NavigationError,
   NavigationCancel,
 } from '@angular/router';
-import { NzMessageService, NzIconService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd';
 import { Subscription } from 'rxjs';
 import { updateHostClass } from '@delon/util';
 import { ScrollService, MenuService, SettingsService } from '@delon/theme';
-
-// #region icons
-
-import {
-  MenuFoldOutline,
-  MenuUnfoldOutline,
-  SearchOutline,
-  SettingOutline,
-  FullscreenOutline,
-  FullscreenExitOutline,
-  BellOutline,
-  LockOutline,
-  PlusOutline,
-  UserOutline,
-  LogoutOutline,
-  EllipsisOutline,
-  GlobalOutline,
-  ArrowDownOutline,
-  // Optional
-  GithubOutline,
-  AppstoreOutline,
-} from '@ant-design/icons-angular/icons';
-
-const ICONS = [
-  MenuFoldOutline,
-  MenuUnfoldOutline,
-  SearchOutline,
-  SettingOutline,
-  FullscreenOutline,
-  FullscreenExitOutline,
-  BellOutline,
-  LockOutline,
-  PlusOutline,
-  UserOutline,
-  LogoutOutline,
-  EllipsisOutline,
-  GlobalOutline,
-  ArrowDownOutline,
-  // Optional
-  GithubOutline,
-  AppstoreOutline,
-];
-
-// #endregion
 
 import { environment } from '@env/environment';
 import { SettingDrawerComponent } from './setting-drawer/setting-drawer.component';
@@ -86,7 +42,6 @@ export class LayoutDefaultComponent
   settingHost: ViewContainerRef;
 
   constructor(
-    iconSrv: NzIconService,
     router: Router,
     scroll: ScrollService,
     _message: NzMessageService,
@@ -97,7 +52,6 @@ export class LayoutDefaultComponent
     private renderer: Renderer2,
     @Inject(DOCUMENT) private doc: any,
   ) {
-    iconSrv.addIcon(...ICONS);
     // scroll to top in change page
     router.events.subscribe(evt => {
       if (!this.isFetching && evt instanceof RouteConfigLoadStart) {

@@ -60,7 +60,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     line: false,
   };
 
-  activeData: any[] = [];
+  activeData: any[];
 
   activeStat = {
     max: 0,
@@ -80,9 +80,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     this.activeData = activeData;
     // stat
     this.activeStat.max = [...activeData].sort()[activeData.length - 1].y + 200;
-    this.activeStat.min = [...activeData].sort()[
-      Math.floor(activeData.length / 2)
-    ].y;
+    this.activeStat.min = [...activeData].sort()[Math.floor(activeData.length / 2)].y;
     this.activeStat.t1 = activeData[Math.floor(activeData.length / 2)].x;
     this.activeStat.t2 = activeData[activeData.length - 1].x;
     this.cd.detectChanges();

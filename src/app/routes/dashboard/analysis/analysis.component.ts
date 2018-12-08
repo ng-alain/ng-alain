@@ -17,10 +17,7 @@ import { I18NService } from '@core/i18n/i18n.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardAnalysisComponent implements OnInit {
-  data: any = {
-    salesData: [],
-    offlineData: [],
-  };
+  data: any = {};
   loading = true;
   date_range: Date[] = [];
   rankingListData: any[] = Array(7)

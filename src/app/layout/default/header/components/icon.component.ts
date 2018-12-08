@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
   <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" (nzVisibleChange)="change()">
     <div class="alain-default__nav-item" nz-dropdown>
-      <i class="anticon anticon-appstore-o"></i>
+      <i class="anticon anticon-appstore"></i>
     </div>
     <div nz-menu class="wd-xl animated jello">
       <nz-spin [nzSpinning]="loading" [nzTip]="'正在读取数据...'">

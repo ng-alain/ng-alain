@@ -93,7 +93,7 @@
       </div>
     </nz-card>
     <nz-card nzTitle="XX 指数" [nzBordered]="false" [nzLoading]="loading" class="mb-lg">
-      <g2-radar [data]="radarData" [height]="343" [hasLegend]="true"></g2-radar>
+      <g2-radar *ngIf="radarData" [data]="radarData" [height]="343" [hasLegend]="true"></g2-radar>
     </nz-card>
     <nz-card nzTitle="团队" [nzBordered]="false" [nzBodyStyle]="{'padding-top.px': 12, 'padding-bottom.px': 12 }" class="mb-lg">
       <div class="members">

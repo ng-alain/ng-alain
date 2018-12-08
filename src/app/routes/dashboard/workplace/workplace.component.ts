@@ -17,7 +17,7 @@ import { _HttpClient } from '@delon/theme';
 export class DashboardWorkplaceComponent implements OnInit {
   notice: any[] = [];
   activities: any[] = [];
-  radarData: any[] = [];
+  radarData: any[];
   loading = true;
 
   // region: mock data
