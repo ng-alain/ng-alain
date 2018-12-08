@@ -43,7 +43,7 @@
       </div>
     </nz-card>
     <nz-card [nzTitle]="'app.monitor.efficiency' | translate" [nzBordered]="false" [nzBodyStyle]="{'text-align': 'center'}" class="mb-lg">
-      <g2-gauge [title]="'app.monitor.ratio' | translate" [height]="180" [percent]="87" [format]="couponFormat"></g2-gauge>
+      <g2-gauge *ngIf="percent" [title]="'app.monitor.ratio' | translate" [height]="180" [percent]="percent" [format]="couponFormat"></g2-gauge>
     </nz-card>
   </div>
 </div>

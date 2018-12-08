@@ -23,6 +23,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     start: null,
     end: null,
   };
+  percent = null;
 
   constructor(
     private http: _HttpClient,
@@ -44,8 +45,8 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     );
 
     // active chart
-    this.genActiveData();
-    this.activeTime$ = setInterval(() => this.genActiveData(), 1000 * 2);
+    this.refData();
+    this.activeTime$ = setInterval(() => this.refData(), 1000 * 2);
   }
 
   // region: active chart
@@ -69,7 +70,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     t2: '',
   };
 
-  genActiveData() {
+  refData() {
     const activeData = [];
     for (let i = 0; i < 24; i += 1) {
       activeData.push({
@@ -83,6 +84,8 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     this.activeStat.min = [...activeData].sort()[Math.floor(activeData.length / 2)].y;
     this.activeStat.t1 = activeData[Math.floor(activeData.length / 2)].x;
     this.activeStat.t2 = activeData[activeData.length - 1].x;
+    // percent
+    this.percent = Math.floor(Math.random() * 100);
     this.cd.detectChanges();
   }
 
