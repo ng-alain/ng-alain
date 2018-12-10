@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { SettingsService, ALAIN_I18N_TOKEN } from '@delon/theme';
 
@@ -21,6 +21,7 @@ import { I18NService } from '@core/i18n/i18n.service';
     </ul>
   </nz-dropdown>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderI18nComponent {
   langs: any[];

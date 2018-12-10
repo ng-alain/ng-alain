@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 
 @Component({
@@ -10,6 +10,7 @@ import { NzModalService, NzMessageService } from 'ng-zorro-antd';
   host: {
     '[class.d-block]': 'true',
   },
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderStorageComponent {
   constructor(

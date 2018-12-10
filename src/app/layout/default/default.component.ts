@@ -19,27 +19,26 @@ import {
   NavigationCancel,
 } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { updateHostClass } from '@delon/util';
 import { ScrollService, MenuService, SettingsService } from '@delon/theme';
 
 import { environment } from '@env/environment';
 import { SettingDrawerComponent } from './setting-drawer/setting-drawer.component';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'layout-default',
   templateUrl: './default.component.html',
-  preserveWhitespaces: false,
   host: {
     '[class.alain-default]': 'true',
   },
 })
-export class LayoutDefaultComponent
-  implements OnInit, AfterViewInit, OnDestroy {
-  private notify$: Subscription;
-  isFetching = false;
+export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy {
+  private unsubscribe$ = new Subject<void>();
   @ViewChild('settingHost', { read: ViewContainerRef })
-  settingHost: ViewContainerRef;
+  private settingHost: ViewContainerRef;
+  isFetching = false;
 
   constructor(
     router: Router,
@@ -53,7 +52,7 @@ export class LayoutDefaultComponent
     @Inject(DOCUMENT) private doc: any,
   ) {
     // scroll to top in change page
-    router.events.subscribe(evt => {
+    router.events.pipe(takeUntil(this.unsubscribe$)).subscribe(evt => {
       if (!this.isFetching && evt instanceof RouteConfigLoadStart) {
         this.isFetching = true;
       }
@@ -105,11 +104,14 @@ export class LayoutDefaultComponent
   }
 
   ngOnInit() {
-    this.notify$ = this.settings.notify.subscribe(() => this.setClass());
+    const { settings, unsubscribe$ } = this;
+    settings.notify.pipe(takeUntil(unsubscribe$)).subscribe(() => this.setClass());
     this.setClass();
   }
 
   ngOnDestroy() {
-    this.notify$.unsubscribe();
+    const { unsubscribe$ } = this;
+    unsubscribe$.next();
+    unsubscribe$.complete();
   }
 }

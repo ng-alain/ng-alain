@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'header-icon',
@@ -47,11 +47,17 @@ import { Component } from '@angular/core';
     </div>
   </nz-dropdown>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderIconComponent {
   loading = true;
 
+  constructor(private cdr: ChangeDetectorRef) { }
+
   change() {
-    setTimeout(() => (this.loading = false), 500);
+    setTimeout(() => {
+      this.loading = false;
+      this.cdr.detectChanges();
+    }, 500);
   }
 }

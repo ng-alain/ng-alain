@@ -82,11 +82,7 @@ const GLOBAL_CONFIG_PROVIDES = [
   ],
 })
 export class DelonModule {
-  constructor(
-    @Optional()
-    @SkipSelf()
-    parentModule: DelonModule,
-  ) {
+  constructor(@Optional() @SkipSelf() parentModule: DelonModule) {
     throwIfAlreadyLoaded(parentModule, 'DelonModule');
   }
 
