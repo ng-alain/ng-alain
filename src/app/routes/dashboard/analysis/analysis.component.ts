@@ -6,9 +6,10 @@ import {
 } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { STColumn } from '@delon/abc';
-import { getTimeDistance, yuan } from '@delon/util';
+import { getTimeDistance } from '@delon/util';
 import { _HttpClient } from '@delon/theme';
 import { I18NService } from '@core/i18n/i18n.service';
+import { yuan } from '@shared/utils';
 
 @Component({
   selector: 'app-dashboard-analysis',

@@ -19,30 +19,9 @@
     ],
     "baseUrl": "./src/",
     "paths": {
-      "@shared": [
-        "app/shared"
-      ],
-      "@shared/*": [
-        "app/shared/*"
-      ],
-      "@core": [
-        "app/core/"
-      ],
-      "@core/*": [
-        "app/core/*"
-      ],
-      "@testing": [
-        "testing/"
-      ],
-      "@testing/*": [
-        "testing/*"
-      ],
-      "@env": [
-        "environments/"
-      ],
-      "@env/*": [
-        "environments/*"
-      ]
+      "@shared/*": [ "app/shared/*" ],
+      "@core/*": [ "app/core/*" ],
+      "@env/*": [ "environments/*" ]
     }
   }
 }
