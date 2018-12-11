@@ -13,6 +13,8 @@ import { NoticeItem, NoticeIconList } from '@delon/abc';
     [data]="data"
     [count]="count"
     [loading]="loading"
+    btnClass="alain-default__nav-item"
+    btnIconClass="alain-default__nav-item-icon"
     (select)="select($event)"
     (clear)="clear($event)"
     (popoverVisibleChange)="loadData()"></notice-icon>
