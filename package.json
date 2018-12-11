@@ -45,7 +45,7 @@
     "core-js": "^2.6.0",
     "@antv/data-set": "^0.10.1",
     "@antv/g2": "^3.4.5",
-    "@antv/g2-plugin-slider": "^2.1.0",
+    "@antv/g2-plugin-slider": "^2.1.1",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "ajv": "^6.6.1",
