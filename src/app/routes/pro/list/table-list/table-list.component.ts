@@ -1,12 +1,13 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { tap, map } from 'rxjs/operators';
-import { STComponent, STColumn, STData } from '@delon/abc';
+import { STComponent, STColumn, STData, STChange } from '@delon/abc';
 
 @Component({
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProTableListComponent implements OnInit {
   q: any = {
@@ -83,7 +84,8 @@ export class ProTableListComponent implements OnInit {
     private http: _HttpClient,
     public msg: NzMessageService,
     private modalSrv: NzModalService,
-  ) {}
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     this.getData();
@@ -91,9 +93,7 @@ export class ProTableListComponent implements OnInit {
 
   getData() {
     this.loading = true;
-    this.q.statusList = this.status
-      .filter(w => w.checked)
-      .map(item => item.index);
+    this.q.statusList = this.status.filter(w => w.checked).map(item => item.index);
     if (this.q.status !== null && this.q.status > -1)
       this.q.statusList.push(this.q.status);
     this.http
@@ -109,15 +109,23 @@ export class ProTableListComponent implements OnInit {
         ),
         tap(() => (this.loading = false)),
       )
-      .subscribe(res => (this.data = res));
+      .subscribe(res => {
+        this.data = res;
+        this.cdr.detectChanges();
+      });
   }
 
-  checkboxChange(list: STData[]) {
-    this.selectedRows = list;
-    this.totalCallNo = this.selectedRows.reduce(
-      (total, cv) => total + cv.callNo,
-      0,
-    );
+  stChange(e: STChange) {
+    switch (e.type) {
+      case 'checkbox':
+        this.selectedRows = e.checkbox;
+        this.totalCallNo = this.selectedRows.reduce((total, cv) => total + cv.callNo, 0);
+        this.cdr.detectChanges();
+        break;
+      case 'filter':
+        this.getData();
+        break;
+    }
   }
 
   remove() {
@@ -141,15 +149,13 @@ export class ProTableListComponent implements OnInit {
         this.loading = true;
         this.http
           .post('/rule', { description: this.description })
-          .subscribe(() => {
-            this.getData();
-          });
+          .subscribe(() => this.getData());
       },
     });
   }
 
-  reset(ls: any[]) {
-    for (const item of ls) item.value = false;
-    this.getData();
+  reset() {
+    // wait form reset updated finished
+    setTimeout(() => this.getData());
   }
 }

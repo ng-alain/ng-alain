@@ -89,7 +89,7 @@ export class DashboardWorkplaceComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
-    private cd: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -110,7 +110,7 @@ export class DashboardWorkplaceComponent implements OnInit {
         return item;
       });
       this.loading = false;
-      this.cd.detectChanges();
+      this.cdr.detectChanges();
     });
   }
 }

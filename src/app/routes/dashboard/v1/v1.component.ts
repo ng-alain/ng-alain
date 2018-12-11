@@ -55,14 +55,14 @@ export class DashboardV1Component implements OnInit {
   salesData: any[];
   offlineChartData: any[];
 
-  constructor(private http: _HttpClient, private cd: ChangeDetectorRef) {}
+  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.http.get('/chart').subscribe((res: any) => {
       this.webSite = res.visitData.slice(0, 10);
       this.salesData = res.salesData;
       this.offlineChartData = res.offlineChartData;
-      this.cd.detectChanges();
+      this.cdr.detectChanges();
     });
   }
 }

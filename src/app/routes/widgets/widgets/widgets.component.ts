@@ -63,14 +63,14 @@ export class WidgetsComponent implements OnInit {
   constructor(
     public msg: NzMessageService,
     private http: _HttpClient,
-    private cd: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
     this.http.get('/chart/visit').subscribe((res: any[]) => {
       this.data = res;
       this.smallData = res.slice(0, 6);
-      this.cd.detectChanges();
+      this.cdr.detectChanges();
     });
   }
 }

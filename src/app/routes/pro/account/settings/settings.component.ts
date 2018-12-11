@@ -43,7 +43,7 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
   ];
   constructor(
     private router: Router,
-    private cd: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
     private el: ElementRef,
   ) {
     this.router$ = this.router.events
@@ -74,7 +74,7 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
       mode = 'horizontal';
     }
     this.mode = mode;
-    this.cd.detectChanges();
+    this.cdr.detectChanges();
   }
 
   ngAfterViewInit(): void {

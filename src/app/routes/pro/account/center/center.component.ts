@@ -42,7 +42,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private http: _HttpClient,
-    private cd: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   private setActive() {
@@ -56,7 +56,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
       ([user, notice]) => {
         this.user = user;
         this.notice = notice;
-        this.cd.detectChanges();
+        this.cdr.detectChanges();
       },
     );
     this.router$ = this.router.events
@@ -75,12 +75,12 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
   private tagInput: ElementRef;
   tagShowIpt() {
     this.taging = true;
-    this.cd.detectChanges();
+    this.cdr.detectChanges();
     (this.tagInput.nativeElement as HTMLInputElement).focus();
   }
 
   tagBlur() {
-    const { user, cd, tagValue } = this;
+    const { user, cdr, tagValue } = this;
     if (
       tagValue &&
       user.tags.filter(tag => tag.label === tagValue).length === 0
@@ -89,7 +89,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
     }
     this.tagValue = '';
     this.taging = false;
-    cd.detectChanges();
+    cdr.detectChanges();
   }
 
   tagEnter(e: KeyboardEvent) {

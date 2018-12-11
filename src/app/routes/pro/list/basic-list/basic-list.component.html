@@ -54,7 +54,7 @@
               <i nz-icon type="down"></i>
             </a>
             <ul nz-menu>
-              <li nz-menu-item (click)="edit('编辑：' + item.title)">编辑</li>
+              <li nz-menu-item (click)="openEdit(item)">编辑</li>
               <li nz-menu-item (click)="msg.success('删除：' + item.title)">删除</li>
             </ul>
           </nz-dropdown>

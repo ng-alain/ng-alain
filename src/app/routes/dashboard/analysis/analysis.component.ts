@@ -62,7 +62,7 @@ export class DashboardAnalysisComponent implements OnInit {
     private http: _HttpClient,
     public msg: NzMessageService,
     private i18n: I18NService,
-    private cd: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -78,7 +78,7 @@ export class DashboardAnalysisComponent implements OnInit {
 
   setDate(type: any) {
     this.date_range = getTimeDistance(type);
-    setTimeout(() => this.cd.detectChanges());
+    setTimeout(() => this.cdr.detectChanges());
   }
 
   salesType = 'all';
@@ -94,7 +94,7 @@ export class DashboardAnalysisComponent implements OnInit {
     if (this.salesPieData) {
       this.salesTotal = this.salesPieData.reduce((pre, now) => now.y + pre, 0);
     }
-    this.cd.detectChanges();
+    this.cdr.detectChanges();
   }
 
   handlePieValueFormat(value: any) {

@@ -57,7 +57,7 @@
       </nz-col>
       <nz-col [nzSpan]="expandForm ? 24 : 8" [class.text-right]="expandForm">
         <button nz-button type="submit" [nzType]="'primary'" [nzLoading]="loading">查询</button>
-        <button nz-button type="reset" (click)="getData()" class="mx-sm">重置</button>
+        <button nz-button type="reset" (click)="reset()" class="mx-sm">重置</button>
         <a (click)="expandForm=!expandForm">
           {{expandForm ? '收起' : '展开'}}
           <i class="anticon" [class.anticon-down]="!expandForm" [class.anticon-up]="expandForm"></i>
@@ -70,9 +70,9 @@
     <span>新建</span>
   </button>
   <ng-container *ngIf="selectedRows.length > 0">
-    <button nz-button class="ml-sm">批量操作</button>
+    <button nz-button>批量操作</button>
     <nz-dropdown [nzPlacement]="'bottomLeft'">
-      <button nz-button nz-dropdown class="ml-sm">
+      <button nz-button nz-dropdown>
         更多操作
         <i nz-icon type="down"></i>
       </button>
@@ -92,7 +92,7 @@
       </ng-template>
     </nz-alert>
   </div>
-  <st #st [columns]="columns" [data]="data" [loading]="loading" (checkboxChange)="checkboxChange($event)" (filterChange)="getData()">
+  <st #st [columns]="columns" [data]="data" [loading]="loading" (change)="stChange($event)">
     <ng-template st-row="status" let-i>
       <nz-badge [nzStatus]="i.statusType" [nzText]="i.statusText"></nz-badge>
     </ng-template>

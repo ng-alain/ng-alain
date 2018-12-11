@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 
@@ -6,6 +6,7 @@ import { _HttpClient } from '@delon/theme';
   selector: 'app-list-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProListProjectsComponent implements OnInit {
   q: any = {
@@ -45,7 +46,7 @@ export class ProListProjectsComponent implements OnInit {
   }
   // endregion
 
-  constructor(private http: _HttpClient, public msg: NzMessageService) {}
+  constructor(private http: _HttpClient, public msg: NzMessageService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.getData();
@@ -56,6 +57,7 @@ export class ProListProjectsComponent implements OnInit {
     this.http.get('/api/list', { count: this.q.ps }).subscribe((res: any) => {
       this.list = this.list.concat(res);
       this.loading = false;
+      this.cdr.detectChanges();
     });
   }
 }

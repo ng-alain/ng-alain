@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NzMessageService, NzTabChangeEvent } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { STColumn } from '@delon/abc';
@@ -7,6 +7,7 @@ import { STColumn } from '@delon/abc';
   selector: 'app-profile-advanced',
   templateUrl: './advanced.component.html',
   styleUrls: ['./advanced.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProProfileAdvancedComponent implements OnInit {
   list: any[] = [];
@@ -25,12 +26,13 @@ export class ProProfileAdvancedComponent implements OnInit {
     { title: '备注', index: 'memo', default: '-' },
   ];
 
-  constructor(public msg: NzMessageService, private http: _HttpClient) {}
+  constructor(public msg: NzMessageService, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.http.get('/profile/advanced').subscribe((res: any) => {
       this.data = res;
       this.change({ index: 0, tab: null });
+      this.cdr.detectChanges();
     });
   }
 

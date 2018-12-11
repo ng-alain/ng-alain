@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-basic-form',
   templateUrl: './basic-form.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasicFormComponent implements OnInit {
   form: FormGroup;
   submitting = false;
 
-  constructor(private fb: FormBuilder, private msg: NzMessageService) {}
+  constructor(private fb: FormBuilder, private msg: NzMessageService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -31,6 +32,7 @@ export class BasicFormComponent implements OnInit {
     setTimeout(() => {
       this.submitting = false;
       this.msg.success(`提交成功`);
+      this.cdr.detectChanges();
     }, 1000);
   }
 }

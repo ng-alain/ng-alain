@@ -1,9 +1,10 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
   selector: 'app-list-articles',
   templateUrl: './articles.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProListArticlesComponent implements OnInit {
   q: any = {
@@ -67,10 +68,12 @@ export class ProListArticlesComponent implements OnInit {
 
   setOwner() {
     this.q.owners = [`wzj`];
+    // TODO: wait nz-dropdown OnPush mode
+    setTimeout(() => this.cdr.detectChanges());
   }
   // endregion
 
-  constructor(private http: _HttpClient) {}
+  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.getData();
@@ -81,6 +84,7 @@ export class ProListArticlesComponent implements OnInit {
     this.http.get('/api/list', { count: this.q.ps }).subscribe((res: any) => {
       this.list = more ? this.list.concat(res) : res;
       this.loading = false;
+      this.cdr.detectChanges();
     });
   }
 }

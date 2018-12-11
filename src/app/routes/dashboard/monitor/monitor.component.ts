@@ -28,7 +28,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
-    private cd: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -40,7 +40,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
         ].value = 1000;
         this.tags = tags.list;
         this.loading = false;
-        this.cd.detectChanges();
+        this.cdr.detectChanges();
       },
     );
 
@@ -86,7 +86,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     this.activeStat.t2 = activeData[activeData.length - 1].x;
     // percent
     this.percent = Math.floor(Math.random() * 100);
-    this.cd.detectChanges();
+    this.cdr.detectChanges();
   }
 
   // endregion

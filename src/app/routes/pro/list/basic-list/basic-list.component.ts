@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient, ModalHelper } from '@delon/theme';
 import { ProBasicListEditComponent } from './edit/edit.component';
@@ -7,6 +7,7 @@ import { ProBasicListEditComponent } from './edit/edit.component';
   selector: 'app-basic-list',
   templateUrl: './basic-list.component.html',
   styleUrls: ['./basic-list.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProBasicListComponent implements OnInit {
   q: any = {
@@ -19,6 +20,7 @@ export class ProBasicListComponent implements OnInit {
     private http: _HttpClient,
     public msg: NzMessageService,
     private modal: ModalHelper,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -30,6 +32,7 @@ export class ProBasicListComponent implements OnInit {
     this.http.get('/api/list', { count: 5 }).subscribe((res: any) => {
       this.data = res;
       this.loading = false;
+      this.cdr.detectChanges();
     });
   }
 
@@ -43,6 +46,7 @@ export class ProBasicListComponent implements OnInit {
           this.data.splice(0, 0, res);
           this.data = [...this.data];
         }
+        this.cdr.detectChanges();
       });
   }
 }

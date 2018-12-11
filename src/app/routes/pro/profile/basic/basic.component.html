@@ -16,27 +16,22 @@
   </sv-container>
   <nz-divider></nz-divider>
   <div class="text-lg mb-md">退货商品</div>
-  <st [data]="goods" [columns]="goodsColumns">
-    <ng-template #body>
-      <tr nz-tbody-tr>
-        <td nz-td>合计</td>
-        <td nz-td></td>
-        <td nz-td></td>
-        <td nz-td class="text-right"></td>
-        <td nz-td class="text-right">
+  <st #st [data]="goods" [columns]="goodsColumns" [body]="goodsBody" [page]="{ show: false }">
+    <ng-template #goodsBody>
+      <tr>
+        <td>合计</td>
+        <td></td>
+        <td></td>
+        <td class="text-right"></td>
+        <td class="text-right">
           <strong>{{basicNum}}</strong>
         </td>
-        <td nz-td class="text-right">
-          <strong>{{amountNum}}</strong>
+        <td class="text-right">
+          <strong>{{amountNum | _currency}}</strong>
         </td>
       </tr>
     </ng-template>
   </st>
   <div class="text-lg my-md">退货进度</div>
-  <st [data]="progress" [columns]="progressColumns">
-    <ng-template st-row="status" let-i>
-      <nz-badge *ngIf="i.status === 'success'" [nzStatus]="'success'" [nzText]="'成功'"></nz-badge>
-      <nz-badge *ngIf="i.status !== 'success'" [nzStatus]="'processing'" [nzText]="'进行中'"></nz-badge>
-    </ng-template>
-  </st>
+  <st [data]="progress" [columns]="progressColumns" [page]="{ show: false }"></st>
 </nz-card>
