@@ -5,6 +5,7 @@
   "editor.snippetSuggestions": "top",
   // 保存时自动格式化，需要安装：https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
   // "editor.formatOnSave": true,
+  // Angular schematics 插件: https://marketplace.visualstudio.com/items?itemName=cyrilletuzi.angular-schematics
   "ngschematics.schematics": [
     "ng-alain"
   ]
