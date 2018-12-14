@@ -21,7 +21,7 @@ export class ProAccountSettingsBaseComponent implements OnInit {
 
   constructor(
     private http: _HttpClient,
-    private cd: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
     private msg: NzMessageService,
   ) {}
 
@@ -34,7 +34,7 @@ export class ProAccountSettingsBaseComponent implements OnInit {
       this.user = user;
       this.provinces = province;
       this.choProvince(user.geographic.province.key, false);
-      this.cd.detectChanges();
+      this.cdr.detectChanges();
     });
   }
 
@@ -47,7 +47,7 @@ export class ProAccountSettingsBaseComponent implements OnInit {
     this.http.get(`/geo/${pid}`).subscribe((res: any) => {
       this.cities = res;
       if (cleanCity) this.user.geographic.city.key = '';
-      this.cd.detectChanges();
+      this.cdr.detectChanges();
     });
   }
 

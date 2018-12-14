@@ -31,7 +31,7 @@
         <p class="text-nowrap mb0">Website Traffics</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
+        <g2-mini-bar *ngIf="webSite" height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite" tooltipType="mini"></g2-mini-bar>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@
         <p class="text-nowrap mb0">Website Impressions</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
+        <g2-mini-bar *ngIf="webSite" height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite" tooltipType="mini"></g2-mini-bar>
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@
         <p class="text-nowrap mb0">Total Sales</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
+        <g2-mini-bar *ngIf="webSite" height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite" tooltipType="mini"></g2-mini-bar>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@
         <p class="text-nowrap mb0">Support Tickets</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
+        <g2-mini-bar *ngIf="webSite" height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite" tooltipType="mini"></g2-mini-bar>
       </div>
     </div>
   </div>
@@ -76,7 +76,7 @@
         Sales Statistics
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
-      <g2-bar height="275" [data]="salesData"></g2-bar>
+      <g2-bar *ngIf="salesData" height="275" [data]="salesData"></g2-bar>
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzMd="12">
@@ -85,7 +85,7 @@
         Growth Rate
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
-      <g2-timeline [data]="offlineChartData" [height]="239" [padding]="[0, 0, 0, 0]" [titleMap]="{ y1: '客流量', y2: '支付笔数' }"></g2-timeline>
+      <g2-timeline *ngIf="offlineChartData" [data]="offlineChartData" [height]="239" [padding]="[0, 0, 0, 0]" [titleMap]="{ y1: '客流量', y2: '支付笔数' }"></g2-timeline>
     </nz-card>
   </div>
 </div>

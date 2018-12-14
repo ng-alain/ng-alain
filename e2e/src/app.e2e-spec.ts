@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ng-alain App', () => {
+describe('workspace-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -9,6 +9,6 @@ describe('ng-alain App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getTitleText()).toEqual('Welcome to ng7!');
   });
 });

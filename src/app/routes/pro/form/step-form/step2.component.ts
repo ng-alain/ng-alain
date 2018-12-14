@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TransferService } from './transfer.service';
 
 @Component({
   selector: 'app-step2',
   templateUrl: './step2.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Step2Component implements OnInit {
   form: FormGroup;

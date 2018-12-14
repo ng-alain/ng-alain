@@ -116,23 +116,26 @@
       }
     },
     "ng-alain-e2e": {
-      "root": "",
-      "sourceRoot": "",
+      "root": "e2e/",
       "projectType": "application",
+      "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "./protractor.conf.js",
+            "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "ng-alain:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ng-alain:serve:production"
+            }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
-            ],
+            "tsConfig": "e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]

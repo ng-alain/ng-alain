@@ -4,7 +4,6 @@ import { Component, Input } from '@angular/core';
   // tslint:disable-next-line:component-selector
   selector: 'setting-drawer-item',
   templateUrl: './setting-drawer-item.component.html',
-  preserveWhitespaces: false,
   host: {
     '[class.setting-drawer__body-item]': 'true',
   },

@@ -17,7 +17,7 @@ import { _HttpClient } from '@delon/theme';
 export class DashboardWorkplaceComponent implements OnInit {
   notice: any[] = [];
   activities: any[] = [];
-  radarData: any[] = [];
+  radarData: any[];
   loading = true;
 
   // region: mock data
@@ -89,7 +89,7 @@ export class DashboardWorkplaceComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
-    private cd: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -110,7 +110,7 @@ export class DashboardWorkplaceComponent implements OnInit {
         return item;
       });
       this.loading = false;
-      this.cd.detectChanges();
+      this.cdr.detectChanges();
     });
   }
 }

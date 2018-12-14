@@ -186,7 +186,7 @@
         {
           "text": "List",
           "i18n": "menu.list",
-          "icon": "anticon anticon-appstore-o",
+          "icon": "anticon anticon-appstore",
           "children": [
             {
               "text": "Table List",
@@ -246,7 +246,7 @@
         {
           "text": "Result",
           "i18n": "menu.result",
-          "icon": "anticon anticon-check-circle-o",
+          "icon": "anticon anticon-check-circle",
           "children": [
             {
               "text": "Success",
@@ -314,7 +314,7 @@
         {
           "text": "Report",
           "i18n": "menu.report",
-          "icon": "anticon anticon-cloud-o",
+          "icon": "anticon anticon-cloud",
           "children": [
             {
               "text": "Relation",

@@ -203,7 +203,6 @@ const DEFAULT_VARS = {
   // tslint:disable-next-line:component-selector
   selector: 'setting-drawer',
   templateUrl: './setting-drawer.component.html',
-  preserveWhitespaces: false,
   host: {
     '[class.setting-drawer]': 'true',
   },
@@ -221,7 +220,7 @@ export class SettingDrawerComponent {
   colors = DEFAULT_COLORS;
 
   constructor(
-    private cd: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
     private msg: NzMessageService,
     private settingSrv: SettingsService,
     private lazy: LazyService,
@@ -278,7 +277,7 @@ export class SettingDrawerComponent {
   }
 
   private runLess() {
-    const { zone, msg, cd } = this;
+    const { zone, msg, cdr } = this;
     const msgId = msg.loading(`正在编译主题！`, { nzDuration: 0 }).messageId;
     setTimeout(() => {
       zone.runOutsideAngular(() => {
@@ -286,7 +285,7 @@ export class SettingDrawerComponent {
           (window as any).less.modifyVars(this.genVars()).then(() => {
             msg.success('成功');
             msg.remove(msgId);
-            zone.run(() => cd.detectChanges());
+            zone.run(() => cdr.detectChanges());
           });
         });
       });
@@ -318,7 +317,7 @@ export class SettingDrawerComponent {
     });
     this.data = data;
     if (run) {
-      this.cd.detectChanges();
+      this.cdr.detectChanges();
       this.runLess();
     }
   }

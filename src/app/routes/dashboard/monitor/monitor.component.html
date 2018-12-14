@@ -28,24 +28,22 @@
   </div>
   <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="6">
     <nz-card [nzTitle]="'app.monitor.activity-forecast' | translate" [nzBordered]="false" class="mb-lg">
-      <div class="active-chart">
+      <div class="active-chart" *ngIf="activeData">
         <number-info subTitle="目标评估" total="有望达到预期"></number-info>
         <g2-mini-area [animate]="false" [line]="true" [borderWidth]="2" [height]="84" [yAxis]="activeYAxis" [data]="activeData"></g2-mini-area>
-        <ng-container *ngIf="activeData?.length > 0">
-          <div class="active-grid">
-            <p>{{activeStat.max}} 亿元</p>
-            <p>{{activeStat.min}} 亿元</p>
-          </div>
-          <div class="active-legend">
-            <span>00:00</span>
-            <span>{{activeStat.t1}}</span>
-            <span>{{activeStat.t2}}</span>
-          </div>
-        </ng-container>
+        <div class="active-grid">
+          <p>{{activeStat.max}} 亿元</p>
+          <p>{{activeStat.min}} 亿元</p>
+        </div>
+        <div class="active-legend">
+          <span>00:00</span>
+          <span>{{activeStat.t1}}</span>
+          <span>{{activeStat.t2}}</span>
+        </div>
       </div>
     </nz-card>
     <nz-card [nzTitle]="'app.monitor.efficiency' | translate" [nzBordered]="false" [nzBodyStyle]="{'text-align': 'center'}" class="mb-lg">
-      <g2-gauge [title]="'app.monitor.ratio' | translate" [height]="180" [percent]="87" [format]="couponFormat"></g2-gauge>
+      <g2-gauge *ngIf="percent" [title]="'app.monitor.ratio' | translate" [height]="180" [percent]="percent" [format]="couponFormat"></g2-gauge>
     </nz-card>
   </div>
 </div>
@@ -66,13 +64,15 @@
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzSm="24" nzLg="6" class="mb-lg">
-    <nz-card [nzTitle]="'app.monitor.popular-searches' | translate" [nzBordered]="false" [nzBodyStyle]="{'overflow': 'hidden'}">
+    <nz-card [nzTitle]="'app.monitor.popular-searches' | translate" [nzBordered]="false">
       <g2-tag-cloud [data]="tags" [height]="165"></g2-tag-cloud>
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzSm="24" nzLg="6" class="mb-lg">
-    <nz-card [nzTitle]="'app.monitor.resource-surplus' | translate" [nzBordered]="false" [nzBodyStyle]="{'overflow': 'hidden'}">
-      <g2-water-wave [title]="'app.monitor.fund-surplus' | translate" [percent]="34" [height]="165"></g2-water-wave>
+    <nz-card [nzTitle]="'app.monitor.resource-surplus' | translate" [nzBordered]="false">
+      <div class="text-center">
+        <g2-water-wave [title]="'app.monitor.fund-surplus' | translate" [percent]="34" [height]="165"></g2-water-wave>
+      </div>
     </nz-card>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'header-task',
@@ -10,7 +10,8 @@ import { Component } from '@angular/core';
       </nz-badge>
     </div>
     <div nz-menu class="wd-lg">
-      <nz-card nzTitle="Notifications" [nzLoading]="loading" nzBordered="false" class="ant-card__body-nopadding">
+      <div *ngIf="loading" class="mx-lg p-lg"><nz-spin></nz-spin></div>
+      <nz-card *ngIf="!loading" nzTitle="Notifications" nzBordered="false" class="ant-card__body-nopadding">
         <ng-template #extra><i nz-icon type="plus"></i></ng-template>
         <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point">
           <div nz-col [nzSpan]="4" class="text-center">
@@ -66,11 +67,17 @@ import { Component } from '@angular/core';
     </div>
   </nz-dropdown>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderTaskComponent {
   loading = true;
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   change() {
-    setTimeout(() => (this.loading = false), 500);
+    setTimeout(() => {
+      this.loading = false;
+      this.cdr.detectChanges();
+    }, 500);
   }
 }

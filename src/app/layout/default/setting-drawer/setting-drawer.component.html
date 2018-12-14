@@ -58,5 +58,5 @@
   </div>
 </nz-drawer>
 <div class="setting-drawer__handle" [ngClass]="{'setting-drawer__handle-opened': collapse}" (click)="toggle()">
-  <i class="anticon anticon-{{!collapse ? 'setting' : 'close'}} setting-drawer__handle-icon"></i>
+  <i nz-icon [type]="!collapse ? 'setting' : 'close'" class="setting-drawer__handle-icon"></i>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { STColumn } from '@delon/abc';
@@ -7,6 +7,7 @@ import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-profile-basic',
   templateUrl: './basic.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProProfileBaseComponent {
   basicNum = 0;
@@ -36,10 +37,15 @@ export class ProProfileBaseComponent {
   progressColumns: STColumn[] = [
     { title: '时间', index: 'time' },
     { title: '当前进度', index: 'rate' },
-    { title: '状态', render: 'status' },
+    {
+      title: '状态', index: 'status', type: 'badge', badge: {
+        'success': { text: '成功', color: 'success' },
+        'processing': { text: '进行中', color: 'processing' }
+      }
+    },
     { title: '操作员ID', index: 'operator' },
     { title: '耗时', index: 'cost' },
   ];
 
-  constructor(private http: _HttpClient, private msg: NzMessageService) {}
+  constructor(private http: _HttpClient, private msg: NzMessageService) { }
 }

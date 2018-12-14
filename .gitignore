@@ -4,11 +4,10 @@
 /dist
 /tmp
 /out-tsc
+/src/assets/alain-*.less
 
 # dependencies
 /node_modules
-# /package-lock.json
-/yarn-taobao.lock
 /yarn.lock
 
 # IDEs and editors
@@ -39,7 +38,6 @@ yarn-error.log
 /_all.less
 
 # e2e
-/e2e/*.js
 /e2e/*.map
 
 # System Files
