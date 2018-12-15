@@ -927,8 +927,6 @@ SOFTWARE.
 
 @delon/abc/global-footer
 
-@delon/abc/exception
-
 @delon/mock
 MIT
 MIT License
@@ -1036,6 +1034,8 @@ SOFTWARE.
 
 
 @delon/abc/qr
+
+@delon/abc/exception
 
 @delon/abc/edit
 
