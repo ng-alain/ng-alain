@@ -211,7 +211,7 @@
 </div>
 <nz-card [nzLoading]="loading" [nzBordered]="false" [nzBodyStyle]="{'padding': '0 0 32px'}" class="offline-card mt-lg">
   <nz-tabset *ngIf="data.offlineData" [(nzSelectedIndex)]="_activeTab" (nzSelectChange)="_tabChange($event)">
-    <nz-tab *ngFor="let tab of data.offlineData; let i = index;" [nzTitle]="nzTabHeading">
+    <nz-tab *ngFor="let tab of data.offlineData; let i = index;" [nzTitle]="nzTabHeading" (nzSelect)="tab.show=true">
       <ng-template #nzTabHeading>
         <div nz-row [nzGutter]="8" style="width: 138px; margin: 8px 0;">
           <div nz-col [nzSpan]="12">
@@ -226,7 +226,7 @@
         </div>
       </ng-template>
       <div class="px-lg">
-        <g2-timeline delay="100" [data]="tab.chart" [titleMap]="titleMap"></g2-timeline>
+        <g2-timeline *ngIf="tab.show" [data]="tab.chart" [titleMap]="titleMap"></g2-timeline>
       </div>
     </nz-tab>
   </nz-tabset>
