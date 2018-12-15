@@ -18,6 +18,9 @@ import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
       <div nz-menu-item routerLink="/pro/account/settings"><i nz-icon type="setting" class="mr-sm"></i>
         {{ 'menu.account.settings' | translate }}
       </div>
+      <div nz-menu-item routerLink="/exception/trigger"><i nz-icon type="setting" class="mr-sm"></i>
+        {{ 'menu.account.trigger' | translate }}
+      </div>
       <li nz-menu-divider></li>
       <div nz-menu-item (click)="logout()"><i nz-icon type="logout" class="mr-sm"></i>
         {{ 'menu.account.logout' | translate }}
