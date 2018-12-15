@@ -53,14 +53,6 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
 
   activeTime$: any;
 
-  activeYAxis = {
-    tickCount: 3,
-    tickLine: false,
-    labels: false,
-    title: false,
-    line: false,
-  };
-
   activeData: any[];
 
   activeStat = {

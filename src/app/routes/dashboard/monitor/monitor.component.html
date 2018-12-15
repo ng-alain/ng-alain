@@ -30,7 +30,7 @@
     <nz-card [nzTitle]="'app.monitor.activity-forecast' | translate" [nzBordered]="false" class="mb-lg">
       <div class="active-chart" *ngIf="activeData">
         <number-info subTitle="目标评估" total="有望达到预期"></number-info>
-        <g2-mini-area [animate]="false" [line]="true" [borderWidth]="2" [height]="84" [yAxis]="activeYAxis" [data]="activeData"></g2-mini-area>
+        <g2-mini-area [animate]="false" line [borderWidth]="2" [height]="84" padding="0" [data]="activeData"></g2-mini-area>
         <div class="active-grid">
           <p>{{activeStat.max}} 亿元</p>
           <p>{{activeStat.min}} 亿元</p>
