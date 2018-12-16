@@ -18,10 +18,7 @@ const COMPONENTS_NOROUNT = [];
 
 @NgModule({
   imports: [SharedModule, ExceptionRoutingModule],
-  declarations: [
-    ...COMPONENTS,
-    ...COMPONENTS_NOROUNT
-  ],
+  declarations: [ ...COMPONENTS, ...COMPONENTS_NOROUNT ],
   entryComponents: COMPONENTS_NOROUNT,
 })
 export class ExceptionModule { }
