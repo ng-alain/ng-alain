@@ -58,6 +58,11 @@ export class DashboardAnalysisComponent implements OnInit {
     },
   ];
 
+  saleTabs: any[] = [
+    { key: 'sales', showBar: true },
+    { key: 'visits' },
+  ];
+
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
