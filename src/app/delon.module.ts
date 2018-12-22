@@ -3,7 +3,7 @@
  * 有关模块注册指导原则请参考：https://github.com/ng-alain/ng-alain/issues/180
  */
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
-import { throwIfAlreadyLoaded } from '@core/module-import-guard';
+import { throwIfAlreadyLoaded } from '@core';
 
 import { AlainThemeModule } from '@delon/theme';
 

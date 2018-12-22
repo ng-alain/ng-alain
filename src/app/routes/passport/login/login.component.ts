@@ -11,7 +11,7 @@ import {
 } from '@delon/auth';
 import { ReuseTabService } from '@delon/abc';
 import { environment } from '@env/environment';
-import { StartupService } from '@core/startup/startup.service';
+import { StartupService } from '@core';
 
 @Component({
   selector: 'passport-login',

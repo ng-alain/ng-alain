@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@shared/shared.module';
+import { SharedModule } from '@shared';
 
 import { StyleRoutingModule } from './style-routing.module';
 import { ColorService } from './color.service';
