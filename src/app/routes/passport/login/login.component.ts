@@ -1,6 +1,6 @@
 import { SettingsService, _HttpClient } from '@delon/theme';
 import { Component, OnDestroy, Inject, Optional } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { SocialService, SocialOpenType, ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
@@ -22,7 +22,6 @@ export class UserLoginComponent implements OnDestroy {
   constructor(
     fb: FormBuilder,
     modalSrv: NzModalService,
-    route: ActivatedRoute,
     private router: Router,
     private settingsService: SettingsService,
     private socialService: SocialService,
@@ -32,11 +31,8 @@ export class UserLoginComponent implements OnDestroy {
     public http: _HttpClient,
     public msg: NzMessageService,
   ) {
-    if (route.snapshot.queryParamMap.has('clean')) {
-      tokenService.clear();
-    }
     this.form = fb.group({
-      userName: [null, [Validators.required, Validators.minLength(5)]],
+      userName: [null, [Validators.required, Validators.minLength(4)]],
       password: [null, Validators.required],
       mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
       captcha: [null, [Validators.required]],
