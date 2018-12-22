@@ -10,7 +10,9 @@
       "node"
     ],
     "paths": {
+      "@shared": [ "app/shared/index" ],
       "@shared/*": [ "app/shared/*" ],
+      "@core": [ "app/core/index" ],
       "@core/*": [ "app/core/*" ],
       "@env/*": [ "environments/*" ]
     }
