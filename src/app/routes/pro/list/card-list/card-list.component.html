@@ -1,4 +1,4 @@
-<page-header [title]="'卡片列表'">
+<page-header [title]="'卡片列表'" [extra]="extra">
   <ng-template #extra>
     <div style="margin-top: -60px; text-align: center; width: 195px;">
       <img class="img-fluid" src="https://gw.alipayobjects.com/zos/rmsportal/RzwpdLnhmvDJToTdfDPe.png">
@@ -21,7 +21,7 @@
   <ng-template #item let-item>
     <nz-list-item>
       <button *ngIf="item === null" nz-button (click)="msg.success('add')" [nzType]="'dashed'" style="width: 100%; height: 183px;">
-        <i class="anticon anticon-plus"></i>
+        <i nz-icon type="plus"></i>
         <span>新增产品</span>
       </button>
       <nz-card nzHoverable *ngIf="item !== null" [nzActions]="[op1, op2]">

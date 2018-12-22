@@ -1,4 +1,4 @@
-<div class="content__title">
+<div class="alain-default__content-title">
   <h1>
     Dashboard
     <small>Welcome !</small>
@@ -31,7 +31,7 @@
         <p class="text-nowrap mb0">Website Traffics</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
+        <g2-mini-bar *ngIf="webSite" height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite" tooltipType="mini"></g2-mini-bar>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@
         <p class="text-nowrap mb0">Website Impressions</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
+        <g2-mini-bar *ngIf="webSite" height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite" tooltipType="mini"></g2-mini-bar>
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@
         <p class="text-nowrap mb0">Total Sales</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
+        <g2-mini-bar *ngIf="webSite" height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite" tooltipType="mini"></g2-mini-bar>
       </div>
     </div>
   </div>
@@ -64,52 +64,52 @@
         <p class="text-nowrap mb0">Support Tickets</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite"></g2-mini-bar>
+        <g2-mini-bar *ngIf="webSite" height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]" [data]="webSite" tooltipType="mini"></g2-mini-bar>
       </div>
     </div>
   </div>
 </div>
 <div nz-row nzGutter="16">
   <div nz-col nzXs="24" nzMd="12">
-    <nz-card [nzBordered]="false" [nzTitle]="title">
-      <ng-template #title>
+    <nz-card [nzBordered]="false" [nzTitle]="salesTitle">
+      <ng-template #salesTitle>
         Sales Statistics
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
-      <g2-bar height="275" [data]="salesData"></g2-bar>
+      <g2-bar *ngIf="salesData" height="275" [data]="salesData"></g2-bar>
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzMd="12">
-    <nz-card [nzTitle]="title" [nzBordered]="false">
-      <ng-template #title>
+    <nz-card [nzTitle]="growthTitle" [nzBordered]="false">
+      <ng-template #growthTitle>
         Growth Rate
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
-      <g2-timeline [data]="offlineChartData" [height]="239" [padding]="[0, 0, 0, 0]" [titleMap]="{ y1: '客流量', y2: '支付笔数' }"></g2-timeline>
+      <g2-timeline *ngIf="offlineChartData" [data]="offlineChartData" [height]="239" [padding]="[0, 0, 0, 0]" [titleMap]="{ y1: '客流量', y2: '支付笔数' }"></g2-timeline>
     </nz-card>
   </div>
 </div>
 <div nz-row nzGutter="16">
   <div nz-col nzXs="24" nzMd="12">
-    <nz-card [nzBordered]="false" class="ant-card__img">
-      <img class="img" src="//os.alipayobjects.com/rmsportal/GhjqstwSgxBXrZS.png">
-      <div class="p-md">
-        <h3>ANT DESIGN</h3>
-        <p class="text-grey">A UI Design Language</p>
-        <ol class="list-styled text-lg pt-md">
-          <li>Designed by experienced team, and showcase dozens of inspiring projects.</li>
-          <li>Provide solutions for usual problems that may be encountered while developing enterprise-like complex UIs.</li>
-          <li>Dozens of flexible and practical reusable components that increase your productivity.</li>
-        </ol>
-        <p class="pt-md">
-          <a class="text-grey" href="//ng.ant.design" target="_blank">View Site...</a>
-        </p>
-      </div>
+    <nz-card [nzBordered]="false" [nzCover]="coverTpl">
+      <ng-template #coverTpl>
+        <img class="img" src="//os.alipayobjects.com/rmsportal/GhjqstwSgxBXrZS.png">
+      </ng-template>
+      <h3>ANT DESIGN</h3>
+      <p class="text-grey">A UI Design Language</p>
+      <ol class="list-styled text-lg pt-md">
+        <li>Designed by experienced team, and showcase dozens of inspiring projects.</li>
+        <li>Provide solutions for usual problems that may be encountered while developing enterprise-like complex UIs.</li>
+        <li>Dozens of flexible and practical reusable components that increase your productivity.</li>
+      </ol>
+      <p class="pt-md mb0">
+        <a class="text-grey" href="//ng.ant.design" target="_blank">View Site...</a>
+      </p>
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzMd="12">
-    <nz-card [nzTitle]="title" [nzBordered]="false" class="ant-card__body-nopadding">
-      <ng-template #title>
+    <nz-card [nzTitle]="recentTitle" [nzBordered]="false" class="ant-card__body-nopadding">
+      <ng-template #recentTitle>
         Recent Posts
         <small class="text-sm font-weight-normal">Venenatis portauam Inceptos ameteiam</small>
       </ng-template>
@@ -136,7 +136,7 @@
         </div>
         <div nz-col [nzSpan]="2" class="text-right pr-md">
           <nz-dropdown [nzPlacement]="'topRight'">
-            <i nz-dropdown class="icon-options-vertical"></i>
+            <i nz-dropdown nz-icon type="ellipsis" class="rotate-90"></i>
             <ul nz-menu>
               <li nz-menu-item *ngIf="item.completed" (click)="item.completed=false">Active</li>
               <li nz-menu-item *ngIf="!item.completed" (click)="item.completed=true">Completed</li>

@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'header-icon',
   template: `
   <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" (nzVisibleChange)="change()">
-    <div class="item" nz-dropdown>
-      <i class="anticon anticon-appstore-o"></i>
+    <div class="alain-default__nav-item" nz-dropdown>
+      <i class="anticon anticon-appstore"></i>
     </div>
     <div nz-menu class="wd-xl animated jello">
       <nz-spin [nzSpinning]="loading" [nzTip]="'正在读取数据...'">
@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
             <small>Calendar</small>
           </div>
           <div nz-col [nzSpan]="6">
-            <i class="anticon anticon-file bg-teal text-white"></i>
+            <i class="anticon anticon-file bg-geekblue text-white"></i>
             <small>Files</small>
           </div>
           <div nz-col [nzSpan]="6">
@@ -47,11 +47,17 @@ import { Component } from '@angular/core';
     </div>
   </nz-dropdown>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderIconComponent {
   loading = true;
 
+  constructor(private cdr: ChangeDetectorRef) { }
+
   change() {
-    setTimeout(() => (this.loading = false), 500);
+    setTimeout(() => {
+      this.loading = false;
+      this.cdr.detectChanges();
+    }, 500);
   }
 }

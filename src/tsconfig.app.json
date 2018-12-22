@@ -4,32 +4,11 @@
     "outDir": "../out-tsc/app",
     "baseUrl": "./",
     "module": "es2015",
-    "types": [],
+    "types": ["node"],
     "paths": {
-      "@shared": [
-        "app/shared"
-      ],
-      "@shared/*": [
-        "app/shared/*"
-      ],
-      "@core": [
-        "app/core/"
-      ],
-      "@core/*": [
-        "app/core/*"
-      ],
-      "@testing": [
-        "testing/"
-      ],
-      "@testing/*": [
-        "testing/*"
-      ],
-      "@env": [
-        "environments/"
-      ],
-      "@env/*": [
-        "environments/*"
-      ]
+      "@shared/*": [ "app/shared/*" ],
+      "@core/*": [ "app/core/*" ],
+      "@env/*": [ "environments/*" ]
     }
   },
   "exclude": [

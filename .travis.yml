@@ -1,13 +1,32 @@
 sudo: required
+dist: trusty
 language: node_js
+
 node_js:
-  - "8.11"
+  - '10.9.0'
 
 addons:
-  chrome: stable
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+      - google-chrome-beta
 
 git:
   depth: 1
+
+jobs:
+  include:
+    - env: "MODE=build"
+    - env: "MODE=lint"
+    - env: "MODE=test-coverage"
+    - env: "DEPLOY_MODE=artifacts"
+      if: branch = master
+
+matrix:
+  allow_failures:
+    - env: "DEPLOY_MODE=artifacts"
 
 before_install:
   - export CHROME_BIN=chromium-browser
@@ -15,11 +34,13 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
-  - npm install
+  - chmod +x -R scripts
+  - yarn
 
 script:
-  - npm run test-coverage
+  - ./scripts/_ci/travis.sh
 
-after_success:
-  - ./node_modules/.bin/codecov
-
+cache:
+  yarn: true
+  directories:
+    - ./node_modules/

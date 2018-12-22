@@ -1,4 +1,4 @@
-<page-header #ph [title]="'搜索列表'">
+<page-header [title]="'搜索列表'" [tab]="tab">
   <div class="text-center">
     <nz-input-group nzSearch nzSize="large" [nzSuffix]="suffixButton" style="width: 520px;">
       <input type="text" nz-input placeholder="请输入">
@@ -9,7 +9,7 @@
   </div>
   <ng-template #tab>
     <nz-tabset [nzSelectedIndex]="pos">
-      <nz-tab *ngFor="let i of tabs" [nzTitle]="i.tab" (click)="to(i)"></nz-tab>
+      <nz-tab *ngFor="let i of tabs" [nzTitle]="i.tab" (nzClick)="to(i)"></nz-tab>
     </nz-tabset>
   </ng-template>
 </page-header>

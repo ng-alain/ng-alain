@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ModalHelper } from '@delon/theme';
-import { SimpleTableComponent, SimpleTableColumn } from '@delon/abc';
+import { STComponent, STColumn } from '@delon/abc';
 import { ExtrasPoiEditComponent } from './edit/edit.component';
 
 @Component({
@@ -9,14 +9,15 @@ import { ExtrasPoiEditComponent } from './edit/edit.component';
   templateUrl: './poi.component.html',
 })
 export class ExtrasPoiComponent {
-  @ViewChild('st') st: SimpleTableComponent;
+  @ViewChild('st')
+  st: STComponent;
   s: any = {
     pi: 1,
     ps: 10,
     s: '',
   };
   url = '/pois';
-  columns: SimpleTableColumn[] = [
+  columns: STColumn[] = [
     { title: '编号', index: 'id', width: '100px' },
     { title: '门店名称', index: 'name' },
     { title: '分店名', index: 'branch_name' },

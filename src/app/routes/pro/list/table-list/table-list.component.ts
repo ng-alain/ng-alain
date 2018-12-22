@@ -1,16 +1,13 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { tap, map } from 'rxjs/operators';
-import {
-  SimpleTableComponent,
-  SimpleTableColumn,
-  SimpleTableData,
-} from '@delon/abc';
+import { STComponent, STColumn, STData, STChange } from '@delon/abc';
 
 @Component({
-  selector: 'pro-table-list',
+  selector: 'app-table-list',
   templateUrl: './table-list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProTableListComponent implements OnInit {
   q: any = {
@@ -34,8 +31,9 @@ export class ProTableListComponent implements OnInit {
     { index: 2, text: '已上线', value: false, type: 'success', checked: false },
     { index: 3, text: '异常', value: false, type: 'error', checked: false },
   ];
-  @ViewChild('st') st: SimpleTableComponent;
-  columns: SimpleTableColumn[] = [
+  @ViewChild('st')
+  st: STComponent;
+  columns: STColumn[] = [
     { title: '', index: 'key', type: 'checkbox' },
     { title: '规则编号', index: 'no' },
     { title: '描述', index: 'description' },
@@ -50,14 +48,18 @@ export class ProTableListComponent implements OnInit {
       title: '状态',
       index: 'status',
       render: 'status',
-      filters: this.status,
-      filter: () => true,
+      filter: {
+        menus: this.status,
+        fn: (filter: any, record: any) => record.status === filter.index,
+      },
     },
     {
       title: '更新时间',
       index: 'updatedAt',
       type: 'date',
-      sorter: (a: any, b: any) => a.updatedAt - b.updatedAt,
+      sort: {
+        compare: (a: any, b: any) => a.updatedAt - b.updatedAt,
+      },
     },
     {
       title: '操作',
@@ -73,7 +75,7 @@ export class ProTableListComponent implements OnInit {
       ],
     },
   ];
-  selectedRows: SimpleTableData[] = [];
+  selectedRows: STData[] = [];
   description = '';
   totalCallNo = 0;
   expandForm = false;
@@ -82,7 +84,8 @@ export class ProTableListComponent implements OnInit {
     private http: _HttpClient,
     public msg: NzMessageService,
     private modalSrv: NzModalService,
-  ) {}
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     this.getData();
@@ -90,9 +93,7 @@ export class ProTableListComponent implements OnInit {
 
   getData() {
     this.loading = true;
-    this.q.statusList = this.status
-      .filter(w => w.checked)
-      .map(item => item.index);
+    this.q.statusList = this.status.filter(w => w.checked).map(item => item.index);
     if (this.q.status !== null && this.q.status > -1)
       this.q.statusList.push(this.q.status);
     this.http
@@ -108,15 +109,23 @@ export class ProTableListComponent implements OnInit {
         ),
         tap(() => (this.loading = false)),
       )
-      .subscribe(res => (this.data = res));
+      .subscribe(res => {
+        this.data = res;
+        this.cdr.detectChanges();
+      });
   }
 
-  checkboxChange(list: SimpleTableData[]) {
-    this.selectedRows = list;
-    this.totalCallNo = this.selectedRows.reduce(
-      (total, cv) => total + cv.callNo,
-      0,
-    );
+  stChange(e: STChange) {
+    switch (e.type) {
+      case 'checkbox':
+        this.selectedRows = e.checkbox;
+        this.totalCallNo = this.selectedRows.reduce((total, cv) => total + cv.callNo, 0);
+        this.cdr.detectChanges();
+        break;
+      case 'filter':
+        this.getData();
+        break;
+    }
   }
 
   remove() {
@@ -140,15 +149,13 @@ export class ProTableListComponent implements OnInit {
         this.loading = true;
         this.http
           .post('/rule', { description: this.description })
-          .subscribe(() => {
-            this.getData();
-          });
+          .subscribe(() => this.getData());
       },
     });
   }
 
-  reset(ls: any[]) {
-    for (const item of ls) item.value = false;
-    this.getData();
+  reset() {
+    // wait form reset updated finished
+    setTimeout(() => this.getData());
   }
 }

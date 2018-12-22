@@ -1,30 +1,32 @@
 import {
   Component,
   HostBinding,
-  ViewChild,
   Input,
-  OnInit,
   ElementRef,
   AfterViewInit,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 @Component({
   selector: 'header-search',
   template: `
-  <nz-input-group nzAddOnBeforeIcon="anticon anticon-search">
+  <nz-input-group [nzAddOnBeforeIcon]="focus ? 'anticon anticon-arrow-down' : 'anticon anticon-search'">
     <input nz-input [(ngModel)]="q" (focus)="qFocus()" (blur)="qBlur()"
-      [placeholder]="'top-search-ph' | translate">
+      [placeholder]="'menu.search.placeholder' | translate">
   </nz-input-group>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderSearchComponent implements AfterViewInit {
   q: string;
 
   qIpt: HTMLInputElement;
 
-  @HostBinding('class.header-search__focus') focus = false;
+  @HostBinding('class.alain-default__search-focus')
+  focus = false;
 
-  @HostBinding('class.header-search__toggled') searchToggled = false;
+  @HostBinding('class.alain-default__search-toggled')
+  searchToggled = false;
 
   @Input()
   set toggleChange(value: boolean) {
@@ -37,9 +39,7 @@ export class HeaderSearchComponent implements AfterViewInit {
   constructor(private el: ElementRef) {}
 
   ngAfterViewInit() {
-    this.qIpt = (this.el.nativeElement as HTMLElement).querySelector(
-      '.ant-input',
-    ) as HTMLInputElement;
+    this.qIpt = (this.el.nativeElement as HTMLElement).querySelector('.ant-input');
   }
 
   qFocus() {

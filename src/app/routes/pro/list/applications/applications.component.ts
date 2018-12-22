@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
-  selector: 'pro-list-applications',
+  selector: 'app-list-applications',
   templateUrl: './applications.component.html',
   styleUrls: ['./applications.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProListApplicationsComponent implements OnInit {
   q: any = {

@@ -1,1 +1,1 @@
-[Document](http://ng-alain.com/docs/mock)
+[Document](https://ng-alain.com/mock)

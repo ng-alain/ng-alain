@@ -1,15 +1,16 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import * as screenfull from 'screenfull';
 
 @Component({
   selector: 'header-fullscreen',
   template: `
-    <i class="anticon anticon-{{status ? 'shrink' : 'arrows-alt'}}"></i>
-    {{(status ? 'fullscreen-exit' : 'fullscreen') | translate }}
+    <i nz-icon [type]="status ? 'fullscreen-exit' : 'fullscreen'"></i>
+    {{(status ? 'menu.fullscreen.exit' : 'menu.fullscreen') | translate }}
   `,
   host: {
     '[class.d-block]': 'true',
   },
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderFullScreenComponent {
   status = false;

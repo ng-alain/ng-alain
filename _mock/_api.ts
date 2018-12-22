@@ -1,4 +1,4 @@
-import { MockRequest } from '@delon/mock';
+import { MockRequest, MockStatusError } from '@delon/mock';
 
 // region: mock data
 
@@ -277,4 +277,8 @@ export const APIS = {
   '/api/list': (req: MockRequest) => getFakeList(req.queryString.count),
   '/api/notice': () => getNotice(),
   '/api/activities': () => getActivities(),
+  '/api/401': () => { throw new MockStatusError(401); },
+  '/api/403': () => { throw new MockStatusError(403); },
+  '/api/404': () => { throw new MockStatusError(404); },
+  '/api/500': () => { throw new MockStatusError(500); }
 };

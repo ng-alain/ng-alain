@@ -21,8 +21,19 @@ import { ProProfileBaseComponent } from './profile/basic/basic.component';
 import { ProProfileAdvancedComponent } from './profile/advanced/advanced.component';
 import { ProResultSuccessComponent } from './result/success/success.component';
 import { ProResultFailComponent } from './result/fail/fail.component';
+import { ProAccountCenterComponent } from './account/center/center.component';
+import { ProAccountCenterArticlesComponent } from './account/center/articles/articles.component';
+import { ProAccountCenterApplicationsComponent } from './account/center/applications/applications.component';
+import { ProAccountCenterProjectsComponent } from './account/center/projects/projects.component';
+import { ProAccountSettingsComponent } from './account/settings/settings.component';
+import { ProAccountSettingsBaseComponent } from './account/settings/base/base.component';
+import { ProAccountSettingsSecurityComponent } from './account/settings/security/security.component';
+import { ProAccountSettingsBindingComponent } from './account/settings/binding/binding.component';
+import { ProAccountSettingsNotificationComponent } from './account/settings/notification/notification.component';
+import { ProBasicListEditComponent } from './list/basic-list/edit/edit.component';
 
-const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component];
+const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component,
+  ProBasicListEditComponent];
 
 @NgModule({
   imports: [SharedModule, ProRoutingModule],
@@ -41,6 +52,15 @@ const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component];
     ProProfileAdvancedComponent,
     ProResultSuccessComponent,
     ProResultFailComponent,
+    ProAccountCenterComponent,
+    ProAccountCenterArticlesComponent,
+    ProAccountCenterProjectsComponent,
+    ProAccountCenterApplicationsComponent,
+    ProAccountSettingsComponent,
+    ProAccountSettingsBaseComponent,
+    ProAccountSettingsSecurityComponent,
+    ProAccountSettingsBindingComponent,
+    ProAccountSettingsNotificationComponent,
     ...COMPONENTS_NOROUNT,
   ],
   entryComponents: COMPONENTS_NOROUNT,

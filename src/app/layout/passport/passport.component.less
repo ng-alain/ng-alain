@@ -1,4 +1,4 @@
-@import 'node_modules/@delon/theme/styles/default';
+@import '~@delon/theme/styles/default';
 :host {
   ::ng-deep {
     .container {
@@ -6,6 +6,19 @@
       flex-direction: column;
       min-height: 100%;
       background: #f0f2f5;
+    }
+    .langs {
+      text-align: right;
+      width: 100%;
+      height: 40px;
+      line-height: 44px;
+      .anticon {
+        margin-top: 24px;
+        margin-right: 24px;
+        font-size: 14px;
+        vertical-align: top;
+        cursor: pointer;
+      }
     }
     .wrap {
       padding: 32px 0;
@@ -23,7 +36,7 @@
         background-size: 100%;
       }
       .wrap {
-        padding: 112px 0 24px;
+        padding: 32px 0 24px;
       }
     }
     .top {

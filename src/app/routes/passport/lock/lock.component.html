@@ -1,29 +1,28 @@
-<div class="wrapper">
-  <div class="abs-center width-lg">
-    <div class="py-lg text-center">
-      <nz-avatar [nzSrc]="settings.user.avatar" nzIcon="anticon anticon-user" nzSize="large"></nz-avatar>
+<div class="ant-card width-lg" style="margin: 0 auto;">
+  <div class="ant-card-body">
+    <div class="avatar">
+      <nz-avatar
+        [nzSrc]="settings.user.avatar"
+        nzIcon="anticon anticon-user"
+        nzSize="large"
+      ></nz-avatar>
     </div>
-    <nz-card [nzBordered]="false">
-      <p class="mb-sm">输入密码后解锁屏幕。</p>
-      <form nz-form [formGroup]="f" (ngSubmit)="submit()" role="form">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-input-group nzSize="large" nzSuffixIcon="anticon anticon-lock">
-              <input type="password" nz-input formControlName="password">
-            </nz-input-group>
-            <nz-form-explain *ngIf="f.get('password').dirty && f.get('password').errors">This field is required</nz-form-explain>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-row nzType="flex" nzAlign="middle">
-          <nz-col [nzOffset]="12" [nzSpan]="12" style="text-align:right;">
-            <button nz-button nzSize="large" [disabled]="!f.valid" nzType="primary">解锁</button>
-          </nz-col>
-        </nz-row>
-      </form>
-    </nz-card>
-    <div class="p-lg text-center text-sm">
-      &copy; {{ settings.app.year }} - {{ settings.app.name }}
-      <br> {{ settings.app.description }}
-    </div>
+    <form nz-form [formGroup]="f" (ngSubmit)="submit()" role="form" class="mt-md">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group nzSuffixIcon="anticon anticon-lock">
+            <input type="password" nz-input formControlName="password" />
+          </nz-input-group>
+          <nz-form-explain *ngIf="f.get('password').dirty && f.get('password').errors">
+            {{ 'validation.password.required' | translate }}
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-row nzType="flex" nzAlign="middle">
+        <nz-col [nzOffset]="12" [nzSpan]="12" style="text-align:right;">
+          <button nz-button [disabled]="!f.valid" nzType="primary">{{ 'app.lock' | translate }}</button>
+        </nz-col>
+      </nz-row>
+    </form>
   </div>
 </div>

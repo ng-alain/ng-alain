@@ -1,18 +1,23 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { zip } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd';
-import { getTimeDistance, yuan } from '@delon/util';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
   selector: 'app-dashboard-workplace',
   templateUrl: './workplace.component.html',
   styleUrls: ['./workplace.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardWorkplaceComponent implements OnInit, OnDestroy {
+export class DashboardWorkplaceComponent implements OnInit {
   notice: any[] = [];
   activities: any[] = [];
-  radarData: any[] = [];
+  radarData: any[];
   loading = true;
 
   // region: mock data
@@ -81,7 +86,11 @@ export class DashboardWorkplaceComponent implements OnInit, OnDestroy {
   ];
   // endregion
 
-  constructor(private http: _HttpClient, public msg: NzMessageService) {}
+  constructor(
+    private http: _HttpClient,
+    public msg: NzMessageService,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnInit() {
     zip(
@@ -101,8 +110,7 @@ export class DashboardWorkplaceComponent implements OnInit, OnDestroy {
         return item;
       });
       this.loading = false;
+      this.cdr.detectChanges();
     });
   }
-
-  ngOnDestroy(): void {}
 }

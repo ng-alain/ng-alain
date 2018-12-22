@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import * as distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import { NzMessageService } from 'ng-zorro-antd';
 import { NoticeItem, NoticeIconList } from '@delon/abc';
@@ -13,10 +13,13 @@ import { NoticeItem, NoticeIconList } from '@delon/abc';
     [data]="data"
     [count]="count"
     [loading]="loading"
+    btnClass="alain-default__nav-item"
+    btnIconClass="alain-default__nav-item-icon"
     (select)="select($event)"
     (clear)="clear($event)"
     (popoverVisibleChange)="loadData()"></notice-icon>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderNotifyComponent {
   data: NoticeItem[] = [
@@ -48,9 +51,9 @@ export class HeaderNotifyComponent {
   count = 5;
   loading = false;
 
-  constructor(private msg: NzMessageService) {}
+  constructor(private msg: NzMessageService, private cdr: ChangeDetectorRef) {}
 
-  updateNoticeData(notices: NoticeIconList[]): NoticeItem[] {
+  private updateNoticeData(notices: NoticeIconList[]): NoticeItem[] {
     const data = this.data.slice();
     data.forEach(i => (i.list = []));
 
@@ -181,8 +184,8 @@ export class HeaderNotifyComponent {
           type: '待办',
         },
       ]);
-
       this.loading = false;
+      this.cdr.detectChanges();
     }, 1000);
   }
 

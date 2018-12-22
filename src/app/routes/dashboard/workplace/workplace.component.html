@@ -1,4 +1,4 @@
-<page-header>
+<page-header [breadcrumb]="breadcrumb" [content]="content" [extra]="extra">
   <ng-template #breadcrumb>
     <nz-breadcrumb>
       <nz-breadcrumb-item>
@@ -11,7 +11,7 @@
     </nz-breadcrumb>
   </ng-template>
   <ng-template #content>
-    <div class="page-header">
+    <div class="content">
       <div class="avatar">
         <nz-avatar nzSrc="https://gw.alipayobjects.com/zos/rmsportal/lctvVCLfRpYCkYxAsiVQ.png"></nz-avatar>
       </div>
@@ -42,8 +42,8 @@
 </page-header>
 <div nz-row [nzGutter]="24">
   <div nz-col nzXs="24" nzSm="24" nzMd="16">
-    <nz-card nzTitle="进行中的项目" [nzBordered]="false" [nzLoading]="loading" class="ant-card__body-nopadding mb-lg project-list">
-      <ng-template #extra>
+    <nz-card nzTitle="进行中的项目" [nzExtra]="ingExtra" [nzBordered]="false" [nzLoading]="loading" class="ant-card__body-nopadding mb-lg project-list">
+      <ng-template #ingExtra>
         <a (click)="msg.success('to')">全部项目</a>
       </ng-template>
       <div *ngFor="let item of notice" nz-card-grid class="project-grid">
@@ -87,13 +87,13 @@
       <div class="links">
         <a *ngFor="let item of links" (click)="msg.success(item.title)">{{item.title}}</a>
         <button nz-button (click)="links.push({title: 'new titel', href: 'href'})" [nzType]="'dashed'" [nzSize]="'small'">
-          <i class="anticon anticon-plus"></i>
+          <i nz-icon type="plus"></i>
           <span>添加</span>
         </button>
       </div>
     </nz-card>
     <nz-card nzTitle="XX 指数" [nzBordered]="false" [nzLoading]="loading" class="mb-lg">
-      <g2-radar [data]="radarData" [height]="343" [hasLegend]="true"></g2-radar>
+      <g2-radar *ngIf="radarData" [data]="radarData" [height]="343" [hasLegend]="true"></g2-radar>
     </nz-card>
     <nz-card nzTitle="团队" [nzBordered]="false" [nzBodyStyle]="{'padding-top.px': 12, 'padding-bottom.px': 12 }" class="mb-lg">
       <div class="members">

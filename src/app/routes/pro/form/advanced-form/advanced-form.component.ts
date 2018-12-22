@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-advanced-form',
   templateUrl: './advanced-form.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdvancedFormComponent implements OnInit {
   editIndex = -1;

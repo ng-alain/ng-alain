@@ -1,13 +1,14 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { PageHeaderComponent } from '@delon/abc';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'pro-list-layout',
+  selector: 'app-list-layout',
   templateUrl: './list.component.html',
 })
-export class ProListLayoutComponent implements OnInit {
+export class ProListLayoutComponent implements OnInit, OnDestroy {
+  private router$: Subscription;
   tabs: any[] = [
     {
       key: 'articles',
@@ -23,21 +24,28 @@ export class ProListLayoutComponent implements OnInit {
     },
   ];
 
-  @ViewChild('ph') ph: PageHeaderComponent;
-
   pos = 0;
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  private setActive() {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
     const idx = this.tabs.findIndex(w => w.key === key);
     if (idx !== -1) this.pos = idx;
   }
 
+  ngOnInit(): void {
+    this.router$ = this.router.events
+      .pipe(filter(e => e instanceof ActivationEnd))
+      .subscribe(() => this.setActive());
+    this.setActive();
+  }
+
   to(item: any) {
-    this.router
-      .navigateByUrl(`/pro/list/${item.key}`)
-      .then(() => this.ph.refresh());
+    this.router.navigateByUrl(`/pro/list/${item.key}`);
+  }
+
+  ngOnDestroy() {
+    this.router$.unsubscribe();
   }
 }
