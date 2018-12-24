@@ -81,38 +81,17 @@
   </div>
 </div>
 <nz-card [nzLoading]="loading" [nzBordered]="false" class="ant-card__body-nopadding sales-card">
-  <nz-tabset [nzTabBarExtraContent]="extraTemplate">
-    <nz-tab [nzTitle]="'app.analysis.sales' | translate">
+  <nz-tabset [nzTabBarExtraContent]="extraTemplate" *ngIf="data.salesData">
+    <nz-tab *ngFor="let tab of saleTabs" [nzTitle]="('app.analysis.' + tab.key) | translate" (nzSelect)="tab.showBar=true">
       <div nz-row>
         <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="16">
           <div class="bar">
-            <g2-bar *ngIf="data.salesData" height="295" [title]="'app.analysis.sales-trend' | translate" [data]="data.salesData"></g2-bar>
+            <g2-bar *ngIf="tab.showBar" height="295" style="width: 100%" [title]="('app.analysis.' + tab.key + '-trend') | translate" [data]="data.salesData"></g2-bar>
           </div>
         </div>
         <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8">
           <div class="rank">
-            <h4 class="ranking-title">{{ 'app.analysis.sales-ranking' | translate}}</h4>
-            <ul class="rank-list">
-              <li *ngFor="let i of rankingListData; let idx = index">
-                <span class="number" [ngClass]="{'active': idx < 3}">{{idx+1}}</span>
-                <span class="title">{{i.title}}</span>
-                <span class="value">{{i.total | number: '3.0'}}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nz-tab>
-    <nz-tab [nzTitle]="'app.analysis.visits' | translate">
-      <div nz-row>
-        <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="16">
-          <div class="bar">
-            <g2-bar *ngIf="data.salesData" height="295" [title]="'app.analysis.visits-trend' | translate" [data]="data.salesData"></g2-bar>
-          </div>
-        </div>
-        <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8">
-          <div class="rank">
-            <h4 class="ranking-title">{{ 'app.analysis.visits-ranking' | translate}}</h4>
+            <h4 class="ranking-title">{{ ('app.analysis.' + tab.key + '-ranking') | translate}}</h4>
             <ul class="rank-list">
               <li *ngFor="let i of rankingListData; let idx = index">
                 <span class="number" [ngClass]="{'active': idx < 3}">{{idx+1}}</span>

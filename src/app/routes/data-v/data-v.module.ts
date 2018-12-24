@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@shared/shared.module';
+import { SharedModule } from '@shared';
 
 import { DataVRoutingModule } from './data-v-routing.module';
 import { RelationComponent } from './relation/relation.component';
 
+const COMPONENTS = [ RelationComponent ];
+const COMPONENTS_NOROUNT = [];
+
 @NgModule({
   imports: [SharedModule, DataVRoutingModule],
-  declarations: [RelationComponent],
+  declarations: [ ...COMPONENTS, ...COMPONENTS_NOROUNT ],
+  entryComponents: COMPONENTS_NOROUNT,
 })
 export class DataVModule {}

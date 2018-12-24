@@ -268,19 +268,19 @@
           "children": [
             {
               "text": "403",
-              "link": "/403",
+              "link": "/exception/403",
               "i18n": "menu.exception.not-permission",
               "reuse": false
             },
             {
               "text": "404",
-              "link": "/404",
+              "link": "/exception/404",
               "i18n": "menu.exception.not-find",
               "reuse": false
             },
             {
               "text": "500",
-              "link": "/500",
+              "link": "/exception/500",
               "i18n": "menu.exception.server-error",
               "reuse": false
             }

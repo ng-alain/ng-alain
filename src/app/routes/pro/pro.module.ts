@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 
-import { SharedModule } from '@shared/shared.module';
+import { SharedModule } from '@shared';
 import { ProRoutingModule } from './pro-routing.module';
 
 import { BasicFormComponent } from './form/basic-form/basic-form.component';
@@ -32,37 +31,42 @@ import { ProAccountSettingsBindingComponent } from './account/settings/binding/b
 import { ProAccountSettingsNotificationComponent } from './account/settings/notification/notification.component';
 import { ProBasicListEditComponent } from './list/basic-list/edit/edit.component';
 
-const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component,
-  ProBasicListEditComponent];
+const COMPONENTS = [
+  BasicFormComponent,
+  StepFormComponent,
+  AdvancedFormComponent,
+  ProTableListComponent,
+  ProBasicListComponent,
+  ProCardListComponent,
+  ProListLayoutComponent,
+  ProListArticlesComponent,
+  ProListProjectsComponent,
+  ProListApplicationsComponent,
+  ProProfileBaseComponent,
+  ProProfileAdvancedComponent,
+  ProResultSuccessComponent,
+  ProResultFailComponent,
+  ProAccountCenterComponent,
+  ProAccountCenterArticlesComponent,
+  ProAccountCenterProjectsComponent,
+  ProAccountCenterApplicationsComponent,
+  ProAccountSettingsComponent,
+  ProAccountSettingsBaseComponent,
+  ProAccountSettingsSecurityComponent,
+  ProAccountSettingsBindingComponent,
+  ProAccountSettingsNotificationComponent,
+];
+
+const COMPONENTS_NOROUNT = [
+  Step1Component,
+  Step2Component,
+  Step3Component,
+  ProBasicListEditComponent
+];
 
 @NgModule({
   imports: [SharedModule, ProRoutingModule],
-  declarations: [
-    BasicFormComponent,
-    StepFormComponent,
-    AdvancedFormComponent,
-    ProTableListComponent,
-    ProBasicListComponent,
-    ProCardListComponent,
-    ProListLayoutComponent,
-    ProListArticlesComponent,
-    ProListProjectsComponent,
-    ProListApplicationsComponent,
-    ProProfileBaseComponent,
-    ProProfileAdvancedComponent,
-    ProResultSuccessComponent,
-    ProResultFailComponent,
-    ProAccountCenterComponent,
-    ProAccountCenterArticlesComponent,
-    ProAccountCenterProjectsComponent,
-    ProAccountCenterApplicationsComponent,
-    ProAccountSettingsComponent,
-    ProAccountSettingsBaseComponent,
-    ProAccountSettingsSecurityComponent,
-    ProAccountSettingsBindingComponent,
-    ProAccountSettingsNotificationComponent,
-    ...COMPONENTS_NOROUNT,
-  ],
+  declarations: [ ...COMPONENTS, ...COMPONENTS_NOROUNT ],
   entryComponents: COMPONENTS_NOROUNT,
 })
 export class ProModule {}
