@@ -3,7 +3,12 @@ import { Component, OnDestroy, Inject, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
-import { SocialService, SocialOpenType, ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
+import {
+  SocialService,
+  SocialOpenType,
+  ITokenService,
+  DA_SERVICE_TOKEN,
+} from '@delon/auth';
 import { ReuseTabService } from '@delon/abc';
 import { environment } from '@env/environment';
 import { StartupService } from '@core';
@@ -25,7 +30,9 @@ export class UserLoginComponent implements OnDestroy {
     private router: Router,
     private settingsService: SettingsService,
     private socialService: SocialService,
-    @Optional() @Inject(ReuseTabService) private reuseTabService: ReuseTabService,
+    @Optional()
+    @Inject(ReuseTabService)
+    private reuseTabService: ReuseTabService,
     @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
     private startupSrv: StartupService,
     public http: _HttpClient,
@@ -129,9 +136,11 @@ export class UserLoginComponent implements OnDestroy {
   open(type: string, openType: SocialOpenType = 'href') {
     let url = ``;
     let callback = ``;
-    if (environment.production)
-      callback = 'https://ng-alain.github.io/ng-alain/callback/' + type;
-    else callback = 'http://localhost:4200/callback/' + type;
+    if (environment.production) {
+      callback = 'https://ng-alain.github.io/ng-alain/#/callback/' + type;
+    } else {
+      callback = 'http://localhost:4200/#/callback/' + type;
+    }
     switch (type) {
       case 'auth0':
         url = `//cipchk.auth0.com/login?client=8gcNydIDzGBYxzqV0Vm1CX_RXH-wsWo5&redirect_uri=${decodeURIComponent(
