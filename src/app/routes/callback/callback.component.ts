@@ -1,40 +1,39 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SocialService } from '@delon/auth';
-import { Subscription } from 'rxjs';
+import { SettingsService } from '@delon/theme';
 
 @Component({
   selector: 'app-callback',
   template: ``,
   providers: [SocialService],
 })
-export class CallbackComponent implements OnInit, OnDestroy {
-  private router$: Subscription;
+export class CallbackComponent implements OnInit {
   type: string;
 
   constructor(
     private socialService: SocialService,
+    private settingsSrv: SettingsService,
     private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
-    this.router$ = this.route.params.subscribe(params => {
-      this.type = params['type'];
-      this.mockModel();
-    });
+    this.type = this.route.snapshot.params['type'];
+    this.mockModel();
   }
 
   private mockModel() {
-    this.socialService.callback({
+    const info = {
       token: '123456789',
       name: 'cipchk',
       email: `${this.type}@${this.type}.com`,
       id: 10000,
       time: +new Date(),
+    };
+    this.settingsSrv.setUser({
+      ...this.settingsSrv.user,
+      ...info,
     });
-  }
-
-  ngOnDestroy() {
-    this.router$.unsubscribe();
+    this.socialService.callback(info);
   }
 }

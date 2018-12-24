@@ -1,17 +1,17 @@
 import { SettingsService, _HttpClient } from '@delon/theme';
 import { Component, OnDestroy, Inject, Optional } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import {
   SocialService,
   SocialOpenType,
-  TokenService,
+  ITokenService,
   DA_SERVICE_TOKEN,
 } from '@delon/auth';
 import { ReuseTabService } from '@delon/abc';
 import { environment } from '@env/environment';
-import { StartupService } from '@core/startup/startup.service';
+import { StartupService } from '@core';
 
 @Component({
   selector: 'passport-login',
@@ -27,23 +27,19 @@ export class UserLoginComponent implements OnDestroy {
   constructor(
     fb: FormBuilder,
     modalSrv: NzModalService,
-    public msg: NzMessageService,
-    route: ActivatedRoute,
     private router: Router,
     private settingsService: SettingsService,
     private socialService: SocialService,
     @Optional()
     @Inject(ReuseTabService)
     private reuseTabService: ReuseTabService,
-    @Inject(DA_SERVICE_TOKEN) private tokenService: TokenService,
+    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
     private startupSrv: StartupService,
     public http: _HttpClient,
+    public msg: NzMessageService,
   ) {
-    if (route.snapshot.queryParamMap.has('clean')) {
-      tokenService.clear();
-    }
     this.form = fb.group({
-      userName: [null, [Validators.required, Validators.minLength(5)]],
+      userName: [null, [Validators.required, Validators.minLength(4)]],
       password: [null, Validators.required],
       mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
       captcha: [null, [Validators.required]],
@@ -127,7 +123,11 @@ export class UserLoginComponent implements OnDestroy {
         // 设置用户Token信息
         this.tokenService.set(res.user);
         // 重新获取 StartupService 内容，我们始终认为应用信息一般都会受当前用户授权范围而影响
-        this.startupSrv.load().then(() => this.router.navigate(['/']));
+        this.startupSrv.load().then(() => {
+          let url = this.tokenService.referrer.url || '/';
+          if (url.includes('/passport')) url = '/';
+          this.router.navigateByUrl(url);
+        });
       });
   }
 
@@ -136,9 +136,11 @@ export class UserLoginComponent implements OnDestroy {
   open(type: string, openType: SocialOpenType = 'href') {
     let url = ``;
     let callback = ``;
-    if (environment.production)
-      callback = 'https://ng-alain.github.io/ng-alain/callback/' + type;
-    else callback = 'http://localhost:4200/callback/' + type;
+    if (environment.production) {
+      callback = 'https://ng-alain.github.io/ng-alain/#/callback/' + type;
+    } else {
+      callback = 'http://localhost:4200/#/callback/' + type;
+    }
     switch (type) {
       case 'auth0':
         url = `//cipchk.auth0.com/login?client=8gcNydIDzGBYxzqV0Vm1CX_RXH-wsWo5&redirect_uri=${decodeURIComponent(

@@ -10,36 +10,14 @@
       "node"
     ],
     "paths": {
-      "@shared": [
-        "app/shared"
-      ],
-      "@shared/*": [
-        "app/shared/*"
-      ],
-      "@core": [
-        "app/core/"
-      ],
-      "@core/*": [
-        "app/core/*"
-      ],
-      "@testing": [
-        "testing/"
-      ],
-      "@testing/*": [
-        "testing/*"
-      ],
-      "@env": [
-        "environments/"
-      ],
-      "@env/*": [
-        "environments/*"
-      ]
+      "@shared": [ "app/shared/index" ],
+      "@shared/*": [ "app/shared/*" ],
+      "@core": [ "app/core/index" ],
+      "@core/*": [ "app/core/*" ],
+      "@env/*": [ "environments/*" ]
     }
   },
-  "files": [
-    "test.ts",
-    "polyfills.ts"
-  ],
+  "files": [ "test.ts", "polyfills.ts" ],
   "include": [
     "**/*.spec.ts",
     "**/*.d.ts"
