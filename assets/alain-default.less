@@ -21443,6 +21443,7 @@ g2-tag-cloud {
 @alain-default-header-search-height:  34px;
 @alain-default-header-icon-fs:        18px;
 
+@alain-default-aside-scroll-width:            20px;
 @alain-default-aside-wd:                      200px;
 @alain-default-aside-bg:                      #fff;
 @alain-default-aside-scrollbar-width:         0;
@@ -21468,6 +21469,9 @@ g2-tag-cloud {
 @alain-default-content-heading-border:         #efe3e5;
 @alain-default-content-padding:                @layout-gutter * 3;
 @alain-default-content-bg:                     #f5f7fa;
+
+@alain-default-widget-app-icons-enabled:        true;
+@alain-default-aside-user-enabled:              true;
 
 html {
   direction: ltr;
@@ -21755,30 +21759,10 @@ body {
   }
   &-inner {
     overflow-x: hidden;
-    overflow-y: scroll; // margin-right: -17px;
+    overflow-y: scroll;
     height: 100%;
-    -webkit-overflow-scrolling: touch;
-    /*IE10,IE11*/
-    -ms-scroll-chaining: chained;
-    -ms-overflow-style: none;
-    -ms-content-zooming: zoom;
-    -ms-scroll-rails: none;
-    -ms-content-zoom-limit-min: 100%;
-    -ms-content-zoom-limit-max: 500%;
-    -ms-scroll-snap-type: proximity;
-    -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-      height: @alain-default-aside-scrollbar-width;
-      width: @alain-default-aside-scrollbar-height;
-    }
-    &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 @alain-default-aside-scrollbar-width
-        @alain-default-aside-scrollbar-track-color;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: @alain-default-aside-scrollbar-thumb-color;
-    }
+    transition: width 0.2s;
+    width: @alain-default-aside-scroll-width + @alain-default-aside-wd;
   }
 }
 
@@ -21787,6 +21771,10 @@ body {
   @{alain-default-prefix}__collapsed {
     @{alain-default-prefix}__aside {
       width: @alain-default-aside-collapsed-wd;
+      &-inner {
+        transition: width 0.2s;
+        width: @alain-default-aside-scroll-width + @alain-default-aside-collapsed-wd;
+      }
     }
   }
 }
@@ -21852,68 +21840,6 @@ body {
   80% { .grad(#6297a4); }
 }
 
-.app-icons {
-  padding: @layout-gutter * 2;
-  .@{ant-prefix}-col-6 {
-    padding: (@layout-gutter * 2) 0;
-    border-radius: 4px;
-    text-align: center;
-    transition: background-color 300ms;
-    cursor: pointer;
-    &:hover {
-      background-color: #ececec;
-    }
-  }
-  i {
-    border-radius: 50%;
-    font-size: 22px;
-    padding: 15px;
-  }
-  small {
-    font-size: 14px;
-    padding-top: 4px;
-    color: #9c9c9c;
-    display: block;
-  }
-}
-
-@alain-default-user-block-width: @alain-default-aside-wd - (@layout-gutter * 6);
-@alain-default-user-block-avatar-hw: @avatar-size-lg;
-
-@{alain-default-prefix}__aside-user {
-  padding-top: (@layout-gutter * 3);
-  margin: 0 auto;
-  display: block !important;
-  width: @alain-default-user-block-width;
-  cursor: pointer;
-  .@{ant-prefix}-dropdown-trigger {
-    display: flex;
-    align-items: center;
-  }
-  &-info {
-    color: @text-color;
-    width: @alain-default-user-block-width - @alain-default-user-block-avatar-hw - @layout-gutter;
-  }
-  &-avatar {
-    margin-right: @layout-gutter;
-  }
-}
-
-// Desktop
-@media (min-width: @mobile-min) {
-  @{alain-default-prefix}__collapsed {
-    @{alain-default-prefix}__aside-user {
-      width: @alain-default-aside-collapsed-wd;
-      &-info {
-        display: none;
-      }
-      &-avatar {
-        margin: 0 auto;
-      }
-    }
-  }
-}
-
 // Main Nav
 @sidebar-nav-prefix-cls:      sidebar-nav;
 
@@ -21956,6 +21882,9 @@ body {
     &-text {
       transition: opacity 0.3s @ease-in-out, width 0.3s @ease-in-out;
       opacity: 1;
+    }
+    &-disabled {
+      opacity: .6;
     }
   }
   // Selected
@@ -22249,6 +22178,75 @@ body {
   top: -6px;
   right: 18px;
 }
+
+.alain-default-widget-app-icons-mixin(@enabled) when(@enabled=true) {
+  .app-icons {
+    padding: @layout-gutter * 2;
+    .@{ant-prefix}-col-6 {
+      padding: (@layout-gutter * 2) 0;
+      border-radius: 4px;
+      text-align: center;
+      transition: background-color 300ms;
+      cursor: pointer;
+      &:hover {
+        background-color: #ececec;
+      }
+    }
+    i {
+      border-radius: 50%;
+      font-size: 22px;
+      padding: 15px;
+    }
+    small {
+      font-size: 14px;
+      padding-top: 4px;
+      color: #9c9c9c;
+      display: block;
+    }
+  }
+}
+.alain-default-widget-app-icons-mixin(@alain-default-widget-app-icons-enabled);
+
+@alain-default-user-block-width: @alain-default-aside-wd - (@layout-gutter * 6);
+@alain-default-user-block-avatar-hw: @avatar-size-lg;
+
+.alain-default-aside-user-mixin(@enabled) when(@enabled=true) {
+
+  @{alain-default-prefix}__aside-user {
+    padding-top: (@layout-gutter * 3);
+    margin: 0 auto;
+    display: block !important;
+    width: @alain-default-user-block-width;
+    cursor: pointer;
+    .@{ant-prefix}-dropdown-trigger {
+      display: flex;
+      align-items: center;
+    }
+    &-info {
+      color: @text-color;
+      width: @alain-default-user-block-width - @alain-default-user-block-avatar-hw - @layout-gutter;
+    }
+    &-avatar {
+      margin-right: @layout-gutter;
+    }
+  }
+
+  // Desktop
+  @media (min-width: @mobile-min) {
+    @{alain-default-prefix}__collapsed {
+      @{alain-default-prefix}__aside-user {
+        width: @alain-default-aside-collapsed-wd;
+        &-info {
+          display: none;
+        }
+        &-avatar {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+.alain-default-aside-user-mixin(@alain-default-aside-user-enabled);
 
 @{alain-default-prefix}__fixed {
   @{alain-default-prefix} {
