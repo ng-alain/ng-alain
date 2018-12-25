@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '@shared/shared.module';
+import { SharedModule } from '@shared';
 
 import { DelonRoutingModule } from './delon-routing.module';
 
@@ -20,7 +20,7 @@ import { ZipComponent } from './zip/zip.component';
 import { DelonFormComponent } from './form/form.component';
 import { QRComponent } from './qr/qr.component';
 
-const COMPONENT = [
+const COMPONENTS = [
   SimpleTableComponent,
   UtilComponent,
   PrintComponent,
@@ -37,12 +37,12 @@ const COMPONENT = [
   QRComponent,
 ];
 
-const COMPONENT_NOROUNT = [];
+const COMPONENTS_NOROUNT = [];
 
 @NgModule({
   imports: [CommonModule, SharedModule, DelonRoutingModule],
   providers: [CanLeaveProvide],
-  declarations: [...COMPONENT, ...COMPONENT_NOROUNT],
-  entryComponents: COMPONENT_NOROUNT,
+  declarations: [ ...COMPONENTS, ...COMPONENTS_NOROUNT ],
+  entryComponents: COMPONENTS_NOROUNT,
 })
 export class DelonModule {}

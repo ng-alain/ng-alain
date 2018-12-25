@@ -24,6 +24,7 @@ const routes: Routes = [
     path: '',
     component: LayoutDefaultComponent,
     canActivate: [SimpleGuard],
+    canActivateChild: [SimpleGuard],
     children: [
       { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
       { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },

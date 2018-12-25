@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@shared/shared.module';
+import { SharedModule } from '@shared';
 
 import { ExceptionRoutingModule } from './exception-routing.module';
 
@@ -18,10 +18,7 @@ const COMPONENTS_NOROUNT = [];
 
 @NgModule({
   imports: [SharedModule, ExceptionRoutingModule],
-  declarations: [
-    ...COMPONENTS,
-    ...COMPONENTS_NOROUNT
-  ],
+  declarations: [ ...COMPONENTS, ...COMPONENTS_NOROUNT ],
   entryComponents: COMPONENTS_NOROUNT,
 })
 export class ExceptionModule { }

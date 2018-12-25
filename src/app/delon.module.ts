@@ -2,13 +2,8 @@
  * 进一步对基础模块的导入提炼
  * 有关模块注册指导原则请参考：https://github.com/ng-alain/ng-alain/issues/180
  */
-import {
-  NgModule,
-  Optional,
-  SkipSelf,
-  ModuleWithProviders,
-} from '@angular/core';
-import { throwIfAlreadyLoaded } from '@core/module-import-guard';
+import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
+import { throwIfAlreadyLoaded } from '@core';
 
 import { AlainThemeModule } from '@delon/theme';
 
@@ -48,21 +43,28 @@ const REUSETAB_PROVIDES = [
 
 import { PageHeaderConfig } from '@delon/abc';
 export function fnPageHeaderConfig(): PageHeaderConfig {
-  return Object.assign(new PageHeaderConfig(), { homeI18n: 'home' });
+  return {
+    ...new PageHeaderConfig(),
+    ...{ homeI18n: 'home' } as PageHeaderConfig
+  };
 }
 
 import { DelonAuthConfig } from '@delon/auth';
 export function fnDelonAuthConfig(): DelonAuthConfig {
-  return Object.assign(new DelonAuthConfig(), <DelonAuthConfig>{
-    login_url: '/passport/login',
-  });
+  return {
+    ...new DelonAuthConfig(),
+    ...{ login_url: '/passport/login' } as DelonAuthConfig
+  };
 }
 
 import { STConfig } from '@delon/abc';
 export function fnSTConfig(): STConfig {
-  return Object.assign(new STConfig(), <STConfig>{
-    modal: { size: 'lg' },
-  });
+  return {
+    ...new STConfig(),
+    ...{
+      modal: { size: 'lg' }
+    } as STConfig
+  };
 }
 
 const GLOBAL_CONFIG_PROVIDES = [
@@ -77,7 +79,6 @@ const GLOBAL_CONFIG_PROVIDES = [
 @NgModule({
   imports: [
     AlainThemeModule.forRoot(),
-    // mock
     ...MOCK_MODULES,
   ],
 })
