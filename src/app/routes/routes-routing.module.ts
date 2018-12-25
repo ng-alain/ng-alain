@@ -81,7 +81,7 @@ const routes: Routes = [
   },
   // 单页不包裹Layout
   { path: 'callback/:type', component: CallbackComponent },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '**', redirectTo: 'exception/404' },
 ];
 
 @NgModule({
