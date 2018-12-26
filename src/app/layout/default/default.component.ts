@@ -78,7 +78,6 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
       {
         ['alain-default']: true,
         [`alain-default__fixed`]: layout.fixed,
-        [`alain-default__boxed`]: layout.boxed,
         [`alain-default__collapsed`]: layout.collapsed,
       },
     );
