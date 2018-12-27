@@ -14,7 +14,7 @@ export class UserLockComponent {
 
   constructor(
     fb: FormBuilder,
-    @Inject(DA_SERVICE_TOKEN) tokenService: ITokenService,
+    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
     public settings: SettingsService,
     private router: Router,
   ) {
@@ -33,6 +33,9 @@ export class UserLockComponent {
     if (this.f.valid) {
       console.log('Valid!');
       console.log(this.f.value);
+      this.tokenService.set({
+        token: '123'
+      });
       this.router.navigate(['dashboard']);
     }
   }
