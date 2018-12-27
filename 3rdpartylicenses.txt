@@ -952,10 +952,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-@ngx-translate/core
+@angular/forms
 MIT
 
-@angular/forms
+@ngx-translate/core
 MIT
 
 core-js
