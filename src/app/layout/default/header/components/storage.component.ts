@@ -13,18 +13,15 @@ import { NzModalService, NzMessageService } from 'ng-zorro-antd';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderStorageComponent {
-  constructor(
-    private confirmServ: NzModalService,
-    private messageServ: NzMessageService,
-  ) {}
+  constructor(private modalSrv: NzModalService, private messageSrv: NzMessageService) {}
 
   @HostListener('click')
   _click() {
-    this.confirmServ.confirm({
+    this.modalSrv.confirm({
       nzTitle: 'Make sure clear all local storage?',
       nzOnOk: () => {
         localStorage.clear();
-        this.messageServ.success('Clear Finished!');
+        this.messageSrv.success('Clear Finished!');
       },
     });
   }
