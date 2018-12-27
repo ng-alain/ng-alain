@@ -85,7 +85,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: environment.useHash })],
+  imports: [
+    RouterModule.forRoot(
+      routes, {
+        useHash: environment.useHash,
+        // NOTICE: If you use `reuse-tab` component and turn on keepingScroll you must set to `disabled`
+        scrollPositionRestoration: 'top',
+      }
+    )],
   exports: [RouterModule],
 })
 export class RouteRoutingModule {}
