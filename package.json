@@ -61,7 +61,7 @@
     "@delon/theme": "^7.0.0-rc.1",
     "@delon/util": "^7.0.0-rc.1",
     "file-saver": "^2.0.0",
-    "ng-zorro-antd": "^7.0.0-rc.1",
+    "ng-zorro-antd": "^7.0.0-rc.3",
     "ngx-countdown": "^3.1.0",
     "ngx-tinymce": "^7.0.0",
     "ngx-ueditor": "^2.1.3",

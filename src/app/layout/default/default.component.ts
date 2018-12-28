@@ -22,7 +22,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { updateHostClass } from '@delon/util';
-import { ScrollService, SettingsService } from '@delon/theme';
+import { SettingsService } from '@delon/theme';
 
 import { environment } from '@env/environment';
 import { SettingDrawerComponent } from './setting-drawer/setting-drawer.component';
@@ -39,7 +39,6 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
 
   constructor(
     router: Router,
-    scroll: ScrollService,
     _message: NzMessageService,
     private resolver: ComponentFactoryResolver,
     private settings: SettingsService,
@@ -63,7 +62,6 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
         return;
       }
       setTimeout(() => {
-        scroll.scrollToTop();
         this.isFetching = false;
       }, 100);
     });
@@ -89,9 +87,7 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
     // Setting componet for only developer
     if (!environment.production) {
       setTimeout(() => {
-        const settingFactory = this.resolver.resolveComponentFactory(
-          SettingDrawerComponent,
-        );
+        const settingFactory = this.resolver.resolveComponentFactory(SettingDrawerComponent);
         this.settingHost.createComponent(settingFactory);
       }, 22);
     }
