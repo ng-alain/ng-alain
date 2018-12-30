@@ -9,11 +9,11 @@ import { I18NService } from '@core';
   selector: 'header-i18n',
   template: `
   <nz-dropdown nzPlacement="bottomRight">
-    <ng-container *ngIf="showLangText">
+    <div *ngIf="showLangText" nz-dropdown>
       <i nz-icon type="global"></i>
       {{ 'menu.lang' | translate}}
       <i nz-icon type="down"></i>
-    </ng-container>
+    </div>
     <i *ngIf="!showLangText" nz-dropdown nz-icon type="global"></i>
     <ul nz-menu>
       <li nz-menu-item *ngFor="let item of langs" [nzSelected]="item.code === curLangCode"
