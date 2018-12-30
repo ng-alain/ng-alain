@@ -29,7 +29,7 @@ import { I18NService } from '@core';
 export class HeaderI18nComponent {
 
   /** Whether to display language text */
-  @Input() @InputBoolean() showLangText = false;
+  @Input() @InputBoolean() showLangText = true;
 
   get langs() {
     return this.i18n.getLangs();
