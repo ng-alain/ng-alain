@@ -20,19 +20,16 @@ import {
 } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { updateHostClass } from '@delon/util';
-import { ScrollService, MenuService, SettingsService } from '@delon/theme';
+import { SettingsService } from '@delon/theme';
 
 import { environment } from '@env/environment';
 import { SettingDrawerComponent } from './setting-drawer/setting-drawer.component';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'layout-default',
   templateUrl: './default.component.html',
-  host: {
-    '[class.alain-default]': 'true',
-  },
 })
 export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
@@ -42,11 +39,9 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
 
   constructor(
     router: Router,
-    scroll: ScrollService,
     _message: NzMessageService,
     private resolver: ComponentFactoryResolver,
-    public menuSrv: MenuService,
-    public settings: SettingsService,
+    private settings: SettingsService,
     private el: ElementRef,
     private renderer: Renderer2,
     @Inject(DOCUMENT) private doc: any,
@@ -67,14 +62,13 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
         return;
       }
       setTimeout(() => {
-        scroll.scrollToTop();
         this.isFetching = false;
       }, 100);
     });
   }
 
   private setClass() {
-    const { el, renderer, settings } = this;
+    const { el, doc, renderer, settings } = this;
     const layout = settings.layout;
     updateHostClass(
       el.nativeElement,
@@ -82,22 +76,18 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
       {
         ['alain-default']: true,
         [`alain-default__fixed`]: layout.fixed,
-        [`alain-default__boxed`]: layout.boxed,
         [`alain-default__collapsed`]: layout.collapsed,
       },
-      true,
     );
 
-    this.doc.body.classList[layout.colorWeak ? 'add' : 'remove']('color-weak');
+    doc.body.classList[layout.colorWeak ? 'add' : 'remove']('color-weak');
   }
 
   ngAfterViewInit(): void {
     // Setting componet for only developer
     if (!environment.production) {
       setTimeout(() => {
-        const settingFactory = this.resolver.resolveComponentFactory(
-          SettingDrawerComponent,
-        );
+        const settingFactory = this.resolver.resolveComponentFactory(SettingDrawerComponent);
         this.settingHost.createComponent(settingFactory);
       }, 22);
     }
