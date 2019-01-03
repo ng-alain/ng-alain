@@ -28,6 +28,7 @@ interface LangData {
   zorro: any;
   dateFns: any;
   delon: any;
+  abbr: string;
 }
 
 const DEFAULT = 'zh-CN';
@@ -38,6 +39,7 @@ const LANGS: { [key: string]: LangData } = {
     zorro: zh_CN,
     dateFns: df_zh_cn,
     delon: delonZhCn,
+    abbr: '🇨🇳',
   },
   'zh-TW': {
     text: '繁体中文',
@@ -45,6 +47,7 @@ const LANGS: { [key: string]: LangData } = {
     zorro: zh_TW,
     dateFns: df_zh_tw,
     delon: delonZhTw,
+    abbr: '🇭🇰',
   },
   'en-US': {
     text: 'English',
@@ -52,6 +55,7 @@ const LANGS: { [key: string]: LangData } = {
     zorro: en_US,
     dateFns: df_en,
     delon: delonEnUS,
+    abbr: '🇬🇧',
   },
 };
 
@@ -61,7 +65,8 @@ export class I18NService implements AlainI18NService {
   private change$ = new BehaviorSubject<string>(null);
 
   private _langs = Object.keys(LANGS).map(code => {
-    return { code, text: LANGS[code].text };
+    const item = LANGS[code];
+    return { code, text: item.text, abbr: item.abbr };
   });
 
   constructor(
