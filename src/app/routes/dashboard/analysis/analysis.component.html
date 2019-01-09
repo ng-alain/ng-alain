@@ -86,7 +86,7 @@
       <div nz-row>
         <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="16">
           <div class="bar">
-            <g2-bar *ngIf="tab.showBar" height="295" style="width: 100%" [title]="('app.analysis.' + tab.key + '-trend') | translate" [data]="data.salesData"></g2-bar>
+            <g2-bar *ngIf="tab.showBar" delay="100" height="295" style="width: 100%" [title]="('app.analysis.' + tab.key + '-trend') | translate" [data]="data.salesData"></g2-bar>
           </div>
         </div>
         <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8">
