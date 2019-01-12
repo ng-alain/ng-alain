@@ -20510,6 +20510,10 @@ code {
       margin-bottom: 0;
       padding-bottom: 0;
     }
+    // fix angular & ng-zorro-antd
+    .@{ant-prefix}-form-explain {
+      display: block;
+    }
   }
   &__label {
     text-align: right;
@@ -20573,10 +20577,6 @@ code {
         margin-right: 0;
       }
     }
-  }
-  // fix angular & ng-zorro-antd
-  .@{ant-prefix}-form-explain {
-    display: block;
   }
 }
 
@@ -20644,9 +20644,31 @@ code {
   }
 }
 
+ellipsis {
+  display: inline-block;
+}
+
 .ellipsis {
   overflow: hidden;
-  display: -webkit-box;
+  display: inline-block;
+  word-break: break-all;
+  width: 100%;
+  &__lines {
+    position: relative;
+  }
+  &__line-clamp {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+  }
+  &__shadow {
+    display: block;
+    position: absolute;
+    color: transparent;
+    opacity: 0;
+    z-index: -999;
+  }
 }
 
 .error-collect {
@@ -21171,7 +21193,7 @@ code {
   }
   .@{ant-prefix}-tabs-nav .@{ant-prefix}-tabs-tab {
     padding: 0;
-    .name {
+    @{reuse-tab-prefix}__name {
       display: inline-block;
       padding: 8px 20px;
     }
