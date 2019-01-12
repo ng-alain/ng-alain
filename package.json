@@ -1,6 +1,6 @@
 {
   "name": "ng-alain",
-  "version": "7.0.0-rc.3",
+  "version": "7.0.0-rc.4",
   "description": "ng-zorro-antd admin panel front-end framework",
   "author": "cipchk",
   "homepage": "https://ng-alain.github.io/ng-alain/",
@@ -51,15 +51,15 @@
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "ajv": "^6.6.1",
-    "@delon/abc": "^7.0.0-rc.3",
-    "@delon/acl": "^7.0.0-rc.3",
-    "@delon/auth": "^7.0.0-rc.3",
-    "@delon/cache": "^7.0.0-rc.3",
-    "@delon/chart": "^7.0.0-rc.3",
-    "@delon/form": "^7.0.0-rc.3",
-    "@delon/mock": "^7.0.0-rc.3",
-    "@delon/theme": "^7.0.0-rc.3",
-    "@delon/util": "^7.0.0-rc.3",
+    "@delon/abc": "^7.0.0-rc.4",
+    "@delon/acl": "^7.0.0-rc.4",
+    "@delon/auth": "^7.0.0-rc.4",
+    "@delon/cache": "^7.0.0-rc.4",
+    "@delon/chart": "^7.0.0-rc.4",
+    "@delon/form": "^7.0.0-rc.4",
+    "@delon/mock": "^7.0.0-rc.4",
+    "@delon/theme": "^7.0.0-rc.4",
+    "@delon/util": "^7.0.0-rc.4",
     "file-saver": "^2.0.0",
     "ng-zorro-antd": "^7.0.0-rc.3",
     "ngx-countdown": "^3.1.0",
@@ -106,8 +106,8 @@
     "stylelint-config-standard": "^18.2.0",
     "webpack-bundle-analyzer": "^3.0.3",
     "xlsx": "^0.14.1",
-    "@delon/testing": "^7.0.0-rc.3",
-    "ng-alain": "^7.0.0-rc.3"
+    "@delon/testing": "^7.0.0-rc.4",
+    "ng-alain": "^7.0.0-rc.4"
   },
   "husky": {
     "hooks": {
