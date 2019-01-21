@@ -30,7 +30,8 @@
     "e2e": "ng e2e",
     "test": "ng test --watch",
     "test-coverage": "ng test --code-coverage --watch=false",
-    "color-less": "node scripts/color-less.js"
+    "color-less": "node scripts/color-less.js",
+    "icon": "ng g ng-alain:plugin icon"
   },
   "dependencies": {
     "@angular/animations": "~7.2.0",
