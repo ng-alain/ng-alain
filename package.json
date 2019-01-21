@@ -107,7 +107,8 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "xlsx": "^0.14.1",
     "@delon/testing": "^7.0.0-rc.4",
-    "ng-alain": "^7.0.0-rc.4"
+    "ng-alain": "^7.0.0-rc.4",
+    "ng-alain-codelyzer": "^0.0.1"
   },
   "husky": {
     "hooks": {
