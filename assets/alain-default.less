@@ -2315,22 +2315,28 @@ darker  @grey-9;
 @positions:     static, relative, absolute, fixed, sticky;
 
 // 文本
-@text-xs:       @font-size-base - 2; // 12px
-@text-sm:       @font-size-base + 0; // 14px
-@text-md:       @font-size-base + 2; // 16px
-@text-lg:       @font-size-base + 4; // 18px
-@text-xl:       @font-size-base + 8; // 22px
+@text-xs:       @font-size-base - 2;  // 12px
+@text-sm:       @font-size-base + 0;  // 14px
+@text-md:       @font-size-base + 2;  // 16px
+@text-lg:       @font-size-base + 4;  // 18px
+@text-xl:       @font-size-base + 8;  // 22px
+@text-xxl:      @font-size-base + 12; // 26px
 
 // icon
-@icon-sm:       @font-size-base * 2; // 24px
-@icon-md:       @font-size-base * 4; // 48px
-@icon-lg:       @font-size-base * 6; // 72px
+@icon-sm:       @font-size-base * 2;  // 14px * 2 = 28px
+@icon-md:       @font-size-base * 4;  // 14px * 4 = 56px
+@icon-lg:       @font-size-base * 6;  // 14px * 6 = 84px
+@icon-xl:       @font-size-base * 8;  // 14px * 8 = 112px
+@icon-xxl:      @font-size-base * 10; // 14px * 10 = 140px
 
 // 宽度
 @widths:
+    xs @layout-gutter * 10, // 80px
     sm @layout-gutter * 20, // 160px
     md @layout-gutter * 30, // 240px
     lg @layout-gutter * 40, // 320px
+    xl @layout-gutter * 50, // 400px
+    xxl @layout-gutter * 60, // 480px
     10 10%,
     20 20%,
     30 30%,
