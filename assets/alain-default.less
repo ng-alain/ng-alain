@@ -19100,25 +19100,19 @@ app-layout router-outlet + * {
 }
 
 .preserve-white-spaces-mixin(@enabled) when(@enabled=true) {
-
   sf + st {
     margin-top: @preserve-sf-and-st-spaces;
   }
 
   // button + button
   .@{ant-prefix}-btn + .@{ant-prefix}-btn,
-  // button + popconfirm
   .@{ant-prefix}-btn + nz-popconfirm,
   nz-popconfirm + .@{ant-prefix}-btn,
-  // popconfirm + popconfirm
   nz-popconfirm + nz-popconfirm,
-  // button + button group
   .@{ant-prefix}-btn + nz-button-group,
   nz-button-group + .@{ant-prefix}-btn,
-  // dropdown + button
   .@{ant-prefix}-btn + nz-dropdown,
-  nz-dropdown +.@{ant-prefix}-btn,
-  // popconfirm + button group
+  nz-dropdown + .@{ant-prefix}-btn,
   nz-popconfirm + nz-button-group,
   nz-button-group + nz-popconfirm {
     margin-left: @preserve-buttons-spaces;
@@ -19126,6 +19120,13 @@ app-layout router-outlet + * {
   .@{ant-prefix}-btn-group {
     .@{ant-prefix}-btn + .@{ant-prefix}-btn {
       margin-left: -1px;
+    }
+  }
+
+  // fix ng-zorro-antd components
+  .@{ant-prefix}-transfer-operation {
+    .@{ant-prefix}-btn + .@{ant-prefix}-btn {
+      margin-left: initial;
     }
   }
 }
@@ -19719,12 +19720,11 @@ fieldset {
 }
 
 // @delon
-.sf {
+@sf-prefix: ~'.sf';
+@sf-title-text-align: left;
+
+@{sf-prefix} {
   display: block;
-  // mode
-  &-search + .ad-st {
-    margin-top: @layout-gutter * 2;
-  }
   &__optional {
     color: rgba(0, 0, 0, 0.45);
   }
@@ -19736,37 +19736,43 @@ fieldset {
       flex: 1;
     }
   }
-  // Array
-  &-array-container {
-    nz-card {
-      margin: 0 16px 0 0;
-      .remove {
-        display: none;
-        position: absolute;
-        right: -16px;
-        top: -16px;
-        font-size: 20px;
-        text-align: center;
-        height: 32px;
-        line-height: 32px;
-        width: 32px;
-        background: rgba(0, 0, 0, 0.26);
-        border-radius: 50%;
-        cursor: pointer;
-        i {
-          color: #fff;
-        }
-      }
-      &:hover {
-        .remove {
-          display: block;
-        }
-      }
-    }
+  &__title {
+    margin-bottom: 8px;
+    padding: 0 16px;
+    font-weight: 700;
+    text-align: @sf-title-text-align;
   }
-  sf-array {
-    .add {
+  // Array
+  &__array {
+    &-add {
       margin-right: 16px;
+    }
+      &-container {
+      nz-card {
+        margin: 0 16px 0 0;
+        .remove {
+          display: none;
+          position: absolute;
+          right: -16px;
+          top: -16px;
+          font-size: 20px;
+          text-align: center;
+          height: 32px;
+          line-height: 32px;
+          width: 32px;
+          background: rgba(0, 0, 0, 0.26);
+          border-radius: 50%;
+          cursor: pointer;
+          i {
+            color: #fff;
+          }
+        }
+        &:hover {
+          .remove {
+            display: block;
+          }
+        }
+      }
     }
   }
   &__checkbox-list {
@@ -20100,10 +20106,6 @@ code {
   height: auto;
 }
 
-.img-fluid {
-  .img-fluid;
-}
-
 .point {
   cursor: pointer;
 }
@@ -20345,7 +20347,9 @@ code {
 
 // scrollbar
 // TODO: (.nz-measure-scrollbar-placeholder) https://github.com/NG-ZORRO/ng-zorro-antd/pull/2617
-.scrollbar-mixin(~'body, @{scrollbar-prefix}, .@{ant-prefix}-dialog-wrap, .@{ant-prefix}-drawer-body, .@{ant-prefix}-drawer-wrapper-body, .@{ant-prefix}-anchor-wrapper, textarea.@{ant-prefix}-input');
+.scrollbar-mixin(
+  ~'body, @{scrollbar-prefix}, .@{ant-prefix}-dialog-wrap, .@{ant-prefix}-drawer-body, .@{ant-prefix}-drawer-wrapper-body, .@{ant-prefix}-anchor-wrapper, textarea.@{ant-prefix}-input'
+);
 
 // table
 .scrollbar-table-mixin(@enabled) when(@enabled=true) {
@@ -20586,9 +20590,6 @@ code {
   }
 }
 
-@media (min-width: @mobile-min) {
-}
-
 @media (max-width: @mobile-max) {
   @{se-prefix} {
     &__horizontal {
@@ -20800,10 +20801,10 @@ ellipsis {
   &__body {
     overflow: hidden;
   }
-  &__opened {
-  }
-  &__hidden-title {
-  }
+  // &__opened {
+  // }
+  // &__hidden-title {
+  // }
 }
 
 @global-footer-prefix: ~'.global-footer';
@@ -20836,14 +20837,12 @@ ellipsis {
 @notice-icon-prefix: ~'.notice-icon';
 
 @{notice-icon-prefix} {
+  width: 336px;
+
   &__btn {
     cursor: pointer;
     display: inline-block;
     transition: all 0.3s;
-  }
-
-  & {
-    width: 336px;
   }
 
   .@{ant-prefix}-popover-inner-content {
@@ -22005,7 +22004,6 @@ body {
     -ms-content-zoom-limit-max: 500%;
     -ms-scroll-snap-type: proximity;
     -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
-    -ms-overflow-style: none;
     // Firefox
     scrollbar-width: none;
     // Chrome
