@@ -19038,51 +19038,50 @@ span.@{radio-prefix-cls} + * {
 .freakMixin();
 // Color contrast
 .color-yiq(@color) {
+  .yiq-mixin (@v) when (@v >= 150) {
+    color: #111;
+  }
+  .yiq-mixin (@v) when (default()) {
+    color: #fff;
+  }
 
-    .yiq-mixin (@v) when (@v >= 150) {
-        color: #111;
-    }
-    .yiq-mixin (@v) when (default()) {
-        color: #fff;
-    }
+  @r: red(@color);
+  @g: green(@color);
+  @b: blue(@color);
 
-    @r: red(@color);
-    @g: green(@color);
-    @b: blue(@color);
-
-    @yiq: ((@r * 299) + (@g * 587) + (@b * 114)) / 1000;
-    .yiq-mixin(@yiq);
+  @yiq: ((@r * 299) + (@g * 587) + (@b * 114)) / 1000;
+  .yiq-mixin(@yiq);
 }
 
 // Basic loop
 .for(@adList, @adCode) {
-    & {
-        .loop(@adI:1) when (@adI =< length(@adList)) {
-            @adIndex: @adI - 1;
-			@adItem: extract(@adList, @adI);
+  & {
+    .loop(@adI:1) when (@adI =< length(@adList)) {
+      @adIndex: @adI - 1;
+      @adItem: extract(@adList, @adI);
 
-			@adCode();
+      @adCode();
 
-			.loop(@adI + 1);
-        }
-        .loop();
+      .loop(@adI + 1);
     }
+    .loop();
+  }
 }
 
 .for-each(@adList, @adCode) {
-    & {
-        .loop(@adI:1) when (@adI =< length(@adList)) {
-            @adIndex: @adI - 1;
-            @adItem: extract(@adList, @adI);
-            @adKey: extract(@adItem, 1);
-            @adValue: extract(@adItem, 2);
+  & {
+    .loop(@adI:1) when (@adI =< length(@adList)) {
+      @adIndex: @adI - 1;
+      @adItem: extract(@adList, @adI);
+      @adKey: extract(@adItem, 1);
+      @adValue: extract(@adItem, 2);
 
-			@adCode();
+      @adCode();
 
-			.loop(@adI + 1);
-        }
-        .loop();
+      .loop(@adI + 1);
     }
+    .loop();
+  }
 }
 
 // Angular
@@ -19393,7 +19392,7 @@ a:focus {
 .@{ant-prefix}-tag {
   &__plus {
     .@{ant-prefix}-tag {
-      background: rgb(255, 255, 255);
+      background: #fff;
       border-style: dashed;
     }
   }
@@ -19470,7 +19469,6 @@ fieldset {
 @abs-enabled: true;
 
 .widget-abs-mixin(@enabled) when(@enabled=true) {
-
   .abs-center-container {
     position: relative;
   }
@@ -19510,7 +19508,6 @@ fieldset {
       position: relative;
     }
   }
-
 }
 
 .widget-abs-mixin(@abs-enabled);
@@ -19828,12 +19825,11 @@ fieldset {
   display: none !important;
 }
 
-@setting-drawer-enabled:    true;
-@setting-drawer-prefix:     ~'.setting-drawer';
-@setting-drawer-width:      500px;
+@setting-drawer-enabled: true;
+@setting-drawer-prefix: ~'.setting-drawer';
+@setting-drawer-width: 500px;
 
 .widget-setting-drawer-mixin(@enabled) when(@enabled=true) {
-
   @{setting-drawer-prefix} {
     &__content {
       min-height: 100%;
@@ -19903,7 +19899,6 @@ fieldset {
       }
     }
   }
-
 }
 
 .widget-setting-drawer-mixin(@setting-drawer-enabled);
@@ -22106,6 +22101,7 @@ body {
     display: flex;
     flex-direction: column;
     &-link {
+      display: block;
       color: @alain-default-aside-nav-text-color;
       text-decoration: none !important;
       padding: @alain-default-aside-nav-padding-top-bottom @layout-gutter * 2;
@@ -22113,8 +22109,6 @@ body {
       overflow: hidden;
       text-overflow: ellipsis;
       position: relative;
-      display: flex;
-      align-items: center;
       user-select: none;
       &:hover {
         color: @alain-default-aside-nav-text-hover-color;
@@ -22136,6 +22130,9 @@ body {
     }
     &-disabled {
       opacity: .6;
+      &:hover {
+        color: initial;
+      }
     }
   }
   // Selected
@@ -22286,6 +22283,7 @@ body {
       .@{sidebar-nav-prefix-cls}__item {
         border: none;
         &-link {
+          display: flex;
           justify-content: center;
           padding: (@layout-gutter * 3) 0;
           .@{sidebar-nav-prefix-cls}__item-icon {
