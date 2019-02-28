@@ -2457,7 +2457,6 @@ darker  @grey-9;
 @forced-turn-off-nz-modal-animation-enabled: false;
 
 // antd
-// antd
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 /* stylelint-disable no-duplicate-selectors */
 /* stylelint-disable */
@@ -5740,223 +5739,6 @@ mark {
   }
 }
 
-// grid muse be first
-
-// mixins for grid system
-// ------------------------
-.make-row(@gutter: @grid-gutter-width) {
-  position: relative;
-  height: auto;
-  margin-right: (@gutter / -2);
-  margin-left: (@gutter / -2);
-  .clearfix;
-}
-
-.make-grid-columns() {
-  .col(@index) {
-    @item: ~'.@{ant-prefix}-col-@{index}, .@{ant-prefix}-col-xs-@{index}, .@{ant-prefix}-col-sm-@{index}, .@{ant-prefix}-col-md-@{index}, .@{ant-prefix}-col-lg-@{index}';
-    .col((@index + 1), @item);
-  }
-  .col(@index, @list) when (@index =< @grid-columns) {
-    @item: ~'.@{ant-prefix}-col-@{index}, .@{ant-prefix}-col-xs-@{index}, .@{ant-prefix}-col-sm-@{index}, .@{ant-prefix}-col-md-@{index}, .@{ant-prefix}-col-lg-@{index}';
-    .col((@index + 1), ~'@{list}, @{item}');
-  }
-  .col(@index, @list) when (@index > @grid-columns) {
-    @{list} {
-      position: relative;
-      // Prevent columns from collapsing when empty
-      min-height: 1px;
-      padding-right: (@grid-gutter-width / 2);
-      padding-left: (@grid-gutter-width / 2);
-    }
-  }
-  .col(1);
-}
-
-.float-grid-columns(@class) {
-  .col(@index) {
-    // initial
-    @item: ~'.@{ant-prefix}-col@{class}-@{index}';
-    .col((@index + 1), @item);
-  }
-  .col(@index, @list) when (@index =< @grid-columns) {
-    // general
-    @item: ~'.@{ant-prefix}-col@{class}-@{index}';
-    .col((@index + 1), ~'@{list}, @{item}');
-  }
-  .col(@index, @list) when (@index > @grid-columns) {
-    // terminal
-    @{list} {
-      flex: 0 0 auto;
-      float: left;
-    }
-  }
-  .col(1); // kickstart it
-}
-
-.loop-grid-columns(@index, @class) when (@index > 0) {
-  .@{ant-prefix}-col@{class}-@{index} {
-    display: block;
-    box-sizing: border-box;
-    width: percentage((@index / @grid-columns));
-  }
-  .@{ant-prefix}-col@{class}-push-@{index} {
-    left: percentage((@index / @grid-columns));
-  }
-  .@{ant-prefix}-col@{class}-pull-@{index} {
-    right: percentage((@index / @grid-columns));
-  }
-  .@{ant-prefix}-col@{class}-offset-@{index} {
-    margin-left: percentage((@index / @grid-columns));
-  }
-  .@{ant-prefix}-col@{class}-order-@{index} {
-    order: @index;
-  }
-  .loop-grid-columns((@index - 1), @class);
-}
-
-.loop-grid-columns(@index, @class) when (@index = 0) {
-  .@{ant-prefix}-col@{class}-@{index} {
-    display: none;
-  }
-  .@{ant-prefix}-col-push-@{index} {
-    left: auto;
-  }
-  .@{ant-prefix}-col-pull-@{index} {
-    right: auto;
-  }
-  .@{ant-prefix}-col@{class}-push-@{index} {
-    left: auto;
-  }
-  .@{ant-prefix}-col@{class}-pull-@{index} {
-    right: auto;
-  }
-  .@{ant-prefix}-col@{class}-offset-@{index} {
-    margin-left: 0;
-  }
-  .@{ant-prefix}-col@{class}-order-@{index} {
-    order: 0;
-  }
-}
-
-.make-grid(@class: ~'') {
-  .float-grid-columns(@class);
-  .loop-grid-columns(@grid-columns, @class);
-}
-
-// Grid system
-.@{ant-prefix}-row {
-  .make-row();
-  display: block;
-  box-sizing: border-box;
-}
-
-.@{ant-prefix}-row-flex {
-  display: flex;
-  flex-flow: row wrap;
-
-  &::before,
-  &::after {
-    display: flex;
-  }
-}
-
-// x轴原点
-.@{ant-prefix}-row-flex-start {
-  justify-content: flex-start;
-}
-
-// x轴居中
-.@{ant-prefix}-row-flex-center {
-  justify-content: center;
-}
-
-// x轴反方向
-.@{ant-prefix}-row-flex-end {
-  justify-content: flex-end;
-}
-
-// x轴平分
-.@{ant-prefix}-row-flex-space-between {
-  justify-content: space-between;
-}
-
-// x轴有间隔地平分
-.@{ant-prefix}-row-flex-space-around {
-  justify-content: space-around;
-}
-
-// 顶部对齐
-.@{ant-prefix}-row-flex-top {
-  align-items: flex-start;
-}
-
-// 居中对齐
-.@{ant-prefix}-row-flex-middle {
-  align-items: center;
-}
-
-// 底部对齐
-.@{ant-prefix}-row-flex-bottom {
-  align-items: flex-end;
-}
-
-.@{ant-prefix}-col {
-  position: relative;
-  display: block;
-}
-
-.make-grid-columns();
-.make-grid();
-
-// Extra small grid
-//
-// Columns, offsets, pushes, and pulls for extra small devices like
-// smartphones.
-
-.make-grid(-xs);
-
-// Small grid
-//
-// Columns, offsets, pushes, and pulls for the small device range, from phones
-// to tablets.
-
-@media (min-width: @screen-sm-min) {
-  .make-grid(-sm);
-}
-
-// Medium grid
-//
-// Columns, offsets, pushes, and pulls for the desktop device range.
-
-@media (min-width: @screen-md-min) {
-  .make-grid(-md);
-}
-
-// Large grid
-//
-// Columns, offsets, pushes, and pulls for the large desktop device range.
-
-@media (min-width: @screen-lg-min) {
-  .make-grid(-lg);
-}
-
-// Extra Large grid
-//
-// Columns, offsets, pushes, and pulls for the full hd device range.
-
-@media (min-width: @screen-xl-min) {
-  .make-grid(-xl);
-}
-
-// Extra Extra Large grid
-//
-// Columns, offsets, pushes, and pulls for the full hd device range.
-
-@media (min-width: @screen-xxl-min) {
-  .make-grid(-xxl);
-}
-
 .@{ant-prefix}-affix {
   position: fixed;
   z-index: @zindex-affix;
@@ -6211,6 +5993,473 @@ mark {
   &-link &-link {
     padding-top: 5px;
     padding-bottom: 5px;
+  }
+}
+
+@input-affix-width: 19px;
+
+// size mixins for input
+.input-lg() {
+  height: @input-height-lg;
+  padding: @input-padding-vertical-lg @input-padding-horizontal-lg;
+  font-size: @font-size-lg;
+}
+
+.input-sm() {
+  height: @input-height-sm;
+  padding: @input-padding-vertical-sm @input-padding-horizontal-sm;
+}
+
+// input status
+// == when focus or actived
+.active(@color: @outline-color) {
+  border-color: ~`colorPalette('@{color}', 5) `;
+  border-right-width: @border-width-base !important;
+  outline: 0;
+  box-shadow: @input-outline-offset @outline-blur-size @outline-width fade(@color, 20%);
+}
+
+// == when hoverd
+.hover(@color: @input-hover-border-color) {
+  border-color: ~`colorPalette('@{color}', 5) `;
+  border-right-width: @border-width-base !important;
+}
+
+.disabled() {
+  color: @disabled-color;
+  background-color: @input-disabled-bg;
+  cursor: not-allowed;
+  opacity: 1;
+  &:hover {
+    .hover(@input-border-color);
+  }
+}
+
+// Basic style for input
+.input() {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: @input-height-base;
+  padding: @input-padding-vertical-base @input-padding-horizontal-base;
+  color: @input-color;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  background-color: @input-bg;
+  background-image: none;
+  border: @border-width-base @border-style-base @input-border-color;
+  border-radius: @border-radius-base;
+  transition: all 0.3s;
+  .placeholder(); // Reset placeholder
+
+  &:hover {
+    .hover();
+  }
+
+  &:focus {
+    .active();
+  }
+
+  &-disabled {
+    .disabled();
+  }
+
+  // Reset height for `textarea`s
+  textarea& {
+    max-width: 100%; // prevent textearea resize from coming out of its container
+    height: auto;
+    min-height: @input-height-base;
+    vertical-align: bottom;
+    transition: all 0.3s, height 0s;
+  }
+
+  // Size
+  &-lg {
+    .input-lg();
+  }
+
+  &-sm {
+    .input-sm();
+  }
+}
+
+// label input
+.input-group(@inputClass) {
+  position: relative;
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  // Undo padding and float of grid classes
+  &[class*='col-'] {
+    float: none;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  > [class*='col-'] {
+    padding-right: 8px;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  &-addon,
+  &-wrap,
+  > .@{inputClass} {
+    display: table-cell;
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+  }
+
+  &-addon,
+  &-wrap {
+    width: 1px; // To make addon/wrap as small as possible
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  &-wrap > * {
+    display: block !important;
+  }
+
+  .@{inputClass} {
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: inherit;
+    &:focus {
+      z-index: 1; // Fix https://gw.alipayobjects.com/zos/rmsportal/DHNpoqfMXSfrSnlZvhsJ.png
+      border-right-width: 1px;
+    }
+    &:hover {
+      z-index: 1;
+      border-right-width: 1px;
+    }
+  }
+
+  &-addon {
+    position: relative;
+    padding: 0 @input-padding-horizontal-base;
+    color: @input-color;
+    font-weight: normal;
+    font-size: @font-size-base;
+    line-height: 1;
+    text-align: center;
+    background-color: @input-addon-bg;
+    border: @border-width-base @border-style-base @input-border-color;
+    border-radius: @border-radius-base;
+    transition: all 0.3s;
+
+    // Reset Select's style in addon
+    .@{ant-prefix}-select {
+      margin: -(@input-padding-vertical-base + 1px) (-@input-padding-horizontal-base);
+
+      .@{ant-prefix}-select-selection {
+        margin: -1px;
+        background-color: inherit;
+        border: @border-width-base @border-style-base transparent;
+        box-shadow: none;
+      }
+
+      &-open,
+      &-focused {
+        .@{ant-prefix}-select-selection {
+          color: @primary-color;
+        }
+      }
+    }
+
+    // Expand addon icon click area
+    // https://github.com/ant-design/ant-design/issues/3714
+    > i:only-child::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+    }
+  }
+
+  // Reset rounded corners
+  > .@{inputClass}:first-child,
+  &-addon:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    // Reset Select's style in addon
+    .@{ant-prefix}-select .@{ant-prefix}-select-selection {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  > .@{inputClass}-affix-wrapper {
+    &:not(:first-child) .@{inputClass} {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:not(:last-child) .@{inputClass} {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &-addon:first-child {
+    border-right: 0;
+  }
+  &-addon:last-child {
+    border-left: 0;
+  }
+
+  > .@{inputClass}:last-child,
+  &-addon:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    // Reset Select's style in addon
+    .@{ant-prefix}-select .@{ant-prefix}-select-selection {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  // Sizing options
+  &-lg .@{inputClass},
+  &-lg > &-addon {
+    .input-lg();
+  }
+
+  &-sm .@{inputClass},
+  &-sm > &-addon {
+    .input-sm();
+  }
+
+  // Fix https://github.com/ant-design/ant-design/issues/5754
+  &-lg .@{ant-prefix}-select-selection--single {
+    height: @input-height-lg;
+  }
+
+  &-sm .@{ant-prefix}-select-selection--single {
+    height: @input-height-sm;
+  }
+
+  .@{inputClass}-affix-wrapper {
+    display: table-cell;
+    float: left;
+    width: 100%;
+  }
+
+  &&-compact {
+    display: block;
+    .clearfix;
+
+    &-addon,
+    &-wrap,
+    > .@{inputClass} {
+      &:not(:first-child):not(:last-child) {
+        border-right-width: @border-width-base;
+        &:hover {
+          z-index: 1;
+        }
+        &:focus {
+          z-index: 1;
+        }
+      }
+    }
+
+    & > * {
+      display: inline-block;
+      float: none;
+      vertical-align: top; // https://github.com/ant-design/ant-design-pro/issues/139
+      border-radius: 0;
+    }
+
+    & > *:not(:last-child) {
+      margin-right: -@border-width-base;
+      border-right-width: @border-width-base;
+    }
+
+    // Undo float for .ant-input-group .ant-input
+    .@{inputClass} {
+      float: none;
+    }
+
+    // reset border for Select, DatePicker, AutoComplete, Cascader, Mention, TimePicker
+    & > .@{ant-prefix}-select > .@{ant-prefix}-select-selection,
+    & > .@{ant-prefix}-calendar-picker .@{ant-prefix}-input,
+    & > .@{ant-prefix}-select-auto-complete .@{ant-prefix}-input,
+    & > .@{ant-prefix}-cascader-picker .@{ant-prefix}-input,
+    & > .@{ant-prefix}-mention-wrapper .@{ant-prefix}-mention-editor,
+    & > .@{ant-prefix}-time-picker .@{ant-prefix}-time-picker-input {
+      border-right-width: @border-width-base;
+      border-radius: 0;
+      &:hover {
+        z-index: 1;
+      }
+      &:focus {
+        z-index: 1;
+      }
+    }
+
+    & > *:first-child,
+    & > .@{ant-prefix}-select:first-child > .@{ant-prefix}-select-selection,
+    & > .@{ant-prefix}-calendar-picker:first-child .@{ant-prefix}-input,
+    & > .@{ant-prefix}-select-auto-complete:first-child .@{ant-prefix}-input,
+    & > .@{ant-prefix}-cascader-picker:first-child .@{ant-prefix}-input,
+    & > .@{ant-prefix}-mention-wrapper:first-child .@{ant-prefix}-mention-editor,
+    & > .@{ant-prefix}-time-picker:first-child .@{ant-prefix}-time-picker-input {
+      border-top-left-radius: @border-radius-base;
+      border-bottom-left-radius: @border-radius-base;
+    }
+
+    & > *:last-child,
+    & > .@{ant-prefix}-select:last-child > .@{ant-prefix}-select-selection,
+    & > .@{ant-prefix}-calendar-picker:last-child .@{ant-prefix}-input,
+    & > .@{ant-prefix}-select-auto-complete:last-child .@{ant-prefix}-input,
+    & > .@{ant-prefix}-cascader-picker:last-child .@{ant-prefix}-input,
+    & > .@{ant-prefix}-cascader-picker-focused:last-child .@{ant-prefix}-input,
+    & > .@{ant-prefix}-mention-wrapper:last-child .@{ant-prefix}-mention-editor,
+    & > .@{ant-prefix}-time-picker:last-child .@{ant-prefix}-time-picker-input {
+      border-right-width: @border-width-base;
+      border-top-right-radius: @border-radius-base;
+      border-bottom-right-radius: @border-radius-base;
+    }
+
+    // https://github.com/ant-design/ant-design/issues/12493
+    & > .@{ant-prefix}-select-auto-complete .@{ant-prefix}-input {
+      vertical-align: top;
+    }
+  }
+}
+
+.input-affix-wrapper(@inputClass) {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: start;
+
+  &:hover .@{inputClass}:not(.@{inputClass}-disabled) {
+    .hover();
+  }
+
+  .@{inputClass} {
+    position: relative;
+    text-align: inherit;
+  }
+
+  .@{inputClass}-prefix,
+  .@{inputClass}-suffix {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    color: @input-color;
+    line-height: 0;
+    transform: translateY(-50%);
+    :not(.anticon) {
+      line-height: @line-height-base;
+    }
+  }
+
+  .@{inputClass}-prefix {
+    left: @input-padding-horizontal-base + 1px;
+  }
+
+  .@{inputClass}-suffix {
+    right: @input-padding-horizontal-base + 1px;
+  }
+
+  .@{inputClass}:not(:first-child) {
+    padding-left: @input-padding-horizontal-base + @input-affix-width;
+  }
+
+  .@{inputClass}:not(:last-child) {
+    padding-right: @input-padding-horizontal-base + @input-affix-width;
+  }
+}
+
+@input-prefix-cls: ~'@{ant-prefix}-input';
+@select-prefix-cls: ~'@{ant-prefix}-select';
+@autocomplete-prefix-cls: ~'@{select-prefix-cls}-auto-complete';
+
+.@{autocomplete-prefix-cls} {
+  .reset-component;
+
+  &.@{select-prefix-cls} {
+    .@{select-prefix-cls} {
+      &-selection {
+        border: 0;
+        box-shadow: none;
+        &__rendered {
+          height: 100%;
+          margin-right: 0;
+          margin-left: 0;
+          line-height: @input-height-base;
+        }
+        &__placeholder {
+          margin-right: (@input-padding-horizontal-base + 1px);
+          margin-left: (@input-padding-horizontal-base + 1px);
+        }
+
+        &--single {
+          height: auto;
+        }
+      }
+    }
+
+    // Fix https://github.com/ant-design/ant-design/issues/7800
+    .@{select-prefix-cls}-search--inline {
+      position: static;
+      float: left;
+    }
+
+    &-allow-clear {
+      .@{select-prefix-cls}-selection:hover .@{select-prefix-cls}-selection__rendered {
+        margin-right: 0 !important;
+      }
+    }
+
+    .@{input-prefix-cls} {
+      height: @input-height-base;
+      line-height: @line-height-base;
+      background: transparent;
+      border-width: @border-width-base;
+      &:focus,
+      &:hover {
+        .hover;
+      }
+      &[disabled] {
+        .disabled;
+        background-color: transparent;
+      }
+    }
+
+    &-lg {
+      .@{select-prefix-cls}-selection__rendered {
+        line-height: @input-height-lg;
+      }
+      .@{input-prefix-cls} {
+        height: @input-height-lg;
+        padding-top: @input-padding-vertical-lg;
+        padding-bottom: @input-padding-vertical-lg;
+      }
+    }
+
+    &-sm {
+      .@{select-prefix-cls}-selection__rendered {
+        line-height: @input-height-sm;
+      }
+      .@{input-prefix-cls} {
+        height: @input-height-sm;
+        padding-top: @input-padding-vertical-sm;
+        padding-bottom: @input-padding-vertical-sm;
+      }
+    }
   }
 }
 
@@ -7824,393 +8073,6 @@ a.@{btn-prefix-cls} {
   }
 }
 
-@input-affix-width: 19px;
-
-// size mixins for input
-.input-lg() {
-  height: @input-height-lg;
-  padding: @input-padding-vertical-lg @input-padding-horizontal-lg;
-  font-size: @font-size-lg;
-}
-
-.input-sm() {
-  height: @input-height-sm;
-  padding: @input-padding-vertical-sm @input-padding-horizontal-sm;
-}
-
-// input status
-// == when focus or actived
-.active(@color: @outline-color) {
-  border-color: ~`colorPalette('@{color}', 5) `;
-  border-right-width: @border-width-base !important;
-  outline: 0;
-  box-shadow: @input-outline-offset @outline-blur-size @outline-width fade(@color, 20%);
-}
-
-// == when hoverd
-.hover(@color: @input-hover-border-color) {
-  border-color: ~`colorPalette('@{color}', 5) `;
-  border-right-width: @border-width-base !important;
-}
-
-.disabled() {
-  color: @disabled-color;
-  background-color: @input-disabled-bg;
-  cursor: not-allowed;
-  opacity: 1;
-  &:hover {
-    .hover(@input-border-color);
-  }
-}
-
-// Basic style for input
-.input() {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: @input-height-base;
-  padding: @input-padding-vertical-base @input-padding-horizontal-base;
-  color: @input-color;
-  font-size: @font-size-base;
-  line-height: @line-height-base;
-  background-color: @input-bg;
-  background-image: none;
-  border: @border-width-base @border-style-base @input-border-color;
-  border-radius: @border-radius-base;
-  transition: all 0.3s;
-  .placeholder(); // Reset placeholder
-
-  &:hover {
-    .hover();
-  }
-
-  &:focus {
-    .active();
-  }
-
-  &-disabled {
-    .disabled();
-  }
-
-  // Reset height for `textarea`s
-  textarea& {
-    max-width: 100%; // prevent textearea resize from coming out of its container
-    height: auto;
-    min-height: @input-height-base;
-    vertical-align: bottom;
-    transition: all 0.3s, height 0s;
-  }
-
-  // Size
-  &-lg {
-    .input-lg();
-  }
-
-  &-sm {
-    .input-sm();
-  }
-}
-
-// label input
-.input-group(@inputClass) {
-  position: relative;
-  display: table;
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-
-  // Undo padding and float of grid classes
-  &[class*='col-'] {
-    float: none;
-    padding-right: 0;
-    padding-left: 0;
-  }
-
-  > [class*='col-'] {
-    padding-right: 8px;
-    &:last-child {
-      padding-right: 0;
-    }
-  }
-
-  &-addon,
-  &-wrap,
-  > .@{inputClass} {
-    display: table-cell;
-
-    &:not(:first-child):not(:last-child) {
-      border-radius: 0;
-    }
-  }
-
-  &-addon,
-  &-wrap {
-    width: 1px; // To make addon/wrap as small as possible
-    white-space: nowrap;
-    vertical-align: middle;
-  }
-
-  &-wrap > * {
-    display: block !important;
-  }
-
-  .@{inputClass} {
-    float: left;
-    width: 100%;
-    margin-bottom: 0;
-    text-align: inherit;
-    &:focus {
-      z-index: 1; // Fix https://gw.alipayobjects.com/zos/rmsportal/DHNpoqfMXSfrSnlZvhsJ.png
-      border-right-width: 1px;
-    }
-    &:hover {
-      z-index: 1;
-      border-right-width: 1px;
-    }
-  }
-
-  &-addon {
-    position: relative;
-    padding: 0 @input-padding-horizontal-base;
-    color: @input-color;
-    font-weight: normal;
-    font-size: @font-size-base;
-    line-height: 1;
-    text-align: center;
-    background-color: @input-addon-bg;
-    border: @border-width-base @border-style-base @input-border-color;
-    border-radius: @border-radius-base;
-    transition: all 0.3s;
-
-    // Reset Select's style in addon
-    .@{ant-prefix}-select {
-      margin: -(@input-padding-vertical-base + 1px) (-@input-padding-horizontal-base);
-
-      .@{ant-prefix}-select-selection {
-        margin: -1px;
-        background-color: inherit;
-        border: @border-width-base @border-style-base transparent;
-        box-shadow: none;
-      }
-
-      &-open,
-      &-focused {
-        .@{ant-prefix}-select-selection {
-          color: @primary-color;
-        }
-      }
-    }
-
-    // Expand addon icon click area
-    // https://github.com/ant-design/ant-design/issues/3714
-    > i:only-child::after {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      content: '';
-    }
-  }
-
-  // Reset rounded corners
-  > .@{inputClass}:first-child,
-  &-addon:first-child {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-
-    // Reset Select's style in addon
-    .@{ant-prefix}-select .@{ant-prefix}-select-selection {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-
-  > .@{inputClass}-affix-wrapper {
-    &:not(:first-child) .@{inputClass} {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-
-    &:not(:last-child) .@{inputClass} {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-
-  &-addon:first-child {
-    border-right: 0;
-  }
-  &-addon:last-child {
-    border-left: 0;
-  }
-
-  > .@{inputClass}:last-child,
-  &-addon:last-child {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-
-    // Reset Select's style in addon
-    .@{ant-prefix}-select .@{ant-prefix}-select-selection {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-  }
-
-  // Sizing options
-  &-lg .@{inputClass},
-  &-lg > &-addon {
-    .input-lg();
-  }
-
-  &-sm .@{inputClass},
-  &-sm > &-addon {
-    .input-sm();
-  }
-
-  // Fix https://github.com/ant-design/ant-design/issues/5754
-  &-lg .@{ant-prefix}-select-selection--single {
-    height: @input-height-lg;
-  }
-
-  &-sm .@{ant-prefix}-select-selection--single {
-    height: @input-height-sm;
-  }
-
-  .@{inputClass}-affix-wrapper {
-    display: table-cell;
-    float: left;
-    width: 100%;
-  }
-
-  &&-compact {
-    display: block;
-    .clearfix;
-
-    &-addon,
-    &-wrap,
-    > .@{inputClass} {
-      &:not(:first-child):not(:last-child) {
-        border-right-width: @border-width-base;
-        &:hover {
-          z-index: 1;
-        }
-        &:focus {
-          z-index: 1;
-        }
-      }
-    }
-
-    & > * {
-      display: inline-block;
-      float: none;
-      vertical-align: top; // https://github.com/ant-design/ant-design-pro/issues/139
-      border-radius: 0;
-    }
-
-    & > *:not(:last-child) {
-      margin-right: -@border-width-base;
-      border-right-width: @border-width-base;
-    }
-
-    // Undo float for .ant-input-group .ant-input
-    .@{inputClass} {
-      float: none;
-    }
-
-    // reset border for Select, DatePicker, AutoComplete, Cascader, Mention, TimePicker
-    & > .@{ant-prefix}-select > .@{ant-prefix}-select-selection,
-    & > .@{ant-prefix}-calendar-picker .@{ant-prefix}-input,
-    & > .@{ant-prefix}-select-auto-complete .@{ant-prefix}-input,
-    & > .@{ant-prefix}-cascader-picker .@{ant-prefix}-input,
-    & > .@{ant-prefix}-mention-wrapper .@{ant-prefix}-mention-editor,
-    & > .@{ant-prefix}-time-picker .@{ant-prefix}-time-picker-input {
-      border-right-width: @border-width-base;
-      border-radius: 0;
-      &:hover {
-        z-index: 1;
-      }
-      &:focus {
-        z-index: 1;
-      }
-    }
-
-    & > *:first-child,
-    & > .@{ant-prefix}-select:first-child > .@{ant-prefix}-select-selection,
-    & > .@{ant-prefix}-calendar-picker:first-child .@{ant-prefix}-input,
-    & > .@{ant-prefix}-select-auto-complete:first-child .@{ant-prefix}-input,
-    & > .@{ant-prefix}-cascader-picker:first-child .@{ant-prefix}-input,
-    & > .@{ant-prefix}-mention-wrapper:first-child .@{ant-prefix}-mention-editor,
-    & > .@{ant-prefix}-time-picker:first-child .@{ant-prefix}-time-picker-input {
-      border-top-left-radius: @border-radius-base;
-      border-bottom-left-radius: @border-radius-base;
-    }
-
-    & > *:last-child,
-    & > .@{ant-prefix}-select:last-child > .@{ant-prefix}-select-selection,
-    & > .@{ant-prefix}-calendar-picker:last-child .@{ant-prefix}-input,
-    & > .@{ant-prefix}-select-auto-complete:last-child .@{ant-prefix}-input,
-    & > .@{ant-prefix}-cascader-picker:last-child .@{ant-prefix}-input,
-    & > .@{ant-prefix}-cascader-picker-focused:last-child .@{ant-prefix}-input,
-    & > .@{ant-prefix}-mention-wrapper:last-child .@{ant-prefix}-mention-editor,
-    & > .@{ant-prefix}-time-picker:last-child .@{ant-prefix}-time-picker-input {
-      border-right-width: @border-width-base;
-      border-top-right-radius: @border-radius-base;
-      border-bottom-right-radius: @border-radius-base;
-    }
-
-    // https://github.com/ant-design/ant-design/issues/12493
-    & > .@{ant-prefix}-select-auto-complete .@{ant-prefix}-input {
-      vertical-align: top;
-    }
-  }
-}
-
-.input-affix-wrapper(@inputClass) {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  text-align: start;
-
-  &:hover .@{inputClass}:not(.@{inputClass}-disabled) {
-    .hover();
-  }
-
-  .@{inputClass} {
-    position: relative;
-    text-align: inherit;
-  }
-
-  .@{inputClass}-prefix,
-  .@{inputClass}-suffix {
-    position: absolute;
-    top: 50%;
-    z-index: 2;
-    color: @input-color;
-    line-height: 0;
-    transform: translateY(-50%);
-    :not(.anticon) {
-      line-height: @line-height-base;
-    }
-  }
-
-  .@{inputClass}-prefix {
-    left: @input-padding-horizontal-base + 1px;
-  }
-
-  .@{inputClass}-suffix {
-    right: @input-padding-horizontal-base + 1px;
-  }
-
-  .@{inputClass}:not(:first-child) {
-    padding-left: @input-padding-horizontal-base + @input-affix-width;
-  }
-
-  .@{inputClass}:not(:last-child) {
-    padding-right: @input-padding-horizontal-base + @input-affix-width;
-  }
-}
-
 @cascader-prefix-cls: ~'@{ant-prefix}-cascader';
 
 .@{cascader-prefix-cls} {
@@ -8746,6 +8608,97 @@ a.@{btn-prefix-cls} {
   }
 }
 
+@comment-prefix-cls: ~'@{ant-prefix}-comment';
+
+.@{comment-prefix-cls} {
+  position: relative;
+
+  &-inner {
+    display: flex;
+    padding: @comment-padding-base;
+  }
+
+  &-avatar {
+    position: relative;
+    flex-shrink: 0;
+    margin-right: 12px;
+    cursor: pointer;
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+  }
+
+  &-content {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 1px;
+    font-size: 14px;
+    word-wrap: break-word;
+
+    &-author {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 4px;
+      font-size: 14px;
+      & > a,
+      & > span {
+        height: 18px;
+        padding-right: 8px;
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      &-name {
+        color: @comment-author-name-color;
+        font-size: 14px;
+        transition: color 0.3s;
+        > * {
+          color: @comment-author-name-color;
+          &:hover {
+            color: @comment-author-name-color;
+          }
+        }
+      }
+
+      &-time {
+        color: @comment-author-time-color;
+        white-space: nowrap;
+        cursor: auto;
+      }
+    }
+
+    &-detail p {
+      white-space: pre-wrap;
+    }
+  }
+
+  &-actions {
+    margin-top: 12px;
+    padding-left: 0;
+    > li {
+      display: inline-block;
+      color: @comment-action-color;
+      > span {
+        padding-right: 10px;
+        color: @comment-action-color;
+        font-size: 12px;
+        cursor: pointer;
+        transition: color 0.3s;
+        user-select: none;
+        &:hover {
+          color: @comment-action-hover-color;
+        }
+      }
+    }
+  }
+
+  &-nested {
+    margin-left: @comment-nest-indent;
+  }
+}
+
 // cdk overlay
 
 .cdk-overlay-container {
@@ -9010,6 +8963,1106 @@ textarea.cdk-textarea-autosize-measuring {
 
 }
 
+@calendar-prefix-cls: ~'@{ant-prefix}-calendar';
+@calendar-timepicker-prefix-cls: ~'@{ant-prefix}-calendar-time-picker';
+
+.@{calendar-prefix-cls}-picker-container {
+  .reset-component;
+  position: absolute;
+  z-index: @zindex-picker;
+  font-family: @font-family;
+
+  &.slide-up-enter.slide-up-enter-active&-placement-topLeft,
+  &.slide-up-enter.slide-up-enter-active&-placement-topRight,
+  &.slide-up-appear.slide-up-appear-active&-placement-topLeft,
+  &.slide-up-appear.slide-up-appear-active&-placement-topRight {
+    animation-name: antSlideDownIn;
+  }
+
+  &.slide-up-enter.slide-up-enter-active&-placement-bottomLeft,
+  &.slide-up-enter.slide-up-enter-active&-placement-bottomRight,
+  &.slide-up-appear.slide-up-appear-active&-placement-bottomLeft,
+  &.slide-up-appear.slide-up-appear-active&-placement-bottomRight {
+    animation-name: antSlideUpIn;
+  }
+
+  &.slide-up-leave.slide-up-leave-active&-placement-topLeft,
+  &.slide-up-leave.slide-up-leave-active&-placement-topRight {
+    animation-name: antSlideDownOut;
+  }
+
+  &.slide-up-leave.slide-up-leave-active&-placement-bottomLeft,
+  &.slide-up-leave.slide-up-leave-active&-placement-bottomRight {
+    animation-name: antSlideUpOut;
+  }
+}
+
+.@{calendar-prefix-cls}-picker {
+  .reset-component;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  transition: opacity 0.3s;
+
+  &-input {
+    outline: none;
+  }
+
+  &-input.@{ant-prefix}-input-sm {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  &:hover &-input:not(.@{ant-prefix}-input-disabled) {
+    border-color: @primary-color;
+  }
+
+  &:focus &-input:not(.@{ant-prefix}-input-disabled) {
+    .active();
+  }
+
+  &-clear,
+  &-icon {
+    position: absolute;
+    top: 50%;
+    right: @control-padding-horizontal;
+    z-index: 1;
+    width: 14px;
+    height: 14px;
+    margin-top: -7px;
+    font-size: @font-size-sm;
+    line-height: 14px;
+    transition: all 0.3s;
+    user-select: none;
+  }
+
+  &-clear {
+    z-index: 2;
+    color: @disabled-color;
+    font-size: @font-size-base;
+    background: @input-bg;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    &:hover {
+      color: @text-color-secondary;
+    }
+  }
+
+  &:hover &-clear {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &-icon {
+    display: inline-block;
+    color: @disabled-color;
+    font-size: @font-size-base;
+    line-height: 1;
+  }
+
+  &-small &-clear,
+  &-small &-icon {
+    right: @control-padding-horizontal-sm;
+  }
+}
+
+.calendarPanelHeader(@calendar-prefix-cls) {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: @border-width-base @border-style-base @border-color-split;
+  user-select: none;
+
+  a:hover {
+    color: @link-hover-color;
+  }
+
+  .@{calendar-prefix-cls}-century-select,
+  .@{calendar-prefix-cls}-decade-select,
+  .@{calendar-prefix-cls}-year-select,
+  .@{calendar-prefix-cls}-month-select {
+    display: inline-block;
+    padding: 0 2px;
+    color: @heading-color;
+    font-weight: 500;
+    line-height: 40px;
+  }
+
+  .@{calendar-prefix-cls}-century-select-arrow,
+  .@{calendar-prefix-cls}-decade-select-arrow,
+  .@{calendar-prefix-cls}-year-select-arrow,
+  .@{calendar-prefix-cls}-month-select-arrow {
+    display: none;
+  }
+
+  .@{calendar-prefix-cls}-prev-century-btn,
+  .@{calendar-prefix-cls}-next-century-btn,
+  .@{calendar-prefix-cls}-prev-decade-btn,
+  .@{calendar-prefix-cls}-next-decade-btn,
+  .@{calendar-prefix-cls}-prev-month-btn,
+  .@{calendar-prefix-cls}-next-month-btn,
+  .@{calendar-prefix-cls}-prev-year-btn,
+  .@{calendar-prefix-cls}-next-year-btn {
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    padding: 0 5px;
+    color: @text-color-secondary;
+    font-size: 16px;
+    font-family: Arial, 'Hiragino Sans GB', 'Microsoft Yahei', 'Microsoft Sans Serif', sans-serif;
+    line-height: 40px;
+  }
+
+  .@{calendar-prefix-cls}-prev-century-btn,
+  .@{calendar-prefix-cls}-prev-decade-btn,
+  .@{calendar-prefix-cls}-prev-year-btn {
+    left: 7px;
+
+    &::after {
+      content: '«';
+    }
+  }
+
+  .@{calendar-prefix-cls}-next-century-btn,
+  .@{calendar-prefix-cls}-next-decade-btn,
+  .@{calendar-prefix-cls}-next-year-btn {
+    right: 7px;
+
+    &::after {
+      content: '»';
+    }
+  }
+
+  .@{calendar-prefix-cls}-prev-month-btn {
+    left: 29px;
+
+    &::after {
+      content: '‹';
+    }
+  }
+
+  .@{calendar-prefix-cls}-next-month-btn {
+    right: 29px;
+
+    &::after {
+      content: '›';
+    }
+  }
+}
+
+.@{calendar-prefix-cls} {
+  position: relative;
+  width: 280px;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  text-align: left;
+  list-style: none;
+  background-color: @component-background;
+  background-clip: padding-box;
+  border: @border-width-base @border-style-base @border-color-inverse;
+  border-radius: @border-radius-base;
+  outline: none;
+  box-shadow: @box-shadow-base;
+
+  &-input-wrap {
+    height: 34px;
+    padding: 6px @control-padding-horizontal - 2px;
+    border-bottom: @border-width-base @border-style-base @border-color-split;
+  }
+
+  &-input {
+    width: 100%;
+    height: 22px;
+    color: @input-color;
+    background: @input-bg;
+    border: 0;
+    outline: 0;
+    cursor: auto;
+    .placeholder;
+  }
+
+  &-week-number {
+    width: 286px;
+
+    &-cell {
+      text-align: center;
+    }
+  }
+
+  &-header {
+    .calendarPanelHeader(@calendar-prefix-cls);
+  }
+
+  &-body {
+    padding: 8px 12px;
+  }
+
+  table {
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+  }
+
+  table,
+  th,
+  td {
+    text-align: center;
+    border: 0;
+  }
+
+  &-calendar-table {
+    margin-bottom: 0;
+    border-spacing: 0;
+  }
+
+  &-column-header {
+    width: 33px;
+    padding: 6px 0;
+    line-height: 18px;
+    text-align: center;
+    .@{calendar-prefix-cls}-column-header-inner {
+      display: block;
+      font-weight: normal;
+    }
+  }
+
+  &-week-number-header {
+    .@{calendar-prefix-cls}-column-header-inner {
+      display: none;
+    }
+  }
+
+  &-cell {
+    height: 30px;
+    padding: 3px 0;
+  }
+
+  &-date {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+    padding: 0;
+    color: @text-color;
+    line-height: 22px;
+    text-align: center;
+    background: transparent;
+    border: @border-width-base @border-style-base transparent;
+    border-radius: @border-radius-sm;
+    transition: background 0.3s ease;
+
+    &-panel {
+      position: relative;
+      outline: none;
+    }
+
+    &:hover {
+      background: @item-hover-bg;
+      cursor: pointer;
+    }
+
+    &:active {
+      color: @text-color-inverse;
+      background: @primary-5;
+    }
+  }
+
+  &-today &-date {
+    color: @primary-color;
+    font-weight: bold;
+    border-color: @primary-color;
+  }
+
+  &-last-month-cell &-date,
+  &-next-month-btn-day &-date {
+    color: @disabled-color;
+  }
+
+  &-selected-day &-date {
+    background: tint(@primary-color, 80%);
+  }
+
+  &-selected-date,
+  &-selected-start-date,
+  &-selected-end-date {
+    .@{calendar-prefix-cls}-date {
+      color: @text-color-inverse;
+      background: @primary-color;
+      border: @border-width-base @border-style-base transparent;
+
+      &:hover {
+        background: @primary-color;
+      }
+    }
+  }
+
+  &-disabled-cell &-date {
+    width: auto;
+    color: @disabled-color;
+    background: @disabled-bg;
+    border: @border-width-base @border-style-base transparent;
+    border-radius: 0;
+    cursor: not-allowed;
+
+    &:hover {
+      background: @disabled-bg;
+    }
+  }
+  &-disabled-cell&-today &-date {
+    position: relative;
+    padding-right: 5px;
+    padding-left: 5px;
+    &::before {
+      position: absolute;
+      top: -1px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      border: @border-width-base @border-style-base @disabled-color;
+      border-radius: @border-radius-sm;
+      content: ' ';
+    }
+  }
+
+  &-disabled-cell-first-of-row &-date {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  &-disabled-cell-last-of-row &-date {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  &-footer {
+    padding: 0 12px;
+    line-height: 38px;
+    border-top: @border-width-base @border-style-base @border-color-split;
+    &:empty {
+      border-top: 0;
+    }
+    &-btn {
+      display: block;
+      text-align: center;
+    }
+    &-extra {
+      text-align: left;
+    }
+  }
+
+  .@{calendar-prefix-cls}-today-btn,
+  .@{calendar-prefix-cls}-clear-btn {
+    display: inline-block;
+    margin: 0 0 0 8px;
+    text-align: center;
+    &-disabled {
+      color: @disabled-color;
+      cursor: not-allowed;
+    }
+    &:only-child {
+      margin: 0;
+    }
+  }
+
+  .@{calendar-prefix-cls}-clear-btn {
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    display: none;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    overflow: hidden;
+    line-height: 20px;
+    text-align: center;
+    text-indent: -76px;
+  }
+
+  .@{calendar-prefix-cls}-clear-btn::after {
+    display: inline-block;
+    width: 20px;
+    color: @disabled-color;
+    font-size: @font-size-base;
+    line-height: 1;
+    text-indent: 43px;
+    transition: color 0.3s ease;
+  }
+
+  .@{calendar-prefix-cls}-clear-btn:hover::after {
+    color: @text-color-secondary;
+  }
+
+  .@{calendar-prefix-cls}-ok-btn {
+    .btn;
+    .btn-primary;
+    .button-size(@btn-height-sm; @btn-padding-sm; @font-size-base; @border-radius-base);
+    line-height: @btn-height-sm - 2px;
+
+    .button-disabled();
+  }
+}
+
+@input-box-height: 34px;
+
+.@{calendar-prefix-cls}-range-picker-input {
+  width: 44%;
+  height: 99%;
+  text-align: center;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  .placeholder();
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.@{calendar-prefix-cls}-range-picker-separator {
+  display: inline-block;
+  width: 10px;
+  height: 100%;
+  color: @text-color-secondary;
+  vertical-align: top;
+}
+
+.@{calendar-prefix-cls}-range {
+  width: 552px;
+  overflow: hidden;
+
+  .@{calendar-prefix-cls}-date-panel {
+    &::after {
+      display: block;
+      clear: both;
+      height: 0;
+      visibility: hidden;
+      content: '.';
+    }
+  }
+  &-part {
+    position: relative;
+    width: 50%;
+  }
+
+  &-left {
+    float: left;
+    .@{calendar-prefix-cls} {
+      &-time-picker-inner {
+        border-right: 1px solid @border-color-split;
+      }
+    }
+  }
+
+  &-right {
+    float: right;
+    .@{calendar-prefix-cls} {
+      &-time-picker-inner {
+        border-left: 1px solid @border-color-split;
+      }
+    }
+  }
+
+  &-middle {
+    position: absolute;
+    left: 50%;
+    width: 20px;
+    height: @input-box-height;
+    margin-left: -132px;
+    color: @text-color-secondary;
+    line-height: @input-box-height;
+    text-align: center;
+  }
+
+  &-right .@{calendar-prefix-cls}-date-input-wrap {
+    margin-left: -118px;
+  }
+
+  &.@{calendar-prefix-cls}-time &-middle {
+    margin-left: -12px;
+  }
+
+  &.@{calendar-prefix-cls}-time &-right .@{calendar-prefix-cls}-date-input-wrap {
+    margin-left: 0;
+  }
+
+  .@{calendar-prefix-cls}-input-wrap {
+    position: relative;
+    height: @input-box-height;
+  }
+
+  .@{calendar-prefix-cls}-input,
+  .@{calendar-timepicker-prefix-cls}-input {
+    .input;
+    height: @input-height-sm;
+    padding-right: 0;
+    padding-left: 0;
+    border: 0;
+    box-shadow: none;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .@{calendar-timepicker-prefix-cls}-icon {
+    display: none;
+  }
+
+  &.@{calendar-prefix-cls}-week-number {
+    width: 574px;
+
+    .@{calendar-prefix-cls}-range-part {
+      width: 286px;
+    }
+  }
+
+  .@{calendar-prefix-cls}-year-panel,
+  .@{calendar-prefix-cls}-month-panel,
+  .@{calendar-prefix-cls}-decade-panel {
+    top: @input-box-height;
+  }
+  .@{calendar-prefix-cls}-month-panel .@{calendar-prefix-cls}-year-panel {
+    top: 0;
+  }
+  .@{calendar-prefix-cls}-decade-panel-table,
+  .@{calendar-prefix-cls}-year-panel-table,
+  .@{calendar-prefix-cls}-month-panel-table {
+    height: 208px;
+  }
+
+  .@{calendar-prefix-cls}-in-range-cell {
+    position: relative;
+    border-radius: 0;
+    > div {
+      position: relative;
+      z-index: 1;
+    }
+    &::before {
+      position: absolute;
+      top: 4px;
+      right: 0;
+      bottom: 4px;
+      left: 0;
+      display: block;
+      background: @item-active-bg;
+      border: 0;
+      border-radius: 0;
+      content: '';
+    }
+  }
+
+  .@{calendar-prefix-cls}-footer-extra {
+    float: left;
+  }
+
+  // `div` for selector specificity
+  div&-quick-selector {
+    text-align: left;
+
+    > a {
+      margin-right: 8px;
+    }
+  }
+
+  .@{calendar-prefix-cls},
+  .@{calendar-prefix-cls}-month-panel,
+  .@{calendar-prefix-cls}-year-panel {
+    &-header {
+      border-bottom: 0;
+    }
+    &-body {
+      border-top: @border-width-base @border-style-base @border-color-split;
+    }
+  }
+
+  &.@{calendar-prefix-cls}-time {
+    .@{calendar-timepicker-prefix-cls} {
+      top: 68px;
+      z-index: 2; // cover .ant-calendar-range .ant-calendar-in-range-cell > div (z-index: 1)
+      width: 100%;
+      height: 207px;
+      &-panel {
+        height: 267px;
+        margin-top: -34px;
+      }
+
+      &-inner {
+        height: 100%;
+        padding-top: 40px;
+        background: none;
+      }
+
+      &-combobox {
+        display: inline-block;
+        height: 100%;
+        background-color: @component-background;
+        border-top: @border-width-base @border-style-base @border-color-split;
+      }
+      &-select {
+        height: 100%;
+        ul {
+          max-height: 100%;
+        }
+      }
+    }
+    .@{calendar-prefix-cls}-footer .@{calendar-prefix-cls}-time-picker-btn {
+      margin-right: 8px;
+    }
+    .@{calendar-prefix-cls}-today-btn {
+      height: 22px;
+      margin: 8px 12px;
+      line-height: 22px;
+    }
+  }
+
+  &-with-ranges.@{calendar-prefix-cls}-time .@{calendar-timepicker-prefix-cls} {
+    height: 233px;
+  }
+}
+
+.@{calendar-prefix-cls}-range.@{calendar-prefix-cls}-show-time-picker {
+  .@{calendar-prefix-cls}-body {
+    border-top-color: transparent;
+  }
+}
+
+.@{calendar-timepicker-prefix-cls} {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  background-color: @component-background;
+
+  &-panel {
+    position: absolute;
+    z-index: @zindex-picker;
+    width: 100%;
+  }
+
+  &-inner {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    font-size: @font-size-base;
+    line-height: 1.5;
+    text-align: left;
+    list-style: none;
+    background-color: @component-background;
+    background-clip: padding-box;
+    outline: none;
+  }
+  &-combobox {
+    width: 100%;
+  }
+
+  &-column-1,
+  &-column-1 &-select {
+    width: 100%;
+  }
+  &-column-2 &-select {
+    width: 50%;
+  }
+  &-column-3 &-select {
+    width: 33.33%;
+  }
+  &-column-4 &-select {
+    width: 25%;
+  }
+
+  &-input-wrap {
+    display: none;
+  }
+
+  &-select {
+    position: relative; // Fix chrome weird render bug
+    float: left;
+    box-sizing: border-box;
+    height: 226px;
+    overflow: hidden;
+    font-size: @font-size-base;
+    border-right: @border-width-base @border-style-base @border-color-split;
+
+    &:hover {
+      overflow-y: auto;
+    }
+
+    &:first-child {
+      margin-left: 0;
+      border-left: 0;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    ul {
+      box-sizing: border-box;
+      width: 100%;
+      max-height: 206px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      box-sizing: content-box;
+      width: 100%;
+      height: 24px;
+      margin: 0;
+      padding-left: 32px;
+      line-height: 24px;
+      list-style: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+
+    li:last-child::after {
+      display: block;
+      height: 202px;
+      content: '';
+    }
+
+    li:hover {
+      background: @item-hover-bg;
+    }
+
+    li&-option-selected {
+      font-weight: bold;
+      background: @time-picker-selected-bg;
+    }
+
+    li&-option-disabled {
+      color: @btn-disable-color;
+      &:hover {
+        background: transparent;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.@{calendar-prefix-cls}-time {
+  .@{calendar-prefix-cls}-day-select {
+    display: inline-block;
+    padding: 0 2px;
+    color: @heading-color;
+    font-weight: 500;
+    line-height: 34px;
+  }
+
+  .@{calendar-prefix-cls}-footer {
+    position: relative;
+    height: auto;
+
+    &-btn {
+      text-align: right;
+    }
+
+    .@{calendar-prefix-cls}-today-btn {
+      float: left;
+      margin: 0;
+    }
+
+    .@{calendar-prefix-cls}-time-picker-btn {
+      display: inline-block;
+      margin-right: 8px;
+
+      &-disabled {
+        color: @disabled-color;
+      }
+    }
+  }
+}
+
+.@{calendar-prefix-cls}-month-panel {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-picker-panel;
+  background: @component-background;
+  border-radius: @border-radius-base;
+  outline: none;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    // TODO: this is a useless wrapper, and we need to remove it in rc-calendar
+    height: 100%;
+  }
+}
+
+.@{calendar-prefix-cls}-month-panel-hidden {
+  display: none;
+}
+
+.@{calendar-prefix-cls}-month-panel-header {
+  .calendarPanelHeader(~'@{calendar-prefix-cls}-month-panel');
+}
+
+.@{calendar-prefix-cls}-month-panel-body {
+  flex: 1;
+}
+
+.@{calendar-prefix-cls}-month-panel-footer {
+  border-top: @border-width-base @border-style-base @border-color-split;
+  .@{calendar-prefix-cls}-footer-extra {
+    padding: 0 12px;
+  }
+}
+
+.@{calendar-prefix-cls}-month-panel-table {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+}
+
+.@{calendar-prefix-cls}-month-panel-selected-cell .@{calendar-prefix-cls}-month-panel-month {
+  color: @text-color-inverse;
+  background: @primary-color;
+
+  &:hover {
+    color: @text-color-inverse;
+    background: @primary-color;
+  }
+}
+
+.@{calendar-prefix-cls}-month-panel-cell {
+  text-align: center;
+
+  &-disabled .@{calendar-prefix-cls}-month-panel-month {
+    &,
+    &:hover {
+      color: @disabled-color;
+      background: @disabled-bg;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.@{calendar-prefix-cls}-month-panel-month {
+  display: inline-block;
+  height: 24px;
+  margin: 0 auto;
+  padding: 0 8px;
+  color: @text-color;
+  line-height: 24px;
+  text-align: center;
+  background: transparent;
+  border-radius: @border-radius-sm;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: @item-hover-bg;
+    cursor: pointer;
+  }
+}
+
+.@{calendar-prefix-cls}-year-panel {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-picker-panel;
+  background: @component-background;
+  border-radius: @border-radius-base;
+  outline: none;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    // TODO: this is a useless wrapper, and we need to remove it in rc-calendar
+    height: 100%;
+  }
+}
+
+.@{calendar-prefix-cls}-year-panel-hidden {
+  display: none;
+}
+
+.@{calendar-prefix-cls}-year-panel-header {
+  .calendarPanelHeader(~'@{calendar-prefix-cls}-year-panel');
+}
+
+.@{calendar-prefix-cls}-year-panel-body {
+  flex: 1;
+}
+
+.@{calendar-prefix-cls}-year-panel-footer {
+  border-top: @border-width-base @border-style-base @border-color-split;
+  .@{calendar-prefix-cls}-footer-extra {
+    padding: 0 12px;
+  }
+}
+
+.@{calendar-prefix-cls}-year-panel-table {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+}
+
+.@{calendar-prefix-cls}-year-panel-cell {
+  text-align: center;
+}
+
+.@{calendar-prefix-cls}-year-panel-year {
+  display: inline-block;
+  height: 24px;
+  margin: 0 auto;
+  padding: 0 8px;
+  color: @text-color;
+  line-height: 24px;
+  text-align: center;
+  background: transparent;
+  border-radius: @border-radius-sm;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: @item-hover-bg;
+    cursor: pointer;
+  }
+}
+
+.@{calendar-prefix-cls}-year-panel-selected-cell .@{calendar-prefix-cls}-year-panel-year {
+  color: @text-color-inverse;
+  background: @primary-color;
+
+  &:hover {
+    color: @text-color-inverse;
+    background: @primary-color;
+  }
+}
+
+.@{calendar-prefix-cls}-year-panel-last-decade-cell,
+.@{calendar-prefix-cls}-year-panel-next-decade-cell {
+  .@{calendar-prefix-cls}-year-panel-year {
+    color: @disabled-color;
+    user-select: none;
+  }
+}
+
+.@{calendar-prefix-cls}-decade-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-picker-panel;
+  display: flex;
+  flex-direction: column;
+  background: @component-background;
+  border-radius: @border-radius-base;
+  outline: none;
+}
+
+.@{calendar-prefix-cls}-decade-panel-hidden {
+  display: none;
+}
+
+.@{calendar-prefix-cls}-decade-panel-header {
+  .calendarPanelHeader(~'@{calendar-prefix-cls}-decade-panel');
+}
+
+.@{calendar-prefix-cls}-decade-panel-body {
+  flex: 1;
+}
+
+.@{calendar-prefix-cls}-decade-panel-footer {
+  border-top: @border-width-base @border-style-base @border-color-split;
+  .@{calendar-prefix-cls}-footer-extra {
+    padding: 0 12px;
+  }
+}
+
+.@{calendar-prefix-cls}-decade-panel-table {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+}
+
+.@{calendar-prefix-cls}-decade-panel-cell {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.@{calendar-prefix-cls}-decade-panel-decade {
+  display: inline-block;
+  height: 24px;
+  margin: 0 auto;
+  padding: 0 6px;
+  color: @text-color;
+  line-height: 24px;
+  text-align: center;
+  background: transparent;
+  border-radius: @border-radius-sm;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: @item-hover-bg;
+    cursor: pointer;
+  }
+}
+
+.@{calendar-prefix-cls}-decade-panel-selected-cell .@{calendar-prefix-cls}-decade-panel-decade {
+  color: @text-color-inverse;
+  background: @primary-color;
+
+  &:hover {
+    color: @text-color-inverse;
+    background: @primary-color;
+  }
+}
+
+.@{calendar-prefix-cls}-decade-panel-last-century-cell,
+.@{calendar-prefix-cls}-decade-panel-next-century-cell {
+  .@{calendar-prefix-cls}-decade-panel-decade {
+    color: @disabled-color;
+    user-select: none;
+  }
+}
+
+.@{calendar-prefix-cls}-month {
+  .@{calendar-prefix-cls}-month-header-wrap {
+    position: relative;
+    height: 288px;
+  }
+  .@{calendar-prefix-cls}-month-panel,
+  .@{calendar-prefix-cls}-year-panel {
+    top: 0;
+    height: 100%;
+  }
+}
+
+.@{calendar-prefix-cls}-week-number {
+  &-cell {
+    opacity: 0.5;
+  }
+  .@{calendar-prefix-cls}-body tr {
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      background: @primary-1;
+    }
+    &.@{calendar-prefix-cls}-active-week {
+      font-weight: bold;
+      background: @primary-2;
+    }
+    .@{calendar-prefix-cls}-selected-day .@{calendar-prefix-cls}-date,
+    .@{calendar-prefix-cls}-selected-day:hover .@{calendar-prefix-cls}-date {
+      color: @text-color;
+      background: transparent;
+    }
+  }
+}
+
 @divider-prefix-cls: ~'@{ant-prefix}-divider';
 
 .@{divider-prefix-cls} {
@@ -9105,6 +10158,201 @@ textarea.cdk-textarea-autosize-measuring {
     &::after {
       border-style: dashed none none;
     }
+  }
+}
+
+// Preserve the typo for compatibility
+// https://github.com/ant-design/ant-design/issues/14628
+@dawer-prefix-cls: ~'@{ant-prefix}-drawer';
+
+@drawer-prefix-cls: @dawer-prefix-cls;
+
+.@{drawer-prefix-cls} {
+  position: fixed;
+  top: 0;
+  z-index: @zindex-modal;
+  width: 0%;
+  height: 100%;
+  > * {
+    transition: transform @animation-duration-slow @ease-base-in;
+  }
+
+  &-content-wrapper {
+    position: fixed;
+  }
+  .@{drawer-prefix-cls}-content {
+    width: 100%;
+    height: 100%;
+  }
+  &-left,
+  &-right {
+    width: 0%;
+    height: 100%;
+    .@{drawer-prefix-cls}-content-wrapper {
+      height: 100%;
+    }
+    &.@{drawer-prefix-cls}-open {
+      width: 100%;
+    }
+    &.@{drawer-prefix-cls}-open.no-mask {
+      width: 0%;
+    }
+  }
+  &-left {
+    &.@{drawer-prefix-cls}-open {
+      .@{drawer-prefix-cls}-content-wrapper {
+        box-shadow: @shadow-1-right;
+      }
+    }
+  }
+  &-right {
+    .@{drawer-prefix-cls} {
+      &-content-wrapper {
+        right: 0;
+      }
+    }
+    &.@{drawer-prefix-cls}-open {
+      .@{drawer-prefix-cls}-content-wrapper {
+        box-shadow: @shadow-1-left;
+      }
+    }
+  }
+
+  &-top,
+  &-bottom {
+    width: 100%;
+    height: 0%;
+    .@{drawer-prefix-cls}-content-wrapper {
+      width: 100%;
+    }
+    &.@{drawer-prefix-cls}-open {
+      height: 100%;
+    }
+    &.@{drawer-prefix-cls}-open.no-mask {
+      height: 0%;
+    }
+  }
+  &-top {
+    &.@{drawer-prefix-cls}-open {
+      .@{drawer-prefix-cls}-content-wrapper {
+        box-shadow: @shadow-1-down;
+      }
+    }
+  }
+  &-bottom {
+    .@{drawer-prefix-cls} {
+      &-content-wrapper {
+        bottom: 0;
+      }
+    }
+    &.@{drawer-prefix-cls}-open {
+      .@{drawer-prefix-cls}-content-wrapper {
+        box-shadow: @shadow-1-up;
+      }
+    }
+  }
+  &.@{drawer-prefix-cls}-open {
+    .@{drawer-prefix-cls} {
+      &-mask {
+        height: 100%;
+        opacity: 0.3;
+        transition: none;
+        animation: antdDrawerFadeIn @animation-duration-slow @ease-base-out;
+      }
+    }
+  }
+
+  &-title {
+    margin: 0;
+    color: @heading-color;
+    font-weight: 500;
+    font-size: @font-size-lg;
+    line-height: 22px;
+  }
+
+  &-content {
+    position: relative;
+    z-index: 1;
+    background-color: @component-background;
+    background-clip: padding-box;
+    border: 0;
+  }
+
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: @zindex-popup-close;
+    display: block;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    color: @text-color-secondary;
+    font-weight: 700;
+    font-size: @font-size-lg;
+    font-style: normal;
+    line-height: 56px;
+    text-align: center;
+    text-transform: none;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: color @animation-duration-slow;
+    text-rendering: auto;
+
+    &:focus,
+    &:hover {
+      color: @icon-color-hover;
+      text-decoration: none;
+    }
+  }
+
+  &-header {
+    position: relative;
+    padding: 16px 24px;
+    color: @text-color;
+    background: @component-background;
+    border-bottom: @border-width-base @border-style-base @border-color-split;
+    border-radius: @border-radius-base @border-radius-base 0 0;
+  }
+
+  &-header-no-title {
+    color: @text-color;
+    background: @component-background;
+  }
+
+  &-body {
+    padding: 24px;
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+    word-wrap: break-word;
+  }
+
+  &-mask {
+    position: fixed;
+    width: 100%;
+    height: 0;
+    background-color: @modal-mask-bg;
+    opacity: 0;
+    filter: ~'alpha(opacity=50)';
+    transition: opacity @animation-duration-slow linear, height 0s ease @animation-duration-slow;
+  }
+  &-open {
+    transition: transform @animation-duration-slow @ease-base-out;
+    &-content {
+      box-shadow: @shadow-2;
+    }
+  }
+}
+
+@keyframes antdDrawerFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.3;
   }
 }
 
@@ -9351,6 +10599,158 @@ textarea.cdk-textarea-autosize-measuring {
       background: @primary-color;
     }
   }
+}
+
+@empty-prefix-cls: ~'@{ant-prefix}-empty';
+
+.@{empty-prefix-cls} {
+  margin: 0 8px;
+  font-size: @empty-font-size;
+  line-height: 22px;
+  text-align: center;
+
+  &-image {
+    height: 100px;
+    margin-bottom: 8px;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  &-description {
+    margin: 0;
+  }
+
+  &-footer {
+    margin-top: 16px;
+  }
+
+  // antd internal empty style
+  &-small {
+    margin: 8px 0;
+
+    .@{empty-prefix-cls}-image {
+      height: 35px;
+    }
+  }
+
+  &-normal {
+    margin: 32px 0;
+
+    .@{empty-prefix-cls}-image {
+      height: 40px;
+    }
+  }
+}
+
+// Patch for popup adjust
+.@{ant-prefix}-select-dropdown--multiple .@{ant-prefix}-select-dropdown-menu-item {
+  .@{empty-prefix-cls}-small {
+    margin-left: @control-padding-horizontal + 20;
+  }
+}
+
+// mixins for grid system
+// ------------------------
+.make-row(@gutter: @grid-gutter-width) {
+  position: relative;
+  height: auto;
+  margin-right: (@gutter / -2);
+  margin-left: (@gutter / -2);
+  .clearfix;
+}
+
+.make-grid-columns() {
+  .col(@index) {
+    @item: ~'.@{ant-prefix}-col-@{index}, .@{ant-prefix}-col-xs-@{index}, .@{ant-prefix}-col-sm-@{index}, .@{ant-prefix}-col-md-@{index}, .@{ant-prefix}-col-lg-@{index}';
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) {
+    @item: ~'.@{ant-prefix}-col-@{index}, .@{ant-prefix}-col-xs-@{index}, .@{ant-prefix}-col-sm-@{index}, .@{ant-prefix}-col-md-@{index}, .@{ant-prefix}-col-lg-@{index}';
+    .col((@index + 1), ~'@{list}, @{item}');
+  }
+  .col(@index, @list) when (@index > @grid-columns) {
+    @{list} {
+      position: relative;
+      // Prevent columns from collapsing when empty
+      min-height: 1px;
+      padding-right: (@grid-gutter-width / 2);
+      padding-left: (@grid-gutter-width / 2);
+    }
+  }
+  .col(1);
+}
+
+.float-grid-columns(@class) {
+  .col(@index) {
+    // initial
+    @item: ~'.@{ant-prefix}-col@{class}-@{index}';
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) {
+    // general
+    @item: ~'.@{ant-prefix}-col@{class}-@{index}';
+    .col((@index + 1), ~'@{list}, @{item}');
+  }
+  .col(@index, @list) when (@index > @grid-columns) {
+    // terminal
+    @{list} {
+      flex: 0 0 auto;
+      float: left;
+    }
+  }
+  .col(1); // kickstart it
+}
+
+.loop-grid-columns(@index, @class) when (@index > 0) {
+  .@{ant-prefix}-col@{class}-@{index} {
+    display: block;
+    box-sizing: border-box;
+    width: percentage((@index / @grid-columns));
+  }
+  .@{ant-prefix}-col@{class}-push-@{index} {
+    left: percentage((@index / @grid-columns));
+  }
+  .@{ant-prefix}-col@{class}-pull-@{index} {
+    right: percentage((@index / @grid-columns));
+  }
+  .@{ant-prefix}-col@{class}-offset-@{index} {
+    margin-left: percentage((@index / @grid-columns));
+  }
+  .@{ant-prefix}-col@{class}-order-@{index} {
+    order: @index;
+  }
+  .loop-grid-columns((@index - 1), @class);
+}
+
+.loop-grid-columns(@index, @class) when (@index = 0) {
+  .@{ant-prefix}-col@{class}-@{index} {
+    display: none;
+  }
+  .@{ant-prefix}-col-push-@{index} {
+    left: auto;
+  }
+  .@{ant-prefix}-col-pull-@{index} {
+    right: auto;
+  }
+  .@{ant-prefix}-col@{class}-push-@{index} {
+    left: auto;
+  }
+  .@{ant-prefix}-col@{class}-pull-@{index} {
+    right: auto;
+  }
+  .@{ant-prefix}-col@{class}-offset-@{index} {
+    margin-left: 0;
+  }
+  .@{ant-prefix}-col@{class}-order-@{index} {
+    order: 0;
+  }
+}
+
+.make-grid(@class: ~'') {
+  .float-grid-columns(@class);
+  .loop-grid-columns(@grid-columns, @class);
 }
 
 .form-control-validation(@text-color: @input-color; @border-color: @input-border-color; @background-color: @input-bg) {
@@ -10139,6 +11539,119 @@ form {
   }
 }
 
+// Grid system
+.@{ant-prefix}-row {
+  .make-row();
+  display: block;
+  box-sizing: border-box;
+}
+
+.@{ant-prefix}-row-flex {
+  display: flex;
+  flex-flow: row wrap;
+
+  &::before,
+  &::after {
+    display: flex;
+  }
+}
+
+// x轴原点
+.@{ant-prefix}-row-flex-start {
+  justify-content: flex-start;
+}
+
+// x轴居中
+.@{ant-prefix}-row-flex-center {
+  justify-content: center;
+}
+
+// x轴反方向
+.@{ant-prefix}-row-flex-end {
+  justify-content: flex-end;
+}
+
+// x轴平分
+.@{ant-prefix}-row-flex-space-between {
+  justify-content: space-between;
+}
+
+// x轴有间隔地平分
+.@{ant-prefix}-row-flex-space-around {
+  justify-content: space-around;
+}
+
+// 顶部对齐
+.@{ant-prefix}-row-flex-top {
+  align-items: flex-start;
+}
+
+// 居中对齐
+.@{ant-prefix}-row-flex-middle {
+  align-items: center;
+}
+
+// 底部对齐
+.@{ant-prefix}-row-flex-bottom {
+  align-items: flex-end;
+}
+
+.@{ant-prefix}-col {
+  position: relative;
+  display: block;
+}
+
+.make-grid-columns();
+.make-grid();
+
+// Extra small grid
+//
+// Columns, offsets, pushes, and pulls for extra small devices like
+// smartphones.
+
+.make-grid(-xs);
+
+// Small grid
+//
+// Columns, offsets, pushes, and pulls for the small device range, from phones
+// to tablets.
+
+@media (min-width: @screen-sm-min) {
+  .make-grid(-sm);
+}
+
+// Medium grid
+//
+// Columns, offsets, pushes, and pulls for the desktop device range.
+
+@media (min-width: @screen-md-min) {
+  .make-grid(-md);
+}
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@media (min-width: @screen-lg-min) {
+  .make-grid(-lg);
+}
+
+// Extra Large grid
+//
+// Columns, offsets, pushes, and pulls for the full hd device range.
+
+@media (min-width: @screen-xl-min) {
+  .make-grid(-xl);
+}
+
+// Extra Extra Large grid
+//
+// Columns, offsets, pushes, and pulls for the full hd device range.
+
+@media (min-width: @screen-xxl-min) {
+  .make-grid(-xxl);
+}
+
 // Input styles
 .@{ant-prefix}-input {
   .reset-component;
@@ -10793,6 +12306,133 @@ form {
   }
 }
 
+@mention-prefix-cls: ~'@{ant-prefix}-mention';
+
+.@{mention-prefix-cls}-wrapper {
+  .reset-component;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+
+  .@{mention-prefix-cls}-editor {
+    .input;
+    display: block;
+    height: auto; // To override height in .input mixin
+    min-height: @input-height-base;
+    padding: 0;
+    line-height: @line-height-base;
+    &-wrapper {
+      height: auto;
+      overflow-y: auto;
+    }
+  }
+  &.@{mention-prefix-cls}-active:not(.disabled) .@{mention-prefix-cls}-editor {
+    .active;
+  }
+  &.disabled .@{mention-prefix-cls}-editor {
+    .disabled();
+  }
+  .public-DraftEditorPlaceholder-root {
+    position: absolute;
+    pointer-events: none;
+    .public-DraftEditorPlaceholder-inner {
+      height: auto;
+      padding: 5px @control-padding-horizontal - 1px;
+      color: @input-placeholder-color;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      outline: none;
+      opacity: 1;
+    }
+  }
+  .DraftEditor-editorContainer .public-DraftEditor-content {
+    height: auto;
+    padding: 5px @control-padding-horizontal - 1px;
+  }
+}
+
+.@{mention-prefix-cls}-dropdown {
+  .reset-component;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  z-index: @zindex-dropdown;
+  min-width: 120px;
+  max-height: 250px;
+  margin-top: 1.5em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: @component-background;
+  border-radius: @border-radius-base;
+  outline: none;
+  box-shadow: @box-shadow-base;
+
+  &-placement-top {
+    margin-top: -0.1em;
+  }
+
+  &-notfound&-item {
+    color: @disabled-color;
+
+    .@{iconfont-css-prefix}-loading {
+      display: block;
+      color: @primary-color;
+      text-align: center;
+    }
+  }
+  &-item {
+    position: relative;
+    display: block;
+    padding: 5px @control-padding-horizontal;
+    overflow: hidden;
+    color: @text-color;
+    font-weight: normal;
+    line-height: 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: @item-hover-bg;
+    }
+
+    &.focus,
+    &-active {
+      background-color: @item-active-bg;
+    }
+
+    &-disabled {
+      color: @disabled-color;
+      cursor: not-allowed;
+
+      &:hover {
+        color: @disabled-color;
+        background-color: @component-background;
+        cursor: not-allowed;
+      }
+    }
+
+    &-selected {
+      &,
+      &:hover {
+        color: @text-color;
+        font-weight: bold;
+        background-color: @background-color-base;
+      }
+    }
+
+    &-divider {
+      height: 1px;
+      margin: 1px 0;
+      overflow: hidden;
+      line-height: 0;
+      background-color: @border-color-split;
+    }
+  }
+}
+
 @menu-prefix-cls: ~'@{ant-prefix}-menu';
 
 // default theme
@@ -11417,133 +13057,6 @@ form {
           background: @disabled-color-dark !important;
         }
       }
-    }
-  }
-}
-
-@mention-prefix-cls: ~'@{ant-prefix}-mention';
-
-.@{mention-prefix-cls}-wrapper {
-  .reset-component;
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  vertical-align: middle;
-
-  .@{mention-prefix-cls}-editor {
-    .input;
-    display: block;
-    height: auto; // To override height in .input mixin
-    min-height: @input-height-base;
-    padding: 0;
-    line-height: @line-height-base;
-    &-wrapper {
-      height: auto;
-      overflow-y: auto;
-    }
-  }
-  &.@{mention-prefix-cls}-active:not(.disabled) .@{mention-prefix-cls}-editor {
-    .active;
-  }
-  &.disabled .@{mention-prefix-cls}-editor {
-    .disabled();
-  }
-  .public-DraftEditorPlaceholder-root {
-    position: absolute;
-    pointer-events: none;
-    .public-DraftEditorPlaceholder-inner {
-      height: auto;
-      padding: 5px @control-padding-horizontal - 1px;
-      color: @input-placeholder-color;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      outline: none;
-      opacity: 1;
-    }
-  }
-  .DraftEditor-editorContainer .public-DraftEditor-content {
-    height: auto;
-    padding: 5px @control-padding-horizontal - 1px;
-  }
-}
-
-.@{mention-prefix-cls}-dropdown {
-  .reset-component;
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-  z-index: @zindex-dropdown;
-  min-width: 120px;
-  max-height: 250px;
-  margin-top: 1.5em;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-color: @component-background;
-  border-radius: @border-radius-base;
-  outline: none;
-  box-shadow: @box-shadow-base;
-
-  &-placement-top {
-    margin-top: -0.1em;
-  }
-
-  &-notfound&-item {
-    color: @disabled-color;
-
-    .@{iconfont-css-prefix}-loading {
-      display: block;
-      color: @primary-color;
-      text-align: center;
-    }
-  }
-  &-item {
-    position: relative;
-    display: block;
-    padding: 5px @control-padding-horizontal;
-    overflow: hidden;
-    color: @text-color;
-    font-weight: normal;
-    line-height: 22px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    cursor: pointer;
-    transition: background 0.3s;
-
-    &:hover {
-      background-color: @item-hover-bg;
-    }
-
-    &.focus,
-    &-active {
-      background-color: @item-active-bg;
-    }
-
-    &-disabled {
-      color: @disabled-color;
-      cursor: not-allowed;
-
-      &:hover {
-        color: @disabled-color;
-        background-color: @component-background;
-        cursor: not-allowed;
-      }
-    }
-
-    &-selected {
-      &,
-      &:hover {
-        color: @text-color;
-        font-weight: bold;
-        background-color: @background-color-base;
-      }
-    }
-
-    &-divider {
-      height: 1px;
-      margin: 1px 0;
-      overflow: hidden;
-      line-height: 0;
-      background-color: @border-color-split;
     }
   }
 }
@@ -13739,6 +15252,132 @@ span.@{radio-prefix-cls} + * {
   }
 }
 
+@skeleton-prefix-cls: ~'@{ant-prefix}-skeleton';
+@skeleton-avatar-prefix-cls: ~'@{skeleton-prefix-cls}-avatar';
+@skeleton-title-prefix-cls: ~'@{skeleton-prefix-cls}-title';
+@skeleton-paragraph-prefix-cls: ~'@{skeleton-prefix-cls}-paragraph';
+
+@skeleton-to-color: shade(@skeleton-color, 5%);
+
+.@{skeleton-prefix-cls} {
+  display: table;
+  width: 100%;
+
+  &-header {
+    display: table-cell;
+    padding-right: 16px;
+    vertical-align: top;
+
+    // Avatar
+    .@{skeleton-avatar-prefix-cls} {
+      display: inline-block;
+      vertical-align: top;
+      background: @skeleton-color;
+
+      .avatar-size(@avatar-size-base);
+
+      &-lg {
+        .avatar-size(@avatar-size-lg);
+      }
+
+      &-sm {
+        .avatar-size(@avatar-size-sm);
+      }
+    }
+  }
+
+  &-content {
+    display: table-cell;
+    width: 100%;
+    vertical-align: top;
+
+    // Title
+    .@{skeleton-title-prefix-cls} {
+      width: 100%;
+      height: 16px;
+      margin-top: 16px;
+      background: @skeleton-color;
+
+      + .@{skeleton-paragraph-prefix-cls} {
+        margin-top: 24px;
+      }
+    }
+
+    // paragraph
+    .@{skeleton-paragraph-prefix-cls} {
+      > li {
+        width: 100%;
+        height: 16px;
+        list-style: none;
+        background: @skeleton-color;
+
+        &:last-child:not(:first-child):not(:nth-child(2)) {
+          width: 61%;
+        }
+
+        + li {
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+
+  &-with-avatar &-content {
+    // Title
+    .@{skeleton-title-prefix-cls} {
+      margin-top: 12px;
+
+      + .@{skeleton-paragraph-prefix-cls} {
+        margin-top: 28px;
+      }
+    }
+  }
+
+  // With active animation
+  &.@{skeleton-prefix-cls}-active {
+    & .@{skeleton-prefix-cls}-content {
+      .@{skeleton-title-prefix-cls},
+      .@{skeleton-paragraph-prefix-cls} > li {
+        .skeleton-color();
+      }
+    }
+
+    .@{skeleton-avatar-prefix-cls} {
+      .skeleton-color();
+    }
+  }
+}
+
+.avatar-size(@size) {
+  width: @size;
+  height: @size;
+  line-height: @size;
+
+  &.@{skeleton-avatar-prefix-cls}-circle {
+    border-radius: 50%;
+  }
+}
+
+.skeleton-color() {
+  background: linear-gradient(
+    90deg,
+    @skeleton-color 25%,
+    @skeleton-to-color 37%,
+    @skeleton-color 63%
+  );
+  background-size: 400% 100%;
+  animation: ~'@{skeleton-prefix-cls}-loading' 1.4s ease infinite;
+}
+
+@keyframes ~"@{skeleton-prefix-cls}-loading" {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
 @slider-prefix-cls: ~'@{ant-prefix}-slider';
 
 .@{slider-prefix-cls} {
@@ -14133,6 +15772,42 @@ span.@{radio-prefix-cls} + * {
 @keyframes antRotate {
   to {
     transform: rotate(405deg);
+  }
+}
+
+@statistic-prefix-cls: ~'@{ant-prefix}-statistic';
+
+.@{statistic-prefix-cls} {
+  .reset-component;
+
+  &-title {
+    margin-bottom: 4px;
+    font-size: @statistic-title-font-size;
+  }
+
+  &-content {
+    font-size: @statistic-content-font-size;
+    font-family: @statistic-font-family;
+
+    &-value {
+      &-decimal {
+        font-size: @statistic-unit-font-size;
+      }
+    }
+
+    &-prefix,
+    &-suffix {
+      display: inline-block;
+    }
+
+    &-prefix {
+      margin-right: 4px;
+    }
+
+    &-suffix {
+      margin-left: 4px;
+      font-size: @statistic-unit-font-size;
+    }
   }
 }
 
@@ -17007,6 +18682,556 @@ span.@{radio-prefix-cls} + * {
   }
 }
 
+@tree-prefix-cls: ~'@{ant-prefix}-tree';
+@tree-select-prefix-cls: ~'@{ant-prefix}-select';
+
+.antTreeSwitcherIcon(@type: 'tree-default-open-icon') {
+  .@{tree-prefix-cls}-switcher-icon,
+  .@{tree-select-prefix-cls}-switcher-icon {
+    .iconfont-size-under-12px(10px);
+    display: inline-block;
+    font-weight: bold;
+    svg {
+      transition: transform 0.3s;
+    }
+  }
+}
+
+.antTreeShowLineIcon(@type) {
+  .@{tree-prefix-cls}-switcher-icon,
+  .@{tree-select-prefix-cls}-switcher-icon {
+    display: inline-block;
+    font-weight: normal;
+    font-size: 12px;
+    svg {
+      transition: transform 0.3s;
+    }
+  }
+}
+
+@tree-prefix-cls: ~'@{ant-prefix}-tree';
+
+.@{tree-prefix-cls} {
+  &.@{tree-prefix-cls}-directory {
+    position: relative;
+
+    // Stretch selector width
+    > li,
+    .@{tree-prefix-cls}-child-tree > li {
+      span {
+        &.@{tree-prefix-cls}-switcher {
+          position: relative;
+          z-index: 1;
+
+          &.@{tree-prefix-cls}-switcher-noop {
+            pointer-events: none;
+          }
+        }
+
+        &.@{tree-prefix-cls}-checkbox {
+          position: relative;
+          z-index: 1;
+        }
+
+        &.@{tree-prefix-cls}-node-content-wrapper {
+          border-radius: 0;
+          user-select: none;
+
+          &:hover {
+            background: transparent;
+
+            &::before {
+              background: @item-hover-bg;
+            }
+          }
+
+          &.@{tree-prefix-cls}-node-selected {
+            color: @tree-directory-selected-color;
+            background: transparent;
+          }
+
+          &::before {
+            position: absolute;
+            right: 0;
+            left: 0;
+            height: @tree-title-height;
+            transition: all 0.3s;
+            content: '';
+          }
+
+          > span {
+            position: relative;
+            z-index: 1;
+          }
+        }
+      }
+
+      &.@{tree-prefix-cls}-treenode-selected {
+        > span {
+          &.@{tree-prefix-cls}-switcher {
+            color: @tree-directory-selected-color;
+          }
+
+          &.@{tree-prefix-cls}-checkbox {
+            .@{tree-prefix-cls}-checkbox-inner {
+              border-color: @primary-color;
+            }
+
+            &.@{tree-prefix-cls}-checkbox-checked {
+              &::after {
+                border-color: @checkbox-check-color;
+              }
+
+              .@{tree-prefix-cls}-checkbox-inner {
+                background: @checkbox-check-color;
+
+                &::after {
+                  border-color: @primary-color;
+                }
+              }
+            }
+          }
+
+          &.@{tree-prefix-cls}-node-content-wrapper {
+            &::before {
+              background: @tree-directory-selected-bg;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@tree-prefix-cls: ~'@{ant-prefix}-tree';
+@tree-showline-icon-color: @text-color-secondary;
+@tree-node-padding: 4px;
+
+.antCheckboxFn(@checkbox-prefix-cls: ~'@{ant-prefix}-tree-checkbox');
+
+.@{tree-prefix-cls} {
+  .reset-component;
+  margin: 0;
+  padding: 0;
+
+  ol,
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin: 0;
+    padding: @tree-node-padding 0;
+    white-space: nowrap;
+    list-style: none;
+    outline: 0;
+    span[draggable],
+    span[draggable='true'] {
+      line-height: @tree-title-height - 4px;
+      border-top: 2px transparent solid;
+      border-bottom: 2px transparent solid;
+      user-select: none;
+      /* Required to make elements draggable in old WebKit */
+      -khtml-user-drag: element;
+      -webkit-user-drag: element;
+    }
+    &.drag-over {
+      > span[draggable] {
+        color: white;
+        background-color: @primary-color;
+        opacity: 0.8;
+      }
+    }
+    &.drag-over-gap-top {
+      > span[draggable] {
+        border-top-color: @primary-color;
+      }
+    }
+    &.drag-over-gap-bottom {
+      > span[draggable] {
+        border-bottom-color: @primary-color;
+      }
+    }
+    &.filter-node {
+      > span {
+        color: @highlight-color !important;
+        font-weight: 500 !important;
+      }
+    }
+
+    // When node is loading
+    &.@{tree-prefix-cls}-treenode-loading {
+      span {
+        &.@{tree-prefix-cls}-switcher {
+          &.@{tree-prefix-cls}-switcher_open,
+          &.@{tree-prefix-cls}-switcher_close {
+            .@{tree-prefix-cls}-switcher-loading-icon {
+              position: absolute;
+              left: 0;
+              display: inline-block;
+              width: 24px;
+              height: 24px;
+              color: @primary-color;
+              font-size: 14px;
+              transform: none;
+              svg {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: auto;
+              }
+            }
+
+            :root &::after {
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0 0 0 @tree-child-padding;
+    }
+    .@{tree-prefix-cls}-node-content-wrapper {
+      display: inline-block;
+      height: @tree-title-height;
+      margin: 0;
+      padding: 0 5px;
+      color: @text-color;
+      line-height: @tree-title-height;
+      text-decoration: none;
+      vertical-align: top;
+      border-radius: @border-radius-sm;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        background-color: @item-hover-bg;
+      }
+      &.@{tree-prefix-cls}-node-selected {
+        background-color: @primary-2;
+      }
+    }
+    span {
+      &.@{tree-prefix-cls}-checkbox {
+        margin: 4px 4px 0 2px;
+      }
+      &.@{tree-prefix-cls}-switcher,
+      &.@{tree-prefix-cls}-iconEle {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin: 0;
+        line-height: @tree-title-height;
+        text-align: center;
+        vertical-align: top;
+        border: 0 none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      &.@{tree-prefix-cls}-switcher {
+        position: relative;
+
+        &.@{tree-prefix-cls}-switcher-noop {
+          cursor: default;
+        }
+        &.@{tree-prefix-cls}-switcher_open {
+          .antTreeSwitcherIcon();
+        }
+        &.@{tree-prefix-cls}-switcher_close {
+          .antTreeSwitcherIcon();
+          .@{tree-prefix-cls}-switcher-icon {
+            svg {
+              transform: rotate(-90deg);
+            }
+          }
+        }
+      }
+    }
+    &:last-child > span {
+      &.@{tree-prefix-cls}-switcher,
+      &.@{tree-prefix-cls}-iconEle {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  > li {
+    &:first-child {
+      padding-top: 7px;
+    }
+    &:last-child {
+      padding-bottom: 7px;
+    }
+  }
+  &-child-tree {
+    display: none;
+    &-open {
+      display: block;
+    }
+
+    // https://github.com/ant-design/ant-design/issues/14958
+    > li {
+      // Provide additional padding between top child node and parent node
+      &:first-child {
+        padding-top: 2 * @tree-node-padding;
+      }
+
+      // Hide additional padding between last child node and next parent node
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+  li&-treenode-disabled {
+    > span:not(.@{tree-prefix-cls}-switcher),
+    > .@{tree-prefix-cls}-node-content-wrapper,
+    > .@{tree-prefix-cls}-node-content-wrapper span {
+      color: @disabled-color;
+      cursor: not-allowed;
+    }
+    > .@{tree-prefix-cls}-node-content-wrapper:hover {
+      background: transparent;
+    }
+  }
+  &-icon__open {
+    margin-right: 2px;
+    vertical-align: top;
+  }
+  &-icon__close {
+    margin-right: 2px;
+    vertical-align: top;
+  }
+  // Tree with line
+  &&-show-line {
+    li {
+      position: relative;
+      span {
+        &.@{tree-prefix-cls}-switcher {
+          color: @tree-showline-icon-color;
+          background: @component-background;
+          &.@{tree-prefix-cls}-switcher-noop {
+            .antTreeShowLineIcon('tree-doc-icon');
+          }
+          &.@{tree-prefix-cls}-switcher_open {
+            .antTreeShowLineIcon('tree-showline-open-icon');
+          }
+          &.@{tree-prefix-cls}-switcher_close {
+            .antTreeShowLineIcon('tree-showline-close-icon');
+          }
+        }
+      }
+    }
+    li:not(:last-child)::before {
+      position: absolute;
+      left: 12px;
+      width: 1px;
+      height: 100%;
+      margin: 22px 0;
+      border-left: 1px solid @border-color-base;
+      content: ' ';
+    }
+  }
+
+  &.@{tree-prefix-cls}-icon-hide {
+    .@{tree-prefix-cls}-treenode-loading {
+      .@{tree-prefix-cls}-iconEle {
+        display: none;
+      }
+    }
+  }
+}
+
+@select-prefix-cls: ~'@{ant-prefix}-select';
+@select-tree-prefix-cls: ~'@{ant-prefix}-select-tree';
+
+.antCheckboxFn(@checkbox-prefix-cls: ~'@{ant-prefix}-select-tree-checkbox');
+
+.@{select-tree-prefix-cls} {
+  .reset-component;
+  margin: 0;
+  margin-top: -4px;
+  padding: 0 4px;
+  li {
+    margin: 8px 0;
+    padding: 0;
+    white-space: nowrap;
+    list-style: none;
+    outline: 0;
+    &.filter-node {
+      > span {
+        font-weight: 500;
+      }
+    }
+    ul {
+      margin: 0;
+      padding: 0 0 0 18px;
+    }
+    .@{select-tree-prefix-cls}-node-content-wrapper {
+      display: inline-block;
+      width: ~'calc(100% - 24px)';
+      margin: 0;
+      padding: 3px 5px;
+      color: @text-color;
+      text-decoration: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        background-color: @item-hover-bg;
+      }
+      &.@{select-tree-prefix-cls}-node-selected {
+        background-color: @primary-2;
+      }
+    }
+    span {
+      &.@{select-tree-prefix-cls}-checkbox {
+        margin: 0 4px 0 0;
+        + .@{select-tree-prefix-cls}-node-content-wrapper {
+          width: ~'calc(100% - 46px)';
+        }
+      }
+      &.@{select-tree-prefix-cls}-switcher,
+      &.@{select-tree-prefix-cls}-iconEle {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin: 0;
+        line-height: 22px;
+        text-align: center;
+        vertical-align: middle;
+        border: 0 none;
+        outline: none;
+        cursor: pointer;
+      }
+      &.@{select-prefix-cls}-icon_loading {
+        .@{select-prefix-cls}-switcher-loading-icon {
+          position: absolute;
+          left: 0;
+          display: inline-block;
+          color: @primary-color;
+          font-size: 14px;
+          transform: none;
+          svg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+          }
+        }
+      }
+      &.@{select-tree-prefix-cls}-switcher {
+        position: relative;
+        &.@{select-tree-prefix-cls}-switcher-noop {
+          cursor: auto;
+        }
+        &.@{select-tree-prefix-cls}-switcher_open {
+          .antTreeSwitcherIcon();
+        }
+        &.@{select-tree-prefix-cls}-switcher_close {
+          .antTreeSwitcherIcon();
+          .@{select-prefix-cls}-switcher-icon {
+            svg {
+              transform: rotate(-90deg);
+            }
+          }
+        }
+
+        &.@{select-tree-prefix-cls}-switcher_open,
+        &.@{select-tree-prefix-cls}-switcher_close {
+          .@{select-prefix-cls}-switcher-loading-icon {
+            position: absolute;
+            left: 0;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            color: @primary-color;
+            font-size: 14px;
+            transform: none;
+            svg {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              margin: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .@{select-tree-prefix-cls}-treenode-loading {
+    .@{select-tree-prefix-cls}-iconEle {
+      display: none;
+    }
+  }
+  &-child-tree {
+    display: none;
+    &-open {
+      display: block;
+    }
+  }
+  li&-treenode-disabled {
+    > span:not(.@{select-tree-prefix-cls}-switcher),
+    > .@{select-tree-prefix-cls}-node-content-wrapper,
+    > .@{select-tree-prefix-cls}-node-content-wrapper span {
+      color: @disabled-color;
+      cursor: not-allowed;
+    }
+    > .@{select-tree-prefix-cls}-node-content-wrapper:hover {
+      background: transparent;
+    }
+  }
+  &-icon__open {
+    margin-right: 2px;
+    vertical-align: top;
+  }
+  &-icon__close {
+    margin-right: 2px;
+    vertical-align: top;
+  }
+}
+
+.@{select-prefix-cls}-tree-dropdown {
+  .reset-component;
+  .@{select-prefix-cls}-dropdown-search {
+    display: block;
+    padding: 4px;
+    .@{select-prefix-cls}-search__field__wrap {
+      width: 100%;
+    }
+    .@{select-prefix-cls}-search__field {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 4px 7px;
+      border: @border-width-base @border-style-base @border-color-base;
+      border-radius: 4px;
+      outline: none;
+    }
+    &.@{select-prefix-cls}-search--hide {
+      display: none;
+    }
+  }
+  .@{select-prefix-cls}-not-found {
+    display: block;
+    padding: 7px 16px;
+    color: @disabled-color;
+    cursor: not-allowed;
+  }
+}
+
 @upload-prefix-cls: ~'@{ant-prefix}-upload';
 @upload-item: ~'@{ant-prefix}-upload-list-item';
 @upload-picture-card-size: 104px;
@@ -17476,1874 +19701,64 @@ span.@{radio-prefix-cls} + * {
   }
 }
 
-@input-prefix-cls: ~'@{ant-prefix}-input';
-@select-prefix-cls: ~'@{ant-prefix}-select';
-@autocomplete-prefix-cls: ~'@{select-prefix-cls}-auto-complete';
-
-.@{autocomplete-prefix-cls} {
-  .reset-component;
-
-  &.@{select-prefix-cls} {
-    .@{select-prefix-cls} {
-      &-selection {
-        border: 0;
-        box-shadow: none;
-        &__rendered {
-          height: 100%;
-          margin-right: 0;
-          margin-left: 0;
-          line-height: @input-height-base;
-        }
-        &__placeholder {
-          margin-right: (@input-padding-horizontal-base + 1px);
-          margin-left: (@input-padding-horizontal-base + 1px);
-        }
-
-        &--single {
-          height: auto;
-        }
-      }
-    }
-
-    // Fix https://github.com/ant-design/ant-design/issues/7800
-    .@{select-prefix-cls}-search--inline {
-      position: static;
-      float: left;
-    }
-
-    &-allow-clear {
-      .@{select-prefix-cls}-selection:hover .@{select-prefix-cls}-selection__rendered {
-        margin-right: 0 !important;
-      }
-    }
-
-    .@{input-prefix-cls} {
-      height: @input-height-base;
-      line-height: @line-height-base;
-      background: transparent;
-      border-width: @border-width-base;
-      &:focus,
-      &:hover {
-        .hover;
-      }
-      &[disabled] {
-        .disabled;
-        background-color: transparent;
-      }
-    }
-
-    &-lg {
-      .@{select-prefix-cls}-selection__rendered {
-        line-height: @input-height-lg;
-      }
-      .@{input-prefix-cls} {
-        height: @input-height-lg;
-        padding-top: @input-padding-vertical-lg;
-        padding-bottom: @input-padding-vertical-lg;
-      }
-    }
-
-    &-sm {
-      .@{select-prefix-cls}-selection__rendered {
-        line-height: @input-height-sm;
-      }
-      .@{input-prefix-cls} {
-        height: @input-height-sm;
-        padding-top: @input-padding-vertical-sm;
-        padding-bottom: @input-padding-vertical-sm;
-      }
-    }
-  }
-}
-
-@tree-prefix-cls: ~'@{ant-prefix}-tree';
-@tree-select-prefix-cls: ~'@{ant-prefix}-select';
-
-.antTreeSwitcherIcon(@type: 'tree-default-open-icon') {
-  .@{tree-prefix-cls}-switcher-icon,
-  .@{tree-select-prefix-cls}-switcher-icon {
-    .iconfont-size-under-12px(10px);
-    display: inline-block;
-    font-weight: bold;
-    svg {
-      transition: transform 0.3s;
-    }
-  }
-}
-
-.antTreeShowLineIcon(@type) {
-  .@{tree-prefix-cls}-switcher-icon,
-  .@{tree-select-prefix-cls}-switcher-icon {
-    display: inline-block;
-    font-weight: normal;
-    font-size: 12px;
-    svg {
-      transition: transform 0.3s;
-    }
-  }
-}
-
-@tree-prefix-cls: ~'@{ant-prefix}-tree';
-
-.@{tree-prefix-cls} {
-  &.@{tree-prefix-cls}-directory {
-    position: relative;
-
-    // Stretch selector width
-    > li,
-    .@{tree-prefix-cls}-child-tree > li {
-      span {
-        &.@{tree-prefix-cls}-switcher {
-          position: relative;
-          z-index: 1;
-
-          &.@{tree-prefix-cls}-switcher-noop {
-            pointer-events: none;
-          }
-        }
-
-        &.@{tree-prefix-cls}-checkbox {
-          position: relative;
-          z-index: 1;
-        }
-
-        &.@{tree-prefix-cls}-node-content-wrapper {
-          border-radius: 0;
-          user-select: none;
-
-          &:hover {
-            background: transparent;
-
-            &::before {
-              background: @item-hover-bg;
-            }
-          }
-
-          &.@{tree-prefix-cls}-node-selected {
-            color: @tree-directory-selected-color;
-            background: transparent;
-          }
-
-          &::before {
-            position: absolute;
-            right: 0;
-            left: 0;
-            height: @tree-title-height;
-            transition: all 0.3s;
-            content: '';
-          }
-
-          > span {
-            position: relative;
-            z-index: 1;
-          }
-        }
-      }
-
-      &.@{tree-prefix-cls}-treenode-selected {
-        > span {
-          &.@{tree-prefix-cls}-switcher {
-            color: @tree-directory-selected-color;
-          }
-
-          &.@{tree-prefix-cls}-checkbox {
-            .@{tree-prefix-cls}-checkbox-inner {
-              border-color: @primary-color;
-            }
-
-            &.@{tree-prefix-cls}-checkbox-checked {
-              &::after {
-                border-color: @checkbox-check-color;
-              }
-
-              .@{tree-prefix-cls}-checkbox-inner {
-                background: @checkbox-check-color;
-
-                &::after {
-                  border-color: @primary-color;
-                }
-              }
-            }
-          }
-
-          &.@{tree-prefix-cls}-node-content-wrapper {
-            &::before {
-              background: @tree-directory-selected-bg;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-@tree-prefix-cls: ~'@{ant-prefix}-tree';
-@tree-showline-icon-color: @text-color-secondary;
-@tree-node-padding: 4px;
-
-.antCheckboxFn(@checkbox-prefix-cls: ~'@{ant-prefix}-tree-checkbox');
-
-.@{tree-prefix-cls} {
-  .reset-component;
-  margin: 0;
-  padding: 0;
-
-  ol,
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  li {
-    margin: 0;
-    padding: @tree-node-padding 0;
-    white-space: nowrap;
-    list-style: none;
-    outline: 0;
-    span[draggable],
-    span[draggable='true'] {
-      line-height: @tree-title-height - 4px;
-      border-top: 2px transparent solid;
-      border-bottom: 2px transparent solid;
-      user-select: none;
-      /* Required to make elements draggable in old WebKit */
-      -khtml-user-drag: element;
-      -webkit-user-drag: element;
-    }
-    &.drag-over {
-      > span[draggable] {
-        color: white;
-        background-color: @primary-color;
-        opacity: 0.8;
-      }
-    }
-    &.drag-over-gap-top {
-      > span[draggable] {
-        border-top-color: @primary-color;
-      }
-    }
-    &.drag-over-gap-bottom {
-      > span[draggable] {
-        border-bottom-color: @primary-color;
-      }
-    }
-    &.filter-node {
-      > span {
-        color: @highlight-color !important;
-        font-weight: 500 !important;
-      }
-    }
-
-    // When node is loading
-    &.@{tree-prefix-cls}-treenode-loading {
-      span {
-        &.@{tree-prefix-cls}-switcher {
-          &.@{tree-prefix-cls}-switcher_open,
-          &.@{tree-prefix-cls}-switcher_close {
-            .@{tree-prefix-cls}-switcher-loading-icon {
-              position: absolute;
-              left: 0;
-              display: inline-block;
-              width: 24px;
-              height: 24px;
-              color: @primary-color;
-              font-size: 14px;
-              transform: none;
-              svg {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                margin: auto;
-              }
-            }
-
-            :root &::after {
-              opacity: 0;
-            }
-          }
-        }
-      }
-    }
-
-    ul {
-      margin: 0;
-      padding: 0 0 0 @tree-child-padding;
-    }
-    .@{tree-prefix-cls}-node-content-wrapper {
-      display: inline-block;
-      height: @tree-title-height;
-      margin: 0;
-      padding: 0 5px;
-      color: @text-color;
-      line-height: @tree-title-height;
-      text-decoration: none;
-      vertical-align: top;
-      border-radius: @border-radius-sm;
-      cursor: pointer;
-      transition: all 0.3s;
-      &:hover {
-        background-color: @item-hover-bg;
-      }
-      &.@{tree-prefix-cls}-node-selected {
-        background-color: @primary-2;
-      }
-    }
-    span {
-      &.@{tree-prefix-cls}-checkbox {
-        margin: 4px 4px 0 2px;
-      }
-      &.@{tree-prefix-cls}-switcher,
-      &.@{tree-prefix-cls}-iconEle {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        margin: 0;
-        line-height: @tree-title-height;
-        text-align: center;
-        vertical-align: top;
-        border: 0 none;
-        outline: none;
-        cursor: pointer;
-      }
-
-      &.@{tree-prefix-cls}-switcher {
-        position: relative;
-
-        &.@{tree-prefix-cls}-switcher-noop {
-          cursor: default;
-        }
-        &.@{tree-prefix-cls}-switcher_open {
-          .antTreeSwitcherIcon();
-        }
-        &.@{tree-prefix-cls}-switcher_close {
-          .antTreeSwitcherIcon();
-          .@{tree-prefix-cls}-switcher-icon {
-            svg {
-              transform: rotate(-90deg);
-            }
-          }
-        }
-      }
-    }
-    &:last-child > span {
-      &.@{tree-prefix-cls}-switcher,
-      &.@{tree-prefix-cls}-iconEle {
-        &::before {
-          display: none;
-        }
-      }
-    }
-  }
-
-  > li {
-    &:first-child {
-      padding-top: 7px;
-    }
-    &:last-child {
-      padding-bottom: 7px;
-    }
-  }
-  &-child-tree {
-    display: none;
-    &-open {
-      display: block;
-    }
-
-    // https://github.com/ant-design/ant-design/issues/14958
-    > li {
-      // Provide additional padding between top child node and parent node
-      &:first-child {
-        padding-top: 2 * @tree-node-padding;
-      }
-
-      // Hide additional padding between last child node and next parent node
-      &:last-child {
-        padding-bottom: 0;
-      }
-    }
-  }
-  li&-treenode-disabled {
-    > span:not(.@{tree-prefix-cls}-switcher),
-    > .@{tree-prefix-cls}-node-content-wrapper,
-    > .@{tree-prefix-cls}-node-content-wrapper span {
-      color: @disabled-color;
-      cursor: not-allowed;
-    }
-    > .@{tree-prefix-cls}-node-content-wrapper:hover {
-      background: transparent;
-    }
-  }
-  &-icon__open {
-    margin-right: 2px;
-    vertical-align: top;
-  }
-  &-icon__close {
-    margin-right: 2px;
-    vertical-align: top;
-  }
-  // Tree with line
-  &&-show-line {
-    li {
-      position: relative;
-      span {
-        &.@{tree-prefix-cls}-switcher {
-          color: @tree-showline-icon-color;
-          background: @component-background;
-          &.@{tree-prefix-cls}-switcher-noop {
-            .antTreeShowLineIcon('tree-doc-icon');
-          }
-          &.@{tree-prefix-cls}-switcher_open {
-            .antTreeShowLineIcon('tree-showline-open-icon');
-          }
-          &.@{tree-prefix-cls}-switcher_close {
-            .antTreeShowLineIcon('tree-showline-close-icon');
-          }
-        }
-      }
-    }
-    li:not(:last-child)::before {
-      position: absolute;
-      left: 12px;
-      width: 1px;
-      height: 100%;
-      margin: 22px 0;
-      border-left: 1px solid @border-color-base;
-      content: ' ';
-    }
-  }
-
-  &.@{tree-prefix-cls}-icon-hide {
-    .@{tree-prefix-cls}-treenode-loading {
-      .@{tree-prefix-cls}-iconEle {
-        display: none;
-      }
-    }
-  }
-}
-
-@calendar-prefix-cls: ~'@{ant-prefix}-calendar';
-@calendar-timepicker-prefix-cls: ~'@{ant-prefix}-calendar-time-picker';
-
-.@{calendar-prefix-cls}-picker-container {
-  .reset-component;
-  position: absolute;
-  z-index: @zindex-picker;
-  font-family: @font-family;
-
-  &.slide-up-enter.slide-up-enter-active&-placement-topLeft,
-  &.slide-up-enter.slide-up-enter-active&-placement-topRight,
-  &.slide-up-appear.slide-up-appear-active&-placement-topLeft,
-  &.slide-up-appear.slide-up-appear-active&-placement-topRight {
-    animation-name: antSlideDownIn;
-  }
-
-  &.slide-up-enter.slide-up-enter-active&-placement-bottomLeft,
-  &.slide-up-enter.slide-up-enter-active&-placement-bottomRight,
-  &.slide-up-appear.slide-up-appear-active&-placement-bottomLeft,
-  &.slide-up-appear.slide-up-appear-active&-placement-bottomRight {
-    animation-name: antSlideUpIn;
-  }
-
-  &.slide-up-leave.slide-up-leave-active&-placement-topLeft,
-  &.slide-up-leave.slide-up-leave-active&-placement-topRight {
-    animation-name: antSlideDownOut;
-  }
-
-  &.slide-up-leave.slide-up-leave-active&-placement-bottomLeft,
-  &.slide-up-leave.slide-up-leave-active&-placement-bottomRight {
-    animation-name: antSlideUpOut;
-  }
-}
-
-.@{calendar-prefix-cls}-picker {
-  .reset-component;
-  position: relative;
-  display: inline-block;
-  outline: none;
-  transition: opacity 0.3s;
-
-  &-input {
-    outline: none;
-  }
-
-  &-input.@{ant-prefix}-input-sm {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  &:hover &-input:not(.@{ant-prefix}-input-disabled) {
-    border-color: @primary-color;
-  }
-
-  &:focus &-input:not(.@{ant-prefix}-input-disabled) {
-    .active();
-  }
-
-  &-clear,
-  &-icon {
-    position: absolute;
-    top: 50%;
-    right: @control-padding-horizontal;
-    z-index: 1;
-    width: 14px;
-    height: 14px;
-    margin-top: -7px;
-    font-size: @font-size-sm;
-    line-height: 14px;
-    transition: all 0.3s;
-    user-select: none;
-  }
-
-  &-clear {
-    z-index: 2;
-    color: @disabled-color;
-    font-size: @font-size-base;
-    background: @input-bg;
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    &:hover {
-      color: @text-color-secondary;
-    }
-  }
-
-  &:hover &-clear {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  &-icon {
-    display: inline-block;
-    color: @disabled-color;
-    font-size: @font-size-base;
-    line-height: 1;
-  }
-
-  &-small &-clear,
-  &-small &-icon {
-    right: @control-padding-horizontal-sm;
-  }
-}
-
-.calendarPanelHeader(@calendar-prefix-cls) {
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  border-bottom: @border-width-base @border-style-base @border-color-split;
-  user-select: none;
-
-  a:hover {
-    color: @link-hover-color;
-  }
-
-  .@{calendar-prefix-cls}-century-select,
-  .@{calendar-prefix-cls}-decade-select,
-  .@{calendar-prefix-cls}-year-select,
-  .@{calendar-prefix-cls}-month-select {
-    display: inline-block;
-    padding: 0 2px;
-    color: @heading-color;
-    font-weight: 500;
-    line-height: 40px;
-  }
-
-  .@{calendar-prefix-cls}-century-select-arrow,
-  .@{calendar-prefix-cls}-decade-select-arrow,
-  .@{calendar-prefix-cls}-year-select-arrow,
-  .@{calendar-prefix-cls}-month-select-arrow {
-    display: none;
-  }
-
-  .@{calendar-prefix-cls}-prev-century-btn,
-  .@{calendar-prefix-cls}-next-century-btn,
-  .@{calendar-prefix-cls}-prev-decade-btn,
-  .@{calendar-prefix-cls}-next-decade-btn,
-  .@{calendar-prefix-cls}-prev-month-btn,
-  .@{calendar-prefix-cls}-next-month-btn,
-  .@{calendar-prefix-cls}-prev-year-btn,
-  .@{calendar-prefix-cls}-next-year-btn {
-    position: absolute;
-    top: 0;
-    display: inline-block;
-    padding: 0 5px;
-    color: @text-color-secondary;
-    font-size: 16px;
-    font-family: Arial, 'Hiragino Sans GB', 'Microsoft Yahei', 'Microsoft Sans Serif', sans-serif;
-    line-height: 40px;
-  }
-
-  .@{calendar-prefix-cls}-prev-century-btn,
-  .@{calendar-prefix-cls}-prev-decade-btn,
-  .@{calendar-prefix-cls}-prev-year-btn {
-    left: 7px;
-
-    &::after {
-      content: '«';
-    }
-  }
-
-  .@{calendar-prefix-cls}-next-century-btn,
-  .@{calendar-prefix-cls}-next-decade-btn,
-  .@{calendar-prefix-cls}-next-year-btn {
-    right: 7px;
-
-    &::after {
-      content: '»';
-    }
-  }
-
-  .@{calendar-prefix-cls}-prev-month-btn {
-    left: 29px;
-
-    &::after {
-      content: '‹';
-    }
-  }
-
-  .@{calendar-prefix-cls}-next-month-btn {
-    right: 29px;
-
-    &::after {
-      content: '›';
-    }
-  }
-}
-
-.@{calendar-prefix-cls} {
-  position: relative;
-  width: 280px;
-  font-size: @font-size-base;
-  line-height: @line-height-base;
-  text-align: left;
-  list-style: none;
-  background-color: @component-background;
-  background-clip: padding-box;
-  border: @border-width-base @border-style-base @border-color-inverse;
-  border-radius: @border-radius-base;
-  outline: none;
-  box-shadow: @box-shadow-base;
-
-  &-input-wrap {
-    height: 34px;
-    padding: 6px @control-padding-horizontal - 2px;
-    border-bottom: @border-width-base @border-style-base @border-color-split;
-  }
-
-  &-input {
-    width: 100%;
-    height: 22px;
-    color: @input-color;
-    background: @input-bg;
-    border: 0;
-    outline: 0;
-    cursor: auto;
-    .placeholder;
-  }
-
-  &-week-number {
-    width: 286px;
-
-    &-cell {
-      text-align: center;
-    }
-  }
-
-  &-header {
-    .calendarPanelHeader(@calendar-prefix-cls);
-  }
-
-  &-body {
-    padding: 8px 12px;
-  }
-
-  table {
-    width: 100%;
-    max-width: 100%;
-    background-color: transparent;
-    border-collapse: collapse;
-  }
-
-  table,
-  th,
-  td {
-    text-align: center;
-    border: 0;
-  }
-
-  &-calendar-table {
-    margin-bottom: 0;
-    border-spacing: 0;
-  }
-
-  &-column-header {
-    width: 33px;
-    padding: 6px 0;
-    line-height: 18px;
-    text-align: center;
-    .@{calendar-prefix-cls}-column-header-inner {
-      display: block;
-      font-weight: normal;
-    }
-  }
-
-  &-week-number-header {
-    .@{calendar-prefix-cls}-column-header-inner {
-      display: none;
-    }
-  }
-
-  &-cell {
-    height: 30px;
-    padding: 3px 0;
-  }
-
-  &-date {
-    display: block;
-    width: 24px;
-    height: 24px;
-    margin: 0 auto;
-    padding: 0;
-    color: @text-color;
-    line-height: 22px;
-    text-align: center;
-    background: transparent;
-    border: @border-width-base @border-style-base transparent;
-    border-radius: @border-radius-sm;
-    transition: background 0.3s ease;
-
-    &-panel {
-      position: relative;
-      outline: none;
-    }
-
-    &:hover {
-      background: @item-hover-bg;
-      cursor: pointer;
-    }
-
-    &:active {
-      color: @text-color-inverse;
-      background: @primary-5;
-    }
-  }
-
-  &-today &-date {
-    color: @primary-color;
-    font-weight: bold;
-    border-color: @primary-color;
-  }
-
-  &-last-month-cell &-date,
-  &-next-month-btn-day &-date {
-    color: @disabled-color;
-  }
-
-  &-selected-day &-date {
-    background: tint(@primary-color, 80%);
-  }
-
-  &-selected-date,
-  &-selected-start-date,
-  &-selected-end-date {
-    .@{calendar-prefix-cls}-date {
-      color: @text-color-inverse;
-      background: @primary-color;
-      border: @border-width-base @border-style-base transparent;
-
-      &:hover {
-        background: @primary-color;
-      }
-    }
-  }
-
-  &-disabled-cell &-date {
-    width: auto;
-    color: @disabled-color;
-    background: @disabled-bg;
-    border: @border-width-base @border-style-base transparent;
-    border-radius: 0;
-    cursor: not-allowed;
-
-    &:hover {
-      background: @disabled-bg;
-    }
-  }
-  &-disabled-cell&-today &-date {
-    position: relative;
-    padding-right: 5px;
-    padding-left: 5px;
-    &::before {
-      position: absolute;
-      top: -1px;
-      left: 5px;
-      width: 24px;
-      height: 24px;
-      border: @border-width-base @border-style-base @disabled-color;
-      border-radius: @border-radius-sm;
-      content: ' ';
-    }
-  }
-
-  &-disabled-cell-first-of-row &-date {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-  }
-
-  &-disabled-cell-last-of-row &-date {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-  }
-
-  &-footer {
-    padding: 0 12px;
-    line-height: 38px;
-    border-top: @border-width-base @border-style-base @border-color-split;
-    &:empty {
-      border-top: 0;
-    }
-    &-btn {
-      display: block;
-      text-align: center;
-    }
-    &-extra {
-      text-align: left;
-    }
-  }
-
-  .@{calendar-prefix-cls}-today-btn,
-  .@{calendar-prefix-cls}-clear-btn {
-    display: inline-block;
-    margin: 0 0 0 8px;
-    text-align: center;
-    &-disabled {
-      color: @disabled-color;
-      cursor: not-allowed;
-    }
-    &:only-child {
-      margin: 0;
-    }
-  }
-
-  .@{calendar-prefix-cls}-clear-btn {
-    position: absolute;
-    top: 7px;
-    right: 5px;
-    display: none;
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    overflow: hidden;
-    line-height: 20px;
-    text-align: center;
-    text-indent: -76px;
-  }
-
-  .@{calendar-prefix-cls}-clear-btn::after {
-    display: inline-block;
-    width: 20px;
-    color: @disabled-color;
-    font-size: @font-size-base;
-    line-height: 1;
-    text-indent: 43px;
-    transition: color 0.3s ease;
-  }
-
-  .@{calendar-prefix-cls}-clear-btn:hover::after {
-    color: @text-color-secondary;
-  }
-
-  .@{calendar-prefix-cls}-ok-btn {
-    .btn;
-    .btn-primary;
-    .button-size(@btn-height-sm; @btn-padding-sm; @font-size-base; @border-radius-base);
-    line-height: @btn-height-sm - 2px;
-
-    .button-disabled();
-  }
-}
-
-@input-box-height: 34px;
-
-.@{calendar-prefix-cls}-range-picker-input {
-  width: 44%;
-  height: 99%;
-  text-align: center;
-  background-color: transparent;
-  border: 0;
-  outline: 0;
-  .placeholder();
-
-  &[disabled] {
-    cursor: not-allowed;
-  }
-}
-
-.@{calendar-prefix-cls}-range-picker-separator {
-  display: inline-block;
-  width: 10px;
-  height: 100%;
-  color: @text-color-secondary;
-  vertical-align: top;
-}
-
-.@{calendar-prefix-cls}-range {
-  width: 552px;
-  overflow: hidden;
-
-  .@{calendar-prefix-cls}-date-panel {
-    &::after {
-      display: block;
-      clear: both;
-      height: 0;
-      visibility: hidden;
-      content: '.';
-    }
-  }
-  &-part {
-    position: relative;
-    width: 50%;
-  }
-
-  &-left {
-    float: left;
-    .@{calendar-prefix-cls} {
-      &-time-picker-inner {
-        border-right: 1px solid @border-color-split;
-      }
-    }
-  }
-
-  &-right {
-    float: right;
-    .@{calendar-prefix-cls} {
-      &-time-picker-inner {
-        border-left: 1px solid @border-color-split;
-      }
-    }
-  }
-
-  &-middle {
-    position: absolute;
-    left: 50%;
-    width: 20px;
-    height: @input-box-height;
-    margin-left: -132px;
-    color: @text-color-secondary;
-    line-height: @input-box-height;
-    text-align: center;
-  }
-
-  &-right .@{calendar-prefix-cls}-date-input-wrap {
-    margin-left: -118px;
-  }
-
-  &.@{calendar-prefix-cls}-time &-middle {
-    margin-left: -12px;
-  }
-
-  &.@{calendar-prefix-cls}-time &-right .@{calendar-prefix-cls}-date-input-wrap {
-    margin-left: 0;
-  }
-
-  .@{calendar-prefix-cls}-input-wrap {
-    position: relative;
-    height: @input-box-height;
-  }
-
-  .@{calendar-prefix-cls}-input,
-  .@{calendar-timepicker-prefix-cls}-input {
-    .input;
-    height: @input-height-sm;
-    padding-right: 0;
-    padding-left: 0;
-    border: 0;
-    box-shadow: none;
-
-    &:focus {
-      box-shadow: none;
-    }
-  }
-
-  .@{calendar-timepicker-prefix-cls}-icon {
-    display: none;
-  }
-
-  &.@{calendar-prefix-cls}-week-number {
-    width: 574px;
-
-    .@{calendar-prefix-cls}-range-part {
-      width: 286px;
-    }
-  }
-
-  .@{calendar-prefix-cls}-year-panel,
-  .@{calendar-prefix-cls}-month-panel,
-  .@{calendar-prefix-cls}-decade-panel {
-    top: @input-box-height;
-  }
-  .@{calendar-prefix-cls}-month-panel .@{calendar-prefix-cls}-year-panel {
-    top: 0;
-  }
-  .@{calendar-prefix-cls}-decade-panel-table,
-  .@{calendar-prefix-cls}-year-panel-table,
-  .@{calendar-prefix-cls}-month-panel-table {
-    height: 208px;
-  }
-
-  .@{calendar-prefix-cls}-in-range-cell {
-    position: relative;
-    border-radius: 0;
-    > div {
-      position: relative;
-      z-index: 1;
-    }
-    &::before {
-      position: absolute;
-      top: 4px;
-      right: 0;
-      bottom: 4px;
-      left: 0;
-      display: block;
-      background: @item-active-bg;
-      border: 0;
-      border-radius: 0;
-      content: '';
-    }
-  }
-
-  .@{calendar-prefix-cls}-footer-extra {
-    float: left;
-  }
-
-  // `div` for selector specificity
-  div&-quick-selector {
-    text-align: left;
-
-    > a {
-      margin-right: 8px;
-    }
-  }
-
-  .@{calendar-prefix-cls},
-  .@{calendar-prefix-cls}-month-panel,
-  .@{calendar-prefix-cls}-year-panel {
-    &-header {
-      border-bottom: 0;
-    }
-    &-body {
-      border-top: @border-width-base @border-style-base @border-color-split;
-    }
-  }
-
-  &.@{calendar-prefix-cls}-time {
-    .@{calendar-timepicker-prefix-cls} {
-      top: 68px;
-      z-index: 2; // cover .ant-calendar-range .ant-calendar-in-range-cell > div (z-index: 1)
-      width: 100%;
-      height: 207px;
-      &-panel {
-        height: 267px;
-        margin-top: -34px;
-      }
-
-      &-inner {
-        height: 100%;
-        padding-top: 40px;
-        background: none;
-      }
-
-      &-combobox {
-        display: inline-block;
-        height: 100%;
-        background-color: @component-background;
-        border-top: @border-width-base @border-style-base @border-color-split;
-      }
-      &-select {
-        height: 100%;
-        ul {
-          max-height: 100%;
-        }
-      }
-    }
-    .@{calendar-prefix-cls}-footer .@{calendar-prefix-cls}-time-picker-btn {
-      margin-right: 8px;
-    }
-    .@{calendar-prefix-cls}-today-btn {
-      height: 22px;
-      margin: 8px 12px;
-      line-height: 22px;
-    }
-  }
-
-  &-with-ranges.@{calendar-prefix-cls}-time .@{calendar-timepicker-prefix-cls} {
-    height: 233px;
-  }
-}
-
-.@{calendar-prefix-cls}-range.@{calendar-prefix-cls}-show-time-picker {
-  .@{calendar-prefix-cls}-body {
-    border-top-color: transparent;
-  }
-}
-
-.@{calendar-timepicker-prefix-cls} {
-  position: absolute;
-  top: 40px;
-  width: 100%;
-  background-color: @component-background;
-
-  &-panel {
-    position: absolute;
-    z-index: @zindex-picker;
-    width: 100%;
-  }
-
-  &-inner {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    overflow: hidden;
-    font-size: @font-size-base;
-    line-height: 1.5;
-    text-align: left;
-    list-style: none;
-    background-color: @component-background;
-    background-clip: padding-box;
-    outline: none;
-  }
-  &-combobox {
-    width: 100%;
-  }
-
-  &-column-1,
-  &-column-1 &-select {
-    width: 100%;
-  }
-  &-column-2 &-select {
-    width: 50%;
-  }
-  &-column-3 &-select {
-    width: 33.33%;
-  }
-  &-column-4 &-select {
-    width: 25%;
-  }
-
-  &-input-wrap {
-    display: none;
-  }
-
-  &-select {
-    position: relative; // Fix chrome weird render bug
-    float: left;
-    box-sizing: border-box;
-    height: 226px;
-    overflow: hidden;
-    font-size: @font-size-base;
-    border-right: @border-width-base @border-style-base @border-color-split;
-
-    &:hover {
-      overflow-y: auto;
-    }
-
-    &:first-child {
-      margin-left: 0;
-      border-left: 0;
-    }
-
-    &:last-child {
-      border-right: 0;
-    }
-
-    ul {
-      box-sizing: border-box;
-      width: 100%;
-      max-height: 206px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    li {
-      box-sizing: content-box;
-      width: 100%;
-      height: 24px;
-      margin: 0;
-      padding-left: 32px;
-      line-height: 24px;
-      list-style: none;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-
-    li:last-child::after {
-      display: block;
-      height: 202px;
-      content: '';
-    }
-
-    li:hover {
-      background: @item-hover-bg;
-    }
-
-    li&-option-selected {
-      font-weight: bold;
-      background: @time-picker-selected-bg;
-    }
-
-    li&-option-disabled {
-      color: @btn-disable-color;
-      &:hover {
-        background: transparent;
-        cursor: not-allowed;
-      }
-    }
-  }
-}
-
-.@{calendar-prefix-cls}-time {
-  .@{calendar-prefix-cls}-day-select {
-    display: inline-block;
-    padding: 0 2px;
-    color: @heading-color;
-    font-weight: 500;
-    line-height: 34px;
-  }
-
-  .@{calendar-prefix-cls}-footer {
-    position: relative;
-    height: auto;
-
-    &-btn {
-      text-align: right;
-    }
-
-    .@{calendar-prefix-cls}-today-btn {
-      float: left;
-      margin: 0;
-    }
-
-    .@{calendar-prefix-cls}-time-picker-btn {
-      display: inline-block;
-      margin-right: 8px;
-
-      &-disabled {
-        color: @disabled-color;
-      }
-    }
-  }
-}
-
-.@{calendar-prefix-cls}-month-panel {
-  position: absolute;
-  top: 1px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: @zindex-picker-panel;
-  background: @component-background;
-  border-radius: @border-radius-base;
-  outline: none;
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    // TODO: this is a useless wrapper, and we need to remove it in rc-calendar
-    height: 100%;
-  }
-}
-
-.@{calendar-prefix-cls}-month-panel-hidden {
-  display: none;
-}
-
-.@{calendar-prefix-cls}-month-panel-header {
-  .calendarPanelHeader(~'@{calendar-prefix-cls}-month-panel');
-}
-
-.@{calendar-prefix-cls}-month-panel-body {
-  flex: 1;
-}
-
-.@{calendar-prefix-cls}-month-panel-footer {
-  border-top: @border-width-base @border-style-base @border-color-split;
-  .@{calendar-prefix-cls}-footer-extra {
-    padding: 0 12px;
-  }
-}
-
-.@{calendar-prefix-cls}-month-panel-table {
-  width: 100%;
-  height: 100%;
-  table-layout: fixed;
-  border-collapse: separate;
-}
-
-.@{calendar-prefix-cls}-month-panel-selected-cell .@{calendar-prefix-cls}-month-panel-month {
-  color: @text-color-inverse;
-  background: @primary-color;
-
-  &:hover {
-    color: @text-color-inverse;
-    background: @primary-color;
-  }
-}
-
-.@{calendar-prefix-cls}-month-panel-cell {
-  text-align: center;
-
-  &-disabled .@{calendar-prefix-cls}-month-panel-month {
-    &,
-    &:hover {
-      color: @disabled-color;
-      background: @disabled-bg;
-      cursor: not-allowed;
-    }
-  }
-}
-
-.@{calendar-prefix-cls}-month-panel-month {
-  display: inline-block;
-  height: 24px;
-  margin: 0 auto;
-  padding: 0 8px;
-  color: @text-color;
-  line-height: 24px;
-  text-align: center;
-  background: transparent;
-  border-radius: @border-radius-sm;
-  transition: background 0.3s ease;
-
-  &:hover {
-    background: @item-hover-bg;
-    cursor: pointer;
-  }
-}
-
-.@{calendar-prefix-cls}-year-panel {
-  position: absolute;
-  top: 1px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: @zindex-picker-panel;
-  background: @component-background;
-  border-radius: @border-radius-base;
-  outline: none;
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    // TODO: this is a useless wrapper, and we need to remove it in rc-calendar
-    height: 100%;
-  }
-}
-
-.@{calendar-prefix-cls}-year-panel-hidden {
-  display: none;
-}
-
-.@{calendar-prefix-cls}-year-panel-header {
-  .calendarPanelHeader(~'@{calendar-prefix-cls}-year-panel');
-}
-
-.@{calendar-prefix-cls}-year-panel-body {
-  flex: 1;
-}
-
-.@{calendar-prefix-cls}-year-panel-footer {
-  border-top: @border-width-base @border-style-base @border-color-split;
-  .@{calendar-prefix-cls}-footer-extra {
-    padding: 0 12px;
-  }
-}
-
-.@{calendar-prefix-cls}-year-panel-table {
-  width: 100%;
-  height: 100%;
-  table-layout: fixed;
-  border-collapse: separate;
-}
-
-.@{calendar-prefix-cls}-year-panel-cell {
-  text-align: center;
-}
-
-.@{calendar-prefix-cls}-year-panel-year {
-  display: inline-block;
-  height: 24px;
-  margin: 0 auto;
-  padding: 0 8px;
-  color: @text-color;
-  line-height: 24px;
-  text-align: center;
-  background: transparent;
-  border-radius: @border-radius-sm;
-  transition: background 0.3s ease;
-
-  &:hover {
-    background: @item-hover-bg;
-    cursor: pointer;
-  }
-}
-
-.@{calendar-prefix-cls}-year-panel-selected-cell .@{calendar-prefix-cls}-year-panel-year {
-  color: @text-color-inverse;
-  background: @primary-color;
-
-  &:hover {
-    color: @text-color-inverse;
-    background: @primary-color;
-  }
-}
-
-.@{calendar-prefix-cls}-year-panel-last-decade-cell,
-.@{calendar-prefix-cls}-year-panel-next-decade-cell {
-  .@{calendar-prefix-cls}-year-panel-year {
-    color: @disabled-color;
-    user-select: none;
-  }
-}
-
-.@{calendar-prefix-cls}-decade-panel {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: @zindex-picker-panel;
-  display: flex;
-  flex-direction: column;
-  background: @component-background;
-  border-radius: @border-radius-base;
-  outline: none;
-}
-
-.@{calendar-prefix-cls}-decade-panel-hidden {
-  display: none;
-}
-
-.@{calendar-prefix-cls}-decade-panel-header {
-  .calendarPanelHeader(~'@{calendar-prefix-cls}-decade-panel');
-}
-
-.@{calendar-prefix-cls}-decade-panel-body {
-  flex: 1;
-}
-
-.@{calendar-prefix-cls}-decade-panel-footer {
-  border-top: @border-width-base @border-style-base @border-color-split;
-  .@{calendar-prefix-cls}-footer-extra {
-    padding: 0 12px;
-  }
-}
-
-.@{calendar-prefix-cls}-decade-panel-table {
-  width: 100%;
-  height: 100%;
-  table-layout: fixed;
-  border-collapse: separate;
-}
-
-.@{calendar-prefix-cls}-decade-panel-cell {
-  white-space: nowrap;
-  text-align: center;
-}
-
-.@{calendar-prefix-cls}-decade-panel-decade {
-  display: inline-block;
-  height: 24px;
-  margin: 0 auto;
-  padding: 0 6px;
-  color: @text-color;
-  line-height: 24px;
-  text-align: center;
-  background: transparent;
-  border-radius: @border-radius-sm;
-  transition: background 0.3s ease;
-
-  &:hover {
-    background: @item-hover-bg;
-    cursor: pointer;
-  }
-}
-
-.@{calendar-prefix-cls}-decade-panel-selected-cell .@{calendar-prefix-cls}-decade-panel-decade {
-  color: @text-color-inverse;
-  background: @primary-color;
-
-  &:hover {
-    color: @text-color-inverse;
-    background: @primary-color;
-  }
-}
-
-.@{calendar-prefix-cls}-decade-panel-last-century-cell,
-.@{calendar-prefix-cls}-decade-panel-next-century-cell {
-  .@{calendar-prefix-cls}-decade-panel-decade {
-    color: @disabled-color;
-    user-select: none;
-  }
-}
-
-.@{calendar-prefix-cls}-month {
-  .@{calendar-prefix-cls}-month-header-wrap {
-    position: relative;
-    height: 288px;
-  }
-  .@{calendar-prefix-cls}-month-panel,
-  .@{calendar-prefix-cls}-year-panel {
-    top: 0;
-    height: 100%;
-  }
-}
-
-.@{calendar-prefix-cls}-week-number {
-  &-cell {
-    opacity: 0.5;
-  }
-  .@{calendar-prefix-cls}-body tr {
-    cursor: pointer;
-    transition: all 0.3s;
-    &:hover {
-      background: @primary-1;
-    }
-    &.@{calendar-prefix-cls}-active-week {
-      font-weight: bold;
-      background: @primary-2;
-    }
-    .@{calendar-prefix-cls}-selected-day .@{calendar-prefix-cls}-date,
-    .@{calendar-prefix-cls}-selected-day:hover .@{calendar-prefix-cls}-date {
-      color: @text-color;
-      background: transparent;
-    }
-  }
-}
-
-// Preserve the typo for compatibility
-// https://github.com/ant-design/ant-design/issues/14628
-@dawer-prefix-cls: ~'@{ant-prefix}-drawer';
-
-@drawer-prefix-cls: @dawer-prefix-cls;
-
-.@{drawer-prefix-cls} {
-  position: fixed;
-  top: 0;
-  z-index: @zindex-modal;
-  width: 0%;
-  height: 100%;
-  > * {
-    transition: transform @animation-duration-slow @ease-base-in;
-  }
-
-  &-content-wrapper {
-    position: fixed;
-  }
-  .@{drawer-prefix-cls}-content {
-    width: 100%;
-    height: 100%;
-  }
-  &-left,
-  &-right {
-    width: 0%;
-    height: 100%;
-    .@{drawer-prefix-cls}-content-wrapper {
-      height: 100%;
-    }
-    &.@{drawer-prefix-cls}-open {
-      width: 100%;
-    }
-    &.@{drawer-prefix-cls}-open.no-mask {
-      width: 0%;
-    }
-  }
-  &-left {
-    &.@{drawer-prefix-cls}-open {
-      .@{drawer-prefix-cls}-content-wrapper {
-        box-shadow: @shadow-1-right;
-      }
-    }
-  }
-  &-right {
-    .@{drawer-prefix-cls} {
-      &-content-wrapper {
-        right: 0;
-      }
-    }
-    &.@{drawer-prefix-cls}-open {
-      .@{drawer-prefix-cls}-content-wrapper {
-        box-shadow: @shadow-1-left;
-      }
-    }
-  }
-
-  &-top,
-  &-bottom {
-    width: 100%;
-    height: 0%;
-    .@{drawer-prefix-cls}-content-wrapper {
-      width: 100%;
-    }
-    &.@{drawer-prefix-cls}-open {
-      height: 100%;
-    }
-    &.@{drawer-prefix-cls}-open.no-mask {
-      height: 0%;
-    }
-  }
-  &-top {
-    &.@{drawer-prefix-cls}-open {
-      .@{drawer-prefix-cls}-content-wrapper {
-        box-shadow: @shadow-1-down;
-      }
-    }
-  }
-  &-bottom {
-    .@{drawer-prefix-cls} {
-      &-content-wrapper {
-        bottom: 0;
-      }
-    }
-    &.@{drawer-prefix-cls}-open {
-      .@{drawer-prefix-cls}-content-wrapper {
-        box-shadow: @shadow-1-up;
-      }
-    }
-  }
-  &.@{drawer-prefix-cls}-open {
-    .@{drawer-prefix-cls} {
-      &-mask {
-        height: 100%;
-        opacity: 0.3;
-        transition: none;
-        animation: antdDrawerFadeIn @animation-duration-slow @ease-base-out;
-      }
-    }
-  }
-
-  &-title {
-    margin: 0;
-    color: @heading-color;
-    font-weight: 500;
-    font-size: @font-size-lg;
-    line-height: 22px;
-  }
-
-  &-content {
-    position: relative;
-    z-index: 1;
-    background-color: @component-background;
-    background-clip: padding-box;
-    border: 0;
-  }
-
-  &-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: @zindex-popup-close;
-    display: block;
-    width: 56px;
-    height: 56px;
-    padding: 0;
-    color: @text-color-secondary;
-    font-weight: 700;
-    font-size: @font-size-lg;
-    font-style: normal;
-    line-height: 56px;
-    text-align: center;
-    text-transform: none;
-    text-decoration: none;
-    background: transparent;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    transition: color @animation-duration-slow;
-    text-rendering: auto;
-
-    &:focus,
-    &:hover {
-      color: @icon-color-hover;
-      text-decoration: none;
-    }
-  }
-
-  &-header {
-    position: relative;
-    padding: 16px 24px;
-    color: @text-color;
-    background: @component-background;
-    border-bottom: @border-width-base @border-style-base @border-color-split;
-    border-radius: @border-radius-base @border-radius-base 0 0;
-  }
-
-  &-header-no-title {
-    color: @text-color;
-    background: @component-background;
-  }
-
-  &-body {
-    padding: 24px;
-    font-size: @font-size-base;
-    line-height: @line-height-base;
-    word-wrap: break-word;
-  }
-
-  &-mask {
-    position: fixed;
-    width: 100%;
-    height: 0;
-    background-color: @modal-mask-bg;
-    opacity: 0;
-    filter: ~'alpha(opacity=50)';
-    transition: opacity @animation-duration-slow linear, height 0s ease @animation-duration-slow;
-  }
-  &-open {
-    transition: transform @animation-duration-slow @ease-base-out;
-    &-content {
-      box-shadow: @shadow-2;
-    }
-  }
-}
-
-@keyframes antdDrawerFadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.3;
-  }
-}
-
-@skeleton-prefix-cls: ~'@{ant-prefix}-skeleton';
-@skeleton-avatar-prefix-cls: ~'@{skeleton-prefix-cls}-avatar';
-@skeleton-title-prefix-cls: ~'@{skeleton-prefix-cls}-title';
-@skeleton-paragraph-prefix-cls: ~'@{skeleton-prefix-cls}-paragraph';
-
-@skeleton-to-color: shade(@skeleton-color, 5%);
-
-.@{skeleton-prefix-cls} {
-  display: table;
-  width: 100%;
-
-  &-header {
-    display: table-cell;
-    padding-right: 16px;
-    vertical-align: top;
-
-    // Avatar
-    .@{skeleton-avatar-prefix-cls} {
-      display: inline-block;
-      vertical-align: top;
-      background: @skeleton-color;
-
-      .avatar-size(@avatar-size-base);
-
-      &-lg {
-        .avatar-size(@avatar-size-lg);
-      }
-
-      &-sm {
-        .avatar-size(@avatar-size-sm);
-      }
-    }
-  }
-
-  &-content {
-    display: table-cell;
-    width: 100%;
-    vertical-align: top;
-
-    // Title
-    .@{skeleton-title-prefix-cls} {
-      width: 100%;
-      height: 16px;
-      margin-top: 16px;
-      background: @skeleton-color;
-
-      + .@{skeleton-paragraph-prefix-cls} {
-        margin-top: 24px;
-      }
-    }
-
-    // paragraph
-    .@{skeleton-paragraph-prefix-cls} {
-      > li {
-        width: 100%;
-        height: 16px;
-        list-style: none;
-        background: @skeleton-color;
-
-        &:last-child:not(:first-child):not(:nth-child(2)) {
-          width: 61%;
-        }
-
-        + li {
-          margin-top: 16px;
-        }
-      }
-    }
-  }
-
-  &-with-avatar &-content {
-    // Title
-    .@{skeleton-title-prefix-cls} {
-      margin-top: 12px;
-
-      + .@{skeleton-paragraph-prefix-cls} {
-        margin-top: 28px;
-      }
-    }
-  }
-
-  // With active animation
-  &.@{skeleton-prefix-cls}-active {
-    & .@{skeleton-prefix-cls}-content {
-      .@{skeleton-title-prefix-cls},
-      .@{skeleton-paragraph-prefix-cls} > li {
-        .skeleton-color();
-      }
-    }
-
-    .@{skeleton-avatar-prefix-cls} {
-      .skeleton-color();
-    }
-  }
-}
-
-.avatar-size(@size) {
-  width: @size;
-  height: @size;
-  line-height: @size;
-
-  &.@{skeleton-avatar-prefix-cls}-circle {
-    border-radius: 50%;
-  }
-}
-
-.skeleton-color() {
-  background: linear-gradient(
-    90deg,
-    @skeleton-color 25%,
-    @skeleton-to-color 37%,
-    @skeleton-color 63%
-  );
-  background-size: 400% 100%;
-  animation: ~'@{skeleton-prefix-cls}-loading' 1.4s ease infinite;
-}
-
-@keyframes ~"@{skeleton-prefix-cls}-loading" {
-  0% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
-}
+// FIXED-CHECK
+// fix: https://github.com/NG-ZORRO/ng-zorro-antd/issues/1360
+// // antd
+// @import '../../../../node_modules/ng-zorro-antd/style/index.less';
+// // grid muse be first
+// @import '../../../../node_modules/ng-zorro-antd/grid/style/index.less';
+
+// @import '../../../../node_modules/ng-zorro-antd/affix/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/alert/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/anchor/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/avatar/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/back-top/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/badge/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/breadcrumb/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/button/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/calendar/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/card/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/carousel/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/cascader/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/checkbox/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/collapse/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/core/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/divider/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/dropdown/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/form/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/input/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/input-number/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/layout/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/list/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/menu/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/mention/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/message/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/modal/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/notification/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/pagination/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/popconfirm/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/popover/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/progress/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/radio/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/rate/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/select/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/slider/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/spin/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/steps/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/switch/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/table/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/tabs/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/tag/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/time-picker/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/timeline/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/tooltip/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/transfer/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/upload/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/auto-complete/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/tree/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/date-picker/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/drawer/style/index.less';
+// @import '../../../../node_modules/ng-zorro-antd/skeleton/style/index.less';
 
 // app
 .freakMixin() {
@@ -19935,13 +20350,14 @@ fieldset {
 .search__form-mixin(@enabled) when(@enabled = true) {
   .search {
     &__form {
-      // BUG: https://github.com/NG-ZORRO/ng-zorro-antd/issues/1202
-      &.@{ant-prefix}-form-inline {
-        .@{ant-prefix}-form-item-label,
-        .@{ant-prefix}-form-item-control-wrapper {
-          padding: 0 !important;
-        }
-      }
+      // FIXED-CHECK
+      // // BUG: https://github.com/NG-ZORRO/ng-zorro-antd/issues/1202
+      // &.@{ant-prefix}-form-inline {
+      //   .@{ant-prefix}-form-item-label,
+      //   .@{ant-prefix}-form-item-control-wrapper {
+      //     padding: 0 !important;
+      //   }
+      // }
       .@{ant-prefix}-form-item {
         margin-bottom: 24px;
         margin-right: 0;
@@ -20891,6 +21307,7 @@ code {
       padding-bottom: @se-compact-bottom;
     }
   }
+  &__hide-label,
   &__inline,
   &__vertical {
     @{se-prefix}__nolabel {
@@ -22764,7 +23181,7 @@ body {
 }
 
 @{alain-default-prefix}__nav-item .@{ant-prefix}-badge-count {
-  top: -6px;
+  top: 6px;
   right: 18px;
 }
 
