@@ -60,8 +60,8 @@ cp -f ${DIST_DIR}/index.html ${DIST_DIR}/404.html
 if [[ ${GH} == true ]]; then
   commitAuthorName=$(git --no-pager show -s --format='%an' HEAD)
 
-  if [ ${commitAuthorName} != '卡色' ]; then
-    echo "Warning: Just only 卡色 user (current: ${commitAuthorName})"
+  if [[ ${commitAuthorName} != 'cipchk' ]] && [[ ${commitAuthorName} != '卡色' ]]; then
+    echo "Warning: Just only cipchk or 卡色 user (current: ${commitAuthorName})"
     exit 0
   fi
 
