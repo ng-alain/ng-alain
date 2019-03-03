@@ -17,7 +17,9 @@ export class HeaderFullScreenComponent {
 
   @HostListener('window:resize')
   _resize() {
-    this.status = screenfull.isFullscreen;
+    setTimeout(() => {
+      this.status = screenfull.isFullscreen;
+    }, 100);
   }
 
   @HostListener('click')
