@@ -4,12 +4,9 @@
   </a>
 </p>
 
-<h1 align="center">
-Ng Alain
-</h1>
+<h1 align="center">NG-ALAIN</h1>
 
 <div align="center">
-
   Out-of-box UI solution for enterprise applications, Let developers focus on business.
 
   [![Build Status](https://img.shields.io/travis/ng-alain/ng-alain/master.svg?style=flat-square)](https://travis-ci.org/ng-alain/ng-alain)
@@ -33,8 +30,8 @@ English | [简体中文](README-zh_CN.md)
 ng new demo --style less
 cd demo
 ng add ng-alain
-ng serve
-# or hmr mode
+ng s -o
+# or HMR mode
 npm run hmr
 ```
 
