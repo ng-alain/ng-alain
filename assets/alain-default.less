@@ -20716,6 +20716,35 @@ fieldset {
       margin-bottom: 8px;
     }
   }
+  &__inline {
+    sf-item-wrap {
+      .@{ant-prefix}-form-item {
+        display: inline-flex;
+        .@{ant-prefix}-form-item-control-wrapper {
+          flex: 1;
+        }
+      }
+    }
+    .sf-btns {
+      margin-right: 0;
+    }
+    @media (max-width: @mobile-max) {
+      sf-item-wrap {
+        .@{ant-prefix}-form-item {
+          display: block !important;
+          width: initial !important;
+          margin-right: 0;;
+        }
+      }
+      .@{ant-prefix}-form-item-label, .@{ant-prefix}-form-item-control-wrapper {
+        display: block !important;
+        width: 100% !important;
+        padding: inherit;
+        line-height: @form-component-max-height - 0.0001px;
+        text-align: left;
+      }
+    }
+  }
 }
 
 .acl__hide {
