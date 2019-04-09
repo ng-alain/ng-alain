@@ -4,12 +4,9 @@
   </a>
 </p>
 
-<h1 align="center">
-Ng Alain
-</h1>
+<h1 align="center">NG-ALAIN</h1>
 
 <div align="center">
-
   一个基于 Antd 中后台前端解决方案，提供更多通用性业务模块，让开发者更加专注于业务。
 
   [![Build Status](https://img.shields.io/travis/ng-alain/ng-alain/master.svg?style=flat-square)](https://travis-ci.org/ng-alain/ng-alain)
@@ -33,7 +30,9 @@ Ng Alain
 ng new demo --style less
 cd demo
 ng add ng-alain
-ng serve
+ng s -o
+# 或 HMR 模式
+npm run hmr
 ```
 
 > 请参考[命令行工具](https://ng-alain.com/cli)了解更多细节。
