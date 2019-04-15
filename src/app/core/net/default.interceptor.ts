@@ -33,8 +33,8 @@ const CODEMESSAGE = {
 export class DefaultInterceptor implements HttpInterceptor {
   constructor(private injector: Injector) { }
 
-  get msg(): NzMessageService {
-    return this.injector.get(NzMessageService);
+  private get notification(): NzNotificationService {
+    return this.injector.get(NzNotificationService);
   }
 
   private goTo(url: string) {
@@ -42,10 +42,12 @@ export class DefaultInterceptor implements HttpInterceptor {
   }
 
   private checkStatus(ev: HttpResponseBase) {
-    if (ev.status >= 200 && ev.status < 300) return;
+    if ((ev.status >= 200 && ev.status < 300) || ev.status === 401) {
+      return;
+    }
 
     const errortext = CODEMESSAGE[ev.status] || ev.statusText;
-    this.injector.get(NzNotificationService).error(
+    this.notification.error(
       `请求错误 ${ev.status}: ${ev.url}`,
       errortext
     );
@@ -80,8 +82,9 @@ export class DefaultInterceptor implements HttpInterceptor {
         //     }
         // }
         break;
-      case 401: // 未登录状态码
-        // 请求错误 401: https://preview.pro.ant.design/api/401 用户没有权限（令牌、用户名、密码错误）。
+      case 401:
+        this.notification.error(`未登录或登录已过期，请重新登录。`, ``);
+        // 清空 token 信息
         (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
         this.goTo('/passport/login');
         break;
