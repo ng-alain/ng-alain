@@ -2,16 +2,7 @@ import { MockRequest, MockStatusError } from '@delon/mock';
 
 // region: mock data
 
-const titles = [
-  'Alipay',
-  'Angular',
-  'Ant Design',
-  'Ant Design Pro',
-  'Bootstrap',
-  'React',
-  'Vue',
-  'Webpack',
-];
+const titles = ['Alipay', 'Angular', 'Ant Design', 'Ant Design Pro', 'Bootstrap', 'React', 'Vue', 'Webpack'];
 
 const avatars = [
   'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png', // Alipay
@@ -62,10 +53,7 @@ function getFakeList(count: number = 20): any[] {
       owner: user[i % 10],
       title: titles[i % 8],
       avatar: avatars[i % 8],
-      cover:
-        parseInt((i / 4).toString(), 10) % 2 === 0
-          ? covers[i % 4]
-          : covers[3 - i % 4],
+      cover: parseInt((i / 4).toString(), 10) % 2 === 0 ? covers[i % 4] : covers[3 - (i % 4)],
       status: ['active', 'exception', 'normal'][i % 3],
       percent: Math.ceil(Math.random() * 50) + 50,
       logo: avatars[i % 8],
@@ -84,18 +72,15 @@ function getFakeList(count: number = 20): any[] {
         '段落示意：蚂蚁金服设计平台 ant.design，用最小的工作量，无缝接入蚂蚁金服生态，提供跨越设计与开发的体验解决方案。蚂蚁金服设计平台 ant.design，用最小的工作量，无缝接入蚂蚁金服生态，提供跨越设计与开发的体验解决方案。',
       members: [
         {
-          avatar:
-            'https://gw.alipayobjects.com/zos/rmsportal/ZiESqWwCXBRQoaPONSJe.png',
+          avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ZiESqWwCXBRQoaPONSJe.png',
           name: '曲丽丽',
         },
         {
-          avatar:
-            'https://gw.alipayobjects.com/zos/rmsportal/tBOxZPlITHqwlGjsJWaF.png',
+          avatar: 'https://gw.alipayobjects.com/zos/rmsportal/tBOxZPlITHqwlGjsJWaF.png',
           name: '王昭君',
         },
         {
-          avatar:
-            'https://gw.alipayobjects.com/zos/rmsportal/sBxjgqiuHMGRkIjqlQCd.png',
+          avatar: 'https://gw.alipayobjects.com/zos/rmsportal/sBxjgqiuHMGRkIjqlQCd.png',
           name: '董娜娜',
         },
       ],
@@ -277,8 +262,16 @@ export const APIS = {
   '/api/list': (req: MockRequest) => getFakeList(req.queryString.count),
   '/api/notice': () => getNotice(),
   '/api/activities': () => getActivities(),
-  '/api/401': () => { throw new MockStatusError(401); },
-  '/api/403': () => { throw new MockStatusError(403); },
-  '/api/404': () => { throw new MockStatusError(404); },
-  '/api/500': () => { throw new MockStatusError(500); }
+  '/api/401': () => {
+    throw new MockStatusError(401);
+  },
+  '/api/403': () => {
+    throw new MockStatusError(403);
+  },
+  '/api/404': () => {
+    throw new MockStatusError(404);
+  },
+  '/api/500': () => {
+    throw new MockStatusError(500);
+  },
 };

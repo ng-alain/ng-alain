@@ -50,8 +50,7 @@ export const USERS = {
   'POST /user/:id': (req: MockRequest) => saveData(+req.params.id, req.body),
   '/user/current': {
     name: 'Cipchk',
-    avatar:
-      'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
     email: 'cipchk@qq.com',
     signature: '海纳百川，有容乃大',
@@ -101,10 +100,7 @@ export const USERS = {
   'POST /user/avatar': 'ok',
   'POST /login/account': (req: MockRequest) => {
     const data = req.body;
-    if (
-      !(data.userName === 'admin' || data.userName === 'user') ||
-      data.password !== 'ng-alain.com'
-    ) {
+    if (!(data.userName === 'admin' || data.userName === 'user') || data.password !== 'ng-alain.com') {
       return { msg: `Invalid username or password（admin/ng-alain.com）` };
     }
     return {
