@@ -11,11 +11,7 @@ export class ExtrasPoiEditComponent implements OnInit {
   i: any;
   cat: string[] = ['美食', '美食,粤菜', '美食,粤菜,湛江菜'];
 
-  constructor(
-    private modal: NzModalRef,
-    public msgSrv: NzMessageService,
-    public http: _HttpClient,
-  ) {}
+  constructor(private modal: NzModalRef, public msgSrv: NzMessageService, public http: _HttpClient) {}
 
   ngOnInit() {
     if (this.i.id > 0) {

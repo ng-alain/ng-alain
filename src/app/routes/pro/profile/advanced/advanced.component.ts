@@ -7,7 +7,7 @@ import { STColumn } from '@delon/abc';
   selector: 'app-profile-advanced',
   templateUrl: './advanced.component.html',
   styleUrls: ['./advanced.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProProfileAdvancedComponent implements OnInit {
   list: any[] = [];

@@ -116,10 +116,6 @@ export class I18NService implements AlainI18NService {
   }
   /** 当前语言 */
   get currentLang() {
-    return (
-      this.translate.currentLang ||
-      this.translate.getDefaultLang() ||
-      this._default
-    );
+    return this.translate.currentLang || this.translate.getDefaultLang() || this._default;
   }
 }

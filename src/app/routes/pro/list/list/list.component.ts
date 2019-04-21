@@ -35,9 +35,7 @@ export class ProListLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.router$ = this.router.events
-      .pipe(filter(e => e instanceof ActivationEnd))
-      .subscribe(() => this.setActive());
+    this.router$ = this.router.events.pipe(filter(e => e instanceof ActivationEnd)).subscribe(() => this.setActive());
     this.setActive();
   }
 

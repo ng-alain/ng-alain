@@ -17,12 +17,7 @@ import { CountdownModule } from 'ngx-countdown';
 import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';
 
-const THIRDMODULES = [
-  NgZorroAntdModule,
-  CountdownModule,
-  UEditorModule,
-  NgxTinymceModule,
-];
+const THIRDMODULES = [NgZorroAntdModule, CountdownModule, UEditorModule, NgxTinymceModule];
 // #endregion
 
 // #region your componets & directives

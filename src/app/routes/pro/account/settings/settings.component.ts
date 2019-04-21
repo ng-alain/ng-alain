@@ -41,14 +41,8 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
       title: '新消息通知',
     },
   ];
-  constructor(
-    private router: Router,
-    private cdr: ChangeDetectorRef,
-    private el: ElementRef,
-  ) {
-    this.router$ = this.router.events
-      .pipe(filter(e => e instanceof ActivationEnd))
-      .subscribe(() => this.setActive());
+  constructor(private router: Router, private cdr: ChangeDetectorRef, private el: ElementRef) {
+    this.router$ = this.router.events.pipe(filter(e => e instanceof ActivationEnd)).subscribe(() => this.setActive());
   }
 
   private setActive() {

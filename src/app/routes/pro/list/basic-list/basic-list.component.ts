@@ -7,7 +7,7 @@ import { ProBasicListEditComponent } from './edit/edit.component';
   selector: 'app-basic-list',
   templateUrl: './basic-list.component.html',
   styleUrls: ['./basic-list.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProBasicListComponent implements OnInit {
   q: any = {
@@ -20,7 +20,7 @@ export class ProBasicListComponent implements OnInit {
     private http: _HttpClient,
     public msg: NzMessageService,
     private modal: ModalHelper,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -37,16 +37,14 @@ export class ProBasicListComponent implements OnInit {
   }
 
   openEdit(record: any = {}) {
-    this.modal
-      .create(ProBasicListEditComponent, { record }, { size: 'md' })
-      .subscribe(res => {
-        if (record.id) {
-          record = Object.assign(record, { id: 'mock_id', percent: 0 }, res);
-        } else {
-          this.data.splice(0, 0, res);
-          this.data = [...this.data];
-        }
-        this.cdr.detectChanges();
-      });
+    this.modal.create(ProBasicListEditComponent, { record }, { size: 'md' }).subscribe(res => {
+      if (record.id) {
+        record = Object.assign(record, { id: 'mock_id', percent: 0 }, res);
+      } else {
+        this.data.splice(0, 0, res);
+        this.data = [...this.data];
+      }
+      this.cdr.detectChanges();
+    });
   }
 }

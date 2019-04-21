@@ -19,13 +19,7 @@ export class ExtrasSettingsComponent implements OnInit {
 
   constructor(fb: FormBuilder, public msg: NzMessageService) {
     this.profileForm = fb.group({
-      name: [
-        null,
-        Validators.compose([
-          Validators.required,
-          Validators.pattern(`^[-_a-zA-Z0-9]{4,20}$`),
-        ]),
-      ],
+      name: [null, Validators.compose([Validators.required, Validators.pattern(`^[-_a-zA-Z0-9]{4,20}$`)])],
       email: '',
       bio: [null, Validators.maxLength(160)],
       url: '',

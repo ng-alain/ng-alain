@@ -1,1 +1,9 @@
 # add files you wish to ignore here
+**/*.md
+**/*.svg
+**/*.html
+**/test.ts
+node_modules/
+coverage/
+dist/
+package.json

@@ -57,16 +57,11 @@ const COMPONENTS = [
   ProAccountSettingsNotificationComponent,
 ];
 
-const COMPONENTS_NOROUNT = [
-  Step1Component,
-  Step2Component,
-  Step3Component,
-  ProBasicListEditComponent
-];
+const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component, ProBasicListEditComponent];
 
 @NgModule({
   imports: [SharedModule, ProRoutingModule],
-  declarations: [ ...COMPONENTS, ...COMPONENTS_NOROUNT ],
+  declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
   entryComponents: COMPONENTS_NOROUNT,
 })
 export class ProModule {}

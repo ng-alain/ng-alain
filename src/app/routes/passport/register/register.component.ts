@@ -1,11 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  FormControl,
-} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 
@@ -27,30 +22,11 @@ export class UserRegisterComponent implements OnDestroy {
     pool: 'exception',
   };
 
-  constructor(
-    fb: FormBuilder,
-    private router: Router,
-    public http: _HttpClient,
-    public msg: NzMessageService,
-  ) {
+  constructor(fb: FormBuilder, private router: Router, public http: _HttpClient, public msg: NzMessageService) {
     this.form = fb.group({
       mail: [null, [Validators.required, Validators.email]],
-      password: [
-        null,
-        [
-          Validators.required,
-          Validators.minLength(6),
-          UserRegisterComponent.checkPassword.bind(this),
-        ],
-      ],
-      confirm: [
-        null,
-        [
-          Validators.required,
-          Validators.minLength(6),
-          UserRegisterComponent.passwordEquar,
-        ],
-      ],
+      password: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
+      confirm: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.passwordEquar]],
       mobilePrefix: ['+86'],
       mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
       captcha: [null, [Validators.required]],
@@ -70,8 +46,7 @@ export class UserRegisterComponent implements OnDestroy {
     }
 
     if (self.visible) {
-      self.progress =
-        control.value.length * 10 > 100 ? 100 : control.value.length * 10;
+      self.progress = control.value.length * 10 > 100 ? 100 : control.value.length * 10;
     }
   }
 

@@ -8,11 +8,7 @@ import { ACLService } from '@delon/acl';
   templateUrl: './guard.component.html',
 })
 export class GuardComponent {
-  constructor(
-    public aclSrv: ACLService,
-    private menuSrv: MenuService,
-    private router: Router,
-  ) {}
+  constructor(public aclSrv: ACLService, private menuSrv: MenuService, private router: Router) {}
 
   setRole(value: string | boolean) {
     this.aclSrv.setFull(typeof value === 'boolean' ? value : false);

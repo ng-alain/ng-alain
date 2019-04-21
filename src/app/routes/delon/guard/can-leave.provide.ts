@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  CanDeactivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { GuardComponent } from './guard.component';
 import { Observable } from 'rxjs';
 import { NzModalService } from 'ng-zorro-antd';

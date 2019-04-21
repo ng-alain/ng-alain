@@ -35,9 +35,7 @@ export class XlsxComponent {
 
   download() {
     const data = [this.columns.map(i => i.title)];
-    this.users.forEach(i =>
-      data.push(this.columns.map(c => i[c.index as string])),
-    );
+    this.users.forEach(i => data.push(this.columns.map(c => i[c.index as string])));
     this.xlsx.export({
       sheets: [
         {

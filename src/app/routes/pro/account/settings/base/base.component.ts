@@ -1,9 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  OnInit,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { zip } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd';
@@ -19,17 +14,10 @@ export class ProAccountSettingsBaseComponent implements OnInit {
   userLoading = true;
   user: any;
 
-  constructor(
-    private http: _HttpClient,
-    private cdr: ChangeDetectorRef,
-    private msg: NzMessageService,
-  ) {}
+  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef, private msg: NzMessageService) {}
 
   ngOnInit(): void {
-    zip(
-      this.http.get('/user/current'),
-      this.http.get('/geo/province'),
-    ).subscribe(([user, province]: any) => {
+    zip(this.http.get('/user/current'), this.http.get('/geo/province')).subscribe(([user, province]: any) => {
       this.userLoading = false;
       this.user = user;
       this.provinces = province;

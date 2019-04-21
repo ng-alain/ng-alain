@@ -7,7 +7,7 @@ import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 @Component({
   selector: 'passport-lock',
   templateUrl: './lock.component.html',
-  styleUrls: [ './lock.component.less' ]
+  styleUrls: ['./lock.component.less'],
 })
 export class UserLockComponent {
   f: FormGroup;
@@ -34,7 +34,7 @@ export class UserLockComponent {
       console.log('Valid!');
       console.log(this.f.value);
       this.tokenService.set({
-        token: '123'
+        token: '123',
       });
       this.router.navigate(['dashboard']);
     }

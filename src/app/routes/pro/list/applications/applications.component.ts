@@ -6,7 +6,7 @@ import { _HttpClient } from '@delon/theme';
   selector: 'app-list-applications',
   templateUrl: './applications.component.html',
   styleUrls: ['./applications.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProListApplicationsComponent implements OnInit {
   q: any = {

@@ -11,13 +11,7 @@ import {
   Inject,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import {
-  Router,
-  NavigationEnd,
-  RouteConfigLoadStart,
-  NavigationError,
-  NavigationCancel,
-} from '@angular/router';
+import { Router, NavigationEnd, RouteConfigLoadStart, NavigationError, NavigationCancel } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -70,15 +64,11 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
   private setClass() {
     const { el, doc, renderer, settings } = this;
     const layout = settings.layout;
-    updateHostClass(
-      el.nativeElement,
-      renderer,
-      {
-        ['alain-default']: true,
-        [`alain-default__fixed`]: layout.fixed,
-        [`alain-default__collapsed`]: layout.collapsed,
-      },
-    );
+    updateHostClass(el.nativeElement, renderer, {
+      ['alain-default']: true,
+      [`alain-default__fixed`]: layout.fixed,
+      [`alain-default__collapsed`]: layout.collapsed,
+    });
 
     doc.body.classList[layout.colorWeak ? 'add' : 'remove']('color-weak');
   }
