@@ -31,7 +31,7 @@ export class ZipComponent {
   }
 
   change(e: Event) {
-    const file = (e.target as HTMLInputElement).files[0];
+    const file = (e.target as HTMLInputElement).files![0];
     this.zip.read(file).then(res => this.format(res));
   }
 
@@ -39,7 +39,7 @@ export class ZipComponent {
 
   // region: write
 
-  instance: JSZip = null;
+  instance: JSZip | null = null;
   data: { path: string; url: string }[] = [
     { path: 'demo.docx', url: 'https://ng-alain.com/assets/demo.docx' },
     {

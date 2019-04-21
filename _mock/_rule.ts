@@ -1,7 +1,7 @@
 import { HttpRequest } from '@angular/common/http';
 import { MockRequest } from '@delon/mock';
 
-const list = [];
+const list: any[] = [];
 
 for (let i = 0; i < 46; i += 1) {
   list.push({

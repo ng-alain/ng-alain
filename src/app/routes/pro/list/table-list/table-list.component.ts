@@ -118,7 +118,7 @@ export class ProTableListComponent implements OnInit {
   stChange(e: STChange) {
     switch (e.type) {
       case 'checkbox':
-        this.selectedRows = e.checkbox;
+        this.selectedRows = e.checkbox!;
         this.totalCallNo = this.selectedRows.reduce((total, cv) => total + cv.callNo, 0);
         this.cdr.detectChanges();
         break;
