@@ -39,11 +39,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
 
   pos = 0;
 
-  constructor(
-    private router: Router,
-    private http: _HttpClient,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  constructor(private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
   private setActive() {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
@@ -52,16 +48,12 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    zip(this.http.get('/user/current'), this.http.get('/api/notice')).subscribe(
-      ([user, notice]) => {
-        this.user = user;
-        this.notice = notice;
-        this.cdr.detectChanges();
-      },
-    );
-    this.router$ = this.router.events
-      .pipe(filter(e => e instanceof ActivationEnd))
-      .subscribe(() => this.setActive());
+    zip(this.http.get('/user/current'), this.http.get('/api/notice')).subscribe(([user, notice]) => {
+      this.user = user;
+      this.notice = notice;
+      this.cdr.detectChanges();
+    });
+    this.router$ = this.router.events.pipe(filter(e => e instanceof ActivationEnd)).subscribe(() => this.setActive());
     this.setActive();
   }
 
@@ -81,10 +73,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
 
   tagBlur() {
     const { user, cdr, tagValue } = this;
-    if (
-      tagValue &&
-      user.tags.filter(tag => tag.label === tagValue).length === 0
-    ) {
+    if (tagValue && user.tags.filter(tag => tag.label === tagValue).length === 0) {
       user.tags.push({ label: tagValue });
     }
     this.tagValue = '';

@@ -58,9 +58,7 @@ export class SimpleTableComponent implements OnInit {
   constructor(public http: _HttpClient, private message: NzMessageService) {}
 
   ngOnInit(): void {
-    this.http
-      .get('/chart/visit')
-      .subscribe((res: any[]) => (this.events = res.slice(0, 8)));
+    this.http.get('/chart/visit').subscribe((res: any[]) => (this.events = res.slice(0, 8)));
   }
 
   fullChange(val: boolean) {

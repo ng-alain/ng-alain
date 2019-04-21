@@ -13,7 +13,7 @@ import { _HttpClient } from '@delon/theme';
     `,
   ],
   encapsulation: ViewEncapsulation.Emulated,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProCardListComponent implements OnInit {
   list: any[] = [null];

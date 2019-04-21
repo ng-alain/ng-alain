@@ -4,12 +4,12 @@ import { SharedModule } from '@shared';
 import { DataVRoutingModule } from './data-v-routing.module';
 import { RelationComponent } from './relation/relation.component';
 
-const COMPONENTS = [ RelationComponent ];
+const COMPONENTS = [RelationComponent];
 const COMPONENTS_NOROUNT = [];
 
 @NgModule({
   imports: [SharedModule, DataVRoutingModule],
-  declarations: [ ...COMPONENTS, ...COMPONENTS_NOROUNT ],
+  declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
   entryComponents: COMPONENTS_NOROUNT,
 })
 export class DataVModule {}

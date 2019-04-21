@@ -5,12 +5,12 @@ import * as screenfull from 'screenfull';
   selector: 'header-fullscreen',
   template: `
     <i nz-icon [type]="status ? 'fullscreen-exit' : 'fullscreen'"></i>
-    {{(status ? 'menu.fullscreen.exit' : 'menu.fullscreen') | translate }}
+    {{ (status ? 'menu.fullscreen.exit' : 'menu.fullscreen') | translate }}
   `,
   host: {
     '[class.d-block]': 'true',
   },
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderFullScreenComponent {
   status = false;

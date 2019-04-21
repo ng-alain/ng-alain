@@ -45,16 +45,13 @@ const I18NSERVICE_MODULES = [
   }),
 ];
 
-const I18NSERVICE_PROVIDES = [
-  { provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false },
-];
+const I18NSERVICE_PROVIDES = [{ provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false }];
 
 // #endregion
 
 // #region global third module
 
-const GLOBAL_THIRD_MODULES = [
-];
+const GLOBAL_THIRD_MODULES = [];
 
 // #endregion
 
@@ -75,9 +72,7 @@ const INTERCEPTOR_PROVIDES = [
 
 // #region Startup Service
 import { StartupService } from '@core';
-export function StartupServiceFactory(
-  startupService: StartupService,
-): Function {
+export function StartupServiceFactory(startupService: StartupService): Function {
   return () => startupService.load();
 }
 const APPINIT_PROVIDES = [
@@ -113,12 +108,7 @@ import { LayoutModule } from './layout/layout.module';
     ...GLOBAL_THIRD_MODULES,
     ...FORM_MODULES,
   ],
-  providers: [
-    ...LANG_PROVIDES,
-    ...INTERCEPTOR_PROVIDES,
-    ...I18NSERVICE_PROVIDES,
-    ...APPINIT_PROVIDES,
-  ],
+  providers: [...LANG_PROVIDES, ...INTERCEPTOR_PROVIDES, ...I18NSERVICE_PROVIDES, ...APPINIT_PROVIDES],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

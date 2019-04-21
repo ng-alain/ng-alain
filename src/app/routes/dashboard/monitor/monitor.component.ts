@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { zip } from 'rxjs';
 import { _HttpClient } from '@delon/theme';
@@ -25,24 +19,16 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
   };
   percent: number | null = null;
 
-  constructor(
-    private http: _HttpClient,
-    public msg: NzMessageService,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  constructor(private http: _HttpClient, public msg: NzMessageService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    zip(this.http.get('/chart'), this.http.get('/chart/tags')).subscribe(
-      ([res, tags]: [any, any]) => {
-        this.data = res;
-        tags.list[
-          Math.floor(Math.random() * tags.list.length) + 1
-        ].value = 1000;
-        this.tags = tags.list;
-        this.loading = false;
-        this.cdr.detectChanges();
-      },
-    );
+    zip(this.http.get('/chart'), this.http.get('/chart/tags')).subscribe(([res, tags]: [any, any]) => {
+      this.data = res;
+      tags.list[Math.floor(Math.random() * tags.list.length) + 1].value = 1000;
+      this.tags = tags.list;
+      this.loading = false;
+      this.cdr.detectChanges();
+    });
 
     // active chart
     this.refData();

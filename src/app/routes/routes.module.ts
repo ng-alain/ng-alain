@@ -26,13 +26,13 @@ const COMPONENTS = [
   UserRegisterResultComponent,
   // single pages
   UserLockComponent,
-  CallbackComponent
+  CallbackComponent,
 ];
 const COMPONENTS_NOROUNT = [];
 
 @NgModule({
   imports: [SharedModule, RouteRoutingModule],
   declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
-  entryComponents: COMPONENTS_NOROUNT
+  entryComponents: COMPONENTS_NOROUNT,
 })
 export class RoutesModule {}

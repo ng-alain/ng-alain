@@ -4,7 +4,7 @@ import { _HttpClient } from '@delon/theme';
 @Component({
   selector: 'app-list-articles',
   templateUrl: './articles.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProListArticlesComponent implements OnInit {
   q: any = {

@@ -4,17 +4,14 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 @Component({
   selector: 'app-advanced-form',
   templateUrl: './advanced-form.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdvancedFormComponent implements OnInit {
   editIndex = -1;
   editObj = {};
 
   form: FormGroup;
-  users: any[] = [
-    { value: 'xiao', label: '付晓晓' },
-    { value: 'mao', label: '周毛毛' },
-  ];
+  users: any[] = [{ value: 'xiao', label: '付晓晓' }, { value: 'mao', label: '周毛毛' }];
 
   constructor(private fb: FormBuilder) {}
 

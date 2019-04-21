@@ -2,12 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { zip } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import {
-  MenuService,
-  SettingsService,
-  TitleService,
-  ALAIN_I18N_TOKEN,
-} from '@delon/theme';
+import { MenuService, SettingsService, TitleService, ALAIN_I18N_TOKEN } from '@delon/theme';
 import { ACLService } from '@delon/acl';
 import { TranslateService } from '@ngx-translate/core';
 import { I18NService } from '../i18n/i18n.service';
@@ -38,7 +33,7 @@ export class StartupService {
   load(): Promise<any> {
     // only works with promises
     // https://github.com/angular/angular/issues/15088
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       zip(
         this.httpClient.get(`assets/tmp/i18n/${this.i18n.defaultLang}.json`),
         this.httpClient.get('assets/tmp/app-data.json'),

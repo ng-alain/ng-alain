@@ -7,7 +7,7 @@ import { STComponent, STColumn, STData, STChange } from '@delon/abc';
 @Component({
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProTableListComponent implements OnInit {
   q: any = {
@@ -84,8 +84,8 @@ export class ProTableListComponent implements OnInit {
     private http: _HttpClient,
     public msg: NzMessageService,
     private modalSrv: NzModalService,
-    private cdr: ChangeDetectorRef
-  ) { }
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnInit() {
     this.getData();
@@ -94,8 +94,7 @@ export class ProTableListComponent implements OnInit {
   getData() {
     this.loading = true;
     this.q.statusList = this.status.filter(w => w.checked).map(item => item.index);
-    if (this.q.status !== null && this.q.status > -1)
-      this.q.statusList.push(this.q.status);
+    if (this.q.status !== null && this.q.status > -1) this.q.statusList.push(this.q.status);
     this.http
       .get('/rule', this.q)
       .pipe(
@@ -129,12 +128,10 @@ export class ProTableListComponent implements OnInit {
   }
 
   remove() {
-    this.http
-      .delete('/rule', { nos: this.selectedRows.map(i => i.no).join(',') })
-      .subscribe(() => {
-        this.getData();
-        this.st.clearCheck();
-      });
+    this.http.delete('/rule', { nos: this.selectedRows.map(i => i.no).join(',') }).subscribe(() => {
+      this.getData();
+      this.st.clearCheck();
+    });
   }
 
   approval() {
@@ -147,9 +144,7 @@ export class ProTableListComponent implements OnInit {
       nzContent: tpl,
       nzOnOk: () => {
         this.loading = true;
-        this.http
-          .post('/rule', { description: this.description })
-          .subscribe(() => this.getData());
+        this.http.post('/rule', { description: this.description }).subscribe(() => this.getData());
       },
     });
   }

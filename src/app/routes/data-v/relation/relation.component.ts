@@ -46,8 +46,7 @@ export class RelationComponent implements OnInit, OnDestroy {
         tooltip: {
           triggerOn: 'click',
           formatter: item => {
-            if (item.dataType === 'node')
-              return `${item.data.name}：${item.data.arg}`;
+            if (item.dataType === 'node') return `${item.data.name}：${item.data.arg}`;
             return item.name;
           },
         },

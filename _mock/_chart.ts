@@ -186,18 +186,20 @@ radarOriginData.forEach(item => {
 // endregion
 
 export const CHARTS = {
-  '/chart': JSON.parse(JSON.stringify({
-    visitData,
-    visitData2,
-    salesData,
-    searchData,
-    offlineData,
-    offlineChartData,
-    salesTypeData,
-    salesTypeDataOnline,
-    salesTypeDataOffline,
-    radarData,
-  })),
+  '/chart': JSON.parse(
+    JSON.stringify({
+      visitData,
+      visitData2,
+      salesData,
+      searchData,
+      offlineData,
+      offlineChartData,
+      salesTypeData,
+      salesTypeDataOnline,
+      salesTypeDataOffline,
+      radarData,
+    }),
+  ),
   '/chart/visit': JSON.parse(JSON.stringify(visitData)),
   '/chart/tags': Mock.mock({
     'list|100': [{ x: '@city', 'value|1-100': 150, 'category|0-2': 1 }],
