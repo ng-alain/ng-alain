@@ -23,7 +23,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     start: null,
     end: null,
   };
-  percent = null;
+  percent: number | null = null;
 
   constructor(
     private http: _HttpClient,
@@ -63,7 +63,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
   };
 
   refData() {
-    const activeData = [];
+    const activeData: any[] = [];
     for (let i = 0; i < 24; i += 1) {
       activeData.push({
         x: `${i.toString().padStart(2, '0')}:00`,

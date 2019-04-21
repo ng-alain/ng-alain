@@ -13,7 +13,7 @@ export class XlsxComponent {
   }
 
   change(e: Event) {
-    const file = (e.target as HTMLInputElement).files[0];
+    const file = (e.target as HTMLInputElement).files![0];
     this.xlsx.import(file).then(res => (this.data = res));
   }
 

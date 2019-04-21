@@ -14,8 +14,8 @@ import { _HttpClient } from '@delon/theme';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WidgetsComponent implements OnInit {
-  data = [];
-  smallData = [];
+  data: any[] = [];
+  smallData: any[] = [];
 
   todoData: any[] = [
     {

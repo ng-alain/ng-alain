@@ -62,7 +62,7 @@ const LANGS: { [key: string]: LangData } = {
 @Injectable({ providedIn: 'root' })
 export class I18NService implements AlainI18NService {
   private _default = DEFAULT;
-  private change$ = new BehaviorSubject<string>(null);
+  private change$ = new BehaviorSubject<string | null>(null);
 
   private _langs = Object.keys(LANGS).map(code => {
     const item = LANGS[code];
@@ -93,7 +93,7 @@ export class I18NService implements AlainI18NService {
   }
 
   get change(): Observable<string> {
-    return this.change$.asObservable().pipe(filter(w => w != null));
+    return this.change$.asObservable().pipe(filter(w => w != null)) as Observable<string>;
   }
 
   use(lang: string): void {

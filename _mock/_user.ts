@@ -1,6 +1,6 @@
 import { MockRequest } from '@delon/mock';
 
-const list = [];
+const list: any[] = [];
 const total = 50;
 
 for (let i = 0; i < total; i += 1) {

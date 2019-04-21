@@ -31,7 +31,7 @@ export class ProProfileAdvancedComponent implements OnInit {
   ngOnInit() {
     this.http.get('/profile/advanced').subscribe((res: any) => {
       this.data = res;
-      this.change({ index: 0, tab: null });
+      this.change({ index: 0, tab: null! });
       this.cdr.detectChanges();
     });
   }

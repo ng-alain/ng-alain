@@ -55,7 +55,7 @@ const user = [
 // endregion
 
 function getFakeList(count: number = 20): any[] {
-  const list = [];
+  const list: any[] = [];
   for (let i = 0; i < count; i += 1) {
     list.push({
       id: `fake-list-${i}`,

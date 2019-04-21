@@ -79,7 +79,7 @@ export class UserRegisterComponent implements OnDestroy {
     if (!control || !control.parent) {
       return null;
     }
-    if (control.value !== control.parent.get('password').value) {
+    if (control.value !== control.parent.get('password')!.value) {
       return { equar: true };
     }
     return null;

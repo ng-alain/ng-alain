@@ -39,7 +39,7 @@ export class HeaderSearchComponent implements AfterViewInit {
   constructor(private el: ElementRef) {}
 
   ngAfterViewInit() {
-    this.qIpt = (this.el.nativeElement as HTMLElement).querySelector('.ant-input');
+    this.qIpt = (this.el.nativeElement as HTMLElement).querySelector('.ant-input') as HTMLInputElement;
   }
 
   qFocus() {
