@@ -24,7 +24,7 @@
     "analyze": "ng build --prod --build-optimizer --stats-json",
     "lint": "npm run lint:ts && npm run lint:style",
     "lint:ts": "tslint -p src/tsconfig.app.json -c tslint.json 'src/**/*.ts'",
-    "lint:style": "stylelint \"src/**/*.less, !src/assets/**/*.less\" --syntax less",
+    "lint:style": "stylelint 'src/**/*.less, !src/assets/**/*.less' --syntax less",
     "lint-staged": "lint-staged",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "e2e": "ng e2e",
