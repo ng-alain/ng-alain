@@ -6,5 +6,6 @@
   "ngschematics.schematics": [
     "ng-alain"
   ],
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "prettier.stylelintIntegration": true
 }

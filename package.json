@@ -104,7 +104,12 @@
     "prettier": "^1.16.1",
     "prettier-stylelint": "^0.4.2",
     "stylelint": "^10.0.1",
+    "stylelint-config-css-modules": "^1.4.0",
+    "stylelint-config-prettier": "^5.1.0",
+    "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^18.3.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
+    "stylelint-order": "^3.0.0",
     "webpack-bundle-analyzer": "^3.3.2",
     "xlsx": "^0.14.2",
     "@delon/testing": "^7.3.0",
@@ -127,8 +132,7 @@
       "git add"
     ],
     "*.less": [
-      "npm run lint:style",
-      "prettier --write",
+      "stylelint 'src/**/*.less' --syntax less --fix",
       "git add"
     ],
     "ignore": [
