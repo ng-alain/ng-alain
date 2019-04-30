@@ -2257,41 +2257,41 @@ this.tinycolor = tinycolor;
 
 .text-truncate() {
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .textOverflow() {
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
   word-break: break-all;
-  white-space: nowrap;
 }
 
 .textOverflowMulti(@line: 3, @bg: #fff) {
-  overflow: hidden;
   position: relative;
-  line-height: 1.5em;
   max-height: @line * 1.5em;
-  text-align: justify;
   margin-right: -1em;
   padding-right: 1em;
-  &:before {
-    background: @bg;
-    content: '...';
-    padding: 0 1px;
+  overflow: hidden;
+  line-height: 1.5em;
+  text-align: justify;
+  &::before {
     position: absolute;
     right: 14px;
     bottom: 0;
+    padding: 0 1px;
+    background: @bg;
+    content: '...';
   }
-  &:after {
-    background: white;
-    content: '';
-    margin-top: 0.2em;
+  &::after {
     position: absolute;
     right: 14px;
     width: 1em;
     height: 1em;
+    margin-top: 0.2em;
+    background: white;
+    content: '';
   }
 }
 
@@ -20195,9 +20195,9 @@ nz-table {
 // 一种路由切换动画的简单实现
 app-layout router-outlet + * {
   display: block;
-  animation-duration: @router-animation-duration;
   // animation-fill-mode: both;
 	animation-name: @router-animation-name; // fadeIn;
+  animation-duration: @router-animation-duration;
 }
 
 .preserve-white-spaces-mixin(@enabled) when(@enabled=true) {
@@ -20271,8 +20271,8 @@ a:focus {
   &-right {
     @media (min-width: @drawer-sm) {
       .drawer-sm {
-        max-width: @drawer-sm;
         width: auto !important;
+        max-width: @drawer-sm;
       }
     }
     @media (max-width: @drawer-sm - 1) {
@@ -20283,8 +20283,8 @@ a:focus {
 
     @media (min-width: @drawer-md) {
       .drawer-md {
-        max-width: @drawer-md;
         width: auto !important;
+        max-width: @drawer-md;
       }
     }
     @media (max-width: @drawer-md - 1) {
@@ -20295,8 +20295,8 @@ a:focus {
 
     @media (min-width: @drawer-lg) {
       .drawer-lg {
-        max-width: @drawer-lg;
         width: auto !important;
+        max-width: @drawer-lg;
       }
     }
     @media (max-width: @drawer-lg - 1) {
@@ -20307,8 +20307,8 @@ a:focus {
 
     @media (min-width: @drawer-xl) {
       .drawer-xl {
-        max-width: @drawer-xl;
         width: auto !important;
+        max-width: @drawer-xl;
       }
     }
     @media (max-width: @drawer-xl - 1) {
@@ -20325,11 +20325,11 @@ a:focus {
     bottom: 0;
     left: 0;
     width: 100%;
-    border-top: @border-width-base @border-style-base @border-color-split;
     padding: 10px 16px;
     text-align: right;
-    border-radius: 0 0 @border-radius-base @border-radius-base;
     background: #fff;
+    border-top: @border-width-base @border-style-base @border-color-split;
+    border-radius: 0 0 @border-radius-base @border-radius-base;
   }
 }
 
@@ -20348,55 +20348,55 @@ a:focus {
 // Small screen / tablet
 @media (min-width: @screen-sm) {
   .modal-sm .@{ant-prefix}-modal {
-    max-width: @modal-sm;
     width: auto !important;
+    max-width: @modal-sm;
   }
 }
 
 // Medium screen / desktop
 @media (min-width: @screen-md) {
   .modal-md .@{ant-prefix}-modal {
-    max-width: @modal-md;
     width: auto !important;
+    max-width: @modal-md;
   }
 }
 
 // Large screen / wide desktop
 @media (min-width: @screen-lg) {
   .modal-lg .@{ant-prefix}-modal {
-    max-width: @modal-lg;
     width: auto !important;
+    max-width: @modal-lg;
   }
 }
 
 // Extra large screen / large descktop
 @media (min-width: @screen-xxl) {
   .modal-xl .@{ant-prefix}-modal {
-    max-width: @modal-xl;
     width: auto !important;
+    max-width: @modal-xl;
   }
 }
 
 // 自定义模态框时非常有用，主要运用于查看、编辑页
 .modal {
   &-header {
-    padding: 16px 24px;
-    margin: -24px -24px 24px -24px;
-    border-radius: @border-radius-base @border-radius-base 0 0;
-    background: @component-background;
-    border-bottom: @border-width-base @border-style-base @border-color-split;
     display: flex;
     justify-content: space-between;
+    margin: -24px -24px 24px -24px;
+    padding: 16px 24px;
+    background: @component-background;
+    border-bottom: @border-width-base @border-style-base @border-color-split;
+    border-radius: @border-radius-base @border-radius-base 0 0;
   }
   &-title {
-    font-size: @font-size-lg;
-    font-weight: 500;
-    line-height: 22px;
     color: @heading-color;
+    font-weight: 500;
+    font-size: @font-size-lg;
+    line-height: 22px;
     small {
+      margin-left: @layout-gutter;
       color: @muted-color;
       font-size: 12px;
-      margin-left: @layout-gutter;
     }
   }
   &-spin {
@@ -20406,11 +20406,11 @@ a:focus {
     text-align: center;
   }
   &-footer {
-    border-top: @border-width-base @border-style-base @border-color-split;
+    margin: 24px -24px -24px -24px;
     padding: 10px 16px;
     text-align: right;
+    border-top: @border-width-base @border-style-base @border-color-split;
     border-radius: 0 0 @border-radius-base @border-radius-base;
-    margin: 24px -24px -24px -24px;
   }
   &-include-tabs {
     nz-tabset {
@@ -20428,11 +20428,11 @@ a:focus {
   td {
     > img,
     .img {
-      border-radius: @nz-table-img-radius;
-      vertical-align: middle;
-      margin-right: @nz-table-img-margin-right;
-      max-height: @nz-table-img-max-height;
       max-width: @nz-table-img-max-width;
+      max-height: @nz-table-img-max-height;
+      margin-right: @nz-table-img-margin-right;
+      vertical-align: middle;
+      border-radius: @nz-table-img-radius;
     }
   }
 }
@@ -20455,9 +20455,9 @@ a:focus {
       &__title {
         display: inline-block;
         width: @nz-table-rep-column-name-width;
-        text-align: @nz-table-rep-column-name-text-align;
         padding-right: @nz-table-rep-column-name-padding-right;
         color: @nz-table-rep-column-name-color;
+        text-align: @nz-table-rep-column-name-text-align;
       }
       &__hide-header-footer {
         .@{ant-prefix}-table-title,
@@ -20470,8 +20470,8 @@ a:focus {
       display: none;
     }
     &-title {
-      background: @nz-table-rep-header-background;
       text-align: center;
+      background: @nz-table-rep-header-background;
     }
     &-tbody {
       > tr {
@@ -20479,13 +20479,13 @@ a:focus {
           background: @nz-table-rep-even-background;
         }
         > td {
-          width: 100%;
           display: flex;
           align-items: center;
-          text-align: left !important;
-          border-bottom: none;
+          width: 100%;
           padding: @nz-table-rep-padding-vertical
             @nz-table-rep-padding-horizontal;
+          text-align: left !important;
+          border-bottom: none;
 
           .@{ant-prefix}-table-rep__title + *:not(.@{ant-prefix}-avatar) {
             flex: 1;
@@ -20581,20 +20581,20 @@ fieldset {
   }
 
   .abs-center {
-    overflow: auto;
-    margin: auto;
     position: absolute;
     top: 0;
-    left: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    overflow: auto;
     &.abs-fixed {
       position: fixed;
       z-index: 999;
     }
     &.abs-right {
-      left: auto;
       right: 20px;
+      left: auto;
       text-align: right;
     }
     &.abs-left {
@@ -20690,11 +20690,11 @@ fieldset {
 
 .search-form-mixin(@enabled) when(@enabled = true) {
   .search-form {
-    background: @search-form-bg;
+    margin-bottom: @layout-gutter * 2;
     padding: @layout-gutter;
+    background: @search-form-bg;
     border: @border-width-base @border-style-base @border-color-split;
     border-radius: @search-form-radius;
-    margin-bottom: @layout-gutter * 2;
   }
 }
 .search-form-mixin(@search-form-enabled);
@@ -20711,13 +20711,13 @@ fieldset {
       //   }
       // }
       .@{ant-prefix}-form-item {
-        margin-bottom: 24px;
-        margin-right: 0;
         display: flex;
+        margin-right: 0;
+        margin-bottom: 24px;
         > .@{ant-prefix}-form-item-label {
           width: auto;
-          line-height: 32px;
           padding-right: 8px;
+          line-height: 32px;
         }
         .@{ant-prefix}-form-item-control {
           line-height: 32px;
@@ -20777,9 +20777,9 @@ fieldset {
 
   .row-masonry {
     position: relative;
+    width: 100%;
     margin: 0;
     padding: 0;
-    width: 100%;
     column-gap: @masonry-column-gap;
     > .col-masonry {
       display: inline-block;
@@ -20811,15 +20811,15 @@ fieldset {
 
 .header-dropdown {
   background-color: #fff;
-  box-shadow: @shadow-1-down;
   border-radius: 4px;
+  box-shadow: @shadow-1-down;
 }
 
 @media screen and (max-width: @screen-xs) {
   .header-dropdown {
-    width: 100% !important;
     right: 0 !important;
     left: 0 !important;
+    width: 100% !important;
     border-radius: 0 !important;
   }
 }
@@ -20856,15 +20856,15 @@ fieldset {
       nz-card {
         margin: 0 16px 0 0;
         .remove {
-          display: none;
           position: absolute;
-          right: -16px;
           top: -16px;
-          font-size: 20px;
-          text-align: center;
-          height: 32px;
-          line-height: 32px;
+          right: -16px;
+          display: none;
           width: 32px;
+          height: 32px;
+          font-size: 20px;
+          line-height: 32px;
+          text-align: center;
           background: rgba(0, 0, 0, 0.26);
           border-radius: 50%;
           cursor: pointer;
@@ -20881,8 +20881,8 @@ fieldset {
     }
   }
   &__checkbox-list {
-    width: 100%;
     display: block;
+    width: 100%;
     @media (min-width: @mobile-min) {
       nz-col {
         margin-top: 8px;
@@ -20891,8 +20891,8 @@ fieldset {
   }
   // upload
   .@{ant-prefix}-upload-select-picture-card i {
-    font-size: 32px;
     color: #999;
+    font-size: 32px;
   }
   .@{ant-prefix}-upload.@{ant-prefix}-upload-drag {
     height: 180px;
@@ -20969,17 +20969,17 @@ fieldset {
 .widget-setting-drawer-mixin(@enabled) when(@enabled=true) {
   @{setting-drawer-prefix} {
     &__content {
+      position: relative;
       min-height: 100%;
       background: #fff;
-      position: relative;
     }
     &__body {
       &-item {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding-bottom: 12px;
+        justify-content: space-between;
         padding-top: 12px;
+        padding-bottom: 12px;
         &:first-child {
           padding-top: 0;
         }
@@ -20989,43 +20989,43 @@ fieldset {
       }
     }
     &__title {
-      font-size: 14px;
-      color: @heading-color;
-      line-height: 22px;
       margin-bottom: 12px;
+      color: @heading-color;
+      font-size: 14px;
+      line-height: 22px;
     }
     &__theme {
       margin-top: 24px;
       overflow: hidden;
       &-tag {
+        float: left;
         width: 20px;
         height: 20px;
-        border-radius: 2px;
-        float: left;
-        cursor: pointer;
         margin-right: 8px;
-        text-align: center;
         color: #fff;
         font-weight: bold;
+        text-align: center;
+        border-radius: 2px;
+        cursor: pointer;
       }
     }
     &__handle {
       position: fixed;
       top: 240px;
-      background: @primary-color;
+      right: 0;
+      z-index: @zindex-modal-mask - 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 48px;
       height: 48px;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      pointer-events: auto;
-      z-index: @zindex-modal-mask - 1;
-      text-align: center;
       font-size: 16px;
+      text-align: center;
+      background: @primary-color;
       border-radius: 4px 0 0 4px;
+      cursor: pointer;
       transition: right @animation-duration-slow @ease-base-in;
+      pointer-events: auto;
       &-icon {
         color: #fff;
         font-size: 20px;
@@ -21131,8 +21131,8 @@ fieldset {
 
 // Inline code
 code {
-  padding: 2px 4px;
   margin: 0 4px;
+  padding: 2px 4px;
   font-size: 90%;
   background-color: @code-bg;
   border: 1px solid @code-border-color;
@@ -21266,20 +21266,20 @@ code {
 
 .no {
   &-resize {
-    resize: none;
-    max-width: 100%;
     min-width: 100%;
+    max-width: 100%;
+    resize: none;
   }
   &-data {
     color: rgba(0, 0, 0, 0.25);
-    text-align: center;
-    line-height: 64px;
     font-size: 16px;
+    line-height: 64px;
+    text-align: center;
     i {
-      font-size: 24px;
-      margin-right: 16px;
       position: relative;
       top: 3px;
+      margin-right: 16px;
+      font-size: 24px;
     }
   }
 }
@@ -21295,20 +21295,20 @@ code {
 }
 
 .page-loading {
-  background: @background-color-base;
-  z-index: 10000;
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
+  z-index: 10000;
   padding-top: 200px;
   text-align: center;
+  background: @background-color-base;
 }
 
 .color-weak {
-  filter: invert(80%);
   display: block;
+  filter: invert(80%);
 }
 
 .for-each(@positions, {
@@ -21469,8 +21469,8 @@ code {
       scrollbar-width: thin;
       // Other
       &::-webkit-scrollbar {
-        height: @scrollbar-width;
         width: @scrollbar-height;
+        height: @scrollbar-width;
       }
       &::-webkit-scrollbar-track {
         box-shadow: inset 0 0 @scrollbar-width @scrollbar-track-color;
@@ -21516,20 +21516,20 @@ code {
 @{st-prefix} {
   display: block;
   &__selection {
-    cursor: pointer;
     padding-left: 2px;
+    cursor: pointer;
   }
   &__p-left {
     .@{ant-prefix}-table-pagination {
-      float: none;
       display: block;
+      float: none;
       text-align: left;
     }
   }
   &__p-center {
     .@{ant-prefix}-table-pagination {
-      float: none;
       display: block;
+      float: none;
       text-align: center;
     }
   }
@@ -21542,8 +21542,8 @@ code {
       &-strict {
         .ant-table-body {
           > table {
-            table-layout: fixed;
             word-wrap: break-word;
+            table-layout: fixed;
           }
         }
       }
@@ -21580,10 +21580,10 @@ code {
     &-fixed {
       display: flex;
       @{sv-prefix}__label {
-        text-align: right;
         flex: 0 0 auto;
-        text-overflow: ellipsis;
         overflow: hidden;
+        text-align: right;
+        text-overflow: ellipsis;
       }
       @{sv-prefix}__detail {
         flex: 1 0 0;
@@ -21592,33 +21592,34 @@ code {
   }
   &__title {
     display: block;
-    font-size: 14px;
+    margin-bottom: @sv-bottom;
     color: @heading-color;
     font-weight: 500;
-    margin-bottom: @sv-bottom;
+    font-size: 14px;
   }
   &__label {
-    line-height: 22px;
-    padding-bottom: @sv-bottom;
-    margin-right: 8px;
-    color: @sv-label-color;
-    white-space: nowrap;
     display: table-cell;
+    // margin-right: 8px;
+    padding-bottom: @sv-bottom;
+    color: @sv-label-color;
+    line-height: 22px;
+    white-space: nowrap;
     &:not(@{sv-prefix}__label-empty) {
-      &:after {
-        content: ':';
-        margin: 0 8px 0 2px;
+      &::after {
         position: relative;
         top: -0.5px;
+        margin: 0 8px 0 2px;
+        content: ':';
       }
     }
   }
   &__detail {
-    line-height: 22px;
+    // contents 对 ie, edge 不支持，但对于子组件的支持会更友好
+    display: table-cell;
     width: 100%;
     padding-bottom: @sv-bottom;
     color: @sv-detail-color;
-    display: table-cell;
+    line-height: 22px;
     word-break: break-all;
   }
   &__type {
@@ -21636,7 +21637,7 @@ code {
     }
   }
   &__default {
-    &:before {
+    &::before {
       content: @sv-default-text;
     }
 
@@ -21687,9 +21688,9 @@ code {
 @{se-prefix} {
   &__title {
     display: block;
-    font-size: 14px;
     color: @heading-color;
     font-weight: 500;
+    font-size: 14px;
     line-height: @form-component-max-height - 0.0001px;
   }
   &__item {
@@ -21698,9 +21699,9 @@ code {
       padding-bottom: 0;
     }
     &-empty {
-      &:before {
-        content: '';
+      &::before {
         display: inline-block;
+        content: '';
       }
     }
     // fix angular & ng-zorro-antd
@@ -21709,12 +21710,12 @@ code {
     }
   }
   &__label {
-    text-align: right;
-    color: @se-label-color;
-    white-space: nowrap;
     display: table-cell;
     flex: 0 0 auto;
     width: initial;
+    color: @se-label-color;
+    white-space: nowrap;
+    text-align: right;
     &-optional {
       color: rgba(0, 0, 0, 0.45);
     }
@@ -21762,9 +21763,9 @@ code {
   &__inline {
     @{se-prefix}__label,
     @{se-prefix}__control {
-      text-align: left;
-      width: initial;
       flex: none;
+      width: initial;
+      text-align: left;
     }
     @{se-prefix}__item {
       &:last-child {
@@ -21798,15 +21799,15 @@ code {
   &__wrap {
     display: inline-block;
     margin-left: 8px;
-    font-size: 0;
     padding: 0;
+    font-size: 0;
   }
   &__item {
     display: inline-block;
-    font-size: @font-size-base;
-    margin-left: -8px;
     width: @avatar-size-base;
     height: @avatar-size-base;
+    margin-left: -8px;
+    font-size: @font-size-base;
     .@{ant-prefix}-avatar {
       border: 1px solid #fff;
       cursor: pointer;
@@ -21836,35 +21837,35 @@ code {
 }
 
 ellipsis {
-  display: inline-block;
+  display: inline;
 }
 
 .ellipsis {
-  overflow: hidden;
   display: inline-block;
-  word-break: break-all;
   width: 100%;
+  overflow: hidden;
+  word-break: break-all;
   &__lines {
     position: relative;
   }
   &__line-clamp {
     position: relative;
+    display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
   }
   &__shadow {
-    display: block;
     position: absolute;
+    z-index: -999;
+    display: block;
     color: transparent;
     opacity: 0;
-    z-index: -999;
   }
 }
 
 .error-collect {
-  color: #f5222d;
   padding-right: 24px;
+  color: #f5222d;
   cursor: pointer;
 }
 
@@ -21878,23 +21879,23 @@ ellipsis {
     width: 62.5%;
     padding-right: 152px;
     zoom: 1;
-    &:before,
-    &:after {
-      content: ' ';
+    &::before,
+    &::after {
       display: table;
+      content: ' ';
     }
-    &:after {
+    &::after {
       clear: both;
-      visibility: hidden;
-      font-size: 0;
       height: 0;
+      font-size: 0;
+      visibility: hidden;
     }
   }
   &__img {
-    height: 360px;
+    float: right;
     width: 100%;
     max-width: 430px;
-    float: right;
+    height: 360px;
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 100% 100%;
@@ -21902,17 +21903,17 @@ ellipsis {
   &__cont {
     flex: auto;
     &-title {
-      color: #434e59;
-      font-size: 72px;
-      font-weight: 600;
-      line-height: 72px;
       margin-bottom: 24px;
+      color: #434e59;
+      font-weight: 600;
+      font-size: 72px;
+      line-height: 72px;
     }
     &-desc {
+      margin-bottom: 16px;
       color: @text-color-secondary;
       font-size: 20px;
       line-height: 28px;
-      margin-bottom: 16px;
     }
     &-actions {
       button:not(:last-child) {
@@ -21935,8 +21936,8 @@ ellipsis {
     display: block;
     text-align: center;
     &__img-block {
-      padding-right: 0;
       margin: 0 auto 24px;
+      padding-right: 0;
     }
   }
 }
@@ -21958,19 +21959,19 @@ ellipsis {
 @footer-toolbar-padding: 0 24px;
 
 @{footer-toolbar-prefix} {
-  display: flex;
   position: fixed;
-  width: 100%;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  z-index: @zindex;
+  display: flex;
+  width: 100%;
   height: @footer-toolbar-height;
+  padding: @footer-toolbar-padding;
   line-height: @footer-toolbar-height;
-  box-shadow: @footer-toolbar-box-shadow;
   background: @footer-toolbar-bg;
   border-top: @footer-toolbar-border-top;
-  padding: @footer-toolbar-padding;
+  box-shadow: @footer-toolbar-box-shadow;
   transition: all 0.3s;
-  z-index: @zindex;
   &__left {
     flex: 1;
   }
@@ -21995,8 +21996,8 @@ ellipsis {
 
 @{global-footer-prefix} {
   display: block;
-  padding: 0 16px;
   margin: 48px 0 24px;
+  padding: 0 16px;
   text-align: center;
   &__links {
     margin-bottom: 8px;
@@ -22024,8 +22025,8 @@ ellipsis {
   width: 336px;
 
   &__btn {
-    cursor: pointer;
     display: inline-block;
+    cursor: pointer;
     transition: all 0.3s;
   }
 
@@ -22053,11 +22054,11 @@ ellipsis {
     max-height: 400px;
     overflow: auto;
     &-item {
-      transition: all 0.3s;
+      padding-right: 24px;
+      padding-left: 24px;
       overflow: hidden;
       cursor: pointer;
-      padding-left: 24px;
-      padding-right: 24px;
+      transition: all 0.3s;
       &:last-child {
         border-bottom: 0;
       }
@@ -22067,35 +22068,35 @@ ellipsis {
       &-meta {
         width: 100%;
         &-title {
-          font-weight: normal;
           margin-bottom: 8px;
+          font-weight: normal;
         }
       }
       .@{ant-prefix}-avatar {
-        background: #fff;
         margin-top: 4px;
+        background: #fff;
       }
     }
   }
   &__notfound {
-    text-align: center;
     padding: 73px 0 88px;
     color: @text-color-secondary;
+    text-align: center;
     &-img {
       display: inline-block;
-      margin-bottom: 16px;
       height: 76px;
+      margin-bottom: 16px;
     }
   }
   &__clear {
     height: 46px;
+    color: @text-color;
     line-height: 46px;
     text-align: center;
-    color: @text-color;
-    border-radius: 0 0 @border-radius-base @border-radius-base;
     border-top: 1px solid @border-color-split;
-    transition: all 0.3s;
+    border-radius: 0 0 @border-radius-base @border-radius-base;
     cursor: pointer;
+    transition: all 0.3s;
     &:hover {
       color: @heading-color;
     }
@@ -22112,16 +22113,16 @@ ellipsis {
       line-height: @line-height-base;
     }
     &-time {
-      font-size: 12px;
       margin-top: 4px;
+      font-size: 12px;
       line-height: @line-height-base;
     }
     &-extra {
       float: right;
+      margin-top: -1.5px;
+      margin-right: 0;
       color: @text-color-secondary;
       font-weight: normal;
-      margin-right: 0;
-      margin-top: -1.5px;
     }
   }
 }
@@ -22132,8 +22133,8 @@ ellipsis {
 
 @{page-header-prefix} {
   display: block;
-  background-color: @page-header-bg;
   padding: 16px 32px 0 32px;
+  background-color: @page-header-bg;
   border-bottom: @border-width-base @border-style-base @border-color-split;
   &__wide {
     max-width: @page-header-wide;
@@ -22160,25 +22161,25 @@ ellipsis {
     margin-right: 16px;
     padding-top: 1px;
     img {
+      display: block;
       width: 28px;
       height: 28px;
       border-radius: @border-radius-base;
-      display: block;
     }
   }
   &__title {
-    font-size: 20px;
-    font-weight: 500;
     color: @heading-color;
+    font-weight: 500;
+    font-size: 20px;
     small {
+      padding-left: @layout-gutter;
       font-weight: normal;
       font-size: 14px;
-      padding-left: @layout-gutter;
     }
   }
   &__action {
-    margin-left: 56px;
     min-width: 266px;
+    margin-left: 56px;
   }
 
   &__title,
@@ -22213,8 +22214,8 @@ ellipsis {
   }
 
   &__extra {
-    margin-left: 88px;
     min-width: 242px;
+    margin-left: 88px;
   }
   @media screen and (max-width: @screen-xl) {
     &__extra {
@@ -22267,13 +22268,13 @@ ellipsis {
 @quick-menu-border-color: #fff;
 
 @{quick-menu-prefix} {
-  display: block;
   position: fixed;
   right: -@quick-menu-border-width;
   left: auto;
-  backface-visibility: hidden;
-  border: @quick-menu-border-width solid @quick-menu-border-color;
   z-index: @zindex + 2;
+  display: block;
+  border: @quick-menu-border-width solid @quick-menu-border-color;
+  backface-visibility: hidden;
   transition: margin 0.3s cubic-bezier(1, 0, 0, 1);
   &__inner {
     position: relative;
@@ -22285,14 +22286,14 @@ ellipsis {
     left: -@quick-menu-ctrl-hw;
     width: @quick-menu-ctrl-hw;
     height: @quick-menu-ctrl-hw;
+    text-align: center;
     border: @quick-menu-border-width solid @quick-menu-border-color;
     border-right: 0;
-    text-align: center;
-    cursor: pointer;
     border-radius: 3px 0 0 3px;
+    cursor: pointer;
     &-icon {
-      line-height: @quick-menu-ctrl-hw - 1;
       font-size: 20px;
+      line-height: @quick-menu-ctrl-hw - 1;
     }
   }
 }
@@ -22309,18 +22310,18 @@ ellipsis {
 
 .result {
   display: block;
-  text-align: center;
   width: 72%;
   margin: 0 auto;
+  text-align: center;
 
   @media screen and (max-width: @screen-xs) {
     width: 100%;
   }
 
   &__icon {
+    margin-bottom: 24px;
     font-size: 72px;
     line-height: 72px;
-    margin-bottom: 24px;
     &-success {
       color: @success-color;
     }
@@ -22329,23 +22330,23 @@ ellipsis {
     }
   }
   &__title {
-    font-size: 24px;
+    margin-bottom: 16px;
     color: @heading-color;
     font-weight: 500;
+    font-size: 24px;
     line-height: 32px;
-    margin-bottom: 16px;
   }
   &__desc {
+    margin-bottom: 24px;
+    color: @text-color-secondary;
     font-size: 14px;
     line-height: 22px;
-    color: @text-color-secondary;
-    margin-bottom: 24px;
   }
   &__extra {
-    background: @result-extra-bg;
     padding: 24px 40px;
-    border-radius: @border-radius-sm;
     text-align: left;
+    background: @result-extra-bg;
+    border-radius: @border-radius-sm;
 
     @media screen and (max-width: @screen-xs) {
       padding: 18px 20px;
@@ -22371,8 +22372,8 @@ ellipsis {
 
 @{reuse-tab-prefix} {
   display: block;
-  background-color: @reuse-tab-bg;
   padding: @reuse-tab-padding;
+  background-color: @reuse-tab-bg;
   border-bottom: 1px solid @reuse-tab-border-color;
   outline: none;
   user-select: none;
@@ -22387,10 +22388,10 @@ ellipsis {
       padding: 8px 20px;
     }
     @{reuse-tab-prefix}__op {
-      display: none;
       position: absolute;
       top: 14px;
       right: 2px;
+      display: none;
       margin: 0;
       font-size: 10px;
     }
@@ -22409,24 +22410,24 @@ ellipsis {
 }
 
 .tag-select {
-  user-select: none;
-  margin-left: -8px;
   position: relative;
-  overflow: hidden;
+  display: block;
   max-height: @form-component-max-height - 0.0001px;
+  margin-left: -8px;
+  overflow: hidden;
   line-height: @form-component-max-height - 0.0001px;
   transition: all 0.3s;
-  display: block;
+  user-select: none;
   &__expanded {
-    transition: all 0.3s;
     max-height: 200px;
+    transition: all 0.3s;
   }
   &__has-expand {
     padding-right: 50px;
   }
   .@{ant-prefix}-tag {
-    padding: 0 8px;
     margin-right: 24px;
+    padding: 0 8px;
   }
   &__trigger {
     position: absolute;
@@ -22463,8 +22464,8 @@ g2-tag-cloud {
   position: relative;
   &__top {
     position: relative;
-    overflow: hidden;
     width: 100%;
+    overflow: hidden;
     &-margin {
       margin-bottom: 12px;
     }
@@ -22476,16 +22477,17 @@ g2-tag-cloud {
     &-wrap {
       float: left;
     }
+
+    height: 22px;
     color: @text-color-secondary;
     font-size: @font-size-base;
     line-height: 22px;
-    height: 22px;
     &-action {
-      cursor: pointer;
       position: absolute;
       top: 4px;
       right: 0;
       line-height: 1;
+      cursor: pointer;
     }
   }
   &__avatar {
@@ -22498,25 +22500,25 @@ g2-tag-cloud {
     }
   }
   &__total {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-all;
-    white-space: nowrap;
-    color: @heading-color;
+    height: 38px;
     margin-top: 4px;
     margin-bottom: 0;
+    overflow: hidden;
+    color: @heading-color;
     font-size: 30px;
     line-height: 38px;
-    height: 38px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
   }
   &__desc {
-    margin-bottom: 12px;
     width: 100%;
+    margin-bottom: 12px;
   }
   &__footer {
-    border-top: 1px solid @border-color-split;
-    padding-top: 9px;
     margin-top: 8px;
+    padding-top: 9px;
+    border-top: 1px solid @border-color-split;
     & > * {
       position: relative;
     }
@@ -22528,48 +22530,48 @@ g2-tag-cloud {
 @{g2-gauge-prefix} {
   &__desc {
     width: 300px;
-    text-align: center;
     font-size: 12px;
+    text-align: center;
   }
   &__title {
-    font-size: 14px;
     color: rgba(0,0,0,0.43);
+    font-size: 14px;
   }
   &__percent {
-    font-size: 24px;
     color: rgba(0,0,0,0.85);
+    font-size: 24px;
   }
 }
 
 @g2-mini-progress-prefix: ~'.g2-mini-progress';
 
 @{g2-mini-progress-prefix} {
-  display: block;
-  padding: 5px 0;
   position: relative;
+  display: block;
   width: 100%;
+  padding: 5px 0;
   &__wrap {
-    background-color: @background-color-base;
     position: relative;
+    background-color: @background-color-base;
   }
   &__value {
-    transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
-    border-radius: 1px 0 0 1px;
-    background-color: @primary-color;
     width: 0;
     height: 100%;
+    background-color: @primary-color;
+    border-radius: 1px 0 0 1px;
+    transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
   }
   &__target {
     position: absolute;
     top: 0;
     bottom: 0;
     &-item {
-      border-radius: 100px;
       position: absolute;
       top: 0;
       left: 0;
-      height: 4px;
       width: 2px;
+      height: 4px;
+      border-radius: 100px;
       &:last-child {
         top: auto;
         bottom: 0;
@@ -22581,25 +22583,25 @@ g2-tag-cloud {
 @g2-pie-prefix: ~'.g2-pie';
 
 @{g2-pie-prefix} {
-  display: block;
   position: relative;
+  display: block;
   &__chart {
     position: relative;
   }
   &__legend {
     position: absolute;
+    top: 50%;
     right: 0;
     min-width: 200px;
-    top: 50%;
-    transform: translateY(-50%);
     margin: 0 20px;
-    list-style: none;
     padding: 0;
+    list-style: none;
+    transform: translateY(-50%);
     &-item {
-      cursor: pointer;
-      margin-bottom: 16px;
       height: 22px;
+      margin-bottom: 16px;
       line-height: 22px;
+      cursor: pointer;
       &:last-child {
         margin-bottom: 0;
       }
@@ -22608,13 +22610,13 @@ g2-tag-cloud {
       color: @text-color;
     }
     &-dot {
-      border-radius: 8px;
-      display: inline-block;
-      margin-right: 8px;
       position: relative;
       top: -1px;
-      height: 8px;
+      display: inline-block;
       width: 8px;
+      height: 8px;
+      margin-right: 8px;
+      border-radius: 8px;
     }
     &-percent {
       color: @text-color-secondary;
@@ -22641,24 +22643,24 @@ g2-tag-cloud {
   }
   &__total {
     position: absolute;
-    left: 50%;
     top: 50%;
-    text-align: center;
+    left: 50%;
     height: 62px;
+    text-align: center;
     transform: translate(-50%, -50%);
     &-title {
-      color: @text-color-secondary;
-      font-size: 14px;
-      line-height: 22px;
       height: 22px;
       margin-bottom: 8px;
+      color: @text-color-secondary;
       font-weight: normal;
+      font-size: 14px;
+      line-height: 22px;
     }
     &-stat {
-      color: @heading-color;
       display: block;
-      font-size: 1.2em;
       height: 32px;
+      color: @heading-color;
+      font-size: 1.2em;
       line-height: 32px;
       white-space: nowrap;
     }
@@ -22666,8 +22668,8 @@ g2-tag-cloud {
   &__mini {
     @{g2-pie-prefix}__total {
       &-title {
-        margin-bottom: 0;
         margin-top: 4px;
+        margin-bottom: 0;
       }
     }
   }
@@ -22681,17 +22683,17 @@ g2-tag-cloud {
     margin-top: 16px;
     &-item {
       position: relative;
-      text-align: center;
-      cursor: pointer;
       color: @text-color-secondary;
       line-height: 22px;
-      &:after {
-        background-color: @border-color-split;
+      text-align: center;
+      cursor: pointer;
+      &::after {
         position: absolute;
         top: 8px;
         right: 0;
-        height: 40px;
         width: 1px;
+        height: 40px;
+        background-color: @border-color-split;
         content: '';
       }
       &:last-child::after {
@@ -22699,21 +22701,21 @@ g2-tag-cloud {
       }
     }
     &-title {
-      color: @heading-color;
-      padding-left: 16px;
-      font-size: 24px;
-      line-height: 32px;
       margin-top: 4px;
       margin-bottom: 0;
+      padding-left: 16px;
+      color: @heading-color;
+      font-size: 24px;
+      line-height: 32px;
     }
     &-dot {
-      border-radius: 6px;
-      display: inline-block;
-      margin-right: 6px;
       position: relative;
       top: -1px;
-      height: 6px;
+      display: inline-block;
       width: 6px;
+      height: 6px;
+      margin-right: 6px;
+      border-radius: 6px;
     }
   }
 }
@@ -22721,15 +22723,15 @@ g2-tag-cloud {
 @g2-water-wave-prefix: ~'.g2-water-wave';
 
 @{g2-water-wave-prefix} {
-  display: inline-block;
   position: relative;
+  display: inline-block;
   transform-origin: left;
   &__desc {
     position: absolute;
-    left: 0;
     top: 32px;
-    text-align: center;
+    left: 0;
     width: 100%;
+    text-align: center;
     &-title {
       color: @text-color-secondary;
       font-size: 14px;
@@ -22737,8 +22739,8 @@ g2-tag-cloud {
     }
     &-percent {
       color: @heading-color;
-      line-height: 32px;
       font-size: 24px;
+      line-height: 32px;
     }
   }
   &__canvas {
@@ -22751,51 +22753,51 @@ g2-tag-cloud {
 @{number-info-prefix} {
   display: block;
   &__title {
+    margin-bottom: 16px;
     color: @text-color;
     font-size: @font-size-lg;
-    margin-bottom: 16px;
     transition: all 0.3s;
     &-sub {
+      height: 22px;
+      overflow: hidden;
       color: @text-color-secondary;
       font-size: @font-size-base;
-      height: 22px;
       line-height: 22px;
-      overflow: hidden;
+      white-space: nowrap;
       text-overflow: ellipsis;
       word-break: break-all;
-      white-space: nowrap;
     }
   }
   &__value {
     margin-top: 4px;
-    font-size: 0;
     overflow: hidden;
+    font-size: 0;
+    white-space: nowrap;
     text-overflow: ellipsis;
     word-break: break-all;
-    white-space: nowrap;
     &-suffix {
+      margin-left: 4px;
       color: @text-color;
       font-size: 16px;
       font-style: normal;
-      margin-left: 4px;
     }
     &-text {
-      color: @heading-color;
       display: inline-block;
-      line-height: 32px;
       height: 32px;
-      font-size: 24px;
       margin-right: 32px;
+      color: @heading-color;
+      font-size: 24px;
+      line-height: 32px;
     }
     &-sub {
+      margin-right: 0;
       color: @text-color-secondary;
       font-size: @font-size-lg;
       vertical-align: top;
-      margin-right: 0;
       .anticon {
+        margin-left: 4px;
         font-size: 12px;
         transform: scale(0.82);
-        margin-left: 4px;
       }
       .anticon-caret-up {
         color: @red-6;
@@ -22820,9 +22822,9 @@ g2-tag-cloud {
   line-height: 22px;
   &__up,
   &__down {
-    margin-left: 4px;
     position: relative;
     top: 1px;
+    margin-left: 4px;
     i {
       font-size: 12px;
       transform: scale(0.83);
@@ -22832,8 +22834,8 @@ g2-tag-cloud {
     color: @red-6;
   }
   &__down {
-    color: @green-6;
     top: -1px;
+    color: @green-6;
   }
   &__grey {
     @{trend-prefix}__up,
@@ -22891,8 +22893,8 @@ g2-tag-cloud {
 @alain-default-aside-user-enabled:              true;
 
 html {
-  direction: ltr;
   height: 100%; // http://updates.html5rocks.com/2013/12/300ms-tap-delay-gone-away
+  direction: ltr;
   touch-action: manipulation;
 }
 
@@ -22909,8 +22911,8 @@ body {
 }
 
 @{alain-default-prefix} {
-  display: block;
   position: relative;
+  display: block;
   width: 100%;
   height: auto;
   min-height: 100%;
@@ -22929,23 +22931,23 @@ body {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      color: #929292;
+      margin-right: -@alain-default-content-padding;
+      margin-bottom: @alain-default-content-padding;
+      margin-left: -@alain-default-content-padding;
       padding: @alain-default-content-padding;
       padding-top: @alain-default-content-padding - 12;
       padding-bottom: @alain-default-content-padding - 12;
-      margin-right: -@alain-default-content-padding;
-      margin-left: -@alain-default-content-padding;
-      margin-bottom: @alain-default-content-padding;
+      color: #929292;
       background-color: @alain-default-content-heading-bg;
       border-bottom: 1px solid @alain-default-content-heading-border;
       > h1 {
-        font-size: 18px;
-        font-weight: normal;
         margin-bottom: 0;
+        font-weight: normal;
+        font-size: 18px;
         > small {
           display: block;
-          font-size: 12px;
           color: @muted-color;
+          font-size: 12px;
         }
       }
     }
@@ -22975,17 +22977,17 @@ body {
 
 @{alain-default-prefix} {
   &__header {
+    z-index: @alain-default-zindex + 10;
     display: flex;
     align-items: center;
-    padding: 0 @alain-default-header-padding;
     width: 100%;
     height: @alain-default-header-hg;
+    padding: 0 @alain-default-header-padding;
     background-color: @alain-default-header-bg;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-    z-index: @alain-default-zindex + 10;
     &-logo {
-      margin-left: -@alain-default-header-padding;
       width: @alain-default-aside-wd;
+      margin-left: -@alain-default-header-padding;
       transition: width 0.2s @alain-default-ease;
       &-link {
         display: block;
@@ -22993,8 +22995,8 @@ body {
       }
       &-expanded,
       &-collapsed {
-        vertical-align: middle;
         max-width: 100%;
+        vertical-align: middle;
         animation: fadeIn 1s;
       }
       &-collapsed {
@@ -23007,14 +23009,15 @@ body {
   }
   &__nav {
     &-wrap {
-      flex: 1;
       display: flex;
+      flex: 1;
       justify-content: space-between;
     }
-    margin: 0;
-    padding: 0;
+
     display: flex;
     align-items: center;
+    margin: 0;
+    padding: 0;
     > li {
       display: inline-block;
       vertical-align: middle;
@@ -23025,14 +23028,14 @@ body {
     }
     &-item {
       display: block;
-      border-radius: 2px;
-      text-align: center;
-      line-height: 100%;
-      padding: 8px 2px;
       min-width: 50px;
-      transition: background-color 300ms;
-      cursor: pointer;
+      padding: 8px 2px;
+      line-height: 100%;
+      text-align: center;
+      border-radius: 2px;
       outline: none;
+      cursor: pointer;
+      transition: background-color 300ms;
       &:hover {
         color: #fff;
         background-color: rgba(255, 255, 255, 0.2) !important;
@@ -23050,11 +23053,11 @@ body {
 // Search
 .header-search-mixin(@enabled) when(@enabled =true) {
   @{alain-default-prefix}__search {
-    flex: 1;
-    margin: 0 @layout-gutter * 3;
     position: relative;
     display: flex;
+    flex: 1;
     align-items: center;
+    margin: 0 @layout-gutter * 3;
     .@{ant-prefix}-input {
       padding-left: 0;
       &:focus {
@@ -23063,8 +23066,8 @@ body {
     }
     .@{ant-prefix}-input,
     .@{ant-prefix}-input-group-addon {
-      background-color: rgba(255, 255, 255, 0.2);
       color: #fff;
+      background-color: rgba(255, 255, 255, 0.2);
       border: none;
       &::placeholder {
         color: #fff;
@@ -23073,16 +23076,16 @@ body {
     }
     .@{ant-prefix}-input-group-addon {
       i {
-        transition: color 300ms, transform 400ms;
-        font-size: 18px;
         color: #fff;
+        font-size: 18px;
+        transition: color 300ms, transform 400ms;
       }
     }
     &-focus {
       .@{ant-prefix}-input,
       .@{ant-prefix}-input-group-addon {
-        background-color: #f3f3f3;
         color: @grey-8;
+        background-color: #f3f3f3;
         &::placeholder {
           color: @grey-8;
           opacity: 1;
@@ -23090,8 +23093,8 @@ body {
       }
       .@{ant-prefix}-input-group-addon {
         i {
-          transform: rotate(90deg);
           color: @grey-8;
+          transform: rotate(90deg);
         }
       }
     }
@@ -23099,17 +23102,17 @@ body {
 
   @media (max-width: @mobile-max) {
     @{alain-default-prefix}__search {
-      align-items: center;
-      transition: transform 300ms;
-      padding: 0 @alain-default-header-padding;
-      margin: 0;
       position: absolute;
-      left: 0;
       top: 0;
-      height: 100%;
-      width: 100%;
-      background-color: #fff;
+      left: 0;
       z-index: @zindex+20;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0 @alain-default-header-padding;
+      background-color: #fff;
+      transition: transform 300ms;
       &-toggled {
         display: flex;
       }
@@ -23158,26 +23161,26 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
-  margin-top: @alain-default-header-hg;
-  width: @alain-default-aside-wd;
-  background-color: @alain-default-aside-bg;
-  transition: width 0.2s @alain-default-ease, translate 0.2s @alain-default-ease;
   z-index: @zindex + 5;
+  width: @alain-default-aside-wd;
+  margin-top: @alain-default-header-hg;
   overflow: hidden;
+  background-color: @alain-default-aside-bg;
   backface-visibility: hidden;
+  transition: width 0.2s @alain-default-ease, translate 0.2s @alain-default-ease;
   -webkit-overflow-scrolling: touch;
-  &:after {
-    content: '';
+  &::after {
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
     bottom: 0;
     border-right: 1px solid @alain-default-content-heading-border;
+    content: '';
   }
   &-inner {
+    height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 100%;
     -webkit-overflow-scrolling: touch;
     // IE
     -ms-scroll-chaining: chained;
@@ -23187,13 +23190,13 @@ body {
     -ms-content-zoom-limit-min: 100%;
     -ms-content-zoom-limit-max: 500%;
     -ms-scroll-snap-type: proximity;
-    -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+    -ms-scroll-snap-points-x: snaplist(100%, 200%, 300%, 400%, 500%);
     // Firefox
     scrollbar-width: none;
     // Chrome
     &::-webkit-scrollbar {
-      height: @alain-default-aside-scrollbar-width;
       width: @alain-default-aside-scrollbar-height;
+      height: @alain-default-aside-scrollbar-width;
     }
     &::-webkit-scrollbar-track {
       -webkit-box-shadow: inset 0 0 @alain-default-aside-scrollbar-width
@@ -23234,91 +23237,97 @@ body {
 }
 
 @{alain-default-prefix}__progress-bar {
+  position: fixed;
+  z-index: @zindex-base + 20;
   width: 100vw;
   height: 4px;
   overflow: hidden;
   background: fade(#ddd, 40%);
-  position: fixed;
-  z-index: @zindex-base + 20;
   &::after {
-    content: ' ';
-    height: 100%;
-    width: 33.3vw;
-    animation: gradcolours 5s steps(1) infinite, loadthird 1s infinite linear;
     display: block;
+    width: 33.3vw;
+    height: 100%;
     transform-origin: top left;
+    animation: gradcolours 5s steps(1) infinite, loadthird 1s infinite linear;
+    content: ' ';
   }
 }
 
 .grad(@hex) {
-  background:
-    linear-gradient(
-      90deg,
-      fade(@hex, 0) 0%,
-      @hex 30%,
-      @hex 50%,
-      @hex 70%,
-      fade(@hex, 0) 100%
-    );
+  background: linear-gradient(90deg, fade(@hex, 0) 0%, @hex 30%, @hex 50%, @hex 70%, fade(@hex, 0) 100%);
 }
 
 @keyframes loadthird {
-    0% { transform: translateX(-33.3vw); }
-  100% { transform: translateX(100vw); }
+  0% {
+    transform: translateX(-33.3vw);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
 }
 
 @keyframes gradcolours {
-    0% { .grad(#e88098); }
-  20% { .grad(#84bebe); }
-  40% { .grad(#e98724); }
-  60% { .grad(#afc94e); }
-  80% { .grad(#6297a4); }
+  0% {
+    .grad(#e88098);
+  }
+  20% {
+    .grad(#84bebe);
+  }
+  40% {
+    .grad(#e98724);
+  }
+  60% {
+    .grad(#afc94e);
+  }
+  80% {
+    .grad(#6297a4);
+  }
 }
 
 // Main Nav
-@sidebar-nav-prefix-cls:      sidebar-nav;
+@sidebar-nav-prefix-cls: sidebar-nav;
 
 .@{sidebar-nav-prefix-cls} {
   display: block;
-  font-size: @alain-default-aside-nav-fs;
   margin: 0;
   padding: 0;
+  font-size: @alain-default-aside-nav-fs;
   &__item {
     position: relative;
-    border-left: 3px solid transparent;
-    transition: border-left-color 0.4s ease;
     display: flex;
     flex-direction: column;
+    border-left: 3px solid transparent;
+    transition: border-left-color 0.4s ease;
     &-link {
-      display: block;
-      color: @alain-default-aside-nav-text-color;
-      text-decoration: none !important;
-      padding: @alain-default-aside-nav-padding-top-bottom @layout-gutter * 2;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       position: relative;
+      display: block;
+      padding: @alain-default-aside-nav-padding-top-bottom @layout-gutter * 2;
+      overflow: hidden;
+      color: @alain-default-aside-nav-text-color;
+      white-space: nowrap;
+      text-decoration: none !important;
+      text-overflow: ellipsis;
       user-select: none;
       &:hover {
         color: @alain-default-aside-nav-text-hover-color;
       }
     }
     &-icon {
-      min-width: @alain-default-aside-nav-icon-width;
       display: inline-block;
+      min-width: @alain-default-aside-nav-icon-width;
       margin-right: @layout-gutter;
       transition: font-size 0.15s @ease-out, margin 0.3s @ease-in-out;
     }
     &-img {
-      height: @alain-default-aside-nav-img-wh;
       width: @alain-default-aside-nav-img-wh;
+      height: @alain-default-aside-nav-img-wh;
     }
     &-text {
-      transition: opacity 0.3s @ease-in-out, width 0.3s @ease-in-out;
       opacity: 1;
+      transition: opacity 0.3s @ease-in-out, width 0.3s @ease-in-out;
     }
     &-disabled {
-      opacity: .6;
+      opacity: 0.6;
       &:hover {
         color: initial;
       }
@@ -23326,8 +23335,8 @@ body {
   }
   // Selected
   &__selected {
-    border-left-color: @alain-default-aside-nav-selected-text-color;
     background-color: @alain-default-aside-nav-selected-bg;
+    border-left-color: @alain-default-aside-nav-selected-text-color;
     > .@{sidebar-nav-prefix-cls}__item-link {
       color: @alain-default-aside-nav-selected-text-color;
     }
@@ -23341,18 +23350,18 @@ body {
     > .@{sidebar-nav-prefix-cls}__item-link {
       .@{sidebar-nav-prefix-cls}__sub-arrow {
         transform: translateY(-2px);
-        &:before {
+        &::before {
           transform: rotate(45deg) translateX(2px);
         }
-        &:after {
+        &::after {
           transform: rotate(-45deg) translateX(-2px);
         }
       }
     }
   }
   &__group-title {
-    color: @alain-default-aside-nav-group-text-color;
     padding: @alain-default-aside-nav-padding-top-bottom @layout-gutter * 2;
+    color: @alain-default-aside-nav-group-text-color;
   }
   &__sub {
     display: none;
@@ -23361,27 +23370,26 @@ body {
       border-left: 0 !important;
     }
     &-arrow {
-      transition: transform .3s @ease-in-out;
       position: absolute;
       top: 50%;
       right: @layout-gutter * 2;
       width: 10px;
-      &:before,
-      &:after {
-        content: '';
+      transition: transform 0.3s @ease-in-out;
+      &::before,
+      &::after {
         position: absolute;
-        vertical-align: baseline;
-        background: #fff;
-        background-image: linear-gradient(to right, @menu-item-color, @menu-item-color);
         width: 6px;
         height: 1.5px;
+        background: #fff;
+        background-image: linear-gradient(to right, @menu-item-color, @menu-item-color);
         border-radius: 2px;
-        transition: background .3s @ease-in-out, transform .3s @ease-in-out, top .3s @ease-in-out;
+        transition: background 0.3s @ease-in-out, transform 0.3s @ease-in-out, top 0.3s @ease-in-out;
+        content: '';
       }
-      &:before {
+      &::before {
         transform: rotate(-45deg) translateX(2px);
       }
-      &:after {
+      &::after {
         transform: rotate(45deg) translateX(-2px);
       }
     }
@@ -23393,11 +23401,11 @@ body {
     @badge-height: @layout-gutter * 2;
     &:not(.badge-dot) {
       top: (@alain-default-aside-nav-item-height - @badge-height) / 2;
-      height: @badge-height;
       width: @badge-height;
-      line-height: @badge-height;
+      height: @badge-height;
       padding: 0;
       overflow: hidden;
+      line-height: @badge-height;
     }
     &-dot {
       top: (@alain-default-aside-nav-item-height - @layout-gutter) / 2;
@@ -23428,11 +23436,11 @@ body {
   &__floating {
     position: absolute;
     z-index: @zindex + 7;
-    min-width: 160px;
-    border: 1px solid @alain-default-content-heading-border;
-    background-color: @alain-default-aside-bg;
-    border-radius: 4px;
     display: none;
+    min-width: 160px;
+    background-color: @alain-default-aside-bg;
+    border: 1px solid @alain-default-content-heading-border;
+    border-radius: 4px;
     .@{sidebar-nav-prefix-cls}__item {
       &-link {
         padding-left: @layout-gutter * 2;
@@ -23484,8 +23492,8 @@ body {
             height: @alain-default-aside-collapsed-nav-img-wh;
           }
           .@{sidebar-nav-prefix-cls}__item-text {
-            opacity: 0;
             display: none;
+            opacity: 0;
           }
         }
       }
@@ -23529,8 +23537,8 @@ body {
     .alain-default__content {
       router-outlet + * {
         display: block;
-        height: 100%;
         width: 100%;
+        height: 100%;
       }
     }
     .alain-default__content-title {
@@ -23557,10 +23565,10 @@ body {
 
 @{alain-default-prefix} {
   @{page-header-prefix} {
-    padding: @alain-default-content-padding - 12 @alain-default-content-padding 0 @alain-default-content-padding;
     margin-right: -@alain-default-content-padding;
-    margin-left: -@alain-default-content-padding;
     margin-bottom: @alain-default-content-padding;
+    margin-left: -@alain-default-content-padding;
+    padding: @alain-default-content-padding - 12 @alain-default-content-padding 0 @alain-default-content-padding;
     border-bottom: 1px solid @alain-default-content-heading-border;
   }
 }
@@ -23579,8 +23587,8 @@ body {
   @{reuse-tab-prefix} {
     position: fixed;
     top: @alain-default-header-hg;
-    left: @alain-default-aside-wd + @alain-default-content-padding;
     right: @alain-default-content-padding;
+    left: @alain-default-aside-wd + @alain-default-content-padding;
     z-index: @zindex-fixed + 1;
   }
 }
@@ -23606,8 +23614,8 @@ body {
   @{alain-default-prefix}__fixed {
     @{reuse-tab-prefix} {
       position: unset;
-      margin-top: @reuse-tab-height;
       width: initial;
+      margin-top: @reuse-tab-height;
     }
   }
 }
@@ -23622,24 +23630,24 @@ body {
     padding: @layout-gutter * 2;
     .@{ant-prefix}-col-6 {
       padding: (@layout-gutter * 2) 0;
-      border-radius: 4px;
       text-align: center;
-      transition: background-color 300ms;
+      border-radius: 4px;
       cursor: pointer;
+      transition: background-color 300ms;
       &:hover {
         background-color: #ececec;
       }
     }
     i {
-      border-radius: 50%;
-      font-size: 22px;
       padding: 15px;
+      font-size: 22px;
+      border-radius: 50%;
     }
     small {
-      font-size: 14px;
+      display: block;
       padding-top: 4px;
       color: #9c9c9c;
-      display: block;
+      font-size: 14px;
     }
   }
 }
@@ -23649,20 +23657,19 @@ body {
 @alain-default-user-block-avatar-hw: @avatar-size-lg;
 
 .alain-default-aside-user-mixin(@enabled) when(@enabled=true) {
-
   @{alain-default-prefix}__aside-user {
-    padding-top: (@layout-gutter * 3);
-    margin: 0 auto;
     display: block !important;
     width: @alain-default-user-block-width;
+    margin: 0 auto;
+    padding-top: (@layout-gutter * 3);
     cursor: pointer;
     .@{ant-prefix}-dropdown-trigger {
       display: flex;
       align-items: center;
     }
     &-info {
-      color: @text-color;
       width: @alain-default-user-block-width - @alain-default-user-block-avatar-hw - @layout-gutter;
+      color: @text-color;
     }
     &-avatar {
       margin-right: @layout-gutter;
@@ -23711,18 +23718,18 @@ body {
 
 @{alain-fullscreen-prefix} {
   display: block;
-  background-color: @alain-fullscreen-bg;
   padding: @alain-fullscreen-content-padding-vertical @alain-fullscreen-content-padding-horizontal;
+  background-color: @alain-fullscreen-bg;
 }
 
 @{alain-fullscreen-prefix} {
 @{page-header-prefix} {
+  margin-right: -@alain-fullscreen-content-padding-horizontal;
+  margin-bottom: @alain-fullscreen-content-padding-vertical;
+  margin-left: -@alain-fullscreen-content-padding-horizontal;
   padding: @alain-fullscreen-content-padding-horizontal;
   padding-top: @alain-fullscreen-content-padding-horizontal - 12;
   padding-bottom: @alain-fullscreen-content-padding-horizontal - 12;
-  margin-right: -@alain-fullscreen-content-padding-horizontal;
-  margin-left: -@alain-fullscreen-content-padding-horizontal;
-  margin-bottom: @alain-fullscreen-content-padding-vertical;
 }
 
 }
