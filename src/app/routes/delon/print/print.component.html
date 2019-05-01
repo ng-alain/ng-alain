@@ -1,6 +1,8 @@
 <div class="alain-default__content-title">
-  <h1>Lodop打印
-    <small>更多体验请至
+  <h1>
+    Lodop打印
+    <small
+      >更多体验请至
       <a href="https://ng-alain.com/components/lodop" target="_blank">ng-alain.com</a>
     </small>
   </h1>
@@ -18,7 +20,7 @@
       <nz-form-control nz-col [nzSm]="18">
         <nz-input-group>
           <div nz-col [nzSpan]="16">
-            <input nz-input nzPlaceHolder="https://localhost:8443/CLodopfuncs.js" [(ngModel)]="cog.url" name="url">
+            <input nz-input nzPlaceHolder="https://localhost:8443/CLodopfuncs.js" [(ngModel)]="cog.url" name="url" />
           </div>
           <div nz-col [nzSpan]="8">
             <button nz-button (click)="reload(null)">重新加载打印机</button>
@@ -29,18 +31,31 @@
     <nz-form-item nz-row>
       <nz-form-label nz-col [nzSm]="6">打印机</nz-form-label>
       <nz-form-control nz-col [nzSm]="18">
-        <nz-select style="width:90%;" nzPlaceHolder="请选择打印机" nzShowSearch nzAllowClear [(ngModel)]="cog.printer" name="printer" (ngModelChange)="changePinter($event)">
-          <nz-option *ngFor="let name of pinters" [nzLabel]="name" [nzValue]="name">
-          </nz-option>
+        <nz-select
+          style="width:90%;"
+          nzPlaceHolder="请选择打印机"
+          nzShowSearch
+          nzAllowClear
+          [(ngModel)]="cog.printer"
+          name="printer"
+          (ngModelChange)="changePinter($event)"
+        >
+          <nz-option *ngFor="let name of pinters" [nzLabel]="name" [nzValue]="name"> </nz-option>
         </nz-select>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item nz-row>
       <nz-form-label nz-col [nzSm]="6">纸张类型</nz-form-label>
       <nz-form-control nz-col [nzSm]="18">
-        <nz-select style="width:90%;" nzPlaceHolder="请选择纸张类型" nzShowSearch nzAllowClear [(ngModel)]="cog.paper" name="paper">
-          <nz-option *ngFor="let name of papers" [nzLabel]="name" [nzValue]="name">
-          </nz-option>
+        <nz-select
+          style="width:90%;"
+          nzPlaceHolder="请选择纸张类型"
+          nzShowSearch
+          nzAllowClear
+          [(ngModel)]="cog.paper"
+          name="paper"
+        >
+          <nz-option *ngFor="let name of papers" [nzLabel]="name" [nzValue]="name"> </nz-option>
         </nz-select>
       </nz-form-control>
     </nz-form-item>

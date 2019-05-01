@@ -12,13 +12,13 @@
           <nz-form-item>
             <nz-form-label [nzSm]="8">String</nz-form-label>
             <nz-form-control [nzSm]="16">
-              <input nz-input [(ngModel)]="format_str" [ngModelOptions]="{standalone: true}">
+              <input nz-input [(ngModel)]="format_str" [ngModelOptions]="{ standalone: true }" />
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
             <nz-form-label [nzSm]="8">Object</nz-form-label>
             <nz-form-control [nzSm]="16">
-              <input nz-input [(ngModel)]="format_obj" [ngModelOptions]="{standalone: true}">
+              <input nz-input [(ngModel)]="format_obj" [ngModelOptions]="{ standalone: true }" />
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
@@ -29,7 +29,7 @@
           <nz-form-item>
             <nz-form-label [nzSm]="8">Result</nz-form-label>
             <nz-form-control [nzSm]="16">
-              {{format_res}}
+              {{ format_res }}
             </nz-form-control>
           </nz-form-item>
         </form>
@@ -37,7 +37,7 @@
       <nz-card nzType="inner" nzTitle="yuan">
         <nz-row [nzGutter]="16">
           <nz-col [nzSpan]="12">
-            <input type="number" nz-input [(ngModel)]="yuan_str" (ngModelChange)="onYuan($event)">
+            <input type="number" nz-input [(ngModel)]="yuan_str" (ngModelChange)="onYuan($event)" />
           </nz-col>
           <nz-col [nzSpan]="12">
             <div [innerHTML]="yuan_res"></div>

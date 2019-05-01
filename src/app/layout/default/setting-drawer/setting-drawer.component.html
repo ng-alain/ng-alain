@@ -2,9 +2,16 @@
   <div class="setting-drawer__content">
     <div class="setting-drawer__body setting-drawer__theme">
       <h3 class="setting-drawer__title">主题色</h3>
-      <span *ngFor="let c of colors" nz-tooltip [ngStyle]="{ 'background-color': c.color }" (click)="changeColor(c.color)"
-            nz-tooltip [nzTitle]="c.key" class="setting-drawer__theme-tag"><i *ngIf="color === c.color"
-           class="anticon anticon-check"></i></span>
+      <span
+        *ngFor="let c of colors"
+        nz-tooltip
+        [ngStyle]="{ 'background-color': c.color }"
+        (click)="changeColor(c.color)"
+        nz-tooltip
+        [nzTitle]="c.key"
+        class="setting-drawer__theme-tag"
+        ><i *ngIf="color === c.color" class="anticon anticon-check"></i
+      ></span>
     </div>
     <nz-divider></nz-divider>
     <div class="setting-drawer__body">
@@ -43,20 +50,32 @@
     <div class="setting-drawer__body">
       <div class="setting-drawer__body-item">
         固定头和侧边栏
-        <nz-switch nzSize="small" [(ngModel)]="layout.fixed" (ngModelChange)="setLayout('fixed', layout.fixed)"></nz-switch>
+        <nz-switch
+          nzSize="small"
+          [(ngModel)]="layout.fixed"
+          (ngModelChange)="setLayout('fixed', layout.fixed)"
+        ></nz-switch>
       </div>
       <div class="setting-drawer__body-item">
         色弱模式
-        <nz-switch nzSize="small" [(ngModel)]="layout.colorWeak" (ngModelChange)="setLayout('colorWeak', layout.colorWeak)"></nz-switch>
+        <nz-switch
+          nzSize="small"
+          [(ngModel)]="layout.colorWeak"
+          (ngModelChange)="setLayout('colorWeak', layout.colorWeak)"
+        ></nz-switch>
       </div>
     </div>
     <nz-divider></nz-divider>
     <button (click)="apply()" type="button" nz-button nzType="primary">预览</button>
     <button (click)="reset()" type="button" nz-button>重置</button>
     <button (click)="copyVar()" type="button" nz-button>拷贝</button>
-    <nz-alert class="mt-md" nzType="warning" nzMessage="配置栏只在开发环境用于预览，生产环境不会展现，请拷贝后手动修改参数配置文件 src/styles/theme.less"></nz-alert>
+    <nz-alert
+      class="mt-md"
+      nzType="warning"
+      nzMessage="配置栏只在开发环境用于预览，生产环境不会展现，请拷贝后手动修改参数配置文件 src/styles/theme.less"
+    ></nz-alert>
   </div>
 </nz-drawer>
-<div class="setting-drawer__handle" [ngClass]="{'setting-drawer__handle-opened': collapse}" (click)="toggle()">
+<div class="setting-drawer__handle" [ngClass]="{ 'setting-drawer__handle-opened': collapse }" (click)="toggle()">
   <i nz-icon [type]="!collapse ? 'setting' : 'close'" class="setting-drawer__handle-icon"></i>
 </div>

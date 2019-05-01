@@ -3,28 +3,37 @@
     <nz-card [nzBordered]="false" class="mb-lg" [nzLoading]="!user">
       <ng-container *ngIf="user">
         <div class="avatarHolder">
-          <img src="{{user.avatar}}">
-          <div class="name">{{user.name}}</div>
-          <div>{{user.signature}}</div>
+          <img src="{{ user.avatar }}" />
+          <div class="name">{{ user.name }}</div>
+          <div>{{ user.signature }}</div>
         </div>
         <div class="detail">
-          <p><i class="title"></i>{{user.title}}</p>
-          <p><i class="group"></i>{{user.group}}</p>
+          <p><i class="title"></i>{{ user.title }}</p>
+          <p><i class="group"></i>{{ user.group }}</p>
           <p>
             <i class="address"></i>
-            {{user.geographic.province.label}}
-            {{user.geographic.city.label}}
+            {{ user.geographic.province.label }}
+            {{ user.geographic.city.label }}
           </p>
         </div>
         <nz-divider nzDashed></nz-divider>
         <div class="tags">
           <div class="tagsTitle">标签</div>
-          <nz-tag *ngFor="let t of user.tags">{{t.label}}</nz-tag>
+          <nz-tag *ngFor="let t of user.tags">{{ t.label }}</nz-tag>
           <nz-tag *ngIf="!taging" (click)="tagShowIpt()" class="ant-tag__plus">
             <i nz-icon type="plus"></i>
           </nz-tag>
-          <input *ngIf="taging" #tagInput nz-input [(ngModel)]="tagValue" (blur)="tagBlur()"
-                 (keydown)="tagEnter($event)" nzSize="small" type="text" style="width: 78px">
+          <input
+            *ngIf="taging"
+            #tagInput
+            nz-input
+            [(ngModel)]="tagValue"
+            (blur)="tagBlur()"
+            (keydown)="tagEnter($event)"
+            nzSize="small"
+            type="text"
+            style="width: 78px"
+          />
         </div>
         <nz-divider nzDashed></nz-divider>
         <div class="team">
@@ -34,7 +43,7 @@
               <div nz-col *ngFor="let t of notice" nzLg="24" nzXl="12">
                 <a href="#" class="text-truncate">
                   <nz-avatar [nzSrc]="t.logo" nzSize="small"></nz-avatar>
-                  {{t.member}}
+                  {{ t.member }}
                 </a>
               </div>
             </div>

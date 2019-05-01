@@ -4,12 +4,12 @@
   "trailingComma": "all",
   "tabWidth": 2,
   "useTabs": false,
-  "overrides": [
-    {
-      "files": ".prettierrc",
-      "options": {
-        "parser": "json"
-      }
+  "proseWrap": "never",
+  "parser": "angular",
+  "overrides": [{
+    "files": ".prettierrc",
+    "options": {
+      "parser": "json"
     }
-  ]
+  }]
 }

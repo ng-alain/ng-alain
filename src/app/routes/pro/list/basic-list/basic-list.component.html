@@ -33,7 +33,7 @@
         </label>
       </nz-radio-group>
       <nz-input-group nzSuffixIcon="anticon anticon-search" style="width: 270px;">
-        <input type="text" nz-input placeholder="请输入" [(ngModel)]="q.q" name="q">
+        <input type="text" nz-input placeholder="请输入" [(ngModel)]="q.q" name="q" />
       </nz-input-group>
     </div>
   </div>
@@ -61,7 +61,7 @@
         </ng-template>
         <nz-list-item-meta [nzTitle]="nzTitle" [nzDescription]="item.subDescription" [nzAvatar]="nzAvatar">
           <ng-template #nzTitle>
-            <a href="{{item.href}}" target="_blank">{{item.title}}</a>
+            <a href="{{ item.href }}" target="_blank">{{ item.title }}</a>
           </ng-template>
           <ng-template #nzAvatar>
             <nz-avatar [nzSrc]="item.logo" nzSize="large" [nzShape]="'square'"></nz-avatar>
@@ -72,11 +72,11 @@
             <div class="d-flex text-grey-dark">
               <div class="flex-1">
                 Owner
-                <p>{{item.owner}}</p>
+                <p>{{ item.owner }}</p>
               </div>
               <div class="text-right">
                 开始时间
-                <p>{{item.createdAt | _date}}</p>
+                <p>{{ item.createdAt | _date }}</p>
               </div>
             </div>
             <nz-progress [nzPercent]="item.percent" [nzStatus]="item.status" [nzStrokeWidth]="6"></nz-progress>

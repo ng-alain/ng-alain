@@ -29,7 +29,8 @@
       </div>
       <div>
         <p>团队内排名</p>
-        <p>8
+        <p>
+          8
           <span> / 24</span>
         </p>
       </div>
@@ -42,7 +43,13 @@
 </page-header>
 <div nz-row [nzGutter]="24">
   <div nz-col nzXs="24" nzSm="24" nzMd="16">
-    <nz-card nzTitle="进行中的项目" [nzExtra]="ingExtra" [nzBordered]="false" [nzLoading]="loading" class="ant-card__body-nopadding mb-lg project-list">
+    <nz-card
+      nzTitle="进行中的项目"
+      [nzExtra]="ingExtra"
+      [nzBordered]="false"
+      [nzLoading]="loading"
+      class="ant-card__body-nopadding mb-lg project-list"
+    >
       <ng-template #ingExtra>
         <a (click)="msg.success('to')">全部项目</a>
       </ng-template>
@@ -52,30 +59,35 @@
             <ng-template #noticeTitle>
               <div class="card-title">
                 <nz-avatar [nzSrc]="item.logo" [nzSize]="'small'"></nz-avatar>
-                <a (click)="msg.info('to' + item.href)">{{item.title}}</a>
+                <a (click)="msg.info('to' + item.href)">{{ item.title }}</a>
               </div>
             </ng-template>
           </nz-card-meta>
           <div class="project-item">
-            <a (click)="msg.info('show user: ' + item.member)">{{item.member}}</a>
-            <span *ngIf="item.updatedAt" class="datetime" title="{{item.updatedAt}}">
-              {{item.updatedAt | _date: 'fn' }}
+            <a (click)="msg.info('show user: ' + item.member)">{{ item.member }}</a>
+            <span *ngIf="item.updatedAt" class="datetime" title="{{ item.updatedAt }}">
+              {{ item.updatedAt | _date: 'fn' }}
             </span>
           </div>
         </nz-card>
       </div>
     </nz-card>
-    <nz-card nzTitle="动态" [nzBordered]="false" [nzLoading]="loading" class="ant-card__body-nopadding mb-lg active-card">
+    <nz-card
+      nzTitle="动态"
+      [nzBordered]="false"
+      [nzLoading]="loading"
+      class="ant-card__body-nopadding mb-lg active-card"
+    >
       <nz-list nzSize="large" class="activities">
         <nz-list-item *ngFor="let item of activities">
           <nz-list-item-meta [nzAvatar]="item.user.avatar" [nzTitle]="activeTitle" [nzDescription]="activeDescription">
             <ng-template #activeTitle>
-              <a (click)="msg.success(item.user.name)" class="username">{{item.user.name}}</a>
+              <a (click)="msg.success(item.user.name)" class="username">{{ item.user.name }}</a>
               &nbsp;
               <span class="event" [innerHTML]="item.template"></span>
             </ng-template>
             <ng-template #activeDescription>
-              <span class="datetime" title="{{item.updatedAt}}">{{item.updatedAt | _date: 'fn'}}</span>
+              <span class="datetime" title="{{ item.updatedAt }}">{{ item.updatedAt | _date: 'fn' }}</span>
             </ng-template>
           </nz-list-item-meta>
         </nz-list-item>
@@ -85,8 +97,13 @@
   <div nz-col nzXs="24" nzSm="24" nzMd="8">
     <nz-card nzTitle="快速开始 / 便捷导航" [nzBordered]="false" class="ant-card__body-nopadding mb-lg">
       <div class="links">
-        <a *ngFor="let item of links" (click)="msg.success(item.title)">{{item.title}}</a>
-        <button nz-button (click)="links.push({title: 'new titel', href: 'href'})" [nzType]="'dashed'" [nzSize]="'small'">
+        <a *ngFor="let item of links" (click)="msg.success(item.title)">{{ item.title }}</a>
+        <button
+          nz-button
+          (click)="links.push({ title: 'new titel', href: 'href' })"
+          [nzType]="'dashed'"
+          [nzSize]="'small'"
+        >
           <i nz-icon type="plus"></i>
           <span>添加</span>
         </button>
@@ -95,13 +112,18 @@
     <nz-card nzTitle="XX 指数" [nzBordered]="false" [nzLoading]="loading" class="mb-lg">
       <g2-radar *ngIf="radarData" [data]="radarData" [height]="343" [hasLegend]="true"></g2-radar>
     </nz-card>
-    <nz-card nzTitle="团队" [nzBordered]="false" [nzBodyStyle]="{'padding-top.px': 12, 'padding-bottom.px': 12 }" class="mb-lg">
+    <nz-card
+      nzTitle="团队"
+      [nzBordered]="false"
+      [nzBodyStyle]="{ 'padding-top.px': 12, 'padding-bottom.px': 12 }"
+      class="mb-lg"
+    >
       <div class="members">
         <div nz-row [nzGutter]="48">
           <div nz-col [nzSpan]="12" *ngFor="let i of members">
             <a (click)="msg.success(i.title)">
               <nz-avatar [nzSrc]="i.logo" [nzSize]="'small'"></nz-avatar>
-              <span class="member">{{i.title}}</span>
+              <span class="member">{{ i.title }}</span>
             </a>
           </div>
         </div>
