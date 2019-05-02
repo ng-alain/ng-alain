@@ -1,8 +1,8 @@
 # add files you wish to ignore here
 **/*.md
 **/*.svg
-**/*.html
 **/test.ts
+src/index.html
 node_modules/
 coverage/
 dist/

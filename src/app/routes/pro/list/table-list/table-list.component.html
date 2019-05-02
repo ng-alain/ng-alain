@@ -6,7 +6,7 @@
         <nz-form-item>
           <nz-form-label nzFor="no">规则编号</nz-form-label>
           <nz-form-control>
-            <input nz-input [(ngModel)]="q.no" name="no" placeholder="请输入" id="no">
+            <input nz-input [(ngModel)]="q.no" name="no" placeholder="请输入" id="no" />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -14,7 +14,13 @@
         <nz-form-item>
           <nz-form-label nzFor="status">使用状态</nz-form-label>
           <nz-form-control>
-            <nz-select [(ngModel)]="q.status" name="status" id="status" [nzPlaceHolder]="'请选择'" [nzShowSearch]="true">
+            <nz-select
+              [(ngModel)]="q.status"
+              name="status"
+              id="status"
+              [nzPlaceHolder]="'请选择'"
+              [nzShowSearch]="true"
+            >
               <nz-option *ngFor="let i of status; let idx = index" [nzLabel]="i.text" [nzValue]="idx"></nz-option>
             </nz-select>
           </nz-form-control>
@@ -24,15 +30,14 @@
         <nz-form-item>
           <nz-form-label nzFor="callNo">调用次数</nz-form-label>
           <nz-form-control>
-            <input nz-input id="callNo">
+            <input nz-input id="callNo" />
           </nz-form-control>
         </nz-form-item>
       </div>
       <div nz-col nzMd="8" nzSm="24" *ngIf="expandForm">
         <nz-form-item>
           <nz-form-label nzFor="updatedAt">更新日期</nz-form-label>
-          <nz-form-control>
-          </nz-form-control>
+          <nz-form-control> </nz-form-control>
         </nz-form-item>
       </div>
       <div nz-col nzMd="8" nzSm="24" *ngIf="expandForm">
@@ -58,8 +63,8 @@
       <div nz-col [nzSpan]="expandForm ? 24 : 8" [class.text-right]="expandForm">
         <button nz-button type="submit" [nzType]="'primary'" [nzLoading]="loading">查询</button>
         <button nz-button type="reset" (click)="reset()" class="mx-sm">重置</button>
-        <a (click)="expandForm=!expandForm">
-          {{expandForm ? '收起' : '展开'}}
+        <a (click)="expandForm = !expandForm">
+          {{ expandForm ? '收起' : '展开' }}
           <i class="anticon" [class.anticon-down]="!expandForm" [class.anticon-up]="expandForm"></i>
         </a>
       </div>
@@ -86,8 +91,8 @@
     <nz-alert [nzType]="'info'" [nzShowIcon]="true" [nzMessage]="message">
       <ng-template #message>
         已选择
-        <strong class="text-primary">{{selectedRows.length}}</strong> 项&nbsp;&nbsp; 服务调用总计
-        <strong>{{totalCallNo}}</strong> 万
+        <strong class="text-primary">{{ selectedRows.length }}</strong> 项&nbsp;&nbsp; 服务调用总计
+        <strong>{{ totalCallNo }}</strong> 万
         <a *ngIf="totalCallNo > 0" (click)="st.clearCheck()" class="ml-lg">清空</a>
       </ng-template>
     </nz-alert>
@@ -102,7 +107,7 @@
   <nz-form-item>
     <nz-form-label nzFor="no">描述</nz-form-label>
     <nz-form-control>
-      <input nz-input [(ngModel)]="description" name="description" placeholder="请输入" id="no">
+      <input nz-input [(ngModel)]="description" name="description" placeholder="请输入" id="no" />
     </nz-form-control>
   </nz-form-item>
 </ng-template>

@@ -1,5 +1,6 @@
 <div class="alain-default__content-title">
-  <h1>Read & Write zip file,
+  <h1>
+    Read & Write zip file,
     <a href="//ng-alain.com/components/zip" target="_blank">Document</a>
   </h1>
 </div>
@@ -7,7 +8,7 @@
   <button nz-button (click)="url()">Via Url</button>
   <input type="file" (change)="change($event)" multiple="false" class="ml-sm" />
   <ol>
-    <li *ngFor="let i of list">{{i | json}}</li>
+    <li *ngFor="let i of list">{{ i | json }}</li>
   </ol>
 </nz-card>
 <nz-card nzTitle="压缩" *ngIf="instance">
@@ -27,10 +28,10 @@
     <tbody>
       <tr *ngFor="let i of data; let index = index">
         <td>
-          <input nz-input [(ngModel)]="i.path" name="path{{index}}">
+          <input nz-input [(ngModel)]="i.path" name="path{{ index }}" />
         </td>
         <td>
-          <input nz-input [(ngModel)]="i.url" name="url{{index}}">
+          <input nz-input [(ngModel)]="i.url" name="url{{ index }}" />
         </td>
       </tr>
     </tbody>
