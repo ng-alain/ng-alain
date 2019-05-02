@@ -5,7 +5,7 @@
       <nz-form-item>
         <nz-form-control>
           <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-user">
-            <input nz-input formControlName="userName" placeholder="username: admin or user">
+            <input nz-input formControlName="userName" placeholder="username: admin or user" />
           </nz-input-group>
           <nz-form-explain *ngIf="userName.dirty && userName.errors">
             {{ 'Please enter mobile number!' | translate }}
@@ -15,7 +15,7 @@
       <nz-form-item>
         <nz-form-control>
           <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-lock">
-            <input nz-input type="password" formControlName="password" placeholder="password: ng-alain.com">
+            <input nz-input type="password" formControlName="password" placeholder="password: ng-alain.com" />
           </nz-input-group>
           <nz-form-explain *ngIf="password.dirty && password.errors">
             {{ 'Please enter password!' | translate }}
@@ -27,7 +27,7 @@
       <nz-form-item>
         <nz-form-control>
           <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-user">
-            <input nz-input formControlName="mobile" placeholder="mobile number">
+            <input nz-input formControlName="mobile" placeholder="mobile number" />
           </nz-input-group>
           <nz-form-explain *ngIf="mobile.dirty && mobile.errors">
             <ng-container *ngIf="mobile.errors.required">
@@ -44,15 +44,23 @@
           <nz-row [nzGutter]="8">
             <nz-col [nzSpan]="16">
               <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-mail">
-                <input nz-input formControlName="captcha" placeholder="captcha">
+                <input nz-input formControlName="captcha" placeholder="captcha" />
               </nz-input-group>
               <nz-form-explain *ngIf="captcha.dirty && captcha.errors">
                 {{ 'validation.verification-code.required' | translate }}
               </nz-form-explain>
             </nz-col>
             <nz-col [nzSpan]="8">
-              <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count" nzBlock [nzLoading]="http.loading">
-                {{ count ? count + 's' : 'app.register.get-verification-code' | translate }}
+              <button
+                type="button"
+                nz-button
+                nzSize="large"
+                (click)="getCaptcha()"
+                [disabled]="count"
+                nzBlock
+                [nzLoading]="http.loading"
+              >
+                {{ count ? count + 's' : ('app.register.get-verification-code' | translate) }}
               </button>
             </nz-col>
           </nz-row>
@@ -76,7 +84,13 @@
 </form>
 <div class="other">
   {{ 'app.login.sign-in-with' | translate }}
-  <i nz-tooltip="in fact Auth0 via window" (click)="open('auth0', 'window')" nz-icon type="alipay-circle" class="icon"></i>
+  <i
+    nz-tooltip="in fact Auth0 via window"
+    (click)="open('auth0', 'window')"
+    nz-icon
+    type="alipay-circle"
+    class="icon"
+  ></i>
   <i nz-tooltip="in fact Github via redirect" (click)="open('github')" nz-icon type="taobao-circle" class="icon"></i>
   <i (click)="open('weibo', 'window')" nz-icon type="weibo-circle" class="icon"></i>
   <a class="register" routerLink="/passport/register">{{ 'app.login.signup' | translate }}</a>

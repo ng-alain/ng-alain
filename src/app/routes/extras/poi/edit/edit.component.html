@@ -1,11 +1,11 @@
 <div class="modal-header">
-  <div class="modal-title">{{i.id > 0 ? '编辑' : '添加'}}-门店（基于HTML模板表单写法）</div>
+  <div class="modal-title">{{ i.id > 0 ? '编辑' : '添加' }}-门店（基于HTML模板表单写法）</div>
 </div>
 <form #f="ngForm" (ngSubmit)="save()" nz-form>
   <nz-form-item class="mb-sm">
     <nz-form-label nzSpan="4">所属分销商</nz-form-label>
     <nz-form-control nzSpan="8">
-      {{i.user_id}}
+      {{ i.user_id }}
       <a (click)="msgSrv.info('find')">查找用户</a>
     </nz-form-control>
   </nz-form-item>
@@ -49,8 +49,7 @@
     <nz-form-label nzSpan="4">门店类型</nz-form-label>
     <nz-form-control nzSpan="8">
       <nz-select [(ngModel)]="i.categories" name="categories" required [nzAllowClear]="false">
-        <nz-option *ngFor="let i of cat" [nzLabel]="i" [nzValue]="i">
-        </nz-option>
+        <nz-option *ngFor="let i of cat" [nzLabel]="i" [nzValue]="i"> </nz-option>
       </nz-select>
     </nz-form-control>
   </nz-form-item>
@@ -82,6 +81,8 @@
   </nz-form-item>
   <div class="modal-footer">
     <button nz-button type="button" (click)="close()">关闭</button>
-    <button nz-button [disabled]="!f.form.valid || !f.form.dirty" [nzLoading]="http.loading" [nzType]="'primary'">保存</button>
+    <button nz-button [disabled]="!f.form.valid || !f.form.dirty" [nzLoading]="http.loading" [nzType]="'primary'">
+      保存
+    </button>
   </div>
 </form>

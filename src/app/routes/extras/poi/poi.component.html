@@ -14,13 +14,13 @@
     </nz-select>
   </se>
   <se>
-    <input nz-input [(ngModel)]="s.user_id" name="user_id" placeholder="用户编号">
+    <input nz-input [(ngModel)]="s.user_id" name="user_id" placeholder="用户编号" />
   </se>
   <se>
-    <input nz-input [(ngModel)]="s.q" name="q" placeholder="门店、分店名称">
+    <input nz-input [(ngModel)]="s.q" name="q" placeholder="门店、分店名称" />
   </se>
   <se>
     <button nz-button (click)="st.reset(s)" nzType="primary">搜索</button>
   </se>
 </form>
-<st #st class="bg-white" [columns]="columns" [data]="url" [req]="{params: s}"></st>
+<st #st class="bg-white" [columns]="columns" [data]="url" [req]="{ params: s }"></st>

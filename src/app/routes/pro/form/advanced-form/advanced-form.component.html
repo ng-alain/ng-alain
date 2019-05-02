@@ -8,19 +8,19 @@
         <nz-form-item>
           <nz-form-label nzFor="name">仓库名</nz-form-label>
           <nz-form-control>
-            <input nz-input formControlName="name" id="name" placeholder="请输入仓库名称">
+            <input nz-input formControlName="name" id="name" placeholder="请输入仓库名称" />
             <nz-form-explain *ngIf="(name.dirty || name.touched) && name.errors?.required">
               请输入仓库名称
             </nz-form-explain>
           </nz-form-control>
         </nz-form-item>
       </nz-col>
-      <nz-col [nzXl]="{span:6, offset:2}" [nzLg]="{span:8}" [nzMd]="{span:12}" nzSm="24">
+      <nz-col [nzXl]="{ span: 6, offset: 2 }" [nzLg]="{ span: 8 }" [nzMd]="{ span: 12 }" nzSm="24">
         <nz-form-item>
           <nz-form-label>仓库域名</nz-form-label>
           <nz-form-control>
             <nz-input-group nzAddOnBefore="http://" nzAddOnAfter=".com">
-              <input nz-input formControlName="url" placeholder="请输入">
+              <input nz-input formControlName="url" placeholder="请输入" />
             </nz-input-group>
             <nz-form-explain *ngIf="(url.dirty || url.touched) && url.errors?.required">
               请输入仓库域名
@@ -28,7 +28,7 @@
           </nz-form-control>
         </nz-form-item>
       </nz-col>
-      <nz-col [nzXl]="{span:8, offset:2}" [nzLg]="{span:10}" [nzMd]="{span:24}" nzSm="24">
+      <nz-col [nzXl]="{ span: 8, offset: 2 }" [nzLg]="{ span: 10 }" [nzMd]="{ span: 24 }" nzSm="24">
         <nz-form-item>
           <nz-form-label>仓库管理员</nz-form-label>
           <nz-form-control>
@@ -48,8 +48,7 @@
           <nz-form-label>审批员</nz-form-label>
           <nz-form-control>
             <nz-select formControlName="approver" [nzPlaceHolder]="'请选择管理员'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value">
-              </nz-option>
+              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value"> </nz-option>
             </nz-select>
             <nz-form-explain *ngIf="(approver.dirty || approver.touched) && approver.errors?.required">
               请选择审批员
@@ -57,15 +56,15 @@
           </nz-form-control>
         </nz-form-item>
       </nz-col>
-      <nz-col [nzXl]="{span:6, offset:2}" [nzLg]="{span:8}" [nzMd]="{span:12}" nzSm="24">
+      <nz-col [nzXl]="{ span: 6, offset: 2 }" [nzLg]="{ span: 8 }" [nzMd]="{ span: 12 }" nzSm="24">
         <nz-form-item>
           <nz-form-label>生效日期</nz-form-label>
           <nz-form-control>
-            <nz-range-picker formControlName="date_range" [nzStyle]="{width: '100%'}"></nz-range-picker>
+            <nz-range-picker formControlName="date_range" [nzStyle]="{ width: '100%' }"></nz-range-picker>
           </nz-form-control>
         </nz-form-item>
       </nz-col>
-      <nz-col [nzXl]="{span:8, offset:2}" [nzLg]="{span:10}" [nzMd]="{span:24}" nzSm="24">
+      <nz-col [nzXl]="{ span: 8, offset: 2 }" [nzLg]="{ span: 10 }" [nzMd]="{ span: 24 }" nzSm="24">
         <nz-form-item>
           <nz-form-label>仓库类型</nz-form-label>
           <nz-form-control>
@@ -87,14 +86,14 @@
         <nz-form-item>
           <nz-form-label>任务名</nz-form-label>
           <nz-form-control>
-            <input nz-input formControlName="name2" placeholder="请输入任务名">
+            <input nz-input formControlName="name2" placeholder="请输入任务名" />
             <nz-form-explain *ngIf="(name2.dirty || name2.touched) && name2.errors?.required">
               请输入任务名
             </nz-form-explain>
           </nz-form-control>
         </nz-form-item>
       </nz-col>
-      <nz-col [nzXl]="{span:6, offset:2}" [nzLg]="{span:8}" [nzMd]="{span:12}" nzSm="24">
+      <nz-col [nzXl]="{ span: 6, offset: 2 }" [nzLg]="{ span: 8 }" [nzMd]="{ span: 12 }" nzSm="24">
         <nz-form-item>
           <nz-form-label>任务描述</nz-form-label>
           <nz-form-control>
@@ -105,13 +104,12 @@
           </nz-form-control>
         </nz-form-item>
       </nz-col>
-      <nz-col [nzXl]="{span:8, offset:2}" [nzLg]="{span:10}" [nzMd]="{span:24}" nzSm="24">
+      <nz-col [nzXl]="{ span: 8, offset: 2 }" [nzLg]="{ span: 10 }" [nzMd]="{ span: 24 }" nzSm="24">
         <nz-form-item>
           <nz-form-label>执行人</nz-form-label>
           <nz-form-control>
             <nz-select formControlName="owner2" [nzPlaceHolder]="'请选择执行人'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value">
-              </nz-option>
+              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value"> </nz-option>
             </nz-select>
             <nz-form-explain *ngIf="(owner2.dirty || owner2.touched) && owner2.errors?.required">
               请选择执行人
@@ -134,7 +132,7 @@
           </nz-form-control>
         </nz-form-item>
       </nz-col>
-      <nz-col [nzXl]="{span:6, offset:2}" [nzLg]="{span:8}" [nzMd]="{span:12}" nzSm="24">
+      <nz-col [nzXl]="{ span: 6, offset: 2 }" [nzLg]="{ span: 8 }" [nzMd]="{ span: 12 }" nzSm="24">
         <nz-form-item>
           <nz-form-label>生效时间</nz-form-label>
           <nz-form-control>
@@ -142,7 +140,7 @@
           </nz-form-control>
         </nz-form-item>
       </nz-col>
-      <nz-col [nzXl]="{span:8, offset:2}" [nzLg]="{span:10}" [nzMd]="{span:24}" nzSm="24">
+      <nz-col [nzXl]="{ span: 8, offset: 2 }" [nzLg]="{ span: 10 }" [nzMd]="{ span: 24 }" nzSm="24">
         <nz-form-item>
           <nz-form-label>任务类型</nz-form-label>
           <nz-form-control>
@@ -171,32 +169,32 @@
       <tbody>
         <tr *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
           <td>
-            <span *ngIf="editIndex!==i">{{items.value[i].name}}</span>
-            <span *ngIf="editIndex===i" nz-form-control>
-              <input nz-input formControlName="name" placeholder="请输入成员姓名">
+            <span *ngIf="editIndex !== i">{{ items.value[i].name }}</span>
+            <span *ngIf="editIndex === i" nz-form-control>
+              <input nz-input formControlName="name" placeholder="请输入成员姓名" />
             </span>
           </td>
           <td>
-            <span *ngIf="editIndex!==i">{{items.value[i].workId}}</span>
-            <span *ngIf="editIndex===i" nz-form-control>
-              <input nz-input formControlName="workId" placeholder="请输入工号">
+            <span *ngIf="editIndex !== i">{{ items.value[i].workId }}</span>
+            <span *ngIf="editIndex === i" nz-form-control>
+              <input nz-input formControlName="workId" placeholder="请输入工号" />
             </span>
           </td>
           <td>
-            <span *ngIf="editIndex!==i">{{items.value[i].department}}</span>
-            <span *ngIf="editIndex===i" nz-form-control>
-              <input nz-input formControlName="department" placeholder="请输入所属部门">
+            <span *ngIf="editIndex !== i">{{ items.value[i].department }}</span>
+            <span *ngIf="editIndex === i" nz-form-control>
+              <input nz-input formControlName="department" placeholder="请输入所属部门" />
             </span>
           </td>
           <td>
-            <span *ngIf="editIndex!==i">
+            <span *ngIf="editIndex !== i">
               <a (click)="edit(i)">编辑</a>
               <nz-divider nzType="vertical"></nz-divider>
               <nz-popconfirm (nzOnConfirm)="del(i)" [nzTitle]="'是否要删除此行？'">
                 <a nz-popconfirm>删除</a>
               </nz-popconfirm>
             </span>
-            <span *ngIf="editIndex===i">
+            <span *ngIf="editIndex === i">
               <a (click)="save(i)">保存</a>
               <nz-divider nzType="vertical"></nz-divider>
               <nz-popconfirm (nzOnConfirm)="cancel(i)" [nzTitle]="'是否要取消操作？'">
@@ -207,7 +205,7 @@
         </tr>
       </tbody>
     </nz-table>
-    <button *ngIf="editIndex===-1" nz-button [nzType]="'dashed'" (click)="add()" nzBlock class="mt-md">
+    <button *ngIf="editIndex === -1" nz-button [nzType]="'dashed'" (click)="add()" nzBlock class="mt-md">
       <i nz-icon type="plus"></i>
       <span>新增成员</span>
     </button>

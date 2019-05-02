@@ -4,9 +4,7 @@
       <a (click)="msg.success('Edit')">修改</a>
     </ng-template>
     <nz-list-item-meta nzTitle="账户密码" [nzDescription]="passwordDesc">
-      <ng-template #passwordDesc>
-        当前密码强度：<span class="text-green">强</span>
-      </ng-template>
+      <ng-template #passwordDesc> 当前密码强度：<span class="text-green">强</span> </ng-template>
     </nz-list-item-meta>
   </nz-list-item>
   <nz-list-item [nzActions]="[phoneOp]">
