@@ -65,7 +65,7 @@
         <button nz-button type="reset" (click)="reset()" class="mx-sm">重置</button>
         <a (click)="expandForm = !expandForm">
           {{ expandForm ? '收起' : '展开' }}
-          <i class="anticon" [class.anticon-down]="!expandForm" [class.anticon-up]="expandForm"></i>
+          <i nz-icon [nzType]="expandForm ? 'up' : 'down'"></i>
         </a>
       </div>
     </div>
