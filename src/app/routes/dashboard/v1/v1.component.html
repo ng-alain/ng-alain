@@ -190,7 +190,7 @@
         </div>
         <div nz-col [nzSpan]="2" class="text-right pr-md">
           <nz-dropdown [nzPlacement]="'topRight'">
-            <i nz-dropdown nz-icon type="ellipsis" class="rotate-90"></i>
+            <i nz-dropdown nz-icon nzType="ellipsis" class="rotate-90"></i>
             <ul nz-menu>
               <li nz-menu-item *ngIf="item.completed" (click)="item.completed = false">Active</li>
               <li nz-menu-item *ngIf="!item.completed" (click)="item.completed = true">Completed</li>

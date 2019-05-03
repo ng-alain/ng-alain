@@ -9,7 +9,7 @@
     >
       <ng-template #action1>
         <nz-tooltip [nzTitle]="'app.analysis.introduce' | translate">
-          <i nz-tooltip nz-icon type="info-circle"></i>
+          <i nz-tooltip nz-icon nzType="info-circle"></i>
         </nz-tooltip>
       </ng-template>
       <trend flag="up" style="display:block; margin-top:2px;">
@@ -38,7 +38,7 @@
     >
       <ng-template #action2>
         <nz-tooltip [nzTitle]="'app.analysis.introduce' | translate">
-          <i nz-tooltip nz-icon type="info-circle"></i>
+          <i nz-tooltip nz-icon nzType="info-circle"></i>
         </nz-tooltip>
       </ng-template>
       <g2-mini-area *ngIf="data.visitData" color="#975FE4" height="46" [data]="data.visitData"></g2-mini-area>
@@ -60,7 +60,7 @@
     >
       <ng-template #action3>
         <nz-tooltip [nzTitle]="'app.analysis.introduce' | translate">
-          <i nz-tooltip nz-icon type="info-circle"></i>
+          <i nz-tooltip nz-icon nzType="info-circle"></i>
         </nz-tooltip>
       </ng-template>
       <g2-mini-bar *ngIf="data.visitData" height="46" [data]="data.visitData"></g2-mini-bar>
@@ -82,7 +82,7 @@
     >
       <ng-template #action4>
         <nz-tooltip [nzTitle]="'app.analysis.introduce' | translate">
-          <i nz-tooltip nz-icon type="info-circle"></i>
+          <i nz-tooltip nz-icon nzType="info-circle"></i>
         </nz-tooltip>
       </ng-template>
       <g2-mini-progress height="46" percent="78" strokeWidth="8" target="80" color="#13C2C2"></g2-mini-progress>
@@ -158,7 +158,7 @@
     >
       <ng-template #extraOp>
         <nz-dropdown class="icon-group">
-          <i nz-dropdown nz-icon type="ellipsis"></i>
+          <i nz-dropdown nz-icon nzType="ellipsis"></i>
           <ul nz-menu>
             <li nz-menu-item>操作一</li>
             <li nz-menu-item>操作二</li>
@@ -171,7 +171,7 @@
             <ng-template #subTitle>
               {{ 'app.analysis.search-users' | translate }}
               <nz-tooltip [nzTitle]="'app.analysis.introduce' | translate">
-                <i nz-tooltip nz-icon type="info-circle" class="ml-sm"></i>
+                <i nz-tooltip nz-icon nzType="info-circle" class="ml-sm"></i>
               </nz-tooltip>
             </ng-template>
           </number-info>
@@ -209,7 +209,7 @@
       <ng-template #extra>
         <div class="sales-card-extra">
           <nz-dropdown class="icon-group" nzPlacement="bottomLeft">
-            <i nz-dropdown nz-icon type="ellipsis"></i>
+            <i nz-dropdown nz-icon nzType="ellipsis"></i>
             <ul nz-menu>
               <li nz-menu-item>操作一</li>
               <li nz-menu-item>操作二</li>

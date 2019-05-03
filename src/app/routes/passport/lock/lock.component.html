@@ -1,12 +1,12 @@
 <div class="ant-card width-lg" style="margin: 0 auto;">
   <div class="ant-card-body">
     <div class="avatar">
-      <nz-avatar [nzSrc]="settings.user.avatar" nzIcon="anticon anticon-user" nzSize="large"></nz-avatar>
+      <nz-avatar [nzSrc]="settings.user.avatar" nzIcon="user" nzSize="large"></nz-avatar>
     </div>
     <form nz-form [formGroup]="f" (ngSubmit)="submit()" role="form" class="mt-md">
       <nz-form-item>
         <nz-form-control>
-          <nz-input-group nzSuffixIcon="anticon anticon-lock">
+          <nz-input-group nzSuffixIcon="lock">
             <input type="password" nz-input formControlName="password" />
           </nz-input-group>
           <nz-form-explain *ngIf="f.get('password')!.dirty && f.get('password')!.errors">

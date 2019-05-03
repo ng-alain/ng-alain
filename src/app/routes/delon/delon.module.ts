@@ -4,7 +4,7 @@ import { SharedModule } from '@shared';
 
 import { DelonRoutingModule } from './delon-routing.module';
 
-import { STDemoComponent } from './simple-table/simple-table.component';
+import { STDemoComponent } from './st/st.component';
 import { UtilComponent } from './util/util.component';
 import { PrintComponent } from './print/print.component';
 import { ACLComponent } from './acl/acl.component';

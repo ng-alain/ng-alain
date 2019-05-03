@@ -4,7 +4,7 @@
       <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
       <nz-form-item>
         <nz-form-control>
-          <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-user">
+          <nz-input-group nzSize="large" nzPrefixIcon="user">
             <input nz-input formControlName="userName" placeholder="username: admin or user" />
           </nz-input-group>
           <nz-form-explain *ngIf="userName.dirty && userName.errors">
@@ -14,7 +14,7 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-control>
-          <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-lock">
+          <nz-input-group nzSize="large" nzPrefixIcon="lock">
             <input nz-input type="password" formControlName="password" placeholder="password: ng-alain.com" />
           </nz-input-group>
           <nz-form-explain *ngIf="password.dirty && password.errors">
@@ -26,7 +26,7 @@
     <nz-tab [nzTitle]="'app.login.tab-login-mobile' | translate">
       <nz-form-item>
         <nz-form-control>
-          <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-user">
+          <nz-input-group nzSize="large" nzPrefixIcon="user">
             <input nz-input formControlName="mobile" placeholder="mobile number" />
           </nz-input-group>
           <nz-form-explain *ngIf="mobile.dirty && mobile.errors">
@@ -43,7 +43,7 @@
         <nz-form-control>
           <nz-row [nzGutter]="8">
             <nz-col [nzSpan]="16">
-              <nz-input-group nzSize="large" nzPrefixIcon="anticon anticon-mail">
+              <nz-input-group nzSize="large" nzPrefixIcon="mail">
                 <input nz-input formControlName="captcha" placeholder="captcha" />
               </nz-input-group>
               <nz-form-explain *ngIf="captcha.dirty && captcha.errors">
@@ -88,10 +88,10 @@
     nz-tooltip="in fact Auth0 via window"
     (click)="open('auth0', 'window')"
     nz-icon
-    type="alipay-circle"
+    nzType="alipay-circle"
     class="icon"
   ></i>
-  <i nz-tooltip="in fact Github via redirect" (click)="open('github')" nz-icon type="taobao-circle" class="icon"></i>
-  <i (click)="open('weibo', 'window')" nz-icon type="weibo-circle" class="icon"></i>
+  <i nz-tooltip="in fact Github via redirect" (click)="open('github')" nz-icon nzType="taobao-circle" class="icon"></i>
+  <i (click)="open('weibo', 'window')" nz-icon nzType="weibo-circle" class="icon"></i>
   <a class="register" routerLink="/passport/register">{{ 'app.login.signup' | translate }}</a>
 </div>

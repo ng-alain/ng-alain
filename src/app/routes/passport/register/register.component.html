@@ -3,7 +3,7 @@
   <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
   <nz-form-item>
     <nz-form-control>
-      <nz-input-group nzSize="large" nzAddonBeforeIcon="anticon anticon-user">
+      <nz-input-group nzSize="large" nzAddonBeforeIcon="user">
         <input nz-input formControlName="mail" placeholder="Email" />
       </nz-input-group>
       <ng-container *ngIf="mail.dirty && mail.errors">
@@ -21,7 +21,7 @@
         nzOverlayClassName="register-password-cdk"
         [nzOverlayStyle]="{ 'width.px': 240 }"
       >
-        <nz-input-group nzSize="large" nz-popover nzAddonBeforeIcon="anticon anticon-lock">
+        <nz-input-group nzSize="large" nz-popover nzAddonBeforeIcon="lock">
           <input nz-input type="password" formControlName="password" placeholder="Password" />
         </nz-input-group>
         <nz-form-explain *ngIf="password.dirty && password.errors">{{
@@ -50,7 +50,7 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control>
-      <nz-input-group nzSize="large" nzAddonBeforeIcon="anticon anticon-lock">
+      <nz-input-group nzSize="large" nzAddonBeforeIcon="lock">
         <input nz-input type="password" formControlName="confirm" placeholder="Confirm Password" />
       </nz-input-group>
       <nz-form-explain *ngIf="confirm.dirty && confirm.errors">
@@ -88,7 +88,7 @@
     <nz-form-control>
       <nz-row [nzGutter]="8">
         <nz-col [nzSpan]="16">
-          <nz-input-group nzSize="large" nzAddonBeforeIcon="anticon anticon-mail">
+          <nz-input-group nzSize="large" nzAddonBeforeIcon="mail">
             <input nz-input formControlName="captcha" placeholder="Captcha" />
           </nz-input-group>
           <nz-form-explain *ngIf="captcha.dirty && captcha.errors">

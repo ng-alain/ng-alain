@@ -6,13 +6,13 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
     <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" (nzVisibleChange)="change()">
       <div class="alain-default__nav-item" nz-dropdown>
         <nz-badge [nzDot]="true">
-          <i nz-icon type="bell" class="alain-default__nav-item-icon"></i>
+          <i nz-icon nzType="bell" class="alain-default__nav-item-icon"></i>
         </nz-badge>
       </div>
       <div nz-menu class="wd-lg">
         <div *ngIf="loading" class="mx-lg p-lg"><nz-spin></nz-spin></div>
         <nz-card *ngIf="!loading" nzTitle="Notifications" nzBordered="false" class="ant-card__body-nopadding">
-          <ng-template #extra><i nz-icon type="plus"></i></ng-template>
+          <ng-template #extra><i nz-icon nzType="plus"></i></ng-template>
           <div
             nz-row
             [nzType]="'flex'"

@@ -18,7 +18,7 @@
         {
           "text": "仪表盘",
           "i18n": "menu.dashboard",
-          "icon": "anticon anticon-dashboard",
+          "icon": "anticon-dashboard",
           "children": [
             {
               "text": "仪表盘V1",
@@ -45,7 +45,7 @@
         {
           "text": "快捷菜单",
           "i18n": "menu.shortcut",
-          "icon": "anticon anticon-rocket",
+          "icon": "anticon-rocket",
           "shortcutRoot": true,
           "children": []
         },
@@ -53,7 +53,7 @@
           "text": "小部件",
           "i18n": "menu.widgets",
           "link": "/widgets",
-          "icon": "anticon anticon-appstore",
+          "icon": "anticon-appstore",
           "badge": 2
         }
       ]
@@ -67,7 +67,7 @@
         {
           "text": "样式",
           "i18n": "menu.style",
-          "icon": "anticon anticon-info",
+          "icon": "anticon-info",
           "children": [
             {
               "text": "Typography",
@@ -90,7 +90,7 @@
         {
           "text": "Delon",
           "i18n": "menu.delon",
-          "icon": "anticon anticon-bulb",
+          "icon": "anticon-bulb",
           "children": [
             {
               "text": "Dynamic Form",
@@ -99,7 +99,7 @@
             },
             {
               "text": "Simple Table",
-              "link": "/delon/simple-table",
+              "link": "/delon/st",
               "i18n": "menu.delon.table"
             },
             {
@@ -163,7 +163,7 @@
           "text": "Form Page",
           "i18n": "menu.form",
           "link": "/pro/form",
-          "icon": "anticon anticon-edit",
+          "icon": "anticon-edit",
           "children": [
             {
               "text": "Basic Form",
@@ -186,7 +186,7 @@
         {
           "text": "List",
           "i18n": "menu.list",
-          "icon": "anticon anticon-appstore",
+          "icon": "anticon-appstore",
           "children": [
             {
               "text": "Table List",
@@ -228,7 +228,7 @@
         {
           "text": "Profile",
           "i18n": "menu.profile",
-          "icon": "anticon anticon-profile",
+          "icon": "anticon-profile",
           "children": [
             {
               "text": "Basic",
@@ -246,7 +246,7 @@
         {
           "text": "Result",
           "i18n": "menu.result",
-          "icon": "anticon anticon-check-circle",
+          "icon": "anticon-check-circle",
           "children": [
             {
               "text": "Success",
@@ -264,7 +264,7 @@
           "text": "Exception",
           "i18n": "menu.exception",
           "link": "/",
-          "icon": "anticon anticon-exception",
+          "icon": "anticon-exception",
           "children": [
             {
               "text": "403",
@@ -289,7 +289,7 @@
         {
           "text": "Account",
           "i18n": "menu.account",
-          "icon": "anticon anticon-user",
+          "icon": "anticon-user",
           "children": [
             {
               "text": "center",
@@ -314,7 +314,7 @@
         {
           "text": "Report",
           "i18n": "menu.report",
-          "icon": "anticon anticon-cloud",
+          "icon": "anticon-cloud",
           "children": [
             {
               "text": "Relation",
@@ -328,7 +328,7 @@
           "text": "Extras",
           "i18n": "menu.extras",
           "link": "/extras",
-          "icon": "anticon anticon-link",
+          "icon": "anticon-link",
           "children": [
             {
               "text": "Help Center",
