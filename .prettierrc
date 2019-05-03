@@ -1,15 +1,17 @@
 {
   "printWidth": 120,
   "singleQuote": true,
+  "semi": true,
   "trailingComma": "all",
   "tabWidth": 2,
   "useTabs": false,
   "proseWrap": "never",
-  "parser": "angular",
-  "overrides": [{
-    "files": ".prettierrc",
-    "options": {
-      "parser": "json"
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": {
+        "parser": "json"
+      }
     }
-  }]
+  ]
 }
