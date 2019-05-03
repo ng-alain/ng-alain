@@ -10,11 +10,11 @@ import { I18NService } from '@core';
   template: `
     <nz-dropdown nzPlacement="bottomRight">
       <div *ngIf="showLangText" nz-dropdown>
-        <i nz-icon type="global"></i>
+        <i nz-icon nzType="global"></i>
         {{ 'menu.lang' | translate }}
-        <i nz-icon type="down"></i>
+        <i nz-icon nzType="down"></i>
       </div>
-      <i *ngIf="!showLangText" nz-dropdown nz-icon type="global"></i>
+      <i *ngIf="!showLangText" nz-dropdown nz-icon nzType="global"></i>
       <ul nz-menu>
         <li
           nz-menu-item

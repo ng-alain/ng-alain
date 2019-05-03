@@ -4,10 +4,10 @@ import { STColumn } from '@delon/abc';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
-  selector: 'app-simple-table',
-  templateUrl: './simple-table.component.html',
+  selector: 'app-st',
+  templateUrl: './st.component.html',
 })
-export class SimpleTableComponent implements OnInit {
+export class STDemoComponent implements OnInit {
   ps = 20;
   total = 200; // mock total
   args: any = { _allow_anonymous: true };
@@ -16,40 +16,43 @@ export class SimpleTableComponent implements OnInit {
   scroll = { y: '230px' };
   columns: STColumn[] = [
     { title: 'id', index: 'id.value', type: 'checkbox' },
-    { title: 'Avatar', index: 'picture.thumbnail', type: 'img', width: '80px' },
+    { title: 'Avatar', index: 'picture.thumbnail', type: 'img', width: 80 },
     {
       title: 'Name',
       index: 'name.first',
-      width: '150px',
-      format: (item: any) => `${item.name.first} ${item.name.last}`,
+      width: 150,
+      format: item => `${item.name.first} ${item.name.last}`,
       type: 'link',
-      click: (item: any) => this.message.info(`${item.name.first}`),
+      click: item => this.message.info(`${item.name.first}`),
     },
     { title: 'Email', index: 'email' },
     {
       title: 'Gender',
       index: 'gender',
       type: 'yn',
-      ynTruth: 'female',
-      ynYes: '男',
-      ynNo: '女',
-      width: '120px',
+      yn: {
+        truth: 'female',
+        yes: '男',
+        no: '女',
+        mode: 'text',
+      },
+      width: 120,
     },
-    { title: 'Events', render: 'events', width: '90px' },
-    { title: 'Registered', index: 'registered', type: 'date', width: '150px' },
+    { title: 'Events', render: 'events', width: 90 },
+    { title: 'Registered', index: 'registered.date', type: 'date', width: 170 },
     {
       title: 'Actions',
-      width: '120px',
+      width: 120,
       buttons: [
         {
           text: 'Edit',
-          click: (item: any) => this.message.info(`edit [${item.id.value}]`),
-          if: (item: any) => item.gender === 'female',
+          click: item => this.message.info(`edit [${item.id.value}]`),
+          if: item => item.gender === 'female',
         },
         {
           text: 'Delete',
           type: 'del',
-          click: (item: any) => this.message.info(`deleted [${item.id.value}]`),
+          click: item => this.message.info(`deleted [${item.id.value}]`),
         },
       ],
     },

@@ -65,13 +65,13 @@
         <button nz-button type="reset" (click)="reset()" class="mx-sm">重置</button>
         <a (click)="expandForm = !expandForm">
           {{ expandForm ? '收起' : '展开' }}
-          <i class="anticon" [class.anticon-down]="!expandForm" [class.anticon-up]="expandForm"></i>
+          <i nz-icon [nzType]="expandForm ? 'up' : 'down'"></i>
         </a>
       </div>
     </div>
   </form>
   <button nz-button (click)="add(modalContent)" [nzType]="'primary'">
-    <i nz-icon type="plus"></i>
+    <i nz-icon nzType="plus"></i>
     <span>新建</span>
   </button>
   <ng-container *ngIf="selectedRows.length > 0">
@@ -79,7 +79,7 @@
     <nz-dropdown [nzPlacement]="'bottomLeft'">
       <button nz-button nz-dropdown>
         更多操作
-        <i nz-icon type="down"></i>
+        <i nz-icon nzType="down"></i>
       </button>
       <ul nz-menu>
         <li nz-menu-item (click)="remove()">删除</li>

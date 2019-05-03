@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ACLGuard } from '@delon/acl';
 
-import { SimpleTableComponent } from './simple-table/simple-table.component';
+import { STDemoComponent } from './st/st.component';
 import { UtilComponent } from './util/util.component';
 import { PrintComponent } from './print/print.component';
 import { ACLComponent } from './acl/acl.component';
@@ -19,7 +19,7 @@ import { DelonFormComponent } from './form/form.component';
 import { QRComponent } from './qr/qr.component';
 
 const routes: Routes = [
-  { path: 'simple-table', component: SimpleTableComponent },
+  { path: 'st', component: STDemoComponent },
   { path: 'util', component: UtilComponent },
   { path: 'print', component: PrintComponent },
   { path: 'acl', component: ACLComponent },
