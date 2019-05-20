@@ -111,6 +111,7 @@
     "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
     "stylelint-order": "^3.0.0",
     "webpack-bundle-analyzer": "^3.3.2",
+    "antd-theme-generator": "^1.1.6",
     "xlsx": "^0.14.2",
     "@delon/testing": "^7.4.0",
     "ng-alain": "^7.4.0",
