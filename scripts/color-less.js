@@ -1,29 +1,41 @@
+const fs = require('fs');
 const path = require('path');
-const {
-  generateTheme
-} = require('./antd-theme-generator');
+const { generateTheme } = require('antd-theme-generator');
 
 const root = path.resolve(__dirname, '../');
+const tmpVarFilePath = path.join(root, 'scripts/var.less');
 const options = {
+  stylesDir: path.join(root, './src'),
   antdStylesDir: path.join(root, './node_modules/ng-zorro-antd'),
-  stylesDir: path.join(root, './src/styles'),
-  // default path is Ant Design default.less file
-  // varFile: path.join(root, './node_modules/@delon/theme/styles/default.less'),
-  varFile: path.join(root, './node_modules/@delon/theme/styles/index.less'),
-  // site less file
+  varFile: path.join(root, './scripts/var.less'),
   mainLessFile: path.join(root, './src/styles.less'),
-  themeVariables: [
-    '@primary-color',
-    '@text-color',
-    '@text-color-secondary'
-  ],
-  // if provided, file will be created with generated less/styles
-  outputFilePath: path.join(root, './src/assets/alain-default.less')
+  themeVariables: ['@primary-color'],
+  outputFilePath: path.join(root, './src/assets/alain-default.less'),
+};
+
+function genVarFile() {
+  const ALLVAR = `
+  @import '~@delon/theme/styles/default';
+  @import '~@delon/theme/styles/layout/default/variable';
+  @import '~@delon/theme/styles/layout/fullscreen/variable';
+  @import '../src/styles/theme.less';
+  `;
+
+  fs.writeFileSync(tmpVarFilePath, ALLVAR);
 }
 
-generateTheme(options).then(less => {
+function removeVarFile() {
+  fs.unlinkSync(tmpVarFilePath);
+}
+
+genVarFile();
+
+generateTheme(options)
+  .then(less => {
+    removeVarFile();
     console.log('Theme generated successfully');
   })
   .catch(error => {
+    removeVarFile();
     console.log('Error', error);
   });

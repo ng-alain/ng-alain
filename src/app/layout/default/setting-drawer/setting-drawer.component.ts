@@ -38,6 +38,10 @@ const DEFAULT_COLORS = [
     key: 'purple',
     color: '#722ED1',
   },
+  {
+    key: 'black',
+    color: '#001529',
+  },
 ];
 const DEFAULT_VARS = {
   'primary-color': { label: '主颜色', type: 'color', default: '#1890ff' },
