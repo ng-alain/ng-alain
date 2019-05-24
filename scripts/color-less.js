@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const { generateTheme } = require('antd-theme-generator');
+const {
+  generateTheme
+} = require('antd-theme-generator');
 
 const root = path.resolve(__dirname, '../');
 const tmpVarFilePath = path.join(root, 'scripts/var.less');
@@ -29,9 +31,8 @@ function removeVarFile() {
 }
 
 genVarFile();
-
 generateTheme(options)
-  .then(less => {
+  .then(() => {
     removeVarFile();
     console.log('Theme generated successfully');
   })
