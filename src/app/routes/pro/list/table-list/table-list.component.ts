@@ -94,7 +94,9 @@ export class ProTableListComponent implements OnInit {
   getData() {
     this.loading = true;
     this.q.statusList = this.status.filter(w => w.checked).map(item => item.index);
-    if (this.q.status !== null && this.q.status > -1) this.q.statusList.push(this.q.status);
+    if (this.q.status !== null && this.q.status > -1) {
+      this.q.statusList.push(this.q.status);
+    }
     this.http
       .get('/rule', this.q)
       .pipe(

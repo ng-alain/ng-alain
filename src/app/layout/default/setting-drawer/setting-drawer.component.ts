@@ -300,7 +300,7 @@ export class SettingDrawerComponent {
     this.settingSrv.setLayout(name, value);
   }
 
-  private resetData(nowData?: Object, run = true) {
+  private resetData(nowData?: {}, run = true) {
     nowData = nowData || {};
     const data = deepCopy(DEFAULT_VARS);
     Object.keys(data).forEach(key => {

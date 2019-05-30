@@ -39,7 +39,7 @@ export class ProBasicListComponent implements OnInit {
   openEdit(record: any = {}) {
     this.modal.create(ProBasicListEditComponent, { record }, { size: 'md' }).subscribe(res => {
       if (record.id) {
-        record = Object.assign(record, { id: 'mock_id', percent: 0 }, res);
+        record = { ...record, id: 'mock_id', percent: 0, ...res };
       } else {
         this.data.splice(0, 0, res);
         this.data = [...this.data];

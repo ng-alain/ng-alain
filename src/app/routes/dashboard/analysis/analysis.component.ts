@@ -64,7 +64,7 @@ export class DashboardAnalysisComponent implements OnInit {
     this.http.get('/chart').subscribe((res: any) => {
       res.offlineData.forEach((item: any, idx: number) => {
         item.show = idx === 0;
-        item.chart = Object.assign([], res.offlineChartData);
+        item.chart = { ...[], ...res.offlineChartData };
       });
       this.data = res;
       this.loading = false;

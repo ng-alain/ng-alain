@@ -31,7 +31,9 @@ export class ProListLayoutComponent implements OnInit, OnDestroy {
   private setActive() {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
     const idx = this.tabs.findIndex(w => w.key === key);
-    if (idx !== -1) this.pos = idx;
+    if (idx !== -1) {
+      this.pos = idx;
+    }
   }
 
   ngOnInit(): void {
