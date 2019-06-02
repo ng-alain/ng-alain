@@ -1,17 +1,5 @@
 {
-  "files.watcherExclude": {
-    "**/.git/**": true,
-    "**/node_modules/*/**": true,
-    "**/dist/*/**": true,
-    "**/coverage/*/**": true
-  },
   "typescript.tsdk": "./node_modules/typescript/lib",
-  // 保存时自动格式化，需要安装：https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
-  // "editor.formatOnSave": true,
-  // Angular schematics 插件: https://marketplace.visualstudio.com/items?itemName=cyrilletuzi.angular-schematics
-  "ngschematics.schematics": [
-    "ng-alain"
-  ],
   "prettier.stylelintIntegration": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
@@ -26,8 +14,19 @@
   "[json]": {
     "editor.formatOnSave": false
   },
+  "files.watcherExclude": {
+    "**/.git/*/**": true,
+    "**/node_modules/*/**": true,
+    "**/dist/*/**": true,
+    "**/coverage/*/**": true
+  },
   "files.associations": {
     "*.json": "jsonc",
+    ".prettierrc": "jsonc",
     ".stylelintrc": "jsonc"
-  }
+  },
+  // Angular schematics 插件: https://marketplace.visualstudio.com/items?itemName=cyrilletuzi.angular-schematics
+  "ngschematics.schematics": [
+    "ng-alain"
+  ]
 }
