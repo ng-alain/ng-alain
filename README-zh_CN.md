@@ -26,7 +26,7 @@
 ## 快速入门
 
 ```bash
-# 确保使用的是最新版本 Angular cli
+# 确保使用全局 Angular Cli 务必是 7.x
 ng new demo --style less
 cd demo
 ng add ng-alain

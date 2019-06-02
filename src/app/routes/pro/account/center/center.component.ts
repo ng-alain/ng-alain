@@ -82,6 +82,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
   }
 
   tagEnter(e: KeyboardEvent) {
+    // tslint:disable-next-line: deprecation
     if (e.keyCode === 13) this.tagBlur();
   }
 

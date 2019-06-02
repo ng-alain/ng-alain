@@ -13,12 +13,12 @@ import {
 import { DOCUMENT } from '@angular/common';
 import { Router, NavigationEnd, RouteConfigLoadStart, NavigationError, NavigationCancel } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { updateHostClass } from '@delon/util';
 import { SettingsService } from '@delon/theme';
-
 import { environment } from '@env/environment';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
 import { SettingDrawerComponent } from './setting-drawer/setting-drawer.component';
 
 @Component({

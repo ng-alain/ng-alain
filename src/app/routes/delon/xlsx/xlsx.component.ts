@@ -39,7 +39,7 @@ export class XlsxComponent {
     this.xlsx.export({
       sheets: [
         {
-          data: data,
+          data,
           name: 'sheet name',
         },
       ],

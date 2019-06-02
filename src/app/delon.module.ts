@@ -43,7 +43,7 @@ import { PageHeaderConfig } from '@delon/abc';
 export function fnPageHeaderConfig(): PageHeaderConfig {
   return {
     ...new PageHeaderConfig(),
-    ...({ homeI18n: 'home' } as PageHeaderConfig),
+    homeI18n: 'home',
   };
 }
 
@@ -51,17 +51,16 @@ import { DelonAuthConfig } from '@delon/auth';
 export function fnDelonAuthConfig(): DelonAuthConfig {
   return {
     ...new DelonAuthConfig(),
-    ...({ login_url: '/passport/login' } as DelonAuthConfig),
+    login_url: '/passport/login',
   };
 }
 
+// tslint:disable-next-line: no-duplicate-imports
 import { STConfig } from '@delon/abc';
 export function fnSTConfig(): STConfig {
   return {
     ...new STConfig(),
-    ...({
-      modal: { size: 'lg' },
-    } as STConfig),
+    modal: { size: 'lg' },
   };
 }
 

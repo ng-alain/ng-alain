@@ -12,6 +12,7 @@ export class UtilComponent {
 
   // region: string
 
+  // tslint:disable-next-line: no-invalid-template-strings
   format_str = 'this is ${name}';
   format_res = '';
   format_obj = JSON.stringify({ name: 'asdf' });

@@ -2,11 +2,15 @@
   "name": "ng-alain",
   "version": "7.5.0",
   "description": "ng-zorro-antd admin panel front-end framework",
-  "author": "cipchk",
-  "homepage": "https://ng-alain.github.io/ng-alain/",
+  "author": "cipchk <cipchk@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ng-alain/ng-alain.git"
+  },
   "bugs": {
     "url": "https://github.com/ng-alain/ng-alain/issues"
   },
+  "homepage": "https://ng-alain.com",
   "license": "MIT",
   "keywords": [
     "delon",
@@ -23,8 +27,8 @@
     "build": "npm run color-less && ng build --prod --build-optimizer",
     "analyze": "ng build --prod --build-optimizer --stats-json",
     "lint": "npm run lint:ts && npm run lint:style",
-    "lint:ts": "tslint -p src/tsconfig.app.json -c tslint.json 'src/**/*.ts'",
-    "lint:style": "stylelint 'src/**/*.less' --syntax less",
+    "lint:ts": "tslint -p src/tsconfig.app.json -c tslint.json \"src/**/*.ts\" --fix",
+    "lint:style": "stylelint \"src/**/*.less\" --syntax less --fix",
     "lint-staged": "lint-staged",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "e2e": "ng e2e",
@@ -87,7 +91,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.11.0",
+    "tslint": "~5.15.0",
     "typescript": "~3.2.2",
     "@angularclass/hmr": "^2.1.3",
     "@types/jszip": "^3.1.5",
@@ -104,7 +108,6 @@
     "prettier": "^1.16.1",
     "prettier-stylelint": "^0.4.2",
     "stylelint": "^10.0.1",
-    "stylelint-config-css-modules": "^1.4.0",
     "stylelint-config-prettier": "^5.1.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^18.3.0",
@@ -129,11 +132,10 @@
     ],
     "*.ts": [
       "npm run lint:ts",
-      "prettier --write",
       "git add"
     ],
     "*.less": [
-      "stylelint 'src/**/*.less' --syntax less --fix",
+      "npm run lint:style",
       "git add"
     ],
     "ignore": [

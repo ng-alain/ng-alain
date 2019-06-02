@@ -3,15 +3,5 @@
   "singleQuote": true,
   "semi": true,
   "trailingComma": "all",
-  "tabWidth": 2,
-  "useTabs": false,
-  "proseWrap": "never",
-  "overrides": [
-    {
-      "files": ".prettierrc",
-      "options": {
-        "parser": "json"
-      }
-    }
-  ]
+  "proseWrap": "never"
 }

@@ -18,7 +18,7 @@ export class CallbackComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.type = this.route.snapshot.params['type'];
+    this.type = this.route.snapshot.params.type;
     this.mockModel();
   }
 

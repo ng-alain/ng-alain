@@ -43,7 +43,7 @@ export class PrintComponent {
     this.cog.printer = '';
     this.cog.paper = '';
 
-    this.lodopSrv.cog = Object.assign({}, this.cog, options);
+    this.lodopSrv.cog = { ...this.cog, ...options };
     this.error = false;
     if (options === null) this.lodopSrv.reset();
   }

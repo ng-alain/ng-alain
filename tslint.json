@@ -1,24 +1,40 @@
 {
   "extends": [
+    "tslint:latest",
     "tslint-config-prettier"
   ],
   "rulesDirectory": [
-    "node_modules/codelyzer",
-    "node_modules/ng-alain-codelyzer"
+    "codelyzer",
+    "ng-alain-codelyzer"
   ],
   "rules": {
-    "arrow-return-shorthand": true,
-    "callable-types": true,
-    "class-name": true,
-    "comment-format": [
+    // Angular parts
+    "array-type": false,
+    "arrow-parens": false,
+    "deprecation": {
+      "severity": "warn"
+    },
+    "component-class-suffix": true,
+    "contextual-lifecycle": true,
+    "directive-class-suffix": true,
+    "directive-selector": [
       true,
-      "check-space"
+      "attribute",
+      ["app", "passport", "exception", "layout", "header"],
+      "camelCase"
     ],
-    "curly": false,
-    "forin": false,
-    "import-blacklist": [true, "rxjs/Rx"],
-    "interface-over-type-literal": true,
-    "label-position": true,
+    "component-selector": [
+      true,
+      "element",
+      ["app", "passport", "exception", "layout", "header"],
+      "kebab-case"
+    ],
+    "import-blacklist": [
+      true,
+      "rxjs/Rx"
+    ],
+    "interface-name": false,
+    "max-classes-per-file": false,
     "max-line-length": [
       false,
       140
@@ -35,8 +51,7 @@
         ]
       }
     ],
-    "no-arg": true,
-    "no-bitwise": false,
+    "no-consecutive-blank-lines": false,
     "no-console": [
       true,
       "debug",
@@ -45,61 +60,52 @@
       "timeEnd",
       "trace"
     ],
-    "no-construct": true,
-    "no-debugger": true,
-    "no-duplicate-super": true,
     "no-empty": false,
-    "no-empty-interface": true,
-    "no-eval": true,
     "no-inferrable-types": [
       true,
       "ignore-params"
     ],
-    "no-misused-new": true,
     "no-non-null-assertion": false,
-    "no-shadowed-variable": true,
-    "no-string-literal": false,
-    "no-string-throw": true,
+    "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
-    "no-trailing-whitespace": false,
-    "no-unnecessary-initializer": true,
-    "no-unused-expression": true,
     "no-use-before-declare": true,
-    "no-var-keyword": true,
+    "no-var-requires": false,
+    "object-literal-key-quotes": [
+      false,
+      "as-needed"
+    ],
     "object-literal-sort-keys": false,
-    "prefer-const": true,
-    "radix": true,
-    "triple-equals": [
-      true,
-      "allow-null-check"
+    "ordered-imports": false,
+    "quotemark": [
+      false,
+      "single"
     ],
-    "typeof-compare": true,
-    "unified-signatures": true,
-    "variable-name": false,
-    "directive-selector": [
-      true,
-      "attribute",
-      ["app", "passport", "exception", "layout", "header"],
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      ["app", "passport", "exception", "layout", "header"],
-      "kebab-case"
-    ],
-    "use-input-property-decorator": true,
-    "use-output-property-decorator": true,
-    "use-host-property-decorator": false,
-    "no-input-rename": false,
-    "no-output-rename": false,
-    "use-life-cycle-interface": true,
+    "trailing-comma": false,
+    "no-conflicting-lifecycle": true,
+    "no-host-metadata-property": true,
+    "no-input-rename": true,
+    "no-inputs-metadata-property": true,
+    "no-output-native": true,
+    "no-output-on-prefix": true,
+    "no-output-rename": true,
+    "no-outputs-metadata-property": true,
+    "template-banana-in-box": true,
+    "template-no-negated-async": true,
+    "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
-    "component-class-suffix": true,
-    "directive-class-suffix": true,
-    "no-access-missing-member": true,
-    "templates-use-public": true,
-    "invoke-injectable": true,
-    "use-path-mapping": [true, ["@core/*", "@shared/*"]]
+    // Custom parts
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false,
+    "curly": false,
+    "variable-name": false,
+    "no-this-assignment": false,
+    "ban-types": [
+      true,
+      ["Object", "Use {} instead."],
+      ["String", "Use string instead."],
+      ["Number", "Use number instead."],
+      ["Boolean", "Use boolean instead."],
+      ["Function", "Use specific callable interface instead."]
+    ]
   }
 }

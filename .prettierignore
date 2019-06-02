@@ -2,8 +2,14 @@
 **/*.md
 **/*.svg
 **/test.ts
+
+.stylelintrc
+.prettierrc
+
 src/index.html
 node_modules/
+.vscode/
 coverage/
 dist/
 package.json
+tslint.json

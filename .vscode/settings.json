@@ -1,12 +1,32 @@
 {
   "typescript.tsdk": "./node_modules/typescript/lib",
-  // 保存时自动格式化，需要安装：https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
-  // "editor.formatOnSave": true,
+  "prettier.stylelintIntegration": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[json]": {
+    "editor.formatOnSave": false
+  },
+  "files.watcherExclude": {
+    "**/.git/*/**": true,
+    "**/node_modules/*/**": true,
+    "**/dist/*/**": true,
+    "**/coverage/*/**": true
+  },
+  "files.associations": {
+    "*.json": "jsonc",
+    ".prettierrc": "jsonc",
+    ".stylelintrc": "jsonc"
+  },
   // Angular schematics 插件: https://marketplace.visualstudio.com/items?itemName=cyrilletuzi.angular-schematics
   "ngschematics.schematics": [
     "ng-alain"
-  ],
-  "editor.tabSize": 2,
-  "prettier.stylelintIntegration": true,
-  "editor.formatOnSave": true
+  ]
 }

@@ -18,17 +18,18 @@ git:
 
 jobs:
   include:
-    - env: "MODE=build"
-    - env: "MODE=lint"
-    - env: "MODE=test-coverage"
-    - env: "DEPLOY_MODE=artifacts"
+    - env: 'MODE=build'
+    - env: 'MODE=lint'
+    - env: 'MODE=test-coverage'
+    - env: 'DEPLOY_MODE=artifacts'
       if: branch = master
 
 matrix:
   allow_failures:
-    - env: "DEPLOY_MODE=artifacts"
+    - env: 'DEPLOY_MODE=artifacts'
 
 before_install:
+  - export NG_CLI_ANALYTICS=ci
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
