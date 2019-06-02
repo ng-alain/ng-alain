@@ -26,7 +26,7 @@ English | [简体中文](README-zh_CN.md)
 ## Quick start
 
 ```bash
-# Make sure you are using the latest version of Angular cli
+# Make sure you are using 7.x version in global Angular Cli
 ng new demo --style less
 cd demo
 ng add ng-alain
