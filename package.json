@@ -2,11 +2,15 @@
   "name": "ng-alain",
   "version": "7.5.0",
   "description": "ng-zorro-antd admin panel front-end framework",
-  "author": "cipchk",
-  "homepage": "https://ng-alain.github.io/ng-alain/",
+  "author": "cipchk <cipchk@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ng-alain/ng-alain.git"
+  },
   "bugs": {
     "url": "https://github.com/ng-alain/ng-alain/issues"
   },
+  "homepage": "https://ng-alain.com",
   "license": "MIT",
   "keywords": [
     "delon",
