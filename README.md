@@ -23,21 +23,9 @@
 
 English | [简体中文](README-zh_CN.md)
 
-## Quick start
+## Quickstart
 
-```bash
-# Make sure you are using 7.x version in global Angular Cli
-ng new demo --style less
-cd demo
-ng add ng-alain
-ng s -o
-# or HMR mode
-npm run hmr
-```
-
-> Please refer to [Cli](https://ng-alain.com/cli) for more details.
->
-> [vscode] recommended install [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) & [ng-alain-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-alain-vscode) plugins.
+- [Getting Started](https://ng-alain.com/docs/getting-started)
 
 ## Links
 

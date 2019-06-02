@@ -25,20 +25,7 @@
 
 ## 快速入门
 
-```bash
-# 确保使用全局 Angular Cli 务必是 7.x
-ng new demo --style less
-cd demo
-ng add ng-alain
-ng s -o
-# 或 HMR 模式
-npm run hmr
-```
-
-> 请参考[命令行工具](https://ng-alain.com/cli)了解更多细节。
->
-> [vscode] 建议安装 [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) 和 [ng-alain-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-alain-vscode) 插件，开发更爽。
-
+- [如何开始使用？](https://ng-alain.com/docs/getting-started)
 
 ## 链接
 
