@@ -2534,7 +2534,7 @@ darker  @grey-9;
 @reuse-tab-border-color: #d9d9d9;
 
 @st-prefix: ~'.st';
-
+@st-btn-disabled-color: rgba(0,0,0,.25);
 @sv-prefix: ~'.sv';
 @sv-label-color: rgba(0, 0, 0, 0.5);
 @sv-label-optional-color: rgba(0, 0, 0, 0.35);
@@ -10779,6 +10779,10 @@ body::-webkit-scrollbar-thumb,
 .ant-anchor-wrapper::-webkit-scrollbar-thumb,
 textarea.ant-input::-webkit-scrollbar-thumb {
   background-color: #6e6e6e;
+}
+.st__btn-disabled,
+.st__btn-disabled > a {
+  color: rgba(0, 0, 0, 0.25);
 }
 .sv__title {
   color: rgba(0, 0, 0, 0.85);
@@ -19293,6 +19297,10 @@ body::-webkit-scrollbar-thumb,
 .ant-anchor-wrapper::-webkit-scrollbar-thumb,
 textarea.ant-input::-webkit-scrollbar-thumb {
   background-color: #6e6e6e;
+}
+.st__btn-disabled,
+.st__btn-disabled > a {
+  color: rgba(0, 0, 0, 0.25);
 }
 .sv__title {
   color: rgba(0, 0, 0, 0.85);
