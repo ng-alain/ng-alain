@@ -24,10 +24,6 @@ jobs:
     - env: 'DEPLOY_MODE=artifacts'
       if: branch = master
 
-matrix:
-  allow_failures:
-    - env: 'DEPLOY_MODE=artifacts'
-
 before_install:
   - export NG_CLI_ANALYTICS=ci
   - export CHROME_BIN=chromium-browser

@@ -10,7 +10,7 @@ import { SFSchema } from '@delon/form';
 export class DelonFormComponent implements OnInit {
   params: any = {};
   url = `/user`;
-  @ViewChild('st')
+  @ViewChild('st', { static: true })
   st: STComponent;
   searchSchema: SFSchema = {
     properties: {

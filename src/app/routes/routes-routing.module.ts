@@ -34,21 +34,21 @@ const routes: Routes = [
       { path: 'dashboard/workplace', component: DashboardWorkplaceComponent },
       {
         path: 'widgets',
-        loadChildren: './widgets/widgets.module#WidgetsModule',
+        loadChildren: () => import('./widgets/widgets.module').then(m => m.WidgetsModule),
       },
-      { path: 'style', loadChildren: './style/style.module#StyleModule' },
-      { path: 'delon', loadChildren: './delon/delon.module#DelonModule' },
-      { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' },
-      { path: 'pro', loadChildren: './pro/pro.module#ProModule' },
+      { path: 'style', loadChildren: () => import('./style/style.module').then(m => m.StyleModule) },
+      { path: 'delon', loadChildren: () => import('./delon/delon.module').then(m => m.DelonModule) },
+      { path: 'extras', loadChildren: () => import('./extras/extras.module').then(m => m.ExtrasModule) },
+      { path: 'pro', loadChildren: () => import('./pro/pro.module').then(m => m.ProModule) },
       // Exception
-      { path: 'exception', loadChildren: './exception/exception.module#ExceptionModule' },
+      { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) },
     ],
   },
   // 全屏布局
   {
     path: 'data-v',
     component: LayoutFullScreenComponent,
-    children: [{ path: '', loadChildren: './data-v/data-v.module#DataVModule' }],
+    children: [{ path: '', loadChildren: () => import('./data-v/data-v.module').then(m => m.DataVModule) }],
   },
   // passport
   {
