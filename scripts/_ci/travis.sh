@@ -2,9 +2,10 @@
 
 set -e
 
-cd $(dirname $0)/../..
+readonly thisDir=$(cd $(dirname $0); pwd)
+cd ${thisDir}
 
-./scripts/_ci/delon.sh
+./delon.sh
 
 if [[ "${MODE}" ]]; then
 
@@ -16,6 +17,6 @@ if [[ "${MODE}" ]]; then
 
 elif [[ "${DEPLOY_MODE}" ]]; then
 
-  ./scripts/_ci/deploy.sh -gh
+  ./deploy.sh -gh
 
 fi

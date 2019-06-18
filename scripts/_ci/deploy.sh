@@ -2,8 +2,6 @@
 
 set -e
 
-node --max_old_space_size=5120
-
 GH=false
 DAY_RELEASE=false
 for ARG in "$@"; do
@@ -42,6 +40,7 @@ fi;
 echo ""
 echo "Build angular"
 echo ""
+node --max_old_space_size=5120
 if [[ ${GH} == true ]]; then
   $(npm bin)/ng build --prod --base-href /ng-alain/
 else
