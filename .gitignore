@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 /src/assets/alain-*.less
+delon-builds
+scripts/var.less
 
 # dependencies
 /node_modules
