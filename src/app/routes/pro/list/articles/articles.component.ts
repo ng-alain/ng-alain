@@ -7,6 +7,9 @@ import { _HttpClient } from '@delon/theme';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProListArticlesComponent implements OnInit {
+  // endregion
+
+  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {}
   q: any = {
     ps: 5,
     categories: [],
@@ -32,14 +35,6 @@ export class ProListArticlesComponent implements OnInit {
     { id: 11, text: '类目十一', value: false },
     { id: 12, text: '类目十二', value: false },
   ];
-
-  changeCategory(status: boolean, idx: number) {
-    if (idx === 0) {
-      this.categories.map(i => (i.value = status));
-    } else {
-      this.categories[idx].value = status;
-    }
-  }
   // endregion
 
   // region: owners
@@ -66,14 +61,19 @@ export class ProListArticlesComponent implements OnInit {
     },
   ];
 
+  changeCategory(status: boolean, idx: number) {
+    if (idx === 0) {
+      this.categories.map(i => (i.value = status));
+    } else {
+      this.categories[idx].value = status;
+    }
+  }
+
   setOwner() {
     this.q.owners = [`wzj`];
     // TODO: wait nz-dropdown OnPush mode
     setTimeout(() => this.cdr.detectChanges());
   }
-  // endregion
-
-  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.getData();

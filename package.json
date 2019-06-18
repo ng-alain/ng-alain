@@ -27,7 +27,7 @@
     "build": "npm run color-less && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod",
     "analyze": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
     "lint": "npm run lint:ts && npm run lint:style",
-    "lint:ts": "tslint -p src/tsconfig.app.json -c tslint.json \"src/**/*.ts\" --fix",
+    "lint:ts": "tslint -p tsconfig.app.json -c tslint.json \"src/**/*.ts\" --fix",
     "lint:style": "stylelint \"src/**/*.less\" --syntax less --fix",
     "lint-staged": "lint-staged",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",

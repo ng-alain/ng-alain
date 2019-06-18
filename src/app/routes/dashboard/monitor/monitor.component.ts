@@ -10,6 +10,8 @@ import { _HttpClient } from '@delon/theme';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardMonitorComponent implements OnInit, OnDestroy {
+
+  constructor(private http: _HttpClient, public msg: NzMessageService, private cdr: ChangeDetectorRef) {}
   data: any = {};
   tags = [];
   loading = true;
@@ -19,7 +21,18 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
   };
   percent: number | null = null;
 
-  constructor(private http: _HttpClient, public msg: NzMessageService, private cdr: ChangeDetectorRef) {}
+  // region: active chart
+
+  activeTime$: any;
+
+  activeData: any[];
+
+  activeStat = {
+    max: 0,
+    min: 0,
+    t1: '',
+    t2: '',
+  };
 
   ngOnInit() {
     zip(this.http.get('/chart'), this.http.get('/chart/tags')).subscribe(([res, tags]: [any, any]) => {
@@ -34,19 +47,6 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     this.refData();
     this.activeTime$ = setInterval(() => this.refData(), 1000 * 2);
   }
-
-  // region: active chart
-
-  activeTime$: any;
-
-  activeData: any[];
-
-  activeStat = {
-    max: 0,
-    min: 0,
-    t1: '',
-    t2: '',
-  };
 
   refData() {
     const activeData: any[] = [];

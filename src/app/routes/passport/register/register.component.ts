@@ -10,6 +10,35 @@ import { _HttpClient } from '@delon/theme';
   styleUrls: ['./register.component.less'],
 })
 export class UserRegisterComponent implements OnDestroy {
+
+  constructor(fb: FormBuilder, private router: Router, public http: _HttpClient, public msg: NzMessageService) {
+    this.form = fb.group({
+      mail: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
+      confirm: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.passwordEquar]],
+      mobilePrefix: ['+86'],
+      mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
+      captcha: [null, [Validators.required]],
+    });
+  }
+
+  // #region fields
+
+  get mail() {
+    return this.form.controls.mail;
+  }
+  get password() {
+    return this.form.controls.password;
+  }
+  get confirm() {
+    return this.form.controls.confirm;
+  }
+  get mobile() {
+    return this.form.controls.mobile;
+  }
+  get captcha() {
+    return this.form.controls.captcha;
+  }
   form: FormGroup;
   error = '';
   type = 0;
@@ -22,16 +51,12 @@ export class UserRegisterComponent implements OnDestroy {
     pool: 'exception',
   };
 
-  constructor(fb: FormBuilder, private router: Router, public http: _HttpClient, public msg: NzMessageService) {
-    this.form = fb.group({
-      mail: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
-      confirm: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.passwordEquar]],
-      mobilePrefix: ['+86'],
-      mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
-      captcha: [null, [Validators.required]],
-    });
-  }
+  // #endregion
+
+  // #region get captcha
+
+  count = 0;
+  interval$: any;
 
   static checkPassword(control: FormControl) {
     if (!control) return null;
@@ -59,31 +84,6 @@ export class UserRegisterComponent implements OnDestroy {
     }
     return null;
   }
-
-  // #region fields
-
-  get mail() {
-    return this.form.controls.mail;
-  }
-  get password() {
-    return this.form.controls.password;
-  }
-  get confirm() {
-    return this.form.controls.confirm;
-  }
-  get mobile() {
-    return this.form.controls.mobile;
-  }
-  get captcha() {
-    return this.form.controls.captcha;
-  }
-
-  // #endregion
-
-  // #region get captcha
-
-  count = 0;
-  interval$: any;
 
   getCaptcha() {
     if (this.mobile.invalid) {
