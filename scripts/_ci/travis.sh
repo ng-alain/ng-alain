@@ -5,7 +5,7 @@ set -e
 readonly thisDir=$(cd $(dirname $0); pwd)
 cd ${thisDir}
 
-./delon.sh
+bash ./delon.sh
 
 if [[ "${MODE}" ]]; then
 
@@ -17,6 +17,6 @@ if [[ "${MODE}" ]]; then
 
 elif [[ "${DEPLOY_MODE}" ]]; then
 
-  ./deploy.sh -gh
+  bash ./deploy.sh -gh
 
 fi

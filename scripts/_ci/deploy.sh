@@ -40,11 +40,11 @@ fi
 echo ""
 echo "Build angular"
 echo ""
-node --max_old_space_size=5120
+
 if [[ ${GH} == true ]]; then
-  $(npm bin)/ng build --prod --base-href /ng-alain/
+  node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --base-href /ng-alain/
 else
-  $(npm bin)/ng build --prod
+  node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod
 fi
 cp -f ${DIST_DIR}/index.html ${DIST_DIR}/404.html
 
