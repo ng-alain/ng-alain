@@ -97,7 +97,6 @@
     "@types/mockjs": "^1.0.2",
     "codecov": "^3.2.0",
     "tslint-config-prettier": "^1.18.0",
-    "editorconfig-tools": "^0.1.1",
     "husky": "^1.3.1",
     "gh-pages": "^2.0.1",
     "lint-staged": "^8.1.0",
@@ -124,10 +123,6 @@
     }
   },
   "lint-staged": {
-    "*.{cmd,html,json,md,sh,txt,xml,yml}": [
-      "editorconfig-tools fix",
-      "git add"
-    ],
     "*.ts": [
       "npm run lint:ts",
       "git add"
