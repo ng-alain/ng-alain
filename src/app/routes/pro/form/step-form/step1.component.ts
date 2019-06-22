@@ -50,7 +50,7 @@ export class Step1Component implements OnInit {
   //#endregion
 
   _submitForm() {
-    this.item = { ...this.item, ...this.form.value };
+    Object.assign(this.item, this.form.value);
     ++this.item.step;
   }
 }
