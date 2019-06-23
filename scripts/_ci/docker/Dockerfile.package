@@ -1,6 +1,8 @@
 FROM nginx:stable-alpine
 
-COPY /usr/src/app/scripts/_ci/nginx/default.conf /etc/nginx/conf.d/
+MAINTAINER cipchk <cipchk@qq.com>
+
+COPY /usr/src/app/_nginx/default.conf /etc/nginx/conf.d/
 
 RUN rm -rf /usr/share/nginx/html/*
 
