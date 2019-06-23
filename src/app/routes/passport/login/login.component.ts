@@ -15,9 +15,6 @@ import { StartupService } from '@core';
   providers: [SocialService],
 })
 export class UserLoginComponent implements OnDestroy {
-  form: FormGroup;
-  error = '';
-  type = 0;
 
   constructor(
     fb: FormBuilder,
@@ -57,17 +54,20 @@ export class UserLoginComponent implements OnDestroy {
   get captcha() {
     return this.form.controls.captcha;
   }
+  form: FormGroup;
+  error = '';
+  type = 0;
+
+  // #region get captcha
+
+  count = 0;
+  interval$: any;
 
   // #endregion
 
   switch(ret: any) {
     this.type = ret.index;
   }
-
-  // #region get captcha
-
-  count = 0;
-  interval$: any;
 
   getCaptcha() {
     if (this.mobile.invalid) {

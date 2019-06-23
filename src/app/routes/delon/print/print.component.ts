@@ -7,6 +7,18 @@ import { Lodop, LodopService } from '@delon/abc';
   templateUrl: './print.component.html',
 })
 export class PrintComponent {
+  constructor(public lodopSrv: LodopService, private msg: NzMessageService, private notify: NzNotificationService) {
+    this.lodopSrv.lodop.subscribe(({ lodop, ok }) => {
+      if (!ok) {
+        this.error = true;
+        return;
+      }
+      this.error = false;
+      this.msg.success(`打印机加载成功`);
+      this.lodop = lodop as Lodop;
+      this.pinters = this.lodopSrv.printer;
+    });
+  }
   cog: any = {
     url: 'https://localhost:8443/CLodopfuncs.js',
     printer: '',
@@ -24,18 +36,8 @@ export class PrintComponent {
   lodop: Lodop | null = null;
   pinters: any[] = [];
   papers: string[] = [];
-  constructor(public lodopSrv: LodopService, private msg: NzMessageService, private notify: NzNotificationService) {
-    this.lodopSrv.lodop.subscribe(({ lodop, ok }) => {
-      if (!ok) {
-        this.error = true;
-        return;
-      }
-      this.error = false;
-      this.msg.success(`打印机加载成功`);
-      this.lodop = lodop as Lodop;
-      this.pinters = this.lodopSrv.printer;
-    });
-  }
+
+  printing = false;
 
   reload(options: any = { url: 'https://localhost:8443/CLodopfuncs.js' }) {
     this.pinters = [];
@@ -51,8 +53,6 @@ export class PrintComponent {
   changePinter(name: string) {
     this.papers = this.lodop!.GET_PAGESIZES_LIST(name, '\n').split('\n');
   }
-
-  printing = false;
   print(isPrivew = false) {
     const LODOP = this.lodop as Lodop;
     LODOP.PRINT_INITA(10, 20, 810, 610, '测试C-Lodop远程打印四步骤');

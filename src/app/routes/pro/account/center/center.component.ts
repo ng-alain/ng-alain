@@ -19,6 +19,8 @@ import { zip, Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProAccountCenterComponent implements OnInit, OnDestroy {
+
+  constructor(private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
   private router$: Subscription;
   user: any;
   notice: any;
@@ -39,7 +41,10 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
 
   pos = 0;
 
-  constructor(private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
+  taging = false;
+  tagValue = '';
+  @ViewChild('tagInput', { static: false })
+  private tagInput: ElementRef;
 
   private setActive() {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
@@ -60,11 +65,6 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
   to(item: any) {
     this.router.navigateByUrl(`/pro/account/center/${item.key}`);
   }
-
-  taging = false;
-  tagValue = '';
-  @ViewChild('tagInput')
-  private tagInput: ElementRef;
   tagShowIpt() {
     this.taging = true;
     this.cdr.detectChanges();

@@ -31,7 +31,7 @@ export class ProTableListComponent implements OnInit {
     { index: 2, text: '已上线', value: false, type: 'success', checked: false },
     { index: 3, text: '异常', value: false, type: 'error', checked: false },
   ];
-  @ViewChild('st')
+  @ViewChild('st', { static: true })
   st: STComponent;
   columns: STColumn[] = [
     { title: '', index: 'key', type: 'checkbox' },

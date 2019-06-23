@@ -10,11 +10,16 @@ import { NzMessageService } from 'ng-zorro-antd';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProAccountSettingsBaseComponent implements OnInit {
+
+  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef, private msg: NzMessageService) {}
   avatar = '';
   userLoading = true;
   user: any;
 
-  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef, private msg: NzMessageService) {}
+  // #region geo
+
+  provinces: any[] = [];
+  cities: any[] = [];
 
   ngOnInit(): void {
     zip(this.http.get('/user/current'), this.http.get('/geo/province')).subscribe(([user, province]: any) => {
@@ -25,11 +30,6 @@ export class ProAccountSettingsBaseComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
-
-  // #region geo
-
-  provinces: any[] = [];
-  cities: any[] = [];
 
   choProvince(pid: string, cleanCity = true) {
     this.http.get(`/geo/${pid}`).subscribe((res: any) => {

@@ -1,20 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
 readonly thisDir=$(cd $(dirname $0); pwd)
 cd ${thisDir}
 
-if [[ "${MODE}" ]]; then
+bash ./delon.sh
 
-  echo ""
-  echo "Running mode: ${MODE}"
-  echo ""
+echo ""
+echo "Running mode: ${MODE}"
+echo ""
 
-  npm run ${MODE}
-
-elif [[ "${DEPLOY_MODE}" ]]; then
-
-  ./deploy.sh -gh -dr
-
-fi
+npm run ${MODE}

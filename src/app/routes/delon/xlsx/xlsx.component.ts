@@ -8,14 +8,6 @@ import { XlsxService, STColumn } from '@delon/abc';
 export class XlsxComponent {
   constructor(private xlsx: XlsxService) {}
   data: any;
-  url() {
-    this.xlsx.import(`./assets/tmp/demo.xlsx`).then(res => (this.data = res));
-  }
-
-  change(e: Event) {
-    const file = (e.target as HTMLInputElement).files![0];
-    this.xlsx.import(file).then(res => (this.data = res));
-  }
 
   users: any[] = Array(100)
     .fill({})
@@ -32,6 +24,14 @@ export class XlsxComponent {
     { title: '姓名', index: 'name' },
     { title: '年龄', index: 'age' },
   ];
+  url() {
+    this.xlsx.import(`./assets/tmp/demo.xlsx`).then(res => (this.data = res));
+  }
+
+  change(e: Event) {
+    const file = (e.target as HTMLInputElement).files![0];
+    this.xlsx.import(file).then(res => (this.data = res));
+  }
 
   download() {
     const data = [this.columns.map(i => i.title)];

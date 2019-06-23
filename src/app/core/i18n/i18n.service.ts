@@ -75,12 +75,15 @@ export class I18NService implements AlainI18NService {
     private delonLocaleService: DelonLocaleService,
     private translate: TranslateService,
   ) {
-    const defaultLan = settings.layout.lang || translate.getBrowserLang();
     // `@ngx-translate/core` 预先知道支持哪些语言
     const lans = this._langs.map(item => item.code);
     translate.addLangs(lans);
 
-    this._default = lans.includes(defaultLan) ? defaultLan : lans[0];
+    const defaultLan = settings.layout.lang || translate.getBrowserLang();
+    if (lans.includes(defaultLan)) {
+      this._default = defaultLan;
+    }
+
     this.updateLangData(this._default);
   }
 

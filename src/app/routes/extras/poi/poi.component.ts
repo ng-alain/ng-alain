@@ -9,7 +9,7 @@ import { ExtrasPoiEditComponent } from './edit/edit.component';
   templateUrl: './poi.component.html',
 })
 export class ExtrasPoiComponent {
-  @ViewChild('st')
+  @ViewChild('st', { static: true })
   st: STComponent;
   s: any = {
     pi: 1,

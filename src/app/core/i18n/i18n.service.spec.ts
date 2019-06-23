@@ -25,7 +25,7 @@ describe('Service: I18n', () => {
     addLangs: () => {},
     setLocale: () => {},
     getDefaultLang: () => '',
-    use: () => of(),
+    use: (lang: string) => of(lang),
     instant: jasmine.createSpy('instant'),
   };
 
@@ -63,6 +63,7 @@ describe('Service: I18n', () => {
     MockTranslateService.getBrowserLang.and.returnValue('zh-TW');
     genModule();
     expect(srv.defaultLang).toBe('zh-TW');
+    MockTranslateService.getBrowserLang.and.returnValue(null);
   });
 
   it('should be trigger notify when changed language', () => {

@@ -7,6 +7,7 @@ import { NzModalService, NzMessageService } from 'ng-zorro-antd';
     <i nz-icon nzType="tool"></i>
     {{ 'menu.clear.local.storage' | translate }}
   `,
+  // tslint:disable-next-line: no-host-metadata-property
   host: {
     '[class.d-block]': 'true',
   },

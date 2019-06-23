@@ -27,7 +27,7 @@ import { SettingDrawerComponent } from './setting-drawer/setting-drawer.componen
 })
 export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
-  @ViewChild('settingHost', { read: ViewContainerRef })
+  @ViewChild('settingHost', { read: ViewContainerRef, static: true })
   private settingHost: ViewContainerRef;
   isFetching = false;
 
@@ -77,7 +77,7 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
 
   ngAfterViewInit(): void {
     // Setting componet for only developer
-    if (!environment.production) {
+    if (true) {
       setTimeout(() => {
         const settingFactory = this.resolver.resolveComponentFactory(SettingDrawerComponent);
         this.settingHost.createComponent(settingFactory);

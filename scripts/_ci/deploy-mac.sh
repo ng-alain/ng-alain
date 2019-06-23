@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# bash ./scripts/_ci/deploy-mac.sh -gh -dr
+
 set -e
 
 GH=false
@@ -30,8 +32,8 @@ echo ""
 node ./scripts/color-less.js
 
 echo '===== need mock'
-sed -i 's/const MOCK_MODULES = !environment.production/const MOCK_MODULES = true/g' ${ROOT_DIR}/src/app/delon.module.ts
-sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/layout/default/default.component.ts
+sed -i '' 's/const MOCK_MODULES = !environment.production/const MOCK_MODULES = true/g' ${ROOT_DIR}/src/app/delon.module.ts
+sed -i '' 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/layout/default/default.component.ts
 
 if [[ ${DAY_RELEASE} == true ]]; then
   bash ./scripts/_ci/delon.sh
