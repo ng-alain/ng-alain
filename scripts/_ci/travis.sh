@@ -7,16 +7,8 @@ cd ${thisDir}
 
 bash ./delon.sh
 
-if [[ "${MODE}" ]]; then
+echo ""
+echo "Running mode: ${MODE}"
+echo ""
 
-  echo ""
-  echo "Running mode: ${MODE}"
-  echo ""
-
-  npm run ${MODE}
-
-elif [[ "${DEPLOY_MODE}" ]]; then
-
-  bash ./deploy.sh -gh
-
-fi
+npm run ${MODE}

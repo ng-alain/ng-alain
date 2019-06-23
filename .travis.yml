@@ -21,8 +21,6 @@ jobs:
     - env: 'MODE=build'
     - env: 'MODE=lint'
     - env: 'MODE=test-coverage'
-    - env: 'DEPLOY_MODE=artifacts'
-      if: branch = master
 
 before_install:
   - export NG_CLI_ANALYTICS=ci
