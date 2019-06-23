@@ -6,6 +6,7 @@ import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core
 import { throwIfAlreadyLoaded } from '@core';
 
 import { AlainThemeModule } from '@delon/theme';
+import { DelonACLModule } from '@delon/acl';
 
 // #region mock
 import { DelonMockModule } from '@delon/mock';
@@ -74,7 +75,7 @@ const GLOBAL_CONFIG_PROVIDES = [
 // #endregion
 
 @NgModule({
-  imports: [AlainThemeModule.forRoot(), ...MOCK_MODULES],
+  imports: [AlainThemeModule.forRoot(), DelonACLModule.forRoot(), ...MOCK_MODULES],
 })
 export class DelonModule {
   constructor(@Optional() @SkipSelf() parentModule: DelonModule) {
