@@ -13,4 +13,4 @@ COPY . .
 RUN npm run build
 
 # deploy to github.io
-RUN /bin/sh -c 'node ./node_modules/@angular/cli/bin/gh-pages -d dist -r "https://${NG_ALAIN_BUILDS_TOKEN}@github.com/ng-alain/ng-alain.git"'
+RUN /bin/sh -c 'npm i --save-dev gh-pages && node ./node_modules/.bin/gh-pages -d dist -r "https://${NG_ALAIN_BUILDS_TOKEN}@github.com/ng-alain/ng-alain.git"'
