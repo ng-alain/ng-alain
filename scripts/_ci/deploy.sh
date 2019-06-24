@@ -4,6 +4,7 @@ set -e
 
 GH=false
 DAY_RELEASE=false
+NETLIFY=false
 for ARG in "$@"; do
   case "$ARG" in
     -gh)
@@ -11,6 +12,9 @@ for ARG in "$@"; do
       ;;
     -dr)
       DAY_RELEASE=true
+      ;;
+    -netlify)
+      NETLIFY=true
       ;;
   esac
 done
@@ -53,6 +57,14 @@ if [[ ${GH} == true ]]; then
   echo "Deploy by gh-pages"
   echo ""
   $(npm bin)/gh-pages -d dist
+fi
+
+if [[ ${NETLIFY} == true ]]; then
+  echo ""
+  echo "Fix package versions"
+
+  rm -rf package-lock.json
+  npm i
 fi
 
 echo "Finished"
