@@ -59,12 +59,4 @@ if [[ ${GH} == true ]]; then
   $(npm bin)/gh-pages -d dist
 fi
 
-if [[ ${NETLIFY} == true ]]; then
-  echo ""
-  echo "Fix package versions"
-
-  rm -rf package-lock.json
-  npm i
-fi
-
 echo "Finished"
