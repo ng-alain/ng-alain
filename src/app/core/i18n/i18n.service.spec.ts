@@ -16,6 +16,7 @@ describe('Service: I18n', () => {
   };
   const MockNzI18nService = {
     setLocale: () => {},
+    setDateLocale: () => {},
   };
   const MockDelonLocaleService = {
     setLocale: () => {},
