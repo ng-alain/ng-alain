@@ -3,12 +3,19 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
 @Component({
   selector: 'header-task',
   template: `
-    <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" (nzVisibleChange)="change()">
-      <div class="alain-default__nav-item" nz-dropdown>
-        <nz-badge [nzDot]="true">
-          <i nz-icon nzType="bell" class="alain-default__nav-item-icon"></i>
-        </nz-badge>
-      </div>
+    <div
+      class="alain-default__nav-item"
+      nz-dropdown
+      [nzDropdownMenu]="taskMenu"
+      nzTrigger="click"
+      nzPlacement="bottomRight"
+      (nzVisibleChange)="change()"
+    >
+      <nz-badge [nzDot]="true">
+        <i nz-icon nzType="bell" class="alain-default__nav-item-icon"></i>
+      </nz-badge>
+    </div>
+    <nz-dropdown-menu #taskMenu="nzDropdownMenu">
       <div nz-menu class="wd-lg">
         <div *ngIf="loading" class="mx-lg p-lg"><nz-spin></nz-spin></div>
         <nz-card *ngIf="!loading" nzTitle="Notifications" nzBordered="false" class="ant-card__body-nopadding">
@@ -95,7 +102,7 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
           </div>
         </nz-card>
       </div>
-    </nz-dropdown>
+    </nz-dropdown-menu>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

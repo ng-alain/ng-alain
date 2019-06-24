@@ -24,17 +24,17 @@
       </div>
       <div nz-col nzSpan="12">
         <div class="text-right">
-          <nz-dropdown>
-            <button nz-button nz-dropdown>
-              <span>Export</span>
-              <i nz-icon nzType="down"></i>
-            </button>
+          <button nz-button nz-dropdown [nzDropdownMenu]="exportMenu">
+            <span>Export</span>
+            <i nz-icon nzType="down"></i>
+          </button>
+          <nz-dropdown-menu #exportMenu="nzDropdownMenu">
             <ul nz-menu>
               <li nz-menu-item>Excel</li>
               <li nz-menu-item>JSON</li>
               <li nz-menu-item>PNG</li>
             </ul>
-          </nz-dropdown>
+          </nz-dropdown-menu>
           <button nz-button [nzType]="'default'" full-toggle class="ml-sm">Full</button>
         </div>
       </div>

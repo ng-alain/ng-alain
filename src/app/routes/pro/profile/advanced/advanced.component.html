@@ -7,16 +7,16 @@
       <button nz-button>操作</button>
       <button nz-button>操作</button>
     </nz-button-group>
-    <nz-dropdown class="mx-sm">
-      <button nz-button nz-dropdown>
-        <i nz-icon nzType="ellipsis"></i>
-      </button>
+    <button nz-button nz-dropdown [nzDropdownMenu]="opMenu" class="mx-sm">
+      <i nz-icon nzType="ellipsis"></i>
+    </button>
+    <nz-dropdown-menu #opMenu="nzDropdownMenu">
       <ul nz-menu>
         <li nz-menu-item>选项一</li>
         <li nz-menu-item>选项二</li>
         <li nz-menu-item>选项三</li>
       </ul>
-    </nz-dropdown>
+    </nz-dropdown-menu>
     <button nz-button [nzType]="'primary'">主操作</button>
   </ng-template>
   <ng-template #extra>

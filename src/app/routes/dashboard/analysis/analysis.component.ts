@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { STColumn } from '@delon/abc';
-import { getTimeDistance } from '@delon/util';
+import { getTimeDistance, deepCopy } from '@delon/util';
 import { _HttpClient } from '@delon/theme';
 import { I18NService } from '@core';
 import { yuan } from '@shared';
@@ -13,7 +13,6 @@ import { yuan } from '@shared';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardAnalysisComponent implements OnInit {
-
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
@@ -72,7 +71,7 @@ export class DashboardAnalysisComponent implements OnInit {
     this.http.get('/chart').subscribe((res: any) => {
       res.offlineData.forEach((item: any, idx: number) => {
         item.show = idx === 0;
-        item.chart = { ...[], ...res.offlineChartData };
+        item.chart = deepCopy(res.offlineChartData);
       });
       this.data = res;
       this.loading = false;

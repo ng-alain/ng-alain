@@ -6,11 +6,16 @@ import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 @Component({
   selector: 'header-user',
   template: `
-    <nz-dropdown nzPlacement="bottomRight">
-      <div class="alain-default__nav-item d-flex align-items-center px-sm" nz-dropdown>
-        <nz-avatar [nzSrc]="settings.user.avatar" nzSize="small" class="mr-sm"></nz-avatar>
-        {{ settings.user.name }}
-      </div>
+    <div
+      class="alain-default__nav-item d-flex align-items-center px-sm"
+      nz-dropdown
+      nzPlacement="bottomRight"
+      [nzDropdownMenu]="userMenu"
+    >
+      <nz-avatar [nzSrc]="settings.user.avatar" nzSize="small" class="mr-sm"></nz-avatar>
+      {{ settings.user.name }}
+    </div>
+    <nz-dropdown-menu #userMenu="nzDropdownMenu">
       <div nz-menu class="width-sm">
         <div nz-menu-item routerLink="/pro/account/center">
           <i nz-icon nzType="user" class="mr-sm"></i>
@@ -30,7 +35,7 @@ import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
           {{ 'menu.account.logout' | translate }}
         </div>
       </div>
-    </nz-dropdown>
+    </nz-dropdown-menu>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

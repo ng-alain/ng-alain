@@ -57,10 +57,16 @@
     </li>
     <!-- Settings -->
     <li class="hidden-mobile">
-      <nz-dropdown nzTrigger="click" nzPlacement="bottomRight">
-        <div class="alain-default__nav-item" nz-dropdown>
-          <i nz-icon nzType="setting"></i>
-        </div>
+      <div
+        class="alain-default__nav-item"
+        nz-dropdown
+        [nzDropdownMenu]="settingsMenu"
+        nzTrigger="click"
+        nzPlacement="bottomRight"
+      >
+        <i nz-icon nzType="setting"></i>
+      </div>
+      <nz-dropdown-menu #settingsMenu="nzDropdownMenu">
         <div nz-menu style="width:200px;">
           <div nz-menu-item>
             <header-fullscreen></header-fullscreen>
@@ -72,7 +78,7 @@
             <header-i18n></header-i18n>
           </div>
         </div>
-      </nz-dropdown>
+      </nz-dropdown-menu>
     </li>
     <li class="hidden-mobile">
       <header-user></header-user>
