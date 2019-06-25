@@ -157,13 +157,13 @@
       class="mb-0"
     >
       <ng-template #extraOp>
-        <nz-dropdown class="icon-group">
-          <i nz-dropdown nz-icon nzType="ellipsis"></i>
+        <i nz-dropdown [nzDropdownMenu]="extraOpMenu" nz-icon nzType="ellipsis" class="icon-group"></i>
+        <nz-dropdown-menu #extraOpMenu="nzDropdownMenu">
           <ul nz-menu>
             <li nz-menu-item>操作一</li>
             <li nz-menu-item>操作二</li>
           </ul>
-        </nz-dropdown>
+        </nz-dropdown-menu>
       </ng-template>
       <div nz-row [nzGutter]="64">
         <div nz-col nzXs="24" nzSm="12" class="mb-md">
@@ -208,13 +208,20 @@
     >
       <ng-template #extra>
         <div class="sales-card-extra">
-          <nz-dropdown class="icon-group" nzPlacement="bottomLeft">
-            <i nz-dropdown nz-icon nzType="ellipsis"></i>
+          <i
+            nz-dropdown
+            [nzDropdownMenu]="salesExtraMenu"
+            nzPlacement="bottomLeft"
+            nz-icon
+            nzType="ellipsis"
+            class="icon-group"
+          ></i>
+          <nz-dropdown-menu #salesExtraMenu="nzDropdownMenu">
             <ul nz-menu>
               <li nz-menu-item>操作一</li>
               <li nz-menu-item>操作二</li>
             </ul>
-          </nz-dropdown>
+          </nz-dropdown-menu>
           <div class="sales-type-radio">
             <nz-radio-group [(ngModel)]="salesType" (ngModelChange)="changeSaleType()">
               <label nz-radio-button [nzValue]="'all'">

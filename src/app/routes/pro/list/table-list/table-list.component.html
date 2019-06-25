@@ -76,16 +76,16 @@
   </button>
   <ng-container *ngIf="selectedRows.length > 0">
     <button nz-button>批量操作</button>
-    <nz-dropdown [nzPlacement]="'bottomLeft'">
-      <button nz-button nz-dropdown>
-        更多操作
-        <i nz-icon nzType="down"></i>
-      </button>
+    <button nz-button nz-dropdown [nzDropdownMenu]="batchMenu" nzPlacement="bottomLeft">
+      更多操作
+      <i nz-icon nzType="down"></i>
+    </button>
+    <nz-dropdown-menu #batchMenu="nzDropdownMenu">
       <ul nz-menu>
         <li nz-menu-item (click)="remove()">删除</li>
         <li nz-menu-item (click)="approval()">批量审批</li>
       </ul>
-    </nz-dropdown>
+    </nz-dropdown-menu>
   </ng-container>
   <div class="my-md">
     <nz-alert [nzType]="'info'" [nzShowIcon]="true" [nzMessage]="message">

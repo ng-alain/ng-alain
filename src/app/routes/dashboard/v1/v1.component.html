@@ -189,14 +189,21 @@
           <p [class.text-deleted]="item.completed" class="mb0">{{ item.content }}</p>
         </div>
         <div nz-col [nzSpan]="2" class="text-right pr-md">
-          <nz-dropdown [nzPlacement]="'topRight'">
-            <i nz-dropdown nz-icon nzType="ellipsis" class="rotate-90"></i>
+          <i
+            nz-dropdown
+            [nzDropdownMenu]="todoMenus"
+            nzPlacement="topRight"
+            nz-icon
+            nzType="ellipsis"
+            class="rotate-90"
+          ></i>
+          <nz-dropdown-menu #todoMenus="nzDropdownMenu">
             <ul nz-menu>
               <li nz-menu-item *ngIf="item.completed" (click)="item.completed = false">Active</li>
               <li nz-menu-item *ngIf="!item.completed" (click)="item.completed = true">Completed</li>
               <li nz-menu-item (click)="todoData.splice(todoData.indexOf(item), 1)">Delted</li>
             </ul>
-          </nz-dropdown>
+          </nz-dropdown-menu>
         </div>
       </div>
     </nz-card>

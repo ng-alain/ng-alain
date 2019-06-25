@@ -4,6 +4,7 @@ set -e
 
 GH=false
 DAY_RELEASE=false
+NETLIFY=false
 for ARG in "$@"; do
   case "$ARG" in
     -gh)
@@ -11,6 +12,9 @@ for ARG in "$@"; do
       ;;
     -dr)
       DAY_RELEASE=true
+      ;;
+    -netlify)
+      NETLIFY=true
       ;;
   esac
 done

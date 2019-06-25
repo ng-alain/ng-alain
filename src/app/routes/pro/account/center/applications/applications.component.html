@@ -23,14 +23,15 @@
           </nz-tooltip>
         </ng-template>
         <ng-template #op4>
-          <nz-dropdown [nzPlacement]="'bottomLeft'">
+          <i nz-dropdown [nzDropdownMenu]="op4Menu" nzPlacement="bottomLeft" nz-icon nzType="ellipsis"></i>
+          <nz-dropdown-menu #op4Menu="nzDropdownMenu">
             <i nz-dropdown nz-icon nzType="ellipsis"></i>
             <ul nz-menu>
               <li nz-menu-item>1st menu item</li>
               <li nz-menu-item>2st menu item</li>
               <li nz-menu-item>3st menu item</li>
             </ul>
-          </nz-dropdown>
+          </nz-dropdown-menu>
         </ng-template>
         <nz-card-meta [nzTitle]="item.title" [nzAvatar]="nzAvatar">
           <ng-template #nzAvatar>

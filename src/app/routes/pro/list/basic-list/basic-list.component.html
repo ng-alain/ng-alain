@@ -48,16 +48,16 @@
           <a (click)="openEdit(item)">编辑</a>
         </ng-template>
         <ng-template #op>
-          <nz-dropdown>
-            <a class="ant-dropdown-link" nz-dropdown>
-              更多
-              <i nz-icon nzType="down"></i>
-            </a>
+          <a class="ant-dropdown-link" nz-dropdown [nzDropdownMenu]="opMenu">
+            更多
+            <i nz-icon nzType="down"></i>
+          </a>
+          <nz-dropdown-menu #opMenu="nzDropdownMenu">
             <ul nz-menu>
               <li nz-menu-item (click)="openEdit(item)">编辑</li>
               <li nz-menu-item (click)="msg.success('删除：' + item.title)">删除</li>
             </ul>
-          </nz-dropdown>
+          </nz-dropdown-menu>
         </ng-template>
         <nz-list-item-meta [nzTitle]="nzTitle" [nzDescription]="item.subDescription" [nzAvatar]="nzAvatar">
           <ng-template #nzTitle>
