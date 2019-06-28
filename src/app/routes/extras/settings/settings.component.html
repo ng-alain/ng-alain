@@ -35,39 +35,35 @@
           >
             <nz-form-item>
               <nz-form-label nzFor="name" nzRequired>name</nz-form-label>
-              <nz-form-control>
+              <nz-form-control nzErrorTip="required, must match pattern [-_a-zA-Z0-9]">
                 <input nz-input formControlName="name" id="name" />
-                <div *ngIf="name.invalid && (name.dirty || name.touched)">
-                  <nz-form-explain *ngIf="name.errors.required">required</nz-form-explain>
-                  <nz-form-explain *ngIf="name.errors.pattern">must match pattern [-_a-zA-Z0-9]</nz-form-explain>
-                </div>
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
               <nz-form-label nzFor="email">email</nz-form-label>
-              <nz-form-control>
+              <nz-form-control [nzExtra]="emailExtra">
                 <nz-select formControlName="email">
                   <nz-option [nzLabel]="'Select a verified email to display'" [nzValue]="''"></nz-option>
                   <nz-option [nzLabel]="'cipchk@qq.com'" [nzValue]="'cipchk@qq.com'"></nz-option>
                 </nz-select>
-                <nz-form-explain
-                  >You can manage verified email addresses in your
-                  <a (click)="active = 3">email settings</a>.</nz-form-explain
-                >
+                <ng-template #emailExtra>
+                  You can manage verified email addresses in your
+                  <a (click)="active = 3">email settings</a>.
+                </ng-template>
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
               <nz-form-label nzFor="bio">Bio</nz-form-label>
-              <nz-form-control>
+              <nz-form-control [nzExtra]="bioExtra">
                 <textarea
                   nz-input
                   formControlName="bio"
                   id="bio"
                   placeholder="Tell us a little bit about yourself"
                 ></textarea>
-                <nz-form-explain
-                  >You can <strong>@mention</strong> other users and organizations to link to them.</nz-form-explain
-                >
+                <ng-template #bioExtra>
+                  You can <strong>@mention</strong> other users and organizations to link to them.
+                </ng-template>
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
@@ -80,9 +76,6 @@
               <nz-form-label nzFor="company">Company</nz-form-label>
               <nz-form-control>
                 <input nz-input formControlName="company" id="company" />
-                <nz-form-explain
-                  >You can <strong>@mention</strong> your company's GitHub organization to link it.</nz-form-explain
-                >
               </nz-form-control>
             </nz-form-item>
             <nz-form-item class="border-top-1 mt-md pt-md">
