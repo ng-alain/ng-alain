@@ -11,14 +11,12 @@
   </nz-form-item>
   <nz-form-item class="mb-sm">
     <nz-form-label nzSpan="4">门店名称</nz-form-label>
-    <nz-form-control nzSpan="8">
+    <nz-form-control nzSpan="8" nzExtra="如：国美、麦当劳，不应包含地区、地址、分店名等信息，错误示例：北京国美">
       <input nz-input [(ngModel)]="i.name" name="name" maxlength="30" required />
-      <p nz-form-explain>如：国美、麦当劳，不应包含地区、地址、分店名等信息，错误示例：北京国美</p>
     </nz-form-control>
     <nz-form-label nzSpan="4">分店名称</nz-form-label>
-    <nz-form-control nzSpan="8">
+    <nz-form-control nzSpan="8" nzExtra="不应包含地区信息，不应与门店名有重复，错误示例：北京王府井店">
       <input nz-input [(ngModel)]="i.branch_name" name="branch_name" maxlength="20" required />
-      <p nz-form-explain>不应包含地区信息，不应与门店名有重复，错误示例：北京王府井店</p>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item class="mb-sm">

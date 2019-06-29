@@ -13,7 +13,14 @@ import { I18NService } from '@core';
       {{ 'menu.lang' | translate }}
       <i nz-icon nzType="down"></i>
     </div>
-    <i *ngIf="!showLangText" nz-dropdown nz-icon nzType="global"></i>
+    <i
+      *ngIf="!showLangText"
+      nz-dropdown
+      [nzDropdownMenu]="langMenu"
+      nzPlacement="bottomRight"
+      nz-icon
+      nzType="global"
+    ></i>
     <nz-dropdown-menu #langMenu="nzDropdownMenu">
       <ul nz-menu>
         <li

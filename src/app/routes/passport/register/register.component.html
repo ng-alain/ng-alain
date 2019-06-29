@@ -2,18 +2,18 @@
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
   <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
   <nz-form-item>
-    <nz-form-control>
+    <nz-form-control [nzErrorTip]="mailErrorTip">
       <nz-input-group nzSize="large" nzAddonBeforeIcon="user">
         <input nz-input formControlName="mail" placeholder="Email" />
       </nz-input-group>
-      <ng-container *ngIf="mail.dirty && mail.errors">
-        <nz-form-explain *ngIf="mail.errors?.required">{{ 'validation.email.required' | translate }}</nz-form-explain>
-        <nz-form-explain *ngIf="mail.errors?.email">{{ 'validation.email.wrong-format' | translate }}</nz-form-explain>
-      </ng-container>
+      <ng-template #mailErrorTip let-i>
+        <ng-container *ngIf="i.errors?.required">{{ 'validation.email.required' | translate }}</ng-container>
+        <ng-container *ngIf="i.errors?.email">{{ 'validation.email.wrong-format' | translate }}</ng-container>
+      </ng-template>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control>
+    <nz-form-control [nzErrorTip]="'validation.password.required' | translate">
       <nz-popover
         [nzPlacement]="'right'"
         [nzTrigger]="'focus'"
@@ -24,9 +24,6 @@
         <nz-input-group nzSize="large" nz-popover nzAddonBeforeIcon="lock">
           <input nz-input type="password" formControlName="password" placeholder="Password" />
         </nz-input-group>
-        <nz-form-explain *ngIf="password.dirty && password.errors">{{
-          'validation.password.required' | translate
-        }}</nz-form-explain>
         <ng-template #nzTemplate>
           <div style="padding: 4px 0;">
             <ng-container [ngSwitch]="status">
@@ -49,22 +46,18 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control>
+    <nz-form-control [nzErrorTip]="confirmErrorTip">
       <nz-input-group nzSize="large" nzAddonBeforeIcon="lock">
         <input nz-input type="password" formControlName="confirm" placeholder="Confirm Password" />
       </nz-input-group>
-      <nz-form-explain *ngIf="confirm.dirty && confirm.errors">
-        <ng-container *ngIf="confirm.errors.required">
-          {{ 'validation.confirm-password.required' | translate }}
-        </ng-container>
-        <ng-container *ngIf="confirm.errors.equar">
-          {{ 'validation.password.twice' | translate }}
-        </ng-container>
-      </nz-form-explain>
+      <ng-template #confirmErrorTip let-i>
+        <ng-container *ngIf="i.errors?.required">{{ 'validation.confirm-password.required' | translate }}</ng-container>
+        <ng-container *ngIf="i.errors?.equar">{{ 'validation.password.twice' | translate }}</ng-container>
+      </ng-template>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control>
+    <nz-form-control [nzErrorTip]="mobileErrorTip">
       <nz-input-group nzSize="large" [nzAddOnBefore]="addOnBeforeTemplate">
         <ng-template #addOnBeforeTemplate>
           <nz-select formControlName="mobilePrefix" style="width: 100px;">
@@ -74,26 +67,19 @@
         </ng-template>
         <input formControlName="mobile" nz-input placeholder="Phone number" />
       </nz-input-group>
-      <nz-form-explain *ngIf="mobile.dirty && mobile.errors">
-        <ng-container *ngIf="mobile.errors.required">
-          {{ 'validation.phone-number.required' | translate }}
-        </ng-container>
-        <ng-container *ngIf="mobile.errors.pattern">
-          {{ 'validation.phone-number.wrong-format' | translate }}
-        </ng-container>
-      </nz-form-explain>
+      <ng-template #mobileErrorTip let-i>
+        <ng-container *ngIf="i.errors?.required">{{ 'validation.phone-number.required' | translate }}</ng-container>
+        <ng-container *ngIf="i.errors?.pattern">{{ 'validation.phone-number.wrong-format' | translate }}</ng-container>
+      </ng-template>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control>
+    <nz-form-control [nzErrorTip]="'validation.verification-code.required' | translate">
       <nz-row [nzGutter]="8">
         <nz-col [nzSpan]="16">
           <nz-input-group nzSize="large" nzAddonBeforeIcon="mail">
             <input nz-input formControlName="captcha" placeholder="Captcha" />
           </nz-input-group>
-          <nz-form-explain *ngIf="captcha.dirty && captcha.errors">
-            {{ 'validation.verification-code.required' | translate }}
-          </nz-form-explain>
         </nz-col>
         <nz-col [nzSpan]="8">
           <button
