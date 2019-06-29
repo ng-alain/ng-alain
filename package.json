@@ -123,14 +123,16 @@
     }
   },
   "lint-staged": {
-    "*.ts": [
-      "npm run lint:ts",
-      "git add"
-    ],
-    "*.less": [
-      "npm run lint:style",
-      "git add"
-    ],
+    "linters": {
+      "*.ts": [
+        "npm run lint:ts",
+        "git add"
+      ],
+      "*.less": [
+        "npm run lint:style",
+        "git add"
+      ]
+    },
     "ignore": [
       "src/assets/*"
     ]
