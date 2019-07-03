@@ -30,7 +30,7 @@
               "src/styles.less"
             ],
             "scripts": [
-              "node_modules/@antv/g2/dist/g2.min.js",
+              "node_modules/@antv/g2/build/g2.js",
               "node_modules/@antv/data-set/dist/data-set.min.js",
               "node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js",
               "node_modules/ajv/dist/ajv.bundle.js",
