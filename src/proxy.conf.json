@@ -1,0 +1,8 @@
+{
+  // Pls refer to [Proxying to a backend server](https://angular.io/guide/build#proxying-to-a-backend-server)
+
+  // "/": {
+  //   "target": "http://127.0.0.1:8001/",
+  //   "secure": false
+  // }
+}
