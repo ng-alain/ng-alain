@@ -31,8 +31,14 @@ function removeVarFile() {
   fs.unlinkSync(tmpVarFilePath);
 }
 
+function removeOutputFile() {
+  if (fs.existsSync(outputFilePath)) {
+    fs.unlinkSync(outputFilePath);
+  }
+}
+
 genVarFile();
-fs.unlinkSync(outputFilePath);
+removeOutputFile();
 generateTheme(options)
   .then(() => {
     removeVarFile();
