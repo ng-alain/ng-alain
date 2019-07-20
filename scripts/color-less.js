@@ -6,13 +6,14 @@ const {
 
 const root = path.resolve(__dirname, '../');
 const tmpVarFilePath = path.join(root, 'scripts/var.less');
+const outputFilePath = path.join(root, './src/assets/alain-default.less');
 const options = {
   stylesDir: path.join(root, './src'),
   antdStylesDir: path.join(root, './node_modules/ng-zorro-antd'),
   varFile: path.join(root, './scripts/var.less'),
   mainLessFile: path.join(root, './src/styles.less'),
   themeVariables: ['@primary-color'],
-  outputFilePath: path.join(root, './src/assets/alain-default.less'),
+  outputFilePath,
 };
 
 function genVarFile() {
@@ -31,6 +32,7 @@ function removeVarFile() {
 }
 
 genVarFile();
+fs.unlinkSync(outputFilePath);
 generateTheme(options)
   .then(() => {
     removeVarFile();
