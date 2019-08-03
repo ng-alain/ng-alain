@@ -2576,7 +2576,9 @@ darker  @grey-9;
 @reuse-tab-border-color: #d9d9d9;
 
 @st-prefix: ~'.st';
-@st-btn-disabled-color: rgba(0,0,0,.25);
+@st-btn-disabled-color: rgba(0, 0, 0, 0.25);
+@st-title-optional-color: rgba(0, 0, 0, 0.35);
+
 @sv-prefix: ~'.sv';
 @sv-label-color: rgba(0, 0, 0, 0.5);
 @sv-label-optional-color: rgba(0, 0, 0, 0.35);
@@ -11329,6 +11331,10 @@ textarea.ant-input::-webkit-scrollbar-thumb {
 }
 .st__btn-disabled .st__btn-text {
   color: rgba(0, 0, 0, 0.25);
+}
+.st__head-optional,
+.st__head-tip {
+  color: rgba(0, 0, 0, 0.35);
 }
 .st .ant-table-thead > tr > th .ant-table-filter-selected.ant-table-filter-icon {
   color: @primary-color;
@@ -20390,6 +20396,10 @@ textarea.ant-input::-webkit-scrollbar-thumb {
 }
 .st__btn-disabled .st__btn-text {
   color: rgba(0, 0, 0, 0.25);
+}
+.st__head-optional,
+.st__head-tip {
+  color: rgba(0, 0, 0, 0.35);
 }
 .st .ant-table-thead > tr > th .ant-table-filter-selected.ant-table-filter-icon {
   color: @primary-color;
