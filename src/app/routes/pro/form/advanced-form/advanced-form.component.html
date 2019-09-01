@@ -2,7 +2,6 @@
   高级表单常见于一次性输入和提交大批量数据的场景。（示例采用响应式表单，也可使用模板驱动方式）
 </page-header>
 <form nz-form [formGroup]="form" (ngSubmit)="_submitForm()" [nzLayout]="'vertical'">
-  a: {{ form.valid | json }}
   <nz-card [nzBordered]="false" nzTitle="仓库管理">
     <nz-row nzGutter="16">
       <nz-col nzLg="6" nzMd="12" nzSm="24">
@@ -161,16 +160,12 @@
             <span *ngIf="editIndex !== i">
               <a (click)="edit(i)">编辑</a>
               <nz-divider nzType="vertical"></nz-divider>
-              <nz-popconfirm (nzOnConfirm)="del(i)" [nzTitle]="'是否要删除此行？'">
-                <a nz-popconfirm>删除</a>
-              </nz-popconfirm>
+              <a nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="del(i)">删除</a>
             </span>
             <span *ngIf="editIndex === i">
               <a (click)="save(i)">保存</a>
               <nz-divider nzType="vertical"></nz-divider>
-              <nz-popconfirm (nzOnConfirm)="cancel(i)" [nzTitle]="'是否要取消操作？'">
-                <a nz-popconfirm>取消</a>
-              </nz-popconfirm>
+              <a nz-popconfirm nzPopconfirmTitle="是否要取消操作？" (nzOnConfirm)="cancel(i)">取消</a>
             </span>
           </td>
         </tr>

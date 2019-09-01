@@ -162,20 +162,18 @@
       <nz-row class="border-1 p-md rounded-sm" [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
         <nz-col [nzSpan]="12">
           cipchk@qq.com
-          <nz-tooltip
-            [nzTitle]="
-              'This email will be used for account-related notifications (e.g. account changes, password resets, billing receipts) as well as any web-based GitHub operations (e.g. edits and merges).'
-            "
+          <nz-tag
+            nz-tooltip
+            nzTooltipTitle="This email will be used for account-related notifications (e.g. account changes, password resets, billing receipts) as well as any web-based GitHub operations (e.g. edits and merges)."
+            [nzColor]="'#28a745'"
+            >Primary</nz-tag
           >
-            <span nz-tooltip>
-              <nz-tag [nzColor]="'#28a745'">Primary</nz-tag>
-            </span>
-          </nz-tooltip>
-          <nz-tooltip [nzTitle]="'This email will be used as the \'from\' address for web-based GitHub operations.'">
-            <span nz-tooltip>
-              <nz-tag [nzColor]="'#959da5'">Public</nz-tag>
-            </span>
-          </nz-tooltip>
+          <nz-tag
+            nz-tooltip
+            nzTooltipTitle="This email will be used as the 'from' address for web-based GitHub operations."
+            [nzColor]="'#959da5'"
+            >Public</nz-tag
+          >
         </nz-col>
         <nz-col [nzSpan]="12" class="text-right">
           <i nz-icon nzType="delete" class="text-lg"></i>
