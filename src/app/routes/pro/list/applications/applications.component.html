@@ -56,19 +56,13 @@
     <nz-list-item>
       <nz-card nzHoverable [nzActions]="[op1, op2, op3, op4]">
         <ng-template #op1>
-          <nz-tooltip [nzTitle]="'下载'">
-            <i nz-tooltip nz-icon nzType="download"></i>
-          </nz-tooltip>
+          <i nz-tooltip nzTooltipTitle="下载" nz-icon nzType="download"></i>
         </ng-template>
         <ng-template #op2>
-          <nz-tooltip [nzTitle]="'编辑'">
-            <i nz-tooltip nz-icon nzType="edit"></i>
-          </nz-tooltip>
+          <i nz-tooltip nzTooltipTitle="编辑" nz-icon nzType="edit"></i>
         </ng-template>
         <ng-template #op3>
-          <nz-tooltip [nzTitle]="'分享'">
-            <i nz-tooltip nz-icon nzType="share-alt"></i>
-          </nz-tooltip>
+          <i nz-tooltip nzTooltipTitle="分享" nz-icon nzType="share-alt"></i>
         </ng-template>
         <ng-template #op4>
           <i nz-dropdown [nzDropdownMenu]="op4Menu" nzPlacement="bottomLeft" nz-icon nzType="ellipsis"></i>

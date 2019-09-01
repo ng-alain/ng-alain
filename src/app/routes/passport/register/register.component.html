@@ -14,35 +14,37 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="'validation.password.required' | translate">
-      <nz-popover
-        [nzPlacement]="'right'"
-        [nzTrigger]="'focus'"
+      <nz-input-group
+        nzSize="large"
+        nzAddonBeforeIcon="lock"
+        nz-popover
+        nzPopoverPlacement="right"
+        nzPopoverTrigger="focus"
         [(nzVisible)]="visible"
         nzOverlayClassName="register-password-cdk"
         [nzOverlayStyle]="{ 'width.px': 240 }"
+        [nzPopoverContent]="pwdCdkTpl"
       >
-        <nz-input-group nzSize="large" nz-popover nzAddonBeforeIcon="lock">
-          <input nz-input type="password" formControlName="password" placeholder="Password" />
-        </nz-input-group>
-        <ng-template #nzTemplate>
-          <div style="padding: 4px 0;">
-            <ng-container [ngSwitch]="status">
-              <div *ngSwitchCase="'ok'" class="success">{{ 'validation.password.strength.strong' | translate }}</div>
-              <div *ngSwitchCase="'pass'" class="warning">{{ 'validation.password.strength.medium' | translate }}</div>
-              <div *ngSwitchDefault class="error">{{ 'validation.password.strength.short' | translate }}</div>
-            </ng-container>
-            <div class="progress-{{ status }}">
-              <nz-progress
-                [nzPercent]="progress"
-                [nzStatus]="passwordProgressMap[status]"
-                [nzStrokeWidth]="6"
-                [nzShowInfo]="false"
-              ></nz-progress>
-            </div>
-            <p class="mt-sm">{{ 'validation.password.strength.msg' | translate }}</p>
+        <input nz-input type="password" formControlName="password" placeholder="Password" />
+      </nz-input-group>
+      <ng-template #pwdCdkTpl>
+        <div style="padding: 4px 0;">
+          <ng-container [ngSwitch]="status">
+            <div *ngSwitchCase="'ok'" class="success">{{ 'validation.password.strength.strong' | translate }}</div>
+            <div *ngSwitchCase="'pass'" class="warning">{{ 'validation.password.strength.medium' | translate }}</div>
+            <div *ngSwitchDefault class="error">{{ 'validation.password.strength.short' | translate }}</div>
+          </ng-container>
+          <div class="progress-{{ status }}">
+            <nz-progress
+              [nzPercent]="progress"
+              [nzStatus]="passwordProgressMap[status]"
+              [nzStrokeWidth]="6"
+              [nzShowInfo]="false"
+            ></nz-progress>
           </div>
-        </ng-template>
-      </nz-popover>
+          <p class="mt-sm">{{ 'validation.password.strength.msg' | translate }}</p>
+        </div>
+      </ng-template>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>

@@ -8,9 +8,7 @@
       [footer]="footer1"
     >
       <ng-template #action1>
-        <nz-tooltip [nzTitle]="'app.analysis.introduce' | translate">
-          <i nz-tooltip nz-icon nzType="info-circle"></i>
-        </nz-tooltip>
+        <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | translate" nz-icon nzType="info-circle"></i>
       </ng-template>
       <trend flag="up" style="display:block; margin-top:2px;">
         {{ 'app.analysis.week' | translate }}
@@ -37,9 +35,7 @@
       [footer]="footer2"
     >
       <ng-template #action2>
-        <nz-tooltip [nzTitle]="'app.analysis.introduce' | translate">
-          <i nz-tooltip nz-icon nzType="info-circle"></i>
-        </nz-tooltip>
+        <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | translate" nz-icon nzType="info-circle"></i>
       </ng-template>
       <g2-mini-area *ngIf="data.visitData" color="#975FE4" height="46" [data]="data.visitData"></g2-mini-area>
       <ng-template #footer2>
@@ -59,9 +55,7 @@
       [footer]="footer3"
     >
       <ng-template #action3>
-        <nz-tooltip [nzTitle]="'app.analysis.introduce' | translate">
-          <i nz-tooltip nz-icon nzType="info-circle"></i>
-        </nz-tooltip>
+        <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | translate" nz-icon nzType="info-circle"></i>
       </ng-template>
       <g2-mini-bar *ngIf="data.visitData" height="46" [data]="data.visitData"></g2-mini-bar>
       <ng-template #footer3>
@@ -81,9 +75,7 @@
       [footer]="footer4"
     >
       <ng-template #action4>
-        <nz-tooltip [nzTitle]="'app.analysis.introduce' | translate">
-          <i nz-tooltip nz-icon nzType="info-circle"></i>
-        </nz-tooltip>
+        <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | translate" nz-icon nzType="info-circle"></i>
       </ng-template>
       <g2-mini-progress height="46" percent="78" strokeWidth="8" target="80" color="#13C2C2"></g2-mini-progress>
       <ng-template #footer4>
@@ -170,9 +162,13 @@
           <number-info total="12,321" subTotal="17.1" status="up" [subTitle]="subTitle">
             <ng-template #subTitle>
               {{ 'app.analysis.search-users' | translate }}
-              <nz-tooltip [nzTitle]="'app.analysis.introduce' | translate">
-                <i nz-tooltip nz-icon nzType="info-circle" class="ml-sm"></i>
-              </nz-tooltip>
+              <i
+                nz-tooltip
+                [nzTooltipTitle]="'app.analysis.introduce' | translate"
+                nz-icon
+                nzType="info-circle"
+                class="ml-sm"
+              ></i>
             </ng-template>
           </number-info>
           <g2-mini-area *ngIf="data.visitData2" [line]="true" height="45" [data]="data.visitData2"></g2-mini-area>

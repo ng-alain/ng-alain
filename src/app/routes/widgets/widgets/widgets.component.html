@@ -597,11 +597,7 @@
   <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
     <nz-card nzTitle="华东 1" class="ant-card__body-nopadding" [nzExtra]="extra">
       <ng-template #extra>
-        <nz-tooltip [nzTitle]="'购买实例'">
-          <span nz-tooltip>
-            <i nz-icon nzType="shopping-cart" class="display-3"></i>
-          </span>
-        </nz-tooltip>
+        <i nz-tooltip nzTooltipTitle="购买实例" nz-icon nzType="shopping-cart" class="display-3"></i>
       </ng-template>
       <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'" [nzGutter]="8">
         <div nz-col [nzSpan]="12" class="text-center">
@@ -683,18 +679,17 @@
         你觉得这篇文章如何：
       </div>
       <div nz-col [nzSpan]="8" class="text-right">
-        <nz-popconfirm
+        <span
+          nz-popconfirm
           [(nzVisible)]="like"
-          [nzPlacement]="'top'"
-          [nzTitle]="'喜欢就开启此内容提醒吧！'"
+          [nzPopconfirmPlacement]="'top'"
+          [nzPopconfirmTitle]="'喜欢就开启此内容提醒吧！'"
           [nzOkText]="'立即开启'"
           [nzCancelText]="'下次再说'"
           (nzOnConfirm)="msg.success('开启提醒')"
           (nzOnCancel)="msg.error('取消提醒')"
           style="display:inline-block; padding-top:15px;"
-        >
-          <span nz-popconfirm></span>
-        </nz-popconfirm>
+        ></span>
         <span class="pr-lg">
           <i nz-icon nzType="like" class="display-3 point" [class.text-primary]="like" (click)="like = !like"></i> 赞
         </span>
@@ -851,7 +846,14 @@
           <div [class.text-deleted]="item.completed">{{ item.content }}</div>
         </div>
         <div nz-col [nzSpan]="2" class="text-right pr-md">
-          <i nz-dropdown [nzDropdownMenu]="menuTpl" nzPlacement="topRight" nz-icon nzType="ellipsis" class="rotate-90"></i>
+          <i
+            nz-dropdown
+            [nzDropdownMenu]="menuTpl"
+            nzPlacement="topRight"
+            nz-icon
+            nzType="ellipsis"
+            class="rotate-90"
+          ></i>
           <nz-dropdown-menu #menuTpl="nzDropdownMenu">
             <ul nz-menu>
               <li nz-menu-item *ngIf="item.completed" (click)="item.completed = false">Active</li>
