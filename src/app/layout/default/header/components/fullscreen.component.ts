@@ -26,7 +26,7 @@ export class HeaderFullScreenComponent {
 
   @HostListener('click')
   _click() {
-    if (this.sf.enabled) {
+    if (this.sf.isEnabled) {
       this.sf.toggle();
     }
   }
