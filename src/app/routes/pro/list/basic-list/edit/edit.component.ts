@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NzMessageService, NzModalRef } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 import { SFSchema } from '@delon/form';
 
 @Component({

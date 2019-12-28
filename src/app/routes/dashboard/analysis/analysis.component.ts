@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { STColumn } from '@delon/abc';
 import { getTimeDistance, deepCopy } from '@delon/util';
 import { _HttpClient } from '@delon/theme';

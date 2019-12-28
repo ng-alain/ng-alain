@@ -8,7 +8,7 @@ import ngZh from '@angular/common/locales/zh';
 import ngEn from '@angular/common/locales/en';
 import ngZhTw from '@angular/common/locales/zh-Hant';
 
-import { en_US, zh_CN, zh_TW, NzI18nService } from 'ng-zorro-antd';
+import { en_US, zh_CN, zh_TW, NzI18nService } from 'ng-zorro-antd/i18n';
 import * as df_en from 'date-fns/locale/en';
 import * as df_zh_cn from 'date-fns/locale/zh_cn';
 import * as df_zh_tw from 'date-fns/locale/zh_tw';

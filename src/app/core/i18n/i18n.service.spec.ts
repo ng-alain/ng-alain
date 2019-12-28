@@ -1,9 +1,8 @@
 import { TestBed, TestBedStatic } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
 import { SettingsService, DelonLocaleService } from '@delon/theme';
-import { NzI18nService } from 'ng-zorro-antd';
+import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { of } from 'rxjs';
-
 import { I18NService } from './i18n.service';
 
 describe('Service: I18n', () => {

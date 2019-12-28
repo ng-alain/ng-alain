@@ -1,7 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { NzMessageService, NzTabChangeEvent } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
 import { _HttpClient } from '@delon/theme';
-import { STColumn } from '@delon/abc';
+import { STColumn } from '@delon/abc/table';
 
 @Component({
   selector: 'app-profile-advanced',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { CacheService } from '@delon/cache';
 
 @Component({

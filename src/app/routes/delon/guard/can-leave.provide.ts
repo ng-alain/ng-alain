@@ -1,19 +1,14 @@
 import { Injectable } from '@angular/core';
-import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { GuardComponent } from './guard.component';
+import { CanDeactivate } from '@angular/router';
 import { Observable } from 'rxjs';
-import { NzModalService } from 'ng-zorro-antd';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { GuardComponent } from './guard.component';
 
 @Injectable()
 export class CanLeaveProvide implements CanDeactivate<GuardComponent> {
   constructor(private confirmSrv: NzModalService) {}
 
-  canDeactivate(
-    component: GuardComponent,
-    currentRoute: ActivatedRouteSnapshot,
-    currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot,
-  ): boolean | Observable<boolean> | Promise<boolean> {
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
     return new Observable(observer => {
       this.confirmSrv.confirm({
         nzTitle: '确认要离开吗？',

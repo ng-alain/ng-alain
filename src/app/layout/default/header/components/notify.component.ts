@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import * as distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { NoticeItem, NoticeIconList } from '@delon/abc';
 
 /**

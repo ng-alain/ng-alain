@@ -133,7 +133,8 @@
       ]
     },
     "ignore": [
-      "src/assets/*"
+      "src/assets/*",
+      "_cli-tpl/**"
     ]
   }
 }

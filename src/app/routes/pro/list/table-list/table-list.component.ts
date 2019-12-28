@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { NzMessageService, NzModalService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { _HttpClient } from '@delon/theme';
 import { tap, map } from 'rxjs/operators';
-import { STComponent, STColumn, STData, STChange } from '@delon/abc';
+import { STComponent, STColumn, STData, STChange } from '@delon/abc/table';
 
 @Component({
   selector: 'app-table-list',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { copy, format } from '@delon/util';
 import { yuan } from '@shared';
 

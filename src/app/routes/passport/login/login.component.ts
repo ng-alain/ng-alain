@@ -2,9 +2,10 @@ import { SettingsService, _HttpClient } from '@delon/theme';
 import { Component, OnDestroy, Inject, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NzMessageService, NzModalService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { SocialService, SocialOpenType, ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
-import { ReuseTabService } from '@delon/abc';
+import { ReuseTabService } from '@delon/abc/reuse-tab';
 import { environment } from '@env/environment';
 import { StartupService } from '@core';
 
@@ -15,7 +16,6 @@ import { StartupService } from '@core';
   providers: [SocialService],
 })
 export class UserLoginComponent implements OnDestroy {
-
   constructor(
     fb: FormBuilder,
     modalSrv: NzModalService,

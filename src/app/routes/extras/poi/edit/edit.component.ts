@@ -1,6 +1,6 @@
-import { NzMessageService, NzModalRef } from 'ng-zorro-antd';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 import { _HttpClient } from '@delon/theme';
 
 @Component({

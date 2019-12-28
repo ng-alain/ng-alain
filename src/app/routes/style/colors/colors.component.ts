@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ColorService } from '../color.service';
 import { copy } from '@delon/util';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-colors',
