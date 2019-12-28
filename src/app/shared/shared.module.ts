@@ -4,20 +4,16 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 // delon
 import { AlainThemeModule } from '@delon/theme';
-import { DelonABCModule } from '@delon/abc';
-import { DelonChartModule } from '@delon/chart';
-import { DelonACLModule } from '@delon/acl';
-import { DelonFormModule } from '@delon/form';
 // i18n
 import { TranslateModule } from '@ngx-translate/core';
 
-// #region third libs
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+// #region libs
+import { DELON_MODULES, ZORRO_MODULES } from './shared-libs-auto';
 import { CountdownModule } from 'ngx-countdown';
 import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';
 
-const THIRDMODULES = [NgZorroAntdModule, CountdownModule, UEditorModule, NgxTinymceModule];
+const MODULES = [...DELON_MODULES, ...ZORRO_MODULES, CountdownModule, UEditorModule, NgxTinymceModule];
 // #endregion
 
 // #region your componets & directives
@@ -32,12 +28,8 @@ const DIRECTIVES = [];
     RouterModule,
     ReactiveFormsModule,
     AlainThemeModule.forChild(),
-    DelonABCModule,
-    DelonChartModule,
-    DelonACLModule,
-    DelonFormModule,
     // third libs
-    ...THIRDMODULES,
+    ...MODULES,
   ],
   declarations: [
     // your components
@@ -50,14 +42,10 @@ const DIRECTIVES = [];
     ReactiveFormsModule,
     RouterModule,
     AlainThemeModule,
-    DelonABCModule,
-    DelonChartModule,
-    DelonACLModule,
-    DelonFormModule,
     // i18n
     TranslateModule,
     // third libs
-    ...THIRDMODULES,
+    ...MODULES,
     // your components
     ...COMPONENTS,
     ...DIRECTIVES,
