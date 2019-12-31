@@ -1,4 +1,4 @@
-<nz-list nzItemLayout="vertical" [nzLoading]="loading" [nzDataSource]="list" [nzRenderItem]="item">
+<nz-list nzItemLayout="vertical" [nzLoading]="!list" [nzDataSource]="list" [nzRenderItem]="item">
   <ng-template #item let-item>
     <nz-list-item [nzContent]="nzContent" [nzExtra]="nzExtra" [nzActions]="[op1, op2, op3]">
       <ng-template #op1><i nz-icon nzType="star" class="mr-sm"></i>{{ item.star }}</ng-template>
