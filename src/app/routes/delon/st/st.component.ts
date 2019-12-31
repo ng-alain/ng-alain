@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { STColumn } from '@delon/abc';
+import { STColumn } from '@delon/abc/table';
 import { _HttpClient } from '@delon/theme';
 
 @Component({

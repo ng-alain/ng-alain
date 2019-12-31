@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { _HttpClient } from '@delon/theme';
-import { STColumn } from '@delon/abc';
+import { STColumn } from '@delon/abc/table';
 import { tap } from 'rxjs/operators';
 
 @Component({
