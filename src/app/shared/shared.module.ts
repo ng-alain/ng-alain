@@ -8,7 +8,7 @@ import { AlainThemeModule } from '@delon/theme';
 import { TranslateModule } from '@ngx-translate/core';
 
 // #region libs
-import { DELON_MODULES, ZORRO_MODULES } from './shared-libs-auto';
+import { DELON_MODULES, ZORRO_MODULES } from './shared-libs';
 import { CountdownModule } from 'ngx-countdown';
 import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';

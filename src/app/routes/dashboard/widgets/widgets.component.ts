@@ -8,7 +8,7 @@ import { _HttpClient } from '@delon/theme';
   styleUrls: ['./widgets.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WidgetsComponent implements OnInit {
+export class DashboardWidgetsComponent implements OnInit {
   data: any[] = [];
   smallData: any[] = [];
 

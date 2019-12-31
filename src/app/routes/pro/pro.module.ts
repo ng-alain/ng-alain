@@ -30,6 +30,7 @@ import { ProAccountSettingsSecurityComponent } from './account/settings/security
 import { ProAccountSettingsBindingComponent } from './account/settings/binding/binding.component';
 import { ProAccountSettingsNotificationComponent } from './account/settings/notification/notification.component';
 import { ProBasicListEditComponent } from './list/basic-list/edit/edit.component';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
 
 const COMPONENTS = [
   BasicFormComponent,
@@ -60,7 +61,7 @@ const COMPONENTS = [
 const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component, ProBasicListEditComponent];
 
 @NgModule({
-  imports: [SharedModule, ProRoutingModule],
+  imports: [SharedModule, NzStepsModule, ProRoutingModule],
   declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
   entryComponents: COMPONENTS_NOROUNT,
 })

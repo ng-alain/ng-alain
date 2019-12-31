@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared';
+import { FullContentModule } from '@delon/abc/full-content';
+import { DownFileModule } from '@delon/abc/down-file';
+import { QRModule } from '@delon/abc/qr';
+import { XlsxModule } from '@delon/abc/xlsx';
+import { ZipModule } from '@delon/abc/zip';
+import { LodopModule } from '@delon/abc/lodop';
 
 import { DelonRoutingModule } from './delon-routing.module';
 
@@ -40,7 +46,17 @@ const COMPONENTS = [
 const COMPONENTS_NOROUNT = [];
 
 @NgModule({
-  imports: [CommonModule, SharedModule, DelonRoutingModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    FullContentModule,
+    DownFileModule,
+    QRModule,
+    LodopModule,
+    XlsxModule,
+    ZipModule,
+    DelonRoutingModule,
+  ],
   providers: [CanLeaveProvide],
   declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
   entryComponents: COMPONENTS_NOROUNT,

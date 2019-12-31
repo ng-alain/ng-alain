@@ -52,7 +52,7 @@
         {
           "text": "小部件",
           "i18n": "menu.widgets",
-          "link": "/widgets",
+          "link": "/dashboard/widgets",
           "icon": "anticon-appstore",
           "badge": 2
         }
