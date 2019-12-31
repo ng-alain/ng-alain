@@ -1,7 +1,7 @@
 <page-header [title]="'高级表单'">
   高级表单常见于一次性输入和提交大批量数据的场景。（示例采用响应式表单，也可使用模板驱动方式）
 </page-header>
-<form nz-form [formGroup]="form" (ngSubmit)="_submitForm()" [nzLayout]="'vertical'">
+<form nz-form #f="ngForm" [formGroup]="form" (ngSubmit)="_submitForm()" [nzLayout]="'vertical'">
   <nz-card [nzBordered]="false" nzTitle="仓库管理">
     <nz-row nzGutter="16">
       <nz-col nzLg="6" nzMd="12" nzSm="24">
@@ -140,21 +140,27 @@
         <tr *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
           <td>
             <span *ngIf="editIndex !== i">{{ items.value[i].name }}</span>
-            <span *ngIf="editIndex === i" nz-form-control nzErrorTip="请输入成员姓名">
-              <input nz-input formControlName="name" placeholder="请输入成员姓名" />
-            </span>
+            <nz-form-item *ngIf="editIndex === i">
+              <nz-form-control nzErrorTip="请输入成员姓名">
+                <input nz-input formControlName="name" placeholder="请输入成员姓名" />
+              </nz-form-control>
+            </nz-form-item>
           </td>
           <td>
             <span *ngIf="editIndex !== i">{{ items.value[i].workId }}</span>
-            <span *ngIf="editIndex === i" nz-form-control nzErrorTip="请输入工号">
-              <input nz-input formControlName="workId" placeholder="请输入工号" />
-            </span>
+            <nz-form-item *ngIf="editIndex === i">
+              <nz-form-control nzErrorTip="请输入工号">
+                <input nz-input formControlName="workId" placeholder="请输入工号" />
+              </nz-form-control>
+            </nz-form-item>
           </td>
           <td>
             <span *ngIf="editIndex !== i">{{ items.value[i].department }}</span>
-            <span *ngIf="editIndex === i" nz-form-control nzErrorTip="请输入所属部门">
-              <input nz-input formControlName="department" placeholder="请输入所属部门" />
-            </span>
+            <nz-form-item *ngIf="editIndex === i">
+              <nz-form-control nzErrorTip="请输入所属部门">
+                <input nz-input formControlName="department" placeholder="请输入所属部门" />
+              </nz-form-control>
+            </nz-form-item>
           </td>
           <td>
             <span *ngIf="editIndex !== i">
@@ -163,7 +169,7 @@
               <a nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="del(i)">删除</a>
             </span>
             <span *ngIf="editIndex === i">
-              <a (click)="save(i)">保存</a>
+              <a [class.disabled]="item.invalid" (click)="save(i)">保存</a>
               <nz-divider nzType="vertical"></nz-divider>
               <a nz-popconfirm nzPopconfirmTitle="是否要取消操作？" (nzOnConfirm)="cancel(i)">取消</a>
             </span>
@@ -177,6 +183,6 @@
     </button>
   </nz-card>
   <footer-toolbar errorCollect>
-    <button nz-button type="primary" nzType="primary">提交</button>
+    <button nz-button type="primary" nzType="primary" [disabled]="!f.form.valid || !f.form.dirty">提交</button>
   </footer-toolbar>
 </form>
