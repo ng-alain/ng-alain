@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import * as distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import parseISO from 'date-fns/parseISO';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { NzMessageService } from 'ng-zorro-antd';
 import { NoticeItem, NoticeIconList } from '@delon/abc';
 
@@ -53,14 +54,14 @@ export class HeaderNotifyComponent {
 
   private updateNoticeData(notices: NoticeIconList[]): NoticeItem[] {
     const data = this.data.slice();
-    data.forEach(i => (i.list = []));
+    data.forEach((i) => (i.list = []));
 
-    notices.forEach(item => {
+    notices.forEach((item) => {
       const newItem = { ...item };
-      if (newItem.datetime)
-        newItem.datetime = distanceInWordsToNow(item.datetime!, {
-          locale: (window as any).__locale__,
-        });
+      if (newItem.datetime) if (typeof item.datetime === 'string') item.datetime = parseISO(item.datetime);
+      newItem.datetime = formatDistanceToNow(item.datetime as Date, {
+        locale: (window as any).__locale__,
+      });
       if (newItem.extra && newItem.status) {
         newItem.color = {
           todo: undefined,
@@ -69,7 +70,7 @@ export class HeaderNotifyComponent {
           doing: 'gold',
         }[newItem.status];
       }
-      data.find(w => w.title === newItem.type)!.list.push(newItem);
+      data.find((w) => w.title === newItem.type)!.list.push(newItem);
     });
     return data;
   }

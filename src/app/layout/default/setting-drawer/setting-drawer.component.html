@@ -4,11 +4,10 @@
       <h3 class="setting-drawer__title">主题色</h3>
       <span
         *ngFor="let c of colors"
-        nz-tooltip
         [ngStyle]="{ 'background-color': c.color }"
         (click)="changeColor(c.color)"
         nz-tooltip
-        [nzTitle]="c.key"
+        [nzTooltipTitle]="c.key"
         class="setting-drawer__theme-tag"
         ><i *ngIf="color === c.color" nz-icon nzType="check"></i
       ></span>

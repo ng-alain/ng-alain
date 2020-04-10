@@ -76,13 +76,21 @@
 <div class="other">
   {{ 'app.login.sign-in-with' | translate }}
   <i
-    nz-tooltip="in fact Auth0 via window"
+    nz-tooltip
+    nzTooltipTitle="in fact Auth0 via window"
     (click)="open('auth0', 'window')"
     nz-icon
     nzType="alipay-circle"
     class="icon"
   ></i>
-  <i nz-tooltip="in fact Github via redirect" (click)="open('github')" nz-icon nzType="taobao-circle" class="icon"></i>
+  <i
+    nz-tooltip
+    nzTooltipTitle="in fact Github via redirect"
+    (click)="open('github')"
+    nz-icon
+    nzType="taobao-circle"
+    class="icon"
+  ></i>
   <i (click)="open('weibo', 'window')" nz-icon nzType="weibo-circle" class="icon"></i>
   <a class="register" routerLink="/passport/register">{{ 'app.login.signup' | translate }}</a>
 </div>

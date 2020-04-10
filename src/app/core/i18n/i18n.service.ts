@@ -9,9 +9,9 @@ import ngEn from '@angular/common/locales/en';
 import ngZhTw from '@angular/common/locales/zh-Hant';
 
 import { en_US, zh_CN, zh_TW, NzI18nService } from 'ng-zorro-antd';
-import * as df_en from 'date-fns/locale/en';
-import * as df_zh_cn from 'date-fns/locale/zh_cn';
-import * as df_zh_tw from 'date-fns/locale/zh_tw';
+import * as df_en from 'date-fns/locale/en-US';
+import * as df_zh_cn from 'date-fns/locale/zh-CN';
+import * as df_zh_tw from 'date-fns/locale/zh-TW';
 import { TranslateService } from '@ngx-translate/core';
 import {
   SettingsService,
@@ -64,7 +64,7 @@ export class I18NService implements AlainI18NService {
   private _default = DEFAULT;
   private change$ = new BehaviorSubject<string | null>(null);
 
-  private _langs = Object.keys(LANGS).map(code => {
+  private _langs = Object.keys(LANGS).map((code) => {
     const item = LANGS[code];
     return { code, text: item.text, abbr: item.abbr };
   });
@@ -76,7 +76,7 @@ export class I18NService implements AlainI18NService {
     private translate: TranslateService,
   ) {
     // `@ngx-translate/core` 预先知道支持哪些语言
-    const lans = this._langs.map(item => item.code);
+    const lans = this._langs.map((item) => item.code);
     translate.addLangs(lans);
 
     const defaultLan = settings.layout.lang || translate.getBrowserLang();
@@ -97,7 +97,7 @@ export class I18NService implements AlainI18NService {
   }
 
   get change(): Observable<string> {
-    return this.change$.asObservable().pipe(filter(w => w != null)) as Observable<string>;
+    return this.change$.asObservable().pipe(filter((w) => w != null)) as Observable<string>;
   }
 
   use(lang: string): void {
