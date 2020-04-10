@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { XlsxService, STColumn } from '@delon/abc';
+import { Component } from '@angular/core';
+import { STColumn } from '@delon/abc/table';
+import { XlsxService } from '@delon/abc/xlsx';
 
 @Component({
   selector: 'app-xlsx',

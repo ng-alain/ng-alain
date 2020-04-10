@@ -1,8 +1,8 @@
-import { Router } from '@angular/router';
 import { Component, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SettingsService } from '@delon/theme';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
+import { SettingsService } from '@delon/theme';
 
 @Component({
   selector: 'passport-lock',

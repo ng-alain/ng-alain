@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { NzMessageService, NzModalService } from 'ng-zorro-antd';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { STChange, STColumn, STComponent, STData } from '@delon/abc/table';
 import { _HttpClient } from '@delon/theme';
-import { tap, map } from 'rxjs/operators';
-import { STComponent, STColumn, STData, STChange } from '@delon/abc';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-table-list',
@@ -80,12 +81,7 @@ export class ProTableListComponent implements OnInit {
   totalCallNo = 0;
   expandForm = false;
 
-  constructor(
-    private http: _HttpClient,
-    public msg: NzMessageService,
-    private modalSrv: NzModalService,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  constructor(private http: _HttpClient, public msg: NzMessageService, private modalSrv: NzModalService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.getData();

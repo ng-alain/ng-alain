@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NzMessageService, NzNotificationService } from 'ng-zorro-antd';
-import { Lodop, LodopService } from '@delon/abc';
+import { Lodop, LodopService } from '@delon/abc/lodop';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-print',

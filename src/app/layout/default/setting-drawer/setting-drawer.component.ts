@@ -1,8 +1,8 @@
-import { Component, ChangeDetectionStrategy, NgZone, Inject, ChangeDetectorRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { NzMessageService } from 'ng-zorro-antd';
-import { LazyService, copy, deepCopy } from '@delon/util';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, NgZone } from '@angular/core';
 import { SettingsService } from '@delon/theme';
+import { copy, deepCopy, LazyService } from '@delon/util';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 const ALAINDEFAULTVAR = 'alain-default-vars';
 const DEFAULT_COLORS = [

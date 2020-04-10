@@ -1,28 +1,21 @@
-import {
-  Component,
-  ViewChild,
-  ComponentFactoryResolver,
-  ViewContainerRef,
-  AfterViewInit,
-  OnInit,
-  OnDestroy,
-  ElementRef,
-  Renderer2,
-  Inject,
-} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import {
-  Router,
-  NavigationEnd,
-  RouteConfigLoadStart,
-  RouteConfigLoadEnd,
-  NavigationError,
-  NavigationCancel,
-} from '@angular/router';
-import { NzMessageService } from 'ng-zorro-antd';
-import { updateHostClass } from '@delon/util';
+  AfterViewInit,
+  Component,
+  ComponentFactoryResolver,
+  ElementRef,
+  Inject,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import { NavigationCancel, NavigationEnd, NavigationError, RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
 import { SettingsService } from '@delon/theme';
+import { updateHostClass } from '@delon/util';
 import { environment } from '@env/environment';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NzMessageService, NzModalRef } from 'ng-zorro-antd';
 import { SFSchema } from '@delon/form';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-basic-list-edit',

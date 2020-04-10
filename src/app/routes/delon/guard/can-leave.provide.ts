@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { GuardComponent } from './guard.component';
+import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
-import { NzModalService } from 'ng-zorro-antd';
+import { GuardComponent } from './guard.component';
 
 @Injectable()
 export class CanLeaveProvide implements CanDeactivate<GuardComponent> {
@@ -14,7 +14,7 @@ export class CanLeaveProvide implements CanDeactivate<GuardComponent> {
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot,
   ): boolean | Observable<boolean> | Promise<boolean> {
-    return new Observable(observer => {
+    return new Observable((observer) => {
       this.confirmSrv.confirm({
         nzTitle: '确认要离开吗？',
         nzContent: '你已经填写了部分表单离开会放弃已经填写的内容。',

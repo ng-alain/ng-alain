@@ -1,8 +1,8 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import parseISO from 'date-fns/parseISO';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { NoticeIconList, NoticeItem } from '@delon/abc/notice-icon';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import { NzMessageService } from 'ng-zorro-antd';
-import { NoticeItem, NoticeIconList } from '@delon/abc';
+import parseISO from 'date-fns/parseISO';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 /**
  * 菜单通知

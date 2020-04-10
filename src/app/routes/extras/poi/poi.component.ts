@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
+import { STColumn, STComponent } from '@delon/abc/table';
 import { ModalHelper } from '@delon/theme';
-import { STComponent, STColumn } from '@delon/abc';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { ExtrasPoiEditComponent } from './edit/edit.component';
 
 @Component({

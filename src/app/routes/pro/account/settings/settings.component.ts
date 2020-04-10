@@ -1,15 +1,15 @@
 import {
-  Component,
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  OnDestroy,
-  AfterViewInit,
+  Component,
   ElementRef,
+  OnDestroy,
 } from '@angular/core';
-import { Router, ActivationEnd } from '@angular/router';
-import { fromEvent, Subscription } from 'rxjs';
-import { filter, debounceTime } from 'rxjs/operators';
+import { ActivationEnd, Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
+import { fromEvent, Subscription } from 'rxjs';
+import { debounceTime, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-settings',

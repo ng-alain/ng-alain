@@ -1,6 +1,6 @@
-import { Component, Inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { SettingsService, ALAIN_I18N_TOKEN } from '@delon/theme';
+import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
+import { ALAIN_I18N_TOKEN, SettingsService } from '@delon/theme';
 import { InputBoolean } from '@delon/util';
 
 import { I18NService } from '@core';

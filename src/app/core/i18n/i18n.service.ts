@@ -1,26 +1,23 @@
 // 请参考：https://ng-alain.com/docs/i18n
-import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { filter } from 'rxjs/operators';
-
 import { registerLocaleData } from '@angular/common';
-import ngZh from '@angular/common/locales/zh';
 import ngEn from '@angular/common/locales/en';
+import ngZh from '@angular/common/locales/zh';
 import ngZhTw from '@angular/common/locales/zh-Hant';
-
-import { en_US, zh_CN, zh_TW, NzI18nService } from 'ng-zorro-antd';
+import { Injectable } from '@angular/core';
+import { AlainI18NService, DelonLocaleService, SettingsService } from '@delon/theme';
+import * as delonEnUS from '@delon/theme/src/locale/languages/en-US';
+import * as delonZhCn from '@delon/theme/src/locale/languages/zh-CN';
+import * as delonZhTw from '@delon/theme/src/locale/languages/zh-TW';
+import { TranslateService } from '@ngx-translate/core';
 import * as df_en from 'date-fns/locale/en-US';
 import * as df_zh_cn from 'date-fns/locale/zh-CN';
 import * as df_zh_tw from 'date-fns/locale/zh-TW';
-import { TranslateService } from '@ngx-translate/core';
-import {
-  SettingsService,
-  AlainI18NService,
-  DelonLocaleService,
-  en_US as delonEnUS,
-  zh_CN as delonZhCn,
-  zh_TW as delonZhTw,
-} from '@delon/theme';
+import { NzI18nService } from 'ng-zorro-antd/i18n';
+import * as zorro_en_US from 'ng-zorro-antd/i18n/languages/en_US';
+import * as zorro_zh_CN from 'ng-zorro-antd/i18n/languages/zh_CN';
+import * as zorro_zh_TW from 'ng-zorro-antd/i18n/languages/zh_TW';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 interface LangData {
   text: string;
@@ -36,7 +33,7 @@ const LANGS: { [key: string]: LangData } = {
   'zh-CN': {
     text: '简体中文',
     ng: ngZh,
-    zorro: zh_CN,
+    zorro: zorro_zh_CN,
     dateFns: df_zh_cn,
     delon: delonZhCn,
     abbr: '🇨🇳',
@@ -44,7 +41,7 @@ const LANGS: { [key: string]: LangData } = {
   'zh-TW': {
     text: '繁体中文',
     ng: ngZhTw,
-    zorro: zh_TW,
+    zorro: zorro_zh_TW,
     dateFns: df_zh_tw,
     delon: delonZhTw,
     abbr: '🇭🇰',
@@ -52,7 +49,7 @@ const LANGS: { [key: string]: LangData } = {
   'en-US': {
     text: 'English',
     ng: ngEn,
-    zorro: en_US,
+    zorro: zorro_en_US,
     dateFns: df_en,
     delon: delonEnUS,
     abbr: '🇬🇧',

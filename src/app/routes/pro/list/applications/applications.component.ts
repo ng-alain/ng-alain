@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-list-applications',

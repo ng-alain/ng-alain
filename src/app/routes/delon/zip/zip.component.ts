@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ZipService } from '@delon/abc';
+import { Component } from '@angular/core';
+import { ZipService } from '@delon/abc/zip';
 import * as JSZip from 'jszip';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-zip',

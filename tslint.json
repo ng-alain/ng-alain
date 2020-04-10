@@ -38,7 +38,10 @@
     "eofline": true,
     "import-blacklist": [
       true,
-      "rxjs/Rx"
+      "rxjs/Rx",
+      "ng-zorro-antd",
+      "@delon/abc",
+      "@delon/chart"
     ],
     "import-spacing": true,
     "indent": {
@@ -147,6 +150,13 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "case-insensitive"
+      }
+    ]
   }
 }
