@@ -57,7 +57,7 @@ const GLOBAL_THIRD_MODULES = [];
 // #endregion
 
 // #region JSON Schema form (using @delon/form)
-import { JsonSchemaModule } from '@shared/json-schema/json-schema.module';
+import { JsonSchemaModule } from '@shared';
 const FORM_MODULES = [JsonSchemaModule];
 // #endregion
 
