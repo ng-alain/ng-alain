@@ -93,7 +93,7 @@ export class ProTableListComponent implements OnInit {
 
   getData() {
     this.loading = true;
-    this.q.statusList = this.status.filter(w => w.checked).map(item => item.index);
+    this.q.statusList = this.status.filter((w) => w.checked).map((item) => item.index);
     if (this.q.status !== null && this.q.status > -1) {
       this.q.statusList.push(this.q.status);
     }
@@ -101,7 +101,7 @@ export class ProTableListComponent implements OnInit {
       .get('/rule', this.q)
       .pipe(
         map((list: any[]) =>
-          list.map(i => {
+          list.map((i) => {
             const statusItem = this.status[i.status];
             i.statusText = statusItem.text;
             i.statusType = statusItem.type;
@@ -110,7 +110,7 @@ export class ProTableListComponent implements OnInit {
         ),
         tap(() => (this.loading = false)),
       )
-      .subscribe(res => {
+      .subscribe((res) => {
         this.data = res;
         this.cdr.detectChanges();
       });
@@ -119,7 +119,7 @@ export class ProTableListComponent implements OnInit {
   stChange(e: STChange) {
     switch (e.type) {
       case 'checkbox':
-        this.selectedRows = e.checkbox!;
+        this.selectedRows = e.checkbox;
         this.totalCallNo = this.selectedRows.reduce((total, cv) => total + cv.callNo, 0);
         this.cdr.detectChanges();
         break;
@@ -130,7 +130,7 @@ export class ProTableListComponent implements OnInit {
   }
 
   remove() {
-    this.http.delete('/rule', { nos: this.selectedRows.map(i => i.no).join(',') }).subscribe(() => {
+    this.http.delete('/rule', { nos: this.selectedRows.map((i) => i.no).join(',') }).subscribe(() => {
       this.getData();
       this.st.clearCheck();
     });

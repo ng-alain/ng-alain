@@ -10,7 +10,6 @@ import { _HttpClient } from '@delon/theme';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardMonitorComponent implements OnInit, OnDestroy {
-
   constructor(private http: _HttpClient, public msg: NzMessageService, private cdr: ChangeDetectorRef) {}
   data: any = {};
   tags = [];
@@ -85,6 +84,8 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.activeTime$) clearInterval(this.activeTime$);
+    if (this.activeTime$) {
+      clearInterval(this.activeTime$);
+    }
   }
 }

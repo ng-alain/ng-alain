@@ -121,7 +121,9 @@ export class DefaultInterceptor implements HttpInterceptor {
     return next.handle(newReq).pipe(
       mergeMap((event: any) => {
         // 允许统一对请求错误处理
-        if (event instanceof HttpResponseBase) return this.handleData(event);
+        if (event instanceof HttpResponseBase) {
+          return this.handleData(event);
+        }
         // 若一切都正常，则后续操作
         return of(event);
       }),

@@ -28,7 +28,9 @@ export class HeaderSearchComponent implements AfterViewInit {
 
   @Input()
   set toggleChange(value: boolean) {
-    if (typeof value === 'undefined') return;
+    if (typeof value === 'undefined') {
+      return;
+    }
     this.searchToggled = true;
     this.focus = true;
     setTimeout(() => this.qIpt.focus(), 300);

@@ -44,8 +44,10 @@ export class RelationComponent implements OnInit, OnDestroy {
         draggable: true,
         tooltip: {
           triggerOn: 'click',
-          formatter: item => {
-            if (item.dataType === 'node') return `${item.data.name}：${item.data.arg}`;
+          formatter: (item) => {
+            if (item.dataType === 'node') {
+              return `${item.data.name}：${item.data.arg}`;
+            }
             return item.name;
           },
         },
@@ -158,7 +160,9 @@ export class RelationComponent implements OnInit, OnDestroy {
   }
 
   private resize() {
-    if (this.ecIntance) this.ecIntance.resize();
+    if (this.ecIntance) {
+      this.ecIntance.resize();
+    }
   }
 
   ngOnDestroy(): void {

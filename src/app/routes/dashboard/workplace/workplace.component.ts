@@ -85,7 +85,9 @@ export class DashboardWorkplaceComponent implements OnInit {
         this.notice = notice;
         this.activities = activities.map((item: any) => {
           item.template = item.template.split(/@\{([^{}]*)\}/gi).map((key: string) => {
-            if (item[key]) return `<a>${item[key].name}</a>`;
+            if (item[key]) {
+              return `<a>${item[key].name}</a>`;
+            }
             return key;
           });
           return item;

@@ -25,17 +25,17 @@ export class XlsxComponent {
     { title: '年龄', index: 'age' },
   ];
   url() {
-    this.xlsx.import(`./assets/tmp/demo.xlsx`).then(res => (this.data = res));
+    this.xlsx.import(`./assets/tmp/demo.xlsx`).then((res) => (this.data = res));
   }
 
   change(e: Event) {
-    const file = (e.target as HTMLInputElement).files![0];
-    this.xlsx.import(file).then(res => (this.data = res));
+    const file = (e.target as HTMLInputElement).files[0];
+    this.xlsx.import(file).then((res) => (this.data = res));
   }
 
   download() {
-    const data = [this.columns.map(i => i.title)];
-    this.users.forEach(i => data.push(this.columns.map(c => i[c.index as string])));
+    const data = [this.columns.map((i) => i.title)];
+    this.users.forEach((i) => data.push(this.columns.map((c) => i[c.index as string])));
     this.xlsx.export({
       sheets: [
         {

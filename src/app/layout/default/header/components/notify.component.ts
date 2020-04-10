@@ -58,7 +58,11 @@ export class HeaderNotifyComponent {
 
     notices.forEach((item) => {
       const newItem = { ...item };
-      if (newItem.datetime) if (typeof item.datetime === 'string') item.datetime = parseISO(item.datetime);
+      if (newItem.datetime) {
+        if (typeof item.datetime === 'string') {
+          item.datetime = parseISO(item.datetime);
+        }
+      }
       newItem.datetime = formatDistanceToNow(item.datetime as Date, {
         locale: (window as any).__locale__,
       });
@@ -70,13 +74,15 @@ export class HeaderNotifyComponent {
           doing: 'gold',
         }[newItem.status];
       }
-      data.find((w) => w.title === newItem.type)!.list.push(newItem);
+      data.find((w) => w.title === newItem.type).list.push(newItem);
     });
     return data;
   }
 
   loadData() {
-    if (this.loading) return;
+    if (this.loading) {
+      return;
+    }
     this.loading = true;
     setTimeout(() => {
       this.data = this.updateNoticeData([
