@@ -7,8 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // #region default language
 // 参考：https://ng-alain.com/docs/i18n
 import { default as ngLang } from '@angular/common/locales/zh';
-import { DELON_LOCALE } from '@delon/theme';
-import * as delonLang from '@delon/theme/src/locale/languages/zh-CN';
+import { DELON_LOCALE, zh_CN as delonLang } from '@delon/theme';
 import { NZ_I18N, zh_CN as zorroLang } from 'ng-zorro-antd/i18n';
 const LANG = {
   abbr: 'zh',

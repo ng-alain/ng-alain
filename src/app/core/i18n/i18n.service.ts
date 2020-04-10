@@ -4,18 +4,19 @@ import ngEn from '@angular/common/locales/en';
 import ngZh from '@angular/common/locales/zh';
 import ngZhTw from '@angular/common/locales/zh-Hant';
 import { Injectable } from '@angular/core';
-import { AlainI18NService, DelonLocaleService, SettingsService } from '@delon/theme';
-import * as delonEnUS from '@delon/theme/src/locale/languages/en-US';
-import * as delonZhCn from '@delon/theme/src/locale/languages/zh-CN';
-import * as delonZhTw from '@delon/theme/src/locale/languages/zh-TW';
+import {
+  AlainI18NService,
+  DelonLocaleService,
+  en_US as delonEnUS,
+  SettingsService,
+  zh_CN as delonZhCn,
+  zh_TW as delonZhTw,
+} from '@delon/theme';
 import { TranslateService } from '@ngx-translate/core';
-import * as df_en from 'date-fns/locale/en-US';
-import * as df_zh_cn from 'date-fns/locale/zh-CN';
-import * as df_zh_tw from 'date-fns/locale/zh-TW';
-import { NzI18nService } from 'ng-zorro-antd/i18n';
-import * as zorro_en_US from 'ng-zorro-antd/i18n/languages/en_US';
-import * as zorro_zh_CN from 'ng-zorro-antd/i18n/languages/zh_CN';
-import * as zorro_zh_TW from 'ng-zorro-antd/i18n/languages/zh_TW';
+import * as dfEn from 'date-fns/locale/en-US';
+import * as dfZhCn from 'date-fns/locale/zh-CN';
+import * as dfZhTw from 'date-fns/locale/zh-TW';
+import { en_US as zorroEnUS, NzI18nService, zh_CN as zorroZhCN, zh_TW as zorroZhTW } from 'ng-zorro-antd/i18n';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -33,24 +34,24 @@ const LANGS: { [key: string]: LangData } = {
   'zh-CN': {
     text: '简体中文',
     ng: ngZh,
-    zorro: zorro_zh_CN,
-    dateFns: df_zh_cn,
+    zorro: zorroZhCN,
+    dateFns: dfZhCn,
     delon: delonZhCn,
     abbr: '🇨🇳',
   },
   'zh-TW': {
     text: '繁体中文',
     ng: ngZhTw,
-    zorro: zorro_zh_TW,
-    dateFns: df_zh_tw,
+    zorro: zorroZhTW,
+    dateFns: dfZhTw,
     delon: delonZhTw,
     abbr: '🇭🇰',
   },
   'en-US': {
     text: 'English',
     ng: ngEn,
-    zorro: zorro_en_US,
-    dateFns: df_en,
+    zorro: zorroEnUS,
+    dateFns: dfEn,
     delon: delonEnUS,
     abbr: '🇬🇧',
   },
