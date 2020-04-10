@@ -12,7 +12,7 @@
         </ng-template>
         <nz-card-meta [nzTitle]="nzTitle" [nzDescription]="item.subDescription">
           <ng-template #nzTitle>
-            <a (click)="msg.success('标题：' + item.id)">{{ item.title }}</a>
+            <a (click)="suc(item.id)">{{ item.title }}</a>
           </ng-template>
         </nz-card-meta>
         <div class="card-item-content">

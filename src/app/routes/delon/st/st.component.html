@@ -18,7 +18,7 @@
           </se>
           <se>
             <button nz-button [nzType]="'primary'" (click)="st.load()" [nzLoading]="http.loading">Search</button>
-            <button nz-button (click)="st.load({ _allow_anonymous: true })" [disabled]="http.loading">Clear</button>
+            <button nz-button (click)="st.load(1, { _allow_anonymous: true })" [disabled]="http.loading">Clear</button>
           </se>
         </form>
       </div>
