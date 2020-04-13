@@ -23,6 +23,9 @@
 
 English | [简体中文](README-zh_CN.md)
 
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fng-alain%2Fng-alain.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fng-alain%2Fng-alain?ref=badge_large)
+
 ## Quickstart
 
 - [Getting Started](https://ng-alain.com/docs/getting-started)
@@ -49,6 +52,7 @@ English | [简体中文](README-zh_CN.md)
 ## Architecture
 
 ![Architecture](https://raw.githubusercontent.com/ng-alain/delon/master/_screenshot/architecture.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fng-alain%2Fng-alain.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fng-alain%2Fng-alain?ref=badge_shield)
 
 > [delon](https://github.com/ng-alain/delon) is a production-ready solution for admin business components packages, Built on the design principles developed by Ant Design.
 
