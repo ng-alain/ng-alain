@@ -11,7 +11,7 @@ import { AlainThemeModule } from '@delon/theme';
 import { DelonMockModule } from '@delon/mock';
 import { environment } from '@env/environment';
 import * as MOCKDATA from '../../_mock';
-const MOCK_MODULES = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
+const MOCK_MODULES = true ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
 // #endregion
 
 // #region reuse-tab
@@ -56,7 +56,7 @@ export function fnDelonAuthConfig(): DelonAuthConfig {
 }
 
 // tslint:disable-next-line: no-duplicate-imports
-import { STConfig } from '@delon/abc/table';
+import { STConfig } from '@delon/abc/st';
 export function fnSTConfig(): STConfig {
   return {
     ...new STConfig(),

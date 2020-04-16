@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { I18NService } from '@core';
-import { STColumn } from '@delon/abc/table';
+import { STColumn } from '@delon/abc/st';
 import { _HttpClient } from '@delon/theme';
 import { deepCopy, getTimeDistance } from '@delon/util';
 import { yuan } from '@shared';

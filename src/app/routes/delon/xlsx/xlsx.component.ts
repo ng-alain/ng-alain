@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { STColumn } from '@delon/abc/table';
+import { STColumn } from '@delon/abc/st';
 import { XlsxService } from '@delon/abc/xlsx';
 
 @Component({
