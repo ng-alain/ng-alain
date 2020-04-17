@@ -1,12 +1,13 @@
-import { SettingsService, _HttpClient } from '@delon/theme';
-import { Component, OnDestroy, Inject, Optional } from '@angular/core';
+import { Component, Inject, OnDestroy, Optional } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NzMessageService, NzModalService } from 'ng-zorro-antd';
-import { SocialService, SocialOpenType, ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
-import { ReuseTabService } from '@delon/abc';
-import { environment } from '@env/environment';
 import { StartupService } from '@core';
+import { ReuseTabService } from '@delon/abc/reuse-tab';
+import { DA_SERVICE_TOKEN, ITokenService, SocialOpenType, SocialService } from '@delon/auth';
+import { SettingsService, _HttpClient } from '@delon/theme';
+import { environment } from '@env/environment';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'passport-login',
@@ -15,7 +16,6 @@ import { StartupService } from '@core';
   providers: [SocialService],
 })
 export class UserLoginComponent implements OnDestroy {
-
   constructor(
     fb: FormBuilder,
     modalSrv: NzModalService,
@@ -125,7 +125,7 @@ export class UserLoginComponent implements OnDestroy {
         this.tokenService.set(res.user);
         // 重新获取 StartupService 内容，我们始终认为应用信息一般都会受当前用户授权范围而影响
         this.startupSrv.load().then(() => {
-          let url = this.tokenService.referrer!.url || '/';
+          let url = this.tokenService.referrer.url || '/';
           if (url.includes('/passport')) {
             url = '/';
           }
@@ -147,9 +147,7 @@ export class UserLoginComponent implements OnDestroy {
     }
     switch (type) {
       case 'auth0':
-        url = `//cipchk.auth0.com/login?client=8gcNydIDzGBYxzqV0Vm1CX_RXH-wsWo5&redirect_uri=${decodeURIComponent(
-          callback,
-        )}`;
+        url = `//cipchk.auth0.com/login?client=8gcNydIDzGBYxzqV0Vm1CX_RXH-wsWo5&redirect_uri=${decodeURIComponent(callback)}`;
         break;
       case 'github':
         url = `//github.com/login/oauth/authorize?client_id=9d6baae4b04a23fcafa2&response_type=code&redirect_uri=${decodeURIComponent(
@@ -157,9 +155,7 @@ export class UserLoginComponent implements OnDestroy {
         )}`;
         break;
       case 'weibo':
-        url = `https://api.weibo.com/oauth2/authorize?client_id=1239507802&response_type=code&redirect_uri=${decodeURIComponent(
-          callback,
-        )}`;
+        url = `https://api.weibo.com/oauth2/authorize?client_id=1239507802&response_type=code&redirect_uri=${decodeURIComponent(callback)}`;
         break;
     }
     if (openType === 'window') {
@@ -167,7 +163,7 @@ export class UserLoginComponent implements OnDestroy {
         .login(url, '/', {
           type: 'window',
         })
-        .subscribe(res => {
+        .subscribe((res) => {
           if (res) {
             this.settingsService.setUser(res);
             this.router.navigateByUrl('/');

@@ -1,16 +1,16 @@
 import {
-  Component,
-  OnInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  ViewChild,
+  Component,
   ElementRef,
   OnDestroy,
+  OnInit,
+  ViewChild,
 } from '@angular/core';
-import { Router, ActivationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { ActivationEnd, Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
-import { zip, Subscription } from 'rxjs';
+import { Subscription, zip } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-center',
@@ -19,7 +19,6 @@ import { zip, Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProAccountCenterComponent implements OnInit, OnDestroy {
-
   constructor(private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
   private router$: Subscription;
   user: any;
@@ -48,8 +47,10 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
 
   private setActive() {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
-    const idx = this.tabs.findIndex(w => w.key === key);
-    if (idx !== -1) this.pos = idx;
+    const idx = this.tabs.findIndex((w) => w.key === key);
+    if (idx !== -1) {
+      this.pos = idx;
+    }
   }
 
   ngOnInit(): void {
@@ -58,7 +59,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
       this.notice = notice;
       this.cdr.detectChanges();
     });
-    this.router$ = this.router.events.pipe(filter(e => e instanceof ActivationEnd)).subscribe(() => this.setActive());
+    this.router$ = this.router.events.pipe(filter((e) => e instanceof ActivationEnd)).subscribe(() => this.setActive());
     this.setActive();
   }
 
@@ -73,7 +74,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
 
   tagBlur() {
     const { user, cdr, tagValue } = this;
-    if (tagValue && user.tags.filter(tag => tag.label === tagValue).length === 0) {
+    if (tagValue && user.tags.filter((tag) => tag.label === tagValue).length === 0) {
       user.tags.push({ label: tagValue });
     }
     this.tagValue = '';
@@ -83,7 +84,9 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
 
   tagEnter(e: KeyboardEvent) {
     // tslint:disable-next-line: deprecation
-    if (e.keyCode === 13) this.tagBlur();
+    if (e.keyCode === 13) {
+      this.tagBlur();
+    }
   }
 
   ngOnDestroy() {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
-import { STColumn } from '@delon/abc';
+import { STColumn } from '@delon/abc/st';
 import { _HttpClient } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-st',
@@ -21,9 +21,9 @@ export class STDemoComponent implements OnInit {
       title: 'Name',
       index: 'name.first',
       width: 150,
-      format: item => `${item.name.first} ${item.name.last}`,
+      format: (item) => `${item.name.first} ${item.name.last}`,
       type: 'link',
-      click: item => this.message.info(`${item.name.first}`),
+      click: (item) => this.message.info(`${item.name.first}`),
     },
     { title: 'Email', index: 'email' },
     {
@@ -46,13 +46,13 @@ export class STDemoComponent implements OnInit {
       buttons: [
         {
           text: 'Edit',
-          click: item => this.message.info(`edit [${item.id.value}]`),
-          if: item => item.gender === 'female',
+          click: (item) => this.message.info(`edit [${item.id.value}]`),
+          if: (item) => item.gender === 'female',
         },
         {
           text: 'Delete',
           type: 'del',
-          click: item => this.message.info(`deleted [${item.id.value}]`),
+          click: (item) => this.message.info(`deleted [${item.id.value}]`),
         },
       ],
     },

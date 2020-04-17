@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'passport-register-result',

@@ -21,6 +21,8 @@ done
 
 cd $(dirname $0)/../..
 
+ls -al
+
 ROOT_DIR="$(pwd)"
 DIST_DIR="$(pwd)/dist"
 

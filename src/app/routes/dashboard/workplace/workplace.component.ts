@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { zip } from 'rxjs';
-import { NzMessageService } from 'ng-zorro-antd';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { zip } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-workplace',
@@ -85,7 +85,9 @@ export class DashboardWorkplaceComponent implements OnInit {
         this.notice = notice;
         this.activities = activities.map((item: any) => {
           item.template = item.template.split(/@\{([^{}]*)\}/gi).map((key: string) => {
-            if (item[key]) return `<a>${item[key].name}</a>`;
+            if (item[key]) {
+              return `<a>${item[key].name}</a>`;
+            }
             return key;
           });
           return item;

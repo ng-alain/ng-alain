@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-advanced-form',
@@ -11,7 +11,10 @@ export class AdvancedFormComponent implements OnInit {
   editObj = {};
 
   form: FormGroup;
-  users: any[] = [{ value: 'xiao', label: '付晓晓' }, { value: 'mao', label: '周毛毛' }];
+  users: any[] = [
+    { value: 'xiao', label: '付晓晓' },
+    { value: 'mao', label: '周毛毛' },
+  ];
 
   constructor(private fb: FormBuilder) {}
 
@@ -51,7 +54,7 @@ export class AdvancedFormComponent implements OnInit {
         department: 'Sidney No. 1 Lake Park',
       },
     ];
-    userList.forEach(i => {
+    userList.forEach((i) => {
       const field = this.createUser();
       field.patchValue(i);
       this.items.push(field);
@@ -131,7 +134,9 @@ export class AdvancedFormComponent implements OnInit {
 
   save(index: number) {
     this.items.at(index).markAsDirty();
-    if (this.items.at(index).invalid) return;
+    if (this.items.at(index).invalid) {
+      return;
+    }
     this.editIndex = -1;
   }
 
@@ -145,10 +150,12 @@ export class AdvancedFormComponent implements OnInit {
   }
 
   _submitForm() {
-    Object.keys(this.form.controls).forEach(key => {
+    Object.keys(this.form.controls).forEach((key) => {
       this.form.controls[key].markAsDirty();
       this.form.controls[key].updateValueAndValidity();
     });
-    if (this.form.invalid) return;
+    if (this.form.invalid) {
+      return;
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
 import { CacheService } from '@delon/cache';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-cache',

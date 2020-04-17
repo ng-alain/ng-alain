@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'passport-register',
@@ -10,7 +10,6 @@ import { _HttpClient } from '@delon/theme';
   styleUrls: ['./register.component.less'],
 })
 export class UserRegisterComponent implements OnDestroy {
-
   constructor(fb: FormBuilder, private router: Router, public http: _HttpClient, public msg: NzMessageService) {
     this.form = fb.group({
       mail: [null, [Validators.required, Validators.email]],
@@ -59,7 +58,9 @@ export class UserRegisterComponent implements OnDestroy {
   interval$: any;
 
   static checkPassword(control: FormControl) {
-    if (!control) return null;
+    if (!control) {
+      return null;
+    }
     const self: any = this;
     self.visible = !!control.value;
     if (control.value && control.value.length > 9) {
@@ -79,7 +80,7 @@ export class UserRegisterComponent implements OnDestroy {
     if (!control || !control.parent) {
       return null;
     }
-    if (control.value !== control.parent.get('password')!.value) {
+    if (control.value !== control.parent.get('password').value) {
       return { equar: true };
     }
     return null;
@@ -94,7 +95,9 @@ export class UserRegisterComponent implements OnDestroy {
     this.count = 59;
     this.interval$ = setInterval(() => {
       this.count -= 1;
-      if (this.count <= 0) clearInterval(this.interval$);
+      if (this.count <= 0) {
+        clearInterval(this.interval$);
+      }
     }, 1000);
   }
 
@@ -102,7 +105,7 @@ export class UserRegisterComponent implements OnDestroy {
 
   submit() {
     this.error = '';
-    Object.keys(this.form.controls).forEach(key => {
+    Object.keys(this.form.controls).forEach((key) => {
       this.form.controls[key].markAsDirty();
       this.form.controls[key].updateValueAndValidity();
     });
@@ -119,6 +122,8 @@ export class UserRegisterComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.interval$) clearInterval(this.interval$);
+    if (this.interval$) {
+      clearInterval(this.interval$);
+    }
   }
 }

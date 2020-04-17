@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-list-projects',
@@ -38,7 +38,7 @@ export class ProListProjectsComponent implements OnInit {
 
   changeCategory(status: boolean, idx: number) {
     if (idx === 0) {
-      this.categories.map(i => (i.value = status));
+      this.categories.map((i) => (i.value = status));
     } else {
       this.categories[idx].value = status;
     }

@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
-import { _HttpClient, ModalHelper } from '@delon/theme';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ModalHelper, _HttpClient } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { ProBasicListEditComponent } from './edit/edit.component';
 
 @Component({
@@ -16,12 +16,7 @@ export class ProBasicListComponent implements OnInit {
   loading = false;
   data: any[] = [];
 
-  constructor(
-    private http: _HttpClient,
-    public msg: NzMessageService,
-    private modal: ModalHelper,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  constructor(private http: _HttpClient, public msg: NzMessageService, private modal: ModalHelper, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.getData();
@@ -37,7 +32,7 @@ export class ProBasicListComponent implements OnInit {
   }
 
   openEdit(record: any = {}) {
-    this.modal.create(ProBasicListEditComponent, { record }, { size: 'md' }).subscribe(res => {
+    this.modal.create(ProBasicListEditComponent, { record }, { size: 'md' }).subscribe((res) => {
       if (record.id) {
         record = { ...record, id: 'mock_id', percent: 0, ...res };
       } else {

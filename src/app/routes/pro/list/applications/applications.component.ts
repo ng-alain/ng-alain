@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
@@ -38,7 +37,7 @@ export class ProListApplicationsComponent implements OnInit {
 
   changeCategory(status: boolean, idx: number) {
     if (idx === 0) {
-      this.categories.map(i => (i.value = status));
+      this.categories.map((i) => (i.value = status));
     } else {
       this.categories[idx].value = status;
     }
@@ -46,7 +45,7 @@ export class ProListApplicationsComponent implements OnInit {
   }
   // endregion
 
-  constructor(private http: _HttpClient, public msg: NzMessageService) {}
+  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.getData();
@@ -55,19 +54,22 @@ export class ProListApplicationsComponent implements OnInit {
   getData() {
     this.loading = true;
     this.http.get('/api/list', { count: this.q.ps }).subscribe((res: any) => {
-      this.list = res.map(item => {
+      this.list = res.map((item) => {
         item.activeUser = this.formatWan(item.activeUser);
         return item;
       });
       this.loading = false;
+      this.cdr.detectChanges();
     });
   }
 
-  private formatWan(val) {
+  private formatWan(val: number) {
     const v = val * 1;
-    if (!v || isNaN(v)) return '';
+    if (!v || isNaN(v)) {
+      return '';
+    }
 
-    let result = val;
+    let result: number | string = val;
     if (val > 10000) {
       result = Math.floor(val / 10000);
       result = `${result}`;

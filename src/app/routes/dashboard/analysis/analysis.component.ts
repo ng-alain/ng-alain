@@ -1,10 +1,10 @@
-import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
-import { STColumn } from '@delon/abc';
-import { getTimeDistance, deepCopy } from '@delon/util';
-import { _HttpClient } from '@delon/theme';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { I18NService } from '@core';
+import { STColumn } from '@delon/abc/st';
+import { _HttpClient } from '@delon/theme';
+import { deepCopy, getTimeDistance } from '@delon/util';
 import { yuan } from '@shared';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-dashboard-analysis',
@@ -13,12 +13,7 @@ import { yuan } from '@shared';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardAnalysisComponent implements OnInit {
-  constructor(
-    private http: _HttpClient,
-    public msg: NzMessageService,
-    private i18n: I18NService,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  constructor(private http: _HttpClient, public msg: NzMessageService, private i18n: I18NService, private cdr: ChangeDetectorRef) {}
   data: any = {};
   loading = true;
   date_range: Date[] = [];

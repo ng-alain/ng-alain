@@ -1,7 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { NzMessageService, NzTabChangeEvent } from 'ng-zorro-antd';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { STColumn } from '@delon/abc/st';
 import { _HttpClient } from '@delon/theme';
-import { STColumn } from '@delon/abc';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
 
 @Component({
   selector: 'app-profile-advanced',
@@ -31,7 +32,7 @@ export class ProProfileAdvancedComponent implements OnInit {
   ngOnInit() {
     this.http.get('/profile/advanced').subscribe((res: any) => {
       this.data = res;
-      this.change({ index: 0, tab: null! });
+      this.change({ index: 0, tab: null });
       this.cdr.detectChanges();
     });
   }

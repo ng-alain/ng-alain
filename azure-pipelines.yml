@@ -1,0 +1,152 @@
+name: ng-alain
+
+trigger:
+  - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+pr:
+  autoCancel: true
+  branches:
+    exclude:
+      - gh-pages
+
+stages:
+  - stage: Env
+    jobs:
+      - job: Nodes
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '12.14.1'
+            displayName: 'Install Node.js'
+
+  - stage: build
+    dependsOn: env
+    jobs:
+      - job: Build
+        steps:
+          - task: Npm@1
+            inputs:
+              command: 'install'
+          - script: |
+              node ./scripts/_azure/github-comment.js "RELEASE" "[Using release @delon, Preview Preparing...](https://dev.azure.com/ng-alain/ng-alain/_build/results?buildId=$(Build.BuildId))"
+            displayName: 'Comment on github'
+            env:
+              ACCESS_REPO: $(ACCESS_REPO)
+              ACCESS_TOKEN: $(ACCESS_TOKEN)
+          - script: npm run build
+            displayName: 'Build'
+          - script: ls -al dist/
+            displayName: 'List build'
+          - script: |
+              export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-ng-alain.surge.sh
+              echo "Deploy to $DEPLOY_DOMAIN"
+              npx surge --project ./dist --domain $DEPLOY_DOMAIN
+            displayName: 'Deploy Site'
+            env:
+              ACCESS_REPO: $(ACCESS_REPO)
+              ACCESS_TOKEN: $(ACCESS_TOKEN)
+              SURGE_LOGIN: $(SURGE_LOGIN)
+              SURGE_TOKEN: $(SURGE_TOKEN)
+          - script: |
+              export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-ng-alain.surge.sh
+              node ./scripts/_azure/github-comment.js "RELEASE" "[Using release @delon, Preview is ready!]($DEPLOY_DOMAIN)"
+            displayName: 'Update comment on github'
+            env:
+              ACCESS_REPO: $(ACCESS_REPO)
+              ACCESS_TOKEN: $(ACCESS_TOKEN)
+      - job: Build_Failed
+        dependsOn: Build
+        condition: failed()
+        steps:
+          - checkout: self
+            displayName: 'Checkout'
+            clean: true
+            fetchDepth: 1
+          - script: npm install
+            displayName: 'Install modules'
+          - script: |
+              node ./scripts/_azure/github-comment.js "RELEASE" "[Using release @delon, Preview Failed](https://dev.azure.com/ng-alain/delon/_build/results?buildId=$(Build.BuildId))"
+            displayName: 'Comment on github'
+            env:
+              ACCESS_REPO: $(ACCESS_REPO)
+              ACCESS_TOKEN: $(ACCESS_TOKEN)
+
+  - stage: build_day
+    dependsOn: env
+    jobs:
+      - job: Build
+        steps:
+          - task: Npm@1
+            inputs:
+              command: 'install'
+          - script: |
+              node ./scripts/_azure/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Preparing...](https://dev.azure.com/ng-alain/ng-alain/_build/results?buildId=$(Build.BuildId))"
+            displayName: 'Comment on github'
+            env:
+              ACCESS_REPO: $(ACCESS_REPO)
+              ACCESS_TOKEN: $(ACCESS_TOKEN)
+          - task: Bash@3
+            displayName: 'Build'
+            inputs:
+              targetType: 'filePath'
+              filePath: './scripts/_ci/deploy-pipelines.sh'
+          - script: ls -al dist/
+            displayName: 'List build'
+          - script: |
+              export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-ng-alain.surge.sh
+              echo "Deploy to $DEPLOY_DOMAIN"
+              npx surge --project ./dist --domain $DEPLOY_DOMAIN
+            displayName: 'Deploy Site'
+            env:
+              ACCESS_REPO: $(ACCESS_REPO)
+              ACCESS_TOKEN: $(ACCESS_TOKEN)
+              SURGE_LOGIN: $(SURGE_LOGIN)
+              SURGE_TOKEN: $(SURGE_TOKEN)
+          - script: |
+              export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-day-ng-alain.surge.sh
+              node ./scripts/_azure/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview is ready!]($DEPLOY_DOMAIN)"
+            displayName: 'Update comment on github'
+            env:
+              ACCESS_REPO: $(ACCESS_REPO)
+              ACCESS_TOKEN: $(ACCESS_TOKEN)
+      - job: Build_Failed
+        dependsOn: Build
+        condition: failed()
+        steps:
+          - checkout: self
+            displayName: 'Checkout'
+            clean: true
+            fetchDepth: 1
+          - script: npm install
+            displayName: 'Install modules'
+          - script: |
+              node ./scripts/_azure/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Failed](https://dev.azure.com/ng-alain/delon/_build/results?buildId=$(Build.BuildId))"
+            displayName: 'Comment on github'
+            env:
+              ACCESS_REPO: $(ACCESS_REPO)
+              ACCESS_TOKEN: $(ACCESS_TOKEN)
+
+  - stage: lint
+    dependsOn:
+      - env
+    jobs:
+      - job: site
+        steps:
+          - task: Npm@1
+            inputs:
+              command: 'install'
+          - script: npm run lint
+
+  - stage: test
+    dependsOn:
+      - env
+    jobs:
+      - job: site
+        steps:
+          - task: Npm@1
+            inputs:
+              command: 'install'
+          - script: npx ng test --no-progress --browsers=ChromeHeadlessCI --code-coverage --no-watch

@@ -39,7 +39,7 @@ function genData(params: any) {
 
 function saveData(id: number, value: any) {
   const item = list.find(w => w.id === id);
-  if (!item) return { msg: '无效用户信息' };
+  if (!item) { return { msg: '无效用户信息' }; }
   Object.assign(item, value);
   return { msg: 'ok' };
 }

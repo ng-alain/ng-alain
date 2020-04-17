@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
@@ -12,7 +12,7 @@ export class ProAccountCenterApplicationsComponent {
   list: any[] = [];
   constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {
     this.http.get('/api/list', { count: 8 }).subscribe((res: any) => {
-      this.list = res.map(item => {
+      this.list = res.map((item) => {
         item.activeUser = this.formatWan(item.activeUser);
         return item;
       });
@@ -23,7 +23,9 @@ export class ProAccountCenterApplicationsComponent {
 
   private formatWan(val) {
     const v = val * 1;
-    if (!v || isNaN(v)) return '';
+    if (!v || isNaN(v)) {
+      return '';
+    }
 
     let result = val;
     if (val > 10000) {

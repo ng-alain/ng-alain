@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { HelpCenterComponent } from './helpcenter/helpcenter.component';
-import { ExtrasSettingsComponent } from './settings/settings.component';
 import { ExtrasPoiComponent } from './poi/poi.component';
+import { ExtrasSettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   { path: 'helpcenter', component: HelpCenterComponent },

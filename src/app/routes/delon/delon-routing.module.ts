@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ACLGuard } from '@delon/acl';
 
-import { STDemoComponent } from './st/st.component';
-import { UtilComponent } from './util/util.component';
-import { PrintComponent } from './print/print.component';
 import { ACLComponent } from './acl/acl.component';
-import { GuardComponent } from './guard/guard.component';
-import { GuardLeaveComponent } from './guard/leave.component';
-import { GuardAuthComponent } from './guard/auth.component';
-import { GuardAdminComponent } from './guard/admin.component';
-import { CanLeaveProvide } from './guard/can-leave.provide';
 import { CacheComponent } from './cache/cache.component';
 import { DownFileComponent } from './downfile/downfile.component';
+import { DelonFormComponent } from './form/form.component';
+import { GuardAdminComponent } from './guard/admin.component';
+import { GuardAuthComponent } from './guard/auth.component';
+import { CanLeaveProvide } from './guard/can-leave.provide';
+import { GuardComponent } from './guard/guard.component';
+import { GuardLeaveComponent } from './guard/leave.component';
+import { PrintComponent } from './print/print.component';
+import { QRComponent } from './qr/qr.component';
+import { STDemoComponent } from './st/st.component';
+import { UtilComponent } from './util/util.component';
 import { XlsxComponent } from './xlsx/xlsx.component';
 import { ZipComponent } from './zip/zip.component';
-import { DelonFormComponent } from './form/form.component';
-import { QRComponent } from './qr/qr.component';
 
 const routes: Routes = [
   { path: 'st', component: STDemoComponent },

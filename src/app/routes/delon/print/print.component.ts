@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NzMessageService, NzNotificationService } from 'ng-zorro-antd';
-import { Lodop, LodopService } from '@delon/abc';
+import { Lodop, LodopService } from '@delon/abc/lodop';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-print',
@@ -47,11 +48,16 @@ export class PrintComponent {
 
     this.lodopSrv.cog = { ...this.cog, ...options };
     this.error = false;
-    if (options === null) this.lodopSrv.reset();
+    if (options === null) {
+      this.lodopSrv.reset();
+    }
   }
 
   changePinter(name: string) {
-    this.papers = this.lodop!.GET_PAGESIZES_LIST(name, '\n').split('\n');
+    if (this.lodop == null) {
+      return;
+    }
+    this.papers = this.lodop.GET_PAGESIZES_LIST(name, '\n').split('\n');
   }
   print(isPrivew = false) {
     const LODOP = this.lodop as Lodop;
@@ -63,7 +69,10 @@ export class PrintComponent {
     LODOP.SET_PRINT_STYLEA(0, 'ItemType', 4);
     LODOP.NewPageA();
     LODOP.ADD_PRINT_HTM(20, 10, '90%', '95%', this.cog.html);
-    if (isPrivew) LODOP.PREVIEW();
-    else LODOP.PRINT();
+    if (isPrivew) {
+      LODOP.PREVIEW();
+    } else {
+      LODOP.PRINT();
+    }
   }
 }

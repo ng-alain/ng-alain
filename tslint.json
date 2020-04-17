@@ -1,6 +1,6 @@
 {
   "extends": [
-    "tslint:latest",
+    "tslint:recommended",
     "tslint-config-prettier"
   ],
   "rulesDirectory": [
@@ -8,11 +8,17 @@
     "ng-alain-codelyzer"
   ],
   "rules": {
-    // Angular parts
+    "align": {
+      "options": [
+        "parameters",
+        "statements"
+      ]
+    },
     "array-type": false,
-    "arrow-parens": false,
+    "arrow-return-shorthand": true,
+    "curly": true,
     "deprecation": {
-      "severity": "warn"
+      "severity": "warning"
     },
     "component-class-suffix": true,
     "contextual-lifecycle": true,
@@ -29,17 +35,25 @@
       ["app", "passport", "exception", "layout", "header"],
       "kebab-case"
     ],
+    "eofline": true,
     "import-blacklist": [
       true,
-      "rxjs/Rx"
+      "rxjs/Rx",
+      "ng-zorro-antd",
+      "@delon/abc",
+      "@delon/chart"
     ],
-    "interface-name": false,
+    "import-spacing": true,
+    "indent": {
+      "options": [
+        "spaces"
+      ]
+    },
     "max-classes-per-file": false,
     "max-line-length": [
       false,
       140
     ],
-    "member-access": false,
     "member-ordering": [
       true,
       {
@@ -51,7 +65,6 @@
         ]
       }
     ],
-    "no-consecutive-blank-lines": false,
     "no-console": [
       true,
       "debug",
@@ -65,22 +78,67 @@
       true,
       "ignore-params"
     ],
-    "no-non-null-assertion": false,
+    "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
-    "no-use-before-declare": true,
     "no-var-requires": false,
     "object-literal-key-quotes": [
-      false,
+      true,
       "as-needed"
     ],
-    "object-literal-sort-keys": false,
-    "ordered-imports": false,
     "quotemark": [
-      false,
+      true,
       "single"
     ],
-    "trailing-comma": false,
+    "semicolon": {
+      "options": [
+        "always"
+      ]
+    },
+    "space-before-function-paren": {
+      "options": {
+        "anonymous": "never",
+        "asyncArrow": "always",
+        "constructor": "never",
+        "method": "never",
+        "named": "never"
+      }
+    },
+    "typedef-whitespace": {
+      "options": [
+        {
+          "call-signature": "nospace",
+          "index-signature": "nospace",
+          "parameter": "nospace",
+          "property-declaration": "nospace",
+          "variable-declaration": "nospace"
+        },
+        {
+          "call-signature": "onespace",
+          "index-signature": "onespace",
+          "parameter": "onespace",
+          "property-declaration": "onespace",
+          "variable-declaration": "onespace"
+        }
+      ]
+    },
+    "variable-name": {
+      "options": [
+        "ban-keywords",
+        // "check-format",
+        "allow-pascal-case"
+      ]
+    },
+    "whitespace": {
+      "options": [
+        "check-branch",
+        "check-decl",
+        "check-operator",
+        "check-separator",
+        "check-type",
+        "check-typecast"
+      ]
+    },
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,
@@ -93,19 +151,12 @@
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
-    // Custom parts
-    "no-submodule-imports": false,
-    "no-implicit-dependencies": false,
-    "curly": false,
-    "variable-name": false,
-    "no-this-assignment": false,
-    "ban-types": [
+    "ordered-imports": [
       true,
-      ["Object", "Use {} instead."],
-      ["String", "Use string instead."],
-      ["Number", "Use number instead."],
-      ["Boolean", "Use boolean instead."],
-      ["Function", "Use specific callable interface instead."]
+      {
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "case-insensitive"
+      }
     ]
   }
 }

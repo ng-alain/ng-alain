@@ -1,7 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { STColumn } from '@delon/abc/st';
 import { _HttpClient } from '@delon/theme';
-import { STColumn } from '@delon/abc';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -14,7 +14,7 @@ export class ProProfileBaseComponent {
   amountNum = 0;
   goods = this.http.get('/profile/goods').pipe(
     tap((list: any[]) => {
-      list.forEach(item => {
+      list.forEach((item) => {
         this.basicNum += Number(item.num);
         this.amountNum += Number(item.amount);
       });
