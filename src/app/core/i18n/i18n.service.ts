@@ -88,7 +88,6 @@ export class I18NService implements AlainI18NService {
     registerLocaleData(item.ng);
     this.nzI18nService.setLocale(item.zorro);
     this.nzI18nService.setDateLocale(item.date);
-    (window as any).__locale__ = item.date;
     this.delonLocaleService.setLocale(item.delon);
   }
 
