@@ -1,9 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
-
-const path = require('path');
-
 module.exports = {
   "src/**/*.ts": () => [
     `npm run lint:ts`,
