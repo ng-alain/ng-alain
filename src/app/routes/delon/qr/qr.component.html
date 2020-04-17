@@ -17,7 +17,7 @@
         [mime]="mime"
         [padding]="padding"
         [size]="size"
-        style="border:1px solid #999"
+        style="border: 1px solid #999;"
       ></qr>
     </nz-col>
     <nz-col [nzSpan]="16">
@@ -26,18 +26,14 @@
           <nz-form-label [nzSpan]="8">背景</nz-form-label>
           <nz-form-control [nzSpan]="16">
             <nz-input-group>
-              <div nz-col nzSpan="12">
-                <input nz-input type="color" [(ngModel)]="background" [ngModelOptions]="{ standalone: true }" />
-              </div>
-              <div nz-col nzSpan="12">
-                <nz-input-number
-                  [(ngModel)]="backgroundAlpha"
-                  [nzMin]="0"
-                  [nzMax]="1"
-                  [nzStep]="0.1"
-                  [ngModelOptions]="{ standalone: true }"
-                ></nz-input-number>
-              </div>
+              <input nz-input type="color" [(ngModel)]="background" [ngModelOptions]="{ standalone: true }" style="width: 100px;" />
+              <nz-input-number
+                [(ngModel)]="backgroundAlpha"
+                [nzMin]="0"
+                [nzMax]="1"
+                [nzStep]="0.1"
+                [ngModelOptions]="{ standalone: true }"
+              ></nz-input-number>
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -45,18 +41,14 @@
           <nz-form-label [nzSpan]="8">前景</nz-form-label>
           <nz-form-control [nzSpan]="16">
             <nz-input-group>
-              <div nz-col nzSpan="12">
-                <input nz-input type="color" [(ngModel)]="foreground" [ngModelOptions]="{ standalone: true }" />
-              </div>
-              <div nz-col nzSpan="12">
-                <nz-input-number
-                  [(ngModel)]="foregroundAlpha"
-                  [nzMin]="0"
-                  [nzMax]="1"
-                  [nzStep]="0.1"
-                  [ngModelOptions]="{ standalone: true }"
-                ></nz-input-number>
-              </div>
+              <input nz-input type="color" [(ngModel)]="foreground" [ngModelOptions]="{ standalone: true }" style="width: 100px;" />
+              <nz-input-number
+                [(ngModel)]="foregroundAlpha"
+                [nzMin]="0"
+                [nzMax]="1"
+                [nzStep]="0.1"
+                [ngModelOptions]="{ standalone: true }"
+              ></nz-input-number>
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -84,13 +76,7 @@
         <nz-form-item>
           <nz-form-label [nzSpan]="8">内边距</nz-form-label>
           <nz-form-control [nzSpan]="16">
-            <nz-input-number
-              [(ngModel)]="padding"
-              [ngModelOptions]="{ standalone: true }"
-              [nzMin]="0"
-              [nzMax]="100"
-            ></nz-input-number
-            >px
+            <nz-input-number [(ngModel)]="padding" [ngModelOptions]="{ standalone: true }" [nzMin]="0" [nzMax]="100"></nz-input-number>px
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>

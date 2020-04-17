@@ -47,7 +47,7 @@ function getRule(params: any) {
 function removeRule(nos: string): boolean {
   nos.split(',').forEach(no => {
     const idx = list.findIndex(w => w.no === no);
-    if (idx !== -1) list.splice(idx, 1);
+    if (idx !== -1) { list.splice(idx, 1); }
   });
   return true;
 }

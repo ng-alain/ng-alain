@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
-import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-list-applications',
@@ -46,7 +45,7 @@ export class ProListApplicationsComponent implements OnInit {
   }
   // endregion
 
-  constructor(private http: _HttpClient, public msg: NzMessageService) {}
+  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.getData();
@@ -60,6 +59,7 @@ export class ProListApplicationsComponent implements OnInit {
         return item;
       });
       this.loading = false;
+      this.cdr.detectChanges();
     });
   }
 

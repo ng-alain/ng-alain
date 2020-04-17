@@ -2,25 +2,20 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-// tslint:disable-next-line:import-blacklist
-import { DelonABCModule } from '@delon/abc';
 import { DelonACLModule } from '@delon/acl';
-// tslint:disable-next-line:import-blacklist
-import { DelonChartModule } from '@delon/chart';
 import { DelonFormModule } from '@delon/form';
-// delon
 import { AlainThemeModule } from '@delon/theme';
-// i18n
 import { TranslateModule } from '@ngx-translate/core';
 
+import { SHARED_DELON_MODULES } from './shared-delon.module';
+import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
+
 // #region third libs
-// tslint:disable-next-line:import-blacklist
-import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { CountdownModule } from 'ngx-countdown';
 import { NgxTinymceModule } from 'ngx-tinymce';
 import { UEditorModule } from 'ngx-ueditor';
 
-const THIRDMODULES = [NgZorroAntdModule, CountdownModule, UEditorModule, NgxTinymceModule];
+const THIRDMODULES = [CountdownModule, UEditorModule, NgxTinymceModule];
 // #endregion
 
 // #region your componets & directives
@@ -35,10 +30,10 @@ const DIRECTIVES = [];
     RouterModule,
     ReactiveFormsModule,
     AlainThemeModule.forChild(),
-    DelonABCModule,
-    DelonChartModule,
     DelonACLModule,
     DelonFormModule,
+    ...SHARED_DELON_MODULES,
+    ...SHARED_ZORRO_MODULES,
     // third libs
     ...THIRDMODULES,
   ],
@@ -53,12 +48,11 @@ const DIRECTIVES = [];
     ReactiveFormsModule,
     RouterModule,
     AlainThemeModule,
-    DelonABCModule,
-    DelonChartModule,
     DelonACLModule,
     DelonFormModule,
-    // i18n
     TranslateModule,
+    ...SHARED_DELON_MODULES,
+    ...SHARED_ZORRO_MODULES,
     // third libs
     ...THIRDMODULES,
     // your components

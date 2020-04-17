@@ -13,9 +13,7 @@ import {
   zh_TW as delonZhTw,
 } from '@delon/theme';
 import { TranslateService } from '@ngx-translate/core';
-import * as dfEn from 'date-fns/locale/en-US';
-import * as dfZhCn from 'date-fns/locale/zh-CN';
-import * as dfZhTw from 'date-fns/locale/zh-TW';
+import { enUS as dfEn, zhCN as dfZhCn, zhTW as dfZhTw } from 'date-fns/locale';
 import { en_US as zorroEnUS, NzI18nService, zh_CN as zorroZhCN, zh_TW as zorroZhTW } from 'ng-zorro-antd/i18n';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -24,7 +22,7 @@ interface LangData {
   text: string;
   ng: any;
   zorro: any;
-  dateFns: any;
+  date: any;
   delon: any;
   abbr: string;
 }
@@ -35,7 +33,7 @@ const LANGS: { [key: string]: LangData } = {
     text: '简体中文',
     ng: ngZh,
     zorro: zorroZhCN,
-    dateFns: dfZhCn,
+    date: dfZhCn,
     delon: delonZhCn,
     abbr: '🇨🇳',
   },
@@ -43,7 +41,7 @@ const LANGS: { [key: string]: LangData } = {
     text: '繁体中文',
     ng: ngZhTw,
     zorro: zorroZhTW,
-    dateFns: dfZhTw,
+    date: dfZhTw,
     delon: delonZhTw,
     abbr: '🇭🇰',
   },
@@ -51,7 +49,7 @@ const LANGS: { [key: string]: LangData } = {
     text: 'English',
     ng: ngEn,
     zorro: zorroEnUS,
-    dateFns: dfEn,
+    date: dfEn,
     delon: delonEnUS,
     abbr: '🇬🇧',
   },
@@ -89,8 +87,8 @@ export class I18NService implements AlainI18NService {
     const item = LANGS[lang];
     registerLocaleData(item.ng);
     this.nzI18nService.setLocale(item.zorro);
-    this.nzI18nService.setDateLocale(item.dateFns);
-    (window as any).__locale__ = item.dateFns;
+    this.nzI18nService.setDateLocale(item.date);
+    (window as any).__locale__ = item.date;
     this.delonLocaleService.setLocale(item.delon);
   }
 

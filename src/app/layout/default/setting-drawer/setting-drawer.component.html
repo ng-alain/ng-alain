@@ -4,7 +4,7 @@
       <h3 class="setting-drawer__title">主题色</h3>
       <span
         *ngFor="let c of colors"
-        [ngStyle]="{ 'background-color': c.color }"
+        [style]="{ 'background-color': c.color }"
         (click)="changeColor(c.color)"
         nz-tooltip
         [nzTooltipTitle]="c.key"
@@ -49,19 +49,11 @@
     <div class="setting-drawer__body">
       <div class="setting-drawer__body-item">
         固定头和侧边栏
-        <nz-switch
-          nzSize="small"
-          [(ngModel)]="layout.fixed"
-          (ngModelChange)="setLayout('fixed', layout.fixed)"
-        ></nz-switch>
+        <nz-switch nzSize="small" [(ngModel)]="layout.fixed" (ngModelChange)="setLayout('fixed', layout.fixed)"></nz-switch>
       </div>
       <div class="setting-drawer__body-item">
         色弱模式
-        <nz-switch
-          nzSize="small"
-          [(ngModel)]="layout.colorWeak"
-          (ngModelChange)="setLayout('colorWeak', layout.colorWeak)"
-        ></nz-switch>
+        <nz-switch nzSize="small" [(ngModel)]="layout.colorWeak" (ngModelChange)="setLayout('colorWeak', layout.colorWeak)"></nz-switch>
       </div>
     </div>
     <nz-divider></nz-divider>

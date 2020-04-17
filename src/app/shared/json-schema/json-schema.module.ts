@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DelonFormModule, WidgetRegistry } from '@delon/form';
-import { SharedModule } from '@shared';
+import { SharedModule } from '../shared.module';
 
 // import { TinymceWidget } from './widgets/tinymce/tinymce.widget';
 // import { UeditorWidget } from './widgets/ueditor/ueditor.widget';
