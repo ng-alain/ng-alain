@@ -30,9 +30,9 @@ English | [简体中文](README-zh_CN.md)
 
 ## Links
 
-+ [Document](https://ng-alain.com) ([Git Pages Mirror](https://ng-alain.github.io/delon/))
-+ [@delon](https://github.com/ng-alain/delon)
-+ [DEMO](https://ng-alain.github.io/ng-alain/) ([国内镜像](https://ng-alain.gitee.io/))
++ [Document](https://ng-alain.com) ([Surge Mirror](https://ng-alain-delon.surge.sh))
++ [@delon Source](https://github.com/ng-alain/delon)
++ [DEMO](https://ng-alain.surge.sh) ([中国镜像](https://ng-alain.gitee.io/))
 
 ## Features
 

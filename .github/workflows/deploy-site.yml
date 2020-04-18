@@ -20,15 +20,10 @@ jobs:
       - name: build-gh-pages
         shell: bash
         run: sh ./scripts/_ci/deploy-pipelines.sh
-        with:
-          arg: -gh
 
-      - name: deploy-gh-pages
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./dist
+      - name: Deploy Surge
+        uses: yohix/deploy-surge@v1.0.0
         with:
-          emptyCommits: false
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          DOMAIN_NAME: https://ng-alain.surge.sh
+          BUILD_DIRECTORY: ./dist
