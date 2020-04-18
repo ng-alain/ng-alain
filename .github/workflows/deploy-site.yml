@@ -19,7 +19,7 @@ jobs:
 
       - name: build
         run: |
-          sh ./scripts/_ci/deploy-pipelines.sh
+          sh ./scripts/_ci/deploy-pipelines.sh -gh
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v2
