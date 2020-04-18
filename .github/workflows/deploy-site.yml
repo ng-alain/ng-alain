@@ -19,7 +19,7 @@ jobs:
 
       - name: build
         shell: bash
-        run: sh ./scripts/_ci/deploy-pipelines.sh
+        run: bash ./scripts/_ci/deploy-pipelines.sh
 
       - name: deploy-to-surge
         uses: yohix/deploy-surge@v1.0.0
