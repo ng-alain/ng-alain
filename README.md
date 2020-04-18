@@ -32,7 +32,7 @@ English | [简体中文](README-zh_CN.md)
 
 + [Document](https://ng-alain.com) ([Surge Mirror](https://ng-alain-doc.surge.sh))
 + [@delon Source](https://github.com/ng-alain/delon)
-+ [DEMO](https://ng-alain.surge.sh) ([中国镜像](https://ng-alain.gitee.io/))
++ [DEMO](https://ng-alain.surge.sh)
 
 ## Features
 
