@@ -32,7 +32,6 @@ sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/layout/d
 
 bash ./scripts/_ci/delon.sh
 
-
 if [[ ${GH} == true ]]; then
   echo "Build angular [github gh-pages]"
   node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --base-href /ng-alain/

@@ -29,9 +29,9 @@
 
 ## 链接
 
-+ [文档](https://ng-alain.com)
++ [文档](https://ng-alain.com) ([Git Pages 镜像](https://ng-alain.github.io/delon/))
 + [@delon](https://github.com/ng-alain/delon)
-+ [DEMO](https://ng-alain.github.io/ng-alain/)
++ [DEMO](https://ng-alain.github.io/ng-alain/) ([国内镜像](https://ng-alain.gitee.io/))
 
 ## 特性
 

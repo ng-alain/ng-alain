@@ -17,11 +17,13 @@ jobs:
       - name: install
         run: npm install
 
-      - name: build
-        run: |
-          sh ./scripts/_ci/deploy-pipelines.sh -gh
+      - name: build-gh-pages
+        shell: bash
+        run: sh ./scripts/_ci/deploy-pipelines.sh
+        with:
+          arg: -gh
 
-      - name: deploy
+      - name: deploy-gh-pages
         uses: peaceiris/actions-gh-pages@v2
         env:
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
