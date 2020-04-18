@@ -1,0 +1,39 @@
+name: Deploy website
+
+# on: push
+
+on:
+  push:
+    branches:
+      - 'publish-**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: install
+        run: npm install
+
+      - name: build
+        shell: bash
+        run: sh ./scripts/_ci/deploy-pipelines.sh
+
+      - name: deploy-to-surge
+        uses: yohix/deploy-surge@v1.0.0
+        with:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          DOMAIN_NAME: https://ng-alain.surge.sh
+          BUILD_DIRECTORY: ./dist
+
+      - name: deploy-to-gh-pages
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./dist
+        with:
+          emptyCommits: false
