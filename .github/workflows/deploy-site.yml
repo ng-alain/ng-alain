@@ -1,0 +1,34 @@
+name: Deploy website
+
+on: push
+
+# on:
+#   push:
+#     branches:
+#       - 'publish-**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: install
+        run: npm install
+
+      - name: build
+        run: npm run build
+
+      - name: gen 404.html
+        run: cp ./src/dist/index.html ./src/dist/404.html
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./dist
+        with:
+          emptyCommits: false
