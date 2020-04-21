@@ -96,7 +96,7 @@ stages:
           - script: ls -al dist/
             displayName: 'List build'
           - script: |
-              export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-ng-alain.surge.sh
+              export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-day-ng-alain.surge.sh
               echo "Deploy to $DEPLOY_DOMAIN"
               npx surge --project ./dist --domain $DEPLOY_DOMAIN
             displayName: 'Deploy Site'
