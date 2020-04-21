@@ -127,7 +127,7 @@ for (let i = 0; i < 10; i += 1) {
 const offlineChartData: any[] = [];
 for (let i = 0; i < 20; i += 1) {
   offlineChartData.push({
-    x: new Date().getTime() + 1000 * 60 * 30 * i,
+    time: format(new Date().getTime() + 1000 * 60 * 30 * i, 'yyyy-MM-dd HH:mm'),
     y1: Math.floor(Math.random() * 100) + 10,
     y2: Math.floor(Math.random() * 100) + 10,
   });
@@ -200,6 +200,6 @@ export const CHARTS = {
   ),
   '/chart/visit': JSON.parse(JSON.stringify(visitData)),
   '/chart/tags': Mock.mock({
-    'list|100': [{ x: '@city', 'value|1-100': 150, 'category|0-2': 1 }],
+    'list|100': [{ name: '@city', 'value|1-100': 150 }],
   }),
 };
