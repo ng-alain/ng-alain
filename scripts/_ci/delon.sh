@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# bash ./scripts/_ci/delon.sh
+
 set -e
 
 cd $(dirname $0)/../..
