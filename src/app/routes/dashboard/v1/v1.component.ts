@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
-import format from 'date-fns/format';
 
 @Component({
   selector: 'app-dashboard-v1',
@@ -57,16 +56,7 @@ export class DashboardV1Component implements OnInit {
     this.http.get('/chart').subscribe((res: any) => {
       this.webSite = res.visitData.slice(0, 10);
       this.salesData = res.salesData;
-      this.offlineChartData = [];
-      for (let i = 0; i < 100; i += 1) {
-        this.offlineChartData.push({
-          time: format(new Date().getTime() + 1000 * 60 * i, 'yyyy-MM-dd HH:mm'),
-          y1: Math.floor(Math.random() * 100) + 1000,
-          y2: Math.floor(Math.random() * 100) + 10,
-        });
-      }
-      // this.offlineChartData = res.offlineChartData;
-      console.log(this.offlineChartData);
+      this.offlineChartData = res.offlineChartData;
       this.cdr.detectChanges();
     });
   }
