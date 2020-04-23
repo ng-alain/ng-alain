@@ -5,7 +5,7 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { throwIfAlreadyLoaded } from '@core';
 import { DelonACLModule } from '@delon/acl';
-import { AlainThemeModule } from '@delon/theme';
+import { AlainConfig, AlainThemeModule, ALAIN_CONFIG } from '@delon/theme';
 
 // #region mock
 import { DelonMockModule } from '@delon/mock';
@@ -26,8 +26,8 @@ const MOCK_MODULES = true ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
  *  </section>
  *  ```
  */
-import { RouteReuseStrategy } from '@angular/router';
-import { ReuseTabService, ReuseTabStrategy } from '@delon/abc/reuse-tab';
+// import { RouteReuseStrategy } from '@angular/router';
+// import { ReuseTabService, ReuseTabStrategy } from '@delon/abc/reuse-tab';
 const REUSETAB_PROVIDES = [
   // {
   //   provide: RouteReuseStrategy,
@@ -39,14 +39,6 @@ const REUSETAB_PROVIDES = [
 
 // #region global config functions
 
-import { PageHeaderConfig } from '@delon/abc/page-header';
-export function fnPageHeaderConfig(): PageHeaderConfig {
-  return {
-    ...new PageHeaderConfig(),
-    homeI18n: 'home',
-  };
-}
-
 import { DelonAuthConfig } from '@delon/auth';
 export function fnDelonAuthConfig(): DelonAuthConfig {
   return {
@@ -55,19 +47,18 @@ export function fnDelonAuthConfig(): DelonAuthConfig {
   };
 }
 
-// tslint:disable-next-line: no-duplicate-imports
-import { STConfig } from '@delon/abc/st';
-export function fnSTConfig(): STConfig {
-  return {
-    ...new STConfig(),
-    modal: { size: 'lg' },
-  };
-}
+const alainConfig: AlainConfig = {
+  st: { modal: { size: 'lg' } },
+  pageHeader: { homeI18n: 'home' },
+  lodop: {
+    license: `A59B099A586B3851E0F0D7FDBF37B603`,
+    licenseA: `C94CEE276DB2187AE6B65D56B3FC2848`,
+  },
+  chart: { theme: 'dark' },
+};
 
 const GLOBAL_CONFIG_PROVIDES = [
-  // TIPS：@delon/abc 有大量的全局配置信息，例如设置所有 `st` 的页码默认为 `20` 行
-  { provide: STConfig, useFactory: fnSTConfig },
-  { provide: PageHeaderConfig, useFactory: fnPageHeaderConfig },
+  { provide: ALAIN_CONFIG, useValue: alainConfig },
   { provide: DelonAuthConfig, useFactory: fnDelonAuthConfig },
 ];
 
