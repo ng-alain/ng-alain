@@ -4,6 +4,10 @@
  */
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { throwIfAlreadyLoaded } from '@core';
+
+// Please refer to: https://ng-alain.com/docs/global-config
+// #region NG-ALAIN Config
+
 import { DelonACLModule } from '@delon/acl';
 import { AlainConfig, AlainThemeModule, ALAIN_CONFIG } from '@delon/theme';
 
@@ -11,7 +15,7 @@ import { AlainConfig, AlainThemeModule, ALAIN_CONFIG } from '@delon/theme';
 import { DelonMockModule } from '@delon/mock';
 import { environment } from '@env/environment';
 import * as MOCKDATA from '../../_mock';
-const MOCK_MODULES = true ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
+const alainMockModues = true ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
 // #endregion
 
 // #region reuse-tab
@@ -28,7 +32,7 @@ const MOCK_MODULES = true ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
  */
 // import { RouteReuseStrategy } from '@angular/router';
 // import { ReuseTabService, ReuseTabStrategy } from '@delon/abc/reuse-tab';
-const REUSETAB_PROVIDES = [
+const alainReusetabProvides = [
   // {
   //   provide: RouteReuseStrategy,
   //   useClass: ReuseTabStrategy,
@@ -36,8 +40,6 @@ const REUSETAB_PROVIDES = [
   // },
 ];
 // #endregion
-
-// #region global config functions
 
 import { DelonAuthConfig } from '@delon/auth';
 export function fnDelonAuthConfig(): DelonAuthConfig {
@@ -57,25 +59,39 @@ const alainConfig: AlainConfig = {
   chart: { theme: 'dark' },
 };
 
-const GLOBAL_CONFIG_PROVIDES = [
+const alainModules = [AlainThemeModule.forRoot(), DelonACLModule.forRoot(), ...alainMockModues];
+
+const alainProvides = [
+  ...alainReusetabProvides,
   { provide: ALAIN_CONFIG, useValue: alainConfig },
   { provide: DelonAuthConfig, useFactory: fnDelonAuthConfig },
 ];
 
 // #endregion
 
+// Please refer to: https://ng.ant.design/docs/global-config/en#how-to-use
+// #region NG-ZORRO Config
+
+import { NzConfig, NZ_CONFIG } from 'ng-zorro-antd/core/config';
+
+const ngZorroConfig: NzConfig = {};
+
+const zorroProvides = [{ provide: NZ_CONFIG, useValue: ngZorroConfig }];
+
+// #endregion
+
 @NgModule({
-  imports: [AlainThemeModule.forRoot(), DelonACLModule.forRoot(), ...MOCK_MODULES],
+  imports: [...alainModules],
 })
-export class DelonModule {
-  constructor(@Optional() @SkipSelf() parentModule: DelonModule) {
-    throwIfAlreadyLoaded(parentModule, 'DelonModule');
+export class GlobalConfigModule {
+  constructor(@Optional() @SkipSelf() parentModule: GlobalConfigModule) {
+    throwIfAlreadyLoaded(parentModule, 'GlobalConfigModule');
   }
 
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: DelonModule,
-      providers: [...REUSETAB_PROVIDES, ...GLOBAL_CONFIG_PROVIDES],
+      ngModule: GlobalConfigModule,
+      providers: [...alainProvides, ...zorroProvides],
     };
   }
 }

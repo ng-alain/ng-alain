@@ -92,7 +92,7 @@ const APPINIT_PROVIDES = [
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { DelonModule } from './delon.module';
+import { GlobalConfigModule } from './global-config.module';
 import { LayoutModule } from './layout/layout.module';
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
@@ -104,7 +104,7 @@ import { STWidgetModule } from './shared/st-widget/st-widget.module';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    DelonModule.forRoot(),
+    GlobalConfigModule.forRoot(),
     CoreModule,
     SharedModule,
     LayoutModule,
