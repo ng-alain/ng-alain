@@ -1,18 +1,33 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { throwIfAlreadyLoaded } from '@core';
+import { DelonMockModule } from '@delon/mock';
+import { AlainThemeModule } from '@delon/theme';
+import { AlainConfig, ALAIN_CONFIG } from '@delon/util';
 
 // Please refer to: https://ng-alain.com/docs/global-config
 // #region NG-ALAIN Config
 
 import { DelonACLModule } from '@delon/acl';
-import { AlainConfig, AlainThemeModule, ALAIN_CONFIG } from '@delon/theme';
 
-// #region mock
-import { DelonMockModule } from '@delon/mock';
+const alainConfig: AlainConfig = {
+  st: { modal: { size: 'lg' } },
+  pageHeader: { homeI18n: 'home' },
+  lodop: {
+    license: `A59B099A586B3851E0F0D7FDBF37B603`,
+    licenseA: `C94CEE276DB2187AE6B65D56B3FC2848`,
+  },
+  auth: { login_url: '/passport/login' },
+};
+
+const alainModules = [AlainThemeModule.forRoot(), DelonACLModule.forRoot(), DelonMockModule.forRoot()];
+const alainProvides = [{ provide: ALAIN_CONFIG, useValue: alainConfig }];
+
+// mock
 import { environment } from '@env/environment';
 import * as MOCKDATA from '../../_mock';
-const alainMockModues = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
-// #endregion
+if (!environment.production) {
+  alainConfig.mock = { data: MOCKDATA };
+}
 
 // #region reuse-tab
 /**
@@ -28,40 +43,13 @@ const alainMockModues = !environment.production ? [DelonMockModule.forRoot({ dat
  */
 // import { RouteReuseStrategy } from '@angular/router';
 // import { ReuseTabService, ReuseTabStrategy } from '@delon/abc/reuse-tab';
-const alainReusetabProvides = [
-  // {
-  //   provide: RouteReuseStrategy,
-  //   useClass: ReuseTabStrategy,
-  //   deps: [ReuseTabService],
-  // },
-];
+// alainProvides.push({
+//   provide: RouteReuseStrategy,
+//   useClass: ReuseTabStrategy,
+//   deps: [ReuseTabService],
+// });
+
 // #endregion
-
-import { DelonAuthConfig } from '@delon/auth';
-export function fnDelonAuthConfig(): DelonAuthConfig {
-  return {
-    ...new DelonAuthConfig(),
-    login_url: '/passport/login',
-  };
-}
-
-const alainConfig: AlainConfig = {
-  st: { modal: { size: 'lg' } },
-  pageHeader: { homeI18n: 'home' },
-  lodop: {
-    license: `A59B099A586B3851E0F0D7FDBF37B603`,
-    licenseA: `C94CEE276DB2187AE6B65D56B3FC2848`,
-  },
-  chart: { theme: 'dark' },
-};
-
-const alainModules = [AlainThemeModule.forRoot(), DelonACLModule.forRoot(), ...alainMockModues];
-
-const alainProvides = [
-  ...alainReusetabProvides,
-  { provide: ALAIN_CONFIG, useValue: alainConfig },
-  { provide: DelonAuthConfig, useFactory: fnDelonAuthConfig },
-];
 
 // #endregion
 
