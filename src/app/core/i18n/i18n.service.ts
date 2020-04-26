@@ -66,7 +66,7 @@ export class I18NService implements AlainI18NService {
   });
 
   constructor(
-    settings: SettingsService,
+    private settings: SettingsService,
     private nzI18nService: NzI18nService,
     private delonLocaleService: DelonLocaleService,
     private translate: TranslateService,
@@ -75,12 +75,19 @@ export class I18NService implements AlainI18NService {
     const lans = this._langs.map((item) => item.code);
     translate.addLangs(lans);
 
-    const defaultLan = settings.layout.lang || translate.getBrowserLang();
+    const defaultLan = this.getDefaultLang();
     if (lans.includes(defaultLan)) {
       this._default = defaultLan;
     }
 
     this.updateLangData(this._default);
+  }
+
+  private getDefaultLang(): string | undefined {
+    if (this.settings.layout.lang) {
+      return this.settings.layout.lang;
+    }
+    return (navigator.languages ? navigator.languages[0] : null) || navigator.language;
   }
 
   private updateLangData(lang: string) {

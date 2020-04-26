@@ -47,7 +47,7 @@ if (!environment.production) {
 //   provide: RouteReuseStrategy,
 //   useClass: ReuseTabStrategy,
 //   deps: [ReuseTabService],
-// });
+// } as any);
 
 // #endregion
 
