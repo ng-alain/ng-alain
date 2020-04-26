@@ -27,7 +27,7 @@ echo ""
 node ./scripts/color-less.js
 
 echo '===== need mock'
-sed -i 's/const MOCK_MODULES = !environment.production/const MOCK_MODULES = true/g' ${ROOT_DIR}/src/app/global-config.module.ts
+sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/global-config.module.ts
 sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/layout/default/default.component.ts
 
 bash ./scripts/_ci/delon.sh
