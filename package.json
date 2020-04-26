@@ -64,7 +64,7 @@
     "@delon/theme": "^9.0.0",
     "@delon/util": "^9.0.0",
     "file-saver": "^2.0.2",
-    "ng-zorro-antd": "^9.0.1",
+    "ng-zorro-antd": "^9.1.0",
     "ngx-tinymce": "^9.0.0",
     "ngx-ueditor": "^9.0.0",
     "screenfull": "^5.0.2",
