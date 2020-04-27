@@ -44,27 +44,29 @@ describe('Service: I18n', () => {
   }
 
   it('should working', () => {
+    spyOnProperty(navigator, 'languages').and.returnValue(['zh-CN']);
     genModule();
     expect(srv).toBeTruthy();
     expect(srv.defaultLang).toBe('zh-CN');
+    const t = TestBed.inject(TranslateService);
     srv.fanyi('a');
     srv.fanyi('a', {});
-    const t = TestBed.inject(TranslateService);
     expect(t.instant).toHaveBeenCalled();
   });
 
   it('should be used layout as default language', () => {
     MockSettingsService.layout.lang = 'en-US';
+    const navSpy = spyOnProperty(navigator, 'languages');
     genModule();
+    expect(navSpy).not.toHaveBeenCalled();
     expect(srv.defaultLang).toBe('en-US');
     MockSettingsService.layout.lang = null;
   });
 
   it('should be used browser as default language', () => {
-    MockTranslateService.getBrowserLang.and.returnValue('zh-TW');
+    spyOnProperty(navigator, 'languages').and.returnValue(['zh-TW']);
     genModule();
     expect(srv.defaultLang).toBe('zh-TW');
-    MockTranslateService.getBrowserLang.and.returnValue(null);
   });
 
   it('should be trigger notify when changed language', () => {
