@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig-es5.app.json",
+  "compilerOptions": {
+      "target": "es5"
+   }
+ }

@@ -71,6 +71,9 @@
                   "with": "src/environments/environment.hmr.ts"
                 }
               ]
+            },
+            "es5": {
+              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         },
@@ -87,6 +90,9 @@
             "hmr": {
               "browserTarget": "ng-alain:build:hmr",
               "hmr": true
+            },
+            "es5": {
+              "browserTarget": "ng-alain:build:es5"
             }
           }
         },
@@ -112,6 +118,11 @@
             "assets": [
               "src/assets"
             ]
+          },
+          "configurations": {
+            "es5": {
+              "tsConfig": "./tsconfig-es5.spec.json"
+            }
           }
         },
         "lint": {
@@ -136,6 +147,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "ng-alain:serve:production"
+            },
+            "es5": {
+              "devServerTarget": "ng-alain:serve:es5"
             }
           }
         }

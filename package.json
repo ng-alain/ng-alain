@@ -24,6 +24,8 @@
     "ng": "ng",
     "start": "npm run color-less && ng serve -o",
     "hmr": "npm run color-less && ng serve -c=hmr",
+    "ie:start": "npm run color-less && ng serve -o --configuration es5",
+    "ie:hmr": "npm run color-less && ng serve -c=hmr --configuration es5",
     "build": "npm run color-less && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod",
     "analyze": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
     "lint": "npm run lint:ts && npm run lint:style",
@@ -68,7 +70,9 @@
     "ngx-tinymce": "^9.0.0",
     "ngx-ueditor": "^9.0.0",
     "screenfull": "^5.0.2",
-    "qrious": "^4.0.2"
+    "qrious": "^4.0.2",
+    "classlist.js": "^1.1.0",
+    "web-animations-js": "^2.3.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.1",
