@@ -61,10 +61,9 @@ describe('Service: I18n', () => {
   });
 
   it('should be used browser as default language', () => {
-    MockTranslateService.getBrowserLang.and.returnValue('zh-TW');
+    spyOnProperty(navigator, 'languages').and.returnValue(['zh-TW']);
     genModule();
     expect(srv.defaultLang).toBe('zh-TW');
-    MockTranslateService.getBrowserLang.and.returnValue(null);
   });
 
   it('should be trigger notify when changed language', () => {
