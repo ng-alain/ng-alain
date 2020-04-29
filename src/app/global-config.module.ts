@@ -32,8 +32,9 @@ if (!environment.production) {
 // #region reuse-tab
 /**
  * 若需要[路由复用](https://ng-alain.com/components/reuse-tab)需要：
- * 1、增加 `REUSETAB_PROVIDES`
- * 2、在 `src/app/layout/default/default.component.html` 修改：
+ * 1、在 `shared-delon.module.ts` 导入 `ReuseTabModule` 模块
+ * 2、注册 `RouteReuseStrategy`
+ * 3、在 `src/app/layout/default/default.component.html` 修改：
  *  ```html
  *  <section class="alain-default__content">
  *    <reuse-tab></reuse-tab>

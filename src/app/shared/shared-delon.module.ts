@@ -14,6 +14,7 @@ import { PageHeaderModule } from '@delon/abc/page-header';
 import { QRModule } from '@delon/abc/qr';
 import { QuickMenuModule } from '@delon/abc/quick-menu';
 import { ResultModule } from '@delon/abc/result';
+// import { ReuseTabModule } from '@delon/abc/reuse-tab';
 import { SEModule } from '@delon/abc/se';
 import { SidebarNavModule } from '@delon/abc/sidebar-nav';
 import { STModule } from '@delon/abc/st';
@@ -71,4 +72,5 @@ export const SHARED_DELON_MODULES = [
   NumberInfoModule,
   TrendModule,
   FullContentModule,
+  // ReuseTabModule,
 ];
