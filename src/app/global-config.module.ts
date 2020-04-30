@@ -37,8 +37,8 @@ if (!environment.production) {
  * 3、在 `src/app/layout/default/default.component.html` 修改：
  *  ```html
  *  <section class="alain-default__content">
- *    <reuse-tab></reuse-tab>
- *    <router-outlet></router-outlet>
+ *    <reuse-tab #reuseTab></reuse-tab>
+ *    <router-outlet (activate)="reuseTab.activate($event)"></router-outlet>
  *  </section>
  *  ```
  */
