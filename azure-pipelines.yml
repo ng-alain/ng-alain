@@ -43,6 +43,7 @@ stages:
           - script: |
               export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-ng-alain.surge.sh
               echo "Deploy to $DEPLOY_DOMAIN"
+              cp ./dist/index.html ./dist/404.html
               npx surge --project ./dist --domain $DEPLOY_DOMAIN
             displayName: 'Deploy Site'
             env:
@@ -98,6 +99,7 @@ stages:
           - script: |
               export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-day-ng-alain.surge.sh
               echo "Deploy to $DEPLOY_DOMAIN"
+              cp ./dist/index.html ./dist/404.html
               npx surge --project ./dist --domain $DEPLOY_DOMAIN
             displayName: 'Deploy Site'
             env:
