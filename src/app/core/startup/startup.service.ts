@@ -36,9 +36,10 @@ export class StartupService {
       zip(this.httpClient.get(`assets/tmp/i18n/${this.i18n.defaultLang}.json`), this.httpClient.get('assets/tmp/app-data.json'))
         .pipe(
           // 接收其他拦截器后产生的异常消息
-          catchError(([langData, appData]) => {
+          catchError((res) => {
+            console.warn(`StartupService.load: Network request failed`, res);
             resolve(null);
-            return [langData, appData];
+            return [];
           }),
         )
         .subscribe(
