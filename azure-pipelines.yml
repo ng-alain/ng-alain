@@ -31,7 +31,7 @@ stages:
             inputs:
               command: 'install'
           - script: |
-              node ./scripts/_azure/github-comment.js "RELEASE" "[Using release @delon, Preview Preparing...](https://dev.azure.com/ng-alain/ng-alain/_build/results?buildId=$(Build.BuildId))"
+              node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Preparing...](https://dev.azure.com/ng-alain/ng-alain/_build/results?buildId=$(Build.BuildId))"
             displayName: 'Comment on github'
             env:
               ACCESS_REPO: $(ACCESS_REPO)
@@ -53,7 +53,7 @@ stages:
               SURGE_TOKEN: $(SURGE_TOKEN)
           - script: |
               export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-ng-alain.surge.sh
-              node ./scripts/_azure/github-comment.js "RELEASE" "[Using release @delon, Preview is ready!]($DEPLOY_DOMAIN)"
+              node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview is ready!]($DEPLOY_DOMAIN)"
             displayName: 'Update comment on github'
             env:
               ACCESS_REPO: $(ACCESS_REPO)
@@ -69,7 +69,7 @@ stages:
           - script: npm install
             displayName: 'Install modules'
           - script: |
-              node ./scripts/_azure/github-comment.js "RELEASE" "[Using release @delon, Preview Failed](https://dev.azure.com/ng-alain/delon/_build/results?buildId=$(Build.BuildId))"
+              node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Failed](https://dev.azure.com/ng-alain/delon/_build/results?buildId=$(Build.BuildId))"
             displayName: 'Comment on github'
             env:
               ACCESS_REPO: $(ACCESS_REPO)
@@ -84,7 +84,7 @@ stages:
             inputs:
               command: 'install'
           - script: |
-              node ./scripts/_azure/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Preparing...](https://dev.azure.com/ng-alain/ng-alain/_build/results?buildId=$(Build.BuildId))"
+              node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Preparing...](https://dev.azure.com/ng-alain/ng-alain/_build/results?buildId=$(Build.BuildId))"
             displayName: 'Comment on github'
             env:
               ACCESS_REPO: $(ACCESS_REPO)
@@ -109,7 +109,7 @@ stages:
               SURGE_TOKEN: $(SURGE_TOKEN)
           - script: |
               export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-day-ng-alain.surge.sh
-              node ./scripts/_azure/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview is ready!]($DEPLOY_DOMAIN)"
+              node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview is ready!]($DEPLOY_DOMAIN)"
             displayName: 'Update comment on github'
             env:
               ACCESS_REPO: $(ACCESS_REPO)
@@ -125,7 +125,7 @@ stages:
           - script: npm install
             displayName: 'Install modules'
           - script: |
-              node ./scripts/_azure/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Failed](https://dev.azure.com/ng-alain/delon/_build/results?buildId=$(Build.BuildId))"
+              node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Failed](https://dev.azure.com/ng-alain/delon/_build/results?buildId=$(Build.BuildId))"
             displayName: 'Comment on github'
             env:
               ACCESS_REPO: $(ACCESS_REPO)

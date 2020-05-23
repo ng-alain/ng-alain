@@ -7,6 +7,8 @@
 /src/assets/alain-*.less
 delon-builds
 scripts/var.less
+src/assets/style.dark.css
+src/assets/style.compact.css
 
 # dependencies
 /node_modules
