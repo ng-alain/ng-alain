@@ -177,22 +177,18 @@
         style="min-height: 502.5px;"
       >
         <ng-template #extra>
-          <div class="sales-card-extra">
-            <i nz-dropdown [nzDropdownMenu]="salesExtraMenu" nzPlacement="bottomLeft" nz-icon nzType="ellipsis" class="icon-group"></i>
-            <nz-dropdown-menu #salesExtraMenu="nzDropdownMenu">
-              <ul nz-menu>
-                <li nz-menu-item>操作一</li>
-                <li nz-menu-item>操作二</li>
-              </ul>
-            </nz-dropdown-menu>
-            <div class="sales-type-radio">
-              <nz-radio-group [(ngModel)]="salesType" (ngModelChange)="changeSaleType()">
-                <label nz-radio-button [nzValue]="'all'">{{ 'app.analysis.channel.all' | translate }}</label>
-                <label nz-radio-button [nzValue]="'online'">{{ 'app.analysis.channel.online' | translate }}</label>
-                <label nz-radio-button [nzValue]="'offline'">{{ 'app.analysis.channel.stores' | translate }}</label>
-              </nz-radio-group>
-            </div>
-          </div>
+          <nz-radio-group [(ngModel)]="salesType" (ngModelChange)="changeSaleType()" class="mr-md">
+            <label nz-radio-button [nzValue]="'all'">{{ 'app.analysis.channel.all' | translate }}</label>
+            <label nz-radio-button [nzValue]="'online'">{{ 'app.analysis.channel.online' | translate }}</label>
+            <label nz-radio-button [nzValue]="'offline'">{{ 'app.analysis.channel.stores' | translate }}</label>
+          </nz-radio-group>
+          <i nz-dropdown [nzDropdownMenu]="salesExtraMenu" nzPlacement="bottomLeft" nz-icon nzType="ellipsis" class="icon-group"></i>
+          <nz-dropdown-menu #salesExtraMenu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item>操作一</li>
+              <li nz-menu-item>操作二</li>
+            </ul>
+          </nz-dropdown-menu>
         </ng-template>
         <h4 class="margin:8px 0 32px 0;">{{ 'app.analysis.sales' | translate }}</h4>
         <g2-pie
