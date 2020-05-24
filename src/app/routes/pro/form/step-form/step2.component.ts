@@ -31,7 +31,7 @@ export class Step2Component implements OnInit {
     setTimeout(() => {
       this.loading = false;
       ++this.item.step;
-    }, 1000 * 2);
+    }, 500);
   }
 
   prev() {

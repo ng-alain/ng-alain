@@ -30,6 +30,10 @@ VERSION=$(node -p "require('./package.json').version")
 
 echo "Start build version: ${VERSION}"
 
+if [[ ${DAY_RELEASE} == true ]]; then
+  bash ./scripts/_ci/delon.sh
+fi
+
 echo ""
 echo "Generate color less"
 echo ""
@@ -38,10 +42,6 @@ node ./scripts/color-less.js
 echo '===== need mock'
 sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/global-config.module.ts
 sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/layout/default/default.component.ts
-
-if [[ ${DAY_RELEASE} == true ]]; then
-  bash ./scripts/_ci/delon.sh
-fi
 
 echo ""
 echo "Build angular"

@@ -16,6 +16,7 @@ import { LayoutFullScreenComponent } from './fullscreen/fullscreen.component';
 
 import { SettingDrawerItemComponent } from './default/setting-drawer/setting-drawer-item.component';
 import { SettingDrawerComponent } from './default/setting-drawer/setting-drawer.component';
+import { LayoutThemeBtnComponent } from './default/theme-btn/theme-btn.component';
 
 const SETTINGDRAWER = [SettingDrawerComponent, SettingDrawerItemComponent];
 const COMPONENTS = [
@@ -24,6 +25,7 @@ const COMPONENTS = [
   HeaderComponent,
   SidebarComponent,
   ...SETTINGDRAWER,
+  LayoutThemeBtnComponent,
 ];
 
 const HEADERCOMPONENTS = [

@@ -1,0 +1,27 @@
+@import '~@delon/theme/index';
+
+:host ::ng-deep {
+  position: fixed;
+  right: 32px;
+  bottom: 102px;
+  z-index: 2147483640;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  &-active {
+    width: 44px;
+    height: 44px;
+    color: @primary-color;
+    font-size: 22px;
+    line-height: 44px;
+  }
+  .ant-avatar {
+    color: #000;
+    background-color: #fff;
+    box-shadow: @shadow-2;
+    transition: color 0.3s;
+    &:hover {
+      color: @primary-color;
+    }
+  }
+}

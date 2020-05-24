@@ -1,9 +1,9 @@
 {
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "prettier.stylelintIntegration": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll.tslint": true,
+    "source.fixAll.stylelint": true
   },
   "[markdown]": {
     "editor.formatOnSave": false

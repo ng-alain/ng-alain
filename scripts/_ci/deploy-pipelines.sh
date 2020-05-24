@@ -21,16 +21,21 @@ VERSION=$(node -p "require('./package.json').version")
 
 echo "Start build version: ${VERSION}"
 
+bash ./scripts/_ci/delon.sh
+
 echo ""
 echo "Generate color less"
 echo ""
 node ./scripts/color-less.js
 
+echo ""
+echo "Generate theme files"
+echo ""
+node ./scripts/theme.js
+
 echo '===== need mock'
 sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/global-config.module.ts
 sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/layout/default/default.component.ts
-
-bash ./scripts/_ci/delon.sh
 
 if [[ ${GH} == true ]]; then
   echo "Build angular [github gh-pages]"

@@ -25,9 +25,7 @@ const options = {
 
 function genVarFile() {
   const ALLVAR = `
-  @import '~@delon/theme/styles/default';
-  @import '~@delon/theme/styles/layout/default/variable';
-  @import '~@delon/theme/styles/layout/fullscreen/variable';
+  @import '~@delon/theme/theme-default';
   @import '../src/styles/theme.less';
   `;
 
