@@ -3106,7 +3106,8 @@ this.tinycolor = tinycolor;
 @forced-turn-off-nz-modal-animation-enabled: false;
 
 @sf-title-text-align: left;
-@sf-optional-color: rgba(0, 0, 0, 0.45);
+@sf-optional-color: rgba(0, 0, 0, 0.35);
+@sf-optional-margin: 2px;
 @sf-inline-ant-select-min-width: 100px;
 @sf-widget-array-type-card-remove-bg: rgba(0, 0, 0, 0.26);
 @sf-widget-array-transfer-bg: #fff;
@@ -3271,6 +3272,15 @@ this.tinycolor = tinycolor;
 :host ::ng-deep .desc {
   color: rgba(0, 0, 0, 0.45);
 }
+[data-theme='dark'] :host ::ng-deep .container {
+  background: #141414;
+}
+[data-theme='dark'] :host ::ng-deep .title {
+  color: rgba(255, 255, 255, 0.85);
+}
+[data-theme='dark'] :host ::ng-deep .desc {
+  color: rgba(255, 255, 255, 0.45);
+}
 :host ::ng-deep .icon-group i {
   color: rgba(0, 0, 0, 0.45);
 }
@@ -3369,6 +3379,12 @@ this.tinycolor = tinycolor;
 :host ::ng-deep .icon:hover {
   color: @primary-color;
 }
+[data-theme='dark'] :host ::ng-deep .icon {
+  color: rgba(255, 255, 255, 0.2);
+}
+[data-theme='dark'] :host ::ng-deep .icon:hover {
+  color: #fff;
+}
 ::ng-deep .register-password-cdk .success {
   color: #52c41a;
 }
@@ -3411,23 +3427,38 @@ this.tinycolor = tinycolor;
 .team a:hover {
   color: @primary-color;
 }
-:host .right .avatar_title {
+:host ::ng-deep .right .avatar_title {
   color: rgba(0, 0, 0, 0.85);
 }
-.main {
+[data-theme='dark'] :host ::ng-deep .right .avatar_title {
+  color: rgba(255, 255, 255, 0.65);
+}
+:host ::ng-deep .main {
   background-color: #fff;
 }
-.menu {
+:host ::ng-deep .menu {
   border-right: 1px solid #f0f0f0;
 }
-.menu ::ng-deep .ant-menu-inline {
+:host ::ng-deep .menu .ant-menu-inline {
   border: none;
 }
-.content .title {
+:host ::ng-deep .content .title {
   color: rgba(0, 0, 0, 0.85);
 }
-.content ::ng-deep .ant-list-split .ant-list-item:last-child {
+:host ::ng-deep .content .ant-list-split .ant-list-item:last-child {
   border-bottom: 1px solid #e8e8e8;
+}
+[data-theme='dark'] :host ::ng-deep .main {
+  background-color: #141414;
+}
+[data-theme='dark'] :host ::ng-deep .content .title {
+  color: rgba(255, 255, 255, 0.65);
+}
+[data-theme='dark'] :host ::ng-deep .menu {
+  border-right-color: #303030;
+}
+[data-theme='dark'] :host ::ng-deep .content .ant-list-split .ant-list-item:last-child {
+  border-bottom-color: #303030;
 }
 :host ::ng-deep .ant-card-actions {
   background: #f7f9fa;
@@ -9977,7 +10008,7 @@ fieldset {
   box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
 }
 .sf__optional {
-  color: rgba(0, 0, 0, 0.45);
+  color: rgba(0, 0, 0, 0.35);
 }
 .sf__array-container nz-card .sf__array-remove {
   background: rgba(0, 0, 0, 0.26);
@@ -19001,7 +19032,7 @@ fieldset {
   box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
 }
 .sf__optional {
-  color: rgba(0, 0, 0, 0.45);
+  color: rgba(0, 0, 0, 0.35);
 }
 .sf__array-container nz-card .sf__array-remove {
   background: rgba(0, 0, 0, 0.26);
