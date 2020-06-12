@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, Renderer2 } from '@angular/core';
-import { AlainChartConfig, AlainConfigService } from '@delon/util';
+import { AlainConfigService } from '@delon/util';
 
 type SiteTheme = 'default' | 'dark' | 'compact';
 
@@ -25,7 +25,7 @@ export class LayoutThemeBtnComponent implements OnInit {
   }
 
   private updateChartTheme(): void {
-    this.configSrv.update<AlainChartConfig, 'chart'>('chart', { theme: this.theme === 'dark' ? 'dark' : '' });
+    this.configSrv.set('chart', { theme: this.theme === 'dark' ? 'dark' : '' });
   }
 
   onThemeChange(theme: SiteTheme): void {
