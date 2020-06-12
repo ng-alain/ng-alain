@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, Renderer2 } from '@angular/core';
-import { AlainChartConfig, AlainConfigService } from '@delon/util';
+import { AlainConfigService } from '@delon/util';
 
 type SiteTheme = 'default' | 'dark' | 'compact';
 
