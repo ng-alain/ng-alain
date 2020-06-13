@@ -2822,6 +2822,10 @@ this.tinycolor = tinycolor;
       }
       return ret;
     }
+
+    this.genComment = function(value, ...comments) {
+      return value + '; /* AUTOGENERATE: ' + comments.join('|SPLIT|') + '*/';
+    }
   })()`;
 }
 .freakMixin();
@@ -2994,16 +2998,13 @@ this.tinycolor = tinycolor;
 @zindex-fixed:      @zindex-base;
 @zindex:            @zindex-base;
 
-@overflows:     auto, hidden;
-@positions:     static, relative, absolute, fixed, sticky;
-
 // 文本
 @text-xs:       @font-size-base - 2;  // 12px
 @text-sm:       @font-size-base + 0;  // 14px
 @text-md:       @font-size-base + 2;  // 16px
 @text-lg:       @font-size-base + 4;  // 18px
 @text-xl:       @font-size-base + 8;  // 22px
-@text-xxl:      @font-size-base + 12; // 26px
+@text-xxl:      @font-size-base + 14; // 28px
 
 // icon
 @icon-sm:       @font-size-base * 2;  // 14px * 2 = 28px
