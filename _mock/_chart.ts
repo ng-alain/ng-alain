@@ -9,7 +9,7 @@ const beginDay = new Date().getTime();
 const fakeY = [7, 5, 4, 2, 4, 7, 5, 6, 5, 9, 6, 3, 1, 5, 3, 6, 5];
 for (let i = 0; i < fakeY.length; i += 1) {
   visitData.push({
-    x: format(new Date(beginDay + 1000 * 60 * 60 * 24 * i), 'yyyyy-MM-dd'),
+    x: format(new Date(beginDay + 1000 * 60 * 60 * 24 * i), 'yyyy-MM-dd'),
     y: fakeY[i],
   });
 }
@@ -18,7 +18,7 @@ const visitData2: any[] = [];
 const fakeY2 = [1, 6, 4, 8, 3, 7, 2];
 for (let i = 0; i < fakeY2.length; i += 1) {
   visitData2.push({
-    x: format(new Date(beginDay + 1000 * 60 * 60 * 24 * i), 'yyyyy-MM-dd'),
+    x: format(new Date(beginDay + 1000 * 60 * 60 * 24 * i), 'yyyy-MM-dd'),
     y: fakeY2[i],
   });
 }
