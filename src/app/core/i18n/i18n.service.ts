@@ -1,4 +1,5 @@
 // 请参考：https://ng-alain.com/docs/i18n
+import { Platform } from '@angular/cdk/platform';
 import { registerLocaleData } from '@angular/common';
 import ngEn from '@angular/common/locales/en';
 import ngZh from '@angular/common/locales/zh';
@@ -70,6 +71,7 @@ export class I18NService implements AlainI18NService {
     private nzI18nService: NzI18nService,
     private delonLocaleService: DelonLocaleService,
     private translate: TranslateService,
+    private platform: Platform,
   ) {
     // `@ngx-translate/core` 预先知道支持哪些语言
     const lans = this._langs.map((item) => item.code);
@@ -84,6 +86,9 @@ export class I18NService implements AlainI18NService {
   }
 
   private getDefaultLang(): string | undefined {
+    if (!this.platform.isBrowser) {
+      return DEFAULT;
+    }
     if (this.settings.layout.lang) {
       return this.settings.layout.lang;
     }
