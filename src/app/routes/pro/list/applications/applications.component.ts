@@ -53,7 +53,7 @@ export class ProListApplicationsComponent implements OnInit {
 
   getData() {
     this.loading = true;
-    this.http.get('/api/list', { count: this.q.ps }).subscribe((res: any) => {
+    this.http.get('/api/list', { count: this.q.ps }).subscribe((res) => {
       this.list = res.map((item) => {
         item.activeUser = this.formatWan(item.activeUser);
         return item;

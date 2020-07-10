@@ -31,7 +31,7 @@ export class ProAccountSettingsBaseComponent implements OnInit {
   }
 
   choProvince(pid: string, cleanCity = true) {
-    this.http.get(`/geo/${pid}`).subscribe((res: any) => {
+    this.http.get(`/geo/${pid}`).subscribe((res) => {
       this.cities = res;
       if (cleanCity) {
         this.user.geographic.city.key = '';

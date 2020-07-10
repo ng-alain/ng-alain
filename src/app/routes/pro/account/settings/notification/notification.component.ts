@@ -1,6 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { _HttpClient } from '@delon/theme';
-import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-account-settings-notification',
@@ -8,10 +6,13 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProAccountSettingsNotificationComponent {
-  i: any = {
+  i: {
+    password: boolean;
+    messages: boolean;
+    todo: boolean;
+  } = {
     password: true,
     messages: true,
     todo: true,
   };
-  constructor(public msg: NzMessageService) {}
 }

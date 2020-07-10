@@ -14,13 +14,7 @@
         <nz-form-item>
           <nz-form-label nzFor="status">使用状态</nz-form-label>
           <nz-form-control>
-            <nz-select
-              [(ngModel)]="q.status"
-              name="status"
-              id="status"
-              [nzPlaceHolder]="'请选择'"
-              [nzShowSearch]="true"
-            >
+            <nz-select [(ngModel)]="q.status" name="status" id="status" [nzPlaceHolder]="'请选择'" [nzShowSearch]="true">
               <nz-option *ngFor="let i of status; let idx = index" [nzLabel]="i.text" [nzValue]="idx"></nz-option>
             </nz-select>
           </nz-form-control>
@@ -37,7 +31,9 @@
       <div nz-col nzMd="8" nzSm="24" *ngIf="expandForm">
         <nz-form-item>
           <nz-form-label nzFor="updatedAt">更新日期</nz-form-label>
-          <nz-form-control> </nz-form-control>
+          <nz-form-control>
+            <nz-date-picker id="updatedAt"></nz-date-picker>
+          </nz-form-control>
         </nz-form-item>
       </div>
       <div nz-col nzMd="8" nzSm="24" *ngIf="expandForm">
@@ -91,8 +87,7 @@
     <nz-alert [nzType]="'info'" [nzShowIcon]="true" [nzMessage]="message">
       <ng-template #message>
         已选择
-        <strong class="text-primary">{{ selectedRows.length }}</strong> 项&nbsp;&nbsp; 服务调用总计
-        <strong>{{ totalCallNo }}</strong> 万
+        <strong class="text-primary">{{ selectedRows.length }}</strong> 项&nbsp;&nbsp; 服务调用总计 <strong>{{ totalCallNo }}</strong> 万
         <a *ngIf="totalCallNo > 0" (click)="st.clearCheck()" class="ml-lg">清空</a>
       </ng-template>
     </nz-alert>

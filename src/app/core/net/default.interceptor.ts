@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
@@ -50,7 +51,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, errortext);
   }
 
-  private handleData(ev: HttpResponseBase): Observable<any> {
+  private handleData(ev: HttpResponseBase): Observable<NzSafeAny> {
     // 可能会因为 `throw` 导出无法执行 `_HttpClient` 的 `end()` 操作
     if (ev.status > 0) {
       this.injector.get(_HttpClient).end();
@@ -64,19 +65,19 @@ export class DefaultInterceptor implements HttpInterceptor {
         //  错误内容：{ status: 1, msg: '非法参数' }
         //  正确内容：{ status: 0, response: {  } }
         // 则以下代码片断可直接适用
-        // if (event instanceof HttpResponse) {
-        //     const body: any = event.body;
-        //     if (body && body.status !== 0) {
-        //         this.msg.error(body.msg);
-        //         // 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：
-        //         // this.http.get('/').subscribe() 并不会触发
-        //         return throwError({});
-        //     } else {
-        //         // 重新修改 `body` 内容为 `response` 内容，对于绝大多数场景已经无须再关心业务状态码
-        //         return of(new HttpResponse(Object.assign(event, { body: body.response })));
-        //         // 或者依然保持完整的格式
-        //         return of(event);
-        //     }
+        // if (ev instanceof HttpResponse) {
+        //   const body = ev.body;
+        //   if (body && body.status !== 0) {
+        //     this.injector.get(NzMessageService).error(body.msg);
+        //     // 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：
+        //     // this.http.get('/').subscribe() 并不会触发
+        //     return throwError({});
+        //   } else {
+        //     // 重新修改 `body` 内容为 `response` 内容，对于绝大多数场景已经无须再关心业务状态码
+        //     return of(new HttpResponse(Object.assign(ev, { body: body.response })));
+        //     // 或者依然保持完整的格式
+        //     return of(ev);
+        //   }
         // }
         break;
       case 401:
@@ -112,13 +113,13 @@ export class DefaultInterceptor implements HttpInterceptor {
 
     const newReq = req.clone({ url });
     return next.handle(newReq).pipe(
-      mergeMap((event: any) => {
+      mergeMap((ev) => {
         // 允许统一对请求错误处理
-        if (event instanceof HttpResponseBase) {
-          return this.handleData(event);
+        if (ev instanceof HttpResponseBase) {
+          return this.handleData(ev);
         }
         // 若一切都正常，则后续操作
-        return of(event);
+        return of(ev);
       }),
       catchError((err: HttpErrorResponse) => this.handleData(err)),
     );

@@ -24,7 +24,7 @@ export class ProBasicListComponent implements OnInit {
 
   getData() {
     this.loading = true;
-    this.http.get('/api/list', { count: 5 }).subscribe((res: any) => {
+    this.http.get('/api/list', { count: 5 }).subscribe((res) => {
       this.data = res;
       this.loading = false;
       this.cdr.detectChanges();

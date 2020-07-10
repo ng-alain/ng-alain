@@ -24,7 +24,7 @@ export class ProCardListComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.http.get('/api/list', { count: 8 }).subscribe((res: any) => {
+    this.http.get('/api/list', { count: 8 }).subscribe((res) => {
       this.list = this.list.concat(res);
       this.loading = false;
       this.cdr.detectChanges();

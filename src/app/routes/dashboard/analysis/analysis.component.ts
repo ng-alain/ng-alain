@@ -35,14 +35,16 @@ export class DashboardAnalysisComponent implements OnInit {
       title: '搜索关键词',
       i18n: 'app.analysis.table.search-keyword',
       index: 'keyword',
-      click: (item: any) => this.msg.success(item.keyword),
+      click: (item) => this.msg.success(item.keyword),
     },
     {
       type: 'number',
       title: '用户数',
       i18n: 'app.analysis.table.users',
       index: 'count',
-      sorter: (a, b) => a.count - b.count,
+      sort: {
+        compare: (a, b) => a.count - b.count,
+      },
     },
     {
       type: 'number',
@@ -50,7 +52,9 @@ export class DashboardAnalysisComponent implements OnInit {
       i18n: 'app.analysis.table.weekly-range',
       index: 'range',
       render: 'range',
-      sorter: (a, b) => a.range - b.range,
+      sort: {
+        compare: (a, b) => a.range - b.range,
+      },
     },
   ];
 
