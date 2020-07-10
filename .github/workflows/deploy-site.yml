@@ -22,11 +22,12 @@ jobs:
         run: bash ./scripts/_ci/deploy-pipelines.sh
 
       - name: deploy-to-surge
-        uses: yohix/deploy-surge@v1.0.0
+        uses: dswistowski/surge-sh-action@v1
         with:
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-          DOMAIN_NAME: https://ng-alain.surge.sh
-          BUILD_DIRECTORY: ./dist
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
+          domain: https://ng-alain.surge.sh
+          project: ./dist
 
       - name: deploy-to-gh-pages
         uses: peaceiris/actions-gh-pages@v2
