@@ -11,7 +11,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class STDemoComponent implements OnInit {
   ps = 20;
   total = 200; // mock total
-  args = { _allow_anonymous: true };
+  args = { _allow_anonymous: true, userid: null };
   url = `https://api.randomuser.me/?results=20`;
   events: G2MiniBarData[] = [];
   scroll = { y: '230px' };
