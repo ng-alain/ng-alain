@@ -17,9 +17,9 @@ export class DashboardAnalysisComponent implements OnInit {
   data: any = {};
   loading = true;
   date_range: Date[] = [];
-  rankingListData: any[] = Array(7)
+  rankingListData: Array<{ title: string; total: number }> = Array(7)
     .fill({})
-    .map((item, i) => {
+    .map((_, i) => {
       return {
         title: this.i18n.fanyi('app.analysis.test', { no: i }),
         total: 323234,
@@ -62,12 +62,12 @@ export class DashboardAnalysisComponent implements OnInit {
   salesPieData: any;
   salesTotal = 0;
 
-  saleTabs: any[] = [{ key: 'sales', show: true }, { key: 'visits' }];
+  saleTabs: Array<{ key: string; show?: boolean }> = [{ key: 'sales', show: true }, { key: 'visits' }];
 
   offlineIdx = 0;
 
   ngOnInit() {
-    this.http.get('/chart').subscribe((res: any) => {
+    this.http.get('/chart').subscribe((res) => {
       res.offlineData.forEach((item: any, idx: number) => {
         item.show = idx === 0;
         item.chart = deepCopy(res.offlineChartData);
@@ -78,7 +78,7 @@ export class DashboardAnalysisComponent implements OnInit {
     });
   }
 
-  setDate(type: any) {
+  setDate(type: 'today' | 'week' | 'month' | 'year') {
     this.date_range = getTimeDistance(type);
     setTimeout(() => this.cdr.detectChanges());
   }
@@ -95,7 +95,7 @@ export class DashboardAnalysisComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
-  handlePieValueFormat(value: any) {
+  handlePieValueFormat(value: string | number) {
     return yuan(value);
   }
   salesChange(idx: number) {

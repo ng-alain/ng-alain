@@ -10,7 +10,8 @@ import { ProBasicListEditComponent } from './edit/edit.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProBasicListComponent implements OnInit {
-  q: any = {
+  q = {
+    q: '',
     status: 'all',
   };
   loading = false;
@@ -31,7 +32,7 @@ export class ProBasicListComponent implements OnInit {
     });
   }
 
-  openEdit(record: any = {}) {
+  openEdit(record: { id?: number } = {}) {
     this.modal.create(ProBasicListEditComponent, { record }, { size: 'md' }).subscribe((res) => {
       if (record.id) {
         record = { ...record, id: 'mock_id', percent: 0, ...res };

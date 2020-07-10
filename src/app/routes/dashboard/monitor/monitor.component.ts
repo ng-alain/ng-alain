@@ -14,7 +14,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
   data: any = {};
   tags = [];
   loading = true;
-  q: any = {
+  q = {
     start: null,
     end: null,
   };

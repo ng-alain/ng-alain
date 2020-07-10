@@ -7,7 +7,7 @@ import { _HttpClient } from '@delon/theme';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardV1Component implements OnInit {
-  todoData: any[] = [
+  todoData = [
     {
       completed: true,
       avatar: '1',

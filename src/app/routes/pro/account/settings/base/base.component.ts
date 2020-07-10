@@ -21,6 +21,11 @@ interface ProAccountSettingsUser {
   };
 }
 
+interface ProAccountSettingsCity {
+  name: string;
+  id: string;
+}
+
 @Component({
   selector: 'app-account-settings-base',
   templateUrl: './base.component.html',
@@ -35,17 +40,19 @@ export class ProAccountSettingsBaseComponent implements OnInit {
 
   // #region geo
 
-  provinces: any[] = [];
-  cities: any[] = [];
+  provinces: ProAccountSettingsCity[] = [];
+  cities: ProAccountSettingsCity[] = [];
 
   ngOnInit(): void {
-    zip(this.http.get('/user/current'), this.http.get('/geo/province')).subscribe(([user, province]: any) => {
-      this.userLoading = false;
-      this.user = user;
-      this.provinces = province;
-      this.choProvince(user.geographic.province.key, false);
-      this.cdr.detectChanges();
-    });
+    zip(this.http.get('/user/current'), this.http.get('/geo/province')).subscribe(
+      ([user, province]: [ProAccountSettingsUser, ProAccountSettingsCity[]]) => {
+        this.userLoading = false;
+        this.user = user;
+        this.provinces = province;
+        this.choProvince(user.geographic.province.key, false);
+        this.cdr.detectChanges();
+      },
+    );
   }
 
   choProvince(pid: string, cleanCity = true) {

@@ -40,7 +40,7 @@ export class PrintComponent {
 
   printing = false;
 
-  reload(options: any = { url: 'https://localhost:8443/CLodopfuncs.js' }) {
+  reload(options: { url: string } = { url: 'https://localhost:8443/CLodopfuncs.js' }) {
     this.pinters = [];
     this.papers = [];
     this.cog.printer = '';
