@@ -3,6 +3,24 @@ import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { zip } from 'rxjs';
 
+interface ProAccountSettingsUser {
+  email: string;
+  name: string;
+  profile: string;
+  country: string;
+  address: string;
+  phone: string;
+  avatar: string;
+  geographic: {
+    province: {
+      key: string;
+    };
+    city: {
+      key: string;
+    };
+  };
+}
+
 @Component({
   selector: 'app-account-settings-base',
   templateUrl: './base.component.html',
@@ -13,7 +31,7 @@ export class ProAccountSettingsBaseComponent implements OnInit {
   constructor(private http: _HttpClient, private cdr: ChangeDetectorRef, private msg: NzMessageService) {}
   avatar = '';
   userLoading = true;
-  user: any;
+  user: ProAccountSettingsUser;
 
   // #region geo
 

@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  OnDestroy,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
 import { fromEvent, Subscription } from 'rxjs';
@@ -22,8 +15,7 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
   private router$: Subscription;
   mode = 'inline';
   title: string;
-  user: any;
-  menus: any[] = [
+  menus: Array<{ key: string; title: string; selected?: boolean }> = [
     {
       key: 'base',
       title: '基本设置',
@@ -41,24 +33,24 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
       title: '新消息通知',
     },
   ];
-  constructor(private router: Router, private cdr: ChangeDetectorRef, private el: ElementRef) {
-    this.router$ = this.router.events.pipe(filter(e => e instanceof ActivationEnd)).subscribe(() => this.setActive());
+  constructor(private router: Router, private cdr: ChangeDetectorRef, private el: ElementRef<HTMLElement>) {
+    this.router$ = this.router.events.pipe(filter((e) => e instanceof ActivationEnd)).subscribe(() => this.setActive());
   }
 
   private setActive() {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
-    this.menus.forEach(i => {
+    this.menus.forEach((i) => {
       i.selected = i.key === key;
     });
-    this.title = this.menus.find(w => w.selected).title;
+    this.title = this.menus.find((w) => w.selected).title;
   }
 
-  to(item: any) {
+  to(item: { key: string }) {
     this.router.navigateByUrl(`/pro/account/settings/${item.key}`);
   }
 
   private resize() {
-    const el = this.el.nativeElement as HTMLElement;
+    const el = this.el.nativeElement;
     let mode = 'inline';
     const { offsetWidth } = el;
     if (offsetWidth < 641 && offsetWidth > 400) {
