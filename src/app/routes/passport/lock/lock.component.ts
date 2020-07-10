@@ -18,7 +18,6 @@ export class UserLockComponent {
     public settings: SettingsService,
     private router: Router,
   ) {
-    tokenService.clear();
     this.f = fb.group({
       password: [null, Validators.required],
     });

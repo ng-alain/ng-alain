@@ -7,7 +7,6 @@ import { DA_SERVICE_TOKEN, ITokenService, SocialOpenType, SocialService } from '
 import { SettingsService, _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'passport-login',
@@ -18,7 +17,6 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 export class UserLoginComponent implements OnDestroy {
   constructor(
     fb: FormBuilder,
-    modalSrv: NzModalService,
     private router: Router,
     private settingsService: SettingsService,
     private socialService: SocialService,
@@ -37,7 +35,6 @@ export class UserLoginComponent implements OnDestroy {
       captcha: [null, [Validators.required]],
       remember: [true],
     });
-    modalSrv.closeAll();
   }
 
   // #region fields
