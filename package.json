@@ -29,7 +29,7 @@
     "lint": "npm run lint:ts && npm run lint:style",
     "lint:ts": "ng lint --fix",
     "lint:style": "stylelint \"src/**/*.less\" --syntax less --fix",
-    "lint-staged": "lint-staged",
+    "pretty-quick": "pretty-quick",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "e2e": "ng e2e",
     "test": "ng test --watch",
@@ -98,7 +98,6 @@
     "tslint-config-prettier": "^1.18.0",
     "husky": "^4.2.3",
     "gh-pages": "^2.2.0",
-    "lint-staged": "^10.2.4",
     "less-bundle-promise": "^1.0.7",
     "less-plugin-clean-css": "^1.5.1",
     "less-plugin-npm-import": "^2.1.0",
@@ -115,11 +114,12 @@
     "xlsx": "^0.16.1",
     "@delon/testing": "^9.5.3",
     "ng-alain": "^9.5.3",
-    "ng-alain-codelyzer": "^0.0.1"
+    "ng-alain-codelyzer": "^0.0.1",
+    "pretty-quick": "^2.0.1"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint-staged"
+      "pre-commit": "pretty-quick --staged"
     }
   }
 }
