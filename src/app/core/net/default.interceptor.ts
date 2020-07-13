@@ -5,8 +5,8 @@ import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, mergeMap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { catchError, filter, mergeMap, switchMap, take, tap } from 'rxjs/operators';
 
 const CODEMESSAGE = {
   200: '服务器成功返回请求的数据。',
@@ -31,10 +31,22 @@ const CODEMESSAGE = {
  */
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
+  private refreshTokenEnabled = true;
+  private refreshToking = false;
+  private refreshToken$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
   constructor(private injector: Injector) {}
 
   private get notification(): NzNotificationService {
     return this.injector.get(NzNotificationService);
+  }
+
+  private get tokenSrv(): ITokenService {
+    return this.injector.get(DA_SERVICE_TOKEN);
+  }
+
+  private get http(): _HttpClient {
+    return this.injector.get(_HttpClient);
   }
 
   private goTo(url: string) {
@@ -50,10 +62,66 @@ export class DefaultInterceptor implements HttpInterceptor {
     this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, errortext);
   }
 
-  private handleData(ev: HttpResponseBase): Observable<any> {
+  private tryRefreshToken(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
+    // 1、若请求为刷新Token请求，表示来自刷新Token可以直接跳转登录页
+    if (!this.refreshTokenEnabled || [`/api/auth/refresh`].some((url) => req.url.includes(url))) {
+      this.toLogin();
+      return throwError(ev);
+    }
+    // 2、如果 `refreshToking` 为 `true` 表示已经在请求刷新 Token 中，后续所有请求转入等待状态，直至结果返回后再重新发起请求
+    if (this.refreshToking) {
+      return this.refreshToken$.pipe(
+        filter((v) => !!v),
+        take(1),
+        switchMap(() => next.handle(this.reAttachToken(req))),
+      );
+    }
+    // 3、尝试调用刷新 Token
+    this.refreshToking = true;
+    this.refreshToken$.next(null);
+
+    return this.refreshTokenRequest().pipe(
+      switchMap((res) => {
+        // 通知后续请求继续执行
+        this.refreshToking = false;
+        this.refreshToken$.next(res);
+        // 重新保存新 token
+        this.tokenSrv.set(res);
+        // 重新发起请求
+        return next.handle(this.reAttachToken(req));
+      }),
+      catchError((err) => {
+        this.refreshToking = false;
+        this.toLogin();
+        return throwError(err);
+      }),
+    );
+  }
+
+  private refreshTokenRequest(): Observable<any> {
+    const model = this.tokenSrv.get();
+    // 刷新token请求
+    return this.http.post(`/api/auth/refresh`, null, null, { headers: { refresh_token: model.refresh_token || '' } });
+  }
+
+  private reAttachToken(req: HttpRequest<any>): HttpRequest<any> {
+    const token = this.tokenSrv.get().token;
+    return req.clone({
+      setHeaders: {
+        token,
+      },
+    });
+  }
+
+  private toLogin(): void {
+    this.notification.error(`未登录或登录已过期，请重新登录。`, ``);
+    this.goTo('/passport/login');
+  }
+
+  private handleData(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // 可能会因为 `throw` 导出无法执行 `_HttpClient` 的 `end()` 操作
     if (ev.status > 0) {
-      this.injector.get(_HttpClient).end();
+      this.http.end();
     }
     this.checkStatus(ev);
     // 业务处理：一些通用操作
@@ -80,11 +148,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         // }
         break;
       case 401:
-        this.notification.error(`未登录或登录已过期，请重新登录。`, ``);
-        // 清空 token 信息
-        (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
-        this.goTo('/passport/login');
-        break;
+        return this.tryRefreshToken(ev, req, next);
       case 403:
       case 404:
       case 500:
@@ -115,12 +179,12 @@ export class DefaultInterceptor implements HttpInterceptor {
       mergeMap((event: any) => {
         // 允许统一对请求错误处理
         if (event instanceof HttpResponseBase) {
-          return this.handleData(event);
+          return this.handleData(event, newReq, next);
         }
         // 若一切都正常，则后续操作
         return of(event);
       }),
-      catchError((err: HttpErrorResponse) => this.handleData(err)),
+      catchError((err: HttpErrorResponse) => this.handleData(err, newReq, next)),
     );
   }
 }
