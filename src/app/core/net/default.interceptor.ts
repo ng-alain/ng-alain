@@ -31,6 +31,7 @@ const CODEMESSAGE = {
  */
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
+  // 是否开启当 Token 过期后重新调用刷新 Token 接口，并在刷新 Token 后再一次发起请求
   private refreshTokenEnabled = true;
   private refreshToking = false;
   private refreshToken$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
@@ -98,17 +99,25 @@ export class DefaultInterceptor implements HttpInterceptor {
     );
   }
 
+  /**
+   * 刷新 Token 请求
+   */
   private refreshTokenRequest(): Observable<any> {
     const model = this.tokenSrv.get();
-    // 刷新token请求
     return this.http.post(`/api/auth/refresh`, null, null, { headers: { refresh_token: model.refresh_token || '' } });
   }
 
+  /**
+   * 重新附加新 Token 信息
+   *
+   * > 由于已经发起的请求，不会再走一遍 `@delon/auth` 因此需要结合业务情况重新附加新的 Token
+   */
   private reAttachToken(req: HttpRequest<any>): HttpRequest<any> {
+    // 以下示例是以 NG-ALAIN 默认使用 `SimpleInterceptor`
     const token = this.tokenSrv.get().token;
     return req.clone({
       setHeaders: {
-        token,
+        token: `Bearer ${token}`,
       },
     });
   }
