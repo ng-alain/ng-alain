@@ -11,10 +11,12 @@ import { ExtrasPoiEditComponent } from './edit/edit.component';
 export class ExtrasPoiComponent {
   @ViewChild('st', { static: true })
   st: STComponent;
-  s: any = {
+  s = {
     pi: 1,
     ps: 10,
+    user_id: '',
     s: '',
+    q: '',
   };
   url = '/pois';
   columns: STColumn[] = [

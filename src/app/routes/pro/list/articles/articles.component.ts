@@ -10,10 +10,12 @@ export class ProListArticlesComponent implements OnInit {
   // endregion
 
   constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {}
-  q: any = {
+  q = {
     ps: 5,
     categories: [],
     owners: ['zxx'],
+    user: '',
+    rate: '',
   };
 
   list: any[] = [];

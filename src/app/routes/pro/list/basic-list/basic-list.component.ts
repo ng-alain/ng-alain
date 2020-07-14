@@ -15,7 +15,17 @@ export class ProBasicListComponent implements OnInit {
     status: 'all',
   };
   loading = false;
-  data: any[] = [];
+  data: Array<{
+    id: number;
+    title: string;
+    subDescription: string;
+    href: string;
+    logo: string;
+    owner: string;
+    createdAt: Date;
+    percent: number;
+    status: string;
+  }> = [];
 
   constructor(private http: _HttpClient, private msg: NzMessageService, private modal: ModalHelper, private cdr: ChangeDetectorRef) {}
 

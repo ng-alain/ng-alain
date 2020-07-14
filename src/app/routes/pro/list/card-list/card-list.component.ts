@@ -16,11 +16,11 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProCardListComponent implements OnInit {
-  list: any[] = [null];
+  list: Array<{ id: number; title: string; avatar: string; description: string }> = [null];
 
   loading = true;
 
-  constructor(private http: _HttpClient, public msg: NzMessageService, private cdr: ChangeDetectorRef) {}
+  constructor(private http: _HttpClient, private msg: NzMessageService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.loading = true;
@@ -29,5 +29,9 @@ export class ProCardListComponent implements OnInit {
       this.loading = false;
       this.cdr.detectChanges();
     });
+  }
+
+  show(text: string): void {
+    this.msg.success(text);
   }
 }
