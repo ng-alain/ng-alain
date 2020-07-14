@@ -1,7 +1,7 @@
 <div class="ant-card width-lg" style="margin: 0 auto;">
   <div class="ant-card-body">
     <div class="avatar">
-      <nz-avatar [nzSrc]="settings.user.avatar" nzIcon="user" nzSize="large"></nz-avatar>
+      <nz-avatar [nzSrc]="user.avatar" nzIcon="user" nzSize="large"></nz-avatar>
     </div>
     <form nz-form [formGroup]="f" (ngSubmit)="submit()" role="form" class="mt-md">
       <nz-form-item>
@@ -12,7 +12,7 @@
         </nz-form-control>
       </nz-form-item>
       <nz-row nzType="flex" nzAlign="middle">
-        <nz-col [nzOffset]="12" [nzSpan]="12" style="text-align:right;">
+        <nz-col [nzOffset]="12" [nzSpan]="12" style="text-align: right;">
           <button nz-button [disabled]="!f.valid" nzType="primary">{{ 'app.lock' | translate }}</button>
         </nz-col>
       </nz-row>
