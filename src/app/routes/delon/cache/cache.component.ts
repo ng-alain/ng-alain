@@ -10,7 +10,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class CacheComponent implements OnInit {
   KEY = 'user';
 
-  constructor(public cache: CacheService, public msg: NzMessageService) {}
+  constructor(private cache: CacheService, private msg: NzMessageService) {}
 
   ngOnInit() {}
 

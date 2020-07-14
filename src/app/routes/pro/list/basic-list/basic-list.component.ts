@@ -17,13 +17,13 @@ export class ProBasicListComponent implements OnInit {
   loading = false;
   data: any[] = [];
 
-  constructor(private http: _HttpClient, public msg: NzMessageService, private modal: ModalHelper, private cdr: ChangeDetectorRef) {}
+  constructor(private http: _HttpClient, private msg: NzMessageService, private modal: ModalHelper, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getData();
   }
 
-  getData() {
+  getData(): void {
     this.loading = true;
     this.http.get('/api/list', { count: 5 }).subscribe((res) => {
       this.data = res;
@@ -32,7 +32,7 @@ export class ProBasicListComponent implements OnInit {
     });
   }
 
-  openEdit(record: { id?: number } = {}) {
+  openEdit(record: { id?: number } = {}): void {
     this.modal.create(ProBasicListEditComponent, { record }, { size: 'md' }).subscribe((res) => {
       if (record.id) {
         record = { ...record, id: 'mock_id', percent: 0, ...res };
@@ -42,5 +42,9 @@ export class ProBasicListComponent implements OnInit {
       }
       this.cdr.detectChanges();
     });
+  }
+
+  remove(title: string): void {
+    this.msg.success(`删除：${title}`);
   }
 }
