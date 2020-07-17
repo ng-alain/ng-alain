@@ -9,8 +9,11 @@ import { TransferService } from './transfer.service';
 })
 export class Step1Component implements OnInit {
   form: FormGroup;
+  get item() {
+    return this.srv;
+  }
 
-  constructor(private fb: FormBuilder, public item: TransferService) {}
+  constructor(private fb: FormBuilder, private srv: TransferService) {}
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -20,12 +23,7 @@ export class Step1Component implements OnInit {
       receiver_name: [null, Validators.compose([Validators.required, Validators.minLength(2)])],
       amount: [
         null,
-        Validators.compose([
-          Validators.required,
-          Validators.pattern(`[0-9]+`),
-          Validators.min(1),
-          Validators.max(10000 * 100),
-        ]),
+        Validators.compose([Validators.required, Validators.pattern(`[0-9]+`), Validators.min(1), Validators.max(10000 * 100)]),
       ],
     });
     this.form.patchValue(this.item);

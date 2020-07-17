@@ -10,8 +10,11 @@ import { TransferService } from './transfer.service';
 export class Step2Component implements OnInit {
   form: FormGroup;
   loading = false;
+  get item() {
+    return this.srv;
+  }
 
-  constructor(private fb: FormBuilder, public item: TransferService) {}
+  constructor(private fb: FormBuilder, private srv: TransferService) {}
 
   ngOnInit() {
     this.form = this.fb.group({

@@ -1,6 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 
+interface ProListApplicationListItem {
+  title: string;
+  avatar: string;
+  activeUser: string | number;
+  newUser: number;
+}
+
 @Component({
   selector: 'app-list-applications',
   templateUrl: './applications.component.html',
@@ -8,13 +15,15 @@ import { _HttpClient } from '@delon/theme';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProListApplicationsComponent implements OnInit {
-  q: any = {
+  q = {
     ps: 8,
+    user: null,
+    rate: null,
     categories: [],
     owners: ['zxx'],
   };
 
-  list: any[] = [];
+  list: ProListApplicationListItem[] = [];
 
   loading = true;
 
@@ -53,9 +62,9 @@ export class ProListApplicationsComponent implements OnInit {
 
   getData() {
     this.loading = true;
-    this.http.get('/api/list', { count: this.q.ps }).subscribe((res: any) => {
-      this.list = res.map((item) => {
-        item.activeUser = this.formatWan(item.activeUser);
+    this.http.get('/api/list', { count: this.q.ps }).subscribe((res) => {
+      this.list = res.map((item: ProListApplicationListItem) => {
+        item.activeUser = this.formatWan(item.activeUser as number);
         return item;
       });
       this.loading = false;

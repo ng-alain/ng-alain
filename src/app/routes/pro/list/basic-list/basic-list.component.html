@@ -55,7 +55,7 @@
           <nz-dropdown-menu #opMenu="nzDropdownMenu">
             <ul nz-menu>
               <li nz-menu-item (click)="openEdit(item)">编辑</li>
-              <li nz-menu-item (click)="msg.success('删除：' + item.title)">删除</li>
+              <li nz-menu-item (click)="remove(item.title)">删除</li>
             </ul>
           </nz-dropdown-menu>
         </ng-template>

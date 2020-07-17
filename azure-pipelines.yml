@@ -36,8 +36,11 @@ stages:
             env:
               ACCESS_REPO: $(ACCESS_REPO)
               ACCESS_TOKEN: $(ACCESS_TOKEN)
-          - script: npm run build
+          - task: Bash@3
             displayName: 'Build'
+            inputs:
+              targetType: 'filePath'
+              filePath: './scripts/_ci/deploy-pipelines.sh'
           - script: ls -al dist/
             displayName: 'List build'
           - script: |
@@ -94,6 +97,7 @@ stages:
             inputs:
               targetType: 'filePath'
               filePath: './scripts/_ci/deploy-pipelines.sh'
+              arguments: '-day'
           - script: ls -al dist/
             displayName: 'List build'
           - script: |

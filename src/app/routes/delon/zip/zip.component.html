@@ -4,7 +4,7 @@
     <a href="//ng-alain.com/components/zip" target="_blank">Document</a>
   </h1>
 </div>
-<nz-card nzTitle="解压">
+<nz-card nzTitle="解压" *ngIf="instance">
   <button nz-button (click)="url()">Via Url</button>
   <input type="file" (change)="change($event)" multiple="false" class="ml-sm" />
   <ol>

@@ -9,9 +9,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AdvancedFormComponent implements OnInit {
   editIndex = -1;
   editObj = {};
-
   form: FormGroup;
-  users: any[] = [
+  users: Array<{ value: string; label: string }> = [
     { value: 'xiao', label: '付晓晓' },
     { value: 'mao', label: '周毛毛' },
   ];

@@ -29,7 +29,7 @@ export class StartupService {
     iconSrv.addIcon(...ICONS_AUTO, ...ICONS);
   }
 
-  load(): Promise<any> {
+  load(): Promise<void> {
     // only works with promises
     // https://github.com/angular/angular/issues/15088
     return new Promise((resolve) => {
@@ -38,7 +38,7 @@ export class StartupService {
           // 接收其他拦截器后产生的异常消息
           catchError((res) => {
             console.warn(`StartupService.load: Network request failed`, res);
-            resolve(null);
+            resolve();
             return [];
           }),
         )
@@ -49,7 +49,7 @@ export class StartupService {
             this.translate.setDefaultLang(this.i18n.defaultLang);
 
             // application data
-            const res: any = appData;
+            const res = appData;
             // 应用信息：包括站点名、描述、年份
             this.settingService.setApp(res.app);
             // 用户信息：包括姓名、头像、邮箱地址
@@ -64,7 +64,7 @@ export class StartupService {
           },
           () => {},
           () => {
-            resolve(null);
+            resolve();
           },
         );
     });

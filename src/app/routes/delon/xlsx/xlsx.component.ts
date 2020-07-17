@@ -9,10 +9,9 @@ import { XlsxService } from '@delon/abc/xlsx';
 export class XlsxComponent {
   constructor(private xlsx: XlsxService) {}
   data: any;
-
-  users: any[] = Array(100)
-    .fill({})
-    .map((item: any, idx: number) => {
+  users: Array<{ id: number; name: string; age: number }> = Array(100)
+    .fill(0)
+    .map((_item: number, idx: number) => {
       return {
         id: idx + 1,
         name: `name ${idx + 1}`,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ZipService } from '@delon/abc/zip';
 import * as JSZip from 'jszip';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -6,20 +6,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 @Component({
   selector: 'app-zip',
   templateUrl: './zip.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ZipComponent {
-  constructor(private zip: ZipService, private msg: NzMessageService) {
-    this.zip.create().then((ret) => (this.instance = ret));
-  }
-
-  // region: read
-
+export class ZipComponent implements OnInit {
   list: any;
-
-  // endregion
-
-  // region: write
-
   instance: JSZip | null = null;
   data: { path?: string; url?: string }[] = [
     { path: 'demo.docx', url: 'https://ng-alain.com/assets/demo.docx' },
@@ -28,6 +18,16 @@ export class ZipComponent {
       url: 'https://wximg.gtimg.com/shake_tv/mina/standard_logo.zip',
     },
   ];
+
+  constructor(private zip: ZipService, private msg: NzMessageService, private cdr: ChangeDetectorRef) {}
+
+  ngOnInit(): void {
+    this.zip.create().then((ret) => {
+      this.instance = ret;
+      this.cdr.detectChanges();
+    });
+  }
+
   private format(data: any) {
     const files = data.files;
     this.list = Object.keys(files).map((key) => {
@@ -37,6 +37,7 @@ export class ZipComponent {
         date: files[key].date,
       };
     });
+    this.cdr.detectChanges();
   }
 
   url() {
@@ -49,7 +50,7 @@ export class ZipComponent {
   }
 
   download() {
-    const promises: Promise<any>[] = [];
+    const promises: Promise<void>[] = [];
     this.data.forEach((item) => {
       promises.push(this.zip.pushUrl(this.instance, item.path, item.url));
     });
@@ -60,12 +61,10 @@ export class ZipComponent {
           this.data = [];
         });
       },
-      (error: any) => {
+      (error: {}) => {
         console.warn(error);
         this.msg.error(JSON.stringify(error));
       },
     );
   }
-
-  // endregion
 }

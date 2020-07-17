@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
+import { G2MiniBarData } from '@delon/chart/mini-bar';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -10,9 +11,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class STDemoComponent implements OnInit {
   ps = 20;
   total = 200; // mock total
-  args: any = { _allow_anonymous: true };
+  args = { _allow_anonymous: true, userid: null };
   url = `https://api.randomuser.me/?results=20`;
-  events: any[] = [];
+  events: G2MiniBarData[] = [];
   scroll = { y: '230px' };
   columns: STColumn[] = [
     { title: 'id', index: 'id.value', type: 'checkbox' },
@@ -47,7 +48,7 @@ export class STDemoComponent implements OnInit {
         {
           text: 'Edit',
           click: (item) => this.message.info(`edit [${item.id.value}]`),
-          if: (item) => item.gender === 'female',
+          iif: (item) => item.gender === 'female',
         },
         {
           text: 'Delete',
@@ -57,11 +58,16 @@ export class STDemoComponent implements OnInit {
       ],
     },
   ];
+  loading = false;
 
-  constructor(public http: _HttpClient, private message: NzMessageService) {}
+  constructor(private http: _HttpClient, private message: NzMessageService) {}
 
   ngOnInit(): void {
-    this.http.get('/chart/visit').subscribe((res: any[]) => (this.events = res.slice(0, 8)));
+    this.loading = true;
+    this.http
+      .get('/chart/visit')
+      .subscribe((res: G2MiniBarData[]) => (this.events = res.slice(0, 8)))
+      .add(() => (this.loading = false));
   }
 
   fullChange(val: boolean) {

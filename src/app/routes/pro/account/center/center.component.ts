@@ -1,12 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
 import { Subscription, zip } from 'rxjs';
@@ -21,9 +13,10 @@ import { filter } from 'rxjs/operators';
 export class ProAccountCenterComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
   private router$: Subscription;
+  @ViewChild('tagInput', { static: false }) private tagInput: ElementRef<HTMLInputElement>;
   user: any;
   notice: any;
-  tabs: any[] = [
+  tabs = [
     {
       key: 'articles',
       tab: '文章 (8)',
@@ -37,13 +30,9 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
       tab: '项目 (8)',
     },
   ];
-
   pos = 0;
-
   taging = false;
   tagValue = '';
-  @ViewChild('tagInput', { static: false })
-  private tagInput: ElementRef;
 
   private setActive() {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
@@ -63,13 +52,13 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
     this.setActive();
   }
 
-  to(item: any) {
+  to(item: { key: string }) {
     this.router.navigateByUrl(`/pro/account/center/${item.key}`);
   }
   tagShowIpt() {
     this.taging = true;
     this.cdr.detectChanges();
-    (this.tagInput.nativeElement as HTMLInputElement).focus();
+    this.tagInput.nativeElement.focus();
   }
 
   tagBlur() {
