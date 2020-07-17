@@ -3,10 +3,14 @@
 set -e
 
 GH=false
+DAY=false
 for ARG in "$@"; do
   case "$ARG" in
     -gh)
       GH=true
+      ;;
+    -day)
+      DAY=true
       ;;
   esac
 done
@@ -21,7 +25,12 @@ VERSION=$(node -p "require('./package.json').version")
 
 echo "Start build version: ${VERSION}"
 
-bash ./scripts/_ci/delon.sh
+if [[ ${DAY} == true ]]; then
+  echo ""
+  echo "Download day @delon/* libs"
+  echo ""
+  bash ./scripts/_ci/delon.sh
+fi
 
 echo ""
 echo "Generate color less"
