@@ -28,20 +28,7 @@ const desc = [
   '那时候我只会想自己想要什么，从不想自己拥有什么',
 ];
 
-const user = [
-  '卡色',
-  'cipchk',
-  '付小小',
-  '曲丽丽',
-  '林东东',
-  '周星星',
-  '吴加好',
-  '朱偏右',
-  '鱼酱',
-  '乐哥',
-  '谭小仪',
-  '仲尼',
-];
+const user = ['卡色', 'cipchk', '付小小', '曲丽丽', '林东东', '周星星', '吴加好', '朱偏右', '鱼酱', '乐哥', '谭小仪', '仲尼'];
 
 // endregion
 
@@ -262,6 +249,7 @@ export const APIS = {
   '/api/list': (req: MockRequest) => getFakeList(req.queryString.count),
   '/api/notice': () => getNotice(),
   '/api/activities': () => getActivities(),
+  'POST /api/auth/refresh': { msg: 'ok', token: 'new-token-by-refresh' },
   '/api/401': () => {
     throw new MockStatusError(401);
   },
