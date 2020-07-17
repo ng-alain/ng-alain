@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
 import { _HttpClient } from '@delon/theme';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
 
@@ -11,14 +12,12 @@ import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProProfileAdvancedComponent implements OnInit {
-  list: any[] = [];
-
+  list: Array<{ [key: string]: NzSafeAny }> = [];
   data = {
     advancedOperation1: [],
     advancedOperation2: [],
     advancedOperation3: [],
   };
-
   opColumns: STColumn[] = [
     { title: '操作类型', index: 'type' },
     { title: '操作人', index: 'name' },
@@ -30,7 +29,7 @@ export class ProProfileAdvancedComponent implements OnInit {
   constructor(public msg: NzMessageService, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.http.get('/profile/advanced').subscribe((res: any) => {
+    this.http.get('/profile/advanced').subscribe((res) => {
       this.data = res;
       this.change({ index: 0, tab: null });
       this.cdr.detectChanges();

@@ -1,14 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NoticeIconList, NoticeItem } from '@delon/abc/notice-icon';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { NoticeIconList, NoticeIconSelect, NoticeItem } from '@delon/abc/notice-icon';
 import add from 'date-fns/add';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import parse from 'date-fns/parse';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
-/**
- * 菜单通知
- */
 @Component({
   selector: 'header-notify',
   template: `
@@ -52,9 +49,9 @@ export class HeaderNotifyComponent {
   count = 5;
   loading = false;
 
-  constructor(private msg: NzMessageService, private nzI18n: NzI18nService) {}
+  constructor(private msg: NzMessageService, private nzI18n: NzI18nService, private cdr: ChangeDetectorRef) {}
 
-  updateNoticeData(notices: NoticeIconList[]): NoticeItem[] {
+  private updateNoticeData(notices: NoticeIconList[]): NoticeItem[] {
     const data = this.data.slice();
     data.forEach((i) => (i.list = []));
 
@@ -79,7 +76,7 @@ export class HeaderNotifyComponent {
     return data;
   }
 
-  loadData() {
+  loadData(): void {
     if (this.loading) {
       return;
     }
@@ -182,14 +179,15 @@ export class HeaderNotifyComponent {
       ]);
 
       this.loading = false;
+      this.cdr.detectChanges();
     }, 500);
   }
 
-  clear(type: string) {
+  clear(type: string): void {
     this.msg.success(`清空了 ${type}`);
   }
 
-  select(res: any) {
+  select(res: NoticeIconSelect): void {
     this.msg.success(`点击了 ${res.title} 的 ${res.item.title}`);
   }
 }

@@ -13,7 +13,7 @@ export class ProProfileBaseComponent {
   basicNum = 0;
   amountNum = 0;
   goods = this.http.get('/profile/goods').pipe(
-    tap((list: any[]) => {
+    tap((list: Array<{ num: number; amount: number }>) => {
       list.forEach((item) => {
         this.basicNum += Number(item.num);
         this.amountNum += Number(item.amount);
@@ -25,7 +25,7 @@ export class ProProfileBaseComponent {
       title: '商品编号',
       index: 'id',
       type: 'link',
-      click: (item: any) => this.msg.success(`show ${item.id}`),
+      click: (item) => this.msg.success(`show ${item.id}`),
     },
     { title: '商品名称', index: 'name' },
     { title: '商品条码', index: 'barcode' },

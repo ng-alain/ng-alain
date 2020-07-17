@@ -8,7 +8,11 @@ import { TransferService } from './transfer.service';
   providers: [TransferService],
 })
 export class StepFormComponent implements AfterViewInit {
-  constructor(public item: TransferService) {}
+  get item() {
+    return this.srv;
+  }
+
+  constructor(private srv: TransferService) {}
 
   ngAfterViewInit() {
     console.log('item', this.item);

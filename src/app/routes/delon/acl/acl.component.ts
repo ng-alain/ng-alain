@@ -11,7 +11,11 @@ export class ACLComponent {
   roleA = '';
   roleB = '';
 
-  constructor(public aclSrv: ACLService, private menuSrv: MenuService) {}
+  get data() {
+    return this.aclSrv.data;
+  }
+
+  constructor(private aclSrv: ACLService, private menuSrv: MenuService) {}
 
   private reMenu() {
     this.menuSrv.resume();

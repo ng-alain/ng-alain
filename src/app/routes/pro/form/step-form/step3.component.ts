@@ -7,5 +7,9 @@ import { TransferService } from './transfer.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Step3Component {
-  constructor(public item: TransferService) {}
+  get item() {
+    return this.srv;
+  }
+
+  constructor(private srv: TransferService) {}
 }

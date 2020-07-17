@@ -10,28 +10,39 @@ import { ProBasicListEditComponent } from './edit/edit.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProBasicListComponent implements OnInit {
-  q: any = {
+  q = {
+    q: '',
     status: 'all',
   };
   loading = false;
-  data: any[] = [];
+  data: Array<{
+    id: number;
+    title: string;
+    subDescription: string;
+    href: string;
+    logo: string;
+    owner: string;
+    createdAt: Date;
+    percent: number;
+    status: string;
+  }> = [];
 
-  constructor(private http: _HttpClient, public msg: NzMessageService, private modal: ModalHelper, private cdr: ChangeDetectorRef) {}
+  constructor(private http: _HttpClient, private msg: NzMessageService, private modal: ModalHelper, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getData();
   }
 
-  getData() {
+  getData(): void {
     this.loading = true;
-    this.http.get('/api/list', { count: 5 }).subscribe((res: any) => {
+    this.http.get('/api/list', { count: 5 }).subscribe((res) => {
       this.data = res;
       this.loading = false;
       this.cdr.detectChanges();
     });
   }
 
-  openEdit(record: any = {}) {
+  openEdit(record: { id?: number } = {}): void {
     this.modal.create(ProBasicListEditComponent, { record }, { size: 'md' }).subscribe((res) => {
       if (record.id) {
         record = { ...record, id: 'mock_id', percent: 0, ...res };
@@ -41,5 +52,9 @@ export class ProBasicListComponent implements OnInit {
       }
       this.cdr.detectChanges();
     });
+  }
+
+  remove(title: string): void {
+    this.msg.success(`删除：${title}`);
   }
 }

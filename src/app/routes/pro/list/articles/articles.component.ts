@@ -10,10 +10,12 @@ export class ProListArticlesComponent implements OnInit {
   // endregion
 
   constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {}
-  q: any = {
+  q = {
     ps: 5,
     categories: [],
     owners: ['zxx'],
+    user: '',
+    rate: '',
   };
 
   list: any[] = [];
@@ -63,7 +65,7 @@ export class ProListArticlesComponent implements OnInit {
 
   changeCategory(status: boolean, idx: number) {
     if (idx === 0) {
-      this.categories.map(i => (i.value = status));
+      this.categories.map((i) => (i.value = status));
     } else {
       this.categories[idx].value = status;
     }
@@ -81,7 +83,7 @@ export class ProListArticlesComponent implements OnInit {
 
   getData(more = false) {
     this.loading = true;
-    this.http.get('/api/list', { count: this.q.ps }).subscribe((res: any) => {
+    this.http.get('/api/list', { count: this.q.ps }).subscribe((res) => {
       this.list = more ? this.list.concat(res) : res;
       this.loading = false;
       this.cdr.detectChanges();

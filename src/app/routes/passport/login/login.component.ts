@@ -62,8 +62,8 @@ export class UserLoginComponent implements OnDestroy {
 
   // #endregion
 
-  switch(ret: any) {
-    this.type = ret.index;
+  switch({ index }: { index: number }): void {
+    this.type = index;
   }
 
   getCaptcha() {
@@ -111,7 +111,7 @@ export class UserLoginComponent implements OnDestroy {
         userName: this.userName.value,
         password: this.password.value,
       })
-      .subscribe((res: any) => {
+      .subscribe((res) => {
         if (res.msg !== 'ok') {
           this.error = res.msg;
           return;

@@ -11,9 +11,10 @@ import { map, tap } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProTableListComponent implements OnInit {
-  q: any = {
+  q = {
     pi: 1,
     ps: 10,
+    no: '',
     sorter: '',
     status: null,
     statusList: [],
@@ -42,8 +43,10 @@ export class ProTableListComponent implements OnInit {
       title: '服务调用次数',
       index: 'callNo',
       type: 'number',
-      format: (item: any) => `${item.callNo} 万`,
-      sorter: (a: any, b: any) => a.callNo - b.callNo,
+      format: (item) => `${item.callNo} 万`,
+      sort: {
+        compare: (a, b) => a.callNo - b.callNo,
+      },
     },
     {
       title: '状态',
@@ -51,7 +54,7 @@ export class ProTableListComponent implements OnInit {
       render: 'status',
       filter: {
         menus: this.status,
-        fn: (filter: any, record: any) => record.status === filter.index,
+        fn: (filter, record) => record.status === filter.index,
       },
     },
     {
@@ -59,7 +62,7 @@ export class ProTableListComponent implements OnInit {
       index: 'updatedAt',
       type: 'date',
       sort: {
-        compare: (a: any, b: any) => a.updatedAt - b.updatedAt,
+        compare: (a, b) => a.updatedAt - b.updatedAt,
       },
     },
     {
@@ -67,11 +70,11 @@ export class ProTableListComponent implements OnInit {
       buttons: [
         {
           text: '配置',
-          click: (item: any) => this.msg.success(`配置${item.no}`),
+          click: (item) => this.msg.success(`配置${item.no}`),
         },
         {
           text: '订阅警报',
-          click: (item: any) => this.msg.success(`订阅警报${item.no}`),
+          click: (item) => this.msg.success(`订阅警报${item.no}`),
         },
       ],
     },
@@ -96,7 +99,7 @@ export class ProTableListComponent implements OnInit {
     this.http
       .get('/rule', this.q)
       .pipe(
-        map((list: any[]) =>
+        map((list: Array<{ status: number; statusText: string; statusType: string }>) =>
           list.map((i) => {
             const statusItem = this.status[i.status];
             i.statusText = statusItem.text;

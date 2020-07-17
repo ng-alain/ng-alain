@@ -15,17 +15,18 @@ import {
 } from '@delon/theme';
 import { TranslateService } from '@ngx-translate/core';
 import { enUS as dfEn, zhCN as dfZhCn, zhTW as dfZhTw } from 'date-fns/locale';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { en_US as zorroEnUS, NzI18nService, zh_CN as zorroZhCN, zh_TW as zorroZhTW } from 'ng-zorro-antd/i18n';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 interface LangData {
-  text: string;
-  ng: any;
-  zorro: any;
-  date: any;
-  delon: any;
   abbr: string;
+  text: string;
+  ng: NzSafeAny;
+  zorro: NzSafeAny;
+  date: NzSafeAny;
+  delon: NzSafeAny;
 }
 
 const DEFAULT = 'zh-CN';

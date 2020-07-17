@@ -6,5 +6,9 @@ import { ColorService } from '../color.service';
   templateUrl: './typography.component.html',
 })
 export class TypographyComponent {
-  constructor(public c: ColorService) {}
+  get names() {
+    return this.colorSrv.names;
+  }
+
+  constructor(private colorSrv: ColorService) {}
 }

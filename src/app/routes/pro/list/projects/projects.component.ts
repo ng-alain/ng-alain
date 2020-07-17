@@ -9,14 +9,14 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProListProjectsComponent implements OnInit {
-  q: any = {
+  q = {
     ps: 8,
     categories: [],
     owners: ['zxx'],
+    user: null,
+    rate: null,
   };
-
   list: any[] = [];
-
   loading = true;
 
   // region: cateogry
@@ -54,7 +54,7 @@ export class ProListProjectsComponent implements OnInit {
 
   getData() {
     this.loading = true;
-    this.http.get('/api/list', { count: this.q.ps }).subscribe((res: any) => {
+    this.http.get('/api/list', { count: this.q.ps }).subscribe((res) => {
       this.list = this.list.concat(res);
       this.loading = false;
       this.cdr.detectChanges();

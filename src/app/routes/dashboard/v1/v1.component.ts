@@ -7,7 +7,7 @@ import { _HttpClient } from '@delon/theme';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardV1Component implements OnInit {
-  todoData: any[] = [
+  todoData = [
     {
       completed: true,
       avatar: '1',
@@ -53,7 +53,7 @@ export class DashboardV1Component implements OnInit {
   constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.http.get('/chart').subscribe((res: any) => {
+    this.http.get('/chart').subscribe((res) => {
       this.webSite = res.visitData.slice(0, 10);
       this.salesData = res.salesData;
       this.offlineChartData = res.offlineChartData;

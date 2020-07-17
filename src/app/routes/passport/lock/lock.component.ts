@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
-import { SettingsService } from '@delon/theme';
+import { SettingsService, User } from '@delon/theme';
 
 @Component({
   selector: 'passport-lock',
@@ -12,10 +12,14 @@ import { SettingsService } from '@delon/theme';
 export class UserLockComponent {
   f: FormGroup;
 
+  get user(): User {
+    return this.settings.user;
+  }
+
   constructor(
     fb: FormBuilder,
     @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
-    public settings: SettingsService,
+    private settings: SettingsService,
     private router: Router,
   ) {
     this.f = fb.group({
