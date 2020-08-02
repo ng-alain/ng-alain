@@ -28,7 +28,7 @@ export class ProProfileAdvancedComponent implements OnInit {
 
   constructor(public msg: NzMessageService, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.http.get('/profile/advanced').subscribe((res) => {
       this.data = res;
       this.change({ index: 0, tab: null });
@@ -36,7 +36,7 @@ export class ProProfileAdvancedComponent implements OnInit {
     });
   }
 
-  change(args: NzTabChangeEvent) {
+  change(args: NzTabChangeEvent): void {
     this.list = this.data[`advancedOperation${args.index + 1}`];
   }
 }

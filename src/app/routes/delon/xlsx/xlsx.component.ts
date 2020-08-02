@@ -8,6 +8,7 @@ import { XlsxService } from '@delon/abc/xlsx';
 })
 export class XlsxComponent {
   constructor(private xlsx: XlsxService) {}
+
   data: any;
   users: Array<{ id: number; name: string; age: number }> = Array(100)
     .fill(0)
@@ -24,16 +25,17 @@ export class XlsxComponent {
     { title: '姓名', index: 'name' },
     { title: '年龄', index: 'age' },
   ];
-  url() {
+
+  url(): void {
     this.xlsx.import(`./assets/tmp/demo.xlsx`).then((res) => (this.data = res));
   }
 
-  change(e: Event) {
+  change(e: Event): void {
     const file = (e.target as HTMLInputElement).files[0];
     this.xlsx.import(file).then((res) => (this.data = res));
   }
 
-  download() {
+  download(): void {
     const data = [this.columns.map((i) => i.title)];
     this.users.forEach((i) => data.push(this.columns.map((c) => i[c.index as string])));
     this.xlsx.export({

@@ -41,7 +41,7 @@ export class HeaderUserComponent {
 
   constructor(private settings: SettingsService, private router: Router, @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService) {}
 
-  logout() {
+  logout(): void {
     this.tokenService.clear();
     this.router.navigateByUrl(this.tokenService.login_url);
   }

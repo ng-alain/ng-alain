@@ -55,7 +55,7 @@ export class WidgetsComponent implements OnInit {
 
   constructor(public msg: NzMessageService, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.http.get('/chart/visit').subscribe((res: G2MiniBarData[]) => {
       this.data = res;
       this.smallData = res.slice(0, 6);

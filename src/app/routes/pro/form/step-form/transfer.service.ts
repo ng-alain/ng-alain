@@ -14,7 +14,7 @@ export class TransferService {
    */
   receiver_type: 'alipay' | 'bank';
 
-  get receiver_type_str() {
+  get receiver_type_str(): string {
     return this.receiver_type === 'alipay' ? '支付宝' : '银行';
   }
 
@@ -38,7 +38,7 @@ export class TransferService {
    */
   password = '123456';
 
-  again() {
+  again(): void {
     this.step = 0;
     this.pay_account = 'ant-design@alipay.com';
     this.receiver_type = 'alipay';

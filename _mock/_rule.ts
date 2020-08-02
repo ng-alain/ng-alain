@@ -24,7 +24,7 @@ for (let i = 0; i < 46; i += 1) {
   });
 }
 
-function getRule(params: any) {
+function getRule(params: any): any[] {
   let ret = [...list];
   if (params.sorter) {
     const s = params.sorter.split('_');
@@ -36,23 +36,25 @@ function getRule(params: any) {
     });
   }
   if (params.statusList && params.statusList.length > 0) {
-    ret = ret.filter(data => params.statusList.indexOf(data.status) > -1);
+    ret = ret.filter((data) => params.statusList.indexOf(data.status) > -1);
   }
   if (params.no) {
-    ret = ret.filter(data => data.no.indexOf(params.no) > -1);
+    ret = ret.filter((data) => data.no.indexOf(params.no) > -1);
   }
   return ret;
 }
 
 function removeRule(nos: string): boolean {
-  nos.split(',').forEach(no => {
-    const idx = list.findIndex(w => w.no === no);
-    if (idx !== -1) { list.splice(idx, 1); }
+  nos.split(',').forEach((no) => {
+    const idx = list.findIndex((w) => w.no === no);
+    if (idx !== -1) {
+      list.splice(idx, 1);
+    }
   });
   return true;
 }
 
-function saveRule(description: string) {
+function saveRule(description: string): void {
   const i = Math.ceil(Math.random() * 10000);
   list.unshift({
     key: i,

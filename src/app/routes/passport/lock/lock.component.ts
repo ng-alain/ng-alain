@@ -27,7 +27,7 @@ export class UserLockComponent {
     });
   }
 
-  submit() {
+  submit(): void {
     // tslint:disable-next-line:forin
     for (const i in this.f.controls) {
       this.f.controls[i].markAsDirty();

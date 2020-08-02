@@ -43,9 +43,9 @@ export class ExtrasPoiComponent {
     },
   ];
 
-  constructor(public msg: NzMessageService, private modal: ModalHelper) {}
+  constructor(private msg: NzMessageService, private modal: ModalHelper) {}
 
-  add() {
+  add(): void {
     this.modal.static(ExtrasPoiEditComponent, { i: { id: 0 } }).subscribe(() => {
       this.st.load();
       this.msg.info('回调，重新发起列表刷新');

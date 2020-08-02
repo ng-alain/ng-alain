@@ -8,13 +8,13 @@ import { MenuService } from '@delon/theme';
   templateUrl: './guard.component.html',
 })
 export class GuardComponent {
-  get data() {
+  get data(): any {
     return this.aclSrv.data;
   }
 
   constructor(private aclSrv: ACLService, private menuSrv: MenuService, private router: Router) {}
 
-  setRole(value: string | boolean) {
+  setRole(value: string | boolean): void {
     this.aclSrv.setFull(typeof value === 'boolean' ? value : false);
     this.aclSrv.set({ role: [value as string] });
     this.menuSrv.resume();

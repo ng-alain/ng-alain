@@ -86,11 +86,11 @@ export class ProTableListComponent implements OnInit {
 
   constructor(private http: _HttpClient, public msg: NzMessageService, private modalSrv: NzModalService, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getData();
   }
 
-  getData() {
+  getData(): void {
     this.loading = true;
     this.q.statusList = this.status.filter((w) => w.checked).map((item) => item.index);
     if (this.q.status !== null && this.q.status > -1) {
@@ -115,7 +115,7 @@ export class ProTableListComponent implements OnInit {
       });
   }
 
-  stChange(e: STChange) {
+  stChange(e: STChange): void {
     switch (e.type) {
       case 'checkbox':
         this.selectedRows = e.checkbox;
@@ -128,18 +128,18 @@ export class ProTableListComponent implements OnInit {
     }
   }
 
-  remove() {
+  remove(): void {
     this.http.delete('/rule', { nos: this.selectedRows.map((i) => i.no).join(',') }).subscribe(() => {
       this.getData();
       this.st.clearCheck();
     });
   }
 
-  approval() {
+  approval(): void {
     this.msg.success(`审批了 ${this.selectedRows.length} 笔`);
   }
 
-  add(tpl: TemplateRef<{}>) {
+  add(tpl: TemplateRef<{}>): void {
     this.modalSrv.create({
       nzTitle: '新建规则',
       nzContent: tpl,
@@ -150,7 +150,7 @@ export class ProTableListComponent implements OnInit {
     });
   }
 
-  reset() {
+  reset(): void {
     // wait form reset updated finished
     setTimeout(() => this.getData());
   }

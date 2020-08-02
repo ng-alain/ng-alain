@@ -57,7 +57,7 @@ export class DashboardV1Component implements OnInit {
     setTimeout(() => this.genOnboarding(), 1000);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.http.get('/chart').subscribe((res) => {
       this.webSite = res.visitData.slice(0, 10);
       this.salesData = res.salesData;

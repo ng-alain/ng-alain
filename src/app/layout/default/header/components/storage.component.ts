@@ -18,7 +18,7 @@ export class HeaderStorageComponent {
   constructor(private modalSrv: NzModalService, private messageSrv: NzMessageService) {}
 
   @HostListener('click')
-  _click() {
+  _click(): void {
     this.modalSrv.confirm({
       nzTitle: 'Make sure clear all local storage?',
       nzOnOk: () => {

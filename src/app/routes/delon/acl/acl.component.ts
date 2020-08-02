@@ -11,23 +11,27 @@ export class ACLComponent {
   roleA = '';
   roleB = '';
 
-  get data() {
+  get data(): {
+    full: boolean;
+    roles: string[];
+    abilities: (string | number)[];
+  } {
     return this.aclSrv.data;
   }
 
   constructor(private aclSrv: ACLService, private menuSrv: MenuService) {}
 
-  private reMenu() {
+  private reMenu(): void {
     this.menuSrv.resume();
   }
 
-  toggleFull() {
+  toggleFull(): void {
     this.full = !this.full;
     this.aclSrv.setFull(this.full);
     this.reMenu();
   }
 
-  toggleRoleA() {
+  toggleRoleA(): void {
     this.full = false;
     this.roleA = this.roleA === 'role-a' ? '' : 'role-a';
     this.aclSrv.setFull(this.full);
@@ -35,7 +39,7 @@ export class ACLComponent {
     this.reMenu();
   }
 
-  toggleRoleB() {
+  toggleRoleB(): void {
     this.full = false;
     this.roleB = this.roleB === 'role-b' ? '' : 'role-b';
     this.aclSrv.setFull(this.full);

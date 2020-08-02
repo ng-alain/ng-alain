@@ -40,12 +40,12 @@ export class ProBasicListEditComponent {
 
   constructor(private modal: NzModalRef, private msgSrv: NzMessageService) {}
 
-  save(value: any) {
+  save(value: any): void {
     this.msgSrv.success('保存成功');
     this.modal.close(value);
   }
 
-  close() {
+  close(): void {
     this.modal.destroy();
   }
 }

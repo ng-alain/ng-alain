@@ -63,7 +63,7 @@ export class ProListArticlesComponent implements OnInit {
     },
   ];
 
-  changeCategory(status: boolean, idx: number) {
+  changeCategory(status: boolean, idx: number): void {
     if (idx === 0) {
       this.categories.map((i) => (i.value = status));
     } else {
@@ -71,17 +71,17 @@ export class ProListArticlesComponent implements OnInit {
     }
   }
 
-  setOwner() {
+  setOwner(): void {
     this.q.owners = [`wzj`];
     // TODO: wait nz-dropdown OnPush mode
     setTimeout(() => this.cdr.detectChanges());
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getData();
   }
 
-  getData(more = false) {
+  getData(more: boolean = false): void {
     this.loading = true;
     this.http.get('/api/list', { count: this.q.ps }).subscribe((res) => {
       this.list = more ? this.list.concat(res) : res;

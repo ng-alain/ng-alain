@@ -66,7 +66,7 @@ export class DashboardAnalysisComponent implements OnInit {
 
   offlineIdx = 0;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.http.get('/chart').subscribe((res) => {
       res.offlineData.forEach((item: any, idx: number) => {
         item.show = idx === 0;
@@ -78,11 +78,11 @@ export class DashboardAnalysisComponent implements OnInit {
     });
   }
 
-  setDate(type: 'today' | 'week' | 'month' | 'year') {
+  setDate(type: 'today' | 'week' | 'month' | 'year'): void {
     this.date_range = getTimeDistance(type);
     setTimeout(() => this.cdr.detectChanges());
   }
-  changeSaleType() {
+  changeSaleType(): void {
     this.salesPieData =
       this.salesType === 'all'
         ? this.data.salesTypeData
@@ -95,16 +95,16 @@ export class DashboardAnalysisComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
-  handlePieValueFormat(value: string | number) {
+  handlePieValueFormat(value: string | number): string {
     return yuan(value);
   }
-  salesChange(idx: number) {
+  salesChange(idx: number): void {
     if (this.saleTabs[idx].show !== true) {
       this.saleTabs[idx].show = true;
       this.cdr.detectChanges();
     }
   }
-  offlineChange(idx: number) {
+  offlineChange(idx: number): void {
     if (this.data.offlineData[idx].show !== true) {
       this.data.offlineData[idx].show = true;
       this.cdr.detectChanges();

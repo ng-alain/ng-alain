@@ -40,7 +40,7 @@ export class PrintComponent {
 
   printing = false;
 
-  reload(options: { url: string } = { url: 'https://localhost:8443/CLodopfuncs.js' }) {
+  reload(options: { url: string } = { url: 'https://localhost:8443/CLodopfuncs.js' }): void {
     this.pinters = [];
     this.papers = [];
     this.cog.printer = '';
@@ -53,13 +53,13 @@ export class PrintComponent {
     }
   }
 
-  changePinter(name: string) {
+  changePinter(name: string): void {
     if (this.lodop == null) {
       return;
     }
     this.papers = this.lodop.GET_PAGESIZES_LIST(name, '\n').split('\n');
   }
-  print(isPrivew = false) {
+  print(isPrivew: boolean = false): void {
     const LODOP = this.lodop as Lodop;
     LODOP.PRINT_INITA(10, 20, 810, 610, '测试C-Lodop远程打印四步骤');
     LODOP.SET_PRINTER_INDEXA(this.cog.printer);

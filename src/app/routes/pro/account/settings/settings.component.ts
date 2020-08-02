@@ -37,7 +37,7 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
     this.router$ = this.router.events.pipe(filter((e) => e instanceof ActivationEnd)).subscribe(() => this.setActive());
   }
 
-  private setActive() {
+  private setActive(): void {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
     this.menus.forEach((i) => {
       i.selected = i.key === key;
@@ -45,11 +45,11 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
     this.title = this.menus.find((w) => w.selected).title;
   }
 
-  to(item: { key: string }) {
+  to(item: { key: string }): void {
     this.router.navigateByUrl(`/pro/account/settings/${item.key}`);
   }
 
-  private resize() {
+  private resize(): void {
     const el = this.el.nativeElement;
     let mode = 'inline';
     const { offsetWidth } = el;

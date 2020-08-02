@@ -27,7 +27,7 @@ export class BasicFormComponent implements OnInit {
     });
   }
 
-  submit() {
+  submit(): void {
     this.submitting = true;
     setTimeout(() => {
       this.submitting = false;

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TransferService } from './transfer.service';
 
 @Component({
@@ -9,13 +9,13 @@ import { TransferService } from './transfer.service';
 })
 export class Step1Component implements OnInit {
   form: FormGroup;
-  get item() {
+  get item(): TransferService {
     return this.srv;
   }
 
   constructor(private fb: FormBuilder, private srv: TransferService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = this.fb.group({
       pay_account: [null, Validators.compose([Validators.required, Validators.email])],
       receiver_type: [null, [Validators.required]],
@@ -30,24 +30,24 @@ export class Step1Component implements OnInit {
   }
 
   //#region get form fields
-  get pay_account() {
+  get pay_account(): AbstractControl {
     return this.form.controls.pay_account;
   }
-  get receiver_type() {
+  get receiver_type(): AbstractControl {
     return this.form.controls.receiver_type;
   }
-  get receiver_account() {
+  get receiver_account(): AbstractControl {
     return this.form.controls.receiver_account;
   }
-  get receiver_name() {
+  get receiver_name(): AbstractControl {
     return this.form.controls.receiver_name;
   }
-  get amount() {
+  get amount(): AbstractControl {
     return this.form.controls.amount;
   }
   //#endregion
 
-  _submitForm() {
+  _submitForm(): void {
     Object.assign(this.item, this.form.value);
     ++this.item.step;
   }

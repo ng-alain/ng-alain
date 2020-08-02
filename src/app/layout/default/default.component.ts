@@ -63,7 +63,7 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
     });
   }
 
-  private setClass() {
+  private setClass(): void {
     const { el, doc, renderer, settings } = this;
     const layout = settings.layout;
     updateHostClass(el.nativeElement, renderer, {
@@ -85,13 +85,13 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
     }
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     const { settings, unsubscribe$ } = this;
     settings.notify.pipe(takeUntil(unsubscribe$)).subscribe(() => this.setClass());
     this.setClass();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     const { unsubscribe$ } = this;
     unsubscribe$.next();
     unsubscribe$.complete();

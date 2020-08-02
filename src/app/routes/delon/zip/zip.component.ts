@@ -28,7 +28,7 @@ export class ZipComponent implements OnInit {
     });
   }
 
-  private format(data: any) {
+  private format(data: any): void {
     const files = data.files;
     this.list = Object.keys(files).map((key) => {
       return {
@@ -40,16 +40,16 @@ export class ZipComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
-  url() {
+  url(): void {
     this.zip.read(`./assets/tmp/demo.zip`).then((res) => this.format(res));
   }
 
-  change(e: Event) {
+  change(e: Event): void {
     const file = (e.target as HTMLInputElement).files[0];
     this.zip.read(file).then((res) => this.format(res));
   }
 
-  download() {
+  download(): void {
     const promises: Promise<void>[] = [];
     this.data.forEach((item) => {
       promises.push(this.zip.pushUrl(this.instance, item.path, item.url));

@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -23,19 +23,19 @@ export class UserRegisterComponent implements OnDestroy {
 
   // #region fields
 
-  get mail() {
+  get mail(): AbstractControl {
     return this.form.controls.mail;
   }
-  get password() {
+  get password(): AbstractControl {
     return this.form.controls.password;
   }
-  get confirm() {
+  get confirm(): AbstractControl {
     return this.form.controls.confirm;
   }
-  get mobile() {
+  get mobile(): AbstractControl {
     return this.form.controls.mobile;
   }
-  get captcha() {
+  get captcha(): AbstractControl {
     return this.form.controls.captcha;
   }
   form: FormGroup;
@@ -57,7 +57,7 @@ export class UserRegisterComponent implements OnDestroy {
   count = 0;
   interval$: any;
 
-  static checkPassword(control: FormControl) {
+  static checkPassword(control: FormControl): void {
     if (!control) {
       return null;
     }
@@ -76,7 +76,7 @@ export class UserRegisterComponent implements OnDestroy {
     }
   }
 
-  static passwordEquar(control: FormControl) {
+  static passwordEquar(control: FormControl): { equar: boolean } | null {
     if (!control || !control.parent) {
       return null;
     }
@@ -86,7 +86,7 @@ export class UserRegisterComponent implements OnDestroy {
     return null;
   }
 
-  getCaptcha() {
+  getCaptcha(): void {
     if (this.mobile.invalid) {
       this.mobile.markAsDirty({ onlySelf: true });
       this.mobile.updateValueAndValidity({ onlySelf: true });
@@ -103,7 +103,7 @@ export class UserRegisterComponent implements OnDestroy {
 
   // #endregion
 
-  submit() {
+  submit(): void {
     this.error = '';
     Object.keys(this.form.controls).forEach((key) => {
       this.form.controls[key].markAsDirty();

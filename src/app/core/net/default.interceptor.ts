@@ -53,11 +53,11 @@ export class DefaultInterceptor implements HttpInterceptor {
     return this.injector.get(_HttpClient);
   }
 
-  private goTo(url: string) {
+  private goTo(url: string): void {
     setTimeout(() => this.injector.get(Router).navigateByUrl(url));
   }
 
-  private checkStatus(ev: HttpResponseBase) {
+  private checkStatus(ev: HttpResponseBase): void {
     if ((ev.status >= 200 && ev.status < 300) || ev.status === 401) {
       return;
     }

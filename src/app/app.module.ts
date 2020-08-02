@@ -35,7 +35,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // 加载i18n语言文件
-export function I18nHttpLoaderFactory(http: HttpClient) {
+export function I18nHttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, `assets/tmp/i18n/`, '.json');
 }
 
@@ -76,7 +76,7 @@ const INTERCEPTOR_PROVIDES = [
 
 // #region Startup Service
 import { StartupService } from '@core';
-export function StartupServiceFactory(startupService: StartupService) {
+export function StartupServiceFactory(startupService: StartupService): () => Promise<void> {
   return () => startupService.load();
 }
 const APPINIT_PROVIDES = [

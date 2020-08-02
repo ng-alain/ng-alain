@@ -6,7 +6,7 @@ import { ColorService } from '../color.service';
   templateUrl: './typography.component.html',
 })
 export class TypographyComponent {
-  get names() {
+  get names(): string[] {
     return this.colorSrv.names;
   }
 

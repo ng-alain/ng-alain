@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TransferService } from './transfer.service';
 
 @Component({
@@ -10,13 +10,13 @@ import { TransferService } from './transfer.service';
 export class Step2Component implements OnInit {
   form: FormGroup;
   loading = false;
-  get item() {
+  get item(): TransferService {
     return this.srv;
   }
 
   constructor(private fb: FormBuilder, private srv: TransferService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = this.fb.group({
       password: [null, Validators.compose([Validators.required, Validators.minLength(6)])],
     });
@@ -24,12 +24,12 @@ export class Step2Component implements OnInit {
   }
 
   //#region get form fields
-  get password() {
+  get password(): AbstractControl {
     return this.form.controls.password;
   }
   //#endregion
 
-  _submitForm() {
+  _submitForm(): void {
     this.loading = true;
     setTimeout(() => {
       this.loading = false;
@@ -37,7 +37,7 @@ export class Step2Component implements OnInit {
     }, 500);
   }
 
-  prev() {
+  prev(): void {
     --this.item.step;
   }
 }

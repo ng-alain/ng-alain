@@ -21,8 +21,10 @@ export class SettingDrawerItemComponent {
   }
 
   pxVal: number;
-  pxChange(val: number) {
+
+  pxChange(val: number): void {
     this.i.value = `${val}px`;
   }
-  format = (value) => `${value} px`;
+
+  format = (value: string) => `${value} px`;
 }

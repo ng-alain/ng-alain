@@ -78,7 +78,7 @@ export class DashboardWorkplaceComponent implements OnInit {
 
   constructor(private http: _HttpClient, public msg: NzMessageService, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     zip(this.http.get('/chart'), this.http.get('/api/notice'), this.http.get('/api/activities')).subscribe(
       ([chart, notice, activities]: [any, any, any]) => {
         this.radarData = chart.radarData;
