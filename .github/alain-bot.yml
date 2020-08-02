@@ -1,0 +1,28 @@
+issue:
+  translate:
+    replay: |
+      Translation of this issue:
+      ---
+      ## {title}
+
+      {body}
+  needReproduce:
+    label: Need Reproduce
+    afterLabel: Need More Info
+    replay: |
+      Hello @{user}. Please provide a online reproduction by forking this link https://stackblitz.com/edit/ng-alain-setup or a minimal GitHub repository.
+      Issues labeled by `Need Reproduce` will be closed if no activities in 7 days.
+
+      你好 @{user}, 我们需要你提供一个在线的重现实例以便于我们帮你排查问题。你可以通过点击 [此处](https://stackblitz.com/edit/ng-alain-setup) 创建一个 stackblitz 或者提供一个最小化的 GitHub 仓库
+      被标记为 `Need Reproduce` 的 issue 7 天内未跟进将会被自动关闭。
+      ![](https://gw.alipayobjects.com/zos/antfincdn/y9kwg7DVCd/reproduce.gif)
+  invalid:
+    mark: ng-alain-issue-helper
+    labels: Invalid
+    replay: |
+      Hello @{user}, your issue has been closed because it does not conform to our issue requirements.
+      Please use the [Issue Helper](https://ng-alain.com/issue-helper/) to create an issue, thank you!
+
+
+      你好 @{user}，为了能够进行高效沟通，我们对 issue 有一定的格式要求，你的 issue 因为不符合要求而被自动关闭。
+      你可以通过 [issue 助手](https://ng-alain.com/issue-helper/#zh) 来创建 issue 以方便我们定位错误。谢谢配合！
