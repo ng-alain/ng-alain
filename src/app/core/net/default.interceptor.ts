@@ -31,12 +31,15 @@ const CODEMESSAGE = {
  */
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-  // 是否开启当 Token 过期后重新调用刷新 Token 接口，并在刷新 Token 后再一次发起请求
-  private refreshTokenEnabled = true;
+  private refreshTokenType: 're-request' | 'auth-refresh' = 'auth-refresh';
   private refreshToking = false;
   private refreshToken$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  constructor(private injector: Injector) {}
+  constructor(private injector: Injector) {
+    if (this.refreshTokenType === 'auth-refresh') {
+      this.buildAuthRefresh();
+    }
+  }
 
   private get notification(): NzNotificationService {
     return this.injector.get(NzNotificationService);
@@ -63,9 +66,19 @@ export class DefaultInterceptor implements HttpInterceptor {
     this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, errortext);
   }
 
+  /**
+   * 刷新 Token 请求
+   */
+  private refreshTokenRequest(): Observable<any> {
+    const model = this.tokenSrv.get();
+    return this.http.post(`/api/auth/refresh`, null, null, { headers: { refresh_token: model.refresh_token || '' } });
+  }
+
+  // #region 刷新Token方式一：使用 401 重新刷新 Token
+
   private tryRefreshToken(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // 1、若请求为刷新Token请求，表示来自刷新Token可以直接跳转登录页
-    if (!this.refreshTokenEnabled || [`/api/auth/refresh`].some((url) => req.url.includes(url))) {
+    if ([`/api/auth/refresh`].some((url) => req.url.includes(url))) {
       this.toLogin();
       return throwError(ev);
     }
@@ -100,14 +113,6 @@ export class DefaultInterceptor implements HttpInterceptor {
   }
 
   /**
-   * 刷新 Token 请求
-   */
-  private refreshTokenRequest(): Observable<any> {
-    const model = this.tokenSrv.get();
-    return this.http.post(`/api/auth/refresh`, null, null, { headers: { refresh_token: model.refresh_token || '' } });
-  }
-
-  /**
    * 重新附加新 Token 信息
    *
    * > 由于已经发起的请求，不会再走一遍 `@delon/auth` 因此需要结合业务情况重新附加新的 Token
@@ -121,6 +126,32 @@ export class DefaultInterceptor implements HttpInterceptor {
       },
     });
   }
+
+  // #endregion
+
+  // #region 刷新Token方式二：使用 `@delon/auth` 的 `refresh` 接口
+
+  private buildAuthRefresh(): void {
+    this.tokenSrv.refresh
+      .pipe(
+        filter(() => !this.refreshToking),
+        switchMap(() => {
+          this.refreshToking = true;
+          return this.refreshTokenRequest();
+        }),
+      )
+      .subscribe(
+        (res) => {
+          // TODO: Mock expired value
+          res.expired = +new Date() + 1000 * 60 * 5;
+          this.refreshToking = false;
+          this.tokenSrv.set(res);
+        },
+        () => this.toLogin(),
+      );
+  }
+
+  // #endregion
 
   private toLogin(): void {
     this.notification.error(`未登录或登录已过期，请重新登录。`, ``);
@@ -157,7 +188,11 @@ export class DefaultInterceptor implements HttpInterceptor {
         // }
         break;
       case 401:
-        return this.tryRefreshToken(ev, req, next);
+        if (this.refreshTokenType === 're-request') {
+          return this.tryRefreshToken(ev, req, next);
+        }
+        this.toLogin();
+        break;
       case 403:
       case 404:
       case 500:
