@@ -20,12 +20,12 @@ export class HeaderFullScreenComponent {
   }
 
   @HostListener('window:resize')
-  _resize() {
+  _resize(): void {
     this.status = this.sf.isFullscreen;
   }
 
   @HostListener('click')
-  _click() {
+  _click(): void {
     if (this.sf.isEnabled) {
       this.sf.toggle();
     }

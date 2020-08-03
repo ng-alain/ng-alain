@@ -61,7 +61,7 @@ export class HeaderIconComponent {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  change() {
+  change(): void {
     setTimeout(() => {
       this.loading = false;
       this.cdr.detectChanges();

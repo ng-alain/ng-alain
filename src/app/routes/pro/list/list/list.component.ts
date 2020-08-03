@@ -28,7 +28,7 @@ export class ProListLayoutComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router) {}
 
-  private setActive() {
+  private setActive(): void {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
     const idx = this.tabs.findIndex((w) => w.key === key);
     if (idx !== -1) {
@@ -41,11 +41,11 @@ export class ProListLayoutComponent implements OnInit, OnDestroy {
     this.setActive();
   }
 
-  to(item: { key: string }) {
+  to(item: { key: string }): void {
     this.router.navigateByUrl(`/pro/list/${item.key}`);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.router$.unsubscribe();
   }
 }

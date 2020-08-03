@@ -11,18 +11,14 @@ import { SettingsService } from '@delon/theme';
 export class CallbackComponent implements OnInit {
   type: string;
 
-  constructor(
-    private socialService: SocialService,
-    private settingsSrv: SettingsService,
-    private route: ActivatedRoute,
-  ) {}
+  constructor(private socialService: SocialService, private settingsSrv: SettingsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.type = this.route.snapshot.params.type;
     this.mockModel();
   }
 
-  private mockModel() {
+  private mockModel(): void {
     const info = {
       token: '123456789',
       name: 'cipchk',

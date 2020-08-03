@@ -70,7 +70,7 @@ export class STDemoComponent implements OnInit {
       .add(() => (this.loading = false));
   }
 
-  fullChange(val: boolean) {
+  fullChange(val: boolean): void {
     this.scroll = val ? { y: '350px' } : { y: '230px' };
   }
 }

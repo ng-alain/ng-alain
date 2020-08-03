@@ -9,12 +9,12 @@ export class HelpCenterComponent {
   type = '';
   q = '';
 
-  quick(key: string) {
+  quick(key: string): void {
     this.q = key;
     this.search();
   }
 
-  search() {
+  search(): void {
     this.msg.success(`搜索：${this.q}`);
   }
 

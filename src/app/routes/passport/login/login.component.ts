@@ -1,5 +1,5 @@
 import { Component, Inject, OnDestroy, Optional } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StartupService } from '@core';
 import { ReuseTabService } from '@delon/abc/reuse-tab';
@@ -39,16 +39,16 @@ export class UserLoginComponent implements OnDestroy {
 
   // #region fields
 
-  get userName() {
+  get userName(): AbstractControl {
     return this.form.controls.userName;
   }
-  get password() {
+  get password(): AbstractControl {
     return this.form.controls.password;
   }
-  get mobile() {
+  get mobile(): AbstractControl {
     return this.form.controls.mobile;
   }
-  get captcha() {
+  get captcha(): AbstractControl {
     return this.form.controls.captcha;
   }
   form: FormGroup;
@@ -66,7 +66,7 @@ export class UserLoginComponent implements OnDestroy {
     this.type = index;
   }
 
-  getCaptcha() {
+  getCaptcha(): void {
     if (this.mobile.invalid) {
       this.mobile.markAsDirty({ onlySelf: true });
       this.mobile.updateValueAndValidity({ onlySelf: true });
@@ -83,7 +83,7 @@ export class UserLoginComponent implements OnDestroy {
 
   // #endregion
 
-  submit() {
+  submit(): void {
     this.error = '';
     if (this.type === 0) {
       this.userName.markAsDirty();
@@ -135,7 +135,7 @@ export class UserLoginComponent implements OnDestroy {
 
   // #region social
 
-  open(type: string, openType: SocialOpenType = 'href') {
+  open(type: string, openType: SocialOpenType = 'href'): void {
     let url = ``;
     let callback = ``;
     // tslint:disable-next-line: prefer-conditional-expression

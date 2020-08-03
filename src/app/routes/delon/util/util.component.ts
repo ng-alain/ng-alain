@@ -28,7 +28,7 @@ export class UtilComponent {
   content = `time ${+new Date()}
 
     中文！@#￥%……&*`;
-  onFormat() {
+  onFormat(): void {
     let obj = null;
     try {
       obj = JSON.parse(this.format_obj);
@@ -38,10 +38,10 @@ export class UtilComponent {
     }
     this.format_res = format(this.format_str, obj, true);
   }
-  onYuan(value: string) {
+  onYuan(value: string): void {
     this.yuan_res = yuan(value);
   }
-  onCopy() {
+  onCopy(): void {
     copy(`time ${+new Date()}`).then(() => this.messageSrv.success(`success`));
   }
 

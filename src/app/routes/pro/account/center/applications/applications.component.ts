@@ -21,17 +21,17 @@ export class ProAccountCenterApplicationsComponent {
     });
   }
 
-  private formatWan(val) {
+  private formatWan(val: number): string {
     const v = val * 1;
     if (!v || isNaN(v)) {
       return '';
     }
 
-    let result = val;
+    let result: string | number = val;
     if (val > 10000) {
       result = Math.floor(val / 10000);
       result = `${result}`;
     }
-    return result;
+    return result.toString();
   }
 }

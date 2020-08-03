@@ -1,23 +1,13 @@
 <nz-row [nzGutter]="24" class="py-lg">
   <nz-col [nzSpan]="6">
     <nz-card nzTitle="Personal settings" class="ant-card__body-nopadding">
-      <a (click)="active = 1" class="d-block py-sm px-md" [ngClass]="{ 'bg-primary-light text-white': active === 1 }"
-        >Profile</a
-      >
-      <a (click)="active = 2" class="d-block py-sm px-md" [ngClass]="{ 'bg-primary-light text-white': active === 2 }"
-        >Account</a
-      >
-      <a (click)="active = 3" class="d-block py-sm px-md" [ngClass]="{ 'bg-primary-light text-white': active === 3 }"
-        >Emails</a
-      >
-      <a (click)="active = 4" class="d-block py-sm px-md" [ngClass]="{ 'bg-primary-light text-white': active === 4 }"
-        >Notifications</a
-      >
+      <a (click)="active = 1" class="d-block py-sm px-md" [ngClass]="{ 'bg-primary-light text-white': active === 1 }">Profile</a>
+      <a (click)="active = 2" class="d-block py-sm px-md" [ngClass]="{ 'bg-primary-light text-white': active === 2 }">Account</a>
+      <a (click)="active = 3" class="d-block py-sm px-md" [ngClass]="{ 'bg-primary-light text-white': active === 3 }">Emails</a>
+      <a (click)="active = 4" class="d-block py-sm px-md" [ngClass]="{ 'bg-primary-light text-white': active === 4 }">Notifications</a>
     </nz-card>
     <nz-card nzTitle="Developer settings" class="ant-card__body-nopadding">
-      <a (click)="active = 5" class="d-block py-sm px-md" [ngClass]="{ 'bg-primary-light text-white': active === 5 }"
-        >OAuth applications</a
-      >
+      <a (click)="active = 5" class="d-block py-sm px-md" [ngClass]="{ 'bg-primary-light text-white': active === 5 }">OAuth applications</a>
       <a (click)="active = 6" class="d-block py-sm px-md" [ngClass]="{ 'bg-primary-light text-white': active === 6 }"
         >Personal access tokens</a
       >
@@ -27,12 +17,7 @@
     <nz-card nzTitle="Public profile" *ngIf="active === 1">
       <nz-row [nzGutter]="64">
         <nz-col [nzSpan]="16">
-          <form
-            nz-form
-            [formGroup]="profileForm"
-            (ngSubmit)="profileSave($event, profileForm.value)"
-            [nzLayout]="'vertical'"
-          >
+          <form nz-form [formGroup]="profileForm" (ngSubmit)="profileSave(profileForm.value)" [nzLayout]="'vertical'">
             <nz-form-item>
               <nz-form-label nzFor="name" nzRequired>name</nz-form-label>
               <nz-form-control nzErrorTip="required, must match pattern [-_a-zA-Z0-9]">
@@ -55,15 +40,8 @@
             <nz-form-item>
               <nz-form-label nzFor="bio">Bio</nz-form-label>
               <nz-form-control [nzExtra]="bioExtra">
-                <textarea
-                  nz-input
-                  formControlName="bio"
-                  id="bio"
-                  placeholder="Tell us a little bit about yourself"
-                ></textarea>
-                <ng-template #bioExtra>
-                  You can <strong>@mention</strong> other users and organizations to link to them.
-                </ng-template>
+                <textarea nz-input formControlName="bio" id="bio" placeholder="Tell us a little bit about yourself"></textarea>
+                <ng-template #bioExtra> You can <strong>@mention</strong> other users and organizations to link to them. </ng-template>
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
@@ -107,27 +85,13 @@
             <nz-form-item>
               <nz-form-label nzFor="old_password" nzRequired>Old password</nz-form-label>
               <nz-form-control>
-                <input
-                  nz-input
-                  [(ngModel)]="pwd.old_password"
-                  name="old_password"
-                  id="old_password"
-                  type="password"
-                  required
-                />
+                <input nz-input [(ngModel)]="pwd.old_password" name="old_password" id="old_password" type="password" required />
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
               <nz-form-label nzFor="new_password" nzRequired>New password</nz-form-label>
               <nz-form-control>
-                <input
-                  nz-input
-                  [(ngModel)]="pwd.new_password"
-                  name="new_password"
-                  id="new_password"
-                  type="password"
-                  required
-                />
+                <input nz-input [(ngModel)]="pwd.new_password" name="new_password" id="new_password" type="password" required />
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
@@ -184,8 +148,7 @@
       <button nz-button (click)="msg.info('add')">Add</button>
       <h4 class="border-top-1 py-md mt-md">Primary email address</h4>
       <p class="mb-md">
-        cipchk@qq.com will be used for account-related notifications and for web-based GitHub operations (e.g. edits and
-        merges).
+        cipchk@qq.com will be used for account-related notifications and for web-based GitHub operations (e.g. edits and merges).
       </p>
       <nz-select [(ngModel)]="primary_email" class="mr-sm">
         <nz-option [nzLabel]="'cipchk@qq.com'" [nzValue]="'cipchk@qq.com'"></nz-option>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -28,28 +28,31 @@ export class ExtrasSettingsComponent implements OnInit {
     });
   }
 
-  get name() {
+  get name(): AbstractControl {
     return this.profileForm.get('name');
   }
 
-  profileSave(event, value) {
+  profileSave(value: any): void {
     console.log('profile value', value);
   }
 
-  pwdSave() {
+  pwdSave(): void {
     if (!this.pwd.old_password) {
-      return this.msg.error('invalid old password');
+      this.msg.error('invalid old password');
+      return;
     }
     if (!this.pwd.new_password) {
-      return this.msg.error('invalid new password');
+      this.msg.error('invalid new password');
+      return;
     }
     if (!this.pwd.confirm_new_password) {
-      return this.msg.error('invalid confirm new password');
+      this.msg.error('invalid confirm new password');
+      return;
     }
     console.log('pwd value', this.pwd);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.profileForm.patchValue({
       name: 'cipchk',
       email: 'cipchk@qq.com',

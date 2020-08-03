@@ -1,17 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { STColumn, STComponent } from '@delon/abc/st';
+import { Component } from '@angular/core';
+import { STColumn } from '@delon/abc/st';
 import { SFSchema } from '@delon/form';
-import { _HttpClient } from '@delon/theme';
 
 @Component({
   selector: 'app-delon-form',
   templateUrl: './form.component.html',
 })
-export class DelonFormComponent implements OnInit {
+export class DelonFormComponent {
   params: any = {};
   url = `/user`;
-  @ViewChild('st', { static: true })
-  st: STComponent;
   searchSchema: SFSchema = {
     properties: {
       no: {
@@ -26,8 +23,4 @@ export class DelonFormComponent implements OnInit {
     { title: '头像', type: 'img', width: '50px', index: 'avatar' },
     { title: '时间', type: 'date', index: 'updatedAt' },
   ];
-
-  constructor(private http: _HttpClient) {}
-
-  ngOnInit() {}
 }

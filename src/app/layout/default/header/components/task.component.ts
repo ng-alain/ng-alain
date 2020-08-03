@@ -81,7 +81,7 @@ export class HeaderTaskComponent {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  change() {
+  change(): void {
     setTimeout(() => {
       this.loading = false;
       this.cdr.detectChanges();

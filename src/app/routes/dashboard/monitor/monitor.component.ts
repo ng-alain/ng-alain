@@ -33,7 +33,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     t2: '',
   };
 
-  ngOnInit() {
+  ngOnInit(): void {
     zip(this.http.get('/chart'), this.http.get('/chart/tags')).subscribe(([res, tags]: [any, any]) => {
       this.data = res;
       tags.list[Math.floor(Math.random() * tags.list.length) + 1].value = 1000;
@@ -47,7 +47,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     this.activeTime$ = setInterval(() => this.refData(), 1000 * 2);
   }
 
-  refData() {
+  refData(): void {
     const activeData: any[] = [];
     for (let i = 0; i < 24; i += 1) {
       activeData.push({
@@ -68,7 +68,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
 
   // endregion
 
-  couponFormat(val: any) {
+  couponFormat(val: any): string {
     switch (parseInt(val, 10)) {
       case 20:
         return '差';

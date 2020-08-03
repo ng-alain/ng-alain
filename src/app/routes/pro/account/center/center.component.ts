@@ -34,7 +34,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
   taging = false;
   tagValue = '';
 
-  private setActive() {
+  private setActive(): void {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
     const idx = this.tabs.findIndex((w) => w.key === key);
     if (idx !== -1) {
@@ -52,16 +52,16 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
     this.setActive();
   }
 
-  to(item: { key: string }) {
+  to(item: { key: string }): void {
     this.router.navigateByUrl(`/pro/account/center/${item.key}`);
   }
-  tagShowIpt() {
+  tagShowIpt(): void {
     this.taging = true;
     this.cdr.detectChanges();
     this.tagInput.nativeElement.focus();
   }
 
-  tagBlur() {
+  tagBlur(): void {
     const { user, cdr, tagValue } = this;
     if (tagValue && user.tags.filter((tag) => tag.label === tagValue).length === 0) {
       user.tags.push({ label: tagValue });
@@ -71,14 +71,14 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
     cdr.detectChanges();
   }
 
-  tagEnter(e: KeyboardEvent) {
+  tagEnter(e: KeyboardEvent): void {
     // tslint:disable-next-line: deprecation
     if (e.keyCode === 13) {
       this.tagBlur();
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.router$.unsubscribe();
   }
 }

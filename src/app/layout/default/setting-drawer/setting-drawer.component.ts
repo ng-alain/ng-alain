@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, NgZone } from '@angular/core';
-import { SettingsService } from '@delon/theme';
+import { Layout, SettingsService } from '@delon/theme';
 import { copy, deepCopy, LazyService } from '@delon/util';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -211,7 +211,7 @@ export class SettingDrawerComponent {
   private loadedLess = false;
 
   collapse = false;
-  get layout() {
+  get layout(): Layout {
     return this.settingSrv.layout;
   }
   data: any = {};
@@ -230,11 +230,11 @@ export class SettingDrawerComponent {
     this.resetData(this.cachedData, false);
   }
 
-  private get cachedData() {
+  private get cachedData(): {} {
     return this.settingSrv.layout[ALAINDEFAULTVAR] || {};
   }
 
-  private get DEFAULT_PRIMARY() {
+  private get DEFAULT_PRIMARY(): string {
     return DEFAULT_VARS['primary-color'].default;
   }
 
@@ -261,7 +261,7 @@ export class SettingDrawerComponent {
       });
   }
 
-  private genVars() {
+  private genVars(): any {
     const { data, color, validKeys } = this;
     const vars: any = {
       [`@primary-color`]: color,
@@ -271,7 +271,7 @@ export class SettingDrawerComponent {
     return vars;
   }
 
-  private runLess() {
+  private runLess(): void {
     const { zone, msg, cdr } = this;
     const msgId = msg.loading(`正在编译主题！`, { nzDuration: 0 }).messageId;
     setTimeout(() => {
@@ -287,11 +287,11 @@ export class SettingDrawerComponent {
     }, 200);
   }
 
-  toggle() {
+  toggle(): void {
     this.collapse = !this.collapse;
   }
 
-  changeColor(color: string) {
+  changeColor(color: string): void {
     this.color = color;
     Object.keys(DEFAULT_VARS)
       .filter((key) => DEFAULT_VARS[key].default === '@primary-color')
@@ -299,11 +299,11 @@ export class SettingDrawerComponent {
     this.resetData(this.cachedData, false);
   }
 
-  setLayout(name: string, value: any) {
+  setLayout(name: string, value: any): void {
     this.settingSrv.setLayout(name, value);
   }
 
-  private resetData(nowData?: {}, run = true) {
+  private resetData(nowData?: {}, run: boolean = true): void {
     nowData = nowData || {};
     const data = deepCopy(DEFAULT_VARS);
     Object.keys(data).forEach((key) => {
@@ -321,17 +321,17 @@ export class SettingDrawerComponent {
     return Object.keys(this.data).filter((key) => this.data[key].value !== this.data[key].default);
   }
 
-  apply() {
+  apply(): void {
     this.runLess();
   }
 
-  reset() {
+  reset(): void {
     this.color = this.DEFAULT_PRIMARY;
     this.settingSrv.setLayout(ALAINDEFAULTVAR, {});
     this.resetData({});
   }
 
-  copyVar() {
+  copyVar(): void {
     const vars = this.genVars();
     const copyContent = Object.keys(vars)
       .map((key) => `${key}: ${vars[key]};`)

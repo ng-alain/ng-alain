@@ -21,11 +21,11 @@ export class ColorService {
     magenta: '#eb2f96',
   };
 
-  get names() {
-    return Object.keys(this.APP_COLORS).filter((name, index) => index > 3);
+  get names(): string[] {
+    return Object.keys(this.APP_COLORS).filter((_, index) => index > 3);
   }
 
-  get brands() {
+  get brands(): string[] {
     return ['primary', 'success', 'error', 'warning'];
   }
 }

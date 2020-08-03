@@ -30,7 +30,7 @@ describe('Service: I18n', () => {
     instant: jasmine.createSpy('instant'),
   };
 
-  function genModule() {
+  function genModule(): void {
     injector = TestBed.configureTestingModule({
       providers: [
         I18NService,

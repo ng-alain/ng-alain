@@ -36,7 +36,7 @@ export class ProListProjectsComponent implements OnInit {
     { id: 12, text: '类目十二', value: false },
   ];
 
-  changeCategory(status: boolean, idx: number) {
+  changeCategory(status: boolean, idx: number): void {
     if (idx === 0) {
       this.categories.map((i) => (i.value = status));
     } else {
@@ -48,11 +48,11 @@ export class ProListProjectsComponent implements OnInit {
 
   constructor(private http: _HttpClient, public msg: NzMessageService, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getData();
   }
 
-  getData() {
+  getData(): void {
     this.loading = true;
     this.http.get('/api/list', { count: this.q.ps }).subscribe((res) => {
       this.list = this.list.concat(res);

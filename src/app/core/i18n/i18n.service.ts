@@ -96,7 +96,7 @@ export class I18NService implements AlainI18NService {
     return (navigator.languages ? navigator.languages[0] : null) || navigator.language;
   }
 
-  private updateLangData(lang: string) {
+  private updateLangData(lang: string): void {
     const item = LANGS[lang];
     registerLocaleData(item.ng);
     this.nzI18nService.setLocale(item.zorro);
@@ -117,19 +117,19 @@ export class I18NService implements AlainI18NService {
     this.translate.use(lang).subscribe(() => this.change$.next(lang));
   }
   /** 获取语言列表 */
-  getLangs() {
+  getLangs(): Array<{ code: string; text: string; abbr: string }> {
     return this._langs;
   }
   /** 翻译 */
-  fanyi(key: string, interpolateParams?: {}) {
+  fanyi(key: string, interpolateParams?: {}): any {
     return this.translate.instant(key, interpolateParams);
   }
   /** 默认语言 */
-  get defaultLang() {
+  get defaultLang(): string {
     return this._default;
   }
   /** 当前语言 */
-  get currentLang() {
+  get currentLang(): string {
     return this.translate.currentLang || this.translate.getDefaultLang() || this._default;
   }
 }

@@ -19,11 +19,11 @@ export class HeaderComponent {
 
   constructor(private settings: SettingsService) {}
 
-  toggleCollapsedSidebar() {
+  toggleCollapsedSidebar(): void {
     this.settings.setLayout('collapsed', !this.settings.layout.collapsed);
   }
 
-  searchToggleChange() {
+  searchToggleChange(): void {
     this.searchToggleStatus = !this.searchToggleStatus;
   }
 }

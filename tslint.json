@@ -125,7 +125,6 @@
     "variable-name": {
       "options": [
         "ban-keywords",
-        // "check-format",
         "allow-pascal-case"
       ]
     },
@@ -157,6 +156,11 @@
         "import-sources-order": "case-insensitive",
         "named-imports-order": "case-insensitive"
       }
-    ]
+    ],
+    "use-path-mapping": [true, ["@core", "@shared"]],
+    "triple-equals": [true, "allow-null-check"],
+    "typedef": [true, "call-signature", "parameter", "property-declaration"],
+    "use-isnan": true,
+    "unified-signatures": true
   }
 }
