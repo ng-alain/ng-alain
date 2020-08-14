@@ -1,0 +1,12 @@
+{
+  "theme": {
+    "list": [
+      {
+        "theme": "dark"
+      },
+      {
+        "theme": "compact"
+      }
+    ]
+  }
+}

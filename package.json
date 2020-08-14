@@ -35,7 +35,7 @@
     "test": "ng test --watch",
     "test-coverage": "ng test --code-coverage --watch=false",
     "color-less": "node scripts/color-less.js",
-    "theme": "node scripts/theme.js",
+    "theme": "ng-alain-plugin-theme",
     "icon": "ng g ng-alain:plugin icon"
   },
   "dependencies": {
@@ -100,8 +100,6 @@
     "husky": "^4.2.3",
     "gh-pages": "^2.2.0",
     "less-bundle-promise": "^1.0.7",
-    "less-plugin-clean-css": "^1.5.1",
-    "less-plugin-npm-import": "^2.1.0",
     "mockjs": "^1.1.0",
     "prettier": "^2.0.5",
     "stylelint": "^13.3.1",
@@ -116,7 +114,8 @@
     "@delon/testing": "^10.0.0-beta.3",
     "ng-alain": "^10.0.0-beta.3",
     "ng-alain-codelyzer": "^0.0.1",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "ng-alain-plugin-theme": "^0.0.1-rc.1"
   },
   "husky": {
     "hooks": {

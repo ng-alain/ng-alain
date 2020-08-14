@@ -30,17 +30,15 @@ export class DashboardAnalysisComponent implements OnInit {
     y2: this.i18n.fanyi('app.analysis.payments'),
   };
   searchColumn: STColumn[] = [
-    { title: '排名', i18n: 'app.analysis.table.rank', index: 'index' },
+    { title: { text: '排名', i18n: 'app.analysis.table.rank' }, index: 'index' },
     {
-      title: '搜索关键词',
-      i18n: 'app.analysis.table.search-keyword',
+      title: { text: '搜索关键词', i18n: 'app.analysis.table.search-keyword' },
       index: 'keyword',
       click: (item) => this.msg.success(item.keyword),
     },
     {
       type: 'number',
-      title: '用户数',
-      i18n: 'app.analysis.table.users',
+      title: { text: '用户数', i18n: 'app.analysis.table.users' },
       index: 'count',
       sort: {
         compare: (a, b) => a.count - b.count,
@@ -48,8 +46,7 @@ export class DashboardAnalysisComponent implements OnInit {
     },
     {
       type: 'number',
-      title: '周涨幅',
-      i18n: 'app.analysis.table.weekly-range',
+      title: { text: '周涨幅', i18n: 'app.analysis.table.weekly-range' },
       index: 'range',
       render: 'range',
       sort: {
