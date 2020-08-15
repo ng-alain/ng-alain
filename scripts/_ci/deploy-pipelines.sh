@@ -35,12 +35,12 @@ fi
 echo ""
 echo "Generate color less"
 echo ""
-node ./scripts/color-less.js
+npm run color-less
 
 echo ""
 echo "Generate theme files"
 echo ""
-node ./scripts/theme.js
+npm run theme
 
 echo '===== need mock'
 sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/global-config.module.ts

@@ -22,9 +22,9 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "npm run color-less && ng serve -o",
-    "hmr": "npm run color-less && ng serve -c=hmr",
-    "build": "npm run color-less && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod",
+    "start": "ng serve -o",
+    "hmr": "ng serve -c=hmr",
+    "build": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod",
     "analyze": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
     "lint": "npm run lint:ts && npm run lint:style",
     "lint:ts": "ng lint --fix",
@@ -34,8 +34,8 @@
     "e2e": "ng e2e",
     "test": "ng test --watch",
     "test-coverage": "ng test --code-coverage --watch=false",
-    "color-less": "node scripts/color-less.js",
-    "theme": "node scripts/theme.js",
+    "color-less": "ng-alain-plugin-theme -t=colorLess",
+    "theme": "ng-alain-plugin-theme -t=themeCss",
     "icon": "ng g ng-alain:plugin icon"
   },
   "dependencies": {
@@ -65,7 +65,7 @@
     "@delon/theme": "^10.0.0-beta.3",
     "@delon/util": "^10.0.0-beta.3",
     "file-saver": "^2.0.2",
-    "ng-zorro-antd": "^10.0.0-beta.1",
+    "ng-zorro-antd": "^10.0.0-beta.4",
     "ngx-tinymce": "^10.0.0",
     "ngx-ueditor": "^10.0.0",
     "ngx-countdown": "^10.0.0",
@@ -98,10 +98,6 @@
     "codecov": "^3.7.0",
     "tslint-config-prettier": "^1.18.0",
     "husky": "^4.2.3",
-    "gh-pages": "^2.2.0",
-    "less-bundle-promise": "^1.0.7",
-    "less-plugin-clean-css": "^1.5.1",
-    "less-plugin-npm-import": "^2.1.0",
     "mockjs": "^1.1.0",
     "prettier": "^2.0.5",
     "stylelint": "^13.3.1",
@@ -111,12 +107,12 @@
     "stylelint-declaration-block-no-ignored-properties": "^2.3.0",
     "stylelint-order": "^4.0.0",
     "webpack-bundle-analyzer": "^3.6.1",
-    "antd-theme-generator": "1.2.2",
     "xlsx": "^0.16.4",
+    "pretty-quick": "^2.0.1",
     "@delon/testing": "^10.0.0-beta.3",
     "ng-alain": "^10.0.0-beta.3",
     "ng-alain-codelyzer": "^0.0.1",
-    "pretty-quick": "^2.0.1"
+    "ng-alain-plugin-theme": "^10.0.1"
   },
   "husky": {
     "hooks": {
