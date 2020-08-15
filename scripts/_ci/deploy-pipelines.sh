@@ -35,7 +35,7 @@ fi
 echo ""
 echo "Generate color less"
 echo ""
-node ./scripts/color-less.js
+npm run color-less
 
 echo ""
 echo "Generate theme files"

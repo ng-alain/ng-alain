@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-/src/assets/alain-*.less
+/src/assets/color.less
 delon-builds
 scripts/var.less
 src/assets/style.dark.css
