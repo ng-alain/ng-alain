@@ -8,7 +8,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './list.component.html',
 })
 export class ProListLayoutComponent implements OnInit, OnDestroy {
-  private router$: Subscription;
+  private router$!: Subscription;
   tabs = [
     {
       key: 'articles',

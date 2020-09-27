@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { STChange, STColumn, STComponent, STData } from '@delon/abc/st';
 import { _HttpClient } from '@delon/theme';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { map, tap } from 'rxjs/operators';
@@ -11,7 +12,14 @@ import { map, tap } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProTableListComponent implements OnInit {
-  q = {
+  q: {
+    pi: number;
+    ps: number;
+    no: string;
+    sorter: string;
+    status: number | null;
+    statusList: NzSafeAny[];
+  } = {
     pi: 1,
     ps: 10,
     no: '',
@@ -34,7 +42,7 @@ export class ProTableListComponent implements OnInit {
     { index: 3, text: '异常', value: false, type: 'error', checked: false },
   ];
   @ViewChild('st', { static: true })
-  st: STComponent;
+  st!: STComponent;
   columns: STColumn[] = [
     { title: '', index: 'key', type: 'checkbox' },
     { title: '规则编号', index: 'no' },
@@ -118,7 +126,7 @@ export class ProTableListComponent implements OnInit {
   stChange(e: STChange): void {
     switch (e.type) {
       case 'checkbox':
-        this.selectedRows = e.checkbox;
+        this.selectedRows = e.checkbox!;
         this.totalCallNo = this.selectedRows.reduce((total, cv) => total + cv.callNo, 0);
         this.cdr.detectChanges();
         break;

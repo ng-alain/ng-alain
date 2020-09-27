@@ -8,7 +8,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, filter, mergeMap, switchMap, take, tap } from 'rxjs/operators';
 
-const CODEMESSAGE = {
+const CODEMESSAGE: { [key: number]: string } = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
   202: '一个请求已经进入后台排队（异步任务）。',
@@ -71,7 +71,7 @@ export class DefaultInterceptor implements HttpInterceptor {
    */
   private refreshTokenRequest(): Observable<any> {
     const model = this.tokenSrv.get();
-    return this.http.post(`/api/auth/refresh`, null, null, { headers: { refresh_token: model.refresh_token || '' } });
+    return this.http.post(`/api/auth/refresh`, null, null, { headers: { refresh_token: model?.refresh_token || '' } });
   }
 
   // #region 刷新Token方式一：使用 401 重新刷新 Token
@@ -119,7 +119,7 @@ export class DefaultInterceptor implements HttpInterceptor {
    */
   private reAttachToken(req: HttpRequest<any>): HttpRequest<any> {
     // 以下示例是以 NG-ALAIN 默认使用 `SimpleInterceptor`
-    const token = this.tokenSrv.get().token;
+    const token = this.tokenSrv.get()?.token;
     return req.clone({
       setHeaders: {
         token: `Bearer ${token}`,
