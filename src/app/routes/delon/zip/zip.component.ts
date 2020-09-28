@@ -45,14 +45,14 @@ export class ZipComponent implements OnInit {
   }
 
   change(e: Event): void {
-    const file = (e.target as HTMLInputElement).files[0];
+    const file = (e.target as HTMLInputElement).files![0];
     this.zip.read(file).then((res) => this.format(res));
   }
 
   download(): void {
     const promises: Promise<void>[] = [];
     this.data.forEach((item) => {
-      promises.push(this.zip.pushUrl(this.instance, item.path, item.url));
+      promises.push(this.zip.pushUrl(this.instance, item.path!, item.url!));
     });
     Promise.all(promises).then(
       () => {

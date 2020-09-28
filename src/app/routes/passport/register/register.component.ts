@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -57,7 +58,7 @@ export class UserRegisterComponent implements OnDestroy {
   count = 0;
   interval$: any;
 
-  static checkPassword(control: FormControl): void {
+  static checkPassword(control: FormControl): NzSafeAny {
     if (!control) {
       return null;
     }
@@ -80,7 +81,7 @@ export class UserRegisterComponent implements OnDestroy {
     if (!control || !control.parent) {
       return null;
     }
-    if (control.value !== control.parent.get('password').value) {
+    if (control.value !== control.parent.get('password')!.value) {
       return { equar: true };
     }
     return null;

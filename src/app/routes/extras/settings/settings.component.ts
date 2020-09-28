@@ -29,7 +29,7 @@ export class ExtrasSettingsComponent implements OnInit {
   }
 
   get name(): AbstractControl {
-    return this.profileForm.get('name');
+    return this.profileForm.get('name')!;
   }
 
   profileSave(value: any): void {

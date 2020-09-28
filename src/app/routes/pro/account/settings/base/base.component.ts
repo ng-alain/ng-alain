@@ -36,7 +36,7 @@ export class ProAccountSettingsBaseComponent implements OnInit {
   constructor(private http: _HttpClient, private cdr: ChangeDetectorRef, private msg: NzMessageService) {}
   avatar = '';
   userLoading = true;
-  user: ProAccountSettingsUser;
+  user!: ProAccountSettingsUser;
 
   // #region geo
 

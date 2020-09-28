@@ -19,7 +19,7 @@ export class UtilComponent {
 
   // yuan
   yuan_str: any;
-  yuan_res: string;
+  yuan_res!: string;
 
   // endregion
 

@@ -37,12 +37,9 @@ const COMPONENTS = [
   QRComponent,
 ];
 
-const COMPONENTS_NOROUNT = [];
-
 @NgModule({
   imports: [CommonModule, SharedModule, DelonRoutingModule],
   providers: [CanLeaveProvide],
-  declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
-  entryComponents: COMPONENTS_NOROUNT,
+  declarations: [...COMPONENTS],
 })
 export class DelonModule {}

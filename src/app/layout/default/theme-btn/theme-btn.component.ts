@@ -12,7 +12,7 @@ type SiteTheme = 'default' | 'dark' | 'compact';
 })
 export class LayoutThemeBtnComponent implements OnInit, OnDestroy {
   theme: SiteTheme = 'default';
-  private el: HTMLLinkElement;
+  private el!: HTMLLinkElement;
 
   constructor(private renderer: Renderer2, private configSrv: AlainConfigService, private platform: Platform) {}
 

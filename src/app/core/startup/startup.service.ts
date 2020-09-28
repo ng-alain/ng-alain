@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { ACLService } from '@delon/acl';
 import { ALAIN_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@delon/theme';
 import { TranslateService } from '@ngx-translate/core';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import { zip } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -49,7 +50,7 @@ export class StartupService {
             this.translate.setDefaultLang(this.i18n.defaultLang);
 
             // application data
-            const res = appData;
+            const res = appData as NzSafeAny;
             // 应用信息：包括站点名、描述、年份
             this.settingService.setApp(res.app);
             // 用户信息：包括姓名、头像、邮箱地址

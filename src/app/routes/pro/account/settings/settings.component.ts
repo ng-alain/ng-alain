@@ -11,10 +11,10 @@ import { debounceTime, filter } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
-  private resize$: Subscription;
+  private resize$!: Subscription;
   private router$: Subscription;
   mode = 'inline';
-  title: string;
+  title!: string;
   menus: Array<{ key: string; title: string; selected?: boolean }> = [
     {
       key: 'base',
@@ -42,7 +42,7 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
     this.menus.forEach((i) => {
       i.selected = i.key === key;
     });
-    this.title = this.menus.find((w) => w.selected).title;
+    this.title = this.menus.find((w) => w.selected)!.title;
   }
 
   to(item: { key: string }): void {

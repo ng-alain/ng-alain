@@ -16,7 +16,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProCardListComponent implements OnInit {
-  list: Array<{ id: number; title: string; avatar: string; description: string }> = [null];
+  list: Array<{ id: number; title: string; avatar: string; description: string } | null> = [null];
 
   loading = true;
 

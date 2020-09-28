@@ -20,7 +20,7 @@ export class SettingDrawerItemComponent {
     }
   }
 
-  pxVal: number;
+  pxVal = 0;
 
   pxChange(val: number): void {
     this.i.value = `${val}px`;

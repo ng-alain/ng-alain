@@ -87,7 +87,7 @@ export class DashboardAnalysisComponent implements OnInit {
         ? this.data.salesTypeDataOnline
         : this.data.salesTypeDataOffline;
     if (this.salesPieData) {
-      this.salesTotal = this.salesPieData.reduce((pre, now) => now.y + pre, 0);
+      this.salesTotal = this.salesPieData.reduce((pre: number, now: { y: number }) => now.y + pre, 0);
     }
     this.cdr.detectChanges();
   }

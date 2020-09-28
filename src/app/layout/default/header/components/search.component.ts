@@ -39,8 +39,8 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
-  q: string;
-  qIpt: HTMLInputElement;
+  q = '';
+  qIpt: HTMLInputElement | null = null;
   options: string[] = [];
   search$ = new BehaviorSubject('');
   loading = false;
@@ -57,7 +57,7 @@ export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
     }
     this.searchToggled = true;
     this.focus = true;
-    setTimeout(() => this.qIpt.focus(), 300);
+    setTimeout(() => this.qIpt!.focus(), 300);
   }
 
   constructor(private el: ElementRef<HTMLElement>, private cdr: ChangeDetectorRef) {}

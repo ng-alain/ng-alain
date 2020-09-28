@@ -12,8 +12,8 @@ import { filter } from 'rxjs/operators';
 })
 export class ProAccountCenterComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
-  private router$: Subscription;
-  @ViewChild('tagInput', { static: false }) private tagInput: ElementRef<HTMLInputElement>;
+  private router$!: Subscription;
+  @ViewChild('tagInput', { static: false }) private tagInput!: ElementRef<HTMLInputElement>;
   user: any;
   notice: any;
   tabs = [
@@ -63,7 +63,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
 
   tagBlur(): void {
     const { user, cdr, tagValue } = this;
-    if (tagValue && user.tags.filter((tag) => tag.label === tagValue).length === 0) {
+    if (tagValue && user.tags.filter((tag: { label: string }) => tag.label === tagValue).length === 0) {
       user.tags.push({ label: tagValue });
     }
     this.tagValue = '';

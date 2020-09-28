@@ -7,7 +7,7 @@ import { _HttpClient } from '@delon/theme';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProAccountCenterArticlesComponent {
-  list: any[];
+  list!: any[];
 
   constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {
     this.http.get('/api/list', { count: 8 }).subscribe((res) => {
