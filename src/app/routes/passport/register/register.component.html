@@ -20,9 +20,9 @@
         nz-popover
         nzPopoverPlacement="right"
         nzPopoverTrigger="focus"
-        [(nzVisible)]="visible"
-        nzOverlayClassName="register-password-cdk"
-        [nzOverlayStyle]="{ 'width.px': 240 }"
+        [(nzPopoverVisible)]="visible"
+        nzPopoverOverlayClassName="register-password-cdk"
+        [nzPopoverOverlayStyle]="{ 'width.px': 240 }"
         [nzPopoverContent]="pwdCdkTpl"
       >
         <input nz-input type="password" formControlName="password" placeholder="Password" />

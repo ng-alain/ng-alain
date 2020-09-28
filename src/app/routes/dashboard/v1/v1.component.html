@@ -152,14 +152,7 @@
         Recent Posts
         <small class="text-sm font-weight-normal">Venenatis portauam Inceptos ameteiam</small>
       </ng-template>
-      <div
-        nz-row
-        [nzType]="'flex'"
-        [nzJustify]="'center'"
-        [nzAlign]="'middle'"
-        class="py-sm bg-grey-lighter-h point"
-        *ngFor="let item of todoData"
-      >
+      <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point" *ngFor="let item of todoData">
         <div nz-col [nzSpan]="4" class="text-center">
           <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'"></nz-avatar>
         </div>
@@ -172,14 +165,7 @@
   </div>
   <div nz-col nzXs="24" nzMd="12">
     <nz-card nzTitle="Todo lists" [nzBordered]="false" class="ant-card__body-nopadding">
-      <div
-        nz-row
-        [nzType]="'flex'"
-        [nzJustify]="'center'"
-        [nzAlign]="'middle'"
-        class="py-sm bg-grey-lighter-h point"
-        *ngFor="let item of todoData"
-      >
+      <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point" *ngFor="let item of todoData">
         <div nz-col [nzSpan]="4" class="text-center">
           <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'"></nz-avatar>
         </div>
