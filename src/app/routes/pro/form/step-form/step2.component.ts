@@ -8,7 +8,7 @@ import { TransferService } from './transfer.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Step2Component implements OnInit {
-  form: FormGroup;
+  form!: FormGroup;
   loading = false;
   get item(): TransferService {
     return this.srv;

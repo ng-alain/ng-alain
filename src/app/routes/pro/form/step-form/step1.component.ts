@@ -8,7 +8,8 @@ import { TransferService } from './transfer.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Step1Component implements OnInit {
-  form: FormGroup;
+  form!: FormGroup;
+
   get item(): TransferService {
     return this.srv;
   }

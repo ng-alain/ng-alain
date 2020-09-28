@@ -28,11 +28,9 @@ const COMPONENTS = [
   UserLockComponent,
   CallbackComponent,
 ];
-const COMPONENTS_NOROUNT = [];
 
 @NgModule({
   imports: [SharedModule, RouteRoutingModule],
-  declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
-  entryComponents: COMPONENTS_NOROUNT,
+  declarations: [...COMPONENTS],
 })
 export class RoutesModule {}

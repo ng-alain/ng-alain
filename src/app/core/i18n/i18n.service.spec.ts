@@ -1,6 +1,7 @@
 import { TestBed, TestBedStatic } from '@angular/core/testing';
 import { DelonLocaleService, SettingsService } from '@delon/theme';
 import { TranslateService } from '@ngx-translate/core';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { of } from 'rxjs';
 
@@ -9,7 +10,7 @@ import { I18NService } from './i18n.service';
 describe('Service: I18n', () => {
   let injector: TestBedStatic;
   let srv: I18NService;
-  const MockSettingsService = {
+  const MockSettingsService: NzSafeAny = {
     layout: {
       lang: null,
     },

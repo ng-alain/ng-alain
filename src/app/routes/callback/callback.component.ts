@@ -9,7 +9,7 @@ import { SettingsService } from '@delon/theme';
   providers: [SocialService],
 })
 export class CallbackComponent implements OnInit {
-  type: string;
+  type = '';
 
   constructor(private socialService: SocialService, private settingsSrv: SettingsService, private route: ActivatedRoute) {}
 

@@ -37,6 +37,6 @@ export class ProProfileAdvancedComponent implements OnInit {
   }
 
   change(args: NzTabChangeEvent): void {
-    this.list = this.data[`advancedOperation${args.index + 1}`];
+    this.list = (this.data as NzSafeAny)[`advancedOperation${args.index! + 1}`];
   }
 }

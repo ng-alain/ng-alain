@@ -43,6 +43,6 @@ export class HeaderUserComponent {
 
   logout(): void {
     this.tokenService.clear();
-    this.router.navigateByUrl(this.tokenService.login_url);
+    this.router.navigateByUrl(this.tokenService.login_url!);
   }
 }

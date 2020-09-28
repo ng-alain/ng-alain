@@ -10,7 +10,7 @@ import { ExtrasPoiEditComponent } from './edit/edit.component';
 })
 export class ExtrasPoiComponent {
   @ViewChild('st', { static: true })
-  st: STComponent;
+  st!: STComponent;
   s = {
     pi: 1,
     ps: 10,

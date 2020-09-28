@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
 import { XlsxService } from '@delon/abc/xlsx';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 @Component({
   selector: 'app-xlsx',
@@ -31,13 +32,13 @@ export class XlsxComponent {
   }
 
   change(e: Event): void {
-    const file = (e.target as HTMLInputElement).files[0];
+    const file = (e.target as HTMLInputElement).files![0];
     this.xlsx.import(file).then((res) => (this.data = res));
   }
 
   download(): void {
     const data = [this.columns.map((i) => i.title)];
-    this.users.forEach((i) => data.push(this.columns.map((c) => i[c.index as string])));
+    this.users.forEach((i: { [key: string]: NzSafeAny }) => data.push(this.columns.map((c) => i[c.index as string])));
     this.xlsx.export({
       sheets: [
         {

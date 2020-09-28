@@ -55,7 +55,7 @@ const I18NSERVICE_PROVIDES = [{ provide: ALAIN_I18N_TOKEN, useClass: I18NService
 
 // #region global third module
 
-const GLOBAL_THIRD_MODULES = [];
+// const GLOBAL_THIRD_MODULES = [];
 
 // #endregion
 
@@ -111,7 +111,7 @@ import { STWidgetModule } from './shared/st-widget/st-widget.module';
     RoutesModule,
     STWidgetModule,
     ...I18NSERVICE_MODULES,
-    ...GLOBAL_THIRD_MODULES,
+    // ...GLOBAL_THIRD_MODULES,
     ...FORM_MODULES,
   ],
   providers: [...LANG_PROVIDES, ...INTERCEPTOR_PROVIDES, ...I18NSERVICE_PROVIDES, ...APPINIT_PROVIDES],

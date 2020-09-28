@@ -162,14 +162,14 @@ const radarOriginData = [
 
 //
 const radarData: any[] = [];
-const radarTitleMap = {
+const radarTitleMap: any = {
   ref: '引用',
   koubei: '口碑',
   output: '产量',
   contribute: '贡献',
   hot: '热度',
 };
-radarOriginData.forEach((item) => {
+radarOriginData.forEach((item: any) => {
   Object.keys(item).forEach((key) => {
     if (key !== 'name') {
       radarData.push({

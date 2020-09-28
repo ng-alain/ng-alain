@@ -24,7 +24,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
 
   activeTime$: any;
 
-  activeData: any[];
+  activeData!: any[];
 
   activeStat = {
     max: 0,

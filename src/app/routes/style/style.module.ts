@@ -10,12 +10,9 @@ import { TypographyComponent } from './typography/typography.component';
 
 const COMPONENTS = [GridMasonryComponent, TypographyComponent, ColorsComponent];
 
-const COMPONENTS_NOROUNT = [];
-
 @NgModule({
   imports: [SharedModule, StyleRoutingModule],
   providers: [ColorService],
-  declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
-  entryComponents: COMPONENTS_NOROUNT,
+  declarations: [...COMPONENTS],
 })
 export class StyleModule {}

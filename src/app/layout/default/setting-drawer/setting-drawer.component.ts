@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, NgZone } from '@angular/core';
 import { Layout, SettingsService } from '@delon/theme';
 import { copy, deepCopy, LazyService } from '@delon/util';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 const ALAINDEFAULTVAR = 'alain-default-vars';
@@ -43,7 +44,7 @@ const DEFAULT_COLORS = [
     color: '#001529',
   },
 ];
-const DEFAULT_VARS = {
+const DEFAULT_VARS: { [key: string]: NzSafeAny } = {
   'primary-color': { label: '主颜色', type: 'color', default: '#1890ff' },
   'alain-default-header-hg': {
     label: '高',
@@ -230,7 +231,7 @@ export class SettingDrawerComponent {
     this.resetData(this.cachedData, false);
   }
 
-  private get cachedData(): {} {
+  private get cachedData(): { [key: string]: any } {
     return this.settingSrv.layout[ALAINDEFAULTVAR] || {};
   }
 
@@ -303,11 +304,11 @@ export class SettingDrawerComponent {
     this.settingSrv.setLayout(name, value);
   }
 
-  private resetData(nowData?: {}, run: boolean = true): void {
+  private resetData(nowData?: { [key: string]: NzSafeAny }, run: boolean = true): void {
     nowData = nowData || {};
     const data = deepCopy(DEFAULT_VARS);
     Object.keys(data).forEach((key) => {
-      const value = nowData[`@${key}`] || data[key].default || '';
+      const value = nowData![`@${key}`] || data[key].default || '';
       data[key].value = value === `@primary-color` ? this.color : value;
     });
     this.data = data;

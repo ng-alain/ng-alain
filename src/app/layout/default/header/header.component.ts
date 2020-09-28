@@ -7,7 +7,7 @@ import { App, SettingsService } from '@delon/theme';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  searchToggleStatus: boolean;
+  searchToggleStatus = false;
 
   get app(): App {
     return this.settings.app;

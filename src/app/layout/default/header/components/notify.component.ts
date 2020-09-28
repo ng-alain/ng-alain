@@ -56,7 +56,7 @@ export class HeaderNotifyComponent {
     data.forEach((i) => (i.list = []));
 
     notices.forEach((item) => {
-      const newItem = { ...item };
+      const newItem = { ...item } as NoticeIconList;
       if (typeof newItem.datetime === 'string') {
         newItem.datetime = parse(newItem.datetime, 'yyyy-MM-dd', new Date());
       }
@@ -71,7 +71,7 @@ export class HeaderNotifyComponent {
           doing: 'gold',
         } as { [key: string]: string | undefined })[newItem.status];
       }
-      data.find((w) => w.title === newItem.type).list.push(newItem);
+      data.find((w) => w.title === newItem.type)!.list.push(newItem);
     });
     return data;
   }

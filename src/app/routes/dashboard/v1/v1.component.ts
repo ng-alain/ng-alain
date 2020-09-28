@@ -48,9 +48,9 @@ export class DashboardV1Component implements OnInit {
     },
   ];
 
-  webSite: any[];
-  salesData: any[];
-  offlineChartData: any[];
+  webSite!: any[];
+  salesData!: any[];
+  offlineChartData!: any[];
 
   constructor(private http: _HttpClient, private cdr: ChangeDetectorRef, private obSrv: OnboardingService, private platform: Platform) {
     // TODO: Wait for the page to load

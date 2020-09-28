@@ -86,7 +86,7 @@ export class I18NService implements AlainI18NService {
     this.updateLangData(this._default);
   }
 
-  private getDefaultLang(): string | undefined {
+  private getDefaultLang(): string {
     if (!this.platform.isBrowser) {
       return DEFAULT;
     }

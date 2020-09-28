@@ -9,7 +9,7 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
 export class AdvancedFormComponent implements OnInit {
   editIndex = -1;
   editObj = {};
-  form: FormGroup;
+  form!: FormGroup;
   users: Array<{ value: string; label: string }> = [
     { value: 'xiao', label: '付晓晓' },
     { value: 'mao', label: '周毛毛' },
