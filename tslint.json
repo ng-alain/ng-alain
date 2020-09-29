@@ -5,7 +5,8 @@
   ],
   "rulesDirectory": [
     "codelyzer",
-    "ng-alain-codelyzer"
+    "ng-alain-codelyzer",
+    "nz-tslint-rules"
   ],
   "rules": {
     "align": {
@@ -161,6 +162,7 @@
     "triple-equals": [true, "allow-null-check"],
     "typedef": [true, "call-signature", "parameter", "property-declaration"],
     "use-isnan": true,
-    "unified-signatures": true
+    "unified-signatures": true,
+    "nz-secondary-entry-imports": true
   }
 }
