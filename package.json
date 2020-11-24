@@ -23,7 +23,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "hmr": "ng serve -c=hmr",
+    "hmr": "ng serve --hmr",
     "build": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod",
     "analyze": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
     "lint": "npm run lint:ts && npm run lint:style",
@@ -67,7 +67,7 @@
     "file-saver": "^2.0.2",
     "ng-zorro-antd": "^10.1.1",
     "ngx-tinymce": "^11.0.0",
-    "ngx-ueditor": "^10.0.0",
+    "ngx-ueditor": "^11.0.0",
     "ngx-countdown": "^11.0.0",
     "screenfull": "^5.0.2",
     "qrious": "^4.0.2"
@@ -92,7 +92,6 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2",
-    "@angularclass/hmr": "^3.0.0",
     "@types/jszip": "^3.4.1",
     "@types/mockjs": "^1.0.2",
     "codecov": "^3.7.0",
