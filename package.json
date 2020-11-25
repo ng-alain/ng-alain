@@ -67,7 +67,7 @@
     "file-saver": "^2.0.2",
     "ng-zorro-antd": "^10.1.1",
     "ngx-tinymce": "^11.0.0",
-    "ngx-ueditor": "^10.0.0",
+    "ngx-ueditor": "^11.0.0",
     "ngx-countdown": "^11.0.0",
     "screenfull": "^5.0.2",
     "qrious": "^4.0.2"
