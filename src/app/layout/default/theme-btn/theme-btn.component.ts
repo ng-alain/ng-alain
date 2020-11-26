@@ -1,3 +1,6 @@
+/**
+ * TIPS: When it does not take effect, you need to run it once: npm run theme
+ */
 import { Platform } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { AlainConfigService } from '@delon/util';
