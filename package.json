@@ -22,8 +22,8 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
-    "hmr": "ng serve --hmr",
+    "start": "ng s -o",
+    "hmr": "ng s -o --hmr",
     "build": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod",
     "analyze": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
     "lint": "npm run lint:ts && npm run lint:style",
