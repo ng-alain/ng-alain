@@ -1,7 +1,10 @@
 <nz-drawer [nzVisible]="collapse" [nzWidth]="500" (nzOnClose)="toggle()">
   <div class="setting-drawer__content">
     <div class="setting-drawer__body setting-drawer__theme">
-      <h3 class="setting-drawer__title">主题色</h3>
+      <h3 class="setting-drawer__title">
+        主题色
+        <i nz-tooltip nzTooltipTitle="如果无法生效，请运行一次：npm run color-less" nz-icon nzType="question-circle"></i>
+      </h3>
       <span
         *ngFor="let c of colors"
         [style]="{ 'background-color': c.color }"
