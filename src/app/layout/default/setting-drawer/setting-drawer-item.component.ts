@@ -26,5 +26,5 @@ export class SettingDrawerItemComponent {
     this.i.value = `${val}px`;
   }
 
-  format = (value: string) => `${value} px`;
+  format = (value: number) => `${value} px`;
 }

@@ -26,7 +26,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
         nz-input
         [(ngModel)]="q"
         [nzAutocomplete]="auto"
-        (input)="search($event)"
+        (keyup.enter)="search($event)"
         (focus)="qFocus()"
         (blur)="qBlur()"
         [attr.placeholder]="'menu.search.placeholder' | translate"
@@ -80,10 +80,7 @@ export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
     this.searchToggled = false;
   }
 
-  search(ev: KeyboardEvent): void {
-    if (ev.key === 'Enter') {
-      return;
-    }
+  search(ev: Event): void {
     this.loading = true;
     this.search$.next((ev.target as HTMLInputElement).value);
   }
