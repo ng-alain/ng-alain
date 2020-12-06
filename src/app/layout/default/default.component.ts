@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'layout-default',
+  selector: 'layout-default1',
   templateUrl: './default.component.html',
 })
 export class LayoutDefaultComponent implements OnInit, OnDestroy {

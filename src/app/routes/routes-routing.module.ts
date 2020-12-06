@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SimpleGuard } from '@delon/auth';
 import { environment } from '@env/environment';
 // layout
-import { LayoutDefaultComponent } from '../layout/default/default.component';
+import { LayoutBasicComponent } from '../layout/basic/basic.component';
 import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.component';
 import { LayoutPassportComponent } from '../layout/passport/passport.component';
 // single pages
@@ -22,7 +22,7 @@ import { UserRegisterComponent } from './passport/register/register.component';
 const routes: Routes = [
   {
     path: '',
-    component: LayoutDefaultComponent,
+    component: LayoutBasicComponent,
     canActivate: [SimpleGuard],
     canActivateChild: [SimpleGuard],
     children: [

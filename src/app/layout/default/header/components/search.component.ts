@@ -55,9 +55,11 @@ export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
     if (typeof value === 'undefined') {
       return;
     }
-    this.searchToggled = true;
-    this.focus = true;
-    setTimeout(() => this.qIpt!.focus(), 300);
+    this.searchToggled = value;
+    this.focus = value;
+    if (value) {
+      setTimeout(() => this.qIpt!.focus(), 300);
+    }
   }
 
   constructor(private el: ElementRef<HTMLElement>, private cdr: ChangeDetectorRef) {}

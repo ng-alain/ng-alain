@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
+import { LayoutDefaultModule } from '@delon/theme/layout-default';
 import { SettingDrawerModule } from '@delon/theme/setting-drawer';
 import { ThemeBtnModule } from '@delon/theme/theme-btn';
 import { SharedModule } from '@shared';
+import { LayoutBasicComponent } from './basic/basic.component';
 
 import { LayoutDefaultComponent } from './default/default.component';
 import { HeaderFullScreenComponent } from './default/header/components/fullscreen.component';
@@ -16,7 +18,7 @@ import { HeaderComponent } from './default/header/header.component';
 import { SidebarComponent } from './default/sidebar/sidebar.component';
 import { LayoutFullScreenComponent } from './fullscreen/fullscreen.component';
 
-const COMPONENTS = [LayoutDefaultComponent, LayoutFullScreenComponent, HeaderComponent, SidebarComponent];
+const COMPONENTS = [LayoutBasicComponent, LayoutDefaultComponent, LayoutFullScreenComponent, HeaderComponent, SidebarComponent];
 
 const HEADERCOMPONENTS = [
   HeaderSearchComponent,
@@ -34,7 +36,7 @@ import { LayoutPassportComponent } from './passport/passport.component';
 const PASSPORT = [LayoutPassportComponent];
 
 @NgModule({
-  imports: [SharedModule, ThemeBtnModule, SettingDrawerModule],
+  imports: [SharedModule, ThemeBtnModule, SettingDrawerModule, LayoutDefaultModule],
   declarations: [...COMPONENTS, ...HEADERCOMPONENTS, ...PASSPORT],
   exports: [...COMPONENTS, ...PASSPORT],
 })
