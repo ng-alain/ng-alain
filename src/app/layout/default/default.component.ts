@@ -1,16 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import {
-  AfterViewInit,
-  Component,
-  ComponentFactoryResolver,
-  ElementRef,
-  Inject,
-  OnDestroy,
-  OnInit,
-  Renderer2,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
+import { Component, ElementRef, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
 import { SettingsService } from '@delon/theme';
 import { updateHostClass } from '@delon/util';
@@ -19,22 +8,18 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { SettingDrawerComponent } from './setting-drawer/setting-drawer.component';
-
 @Component({
   selector: 'layout-default',
   templateUrl: './default.component.html',
 })
-export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy {
+export class LayoutDefaultComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
-  @ViewChild('settingHost', { read: ViewContainerRef, static: true })
-  private settingHost!: ViewContainerRef;
   isFetching = false;
+  isDev = !environment.production;
 
   constructor(
     router: Router,
     msgSrv: NzMessageService,
-    private resolver: ComponentFactoryResolver,
     private settings: SettingsService,
     private el: ElementRef,
     private renderer: Renderer2,
@@ -73,16 +58,6 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
     });
 
     doc.body.classList[layout.colorWeak ? 'add' : 'remove']('color-weak');
-  }
-
-  ngAfterViewInit(): void {
-    // Setting componet for only developer
-    if (!environment.production) {
-      setTimeout(() => {
-        const settingFactory = this.resolver.resolveComponentFactory(SettingDrawerComponent);
-        this.settingHost.createComponent(settingFactory);
-      }, 22);
-    }
   }
 
   ngOnInit(): void {

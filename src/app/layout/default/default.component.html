@@ -4,5 +4,5 @@
 <section class="alain-default__content">
   <router-outlet></router-outlet>
 </section>
-<ng-template #settingHost></ng-template>
-<layout-theme-btn></layout-theme-btn>
+<setting-drawer *ngIf="isDev"></setting-drawer>
+<theme-btn></theme-btn>
