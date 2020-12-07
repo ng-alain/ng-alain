@@ -44,7 +44,7 @@ const routes: Routes = [
       { path: 'exception', loadChildren: () => import('./exception/exception.module').then((m) => m.ExceptionModule) },
     ],
   },
-  // 全屏布局
+  // 空白布局
   {
     path: 'data-v',
     component: LayoutBlankComponent,
