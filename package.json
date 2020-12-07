@@ -111,7 +111,7 @@
     "@delon/testing": "^10.1.1",
     "ng-alain": "^10.1.1",
     "ng-alain-codelyzer": "^0.0.1",
-    "ng-alain-plugin-theme": "^10.0.3",
+    "ng-alain-plugin-theme": "^11.0.0",
     "nz-tslint-rules": "^0.901.2"
   },
   "husky": {
