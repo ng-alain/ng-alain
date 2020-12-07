@@ -42,7 +42,7 @@ import { LayoutDefaultOptions } from '@delon/theme/layout-default';
               <header-fullscreen></header-fullscreen>
             </div>
             <div nz-menu-item>
-              <header-storage></header-storage>
+              <header-clear-storage></header-clear-storage>
             </div>
             <div nz-menu-item>
               <header-i18n></header-i18n>
