@@ -4,7 +4,7 @@ import { SimpleGuard } from '@delon/auth';
 import { environment } from '@env/environment';
 // layout
 import { LayoutBasicComponent } from '../layout/basic/basic.component';
-import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.component';
+import { LayoutBlankComponent } from '../layout/blank/blank.component';
 import { LayoutPassportComponent } from '../layout/passport/passport.component';
 // single pages
 import { CallbackComponent } from './callback/callback.component';
@@ -47,7 +47,7 @@ const routes: Routes = [
   // 全屏布局
   {
     path: 'data-v',
-    component: LayoutFullScreenComponent,
+    component: LayoutBlankComponent,
     children: [{ path: '', loadChildren: () => import('./data-v/data-v.module').then((m) => m.DataVModule) }],
   },
   // passport
