@@ -44,7 +44,7 @@ npm run theme
 
 echo '===== need mock'
 sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/global-config.module.ts
-sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/layout/default/default.component.ts
+sed -i 's/showSettingDrawer = !environment.production;/showSettingDrawer = true;/g' ${ROOT_DIR}/src/app/layout/basic/basic.component.ts
 
 if [[ ${GH} == true ]]; then
   echo "Build angular [github gh-pages]"
