@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
 import { ALAIN_I18N_TOKEN, SettingsService } from '@delon/theme';
-import { InputBoolean } from '@delon/util';
+import { BooleanInput, InputBoolean } from '@delon/util';
 
 import { I18NService } from '@core';
 
@@ -26,6 +26,7 @@ import { I18NService } from '@core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderI18nComponent {
+  static ngAcceptInputType_showLangText: BooleanInput;
   /** Whether to display language text */
   @Input() @InputBoolean() showLangText = true;
 
