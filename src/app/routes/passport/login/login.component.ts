@@ -141,9 +141,9 @@ export class UserLoginComponent implements OnDestroy {
     let callback = ``;
     // tslint:disable-next-line: prefer-conditional-expression
     if (environment.production) {
-      callback = 'https://ng-alain.github.io/ng-alain/#/callback/' + type;
+      callback = 'https://ng-alain.github.io/ng-alain/#/passport/callback/' + type;
     } else {
-      callback = 'http://localhost:4200/#/callback/' + type;
+      callback = 'http://localhost:4200/#/passport/callback/' + type;
     }
     switch (type) {
       case 'auth0':

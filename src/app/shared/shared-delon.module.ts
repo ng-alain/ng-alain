@@ -4,7 +4,6 @@ import { DatePickerModule } from '@delon/abc/date-picker';
 import { DownFileModule } from '@delon/abc/down-file';
 import { EllipsisModule } from '@delon/abc/ellipsis';
 import { ErrorCollectModule } from '@delon/abc/error-collect';
-import { ExceptionModule } from '@delon/abc/exception';
 import { FooterToolbarModule } from '@delon/abc/footer-toolbar';
 import { FullContentModule } from '@delon/abc/full-content';
 import { GlobalFooterModule } from '@delon/abc/global-footer';
@@ -49,7 +48,6 @@ export const SHARED_DELON_MODULES = [
   NumberToChineseModule,
   OnboardingModule,
   ErrorCollectModule,
-  ExceptionModule,
   FooterToolbarModule,
   GlobalFooterModule,
   GlobalFooterModule,

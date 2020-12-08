@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '@shared';
-import { CallbackComponent } from './callback/callback.component';
 import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
 import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
 // dashboard pages
 import { DashboardV1Component } from './dashboard/v1/v1.component';
 import { DashboardWorkplaceComponent } from './dashboard/workplace/workplace.component';
+import { CallbackComponent } from './passport/callback.component';
 // single pages
 import { UserLockComponent } from './passport/lock/lock.component';
 // passport pages

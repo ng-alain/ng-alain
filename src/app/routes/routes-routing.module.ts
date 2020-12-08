@@ -7,12 +7,12 @@ import { LayoutBasicComponent } from '../layout/basic/basic.component';
 import { LayoutBlankComponent } from '../layout/blank/blank.component';
 import { LayoutPassportComponent } from '../layout/passport/passport.component';
 // single pages
-import { CallbackComponent } from './callback/callback.component';
 import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
 import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
 // dashboard pages
 import { DashboardV1Component } from './dashboard/v1/v1.component';
 import { DashboardWorkplaceComponent } from './dashboard/workplace/workplace.component';
+import { CallbackComponent } from './passport/callback.component';
 import { UserLockComponent } from './passport/lock/lock.component';
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
@@ -44,7 +44,7 @@ const routes: Routes = [
       { path: 'exception', loadChildren: () => import('./exception/exception.module').then((m) => m.ExceptionModule) },
     ],
   },
-  // 空白布局
+  // Blak Layout 空白布局
   {
     path: 'data-v',
     component: LayoutBlankComponent,
@@ -78,7 +78,7 @@ const routes: Routes = [
     ],
   },
   // 单页不包裹Layout
-  { path: 'callback/:type', component: CallbackComponent },
+  { path: 'passport/callback/:type', component: CallbackComponent },
   { path: '**', redirectTo: 'exception/404' },
 ];
 
