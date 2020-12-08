@@ -6,7 +6,7 @@ import { environment } from '@env/environment';
 @Component({
   selector: 'layout-basic',
   template: `
-    <layout-default [options]="options" [asideUser]="asideUserTpl">
+    <layout-default [options]="options" [asideUser]="asideUserTpl" [content]="contentTpl">
       <layout-default-header-item direction="left">
         <a layout-default-header-item-trigger href="//github.com/ng-alain/ng-alain" target="_blank">
           <i nz-icon nzType="github"></i>
@@ -70,8 +70,9 @@ import { environment } from '@env/environment';
           </ul>
         </nz-dropdown-menu>
       </ng-template>
-
-      <router-outlet></router-outlet>
+      <ng-template #contentTpl>
+        <router-outlet></router-outlet>
+      </ng-template>
     </layout-default>
 
     <setting-drawer *ngIf="showSettingDrawer"></setting-drawer>
