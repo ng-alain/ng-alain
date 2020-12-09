@@ -21,11 +21,13 @@
     "scaffold"
   ],
   "scripts": {
+    "ng-high-memory": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng",
     "ng": "ng",
     "start": "ng s -o",
     "hmr": "ng s -o --hmr",
-    "build": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod",
-    "analyze": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
+    "build": "npm run ng-high-memory build -- --prod",
+    "analyze": "npm run ng-high-memory build -- --prod --source-map",
+    "analyze:view": "source-map-explorer dist/**/*.js",
     "lint": "npm run lint:ts && npm run lint:style",
     "lint:ts": "ng lint --fix",
     "lint:style": "stylelint \"src/**/*.less\" --syntax less --fix",
@@ -105,13 +107,13 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.3.0",
     "stylelint-order": "^4.1.0",
-    "webpack-bundle-analyzer": "^4.1.0",
+    "source-map-explorer": "^2.5.1",
     "xlsx": "^0.16.7",
     "pretty-quick": "^3.0.2",
     "@delon/testing": "^10.1.1",
     "ng-alain": "^10.1.1",
     "ng-alain-codelyzer": "^0.0.1",
-    "ng-alain-plugin-theme": "^11.0.0",
+    "ng-alain-plugin-theme": "^11.0.1",
     "nz-tslint-rules": "^0.901.2"
   },
   "husky": {
