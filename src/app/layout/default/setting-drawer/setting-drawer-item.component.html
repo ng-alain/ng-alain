@@ -28,6 +28,6 @@
     <nz-switch nzSize="small" [(ngModel)]="i.value" [ngModelOptions]="{ standalone: true }"></nz-switch>
   </ng-container>
   <ng-container *ngSwitchDefault>
-    <ng-content></ng-content>
+    <ng-template nzDrawerContent></ng-template>
   </ng-container>
 </div>
