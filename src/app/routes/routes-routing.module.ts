@@ -25,6 +25,7 @@ const routes: Routes = [
     component: LayoutBasicComponent,
     canActivate: [SimpleGuard],
     canActivateChild: [SimpleGuard],
+    data: {},
     children: [
       { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
       { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
@@ -40,8 +41,6 @@ const routes: Routes = [
       { path: 'delon', loadChildren: () => import('./delon/delon.module').then((m) => m.DelonModule) },
       { path: 'extras', loadChildren: () => import('./extras/extras.module').then((m) => m.ExtrasModule) },
       { path: 'pro', loadChildren: () => import('./pro/pro.module').then((m) => m.ProModule) },
-      // Exception
-      { path: 'exception', loadChildren: () => import('./exception/exception.module').then((m) => m.ExceptionModule) },
     ],
   },
   // Blak Layout 空白布局
@@ -79,6 +78,7 @@ const routes: Routes = [
   },
   // 单页不包裹Layout
   { path: 'passport/callback/:type', component: CallbackComponent },
+  { path: 'exception', loadChildren: () => import('./exception/exception.module').then((m) => m.ExceptionModule) },
   { path: '**', redirectTo: 'exception/404' },
 ];
 
