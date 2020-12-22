@@ -14,3 +14,5 @@ coverage/
 dist/
 package.json
 tslint.json
+
+_cli-tpl/**/*

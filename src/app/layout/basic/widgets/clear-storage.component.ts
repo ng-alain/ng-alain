@@ -3,7 +3,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
-  selector: 'header-storage',
+  selector: 'header-clear-storage',
   template: `
     <i nz-icon nzType="tool"></i>
     {{ 'menu.clear.local.storage' | translate }}
@@ -14,7 +14,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderStorageComponent {
+export class HeaderClearStorageComponent {
   constructor(private modalSrv: NzModalService, private messageSrv: NzMessageService) {}
 
   @HostListener('click')

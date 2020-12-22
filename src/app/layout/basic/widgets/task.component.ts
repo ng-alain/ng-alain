@@ -66,9 +66,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
             </div>
           </div>
           <div nz-row>
-            <div nz-col [nzSpan]="24" class="pt-md border-top-1 text-center text-grey point">
-              See All
-            </div>
+            <div nz-col [nzSpan]="24" class="pt-md border-top-1 text-center text-grey point">See All</div>
           </div>
         </nz-card>
       </div>

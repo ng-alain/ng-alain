@@ -3,16 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { SimpleGuard } from '@delon/auth';
 import { environment } from '@env/environment';
 // layout
-import { LayoutDefaultComponent } from '../layout/default/default.component';
-import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.component';
+import { LayoutBasicComponent } from '../layout/basic/basic.component';
+import { LayoutBlankComponent } from '../layout/blank/blank.component';
 import { LayoutPassportComponent } from '../layout/passport/passport.component';
 // single pages
-import { CallbackComponent } from './callback/callback.component';
 import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
 import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
 // dashboard pages
 import { DashboardV1Component } from './dashboard/v1/v1.component';
 import { DashboardWorkplaceComponent } from './dashboard/workplace/workplace.component';
+import { CallbackComponent } from './passport/callback.component';
 import { UserLockComponent } from './passport/lock/lock.component';
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
@@ -22,9 +22,10 @@ import { UserRegisterComponent } from './passport/register/register.component';
 const routes: Routes = [
   {
     path: '',
-    component: LayoutDefaultComponent,
+    component: LayoutBasicComponent,
     canActivate: [SimpleGuard],
     canActivateChild: [SimpleGuard],
+    data: {},
     children: [
       { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
       { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
@@ -34,21 +35,19 @@ const routes: Routes = [
       { path: 'dashboard/workplace', component: DashboardWorkplaceComponent },
       {
         path: 'widgets',
-        loadChildren: () => import('./widgets/widgets.module').then(m => m.WidgetsModule),
+        loadChildren: () => import('./widgets/widgets.module').then((m) => m.WidgetsModule),
       },
-      { path: 'style', loadChildren: () => import('./style/style.module').then(m => m.StyleModule) },
-      { path: 'delon', loadChildren: () => import('./delon/delon.module').then(m => m.DelonModule) },
-      { path: 'extras', loadChildren: () => import('./extras/extras.module').then(m => m.ExtrasModule) },
-      { path: 'pro', loadChildren: () => import('./pro/pro.module').then(m => m.ProModule) },
-      // Exception
-      { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) },
+      { path: 'style', loadChildren: () => import('./style/style.module').then((m) => m.StyleModule) },
+      { path: 'delon', loadChildren: () => import('./delon/delon.module').then((m) => m.DelonModule) },
+      { path: 'extras', loadChildren: () => import('./extras/extras.module').then((m) => m.ExtrasModule) },
+      { path: 'pro', loadChildren: () => import('./pro/pro.module').then((m) => m.ProModule) },
     ],
   },
-  // 全屏布局
+  // Blak Layout 空白布局
   {
     path: 'data-v',
-    component: LayoutFullScreenComponent,
-    children: [{ path: '', loadChildren: () => import('./data-v/data-v.module').then(m => m.DataVModule) }],
+    component: LayoutBlankComponent,
+    children: [{ path: '', loadChildren: () => import('./data-v/data-v.module').then((m) => m.DataVModule) }],
   },
   // passport
   {
@@ -78,7 +77,8 @@ const routes: Routes = [
     ],
   },
   // 单页不包裹Layout
-  { path: 'callback/:type', component: CallbackComponent },
+  { path: 'passport/callback/:type', component: CallbackComponent },
+  { path: 'exception', loadChildren: () => import('./exception/exception.module').then((m) => m.ExceptionModule) },
   { path: '**', redirectTo: 'exception/404' },
 ];
 

@@ -26,7 +26,6 @@
             "styles": ["src/styles.less"],
             "scripts": ["node_modules/ajv/dist/ajv.bundle.js", "node_modules/qrious/dist/qrious.min.js"],
             "allowedCommonJsDependencies": [
-              "@angularclass/hmr",
               "@ant-design/colors",
               "@antv/adjust",
               "@antv/attr",
@@ -52,7 +51,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -70,14 +68,6 @@
                   "maximumError": "10kb"
                 }
               ]
-            },
-            "hmr": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.hmr.ts"
-                }
-              ]
             }
           }
         },
@@ -90,10 +80,6 @@
           "configurations": {
             "production": {
               "browserTarget": "ng-alain:build:production"
-            },
-            "hmr": {
-              "browserTarget": "ng-alain:build:hmr",
-              "hmr": true
             }
           }
         },

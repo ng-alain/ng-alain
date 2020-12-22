@@ -7,6 +7,7 @@ import { DA_SERVICE_TOKEN, ITokenService, SocialOpenType, SocialService } from '
 import { SettingsService, _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
 
 @Component({
   selector: 'passport-login',
@@ -62,8 +63,8 @@ export class UserLoginComponent implements OnDestroy {
 
   // #endregion
 
-  switch({ index }: { index: number }): void {
-    this.type = index;
+  switch({ index }: NzTabChangeEvent): void {
+    this.type = index!;
   }
 
   getCaptcha(): void {
@@ -140,9 +141,9 @@ export class UserLoginComponent implements OnDestroy {
     let callback = ``;
     // tslint:disable-next-line: prefer-conditional-expression
     if (environment.production) {
-      callback = 'https://ng-alain.github.io/ng-alain/#/callback/' + type;
+      callback = 'https://ng-alain.github.io/ng-alain/#/passport/callback/' + type;
     } else {
-      callback = 'http://localhost:4200/#/callback/' + type;
+      callback = 'http://localhost:4200/#/passport/callback/' + type;
     }
     switch (type) {
       case 'auth0':
