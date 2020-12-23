@@ -17,8 +17,8 @@
             <input nz-input [(ngModel)]="args.userid" name="userid" id="userid" />
           </se>
           <se>
-            <button nz-button [nzType]="'primary'" (click)="st.load()" [nzLoading]="loading">Search</button>
-            <button nz-button (click)="st.load(1, { _allow_anonymous: true })" [disabled]="loading">Clear</button>
+            <button nz-button [nzType]="'primary'" (click)="st.load()" [nzLoading]="http.loading">Search</button>
+            <button nz-button (click)="st.load(1, { _allow_anonymous: true })" [disabled]="http.loading">Clear</button>
           </se>
         </form>
       </div>

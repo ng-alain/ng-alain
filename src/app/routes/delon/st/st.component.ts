@@ -58,16 +58,11 @@ export class STDemoComponent implements OnInit {
       ],
     },
   ];
-  loading = false;
 
-  constructor(private http: _HttpClient, private message: NzMessageService) {}
+  constructor(public http: _HttpClient, private message: NzMessageService) {}
 
   ngOnInit(): void {
-    this.loading = true;
-    this.http
-      .get('/chart/visit')
-      .subscribe((res: G2MiniBarData[]) => (this.events = res.slice(0, 8)))
-      .add(() => (this.loading = false));
+    this.http.get('/chart/visit').subscribe((res: G2MiniBarData[]) => (this.events = res.slice(0, 8)));
   }
 
   fullChange(val: boolean): void {

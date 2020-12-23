@@ -159,10 +159,6 @@ export class DefaultInterceptor implements HttpInterceptor {
   }
 
   private handleData(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    // 可能会因为 `throw` 导出无法执行 `_HttpClient` 的 `end()` 操作
-    if (ev.status > 0) {
-      this.http.end();
-    }
     this.checkStatus(ev);
     // 业务处理：一些通用操作
     switch (ev.status) {
