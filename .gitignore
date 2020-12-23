@@ -4,11 +4,11 @@
 /dist
 /tmp
 /out-tsc
-/src/assets/color.less
+# /src/assets/color.less
 delon-builds
 scripts/var.less
-src/assets/style.dark.css
-src/assets/style.compact.css
+# src/assets/style.dark.css
+# src/assets/style.compact.css
 
 # dependencies
 /node_modules
