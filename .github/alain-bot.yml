@@ -21,8 +21,8 @@ issue:
     labels: Invalid
     replay: |
       Hello @{user}, your issue has been closed because it does not conform to our issue requirements.
-      Please use the [Issue Helper](https://ng-alain.com/issue-helper/) to create an issue, thank you!
+      Please use the [Issue Helper](https://ng-alain.com/issue-helper/index.html#en) to create an issue, thank you!
 
 
       你好 @{user}，为了能够进行高效沟通，我们对 issue 有一定的格式要求，你的 issue 因为不符合要求而被自动关闭。
-      你可以通过 [issue 助手](https://ng-alain.com/issue-helper/#zh) 来创建 issue 以方便我们定位错误。谢谢配合！
+      你可以通过 [issue 助手](https://ng-alain.com/issue-helper/index.html#zh) 来创建 issue 以方便我们定位错误。谢谢配合！
