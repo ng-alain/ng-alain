@@ -11,11 +11,10 @@ import { SHARED_DELON_MODULES } from './shared-delon.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 
 // #region third libs
-import { CountdownModule } from 'ngx-countdown';
-import { NgxTinymceModule } from 'ngx-tinymce';
-import { UEditorModule } from 'ngx-ueditor';
+// import { NgxTinymceModule } from 'ngx-tinymce';
+// import { UEditorModule } from 'ngx-ueditor';
 
-const THIRDMODULES = [CountdownModule, UEditorModule, NgxTinymceModule];
+const THIRDMODULES: Type<any>[] = [];
 // #endregion
 
 // #region your componets & directives
