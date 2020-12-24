@@ -61,9 +61,11 @@ const COMPONENTS = [
   ProAccountSettingsSecurityComponent,
   ProAccountSettingsBindingComponent,
   ProAccountSettingsNotificationComponent,
+  Step1Component,
+  Step2Component,
+  Step3Component,
+  ProBasicListEditComponent,
 ];
-
-const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component, ProBasicListEditComponent];
 
 @NgModule({
   imports: [
@@ -76,7 +78,6 @@ const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component, ProB
     NzPaginationModule,
     NzStepsModule,
   ],
-  declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
-  entryComponents: COMPONENTS_NOROUNT,
+  declarations: COMPONENTS,
 })
 export class ProModule {}

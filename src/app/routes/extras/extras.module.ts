@@ -8,12 +8,10 @@ import { ExtrasPoiEditComponent } from './poi/edit/edit.component';
 import { ExtrasPoiComponent } from './poi/poi.component';
 import { ExtrasSettingsComponent } from './settings/settings.component';
 
-const COMPONENTS = [HelpCenterComponent, ExtrasSettingsComponent, ExtrasPoiComponent];
-const COMPONENTS_NOROUNT = [ExtrasPoiEditComponent];
+const COMPONENTS = [HelpCenterComponent, ExtrasSettingsComponent, ExtrasPoiComponent, ExtrasPoiEditComponent];
 
 @NgModule({
   imports: [SharedModule, ExtrasRoutingModule],
-  declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
-  entryComponents: COMPONENTS_NOROUNT,
+  declarations: [...COMPONENTS],
 })
 export class ExtrasModule {}
