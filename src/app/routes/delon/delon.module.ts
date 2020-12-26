@@ -1,9 +1,12 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { DownFileModule } from '@delon/abc/down-file';
+import { FullContentModule } from '@delon/abc/full-content';
+import { QRModule } from '@delon/abc/qr';
 import { SharedModule } from '@shared';
 
 import { DelonRoutingModule } from './delon-routing.module';
 
+import { G2MiniBarModule } from '@delon/chart/mini-bar';
 import { ACLComponent } from './acl/acl.component';
 import { CacheComponent } from './cache/cache.component';
 import { DownFileComponent } from './downfile/downfile.component';
@@ -38,8 +41,8 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-  imports: [CommonModule, SharedModule, DelonRoutingModule],
+  imports: [SharedModule, DelonRoutingModule, DownFileModule, FullContentModule, QRModule, G2MiniBarModule],
   providers: [CanLeaveProvide],
-  declarations: [...COMPONENTS],
+  declarations: COMPONENTS,
 })
 export class DelonModule {}

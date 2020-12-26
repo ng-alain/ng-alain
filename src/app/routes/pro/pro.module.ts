@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
-
+import { AvatarListModule } from '@delon/abc/avatar-list';
+import { EllipsisModule } from '@delon/abc/ellipsis';
+import { FooterToolbarModule } from '@delon/abc/footer-toolbar';
+import { TagSelectModule } from '@delon/abc/tag-select';
 import { SharedModule } from '@shared';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
+
 import { ProRoutingModule } from './pro-routing.module';
 
 import { ProAccountCenterApplicationsComponent } from './account/center/applications/applications.component';
@@ -55,13 +61,23 @@ const COMPONENTS = [
   ProAccountSettingsSecurityComponent,
   ProAccountSettingsBindingComponent,
   ProAccountSettingsNotificationComponent,
+  Step1Component,
+  Step2Component,
+  Step3Component,
+  ProBasicListEditComponent,
 ];
 
-const COMPONENTS_NOROUNT = [Step1Component, Step2Component, Step3Component, ProBasicListEditComponent];
-
 @NgModule({
-  imports: [SharedModule, ProRoutingModule],
-  declarations: [...COMPONENTS, ...COMPONENTS_NOROUNT],
-  entryComponents: COMPONENTS_NOROUNT,
+  imports: [
+    SharedModule,
+    ProRoutingModule,
+    EllipsisModule,
+    TagSelectModule,
+    AvatarListModule,
+    FooterToolbarModule,
+    NzPaginationModule,
+    NzStepsModule,
+  ],
+  declarations: COMPONENTS,
 })
 export class ProModule {}

@@ -5,19 +5,6 @@ import { environment } from '@env/environment';
 // layout
 import { LayoutBasicComponent } from '../layout/basic/basic.component';
 import { LayoutBlankComponent } from '../layout/blank/blank.component';
-import { LayoutPassportComponent } from '../layout/passport/passport.component';
-// single pages
-import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
-import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
-// dashboard pages
-import { DashboardV1Component } from './dashboard/v1/v1.component';
-import { DashboardWorkplaceComponent } from './dashboard/workplace/workplace.component';
-import { CallbackComponent } from './passport/callback.component';
-import { UserLockComponent } from './passport/lock/lock.component';
-// passport pages
-import { UserLoginComponent } from './passport/login/login.component';
-import { UserRegisterResultComponent } from './passport/register-result/register-result.component';
-import { UserRegisterComponent } from './passport/register/register.component';
 
 const routes: Routes = [
   {
@@ -27,12 +14,7 @@ const routes: Routes = [
     canActivateChild: [SimpleGuard],
     data: {},
     children: [
-      { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
-      { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
-      { path: 'dashboard/v1', component: DashboardV1Component },
-      { path: 'dashboard/analysis', component: DashboardAnalysisComponent },
-      { path: 'dashboard/monitor', component: DashboardMonitorComponent },
-      { path: 'dashboard/workplace', component: DashboardWorkplaceComponent },
+      { path: '', loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule) },
       {
         path: 'widgets',
         loadChildren: () => import('./widgets/widgets.module').then((m) => m.WidgetsModule),
@@ -50,34 +32,7 @@ const routes: Routes = [
     children: [{ path: '', loadChildren: () => import('./data-v/data-v.module').then((m) => m.DataVModule) }],
   },
   // passport
-  {
-    path: 'passport',
-    component: LayoutPassportComponent,
-    children: [
-      {
-        path: 'login',
-        component: UserLoginComponent,
-        data: { title: '登录', titleI18n: 'app.login.login' },
-      },
-      {
-        path: 'register',
-        component: UserRegisterComponent,
-        data: { title: '注册', titleI18n: 'app.register.register' },
-      },
-      {
-        path: 'register-result',
-        component: UserRegisterResultComponent,
-        data: { title: '注册结果', titleI18n: 'app.register.register' },
-      },
-      {
-        path: 'lock',
-        component: UserLockComponent,
-        data: { title: '锁屏', titleI18n: 'app.lock' },
-      },
-    ],
-  },
-  // 单页不包裹Layout
-  { path: 'passport/callback/:type', component: CallbackComponent },
+  { path: '', loadChildren: () => import('./passport/passport.module').then((m) => m.PassportModule) },
   { path: 'exception', loadChildren: () => import('./exception/exception.module').then((m) => m.ExceptionModule) },
   { path: '**', redirectTo: 'exception/404' },
 ];
