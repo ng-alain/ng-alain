@@ -71,7 +71,7 @@
         </nz-col>
         <nz-col [nzSpan]="8">
           <h4>Profile picture</h4>
-          <img src="./assets/tmp/img/avatar.jpg" style="width: 100%;" />
+          <img src="./assets/tmp/img/avatar.jpg" style="width: 100%" />
           <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/" class="d-block mt-md text-center">
             <button nz-button>Upload new picture</button>
           </nz-upload>
@@ -144,7 +144,7 @@
         </nz-col>
       </nz-row>
       <h4 class="pt-md mb-sm">Add email address</h4>
-      <input nz-input style="width: 200px;" class="mr-sm" />
+      <input nz-input style="width: 200px" class="mr-sm" />
       <button nz-button (click)="msg.info('add')">Add</button>
       <h4 class="border-top-1 py-md mt-md">Primary email address</h4>
       <p class="mb-md">
@@ -156,22 +156,16 @@
       <button nz-button (click)="msg.info('save')">Save</button>
     </nz-card>
     <nz-card nzTitle="Notifications" *ngIf="active === 4">
-      <p class="pb-md">
-        Choose how you receive notifications. These notification settings apply to the repositories you’re watching.
-      </p>
+      <p class="pb-md">Choose how you receive notifications. These notification settings apply to the repositories you’re watching.</p>
       <nz-list nzBordered>
         <nz-list-item class="d-block">
           <h4>Automatically watch repositories</h4>
-          <p class="py-sm">
-            When you’re given push access to a repository, automatically receive notifications for it.
-          </p>
+          <p class="py-sm">When you’re given push access to a repository, automatically receive notifications for it.</p>
           <label nz-checkbox [ngModel]="true">Automatically watch</label>
         </nz-list-item>
         <nz-list-item class="d-block">
           <h4>Participating</h4>
-          <p class="py-sm">
-            Notifications for the conversations you are participating in, or if someone cites you with an @mention.
-          </p>
+          <p class="py-sm">Notifications for the conversations you are participating in, or if someone cites you with an @mention.</p>
           <label nz-checkbox [ngModel]="true">Email</label>
           <label nz-checkbox [ngModel]="true">Web</label>
         </nz-list-item>
@@ -187,17 +181,13 @@
       <div class="border rounded-md text-center p-lg bg-grey-lighter">
         <h3>No OAuth applications</h3>
         <p class="py-md">OAuth applications are used to access the GitHub API. Read the docs to find out more.</p>
-        <button nz-button (click)="msg.info('Register a new application')" [nzType]="'primary'">
-          Register a new application
-        </button>
+        <button nz-button (click)="msg.info('Register a new application')" [nzType]="'primary'">Register a new application</button>
       </div>
     </nz-card>
     <nz-card nzTitle="Personal access tokens" [nzExtra]="extra" *ngIf="active === 6">
       <ng-template #extra>
-        <button nz-button (click)="msg.info('Generate new token')" [nzSize]="'small'">Generate new token</button>
-        <button nz-button (click)="msg.info('Revoke all')" [nzSize]="'small'" [nzType]="'danger'" class="ml-sm">
-          Revoke all
-        </button>
+        <button nz-button (click)="msg.info('Generate new token')" nzSize="small">Generate new token</button>
+        <button nz-button (click)="msg.info('Revoke all')" nzSize="small" nzDanger class="ml-sm">Revoke all</button>
       </ng-template>
       <p>Tokens you have generated that can be used to access the GitHub API.</p>
       <nz-list nzBordered class="mt-sm">
@@ -207,7 +197,7 @@
             Last used within the last day
             <nz-button-group>
               <button nz-button>Edit</button>
-              <button nz-button [nzType]="'danger'">Delete</button>
+              <button nz-button nzDanger>Delete</button>
             </nz-button-group>
           </nz-col>
         </nz-list-item>
