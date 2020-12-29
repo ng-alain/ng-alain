@@ -24,6 +24,7 @@ import { HeaderFullScreenComponent } from './basic/widgets/fullscreen.component'
 import { HeaderI18nComponent } from './basic/widgets/i18n.component';
 import { HeaderIconComponent } from './basic/widgets/icon.component';
 import { HeaderNotifyComponent } from './basic/widgets/notify.component';
+import { HeaderRTLComponent } from './basic/widgets/rtl.component';
 import { HeaderSearchComponent } from './basic/widgets/search.component';
 import { HeaderTaskComponent } from './basic/widgets/task.component';
 import { HeaderUserComponent } from './basic/widgets/user.component';
@@ -40,6 +41,7 @@ const HEADERCOMPONENTS = [
   HeaderI18nComponent,
   HeaderClearStorageComponent,
   HeaderUserComponent,
+  HeaderRTLComponent,
 ];
 
 // passport

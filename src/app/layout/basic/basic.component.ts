@@ -41,6 +41,9 @@ import { environment } from '@env/environment';
         <nz-dropdown-menu #settingsMenu="nzDropdownMenu">
           <div nz-menu style="width: 200px;">
             <div nz-menu-item>
+              <header-rtl></header-rtl>
+            </div>
+            <div nz-menu-item>
               <header-fullscreen></header-fullscreen>
             </div>
             <div nz-menu-item>
