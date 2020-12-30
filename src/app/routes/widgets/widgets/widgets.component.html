@@ -172,7 +172,7 @@
   </div>
   <div nz-col [nzXs]="24" [nzSm]="8">
     <nz-card class="ant-card__body-nopadding">
-      <div class="text-center bg-center py-lg text-white" style="background-image: url('./assets/tmp/img/bg9.jpg');">
+      <div class="text-center bg-center py-lg text-white" style="background-image: url('./assets/tmp/img/bg9.jpg')">
         <nz-avatar [nzSrc]="'./assets/tmp/img/1.png'"></nz-avatar>
         <h3 class="text-white">cipchk</h3>
         <div>
@@ -445,7 +445,7 @@
         <i nz-icon nzType="check-circle" class="text-green"></i> 已开通 16 个 <i nz-icon nzType="check-circle" class="pl-md"></i> 未开通 4
         个
       </div>
-      <nz-carousel style="overflow: initial;">
+      <nz-carousel style="overflow: initial">
         <div nz-carousel-content>
           <div nz-row [nzGutter]="24" class="mb-md">
             <div nz-col [nzSpan]="12">
@@ -651,9 +651,7 @@
   </div>
   <div nz-col [nzXs]="24" [nzMd]="12" class="mb-md">
     <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="bg-white rounded-md border p-md">
-      <div nz-col [nzSpan]="16">
-        你觉得这篇文章如何：
-      </div>
+      <div nz-col [nzSpan]="16">你觉得这篇文章如何：</div>
       <div nz-col [nzSpan]="8" class="text-right">
         <span
           nz-popconfirm
@@ -664,7 +662,7 @@
           [nzCancelText]="'下次再说'"
           (nzOnConfirm)="msg.success('开启提醒')"
           (nzOnCancel)="msg.error('取消提醒')"
-          style="display: inline-block; padding-top: 15px;"
+          style="display: inline-block; padding-top: 15px"
         ></span>
         <span class="pr-lg">
           <i nz-icon nzType="like" class="display-3 point" [class.text-primary]="like" (click)="like = !like"></i> 赞
@@ -752,9 +750,7 @@
       <p class="text-grey">A UI Design Language</p>
       <ol class="list-styled text-lg pt-md">
         <li>Designed by experienced team, and showcase dozens of inspiring projects.</li>
-        <li>
-          Provide solutions for usual problems that may be encountered while developing enterprise-like complex UIs.
-        </li>
+        <li>Provide solutions for usual problems that may be encountered while developing enterprise-like complex UIs.</li>
         <li>Dozens of flexible and practical reusable components that increase your productivity.</li>
       </ol>
       <p class="pt-md mb0">
@@ -768,7 +764,7 @@
         Recent Posts
         <small class="text-sm font-weight-normal">Venenatis portauam Inceptos ameteiam</small>
       </ng-template>
-      <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point" *ngFor="let item of todoData">
+      <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md bg-grey-lighter-h point" *ngFor="let item of todoData">
         <div nz-col [nzSpan]="4" class="text-center">
           <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'"></nz-avatar>
         </div>
