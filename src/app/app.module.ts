@@ -1,6 +1,6 @@
 // tslint:disable: no-duplicate-imports
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, LOCALE_ID, NgModule } from '@angular/core';
+import { APP_INITIALIZER, LOCALE_ID, NgModule, Type } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
@@ -56,7 +56,8 @@ const I18NSERVICE_PROVIDES = [{ provide: ALAIN_I18N_TOKEN, useClass: I18NService
 
 // #region global third module
 
-// const GLOBAL_THIRD_MODULES = [];
+import { BidiModule } from '@angular/cdk/bidi';
+const GLOBAL_THIRD_MODULES: Type<any>[] = [BidiModule];
 
 // #endregion
 
@@ -113,7 +114,7 @@ import { STWidgetModule } from './shared/st-widget/st-widget.module';
     STWidgetModule,
     NzNotificationModule,
     ...I18NSERVICE_MODULES,
-    // ...GLOBAL_THIRD_MODULES,
+    ...GLOBAL_THIRD_MODULES,
     ...FORM_MODULES,
   ],
   providers: [...LANG_PROVIDES, ...INTERCEPTOR_PROVIDES, ...I18NSERVICE_PROVIDES, ...APPINIT_PROVIDES],
