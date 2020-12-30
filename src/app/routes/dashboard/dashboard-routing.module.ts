@@ -7,12 +7,11 @@ import { DashboardV1Component } from './v1/v1.component';
 import { DashboardWorkplaceComponent } from './workplace/workplace.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
-  { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
-  { path: 'dashboard/v1', component: DashboardV1Component },
-  { path: 'dashboard/analysis', component: DashboardAnalysisComponent },
-  { path: 'dashboard/monitor', component: DashboardMonitorComponent },
-  { path: 'dashboard/workplace', component: DashboardWorkplaceComponent },
+  { path: '', redirectTo: 'v1', pathMatch: 'full' },
+  { path: 'v1', component: DashboardV1Component },
+  { path: 'analysis', component: DashboardAnalysisComponent },
+  { path: 'monitor', component: DashboardMonitorComponent },
+  { path: 'workplace', component: DashboardWorkplaceComponent },
 ];
 
 @NgModule({

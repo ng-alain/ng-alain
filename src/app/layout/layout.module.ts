@@ -11,6 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -24,6 +25,7 @@ import { HeaderFullScreenComponent } from './basic/widgets/fullscreen.component'
 import { HeaderI18nComponent } from './basic/widgets/i18n.component';
 import { HeaderIconComponent } from './basic/widgets/icon.component';
 import { HeaderNotifyComponent } from './basic/widgets/notify.component';
+import { HeaderRTLComponent } from './basic/widgets/rtl.component';
 import { HeaderSearchComponent } from './basic/widgets/search.component';
 import { HeaderTaskComponent } from './basic/widgets/task.component';
 import { HeaderUserComponent } from './basic/widgets/user.component';
@@ -40,6 +42,7 @@ const HEADERCOMPONENTS = [
   HeaderI18nComponent,
   HeaderClearStorageComponent,
   HeaderUserComponent,
+  HeaderRTLComponent,
 ];
 
 // passport
@@ -66,6 +69,7 @@ const PASSPORT = [LayoutPassportComponent];
     NzBadgeModule,
     NzAvatarModule,
     NzIconModule,
+    NzCardModule,
   ],
   declarations: [...COMPONENTS, ...HEADERCOMPONENTS, ...PASSPORT],
   exports: [...COMPONENTS, ...PASSPORT],
