@@ -1,5 +1,6 @@
+import { Direction } from '@angular/cdk/bidi';
 import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
-import { LayoutDirection, SettingsService } from '@delon/theme';
+import { SettingsService } from '@delon/theme';
 import { AlainConfigService } from '@delon/util';
 import { NzConfigService } from 'ng-zorro-antd/core/config';
 
@@ -16,11 +17,11 @@ import { NzConfigService } from 'ng-zorro-antd/core/config';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderRTLComponent {
-  get nextDir(): LayoutDirection {
+  get nextDir(): Direction {
     return this.dir === 'ltr' ? 'rtl' : 'ltr';
   }
 
-  dir: LayoutDirection = 'ltr';
+  dir: Direction = 'ltr';
 
   constructor(private settingsSrv: SettingsService, private nzConfigService: NzConfigService, private configSrv: AlainConfigService) {
     this.dir = settingsSrv.layout.direction;

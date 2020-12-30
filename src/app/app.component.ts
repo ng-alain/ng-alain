@@ -1,6 +1,7 @@
+import { Direction } from '@angular/cdk/bidi';
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { LayoutDirection, SettingsService, TitleService, VERSION as VERSION_ALAIN } from '@delon/theme';
+import { SettingsService, TitleService, VERSION as VERSION_ALAIN } from '@delon/theme';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { VERSION as VERSION_ZORRO } from 'ng-zorro-antd/version';
 import { filter } from 'rxjs/operators';
@@ -14,7 +15,7 @@ import { filter } from 'rxjs/operators';
   `,
 })
 export class AppComponent implements OnInit {
-  dir: LayoutDirection = 'ltr';
+  dir: Direction = 'ltr';
 
   constructor(
     el: ElementRef,
