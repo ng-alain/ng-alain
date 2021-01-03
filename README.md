@@ -43,6 +43,7 @@ English | [简体中文](README-zh_CN.md)
 + UI Router States
 + Customize Theme
 + Less preprocessor
++ RTL
 + Well organized & commented code
 + Simple upgrade
 + Support Docker deploy

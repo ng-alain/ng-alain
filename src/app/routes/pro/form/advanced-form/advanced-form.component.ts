@@ -132,18 +132,23 @@ export class AdvancedFormComponent implements OnInit {
   }
 
   save(index: number): void {
-    this.items.at(index).markAsDirty();
-    if (this.items.at(index).invalid) {
+    const item = this.items.at(index) as FormGroup;
+    Object.keys(item.controls).forEach((key) => {
+      item.controls[key].markAsDirty();
+      item.controls[key].updateValueAndValidity();
+    });
+    if (item.invalid) {
       return;
     }
     this.editIndex = -1;
   }
 
   cancel(index: number): void {
-    if (!this.items.at(index).value.key) {
+    const item = this.items.at(index);
+    if (!item.value.key) {
       this.del(index);
     } else {
-      this.items.at(index).patchValue(this.editObj);
+      item.patchValue(this.editObj);
     }
     this.editIndex = -1;
   }

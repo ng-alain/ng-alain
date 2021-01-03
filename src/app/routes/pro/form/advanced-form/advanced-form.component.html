@@ -140,21 +140,27 @@
         <tr *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
           <td>
             <span *ngIf="editIndex !== i">{{ items.value[i].name }}</span>
-            <span *ngIf="editIndex === i" nz-form-control nzErrorTip="请输入成员姓名">
-              <input nz-input formControlName="name" placeholder="请输入成员姓名" />
-            </span>
+            <nz-form-item *ngIf="editIndex === i">
+              <nz-form-control nzErrorTip="请输入成员姓名">
+                <input nz-input formControlName="name" placeholder="请输入成员姓名" />
+              </nz-form-control>
+            </nz-form-item>
           </td>
           <td>
             <span *ngIf="editIndex !== i">{{ items.value[i].workId }}</span>
-            <span *ngIf="editIndex === i" nz-form-control nzErrorTip="请输入工号">
-              <input nz-input formControlName="workId" placeholder="请输入工号" />
-            </span>
+            <nz-form-item *ngIf="editIndex === i">
+              <nz-form-control nzErrorTip="请输入工号">
+                <input nz-input formControlName="workId" placeholder="请输入工号" />
+              </nz-form-control>
+            </nz-form-item>
           </td>
           <td>
             <span *ngIf="editIndex !== i">{{ items.value[i].department }}</span>
-            <span *ngIf="editIndex === i" nz-form-control nzErrorTip="请输入所属部门">
-              <input nz-input formControlName="department" placeholder="请输入所属部门" />
-            </span>
+            <nz-form-item *ngIf="editIndex === i">
+              <nz-form-control nzErrorTip="请输入所属部门">
+                <input nz-input formControlName="department" placeholder="请输入所属部门" />
+              </nz-form-control>
+            </nz-form-item>
           </td>
           <td>
             <span *ngIf="editIndex !== i">
