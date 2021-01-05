@@ -63,7 +63,6 @@
     "@delon/mock": "^11.0.2",
     "@delon/theme": "^11.0.2",
     "@delon/util": "^11.0.2",
-    "ng-zorro-antd": "^11.0.1",
     "ngx-tinymce": "^11.0.0",
     "ngx-ueditor": "^11.0.0",
     "screenfull": "^5.1.0",
