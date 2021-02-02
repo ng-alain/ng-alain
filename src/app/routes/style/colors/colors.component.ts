@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { copy } from '@delon/util';
+import { copy } from '@delon/util/browser';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ColorService } from '../color.service';
 
