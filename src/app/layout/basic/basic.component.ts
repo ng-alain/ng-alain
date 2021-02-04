@@ -23,7 +23,7 @@ import { environment } from '@env/environment';
         </div>
       </layout-default-header-item>
       <layout-default-header-item direction="middle">
-        <header-search class="alain-default__search" [toggleChange]="searchToggleStatus"></header-search>
+        <header-search class="alain-default__search" [(toggleChange)]="searchToggleStatus"></header-search>
       </layout-default-header-item>
       <layout-default-header-item direction="right">
         <header-notify></header-notify>
