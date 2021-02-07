@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { I18NService } from '@core';
 import { STColumn } from '@delon/abc/st';
 import { _HttpClient } from '@delon/theme';
-import { deepCopy, getTimeDistance } from '@delon/util';
+import { getTimeDistance } from '@delon/util/date-time';
+import { deepCopy } from '@delon/util/other';
 import { yuan } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
