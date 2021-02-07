@@ -4,9 +4,11 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   HostBinding,
   Input,
   OnDestroy,
+  Output,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
@@ -58,9 +60,10 @@ export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
     this.searchToggled = value;
     this.focus = value;
     if (value) {
-      setTimeout(() => this.qIpt!.focus(), 300);
+      setTimeout(() => this.qIpt!.focus());
     }
   }
+  @Output() toggleChangeChange = new EventEmitter<boolean>();
 
   constructor(private el: ElementRef<HTMLElement>, private cdr: ChangeDetectorRef) {}
 
@@ -90,6 +93,8 @@ export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
   qBlur(): void {
     this.focus = false;
     this.searchToggled = false;
+    this.options.length = 0;
+    this.toggleChangeChange.emit(false);
   }
 
   search(ev: Event): void {
