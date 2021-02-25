@@ -1,12 +1,21 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponseBase } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandler,
+  HttpHeaders,
+  HttpInterceptor,
+  HttpRequest,
+  HttpResponseBase,
+} from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
+import { ALAIN_I18N_TOKEN } from '@delon/theme';
 import { _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { catchError, filter, mergeMap, switchMap, take, tap } from 'rxjs/operators';
+import { catchError, filter, mergeMap, switchMap, take } from 'rxjs/operators';
 
 const CODEMESSAGE: { [key: number]: string } = {
   200: '服务器成功返回请求的数据。',
@@ -31,7 +40,8 @@ const CODEMESSAGE: { [key: number]: string } = {
  */
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-  private refreshTokenType: 're-request' | 'auth-refresh' = 'auth-refresh';
+  private refreshTokenEnabled = environment.api.refreshTokenEnabled;
+  private refreshTokenType: 're-request' | 'auth-refresh' = environment.api.refreshTokenType;
   private refreshToking = false;
   private refreshToken$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
@@ -132,10 +142,14 @@ export class DefaultInterceptor implements HttpInterceptor {
   // #region 刷新Token方式二：使用 `@delon/auth` 的 `refresh` 接口
 
   private buildAuthRefresh(): void {
+    if (!this.refreshTokenEnabled) {
+      return;
+    }
     this.tokenSrv.refresh
       .pipe(
         filter(() => !this.refreshToking),
-        switchMap(() => {
+        switchMap((res) => {
+          console.log(res);
           this.refreshToking = true;
           return this.refreshTokenRequest();
         }),
@@ -184,7 +198,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         // }
         break;
       case 401:
-        if (this.refreshTokenType === 're-request') {
+        if (this.refreshTokenEnabled && this.refreshTokenType === 're-request') {
           return this.tryRefreshToken(ev, req, next);
         }
         this.toLogin();
@@ -210,14 +224,24 @@ export class DefaultInterceptor implements HttpInterceptor {
     }
   }
 
+  private getAdditionalHeaders(headers?: HttpHeaders): { [name: string]: string } {
+    const res: { [name: string]: string } = {};
+    const lang = this.injector.get(ALAIN_I18N_TOKEN).currentLang;
+    if (!headers?.has('Accept-Language') && lang) {
+      res['Accept-Language'] = lang;
+    }
+
+    return res;
+  }
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // 统一加上服务端前缀
     let url = req.url;
     if (!url.startsWith('https://') && !url.startsWith('http://')) {
-      url = environment.SERVER_URL + url;
+      url = environment.api.baseUrl + url;
     }
 
-    const newReq = req.clone({ url });
+    const newReq = req.clone({ url, setHeaders: this.getAdditionalHeaders(req.headers) });
     return next.handle(newReq).pipe(
       mergeMap((ev) => {
         // 允许统一对请求错误处理

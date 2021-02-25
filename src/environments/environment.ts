@@ -2,11 +2,17 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { Environment } from '@delon/theme';
+
 export const environment = {
-  SERVER_URL: `./`,
   production: false,
   useHash: true,
-};
+  api: {
+    baseUrl: './',
+    refreshTokenEnabled: true,
+    refreshTokenType: 'auth-refresh',
+  },
+} as Environment;
 
 /*
  * In development mode, to ignore zone related error stack frames such as

@@ -1,5 +1,11 @@
+import { Environment } from '@delon/theme';
+
 export const environment = {
-  SERVER_URL: `./`,
   production: true,
   useHash: true,
-};
+  api: {
+    baseUrl: './',
+    refreshTokenEnabled: true,
+    refreshTokenType: 'auth-refresh',
+  },
+} as Environment;
