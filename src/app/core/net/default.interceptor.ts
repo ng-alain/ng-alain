@@ -31,6 +31,17 @@ const CODEMESSAGE: { [key: number]: string } = {
  */
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
+  /**
+   * Whether to enable automatic refresh token
+   *
+   * 是否启用自动刷新Token
+   */
+  private refreshTokenEnabled = true;
+  /**
+   * Token refresh type, `re-request` Trigger token refresh request when the detection time expires, and then re-send the original request, `auth-refresh` uses `@delon/auth` to periodically check whether it has expired
+   *
+   * 刷新Token方式，`re-request` 当检测过期时间到期时先发起刷新Token请求，再重新发起原请求，`auth-refresh` 利用 `@delon/auth` 来定期检测是否过期
+   */
   private refreshTokenType: 're-request' | 'auth-refresh' = 'auth-refresh';
   private refreshToking = false;
   private refreshToken$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
@@ -132,10 +143,14 @@ export class DefaultInterceptor implements HttpInterceptor {
   // #region 刷新Token方式二：使用 `@delon/auth` 的 `refresh` 接口
 
   private buildAuthRefresh(): void {
+    if (!this.refreshTokenEnabled) {
+      return;
+    }
     this.tokenSrv.refresh
       .pipe(
         filter(() => !this.refreshToking),
-        switchMap(() => {
+        switchMap((res) => {
+          console.log(res);
           this.refreshToking = true;
           return this.refreshTokenRequest();
         }),
@@ -184,7 +199,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         // }
         break;
       case 401:
-        if (this.refreshTokenType === 're-request') {
+        if (this.refreshTokenEnabled && this.refreshTokenType === 're-request') {
           return this.tryRefreshToken(ev, req, next);
         }
         this.toLogin();
