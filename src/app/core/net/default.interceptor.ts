@@ -1,7 +1,16 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponseBase } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandler,
+  HttpHeaders,
+  HttpInterceptor,
+  HttpRequest,
+  HttpResponseBase,
+} from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
+import { ALAIN_I18N_TOKEN } from '@delon/theme';
 import { _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
@@ -215,6 +224,16 @@ export class DefaultInterceptor implements HttpInterceptor {
     }
   }
 
+  private getAdditionalHeaders(headers?: HttpHeaders): { [name: string]: string } {
+    const res: { [name: string]: string } = {};
+    const lang = this.injector.get(ALAIN_I18N_TOKEN).currentLang;
+    if (!headers?.has('Accept-Language') && lang) {
+      res['Accept-Language'] = lang;
+    }
+
+    return res;
+  }
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // 统一加上服务端前缀
     let url = req.url;
@@ -222,7 +241,7 @@ export class DefaultInterceptor implements HttpInterceptor {
       url = environment.api.baseUrl + url;
     }
 
-    const newReq = req.clone({ url });
+    const newReq = req.clone({ url, setHeaders: this.getAdditionalHeaders(req.headers) });
     return next.handle(newReq).pipe(
       mergeMap((ev) => {
         // 允许统一对请求错误处理
