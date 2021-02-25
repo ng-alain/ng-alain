@@ -6,7 +6,7 @@ import { _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { catchError, filter, mergeMap, switchMap, take, tap } from 'rxjs/operators';
+import { catchError, filter, mergeMap, switchMap, take } from 'rxjs/operators';
 
 const CODEMESSAGE: { [key: number]: string } = {
   200: '服务器成功返回请求的数据。',
@@ -31,18 +31,8 @@ const CODEMESSAGE: { [key: number]: string } = {
  */
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-  /**
-   * Whether to enable automatic refresh token
-   *
-   * 是否启用自动刷新Token
-   */
-  private refreshTokenEnabled = true;
-  /**
-   * Token refresh type, `re-request` Trigger token refresh request when the detection time expires, and then re-send the original request, `auth-refresh` uses `@delon/auth` to periodically check whether it has expired
-   *
-   * 刷新Token方式，`re-request` 当检测过期时间到期时先发起刷新Token请求，再重新发起原请求，`auth-refresh` 利用 `@delon/auth` 来定期检测是否过期
-   */
-  private refreshTokenType: 're-request' | 'auth-refresh' = 'auth-refresh';
+  private refreshTokenEnabled = environment.api.refreshTokenEnabled;
+  private refreshTokenType: 're-request' | 'auth-refresh' = environment.api.refreshTokenType;
   private refreshToking = false;
   private refreshToken$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
@@ -229,7 +219,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     // 统一加上服务端前缀
     let url = req.url;
     if (!url.startsWith('https://') && !url.startsWith('http://')) {
-      url = environment.SERVER_URL + url;
+      url = environment.api.baseUrl + url;
     }
 
     const newReq = req.clone({ url });
