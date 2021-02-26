@@ -1,5 +1,5 @@
 <nz-card [nzBordered]="false">
-  <form nz-form se-container="1" size="compact" gutter="32" [labelWidth]="null">
+  <form nz-form se-container="1" size="compact" [gutter]="32" [labelWidth]="null">
     <se label="所属类目" line>
       <tag-select>
         <nz-tag
@@ -13,7 +13,7 @@
       </tag-select>
     </se>
     <se label="owner" line>
-      <nz-select [(ngModel)]="q.owners" name="owners" [nzMode]="'tags'" style="max-width: 286px;">
+      <nz-select [(ngModel)]="q.owners" name="owners" [nzMode]="'tags'" style="max-width: 286px">
         <nz-option *ngFor="let i of owners" [nzLabel]="i.name" [nzValue]="i.id"></nz-option>
       </nz-select>
       <a class="ml-sm" (click)="setOwner()">只看自己的</a>
@@ -23,13 +23,7 @@
         <nz-form-item>
           <nz-form-label nzFor="rate">作者</nz-form-label>
           <nz-form-control>
-            <nz-select
-              [(ngModel)]="q.user"
-              name="user"
-              [nzPlaceHolder]="'不限'"
-              [nzShowSearch]="true"
-              style="width: 100px;"
-            >
+            <nz-select [(ngModel)]="q.user" name="user" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" style="width: 100px">
               <nz-option [nzLabel]="'李三'" [nzValue]="'lisa'"></nz-option>
             </nz-select>
           </nz-form-control>
@@ -37,13 +31,7 @@
         <nz-form-item>
           <nz-form-label nzFor="rate">好评度</nz-form-label>
           <nz-form-control>
-            <nz-select
-              [(ngModel)]="q.rate"
-              name="rate"
-              [nzPlaceHolder]="'不限'"
-              [nzShowSearch]="true"
-              style="width: 100px;"
-            >
+            <nz-select [(ngModel)]="q.rate" name="rate" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" style="width: 100px">
               <nz-option [nzLabel]="'优秀'" [nzValue]="'good'"></nz-option>
             </nz-select>
           </nz-form-control>
@@ -53,20 +41,14 @@
   </form>
 </nz-card>
 <nz-card [nzBordered]="false">
-  <nz-list
-    nzItemLayout="vertical"
-    [nzLoading]="loading"
-    [nzDataSource]="list"
-    [nzRenderItem]="item"
-    [nzLoadMore]="loadMore"
-  >
+  <nz-list nzItemLayout="vertical" [nzLoading]="loading" [nzDataSource]="list" [nzRenderItem]="item" [nzLoadMore]="loadMore">
     <ng-template #item let-item>
       <nz-list-item [nzContent]="nzContent" [nzExtra]="nzExtra" [nzActions]="[op1, op2, op3]">
         <ng-template #op1> <i nz-icon nzType="star" class="mr-sm"></i>{{ item.star }}</ng-template>
         <ng-template #op2> <i nz-icon nzType="like" class="mr-sm"></i>{{ item.like }}</ng-template>
         <ng-template #op3> <i nz-icon nzType="message" class="mr-sm"></i>{{ item.message }}</ng-template>
         <ng-template #nzExtra>
-          <div style="width: 272px; height: 1px;"></div>
+          <div style="width: 272px; height: 1px"></div>
         </ng-template>
         <nz-list-item-meta [nzTitle]="nzTitle" [nzDescription]="nzDescription">
           <ng-template #nzTitle>
@@ -92,9 +74,7 @@
     </ng-template>
     <ng-template #loadMore>
       <div class="text-center mt-md">
-        <button nz-button (click)="getData(true)" [nzLoading]="loading" [nzType]="'dashed'" style="min-width:200px;">
-          加载更多
-        </button>
+        <button nz-button (click)="getData(true)" [nzLoading]="loading" [nzType]="'dashed'" style="min-width: 200px">加载更多</button>
       </div>
     </ng-template>
   </nz-list>

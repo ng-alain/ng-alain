@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
+import { NzMenuModeType } from 'ng-zorro-antd/menu';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, filter } from 'rxjs/operators';
 
@@ -13,7 +14,7 @@ import { debounceTime, filter } from 'rxjs/operators';
 export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
   private resize$!: Subscription;
   private router$: Subscription;
-  mode = 'inline';
+  mode: NzMenuModeType = 'inline';
   title!: string;
   menus: Array<{ key: string; title: string; selected?: boolean }> = [
     {
@@ -51,7 +52,7 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
 
   private resize(): void {
     const el = this.el.nativeElement;
-    let mode = 'inline';
+    let mode: NzMenuModeType = 'inline';
     const { offsetWidth } = el;
     if (offsetWidth < 641 && offsetWidth > 400) {
       mode = 'horizontal';

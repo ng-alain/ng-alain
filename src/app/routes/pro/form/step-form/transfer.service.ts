@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TransferService {
-  step: 0 | 1 | 2 = 1;
+  step = 1;
 
   /**
    * 付款账户

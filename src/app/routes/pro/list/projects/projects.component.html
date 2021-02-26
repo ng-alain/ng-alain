@@ -1,5 +1,5 @@
 <nz-card [nzBordered]="false">
-  <form nz-form se-container="1" size="compact" gutter="32" [labelWidth]="null">
+  <form nz-form se-container="1" size="compact" [gutter]="32" [labelWidth]="null">
     <se label="所属类目" line>
       <tag-select>
         <nz-tag
@@ -17,13 +17,7 @@
         <nz-form-item>
           <nz-form-label nzFor="rate">作者</nz-form-label>
           <nz-form-control>
-            <nz-select
-              [(ngModel)]="q.user"
-              name="user"
-              [nzPlaceHolder]="'不限'"
-              [nzShowSearch]="true"
-              style="width: 100px;"
-            >
+            <nz-select [(ngModel)]="q.user" name="user" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" style="width: 100px">
               <nz-option [nzLabel]="'李三'" [nzValue]="'lisa'"></nz-option>
             </nz-select>
           </nz-form-control>
@@ -31,13 +25,7 @@
         <nz-form-item>
           <nz-form-label nzFor="rate">好评度</nz-form-label>
           <nz-form-control>
-            <nz-select
-              [(ngModel)]="q.rate"
-              name="rate"
-              [nzPlaceHolder]="'不限'"
-              [nzShowSearch]="true"
-              style="width: 100px;"
-            >
+            <nz-select [(ngModel)]="q.rate" name="rate" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" style="width: 100px">
               <nz-option [nzLabel]="'优秀'" [nzValue]="'good'"></nz-option>
             </nz-select>
           </nz-form-control>
@@ -46,12 +34,7 @@
     </se>
   </form>
 </nz-card>
-<nz-list
-  [nzLoading]="loading"
-  [nzRenderItem]="item"
-  [nzDataSource]="list"
-  [nzGrid]="{ gutter: 24, lg: 6, md: 8, sm: 12, xs: 24 }"
->
+<nz-list [nzLoading]="loading" [nzRenderItem]="item" [nzDataSource]="list" [nzGrid]="{ gutter: 24, lg: 6, md: 8, sm: 12, xs: 24 }">
   <ng-template #item let-item>
     <nz-list-item>
       <nz-card nzHoverable [nzCover]="cover">

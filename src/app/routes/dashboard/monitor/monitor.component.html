@@ -16,7 +16,7 @@
           </number-info>
         </div>
         <div nz-col nzXs="24" nzSm="12" nzMd="6">
-          <number-info [subTitle]="'app.monitor.total-transactions-per-second' | translate" [total]="234" suffix="元"></number-info>
+          <number-info [subTitle]="'app.monitor.total-transactions-per-second' | translate" total="234" suffix="元"></number-info>
         </div>
       </div>
       <div class="map-chart">
@@ -34,7 +34,7 @@
     <nz-card [nzTitle]="'app.monitor.activity-forecast' | translate" [nzBordered]="false" class="mb-lg">
       <div class="active-chart" *ngIf="activeData">
         <number-info subTitle="目标评估" total="有望达到预期"></number-info>
-        <g2-mini-area [animate]="false" line [borderWidth]="2" [height]="84" padding="0" [data]="activeData"></g2-mini-area>
+        <g2-mini-area [animate]="false" line [borderWidth]="2" [height]="84" [padding]="0" [data]="activeData"></g2-mini-area>
         <div class="active-grid">
           <p>{{ activeStat.max }} 亿元</p>
           <p>{{ activeStat.min }} 亿元</p>
@@ -60,7 +60,7 @@
 <div nz-row [nzGutter]="24">
   <div nz-col nzXs="24" nzSm="24" nzLg="12" class="mb-lg">
     <nz-card [nzTitle]="'app.monitor.proportion-per-category' | translate" [nzBordered]="false" class="pie-card">
-      <div nz-row [nzGutter]="4" style="padding: 16px 0;">
+      <div nz-row [nzGutter]="4" style="padding: 16px 0">
         <div nz-col [nzSpan]="8">
           <g2-pie
             [animate]="false"
