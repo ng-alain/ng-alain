@@ -35,15 +35,16 @@ fi
 echo ""
 echo "Generate color less"
 echo ""
-npm run color-less
+# npm run color-less
 
 echo ""
 echo "Generate theme files"
 echo ""
-npm run theme
+# npm run theme
 
 echo '===== need mock'
-sed -i 's/if (!environment.production)/if (true)/g' ${ROOT_DIR}/src/app/global-config.module.ts
+cp -f ${ROOT_DIR}/src/environments/environment.ts ${ROOT_DIR}/src/environments/environment.prod.ts
+sed -i 's/production: false/production: true/g' ${ROOT_DIR}/src/environments/environment.prod.ts
 sed -i 's/showSettingDrawer = !environment.production;/showSettingDrawer = true;/g' ${ROOT_DIR}/src/app/layout/basic/basic.component.ts
 
 if [[ ${GH} == true ]]; then
