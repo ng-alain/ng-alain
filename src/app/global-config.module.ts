@@ -1,8 +1,8 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { throwIfAlreadyLoaded } from '@core';
-import { DelonMockModule } from '@delon/mock';
 import { AlainThemeModule } from '@delon/theme';
 import { AlainConfig, ALAIN_CONFIG } from '@delon/util/config';
+import { environment } from '@env/environment';
 
 // Please refer to: https://ng-alain.com/docs/global-config
 // #region NG-ALAIN Config
@@ -19,15 +19,8 @@ const alainConfig: AlainConfig = {
   auth: { login_url: '/passport/login' },
 };
 
-const alainModules = [AlainThemeModule.forRoot(), DelonACLModule.forRoot(), DelonMockModule.forRoot()];
+const alainModules: any[] = [AlainThemeModule.forRoot(), DelonACLModule.forRoot()];
 const alainProvides = [{ provide: ALAIN_CONFIG, useValue: alainConfig }];
-
-// mock
-import { environment } from '@env/environment';
-import * as MOCKDATA from '../../_mock';
-if (!environment.production) {
-  alainConfig.mock = { data: MOCKDATA };
-}
 
 // #region reuse-tab
 /**
@@ -66,7 +59,7 @@ const zorroProvides = [{ provide: NZ_CONFIG, useValue: ngZorroConfig }];
 // #endregion
 
 @NgModule({
-  imports: [...alainModules],
+  imports: [...alainModules, ...(environment.modules || [])],
 })
 export class GlobalConfigModule {
   constructor(@Optional() @SkipSelf() parentModule: GlobalConfigModule) {
