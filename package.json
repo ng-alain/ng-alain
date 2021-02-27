@@ -65,8 +65,7 @@
     "@delon/util": "^11.6.0",
     "ngx-tinymce": "^11.0.0",
     "ngx-ueditor": "^11.0.0",
-    "screenfull": "^5.1.0",
-    "qrious": "^4.0.2"
+    "screenfull": "^5.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1101.1",

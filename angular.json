@@ -24,7 +24,7 @@
             "polyfills": "src/polyfills.ts",
             "assets": ["src/assets", "src/favicon.ico"],
             "styles": ["src/styles.less"],
-            "scripts": ["node_modules/ajv/dist/ajv.bundle.js", "node_modules/qrious/dist/qrious.min.js"],
+            "scripts": [],
             "allowedCommonJsDependencies": [
               "@ant-design/colors",
               "@antv/adjust",
@@ -37,7 +37,8 @@
               "@antv/path-util",
               "@antv/util",
               "file-saver",
-              "hammerjs"
+              "hammerjs",
+              "ajv"
             ]
           },
           "configurations": {
@@ -96,7 +97,7 @@
             "polyfills": "src/polyfills.ts",
             "karmaConfig": "karma.conf.js",
             "tsConfig": "tsconfig.spec.json",
-            "scripts": ["node_modules/ajv/dist/ajv.bundle.js", "node_modules/qrious/dist/qrious.min.js"],
+            "scripts": [],
             "styles": [],
             "assets": ["src/assets"]
           }
