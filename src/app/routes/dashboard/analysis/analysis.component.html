@@ -4,7 +4,7 @@
       <ng-template #action1>
         <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | translate" nz-icon nzType="info-circle"></i>
       </ng-template>
-      <trend flag="up" style="display: block; margin-top: 2px;">
+      <trend flag="up" style="display: block; margin-top: 2px">
         {{ 'app.analysis.week' | translate }}
         <span class="pl-sm">12%</span>
       </trend>
@@ -78,7 +78,7 @@
             <g2-bar
               *ngIf="tab.show"
               height="295"
-              style="width: 100%;"
+              style="width: 100%"
               [title]="'app.analysis.' + tab.key + '-trend' | translate"
               [data]="data.salesData"
             ></g2-bar>
@@ -144,7 +144,7 @@
           <g2-mini-area *ngIf="data.visitData2" [line]="true" height="45" [data]="data.visitData2"></g2-mini-area>
         </div>
       </div>
-      <st [data]="data.searchData" [columns]="searchColumn" size="small" ps="5" [page]="{ toTopInChange: false }">
+      <st [data]="data.searchData" [columns]="searchColumn" size="small" ps="5" [page]="{ toTop: false }">
         <ng-template st-row="range" let-i>
           <trend [flag]="i.status === 1 ? 'down' : 'up'">
             <span>{{ i.range }}%</span>
@@ -161,7 +161,7 @@
       [nzBodyStyle]="{ 'padding.px': 24 }"
       [nzExtra]="extra"
       class="sales-card mb-0"
-      style="min-height: 502.5px;"
+      style="min-height: 502.5px"
     >
       <ng-template #extra>
         <nz-radio-group [(ngModel)]="salesType" (ngModelChange)="changeSaleType()">
@@ -202,20 +202,20 @@
   <nz-tabset *ngIf="data.offlineData" [(nzSelectedIndex)]="offlineIdx" (nzSelectedIndexChange)="offlineChange($event)">
     <nz-tab *ngFor="let tab of data.offlineData; let i = index" [nzTitle]="nzTabHeading">
       <ng-template #nzTabHeading>
-        <div nz-row [nzGutter]="8" style="width: 138px; margin: 8px 0;">
+        <div nz-row nzGutter="8" style="width: 138px; margin: 8px 0">
           <div nz-col [nzSpan]="12">
             <number-info
               [title]="tab.name"
               [subTitle]="'app.analysis.conversion-rate' | translate"
               gap="2"
               [total]="tab.cvr * 100 + '%'"
-              [theme]="i !== offlineIdx && 'light'"
+              [theme]="i !== offlineIdx ? 'light' : 'default'"
             ></number-info>
           </div>
-          <div nz-col [nzSpan]="12" style="padding-top: 36px;">
+          <div nz-col [nzSpan]="12" style="padding-top: 36px">
             <g2-pie
               [animate]="false"
-              [color]="i !== offlineIdx && '#BDE4FF'"
+              [color]="i !== offlineIdx ? '#BDE4FF' : 'rgba(24, 144, 255, 0.85)'"
               [inner]="0.55"
               [tooltip]="false"
               [padding]="[0, 0, 0, 0]"
