@@ -35,12 +35,12 @@ fi
 echo ""
 echo "Generate color less"
 echo ""
-# npm run color-less
+npm run color-less
 
 echo ""
 echo "Generate theme files"
 echo ""
-# npm run theme
+npm run theme
 
 echo '===== need mock'
 cp -f ${ROOT_DIR}/src/environments/environment.ts ${ROOT_DIR}/src/environments/environment.prod.ts
