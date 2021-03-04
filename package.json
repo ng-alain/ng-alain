@@ -52,8 +52,6 @@
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3",
-    "@ngx-translate/core": "^13.0.0",
-    "@ngx-translate/http-loader": "^6.0.0",
     "@delon/abc": "^11.7.0",
     "@delon/acl": "^11.7.0",
     "@delon/auth": "^11.7.0",
@@ -65,7 +63,10 @@
     "@delon/util": "^11.7.0",
     "ngx-tinymce": "^11.0.0",
     "ngx-ueditor": "^11.0.0",
-    "screenfull": "^5.1.0"
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
+    "screenfull": "^5.1.0",
+    "ajv": "^7.1.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.1",
