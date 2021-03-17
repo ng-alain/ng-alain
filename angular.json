@@ -38,7 +38,8 @@
               "@antv/util",
               "file-saver",
               "hammerjs",
-              "ajv"
+              "ajv",
+              "date-fns"
             ]
           },
           "configurations": {

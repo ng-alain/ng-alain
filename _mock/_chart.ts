@@ -1,4 +1,4 @@
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 import * as Mock from 'mockjs';
 
 // region: mock data
