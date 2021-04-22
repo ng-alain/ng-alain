@@ -186,8 +186,8 @@ export class DefaultInterceptor implements HttpInterceptor {
         //   const body = ev.body;
         //   if (body && body.status !== 0) {
         //     this.injector.get(NzMessageService).error(body.msg);
-        //     // 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：
-        //     // this.http.get('/').subscribe() 并不会触发
+        //     // 注意：这里如果继续抛出错误会被行254的 catchError 二次拦截，导致外部实现的 Pipe、subscribe 操作被中断，例如：this.http.get('/').subscribe() 不会触发
+        //     // 如果你希望外部实现，需要手动移除行254
         //     return throwError({});
         //   } else {
         //     // 重新修改 `body` 内容为 `response` 内容，对于绝大多数场景已经无须再关心业务状态码
