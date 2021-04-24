@@ -25,22 +25,7 @@
             "assets": ["src/assets", "src/favicon.ico"],
             "styles": ["src/styles.less"],
             "scripts": [],
-            "allowedCommonJsDependencies": [
-              "@ant-design/colors",
-              "@antv/adjust",
-              "@antv/attr",
-              "@antv/component",
-              "@antv/g-base",
-              "@antv/g-canvas",
-              "@antv/g-math",
-              "@antv/g-svg",
-              "@antv/path-util",
-              "@antv/util",
-              "file-saver",
-              "hammerjs",
-              "ajv",
-              "date-fns"
-            ]
+            "allowedCommonJsDependencies": ["@antv/g2", "file-saver", "ajv", "ajv-formats", "date-fns"]
           },
           "configurations": {
             "production": {
