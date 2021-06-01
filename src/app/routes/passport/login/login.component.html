@@ -42,15 +42,7 @@
               </nz-input-group>
             </nz-col>
             <nz-col [nzSpan]="8">
-              <button
-                type="button"
-                nz-button
-                nzSize="large"
-                (click)="getCaptcha()"
-                [disabled]="count >= 0"
-                nzBlock
-                [nzLoading]="http.loading"
-              >
+              <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count >= 0" nzBlock [nzLoading]="loading">
                 {{ count ? count + 's' : ('app.register.get-verification-code' | translate) }}
               </button>
             </nz-col>
@@ -64,11 +56,11 @@
       <label nz-checkbox formControlName="remember">{{ 'app.login.remember-me' | translate }}</label>
     </nz-col>
     <nz-col [nzSpan]="12" class="text-right">
-      <a class="forgot" (click)="msg.error('请找欧阳锋')">{{ 'app.login.forgot-password' | translate }}</a>
+      <a class="forgot" routerLink="/passport/register">{{ 'app.login.forgot-password' | translate }}</a>
     </nz-col>
   </nz-form-item>
   <nz-form-item>
-    <button nz-button type="submit" nzType="primary" nzSize="large" [nzLoading]="http.loading" nzBlock>
+    <button nz-button type="submit" nzType="primary" nzSize="large" [nzLoading]="loading" nzBlock>
       {{ 'app.login.login' | translate }}
     </button>
   </nz-form-item>
