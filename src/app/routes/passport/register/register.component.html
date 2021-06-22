@@ -28,7 +28,7 @@
         <input nz-input type="password" formControlName="password" placeholder="Password" />
       </nz-input-group>
       <ng-template #pwdCdkTpl>
-        <div style="padding: 4px 0;">
+        <div style="padding: 4px 0">
           <ng-container [ngSwitch]="status">
             <div *ngSwitchCase="'ok'" class="success">{{ 'validation.password.strength.strong' | translate }}</div>
             <div *ngSwitchCase="'pass'" class="warning">{{ 'validation.password.strength.medium' | translate }}</div>
@@ -62,7 +62,7 @@
     <nz-form-control [nzErrorTip]="mobileErrorTip">
       <nz-input-group nzSize="large" [nzAddOnBefore]="addOnBeforeTemplate">
         <ng-template #addOnBeforeTemplate>
-          <nz-select formControlName="mobilePrefix" style="width: 100px;">
+          <nz-select formControlName="mobilePrefix" style="width: 100px">
             <nz-option [nzLabel]="'+86'" [nzValue]="'+86'"></nz-option>
             <nz-option [nzLabel]="'+87'" [nzValue]="'+87'"></nz-option>
           </nz-select>
@@ -84,7 +84,7 @@
           </nz-input-group>
         </nz-col>
         <nz-col [nzSpan]="8">
-          <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count > 0" nzBlock [nzLoading]="http.loading">
+          <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count > 0" nzBlock [nzLoading]="loading">
             {{ count ? count + 's' : ('app.register.get-verification-code' | translate) }}
           </button>
         </nz-col>
@@ -92,7 +92,7 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <button nz-button nzType="primary" nzSize="large" type="submit" [nzLoading]="http.loading" class="submit">
+    <button nz-button nzType="primary" nzSize="large" type="submit" [nzLoading]="loading" class="submit">
       {{ 'app.register.register' | translate }}
     </button>
     <a class="login" routerLink="/passport/login">{{ 'app.register.sign-in' | translate }}</a>
