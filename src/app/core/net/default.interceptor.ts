@@ -190,6 +190,10 @@ export class DefaultInterceptor implements HttpInterceptor {
         //     // 如果你希望外部实现，需要手动移除行254
         //     return throwError({});
         //   } else {
+        //     // 忽略 Blob 文件体
+        //     if (ev.body instanceof Blob) {
+        //        return of(ev);
+        //     }
         //     // 重新修改 `body` 内容为 `response` 内容，对于绝大多数场景已经无须再关心业务状态码
         //     return of(new HttpResponse(Object.assign(ev, { body: body.response })));
         //     // 或者依然保持完整的格式
