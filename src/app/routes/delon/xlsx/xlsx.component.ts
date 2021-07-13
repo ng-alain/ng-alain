@@ -5,7 +5,7 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 @Component({
   selector: 'app-xlsx',
-  templateUrl: './xlsx.component.html',
+  templateUrl: './xlsx.component.html'
 })
 export class XlsxComponent {
   constructor(private xlsx: XlsxService) {}
@@ -17,35 +17,35 @@ export class XlsxComponent {
       return {
         id: idx + 1,
         name: `name ${idx + 1}`,
-        age: Math.ceil(Math.random() * 10) + 20,
+        age: Math.ceil(Math.random() * 10) + 20
       };
     });
 
   columns: STColumn[] = [
     { title: '编号', index: 'id', type: 'checkbox' },
     { title: '姓名', index: 'name' },
-    { title: '年龄', index: 'age' },
+    { title: '年龄', index: 'age' }
   ];
 
   url(): void {
-    this.xlsx.import(`./assets/tmp/demo.xlsx`).then((res) => (this.data = res));
+    this.xlsx.import(`./assets/tmp/demo.xlsx`).then(res => (this.data = res));
   }
 
   change(e: Event): void {
     const file = (e.target as HTMLInputElement).files![0];
-    this.xlsx.import(file).then((res) => (this.data = res));
+    this.xlsx.import(file).then(res => (this.data = res));
   }
 
   download(): void {
-    const data = [this.columns.map((i) => i.title)];
-    this.users.forEach((i: { [key: string]: NzSafeAny }) => data.push(this.columns.map((c) => i[c.index as string])));
+    const data = [this.columns.map(i => i.title)];
+    this.users.forEach((i: { [key: string]: NzSafeAny }) => data.push(this.columns.map(c => i[c.index as string])));
     this.xlsx.export({
       sheets: [
         {
           data,
-          name: 'sheet name',
-        },
-      ],
+          name: 'sheet name'
+        }
+      ]
     });
   }
 }

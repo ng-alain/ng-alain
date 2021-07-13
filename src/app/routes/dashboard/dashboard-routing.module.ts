@@ -11,11 +11,11 @@ const routes: Routes = [
   { path: 'v1', component: DashboardV1Component },
   { path: 'analysis', component: DashboardAnalysisComponent },
   { path: 'monitor', component: DashboardMonitorComponent },
-  { path: 'workplace', component: DashboardWorkplaceComponent },
+  { path: 'workplace', component: DashboardWorkplaceComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class DashboardRoutingModule {}

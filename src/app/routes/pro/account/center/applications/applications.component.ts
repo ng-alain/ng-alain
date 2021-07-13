@@ -6,14 +6,14 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
   selector: 'app-account-center-applications',
   templateUrl: './applications.component.html',
   styleUrls: ['./applications.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProAccountCenterApplicationsComponent {
   listLoading = true;
   list: any[] = [];
   constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {
     this.http.get('/api/list', { count: 8 }).subscribe((res: NzSafeAny[]) => {
-      this.list = res.map((item) => {
+      this.list = res.map(item => {
         item.activeUser = this.formatWan(item.activeUser);
         return item;
       });

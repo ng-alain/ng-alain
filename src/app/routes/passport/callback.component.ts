@@ -6,7 +6,7 @@ import { SettingsService } from '@delon/theme';
 @Component({
   selector: 'app-callback',
   template: ``,
-  providers: [SocialService],
+  providers: [SocialService]
 })
 export class CallbackComponent implements OnInit {
   type = '';
@@ -24,11 +24,11 @@ export class CallbackComponent implements OnInit {
       name: 'cipchk',
       email: `${this.type}@${this.type}.com`,
       id: 10000,
-      time: +new Date(),
+      time: +new Date()
     };
     this.settingsSrv.setUser({
       ...this.settingsSrv.user,
-      ...info,
+      ...info
     });
     this.socialService.callback(info);
   }

@@ -32,7 +32,7 @@ import { SettingsService, User } from '@delon/theme';
       </div>
     </nz-dropdown-menu>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderUserComponent {
   get user(): User {

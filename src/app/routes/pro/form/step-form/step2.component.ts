@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { TransferService } from './transfer.service';
 
 @Component({
   selector: 'app-step2',
   templateUrl: './step2.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Step2Component implements OnInit {
   form!: FormGroup;
@@ -18,7 +19,7 @@ export class Step2Component implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      password: [null, Validators.compose([Validators.required, Validators.minLength(6)])],
+      password: [null, Validators.compose([Validators.required, Validators.minLength(6)])]
     });
     this.form.patchValue(this.item);
   }

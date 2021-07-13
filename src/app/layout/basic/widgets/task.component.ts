@@ -72,7 +72,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
       </div>
     </nz-dropdown-menu>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderTaskComponent {
   loading = true;

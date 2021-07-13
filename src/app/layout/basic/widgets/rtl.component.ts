@@ -7,11 +7,10 @@ import { RTLService } from '@delon/theme';
     <i nz-icon [nzType]="rtl.nextDir === 'rtl' ? 'border-left' : 'border-right'"></i>
     {{ rtl.nextDir | uppercase }}
   `,
-  // tslint:disable-next-line: no-host-metadata-property
   host: {
-    '[class.d-block]': 'true',
+    '[class.d-block]': 'true'
   },
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderRTLComponent {
   constructor(public rtl: RTLService) {}

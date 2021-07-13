@@ -1,6 +1,6 @@
 <page-header [title]="'卡片列表'" [extra]="extra">
   <ng-template #extra>
-    <div style="width: 195px; margin-top: -60px; text-align: center;">
+    <div style="width: 195px; margin-top: -60px; text-align: center">
       <img class="img-fluid" src="https://gw.alipayobjects.com/zos/rmsportal/RzwpdLnhmvDJToTdfDPe.png" />
     </div>
   </ng-template>
@@ -14,7 +14,7 @@
 <nz-list [nzLoading]="loading" [nzDataSource]="list" [nzRenderItem]="item" [nzGrid]="{ gutter: 24, lg: 8, md: 12, sm: 24, xs: 24 }">
   <ng-template #item let-item>
     <nz-list-item>
-      <button *ngIf="item === null" nz-button (click)="show('add')" nzType="dashed" style="width: 100%; height: 193px;">
+      <button *ngIf="item === null" nz-button (click)="show('add')" nzType="dashed" style="width: 100%; height: 193px">
         <i nz-icon nzType="plus"></i>
         <span>新增产品</span>
       </button>

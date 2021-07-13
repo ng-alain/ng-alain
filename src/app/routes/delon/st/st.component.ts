@@ -6,7 +6,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-st',
-  templateUrl: './st.component.html',
+  templateUrl: './st.component.html'
 })
 export class STDemoComponent implements OnInit {
   ps = 20;
@@ -22,9 +22,9 @@ export class STDemoComponent implements OnInit {
       title: 'Name',
       index: 'name.first',
       width: 150,
-      format: (item) => `${item.name.first} ${item.name.last}`,
+      format: item => `${item.name.first} ${item.name.last}`,
       type: 'link',
-      click: (item) => this.message.info(`${item.name.first}`),
+      click: item => this.message.info(`${item.name.first}`)
     },
     { title: 'Email', index: 'email' },
     {
@@ -35,9 +35,9 @@ export class STDemoComponent implements OnInit {
         truth: 'female',
         yes: '男',
         no: '女',
-        mode: 'text',
+        mode: 'text'
       },
-      width: 120,
+      width: 120
     },
     { title: 'Events', render: 'events', width: 90 },
     { title: 'Registered', index: 'registered.date', type: 'date', width: 170 },
@@ -47,16 +47,16 @@ export class STDemoComponent implements OnInit {
       buttons: [
         {
           text: 'Edit',
-          click: (item) => this.message.info(`edit [${item.id.value}]`),
-          iif: (item) => item.gender === 'female',
+          click: item => this.message.info(`edit [${item.id.value}]`),
+          iif: item => item.gender === 'female'
         },
         {
           text: 'Delete',
           type: 'del',
-          click: (item) => this.message.info(`deleted [${item.id.value}]`),
-        },
-      ],
-    },
+          click: item => this.message.info(`deleted [${item.id.value}]`)
+        }
+      ]
+    }
   ];
 
   constructor(public http: _HttpClient, private message: NzMessageService) {}

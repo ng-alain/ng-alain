@@ -7,6 +7,7 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import { zip } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
 import { ICONS } from '../../../style-icons';
 import { ICONS_AUTO } from '../../../style-icons-auto';
 import { I18NService } from '../i18n/i18n.service';
@@ -25,7 +26,7 @@ export class StartupService {
     private settingService: SettingsService,
     private aclService: ACLService,
     private titleService: TitleService,
-    private httpClient: HttpClient,
+    private httpClient: HttpClient
   ) {
     iconSrv.addIcon(...ICONS_AUTO, ...ICONS);
   }
@@ -33,15 +34,15 @@ export class StartupService {
   load(): Promise<void> {
     // only works with promises
     // https://github.com/angular/angular/issues/15088
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       zip(this.httpClient.get(`assets/tmp/i18n/${this.i18n.defaultLang}.json`), this.httpClient.get('assets/tmp/app-data.json'))
         .pipe(
           // 接收其他拦截器后产生的异常消息
-          catchError((res) => {
+          catchError(res => {
             console.warn(`StartupService.load: Network request failed`, res);
             resolve();
             return [];
-          }),
+          })
         )
         .subscribe(
           ([langData, appData]) => {
@@ -66,7 +67,7 @@ export class StartupService {
           () => {},
           () => {
             resolve();
-          },
+          }
         );
     });
   }

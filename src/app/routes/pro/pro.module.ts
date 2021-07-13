@@ -3,11 +3,10 @@ import { AvatarListModule } from '@delon/abc/avatar-list';
 import { EllipsisModule } from '@delon/abc/ellipsis';
 import { FooterToolbarModule } from '@delon/abc/footer-toolbar';
 import { TagSelectModule } from '@delon/abc/tag-select';
+import { CurrencyPipeModule } from '@delon/util/pipes/currency';
 import { SharedModule } from '@shared';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
-
-import { ProRoutingModule } from './pro-routing.module';
 
 import { ProAccountCenterApplicationsComponent } from './account/center/applications/applications.component';
 import { ProAccountCenterArticlesComponent } from './account/center/articles/articles.component';
@@ -32,6 +31,7 @@ import { ProCardListComponent } from './list/card-list/card-list.component';
 import { ProListLayoutComponent } from './list/list/list.component';
 import { ProListProjectsComponent } from './list/projects/projects.component';
 import { ProTableListComponent } from './list/table-list/table-list.component';
+import { ProRoutingModule } from './pro-routing.module';
 import { ProProfileAdvancedComponent } from './profile/advanced/advanced.component';
 import { ProProfileBaseComponent } from './profile/basic/basic.component';
 import { ProResultFailComponent } from './result/fail/fail.component';
@@ -64,7 +64,7 @@ const COMPONENTS = [
   Step1Component,
   Step2Component,
   Step3Component,
-  ProBasicListEditComponent,
+  ProBasicListEditComponent
 ];
 
 @NgModule({
@@ -77,7 +77,8 @@ const COMPONENTS = [
     FooterToolbarModule,
     NzPaginationModule,
     NzStepsModule,
+    CurrencyPipeModule
   ],
-  declarations: COMPONENTS,
+  declarations: COMPONENTS
 })
 export class ProModule {}

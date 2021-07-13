@@ -3,7 +3,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-helpcenter',
-  templateUrl: './helpcenter.component.html',
+  templateUrl: './helpcenter.component.html'
 })
 export class HelpCenterComponent {
   type = '';

@@ -14,7 +14,7 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less'],
   providers: [SocialService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserLoginComponent implements OnDestroy {
   constructor(
@@ -28,14 +28,14 @@ export class UserLoginComponent implements OnDestroy {
     @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
     private startupSrv: StartupService,
     private http: _HttpClient,
-    private cdr: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef
   ) {
     this.form = fb.group({
       userName: [null, [Validators.required, Validators.pattern(/^(admin|user)$/)]],
       password: [null, [Validators.required, Validators.pattern(/^(ng\-alain\.com)$/)]],
       mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
       captcha: [null, [Validators.required]],
-      remember: [true],
+      remember: [true]
     });
   }
 
@@ -114,15 +114,15 @@ export class UserLoginComponent implements OnDestroy {
       .post('/login/account?_allow_anonymous=true', {
         type: this.type,
         userName: this.userName.value,
-        password: this.password.value,
+        password: this.password.value
       })
       .pipe(
         finalize(() => {
           this.loading = true;
           this.cdr.detectChanges();
-        }),
+        })
       )
-      .subscribe((res) => {
+      .subscribe(res => {
         if (res.msg !== 'ok') {
           this.error = res.msg;
           this.cdr.detectChanges();
@@ -150,11 +150,10 @@ export class UserLoginComponent implements OnDestroy {
   open(type: string, openType: SocialOpenType = 'href'): void {
     let url = ``;
     let callback = ``;
-    // tslint:disable-next-line: prefer-conditional-expression
     if (environment.production) {
-      callback = 'https://ng-alain.github.io/ng-alain/#/passport/callback/' + type;
+      callback = `https://ng-alain.github.io/ng-alain/#/passport/callback/${type}`;
     } else {
-      callback = 'http://localhost:4200/#/passport/callback/' + type;
+      callback = `http://localhost:4200/#/passport/callback/${type}`;
     }
     switch (type) {
       case 'auth0':
@@ -162,7 +161,7 @@ export class UserLoginComponent implements OnDestroy {
         break;
       case 'github':
         url = `//github.com/login/oauth/authorize?client_id=9d6baae4b04a23fcafa2&response_type=code&redirect_uri=${decodeURIComponent(
-          callback,
+          callback
         )}`;
         break;
       case 'weibo':
@@ -172,9 +171,9 @@ export class UserLoginComponent implements OnDestroy {
     if (openType === 'window') {
       this.socialService
         .login(url, '/', {
-          type: 'window',
+          type: 'window'
         })
-        .subscribe((res) => {
+        .subscribe(res => {
           if (res) {
             this.settingsService.setUser(res);
             this.router.navigateByUrl('/');
@@ -182,7 +181,7 @@ export class UserLoginComponent implements OnDestroy {
         });
     } else {
       this.socialService.login(url, '/', {
-        type: 'href',
+        type: 'href'
       });
     }
   }

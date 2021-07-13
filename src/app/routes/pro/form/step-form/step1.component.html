@@ -7,11 +7,11 @@
     </se>
     <se label="收款账户" error="请输入收款账户" required>
       <nz-input-group nzCompact>
-        <nz-select formControlName="receiver_type" style="width: 100px;">
+        <nz-select formControlName="receiver_type" style="width: 100px">
           <nz-option [nzLabel]="'支付宝'" [nzValue]="'alipay'"></nz-option>
           <nz-option [nzLabel]="'银行账号'" [nzValue]="'bank'"></nz-option>
         </nz-select>
-        <input formControlName="receiver_account" nz-input style="width: calc(100% - 100px);" />
+        <input formControlName="receiver_account" nz-input style="width: calc(100% - 100px)" />
       </nz-input-group>
     </se>
     <se label="收款姓名" error="请输入收款姓名，至少2个字符以上" required>

@@ -14,12 +14,12 @@ import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 // import { NgxTinymceModule } from 'ngx-tinymce';
 // import { UEditorModule } from 'ngx-ueditor';
 
-const THIRDMODULES: Type<any>[] = [];
+const THIRDMODULES: Array<Type<any>> = [];
 // #endregion
 
 // #region your componets & directives
-const COMPONENTS: Type<any>[] = [];
-const DIRECTIVES: Type<any>[] = [];
+const COMPONENTS: Array<Type<any>> = [];
+const DIRECTIVES: Array<Type<any>> = [];
 // #endregion
 
 @NgModule({
@@ -34,12 +34,12 @@ const DIRECTIVES: Type<any>[] = [];
     ...SHARED_DELON_MODULES,
     ...SHARED_ZORRO_MODULES,
     // third libs
-    ...THIRDMODULES,
+    ...THIRDMODULES
   ],
   declarations: [
     // your components
     ...COMPONENTS,
-    ...DIRECTIVES,
+    ...DIRECTIVES
   ],
   exports: [
     CommonModule,
@@ -56,7 +56,7 @@ const DIRECTIVES: Type<any>[] = [];
     ...THIRDMODULES,
     // your components
     ...COMPONENTS,
-    ...DIRECTIVES,
-  ],
+    ...DIRECTIVES
+  ]
 })
 export class SharedModule {}

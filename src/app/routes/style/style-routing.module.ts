@@ -8,11 +8,11 @@ import { TypographyComponent } from './typography/typography.component';
 const routes: Routes = [
   { path: 'gridmasonry', component: GridMasonryComponent },
   { path: 'typography', component: TypographyComponent },
-  { path: 'colors', component: ColorsComponent },
+  { path: 'colors', component: ColorsComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class StyleRoutingModule {}

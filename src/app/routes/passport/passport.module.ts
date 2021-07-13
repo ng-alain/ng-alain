@@ -12,6 +12,6 @@ const COMPONENTS = [UserLoginComponent, UserRegisterResultComponent, UserRegiste
 
 @NgModule({
   imports: [SharedModule, PassportRoutingModule],
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS]
 })
 export class PassportModule {}

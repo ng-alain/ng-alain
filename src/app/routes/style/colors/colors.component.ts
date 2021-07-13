@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { copy } from '@delon/util/browser';
 import { NzMessageService } from 'ng-zorro-antd/message';
+
 import { ColorService } from '../color.service';
 
 @Component({
   selector: 'app-colors',
   templateUrl: './colors.component.html',
-  styleUrls: ['./colors.component.less'],
+  styleUrls: ['./colors.component.less']
 })
 export class ColorsComponent {
   nums = Array(10)

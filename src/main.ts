@@ -15,13 +15,13 @@ if (environment.production) {
 platformBrowserDynamic()
   .bootstrapModule(AppModule, {
     defaultEncapsulation: ViewEncapsulation.Emulated,
-    preserveWhitespaces: false,
+    preserveWhitespaces: false
   })
-  .then((res) => {
+  .then(res => {
     const win = window as NzSafeAny;
     if (win && win.appBootstrap) {
       win.appBootstrap();
     }
     return res;
   })
-  .catch((err) => console.error(err));
+  .catch(err => console.error(err));

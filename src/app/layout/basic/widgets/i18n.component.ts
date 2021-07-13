@@ -1,9 +1,8 @@
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
+import { I18NService } from '@core';
 import { ALAIN_I18N_TOKEN, SettingsService } from '@delon/theme';
 import { BooleanInput, InputBoolean } from '@delon/util/decorator';
-
-import { I18NService } from '@core';
 
 @Component({
   selector: 'header-i18n',
@@ -23,7 +22,7 @@ import { I18NService } from '@core';
       </ul>
     </nz-dropdown-menu>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderI18nComponent {
   static ngAcceptInputType_showLangText: BooleanInput;

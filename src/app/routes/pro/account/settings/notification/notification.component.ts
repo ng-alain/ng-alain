@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'app-account-settings-notification',
   templateUrl: './notification.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProAccountSettingsNotificationComponent {
   i: {
@@ -13,6 +13,6 @@ export class ProAccountSettingsNotificationComponent {
   } = {
     password: true,
     messages: true,
-    todo: true,
+    todo: true
   };
 }

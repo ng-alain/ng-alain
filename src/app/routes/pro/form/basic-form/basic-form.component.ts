@@ -5,7 +5,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 @Component({
   selector: 'app-basic-form',
   templateUrl: './basic-form.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasicFormComponent implements OnInit {
   form!: FormGroup;
@@ -23,7 +23,7 @@ export class BasicFormComponent implements OnInit {
       invites: [null, []],
       weight: [null, []],
       public: [1, [Validators.min(1), Validators.max(3)]],
-      publicUsers: [null, []],
+      publicUsers: [null, []]
     });
   }
 
