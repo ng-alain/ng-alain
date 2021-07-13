@@ -25,20 +25,19 @@
     "ng": "ng",
     "start": "ng s -o",
     "hmr": "ng s -o --hmr",
-    "build": "npm run ng-high-memory build -- --configuration production",
-    "analyze": "npm run ng-high-memory build -- --configuration production --source-map",
+    "build": "npm run ng-high-memory build",
+    "analyze": "npm run ng-high-memory build -- --source-map",
     "analyze:view": "source-map-explorer dist/**/*.js",
     "lint": "npm run lint:ts && npm run lint:style",
     "lint:ts": "ng lint --fix",
     "lint:style": "stylelint \"src/**/*.less\" --syntax less --fix",
-    "pretty-quick": "pretty-quick",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "e2e": "ng e2e",
     "test": "ng test --watch",
     "test-coverage": "ng test --code-coverage --watch=false",
     "color-less": "ng-alain-plugin-theme -t=colorLess",
     "theme": "ng-alain-plugin-theme -t=themeCss",
-    "icon": "ng g ng-alain:plugin icon"
+    "icon": "ng g ng-alain:plugin icon",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@angular/animations": "~12.1.1",
@@ -108,22 +107,18 @@
     "ng-alain": "12.0.0-beta.0",
     "ng-alain-plugin-theme": "^12.0.0",
     "ng-alain-sts": "^0.0.1",
-
     "@types/jasminewd2": "~2.0.3",
     "jasmine-spec-reporter": "~5.0.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
-
-
-    "husky": "^4.2.3",
-    "pretty-quick": "^3.1.0",
-
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.3"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+  "lint-staged": {
+    "(src)/**/*.{html,ts}": [
+      "eslint --fix"
+    ]
   }
 }
