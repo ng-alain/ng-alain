@@ -11,6 +11,9 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "less"
+        },
+        "@schematics/angular:application": {
+          "strict": true
         }
       },
       "architect": {
@@ -25,14 +28,7 @@
             "assets": ["src/assets", "src/favicon.ico"],
             "styles": ["src/styles.less"],
             "scripts": [],
-            "allowedCommonJsDependencies": ["@antv/g2", "file-saver", "ajv", "ajv-formats", "date-fns"],
-            "aot": false,
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+            "allowedCommonJsDependencies": ["@antv/g2", "file-saver", "ajv", "ajv-formats", "date-fns"]
           },
           "configurations": {
             "production": {
@@ -42,14 +38,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -62,9 +51,17 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -75,8 +72,12 @@
           "configurations": {
             "production": {
               "browserTarget": "ng-alain:build:production"
+            },
+            "development": {
+              "browserTarget": "ng-alain:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
