@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { TransferService } from './transfer.service';
 
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Step1Component implements OnInit {
   form!: FormGroup;
@@ -24,8 +25,8 @@ export class Step1Component implements OnInit {
       receiver_name: [null, Validators.compose([Validators.required, Validators.minLength(2)])],
       amount: [
         null,
-        Validators.compose([Validators.required, Validators.pattern(`[0-9]+`), Validators.min(1), Validators.max(10000 * 100)]),
-      ],
+        Validators.compose([Validators.required, Validators.pattern(`[0-9]+`), Validators.min(1), Validators.max(10000 * 100)])
+      ]
     });
     this.form.patchValue(this.item);
   }

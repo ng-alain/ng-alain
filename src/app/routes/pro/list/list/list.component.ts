@@ -5,23 +5,23 @@ import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list-layout',
-  templateUrl: './list.component.html',
+  templateUrl: './list.component.html'
 })
 export class ProListLayoutComponent implements OnInit, OnDestroy {
   private router$!: Subscription;
   tabs = [
     {
       key: 'articles',
-      tab: '文章',
+      tab: '文章'
     },
     {
       key: 'applications',
-      tab: '应用',
+      tab: '应用'
     },
     {
       key: 'projects',
-      tab: '项目',
-    },
+      tab: '项目'
+    }
   ];
 
   pos = 0;
@@ -30,14 +30,14 @@ export class ProListLayoutComponent implements OnInit, OnDestroy {
 
   private setActive(): void {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
-    const idx = this.tabs.findIndex((w) => w.key === key);
+    const idx = this.tabs.findIndex(w => w.key === key);
     if (idx !== -1) {
       this.pos = idx;
     }
   }
 
   ngOnInit(): void {
-    this.router$ = this.router.events.pipe(filter((e) => e instanceof ActivationEnd)).subscribe(() => this.setActive());
+    this.router$ = this.router.events.pipe(filter(e => e instanceof ActivationEnd)).subscribe(() => this.setActive());
     this.setActive();
   }
 

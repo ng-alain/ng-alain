@@ -30,7 +30,7 @@ interface ProAccountSettingsCity {
   selector: 'app-account-settings-base',
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProAccountSettingsBaseComponent implements OnInit {
   constructor(private http: _HttpClient, private cdr: ChangeDetectorRef, private msg: NzMessageService) {}
@@ -51,12 +51,12 @@ export class ProAccountSettingsBaseComponent implements OnInit {
         this.provinces = province;
         this.choProvince(user.geographic.province.key, false);
         this.cdr.detectChanges();
-      },
+      }
     );
   }
 
   choProvince(pid: string, cleanCity: boolean = true): void {
-    this.http.get(`/geo/${pid}`).subscribe((res) => {
+    this.http.get(`/geo/${pid}`).subscribe(res => {
       this.cities = res;
       if (cleanCity) {
         this.user.geographic.city.key = '';

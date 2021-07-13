@@ -4,7 +4,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-cache',
-  templateUrl: './cache.component.html',
+  templateUrl: './cache.component.html'
 })
 export class CacheComponent {
   KEY = 'user';

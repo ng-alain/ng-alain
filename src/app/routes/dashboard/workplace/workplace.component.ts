@@ -7,7 +7,7 @@ import { zip } from 'rxjs';
   selector: 'app-dashboard-workplace',
   templateUrl: './workplace.component.html',
   styleUrls: ['./workplace.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardWorkplaceComponent implements OnInit {
   notice: any[] = [];
@@ -19,60 +19,60 @@ export class DashboardWorkplaceComponent implements OnInit {
   links = [
     {
       title: '操作一',
-      href: '',
+      href: ''
     },
     {
       title: '操作二',
-      href: '',
+      href: ''
     },
     {
       title: '操作三',
-      href: '',
+      href: ''
     },
     {
       title: '操作四',
-      href: '',
+      href: ''
     },
     {
       title: '操作五',
-      href: '',
+      href: ''
     },
     {
       title: '操作六',
-      href: '',
-    },
+      href: ''
+    }
   ];
   members = [
     {
       id: 'members-1',
       title: '科学搬砖组',
       logo: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png',
-      link: '',
+      link: ''
     },
     {
       id: 'members-2',
       title: '程序员日常',
       logo: 'https://gw.alipayobjects.com/zos/rmsportal/zOsKZmFRdUtvpqCImOVY.png',
-      link: '',
+      link: ''
     },
     {
       id: 'members-3',
       title: '设计天团',
       logo: 'https://gw.alipayobjects.com/zos/rmsportal/dURIMkkrRFpPgTuzkwnB.png',
-      link: '',
+      link: ''
     },
     {
       id: 'members-4',
       title: '中二少女团',
       logo: 'https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png',
-      link: '',
+      link: ''
     },
     {
       id: 'members-5',
       title: '骗你学计算机',
       logo: 'https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png',
-      link: '',
-    },
+      link: ''
+    }
   ];
   // endregion
 
@@ -94,7 +94,7 @@ export class DashboardWorkplaceComponent implements OnInit {
         });
         this.loading = false;
         this.cdr.detectChanges();
-      },
+      }
     );
   }
 }

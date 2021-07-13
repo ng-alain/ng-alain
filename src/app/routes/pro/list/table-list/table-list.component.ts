@@ -9,7 +9,7 @@ import { map, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProTableListComponent implements OnInit {
   q: {
@@ -25,7 +25,7 @@ export class ProTableListComponent implements OnInit {
     no: '',
     sorter: '',
     status: null,
-    statusList: [],
+    statusList: []
   };
   data: any[] = [];
   loading = false;
@@ -36,10 +36,10 @@ export class ProTableListComponent implements OnInit {
       text: '运行中',
       value: false,
       type: 'processing',
-      checked: false,
+      checked: false
     },
     { index: 2, text: '已上线', value: false, type: 'success', checked: false },
-    { index: 3, text: '异常', value: false, type: 'error', checked: false },
+    { index: 3, text: '异常', value: false, type: 'error', checked: false }
   ];
   @ViewChild('st', { static: true })
   st!: STComponent;
@@ -51,10 +51,10 @@ export class ProTableListComponent implements OnInit {
       title: '服务调用次数',
       index: 'callNo',
       type: 'number',
-      format: (item) => `${item.callNo} 万`,
+      format: item => `${item.callNo} 万`,
       sort: {
-        compare: (a, b) => a.callNo - b.callNo,
-      },
+        compare: (a, b) => a.callNo - b.callNo
+      }
     },
     {
       title: '状态',
@@ -62,30 +62,30 @@ export class ProTableListComponent implements OnInit {
       render: 'status',
       filter: {
         menus: this.status,
-        fn: (filter, record) => record.status === filter.index,
-      },
+        fn: (filter, record) => record.status === filter.index
+      }
     },
     {
       title: '更新时间',
       index: 'updatedAt',
       type: 'date',
       sort: {
-        compare: (a, b) => a.updatedAt - b.updatedAt,
-      },
+        compare: (a, b) => a.updatedAt - b.updatedAt
+      }
     },
     {
       title: '操作',
       buttons: [
         {
           text: '配置',
-          click: (item) => this.msg.success(`配置${item.no}`),
+          click: item => this.msg.success(`配置${item.no}`)
         },
         {
           text: '订阅警报',
-          click: (item) => this.msg.success(`订阅警报${item.no}`),
-        },
-      ],
-    },
+          click: item => this.msg.success(`订阅警报${item.no}`)
+        }
+      ]
+    }
   ];
   selectedRows: STData[] = [];
   description = '';
@@ -100,7 +100,7 @@ export class ProTableListComponent implements OnInit {
 
   getData(): void {
     this.loading = true;
-    this.q.statusList = this.status.filter((w) => w.checked).map((item) => item.index);
+    this.q.statusList = this.status.filter(w => w.checked).map(item => item.index);
     if (this.q.status !== null && this.q.status > -1) {
       this.q.statusList.push(this.q.status);
     }
@@ -108,16 +108,16 @@ export class ProTableListComponent implements OnInit {
       .get('/rule', this.q)
       .pipe(
         map((list: Array<{ status: number; statusText: string; statusType: string }>) =>
-          list.map((i) => {
+          list.map(i => {
             const statusItem = this.status[i.status];
             i.statusText = statusItem.text;
             i.statusType = statusItem.type;
             return i;
-          }),
+          })
         ),
-        tap(() => (this.loading = false)),
+        tap(() => (this.loading = false))
       )
-      .subscribe((res) => {
+      .subscribe(res => {
         this.data = res;
         this.cdr.detectChanges();
       });
@@ -137,7 +137,7 @@ export class ProTableListComponent implements OnInit {
   }
 
   remove(): void {
-    this.http.delete('/rule', { nos: this.selectedRows.map((i) => i.no).join(',') }).subscribe(() => {
+    this.http.delete('/rule', { nos: this.selectedRows.map(i => i.no).join(',') }).subscribe(() => {
       this.getData();
       this.st.clearCheck();
     });
@@ -154,7 +154,7 @@ export class ProTableListComponent implements OnInit {
       nzOnOk: () => {
         this.loading = true;
         this.http.post('/rule', { description: this.description }).subscribe(() => this.getData());
-      },
+      }
     });
   }
 

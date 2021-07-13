@@ -7,7 +7,7 @@ import { zip } from 'rxjs';
   selector: 'app-dashboard-monitor',
   templateUrl: './monitor.component.html',
   styleUrls: ['./monitor.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardMonitorComponent implements OnInit, OnDestroy {
   constructor(private http: _HttpClient, public msg: NzMessageService, private cdr: ChangeDetectorRef) {}
@@ -16,7 +16,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
   loading = true;
   q = {
     start: null,
-    end: null,
+    end: null
   };
   percent: number | null = null;
 
@@ -30,7 +30,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     max: 0,
     min: 0,
     t1: '',
-    t2: '',
+    t2: ''
   };
 
   ngOnInit(): void {
@@ -52,7 +52,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     for (let i = 0; i < 24; i += 1) {
       activeData.push({
         x: `${i.toString().padStart(2, '0')}:00`,
-        y: i * 50 + Math.floor(Math.random() * 200),
+        y: i * 50 + Math.floor(Math.random() * 200)
       });
     }
     this.activeData = activeData;

@@ -48,8 +48,8 @@ const COMPONENTS = [DashboardV1Component, DashboardAnalysisComponent, DashboardM
     NumberInfoModule,
     TrendModule,
     QuickMenuModule,
-    OnboardingModule,
+    OnboardingModule
   ],
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS]
 })
 export class DashboardModule {}

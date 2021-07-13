@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-qr',
-  templateUrl: './qr.component.html',
+  templateUrl: './qr.component.html'
 })
 export class QRComponent {
   value = 'https://ng-alain.com/';

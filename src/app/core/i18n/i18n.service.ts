@@ -11,7 +11,7 @@ import {
   en_US as delonEnUS,
   SettingsService,
   zh_CN as delonZhCn,
-  zh_TW as delonZhTw,
+  zh_TW as delonZhTw
 } from '@delon/theme';
 import { TranslateService } from '@ngx-translate/core';
 import { enUS as dfEn, zhCN as dfZhCn, zhTW as dfZhTw } from 'date-fns/locale';
@@ -37,7 +37,7 @@ const LANGS: { [key: string]: LangData } = {
     zorro: zorroZhCN,
     date: dfZhCn,
     delon: delonZhCn,
-    abbr: '🇨🇳',
+    abbr: '🇨🇳'
   },
   'zh-TW': {
     text: '繁体中文',
@@ -45,7 +45,7 @@ const LANGS: { [key: string]: LangData } = {
     zorro: zorroZhTW,
     date: dfZhTw,
     delon: delonZhTw,
-    abbr: '🇭🇰',
+    abbr: '🇭🇰'
   },
   'en-US': {
     text: 'English',
@@ -53,8 +53,8 @@ const LANGS: { [key: string]: LangData } = {
     zorro: zorroEnUS,
     date: dfEn,
     delon: delonEnUS,
-    abbr: '🇬🇧',
-  },
+    abbr: '🇬🇧'
+  }
 };
 
 @Injectable({ providedIn: 'root' })
@@ -62,7 +62,7 @@ export class I18NService implements AlainI18NService {
   private _default = DEFAULT;
   private change$ = new BehaviorSubject<string | null>(null);
 
-  private _langs = Object.keys(LANGS).map((code) => {
+  private _langs = Object.keys(LANGS).map(code => {
     const item = LANGS[code];
     return { code, text: item.text, abbr: item.abbr };
   });
@@ -72,10 +72,10 @@ export class I18NService implements AlainI18NService {
     private nzI18nService: NzI18nService,
     private delonLocaleService: DelonLocaleService,
     private translate: TranslateService,
-    private platform: Platform,
+    private platform: Platform
   ) {
     // `@ngx-translate/core` 预先知道支持哪些语言
-    const lans = this._langs.map((item) => item.code);
+    const lans = this._langs.map(item => item.code);
     translate.addLangs(lans);
 
     const defaultLan = this.getDefaultLang();
@@ -105,7 +105,7 @@ export class I18NService implements AlainI18NService {
   }
 
   get change(): Observable<string> {
-    return this.change$.asObservable().pipe(filter((w) => w != null)) as Observable<string>;
+    return this.change$.asObservable().pipe(filter(w => w != null)) as Observable<string>;
   }
 
   use(lang: string): void {

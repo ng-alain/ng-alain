@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared';
 
 import { ExtrasRoutingModule } from './extras-routing.module';
-
 import { HelpCenterComponent } from './helpcenter/helpcenter.component';
 import { ExtrasPoiEditComponent } from './poi/edit/edit.component';
 import { ExtrasPoiComponent } from './poi/poi.component';
@@ -12,6 +11,6 @@ const COMPONENTS = [HelpCenterComponent, ExtrasSettingsComponent, ExtrasPoiCompo
 
 @NgModule({
   imports: [SharedModule, ExtrasRoutingModule],
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS]
 })
 export class ExtrasModule {}

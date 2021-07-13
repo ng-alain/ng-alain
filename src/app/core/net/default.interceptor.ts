@@ -5,13 +5,12 @@ import {
   HttpHeaders,
   HttpInterceptor,
   HttpRequest,
-  HttpResponseBase,
+  HttpResponseBase
 } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
-import { ALAIN_I18N_TOKEN } from '@delon/theme';
-import { _HttpClient } from '@delon/theme';
+import { ALAIN_I18N_TOKEN, _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
@@ -32,7 +31,7 @@ const CODEMESSAGE: { [key: number]: string } = {
   500: '服务器发生错误，请检查服务器。',
   502: '网关错误。',
   503: '服务不可用，服务器暂时过载或维护。',
-  504: '网关超时。',
+  504: '网关超时。'
 };
 
 /**
@@ -88,16 +87,16 @@ export class DefaultInterceptor implements HttpInterceptor {
 
   private tryRefreshToken(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // 1、若请求为刷新Token请求，表示来自刷新Token可以直接跳转登录页
-    if ([`/api/auth/refresh`].some((url) => req.url.includes(url))) {
+    if ([`/api/auth/refresh`].some(url => req.url.includes(url))) {
       this.toLogin();
       return throwError(ev);
     }
     // 2、如果 `refreshToking` 为 `true` 表示已经在请求刷新 Token 中，后续所有请求转入等待状态，直至结果返回后再重新发起请求
     if (this.refreshToking) {
       return this.refreshToken$.pipe(
-        filter((v) => !!v),
+        filter(v => !!v),
         take(1),
-        switchMap(() => next.handle(this.reAttachToken(req))),
+        switchMap(() => next.handle(this.reAttachToken(req)))
       );
     }
     // 3、尝试调用刷新 Token
@@ -105,7 +104,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     this.refreshToken$.next(null);
 
     return this.refreshTokenRequest().pipe(
-      switchMap((res) => {
+      switchMap(res => {
         // 通知后续请求继续执行
         this.refreshToking = false;
         this.refreshToken$.next(res);
@@ -114,11 +113,11 @@ export class DefaultInterceptor implements HttpInterceptor {
         // 重新发起请求
         return next.handle(this.reAttachToken(req));
       }),
-      catchError((err) => {
+      catchError(err => {
         this.refreshToking = false;
         this.toLogin();
         return throwError(err);
-      }),
+      })
     );
   }
 
@@ -132,8 +131,8 @@ export class DefaultInterceptor implements HttpInterceptor {
     const token = this.tokenSrv.get()?.token;
     return req.clone({
       setHeaders: {
-        token: `Bearer ${token}`,
-      },
+        token: `Bearer ${token}`
+      }
     });
   }
 
@@ -148,20 +147,20 @@ export class DefaultInterceptor implements HttpInterceptor {
     this.tokenSrv.refresh
       .pipe(
         filter(() => !this.refreshToking),
-        switchMap((res) => {
+        switchMap(res => {
           console.log(res);
           this.refreshToking = true;
           return this.refreshTokenRequest();
-        }),
+        })
       )
       .subscribe(
-        (res) => {
+        res => {
           // TODO: Mock expired value
           res.expired = +new Date() + 1000 * 60 * 5;
           this.refreshToking = false;
           this.tokenSrv.set(res);
         },
-        () => this.toLogin(),
+        () => this.toLogin()
       );
   }
 
@@ -216,7 +215,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         if (ev instanceof HttpErrorResponse) {
           console.warn(
             '未可知错误，大部分是由于后端不支持跨域CORS或无效配置引起，请参考 https://ng-alain.com/docs/server 解决跨域问题',
-            ev,
+            ev
           );
         }
         break;
@@ -247,7 +246,7 @@ export class DefaultInterceptor implements HttpInterceptor {
 
     const newReq = req.clone({ url, setHeaders: this.getAdditionalHeaders(req.headers) });
     return next.handle(newReq).pipe(
-      mergeMap((ev) => {
+      mergeMap(ev => {
         // 允许统一对请求错误处理
         if (ev instanceof HttpResponseBase) {
           return this.handleData(ev, newReq, next);
@@ -255,7 +254,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         // 若一切都正常，则后续操作
         return of(ev);
       }),
-      catchError((err: HttpErrorResponse) => this.handleData(err, newReq, next)),
+      catchError((err: HttpErrorResponse) => this.handleData(err, newReq, next))
     );
   }
 }

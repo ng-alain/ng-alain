@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { DownFileModule } from '@delon/abc/down-file';
 import { FullContentModule } from '@delon/abc/full-content';
 import { QRModule } from '@delon/abc/qr';
+import { G2MiniBarModule } from '@delon/chart/mini-bar';
 import { SharedModule } from '@shared';
 
-import { DelonRoutingModule } from './delon-routing.module';
-
-import { G2MiniBarModule } from '@delon/chart/mini-bar';
 import { ACLComponent } from './acl/acl.component';
 import { CacheComponent } from './cache/cache.component';
+import { DelonRoutingModule } from './delon-routing.module';
 import { DownFileComponent } from './downfile/downfile.component';
 import { DelonFormComponent } from './form/form.component';
 import { GuardAdminComponent } from './guard/admin.component';
@@ -37,12 +36,12 @@ const COMPONENTS = [
   XlsxComponent,
   ZipComponent,
   DelonFormComponent,
-  QRComponent,
+  QRComponent
 ];
 
 @NgModule({
   imports: [SharedModule, DelonRoutingModule, DownFileModule, FullContentModule, QRModule, G2MiniBarModule],
   providers: [CanLeaveProvide],
-  declarations: COMPONENTS,
+  declarations: COMPONENTS
 })
 export class DelonModule {}
