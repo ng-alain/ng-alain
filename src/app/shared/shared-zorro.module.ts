@@ -63,5 +63,5 @@ export const SHARED_ZORRO_MODULES = [
   NzDividerModule,
   NzProgressModule,
   NzPopconfirmModule,
-  NzUploadModule,
+  NzUploadModule
 ];

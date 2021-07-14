@@ -5,7 +5,7 @@ import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-basic-list-edit',
-  templateUrl: './edit.component.html',
+  templateUrl: './edit.component.html'
 })
 export class ProBasicListEditComponent {
   record: any = {};
@@ -19,23 +19,23 @@ export class ProBasicListEditComponent {
         enum: [
           { value: 'asdf', label: 'asdf' },
           { value: '卡色', label: '卡色' },
-          { value: 'cipchk', label: 'cipchk' },
-        ],
+          { value: 'cipchk', label: 'cipchk' }
+        ]
       },
       subDescription: {
         type: 'string',
         title: '产品描述',
         ui: {
           widget: 'textarea',
-          autosize: { minRows: 2, maxRows: 6 },
-        },
-      },
+          autosize: { minRows: 2, maxRows: 6 }
+        }
+      }
     },
     required: ['title', 'createdAt', 'owner'],
     ui: {
       spanLabelFixed: 150,
-      grid: { span: 24 },
-    },
+      grid: { span: 24 }
+    }
   };
 
   constructor(private modal: NzModalRef, private msgSrv: NzMessageService) {}

@@ -4,7 +4,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-extras-settings',
-  templateUrl: './settings.component.html',
+  templateUrl: './settings.component.html'
 })
 export class ExtrasSettingsComponent implements OnInit {
   active = 1;
@@ -12,7 +12,7 @@ export class ExtrasSettingsComponent implements OnInit {
   pwd = {
     old_password: '',
     new_password: '',
-    confirm_new_password: '',
+    confirm_new_password: ''
   };
   // Email
   primary_email = 'cipchk@qq.com';
@@ -24,7 +24,7 @@ export class ExtrasSettingsComponent implements OnInit {
       bio: [null, Validators.maxLength(160)],
       url: '',
       company: '',
-      location: '',
+      location: ''
     });
   }
 
@@ -55,7 +55,7 @@ export class ExtrasSettingsComponent implements OnInit {
   ngOnInit(): void {
     this.profileForm.patchValue({
       name: 'cipchk',
-      email: 'cipchk@qq.com',
+      email: 'cipchk@qq.com'
     });
   }
 }

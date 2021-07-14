@@ -29,6 +29,7 @@ import { HeaderRTLComponent } from './basic/widgets/rtl.component';
 import { HeaderSearchComponent } from './basic/widgets/search.component';
 import { HeaderTaskComponent } from './basic/widgets/task.component';
 import { HeaderUserComponent } from './basic/widgets/user.component';
+// eslint-disable-next-line import/order
 import { LayoutBlankComponent } from './blank/blank.component';
 
 const COMPONENTS = [LayoutBasicComponent, LayoutBlankComponent];
@@ -42,7 +43,7 @@ const HEADERCOMPONENTS = [
   HeaderI18nComponent,
   HeaderClearStorageComponent,
   HeaderUserComponent,
-  HeaderRTLComponent,
+  HeaderRTLComponent
 ];
 
 // passport
@@ -69,9 +70,9 @@ const PASSPORT = [LayoutPassportComponent];
     NzBadgeModule,
     NzAvatarModule,
     NzIconModule,
-    NzCardModule,
+    NzCardModule
   ],
   declarations: [...COMPONENTS, ...HEADERCOMPONENTS, ...PASSPORT],
-  exports: [...COMPONENTS, ...PASSPORT],
+  exports: [...COMPONENTS, ...PASSPORT]
 })
 export class LayoutModule {}

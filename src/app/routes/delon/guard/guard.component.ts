@@ -5,7 +5,7 @@ import { MenuService } from '@delon/theme';
 
 @Component({
   selector: 'app-guard',
-  templateUrl: './guard.component.html',
+  templateUrl: './guard.component.html'
 })
 export class GuardComponent {
   get data(): any {

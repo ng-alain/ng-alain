@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
     <button nz-button [nzType]="'primary'" [routerLink]="['/logics/guard']">
       <span>我要离开</span>
     </button>
-  `,
+  `
 })
 export class GuardLeaveComponent {}

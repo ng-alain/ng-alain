@@ -4,7 +4,7 @@ import { MenuService } from '@delon/theme';
 
 @Component({
   selector: 'app-acl',
-  templateUrl: './acl.component.html',
+  templateUrl: './acl.component.html'
 })
 export class ACLComponent {
   full = true;
@@ -14,7 +14,7 @@ export class ACLComponent {
   get data(): {
     full: boolean;
     roles: string[];
-    abilities: (string | number)[];
+    abilities: Array<string | number>;
   } {
     return this.aclSrv.data;
   }

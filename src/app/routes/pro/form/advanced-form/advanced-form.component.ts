@@ -4,7 +4,7 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
 @Component({
   selector: 'app-advanced-form',
   templateUrl: './advanced-form.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdvancedFormComponent implements OnInit {
   editIndex = -1;
@@ -12,7 +12,7 @@ export class AdvancedFormComponent implements OnInit {
   form!: FormGroup;
   users: Array<{ value: string; label: string }> = [
     { value: 'xiao', label: '付晓晓' },
-    { value: 'mao', label: '周毛毛' },
+    { value: 'mao', label: '周毛毛' }
   ];
 
   constructor(private fb: FormBuilder) {}
@@ -31,29 +31,29 @@ export class AdvancedFormComponent implements OnInit {
       approver2: [null, [Validators.required]],
       time: [null, [Validators.required]],
       type2: [null, [Validators.required]],
-      items: this.fb.array([]),
+      items: this.fb.array([])
     });
     const userList = [
       {
         key: '1',
         workId: '00001',
         name: 'John Brown',
-        department: 'New York No. 1 Lake Park',
+        department: 'New York No. 1 Lake Park'
       },
       {
         key: '2',
         workId: '00002',
         name: 'Jim Green',
-        department: 'London No. 1 Lake Park',
+        department: 'London No. 1 Lake Park'
       },
       {
         key: '3',
         workId: '00003',
         name: 'Joe Black',
-        department: 'Sidney No. 1 Lake Park',
-      },
+        department: 'Sidney No. 1 Lake Park'
+      }
     ];
-    userList.forEach((i) => {
+    userList.forEach(i => {
       const field = this.createUser();
       field.patchValue(i);
       this.items.push(field);
@@ -65,7 +65,7 @@ export class AdvancedFormComponent implements OnInit {
       key: [null],
       workId: [null, [Validators.required]],
       name: [null, [Validators.required]],
-      department: [null, [Validators.required]],
+      department: [null, [Validators.required]]
     });
   }
 
@@ -133,7 +133,7 @@ export class AdvancedFormComponent implements OnInit {
 
   save(index: number): void {
     const item = this.items.at(index) as FormGroup;
-    Object.keys(item.controls).forEach((key) => {
+    Object.keys(item.controls).forEach(key => {
       item.controls[key].markAsDirty();
       item.controls[key].updateValueAndValidity();
     });
@@ -154,7 +154,7 @@ export class AdvancedFormComponent implements OnInit {
   }
 
   _submitForm(): void {
-    Object.keys(this.form.controls).forEach((key) => {
+    Object.keys(this.form.controls).forEach(key => {
       this.form.controls[key].markAsDirty();
       this.form.controls[key].updateValueAndValidity();
     });

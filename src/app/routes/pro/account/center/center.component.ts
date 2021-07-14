@@ -8,7 +8,7 @@ import { filter } from 'rxjs/operators';
   selector: 'app-account-center',
   templateUrl: './center.component.html',
   styleUrls: ['./center.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProAccountCenterComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
@@ -19,16 +19,16 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
   tabs = [
     {
       key: 'articles',
-      tab: '文章 (8)',
+      tab: '文章 (8)'
     },
     {
       key: 'applications',
-      tab: '应用 (8)',
+      tab: '应用 (8)'
     },
     {
       key: 'projects',
-      tab: '项目 (8)',
-    },
+      tab: '项目 (8)'
+    }
   ];
   pos = 0;
   taging = false;
@@ -36,7 +36,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
 
   private setActive(): void {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
-    const idx = this.tabs.findIndex((w) => w.key === key);
+    const idx = this.tabs.findIndex(w => w.key === key);
     if (idx !== -1) {
       this.pos = idx;
     }
@@ -48,7 +48,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
       this.notice = notice;
       this.cdr.detectChanges();
     });
-    this.router$ = this.router.events.pipe(filter((e) => e instanceof ActivationEnd)).subscribe(() => this.setActive());
+    this.router$ = this.router.events.pipe(filter(e => e instanceof ActivationEnd)).subscribe(() => this.setActive());
     this.setActive();
   }
 
@@ -72,7 +72,6 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
   }
 
   tagEnter(e: KeyboardEvent): void {
-    // tslint:disable-next-line: deprecation
     if (e.keyCode === 13) {
       this.tagBlur();
     }

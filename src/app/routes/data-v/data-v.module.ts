@@ -8,6 +8,6 @@ const COMPONENTS = [RelationComponent];
 
 @NgModule({
   imports: [SharedModule, DataVRoutingModule],
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS]
 })
 export class DataVModule {}

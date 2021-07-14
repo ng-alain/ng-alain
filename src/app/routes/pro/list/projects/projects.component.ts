@@ -6,7 +6,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   selector: 'app-list-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProListProjectsComponent implements OnInit {
   q = {
@@ -14,7 +14,7 @@ export class ProListProjectsComponent implements OnInit {
     categories: [],
     owners: ['zxx'],
     user: null,
-    rate: null,
+    rate: null
   };
   list: any[] = [];
   loading = true;
@@ -33,12 +33,12 @@ export class ProListProjectsComponent implements OnInit {
     { id: 9, text: '类目九', value: false },
     { id: 10, text: '类目十', value: false },
     { id: 11, text: '类目十一', value: false },
-    { id: 12, text: '类目十二', value: false },
+    { id: 12, text: '类目十二', value: false }
   ];
 
   changeCategory(status: boolean, idx: number): void {
     if (idx === 0) {
-      this.categories.map((i) => (i.value = status));
+      this.categories.map(i => (i.value = status));
     } else {
       this.categories[idx].value = status;
     }
@@ -54,7 +54,7 @@ export class ProListProjectsComponent implements OnInit {
 
   getData(): void {
     this.loading = true;
-    this.http.get('/api/list', { count: this.q.ps }).subscribe((res) => {
+    this.http.get('/api/list', { count: this.q.ps }).subscribe(res => {
       this.list = this.list.concat(res);
       this.loading = false;
       this.cdr.detectChanges();

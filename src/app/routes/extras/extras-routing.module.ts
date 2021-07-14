@@ -8,11 +8,11 @@ import { ExtrasSettingsComponent } from './settings/settings.component';
 const routes: Routes = [
   { path: 'helpcenter', component: HelpCenterComponent },
   { path: 'settings', component: ExtrasSettingsComponent },
-  { path: 'poi', component: ExtrasPoiComponent },
+  { path: 'poi', component: ExtrasPoiComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class ExtrasRoutingModule {}

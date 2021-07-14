@@ -6,14 +6,13 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-util',
-  templateUrl: './util.component.html',
+  templateUrl: './util.component.html'
 })
 export class UtilComponent {
   constructor(public messageSrv: NzMessageService) {}
 
   // region: string
 
-  // tslint:disable-next-line: no-invalid-template-strings
   format_str = 'this is ${name}';
   format_res = '';
   format_obj = JSON.stringify({ name: 'asdf' });

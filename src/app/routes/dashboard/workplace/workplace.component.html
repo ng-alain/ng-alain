@@ -72,12 +72,7 @@
         </nz-card>
       </div>
     </nz-card>
-    <nz-card
-      nzTitle="动态"
-      [nzBordered]="false"
-      [nzLoading]="loading"
-      class="ant-card__body-nopadding mb-lg active-card"
-    >
+    <nz-card nzTitle="动态" [nzBordered]="false" [nzLoading]="loading" class="ant-card__body-nopadding mb-lg active-card">
       <nz-list nzSize="large" class="activities">
         <nz-list-item *ngFor="let item of activities">
           <nz-list-item-meta [nzAvatar]="item.user.avatar" [nzTitle]="activeTitle" [nzDescription]="activeDescription">
@@ -98,12 +93,7 @@
     <nz-card nzTitle="快速开始 / 便捷导航" [nzBordered]="false" class="ant-card__body-nopadding mb-lg">
       <div class="links">
         <a *ngFor="let item of links" (click)="msg.success(item.title)">{{ item.title }}</a>
-        <button
-          nz-button
-          (click)="links.push({ title: 'new titel', href: 'href' })"
-          [nzType]="'dashed'"
-          [nzSize]="'small'"
-        >
+        <button nz-button (click)="links.push({ title: 'new titel', href: 'href' })" [nzType]="'dashed'" [nzSize]="'small'">
           <i nz-icon nzType="plus"></i>
           <span>添加</span>
         </button>
@@ -112,12 +102,7 @@
     <nz-card nzTitle="XX 指数" [nzBordered]="false" [nzLoading]="loading" class="mb-lg">
       <g2-radar *ngIf="radarData" [data]="radarData" [height]="343" [hasLegend]="true"></g2-radar>
     </nz-card>
-    <nz-card
-      nzTitle="团队"
-      [nzBordered]="false"
-      [nzBodyStyle]="{ 'padding-top.px': 12, 'padding-bottom.px': 12 }"
-      class="mb-lg"
-    >
+    <nz-card nzTitle="团队" [nzBordered]="false" [nzBodyStyle]="{ 'padding-top.px': 12, 'padding-bottom.px': 12 }" class="mb-lg">
       <div class="members">
         <div nz-row [nzGutter]="48">
           <div nz-col [nzSpan]="12" *ngFor="let i of members">

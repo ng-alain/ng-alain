@@ -18,7 +18,7 @@ export class ColorService {
     blue: '#1890ff',
     geekblue: '#2f54eb',
     purple: '#722ed1',
-    magenta: '#eb2f96',
+    magenta: '#eb2f96'
   };
 
   get names(): string[] {
