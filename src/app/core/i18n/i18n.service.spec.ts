@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed, TestBedStatic } from '@angular/core/testing';
 import { DelonLocaleService, SettingsService } from '@delon/theme';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -32,6 +33,7 @@ describe('Service: I18n', () => {
 
   function genModule(): void {
     injector = TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       providers: [
         I18NService,
         { provide: SettingsService, useValue: MockSettingsService },
