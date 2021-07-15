@@ -31,7 +31,7 @@ import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
         (input)="search($event)"
         (focus)="qFocus()"
         (blur)="qBlur()"
-        [attr.placeholder]="'menu.search.placeholder' | translate"
+        [attr.placeholder]="'menu.search.placeholder' | i18n"
       />
     </nz-input-group>
     <nz-autocomplete nzBackfill #auto>

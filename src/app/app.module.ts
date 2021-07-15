@@ -1,6 +1,6 @@
 /* eslint-disable import/order */
 /* eslint-disable import/no-duplicates */
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { default as ngLang } from '@angular/common/locales/zh';
 import { APP_INITIALIZER, LOCALE_ID, NgModule, Type } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -34,23 +34,6 @@ const LANG_PROVIDES = [
 // #endregion
 
 // #region i18n services
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-// 加载i18n语言文件
-export function I18nHttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, `assets/tmp/i18n/`, '.json');
-}
-
-const I18NSERVICE_MODULES = [
-  TranslateModule.forRoot({
-    loader: {
-      provide: TranslateLoader,
-      useFactory: I18nHttpLoaderFactory,
-      deps: [HttpClient]
-    }
-  })
-];
 
 const I18NSERVICE_PROVIDES = [{ provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false }];
 
@@ -81,7 +64,7 @@ const INTERCEPTOR_PROVIDES = [
 
 // #region Startup Service
 import { StartupService } from '@core';
-export function StartupServiceFactory(startupService: StartupService): () => Promise<void> {
+export function StartupServiceFactory(startupService: StartupService): () => Observable<void> {
   return () => startupService.load();
 }
 const APPINIT_PROVIDES = [
@@ -102,6 +85,7 @@ import { LayoutModule } from './layout/layout.module';
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 import { STWidgetModule } from './shared/st-widget/st-widget.module';
+import { Observable } from 'rxjs';
 
 @NgModule({
   declarations: [AppComponent],
@@ -116,7 +100,6 @@ import { STWidgetModule } from './shared/st-widget/st-widget.module';
     RoutesModule,
     STWidgetModule,
     NzNotificationModule,
-    ...I18NSERVICE_MODULES,
     ...GLOBAL_THIRD_MODULES,
     ...FORM_MODULES
   ],
