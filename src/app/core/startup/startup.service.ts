@@ -12,8 +12,8 @@ import { ICONS_AUTO } from '../../../style-icons-auto';
 import { I18NService } from '../i18n/i18n.service';
 
 /**
- * 用于应用启动时
- * 一般用来获取应用所需要的基础数据等
+ * Used for application startup
+ * Generally used to get the basic data of the application, like: Menu Data, User Data, etc.
  */
 @Injectable()
 export class StartupService {
