@@ -47,8 +47,8 @@ export class HeaderI18nComponent {
 
     this.i18n.loadLangData(lang).subscribe(res => {
       this.i18n.use(lang, res);
+      this.settings.setLayout('lang', lang);
+      setTimeout(() => this.doc.location.reload());
     });
-    this.settings.setLayout('lang', lang);
-    setTimeout(() => this.doc.location.reload());
   }
 }
