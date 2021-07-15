@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { DelonACLModule } from '@delon/acl';
 import { DelonFormModule } from '@delon/form';
 import { AlainThemeModule } from '@delon/theme';
-import { TranslateModule } from '@ngx-translate/core';
 
 import { SHARED_DELON_MODULES } from './shared-delon.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
@@ -49,7 +48,6 @@ const DIRECTIVES: Array<Type<any>> = [];
     AlainThemeModule,
     DelonACLModule,
     DelonFormModule,
-    TranslateModule,
     ...SHARED_DELON_MODULES,
     ...SHARED_ZORRO_MODULES,
     // third libs

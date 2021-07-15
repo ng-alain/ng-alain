@@ -9,7 +9,7 @@ import { BooleanInput, InputBoolean } from '@delon/util/decorator';
   template: `
     <div *ngIf="showLangText" nz-dropdown [nzDropdownMenu]="langMenu" nzPlacement="bottomRight">
       <i nz-icon nzType="global"></i>
-      {{ 'menu.lang' | translate }}
+      {{ 'menu.lang' | i18n }}
       <i nz-icon nzType="down"></i>
     </div>
     <i *ngIf="!showLangText" nz-dropdown [nzDropdownMenu]="langMenu" nzPlacement="bottomRight" nz-icon nzType="global"></i>
@@ -45,8 +45,10 @@ export class HeaderI18nComponent {
     spinEl.innerHTML = `<span class="ant-spin-dot ant-spin-dot-spin"><i></i><i></i><i></i><i></i></span>`;
     this.doc.body.appendChild(spinEl);
 
-    this.i18n.use(lang);
-    this.settings.setLayout('lang', lang);
-    setTimeout(() => this.doc.location.reload());
+    this.i18n.loadLangData(lang).subscribe(res => {
+      this.i18n.use(lang, res);
+      this.settings.setLayout('lang', lang);
+      setTimeout(() => this.doc.location.reload());
+    });
   }
 }

@@ -1,6 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed, TestBedStatic } from '@angular/core/testing';
 import { DelonLocaleService, SettingsService } from '@delon/theme';
-import { TranslateService } from '@ngx-translate/core';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { of } from 'rxjs';
@@ -33,12 +33,12 @@ describe('Service: I18n', () => {
 
   function genModule(): void {
     injector = TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       providers: [
         I18NService,
         { provide: SettingsService, useValue: MockSettingsService },
         { provide: NzI18nService, useValue: MockNzI18nService },
-        { provide: DelonLocaleService, useValue: MockDelonLocaleService },
-        { provide: TranslateService, useValue: MockTranslateService }
+        { provide: DelonLocaleService, useValue: MockDelonLocaleService }
       ]
     });
     srv = TestBed.inject(I18NService);
@@ -49,10 +49,8 @@ describe('Service: I18n', () => {
     genModule();
     expect(srv).toBeTruthy();
     expect(srv.defaultLang).toBe('zh-CN');
-    const t = TestBed.inject(TranslateService);
     srv.fanyi('a');
     srv.fanyi('a', {});
-    expect(t.instant).toHaveBeenCalled();
   });
 
   it('should be used layout as default language', () => {
@@ -72,7 +70,7 @@ describe('Service: I18n', () => {
 
   it('should be trigger notify when changed language', () => {
     genModule();
-    srv.use('en-US');
+    srv.use('en-US', {});
     srv.change.subscribe(lang => {
       expect(lang).toBe('en-US');
     });
