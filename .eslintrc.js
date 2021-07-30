@@ -118,7 +118,8 @@ module.exports = {
       excludedFiles: ['*inline-template-*.component.html'],
       extends: ['plugin:prettier/recommended'],
       rules: {
-        'prettier/prettier': ['error', { parser: 'angular' }]
+        'prettier/prettier': ['error', { parser: 'angular' }],
+        '@angular-eslint/template/eqeqeq': 'off'
       }
     }
   ]
