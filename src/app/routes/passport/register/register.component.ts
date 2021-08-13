@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
+import { MatchControl } from '@delon/util/form';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { finalize } from 'rxjs/operators';
 
@@ -13,14 +14,19 @@ import { finalize } from 'rxjs/operators';
 })
 export class UserRegisterComponent implements OnDestroy {
   constructor(fb: FormBuilder, private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {
-    this.form = fb.group({
-      mail: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
-      confirm: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.passwordEquar]],
-      mobilePrefix: ['+86'],
-      mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
-      captcha: [null, [Validators.required]]
-    });
+    this.form = fb.group(
+      {
+        mail: [null, [Validators.required, Validators.email]],
+        password: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
+        confirm: [null, [Validators.required, Validators.minLength(6)]],
+        mobilePrefix: ['+86'],
+        mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
+        captcha: [null, [Validators.required]]
+      },
+      {
+        validators: MatchControl('password', 'confirm')
+      }
+    );
   }
 
   // #region fields
@@ -78,16 +84,6 @@ export class UserRegisterComponent implements OnDestroy {
     if (self.visible) {
       self.progress = control.value.length * 10 > 100 ? 100 : control.value.length * 10;
     }
-  }
-
-  static passwordEquar(control: FormControl): { equar: boolean } | null {
-    if (!control || !control.parent!) {
-      return null;
-    }
-    if (control.value !== control.parent!.get('password')!.value) {
-      return { equar: true };
-    }
-    return null;
   }
 
   getCaptcha(): void {

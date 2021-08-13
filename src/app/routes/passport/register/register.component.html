@@ -54,7 +54,7 @@
       </nz-input-group>
       <ng-template #confirmErrorTip let-i>
         <ng-container *ngIf="i.errors?.required">{{ 'validation.confirm-password.required' | i18n }}</ng-container>
-        <ng-container *ngIf="i.errors?.equar">{{ 'validation.password.twice' | i18n }}</ng-container>
+        <ng-container *ngIf="i.errors?.matchControl">{{ 'validation.password.twice' | i18n }}</ng-container>
       </ng-template>
     </nz-form-control>
   </nz-form-item>
