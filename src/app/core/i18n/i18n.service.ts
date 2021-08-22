@@ -28,9 +28,9 @@ interface LangConfigData {
   delon: NzSafeAny;
 }
 
-const DEFAULT = 'zh-CN';
+const DEFAULT = 'zh-cn';
 const LANGS: { [key: string]: LangConfigData } = {
-  'zh-CN': {
+  'zh-cn': {
     text: '简体中文',
     ng: ngZh,
     zorro: zorroZhCN,
@@ -38,7 +38,7 @@ const LANGS: { [key: string]: LangConfigData } = {
     delon: delonZhCn,
     abbr: '🇨🇳'
   },
-  'zh-TW': {
+  'zh-tw': {
     text: '繁体中文',
     ng: ngZhTw,
     zorro: zorroZhTW,
@@ -46,7 +46,7 @@ const LANGS: { [key: string]: LangConfigData } = {
     delon: delonZhTw,
     abbr: '🇭🇰'
   },
-  'en-US': {
+  'en-us': {
     text: 'English',
     ng: ngEn,
     zorro: zorroEnUS,
@@ -94,6 +94,7 @@ export class I18NService extends AlainI18nBaseService {
   }
 
   use(lang: string, data: Record<string, string>): void {
+    lang = lang.toLowerCase();
     if (this._currentLang === lang) return;
 
     this._data = data;
