@@ -72,7 +72,7 @@ describe('Service: I18n', () => {
     genModule();
     srv.use('en-US', {});
     srv.change.subscribe(lang => {
-      expect(lang).toBe('en-US');
+      expect(lang).toBe('en-us');
     });
   });
 });
