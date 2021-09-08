@@ -29,9 +29,9 @@ interface LangConfigData {
   delon: NzSafeAny;
 }
 
-const DEFAULT = 'zh-cn';
+const DEFAULT = 'zh-CN';
 const LANGS: { [key: string]: LangConfigData } = {
-  'zh-cn': {
+  'zh-CN': {
     text: '简体中文',
     ng: ngZh,
     zorro: zorroZhCN,
@@ -39,7 +39,7 @@ const LANGS: { [key: string]: LangConfigData } = {
     delon: delonZhCn,
     abbr: '🇨🇳'
   },
-  'zh-tw': {
+  'zh-TW': {
     text: '繁体中文',
     ng: ngZhTw,
     zorro: zorroZhTW,
@@ -47,7 +47,7 @@ const LANGS: { [key: string]: LangConfigData } = {
     delon: delonZhTw,
     abbr: '🇭🇰'
   },
-  'en-us': {
+  'en-US': {
     text: 'English',
     ng: ngEn,
     zorro: zorroEnUS,
@@ -88,7 +88,9 @@ export class I18NService extends AlainI18nBaseService {
     if (this.settings.layout.lang) {
       return this.settings.layout.lang;
     }
-    return (navigator.languages ? navigator.languages[0] : null) || navigator.language;
+    let res = (navigator.languages ? navigator.languages[0] : null) || navigator.language;
+    const arr = res.split('-');
+    return arr.length <= 1 ? res : `${arr[0]}-${arr[1].toUpperCase()}`;
   }
 
   loadLangData(lang: string): Observable<NzSafeAny> {
@@ -96,7 +98,6 @@ export class I18NService extends AlainI18nBaseService {
   }
 
   use(lang: string, data: Record<string, string>): void {
-    lang = lang.toLowerCase();
     if (this._currentLang === lang) return;
 
     this._data = data;
