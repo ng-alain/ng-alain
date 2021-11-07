@@ -168,7 +168,7 @@ export class DefaultInterceptor implements HttpInterceptor {
 
   private toLogin(): void {
     this.notification.error(`未登录或登录已过期，请重新登录。`, ``);
-    this.goTo('/passport/login');
+    this.goTo(this.tokenSrv.login_url!);
   }
 
   private handleData(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
