@@ -85,7 +85,7 @@
   "app.analysis.all-year": "全年",
   "app.analysis.all-month": "本月",
   "app.analysis.all-week": "本周",
-  "app.analysis.all-day": "今日",
+  "app.analysis.all-today": "今日",
   "app.analysis.search-users": "搜索用户数",
   "app.analysis.per-capita-search": "人均搜索次数",
   "app.analysis.online-top-search": "线上热门搜索",

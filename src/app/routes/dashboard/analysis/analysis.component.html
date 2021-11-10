@@ -101,12 +101,11 @@
     <ng-template #extraTemplate>
       <div class="sales-extra-wrap">
         <div class="sales-extra">
-          <span (click)="setDate('today')">{{ 'app.analysis.all-day' | i18n }}</span>
-          <span (click)="setDate('week')">{{ 'app.analysis.all-week' | i18n }}</span>
-          <span (click)="setDate('month')">{{ 'app.analysis.all-month' | i18n }}</span>
-          <span (click)="setDate('year')">{{ 'app.analysis.all-year' | i18n }}</span>
+          <span *ngFor="let t of dateRangeTypes" (click)="setDate(t)" [class.currentDate]="dateRangeType === t">
+            {{ 'app.analysis.all-' + t | i18n }}
+          </span>
         </div>
-        <nz-range-picker [(ngModel)]="date_range"></nz-range-picker>
+        <nz-range-picker [(ngModel)]="dateRange"></nz-range-picker>
       </div>
     </ng-template>
   </nz-tabset>
@@ -161,7 +160,7 @@
       [nzBodyStyle]="{ 'padding.px': 24 }"
       [nzExtra]="extra"
       class="sales-card mb-0"
-      style="min-height: 502.5px"
+      style="min-height: 506.5px"
     >
       <ng-template #extra>
         <nz-radio-group [(ngModel)]="salesType" (ngModelChange)="changeSaleType()">
@@ -175,7 +174,7 @@
             {{ 'app.analysis.channel.stores' | i18n }}
           </label>
         </nz-radio-group>
-        <i nz-dropdown [nzDropdownMenu]="salesExtraMenu" nzPlacement="bottomLeft" nz-icon nzType="ellipsis" class="icon-group"></i>
+        <i nz-dropdown [nzDropdownMenu]="salesExtraMenu" nzPlacement="bottomLeft" nz-icon nzType="ellipsis" class="ml-md"></i>
         <nz-dropdown-menu #salesExtraMenu="nzDropdownMenu">
           <ul nz-menu>
             <li nz-menu-item>操作一</li>
@@ -183,7 +182,7 @@
           </ul>
         </nz-dropdown-menu>
       </ng-template>
-      <h4 class="margin:8px 0 32px 0;">{{ 'app.analysis.sales' | i18n }}</h4>
+      <h4 class="my-xl">{{ 'app.analysis.sales' | i18n }}</h4>
       <g2-pie
         *ngIf="salesPieData"
         [data]="salesPieData"
@@ -202,28 +201,26 @@
   <nz-tabset *ngIf="data.offlineData" [(nzSelectedIndex)]="offlineIdx" (nzSelectedIndexChange)="offlineChange($event)">
     <nz-tab *ngFor="let tab of data.offlineData; let i = index" [nzTitle]="nzTabHeading">
       <ng-template #nzTabHeading>
-        <div nz-row nzGutter="8" style="width: 138px; margin: 8px 0">
-          <div nz-col [nzSpan]="12">
-            <number-info
-              [title]="tab.name"
-              [subTitle]="'app.analysis.conversion-rate' | i18n"
-              gap="2"
-              [total]="tab.cvr * 100 + '%'"
-              [theme]="i !== offlineIdx ? 'light' : 'default'"
-            ></number-info>
-          </div>
-          <div nz-col [nzSpan]="12" style="padding-top: 36px">
-            <g2-pie
-              [animate]="false"
-              [color]="i !== offlineIdx ? '#BDE4FF' : 'rgba(24, 144, 255, 0.85)'"
-              [inner]="0.55"
-              [tooltip]="false"
-              [padding]="[0, 0, 0, 0]"
-              [percent]="tab.cvr * 100"
-              [height]="64"
-            >
-            </g2-pie>
-          </div>
+        <div class="flex-center-between px-md">
+          <number-info
+            [title]="tab.name"
+            [subTitle]="'app.analysis.conversion-rate' | i18n"
+            gap="2"
+            [total]="tab.cvr * 100 + '%'"
+            [theme]="i !== offlineIdx ? 'light' : 'default'"
+            class="mr-md"
+          ></number-info>
+          <g2-pie
+            style="padding-top: 36px; width: 48px"
+            [animate]="false"
+            [color]="i !== offlineIdx ? '#BDE4FF' : 'rgba(24, 144, 255, 0.85)'"
+            [inner]="0.55"
+            [tooltip]="false"
+            [padding]="[0, 0, 0, 0]"
+            [percent]="tab.cvr * 100"
+            [height]="48"
+          >
+          </g2-pie>
         </div>
       </ng-template>
       <div class="px-lg">

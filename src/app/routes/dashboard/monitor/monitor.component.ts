@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import type { CountdownConfig } from 'ngx-countdown';
 import { zip } from 'rxjs';
 
 @Component({
@@ -19,6 +20,10 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     end: null
   };
   percent: number | null = null;
+  cd: CountdownConfig = {
+    format: `HH:mm:ss.S`,
+    leftTime: 10000
+  };
 
   // region: active chart
 
