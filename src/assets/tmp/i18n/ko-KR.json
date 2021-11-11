@@ -85,7 +85,7 @@
   "app.analysis.all-year": "올해",
   "app.analysis.all-month": "이번달",
   "app.analysis.all-week": "이번주",
-  "app.analysis.all-day": "오늘",
+  "app.analysis.all-today": "오늘",
   "app.analysis.search-users": "검색 사용자",
   "app.analysis.per-capita-search": "1인당 검색",
   "app.analysis.online-top-search": "온라인 인기 검색",

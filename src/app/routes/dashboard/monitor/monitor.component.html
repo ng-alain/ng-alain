@@ -11,7 +11,7 @@
         <div nz-col nzXs="24" nzSm="12" nzMd="6">
           <number-info [subTitle]="'app.monitor.remaining-time' | i18n" [total]="lastTotalTime">
             <ng-template #lastTotalTime>
-              <count-down [target]="30"></count-down>
+              <count-down [config]="cd"></count-down>
             </ng-template>
           </number-info>
         </div>
