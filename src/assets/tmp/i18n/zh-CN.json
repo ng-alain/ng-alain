@@ -1,15 +1,19 @@
 {
+  "menu": {
+    "dashboard": {
+      "": "仪表盘",
+      "v1": "默认页",
+      "analysis": "分析页",
+      "monitor": "监控页",
+      "workplace": "工作台"
+    }
+  },
   "menu.search.placeholder": "搜索：员工、文件、照片等",
   "menu.fullscreen": "全屏",
   "menu.fullscreen.exit": "退出全屏",
   "menu.clear.local.storage": "清理本地缓存",
   "menu.lang": "语言",
   "menu.main": "主导航",
-  "menu.dashboard": "仪表盘",
-  "menu.dashboard.v1": "默认页",
-  "menu.dashboard.analysis": "分析页",
-  "menu.dashboard.monitor": "监控页",
-  "menu.dashboard.workplace": "工作台",
   "menu.shortcut": "快捷菜单",
   "menu.widgets": "小部件",
   "menu.alain": "Alain",
