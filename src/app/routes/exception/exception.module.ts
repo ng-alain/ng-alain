@@ -4,16 +4,12 @@ import { ExceptionModule as DelonExceptionModule } from '@delon/abc/exception';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 
-import { Exception403Component } from './403.component';
-import { Exception404Component } from './404.component';
-import { Exception500Component } from './500.component';
 import { ExceptionRoutingModule } from './exception-routing.module';
+import { ExceptionComponent } from './exception.component';
 import { ExceptionTriggerComponent } from './trigger.component';
-
-const COMPONENTS = [Exception403Component, Exception404Component, Exception500Component, ExceptionTriggerComponent];
 
 @NgModule({
   imports: [CommonModule, DelonExceptionModule, NzButtonModule, NzCardModule, ExceptionRoutingModule],
-  declarations: [...COMPONENTS]
+  declarations: [ExceptionComponent, ExceptionTriggerComponent]
 })
 export class ExceptionModule {}

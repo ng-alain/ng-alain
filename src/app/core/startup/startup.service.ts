@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ACLService } from '@delon/acl';
 import { ALAIN_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@delon/theme';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -24,7 +25,8 @@ export class StartupService {
     private settingService: SettingsService,
     private aclService: ACLService,
     private titleService: TitleService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router
   ) {
     iconSrv.addIcon(...ICONS_AUTO, ...ICONS);
   }
@@ -35,6 +37,7 @@ export class StartupService {
       // 接收其他拦截器后产生的异常消息
       catchError(res => {
         console.warn(`StartupService.load: Network request failed`, res);
+        setTimeout(() => this.router.navigateByUrl(`/exception/500`));
         return [];
       }),
       map(([langData, appData]: [Record<string, string>, NzSafeAny]) => {
