@@ -76,9 +76,7 @@ export class I18NService extends AlainI18nBaseService {
     super(cogSrv);
 
     const defaultLang = this.getDefaultLang();
-    if (this._langs.findIndex(w => w.code === defaultLang)) {
-      this._defaultLang = defaultLang;
-    }
+    this._defaultLang = this._langs.findIndex(w => w.code === defaultLang) === -1 ? DEFAULT : defaultLang;
   }
 
   private getDefaultLang(): string {
