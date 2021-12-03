@@ -8,7 +8,7 @@ import { RTLService } from '@delon/theme';
     {{ rtl.nextDir | uppercase }}
   `,
   host: {
-    '[class.d-block]': 'true'
+    '[class.flex-1]': 'true'
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })

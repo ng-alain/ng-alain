@@ -8,7 +8,7 @@ import * as screenfull from 'screenfull';
     {{ (status ? 'menu.fullscreen.exit' : 'menu.fullscreen') | i18n }}
   `,
   host: {
-    '[class.d-block]': 'true'
+    '[class.flex-1]': 'true'
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })

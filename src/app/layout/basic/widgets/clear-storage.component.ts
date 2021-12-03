@@ -9,7 +9,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
     {{ 'menu.clear.local.storage' | i18n }}
   `,
   host: {
-    '[class.d-block]': 'true'
+    '[class.flex-1]': 'true'
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
