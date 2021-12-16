@@ -22,6 +22,9 @@ import { BooleanInput, InputBoolean } from '@delon/util/decorator';
       </ul>
     </nz-dropdown-menu>
   `,
+  host: {
+    '[class.flex-1]': 'true'
+  },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderI18nComponent {
