@@ -28,6 +28,11 @@ async function withGithub(url, json, method) {
 }
 
 (async function run() {
+  if (PR == null) {
+    console.log('未获取到PR，忽略处理')
+    return;
+  }
+
   const comments = await withGithub(`https://api.github.com/repos/${REPO}/issues/${PR}/comments`);
 
   // Find my comment
