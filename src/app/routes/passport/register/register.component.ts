@@ -32,19 +32,19 @@ export class UserRegisterComponent implements OnDestroy {
   // #region fields
 
   get mail(): AbstractControl {
-    return this.form.controls.mail;
+    return this.form.get('mail')!;
   }
   get password(): AbstractControl {
-    return this.form.controls.password;
+    return this.form.get('password')!;
   }
   get confirm(): AbstractControl {
-    return this.form.controls.confirm;
+    return this.form.get('confirm')!;
   }
   get mobile(): AbstractControl {
-    return this.form.controls.mobile;
+    return this.form.get('mobile')!;
   }
   get captcha(): AbstractControl {
-    return this.form.controls.captcha;
+    return this.form.get('captcha')!;
   }
   form: FormGroup;
   error = '';

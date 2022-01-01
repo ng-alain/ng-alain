@@ -42,16 +42,16 @@ export class UserLoginComponent implements OnDestroy {
   // #region fields
 
   get userName(): AbstractControl {
-    return this.form.controls.userName;
+    return this.form.get('userName')!;
   }
   get password(): AbstractControl {
-    return this.form.controls.password;
+    return this.form.get('password')!;
   }
   get mobile(): AbstractControl {
-    return this.form.controls.mobile;
+    return this.form.get('mobile')!;
   }
   get captcha(): AbstractControl {
-    return this.form.controls.captcha;
+    return this.form.get('captcha')!;
   }
   form: FormGroup;
   error = '';

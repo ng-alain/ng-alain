@@ -61,17 +61,17 @@ export class HeaderNotifyComponent {
       if (newItem.datetime) {
         newItem.datetime = formatDistanceToNow(newItem.datetime as Date, { locale: this.nzI18n.getDateLocale() });
       }
-      if (newItem.extra && newItem.status) {
-        newItem.color = (
+      if (newItem.extra && newItem['status']) {
+        newItem['color'] = (
           {
             todo: undefined,
             processing: 'blue',
             urgent: 'red',
             doing: 'gold'
           } as { [key: string]: string | undefined }
-        )[newItem.status];
+        )[newItem['status']];
       }
-      data.find(w => w.title === newItem.type)!.list.push(newItem);
+      data.find(w => w.title === newItem['type'])!.list.push(newItem);
     });
     return data;
   }

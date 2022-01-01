@@ -14,7 +14,7 @@ export class CallbackComponent implements OnInit {
   constructor(private socialService: SocialService, private settingsSrv: SettingsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.type = this.route.snapshot.params.type;
+    this.type = this.route.snapshot.params['type'];
     this.mockModel();
   }
 

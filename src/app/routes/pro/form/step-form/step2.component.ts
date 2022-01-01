@@ -26,7 +26,7 @@ export class Step2Component implements OnInit {
 
   //#region get form fields
   get password(): AbstractControl {
-    return this.form.controls.password;
+    return this.form.get('password')!;
   }
   //#endregion
 

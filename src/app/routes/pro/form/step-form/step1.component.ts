@@ -33,19 +33,19 @@ export class Step1Component implements OnInit {
 
   //#region get form fields
   get pay_account(): AbstractControl {
-    return this.form.controls.pay_account;
+    return this.form.get('pay_account')!;
   }
   get receiver_type(): AbstractControl {
-    return this.form.controls.receiver_type;
+    return this.form.get('receiver_type')!;
   }
   get receiver_account(): AbstractControl {
-    return this.form.controls.receiver_account;
+    return this.form.get('receiver_account')!;
   }
   get receiver_name(): AbstractControl {
-    return this.form.controls.receiver_name;
+    return this.form.get('receiver_name')!;
   }
   get amount(): AbstractControl {
-    return this.form.controls.amount;
+    return this.form.get('amount')!;
   }
   //#endregion
 
