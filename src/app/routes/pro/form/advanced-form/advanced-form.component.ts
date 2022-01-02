@@ -71,46 +71,46 @@ export class AdvancedFormComponent implements OnInit {
 
   //#region get form fields
   get name(): AbstractControl {
-    return this.form.controls.name;
+    return this.form.get('name')!;
   }
   get url(): AbstractControl {
-    return this.form.controls.url;
+    return this.form.get('url')!;
   }
   get owner(): AbstractControl {
-    return this.form.controls.owner;
+    return this.form.get('owner')!;
   }
   get approver(): AbstractControl {
-    return this.form.controls.approver;
+    return this.form.get('approver')!;
   }
   get time_start(): AbstractControl {
-    return this.form.controls.time_start;
+    return this.form.get('time_start')!;
   }
   get time_end(): AbstractControl {
-    return this.form.controls.time_end;
+    return this.form.get('time_end')!;
   }
   get type(): AbstractControl {
-    return this.form.controls.type;
+    return this.form.get('type')!;
   }
   get name2(): AbstractControl {
-    return this.form.controls.name2;
+    return this.form.get('name2')!;
   }
   get summary(): AbstractControl {
-    return this.form.controls.summary;
+    return this.form.get('summary')!;
   }
   get owner2(): AbstractControl {
-    return this.form.controls.owner2;
+    return this.form.get('owner2')!;
   }
   get approver2(): AbstractControl {
-    return this.form.controls.approver2;
+    return this.form.get('approver2')!;
   }
   get time(): AbstractControl {
-    return this.form.controls.time;
+    return this.form.get('time')!;
   }
   get type2(): AbstractControl {
-    return this.form.controls.type2;
+    return this.form.get('type2')!;
   }
   get items(): FormArray {
-    return this.form.controls.items as FormArray;
+    return this.form.get('items') as FormArray;
   }
   //#endregion
 

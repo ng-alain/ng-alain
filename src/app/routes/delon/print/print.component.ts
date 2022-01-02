@@ -67,7 +67,7 @@ export class PrintComponent {
     LODOP.ADD_PRINT_TEXT(1, 1, 300, 200, '下面输出的是本页源代码及其展现效果：');
     LODOP.ADD_PRINT_TEXT(20, 10, '90%', '95%', this.cog.html);
     LODOP.SET_PRINT_STYLEA(0, 'ItemType', 4);
-    LODOP.NewPageA();
+    LODOP.NEWPAGEA();
     LODOP.ADD_PRINT_HTM(20, 10, '90%', '95%', this.cog.html);
     if (isPrivew) {
       LODOP.PREVIEW();

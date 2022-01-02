@@ -28,7 +28,12 @@
             "assets": ["src/assets", "src/favicon.ico"],
             "styles": ["src/styles.less"],
             "scripts": [],
-            "allowedCommonJsDependencies": ["ajv", "ajv-formats"]
+            "allowedCommonJsDependencies": ["ajv", "ajv-formats"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -118,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "ng-alain"
+  "defaultProject": "ng-alain",
+  "cli": {
+    "packageManager": "yarn"
+  }
 }

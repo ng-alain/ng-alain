@@ -80,7 +80,7 @@ export class DefaultInterceptor implements HttpInterceptor {
    */
   private refreshTokenRequest(): Observable<any> {
     const model = this.tokenSrv.get();
-    return this.http.post(`/api/auth/refresh`, null, null, { headers: { refresh_token: model?.refresh_token || '' } });
+    return this.http.post(`/api/auth/refresh`, null, null, { headers: { refresh_token: model?.['refresh_token'] || '' } });
   }
 
   // #region 刷新Token方式一：使用 401 重新刷新 Token
