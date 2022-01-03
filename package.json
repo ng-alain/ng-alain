@@ -30,7 +30,7 @@
     "analyze:view": "source-map-explorer dist/**/*.js",
     "lint": "npm run lint:ts && npm run lint:style",
     "lint:ts": "ng lint --fix",
-    "lint:style": "stylelint \"src/**/*.less\" --syntax less --fix",
+    "lint:style": "stylelint \"src/**/*.less\" --fix",
     "e2e": "ng e2e",
     "test": "ng test --watch",
     "test-coverage": "ng test --code-coverage --watch=false",
@@ -119,7 +119,7 @@
       "eslint --fix"
     ],
     "(src)/**/*.less": [
-      "stylelint --syntax less --fix"
+      "npm run lint:style"
     ]
   }
 }
