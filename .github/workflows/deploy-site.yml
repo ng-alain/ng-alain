@@ -14,8 +14,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: install
-        run: npm install
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
 
       - name: build
         shell: bash
