@@ -27,9 +27,8 @@ stages:
     jobs:
       - job: Build
         steps:
-          - task: Npm@1
-            inputs:
-              command: 'install'
+          - script: yarn install
+            displayName: 'Install'
           - script: |
               node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Preparing...](https://dev.azure.com/ng-alain/ng-alain/_build/results?buildId=$(Build.BuildId))"
             displayName: 'Comment on github'
@@ -69,8 +68,8 @@ stages:
             displayName: 'Checkout'
             clean: true
             fetchDepth: 1
-          - script: npm install
-            displayName: 'Install modules'
+          - script: yarn install
+            displayName: 'Install'
           - script: |
               node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Failed](https://dev.azure.com/ng-alain/delon/_build/results?buildId=$(Build.BuildId))"
             displayName: 'Comment on github'
@@ -83,9 +82,8 @@ stages:
     jobs:
       - job: Build
         steps:
-          - task: Npm@1
-            inputs:
-              command: 'install'
+          - script: yarn install
+            displayName: 'Install'
           - script: |
               node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Preparing...](https://dev.azure.com/ng-alain/ng-alain/_build/results?buildId=$(Build.BuildId))"
             displayName: 'Comment on github'
@@ -126,8 +124,8 @@ stages:
             displayName: 'Checkout'
             clean: true
             fetchDepth: 1
-          - script: npm install
-            displayName: 'Install modules'
+          - script: yarn install
+            displayName: 'Install'
           - script: |
               node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Failed](https://dev.azure.com/ng-alain/delon/_build/results?buildId=$(Build.BuildId))"
             displayName: 'Comment on github'
@@ -141,10 +139,9 @@ stages:
     jobs:
       - job: site
         steps:
-          - task: Npm@1
-            inputs:
-              command: 'install'
-          - script: npm run lint
+          - script: yarn install
+            displayName: 'Install'
+          - script: yarn run lint
 
   - stage: test
     dependsOn:
@@ -152,7 +149,6 @@ stages:
     jobs:
       - job: site
         steps:
-          - task: Npm@1
-            inputs:
-              command: 'install'
+          - script: yarn install
+            displayName: 'Install'
           - script: npx ng test --no-progress --browsers=ChromeHeadlessCI --code-coverage --no-watch
