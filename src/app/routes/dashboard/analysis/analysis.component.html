@@ -101,7 +101,7 @@
     <ng-template #extraTemplate>
       <div class="sales-extra-wrap">
         <div class="sales-extra">
-          <span *ngFor="let t of dateRangeTypes" (click)="setDate(t)" [class.currentDate]="dateRangeType === t">
+          <span *ngFor="let t of dateRangeTypes" (click)="setDate(t)" [class.current-date]="dateRangeType === t">
             {{ 'app.analysis.all-' + t | i18n }}
           </span>
         </div>
