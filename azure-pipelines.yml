@@ -141,7 +141,9 @@ stages:
         steps:
           - script: yarn install
             displayName: 'Install'
-          - script: yarn run lint
+          - script: |
+              npx stylelint --version
+              yarn run lint
 
   - stage: test
     dependsOn:

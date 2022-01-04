@@ -2,7 +2,7 @@
   <div nz-col nzMd="24" nzLg="7">
     <nz-card [nzBordered]="false" class="mb-lg" [nzLoading]="!user">
       <ng-container *ngIf="user">
-        <div class="avatarHolder">
+        <div class="avatar-holder">
           <img src="{{ user.avatar }}" />
           <div class="name">{{ user.name }}</div>
           <div>{{ user.signature }}</div>
@@ -18,7 +18,7 @@
         </div>
         <nz-divider nzDashed></nz-divider>
         <div class="tags">
-          <div class="tagsTitle">标签</div>
+          <div class="tags-title">标签</div>
           <nz-tag *ngFor="let t of user.tags">{{ t.label }}</nz-tag>
           <nz-tag *ngIf="!taging" (click)="tagShowIpt()" class="ant-tag__plus">
             <i nz-icon nzType="plus"></i>
@@ -37,7 +37,7 @@
         </div>
         <nz-divider nzDashed></nz-divider>
         <div class="team">
-          <div class="teamTitle">团队</div>
+          <div class="team-title">团队</div>
           <nz-spin [nzSpinning]="!notice">
             <div nz-row nzGutter="36">
               <div nz-col *ngFor="let t of notice" nzLg="24" nzXl="12">
@@ -53,7 +53,7 @@
     </nz-card>
   </div>
   <div nz-col nzMd="24" nzLg="17">
-    <nz-card class="tabsCard" [nzBordered]="false" [nzTitle]="tagTitleTpl">
+    <nz-card class="tabs-card" [nzBordered]="false" [nzTitle]="tagTitleTpl">
       <ng-template #tagTitleTpl>
         <nz-tabset nzSize="large" [nzSelectedIndex]="pos">
           <nz-tab *ngFor="let i of tabs" [nzTitle]="i.tab" (nzClick)="to(i)"></nz-tab>
