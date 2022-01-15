@@ -1,7 +1,10 @@
 import { Platform } from '@angular/cdk/platform';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import type { Chart } from '@antv/g2';
 import { OnboardingService } from '@delon/abc/onboarding';
 import { _HttpClient } from '@delon/theme';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 @Component({
   selector: 'app-dashboard-v1',
@@ -52,9 +55,25 @@ export class DashboardV1Component implements OnInit {
   salesData!: any[];
   offlineChartData!: any[];
 
-  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef, private obSrv: OnboardingService, private platform: Platform) {
+  constructor(
+    private http: _HttpClient,
+    private cdr: ChangeDetectorRef,
+    private obSrv: OnboardingService,
+    private platform: Platform,
+    @Inject(DOCUMENT) private doc: NzSafeAny
+  ) {
     // TODO: Wait for the page to load
     setTimeout(() => this.genOnboarding(), 1000);
+  }
+
+  fixDark(chart: Chart): void {
+    if (!this.platform.isBrowser || (this.doc.body as HTMLBodyElement).getAttribute('data-theme') !== 'dark') return;
+
+    chart.theme({
+      styleSheet: {
+        backgroundColor: 'transparent'
+      }
+    });
   }
 
   ngOnInit(): void {
