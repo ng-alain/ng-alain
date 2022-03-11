@@ -10,6 +10,7 @@
     "stylelint-declaration-block-no-ignored-properties"
   ],
   "rules": {
+    "function-no-unknown": null,
     "no-descending-specificity": null,
     "plugin/declaration-block-no-ignored-properties": true,
     "selector-type-no-unknown": [
