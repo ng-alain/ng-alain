@@ -1,1 +1,1 @@
-[Document](https://ng-alain.com/theme/default)
+[Document](https://ng-alain.com/theme/layout-default)

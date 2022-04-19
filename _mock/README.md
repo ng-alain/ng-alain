@@ -1,1 +1,1 @@
-[Document](https://ng-alain.com/mock)
+[Document](https://ng-alain.com/mock/getting-started)
