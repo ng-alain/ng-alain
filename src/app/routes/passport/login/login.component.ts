@@ -118,7 +118,7 @@ export class UserLoginComponent implements OnDestroy {
       })
       .pipe(
         finalize(() => {
-          this.loading = true;
+          this.loading = false;
           this.cdr.detectChanges();
         })
       )
