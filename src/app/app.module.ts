@@ -16,7 +16,7 @@ import { I18NService } from '@core';
 import { zhCN as dateLang } from 'date-fns/locale';
 
 const LANG = {
-  abbr: 'zh',
+  abbr: 'en',
   ng: ngLang,
   zorro: zorroLang,
   date: dateLang,
@@ -86,6 +86,10 @@ import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 import { STWidgetModule } from './shared/st-widget/st-widget.module';
 import { Observable } from 'rxjs';
+import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
+import { AuthGuardService } from './auth-guard.service';
+
+// const GOOGLE_CLIENT_ID = process.env['GOOGLE_CLIENT_ID'];
 
 @NgModule({
   declarations: [AppComponent],
@@ -100,10 +104,29 @@ import { Observable } from 'rxjs';
     RoutesModule,
     STWidgetModule,
     NzNotificationModule,
+    SocialLoginModule,
     ...GLOBAL_THIRD_MODULES,
     ...FORM_MODULES
   ],
-  providers: [...LANG_PROVIDES, ...INTERCEPTOR_PROVIDES, ...I18NSERVICE_PROVIDES, ...APPINIT_PROVIDES],
+  providers: [
+    ...LANG_PROVIDES,
+    ...INTERCEPTOR_PROVIDES,
+    ...I18NSERVICE_PROVIDES,
+    ...APPINIT_PROVIDES,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('572155576760-nkolp8518ltubhg0121hcl4c0v0448lc.apps.googleusercontent.com')
+          }
+        ]
+      }
+    },
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

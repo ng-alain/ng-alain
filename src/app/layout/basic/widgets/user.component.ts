@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { SettingsService, User } from '@delon/theme';
+import { SocialAuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'header-user',
@@ -39,9 +40,15 @@ export class HeaderUserComponent {
     return this.settings.user;
   }
 
-  constructor(private settings: SettingsService, private router: Router, @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService) {}
+  constructor(
+    private socialAuthService: SocialAuthService,
+    private settings: SettingsService,
+    private router: Router,
+    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService
+  ) {}
 
   logout(): void {
+    this.socialAuthService.signOut();
     this.tokenService.clear();
     this.router.navigateByUrl(this.tokenService.login_url!);
   }

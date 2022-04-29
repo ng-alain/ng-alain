@@ -1,98 +1,270 @@
-import { Platform } from '@angular/cdk/platform';
-import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit, Renderer2 } from '@angular/core';
-import type { Chart } from '@antv/g2';
-import { OnboardingService } from '@delon/abc/onboarding';
-import { _HttpClient } from '@delon/theme';
-import { NzSafeAny } from 'ng-zorro-antd/core/types';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { STColumn, STComponent, STData } from '@delon/abc/st';
+import { SettingsService, User, _HttpClient } from '@delon/theme';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
 
 @Component({
   selector: 'app-dashboard-v1',
   templateUrl: './v1.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardV1Component implements OnInit {
-  todoData = [
+export class DashboardV1Component {
+  @ViewChild('st') private st!: STComponent;
+  currentRate = [
     {
-      completed: true,
-      avatar: '1',
-      name: '苏先生',
-      content: `请告诉我，我应该说点什么好？`
+      Currency: 'BTCJPY',
+      RateLow: 4500000,
+      RateHigh: 4550000
     },
     {
-      completed: false,
-      avatar: '2',
-      name: 'はなさき',
-      content: `ハルカソラトキヘダツヒカリ`
+      Currency: 'ETHJPY',
+      RateLow: 4500000,
+      RateHigh: 4550000
     },
     {
-      completed: false,
-      avatar: '3',
-      name: 'cipchk',
-      content: `this world was never meant for one as beautiful as you.`
-    },
-    {
-      completed: false,
-      avatar: '4',
-      name: 'Kent',
-      content: `my heart is beating with hers`
-    },
-    {
-      completed: false,
-      avatar: '5',
-      name: 'Are you',
-      content: `They always said that I love beautiful girl than my friends`
-    },
-    {
-      completed: false,
-      avatar: '6',
-      name: 'Forever',
-      content: `Walking through green fields ，sunshine in my eyes.`
+      Currency: 'ETHJPY',
+      RateLow: 4500000,
+      RateHigh: 4550000
     }
   ];
-
-  webSite!: any[];
-  salesData!: any[];
-  offlineChartData!: any[];
-
-  constructor(
-    private http: _HttpClient,
-    private cdr: ChangeDetectorRef,
-    private obSrv: OnboardingService,
-    private platform: Platform,
-    @Inject(DOCUMENT) private doc: NzSafeAny
-  ) {
-    // TODO: Wait for the page to load
-    setTimeout(() => this.genOnboarding(), 1000);
-  }
-
-  fixDark(chart: Chart): void {
-    if (!this.platform.isBrowser || (this.doc.body as HTMLBodyElement).getAttribute('data-theme') !== 'dark') return;
-
-    chart.theme({
-      styleSheet: {
-        backgroundColor: 'transparent'
-      }
-    });
-  }
-
-  ngOnInit(): void {
-    this.http.get('/chart').subscribe(res => {
-      this.webSite = res.visitData.slice(0, 10);
-      this.salesData = res.salesData;
-      this.offlineChartData = res.offlineChartData;
-      this.cdr.detectChanges();
-    });
-  }
-
-  private genOnboarding(): void {
-    const KEY = 'on-boarding';
-    if (!this.platform.isBrowser || localStorage.getItem(KEY) === '1') {
-      return;
+  exposure = [
+    {
+      CP: 'Bitflyer',
+      JPY: 50000000,
+      BTC: 0,
+      ETH: 0,
+      XRP: 0
+    },
+    {
+      CP: 'Okex',
+      JPY: 45450000,
+      BTC: 1,
+      ETH: 0,
+      XRP: 0
+    },
+    {
+      CP: 'Huobi',
+      JPY: 45000000,
+      BTC: 1,
+      ETH: 0,
+      XRP: 0
+    },
+    {
+      CP: 'Liquid',
+      JPY: 49700000,
+      BTC: 0,
+      ETH: 1,
+      XRP: 0
+    },
+    {
+      CP: 'CoinCheck',
+      JPY: 50000000,
+      BTC: 0,
+      ETH: 0,
+      XRP: 0
+    },
+    {
+      CP: 'CG',
+      JPY: 49300000,
+      BTC: 0,
+      ETH: 0,
+      XRP: 10000
     }
-    this.http.get(`./assets/tmp/on-boarding.json`).subscribe(res => {
-      this.obSrv.start(res);
-      localStorage.setItem(KEY, '1');
-    });
+  ];
+  orders: STData[] = [
+    {
+      cp: 'Bitflyer',
+      symbol: 'BTC',
+      bid: 0,
+      ask: 0,
+      amount: 1,
+      interval: 0.5
+    },
+    {
+      cp: 'Okex',
+      symbol: 'BTC',
+      bid: 100,
+      ask: 100,
+      amount: 0.2,
+      interval: 1
+    },
+    {
+      cp: 'Huobi',
+      symbol: 'BTC',
+      bid: 100,
+      ask: 100,
+      amount: 0.2,
+      interval: 1
+    },
+    {
+      cp: 'Liquid',
+      symbol: 'BTC',
+      bid: 100,
+      ask: 100,
+      amount: 0.2,
+      interval: 1
+    },
+    {
+      cp: 'CoinCheck',
+      symbol: 'BTC',
+      bid: 100,
+      ask: 100,
+      amount: 1,
+      interval: 1
+    },
+    {
+      cp: 'CG',
+      symbol: 'BTC',
+      bid: 100,
+      ask: 100,
+      amount: 1,
+      interval: 1
+    }
+  ];
+  balance: STData[] = [
+    {
+      cp: 'Bitflyer',
+      symbol: 'XRP',
+      amount: 50000000
+    },
+    {
+      cp: 'Okex',
+      symbol: 'XRP',
+      amount: 0
+    },
+    {
+      cp: 'Huobi',
+      symbol: 'XRP',
+      amount: 0
+    },
+    {
+      cp: 'Liquid',
+      symbol: 'XRP',
+      amount: 0
+    },
+    {
+      cp: 'CoinCheck',
+      symbol: 'XRP',
+      amount: 0
+    },
+    {
+      cp: 'CG',
+      symbol: 'XRP',
+      amount: 0
+    }
+  ];
+  orderHistory = [
+    {
+      counterParty: '',
+      orderID: '',
+      orderTime: '',
+      symbol: '',
+      side: '',
+      orderAmount: '',
+      orderPrice: '',
+      orderType: '',
+      orderResult: ''
+    }
+  ];
+  crColumns: STColumn[] = [
+    { title: 'Currency', index: 'Currency' },
+    { title: 'Low', index: 'RateLow', type: 'currency' },
+    { title: 'High', index: 'RateHigh', type: 'currency' }
+  ];
+  eColumns: STColumn[] = [
+    { title: 'CP', index: 'CP' },
+    { title: 'JPY', index: 'JPY', type: 'currency' },
+    { title: 'BTC', index: 'BTC', type: 'currency' },
+    { title: 'ETH', index: 'ETH', type: 'currency' },
+    { title: 'XRP', index: 'XRP', type: 'currency' }
+  ];
+  oColumns: STColumn[] = [
+    { title: 'CP', index: 'cp', render: 'cpTpl' },
+    { title: 'Symbol', index: 'symbol', render: 'symbolTpl' },
+    { title: 'Bid', index: 'bid', render: 'bidTpl' },
+    { title: 'Ask', index: 'ask', render: 'askTpl' },
+    { title: 'Amount', index: 'amount', render: 'amountTpl' },
+    { title: 'Interval', index: 'interval', render: 'intervalTpl' },
+    {
+      title: 'Action',
+      buttons: [
+        {
+          text: `Update`,
+          iif: i => !i.edit,
+          click: i => this.updateEdit(i, true)
+        },
+        {
+          text: `Save`,
+          iif: i => i.edit,
+          click: i => {
+            this.submit(i);
+          }
+        },
+        {
+          text: `Cancel`,
+          iif: i => i.edit,
+          click: i => this.updateEdit(i, false)
+        }
+      ]
+    }
+  ];
+  bColumns: STColumn[] = [
+    { title: 'CP', index: 'cp', render: 'cpTpl' },
+    { title: 'Symbol', index: 'symbol', render: 'symbolTpl' },
+    { title: 'Amount', index: 'amount', render: 'amountTpl' },
+    {
+      title: 'Action',
+      buttons: [
+        {
+          text: `Update`,
+          iif: i => !i.edit,
+          click: i => this.updateEdit(i, true)
+        },
+        {
+          text: `Save`,
+          iif: i => i.edit,
+          click: i => {
+            this.submit(i);
+          }
+        },
+        {
+          text: `Cancel`,
+          iif: i => i.edit,
+          click: i => this.updateEdit(i, false)
+        }
+      ]
+    }
+  ];
+  ohColumns: STColumn[] = [
+    { title: 'Counter Party', index: 'counterParty' },
+    { title: 'Order ID', index: 'orderID' },
+    { title: 'Order Time', index: 'orderTime' },
+    { title: 'Symbol', index: 'symbol' },
+    { title: 'Side', index: 'side' },
+    { title: 'Order Time', index: 'orderTime' },
+    { title: 'Order Price', index: 'orderPrice' },
+    { title: 'Order Type', index: 'orderType' },
+    { title: 'Order Result', index: 'orderResult' }
+  ];
+
+  get user(): User {
+    return this.settings.user;
+  }
+
+  type: number | undefined;
+  switch({ index }: NzTabChangeEvent): void {
+    this.type = index!;
+  }
+
+  constructor(private settings: SettingsService, private msg: NzMessageService) {}
+
+  private submit(i: STData): void {
+    this.msg.success(JSON.stringify(this.st.pureItem(i)));
+    this.updateEdit(i, false);
+  }
+
+  private updateEdit(i: STData, edit: boolean): void {
+    this.st.setRow(i, { edit }, { refreshSchema: true });
   }
 }

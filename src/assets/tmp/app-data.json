@@ -1,12 +1,12 @@
 {
   "app": {
-    "name": "Alain",
-    "description": "Ng-zorro admin panel front-end framework"
+    "name": "DMM Broker",
+    "description": "A Broker Trading Agent Web Application"
   },
   "user": {
-    "name": "Admin",
+    "name": "DMM User",
     "avatar": "./assets/tmp/img/avatar.jpg",
-    "email": "cipchk@qq.com"
+    "email": "dmmuser@gmail.com"
   },
   "menu": [
     {
