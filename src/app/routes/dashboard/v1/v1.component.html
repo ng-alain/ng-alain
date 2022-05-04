@@ -7,77 +7,22 @@
 <nz-tabset [nzAnimated]="false" class="tabs" (nzSelectChange)="switch($event)">
   <nz-tab [nzTitle]="'Exposure' | i18n">
     <h3>Current Rate</h3>
-    <st class="st-width" #st [widthMode]="{ type: 'strict' }" [data]="currentRate" [columns]="crColumns"></st>
+    <app-current-rate></app-current-rate>
     <h3>Exposure</h3>
-    <st class="st-width" #st [widthMode]="{ type: 'strict' }" [data]="exposure" [columns]="eColumns" max-width="80%"></st>
+    <app-exposure></app-exposure>
   </nz-tab>
   <nz-tab [nzTitle]="'Settings' | i18n">
     <h3>Order Setting (Mark Up, Amount, Interval)</h3>
-    <st class="st-width" #st [data]="orders" [columns]="oColumns">
-      <ng-template st-row="cpTpl" let-item let-index="index">
-        <input *ngIf="item.edit" nz-input [ngModel]="item.cp" (ngModelChange)="st.setRow(index, { cp: $event })" />
-        <ng-container *ngIf="!item.edit">{{ item.cp }}</ng-container>
-      </ng-template>
-      <ng-template st-row="symbolTpl" let-item let-index="index">
-        <input *ngIf="item.edit" nz-input [ngModel]="item.symbol" (ngModelChange)="st.setRow(index, { symbol: $event })" />
-        <ng-container *ngIf="!item.edit">{{ item.symbol }}</ng-container>
-      </ng-template>
-      <ng-template st-row="bidTpl" let-item let-index="index">
-        <nz-input-number *ngIf="item.edit" [ngModel]="item.bid" (ngModelChange)="st.setRow(index, { bid: $event })"></nz-input-number>
-        <ng-container *ngIf="!item.edit">{{ item.bid }}</ng-container>
-      </ng-template>
-      <ng-template st-row="askTpl" let-item let-index="index">
-        <nz-input-number *ngIf="item.edit" [ngModel]="item.ask" (ngModelChange)="st.setRow(index, { ask: $event })"></nz-input-number>
-        <ng-container *ngIf="!item.edit">{{ item.ask }}</ng-container>
-      </ng-template>
-      <ng-template st-row="amountTpl" let-item let-index="index">
-        <nz-input-number *ngIf="item.edit" [ngModel]="item.amount" (ngModelChange)="st.setRow(index, { amount: $event })"></nz-input-number>
-        <ng-container *ngIf="!item.edit">{{ item.amount.toLocaleString() }}</ng-container>
-      </ng-template>
-      <ng-template st-row="intervalTpl" let-item let-index="index">
-        <nz-input-number
-          *ngIf="item.edit"
-          [ngModel]="item.interval"
-          (ngModelChange)="st.setRow(index, { interval: $event })"
-        ></nz-input-number>
-        <ng-container *ngIf="!item.edit">{{ item.interval }}</ng-container>
-      </ng-template>
-    </st>
+    <app-order-setting></app-order-setting>
     <h3>Balance Adjustment</h3>
     <div class="st-width">
-      <st #st [data]="balance" [columns]="bColumns">
-        <ng-template st-row="cpTpl" let-item let-index="index">
-          <input *ngIf="item.edit" nz-input [ngModel]="item.cp" (ngModelChange)="st.setRow(index, { cp: $event })" />
-          <ng-container *ngIf="!item.edit">{{ item.cp }}</ng-container>
-        </ng-template>
-        <ng-template st-row="symbolTpl" let-item let-index="index">
-          <input *ngIf="item.edit" nz-input [ngModel]="item.symbol" (ngModelChange)="st.setRow(index, { symbol: $event })" />
-          <ng-container *ngIf="!item.edit">{{ item.symbol }}</ng-container>
-        </ng-template>
-        <ng-template st-row="amountTpl" let-item let-index="index">
-          <nz-input-number
-            *ngIf="item.edit"
-            [ngModel]="item.amount"
-            (ngModelChange)="st.setRow(index, { amount: $event })"
-          ></nz-input-number>
-          <ng-container *ngIf="!item.edit">{{ item.amount.toLocaleString() }}</ng-container>
-        </ng-template>
-      </st>
+      <app-balance-adjustment></app-balance-adjustment>
       <h3>Settings History Logs</h3>
-      <g2-card class="history-logs" contentHeight="100%">
-        <p class="history-logs">YYYYMMDD HH:MM:SSS Bitflyer changed to non-tradeable.</p>
-        <p class="history-logs">YYYYMMDD HH:MM:SSS Bitflyer changed to tradeable.</p>
-        <p>YYYYMMDD HH:MM:SSS Bid Spread Points of Bitcoin for Bitflyer changed to 100.</p>
-        <p>YYYYMMDD HH:MM:SSS Bid Spread Points of Bitcoin for Bitflyer was deleted.</p>
-      </g2-card>
+      <app-settings-history-logs></app-settings-history-logs>
     </div>
   </nz-tab>
   <nz-tab [nzTitle]="'Report' | i18n">
     <h3>Order History</h3>
-    <div class="mb-md st-width" nz-row nzJustify="end">
-      <button nz-col (click)="st.clear()" nz-button>Update</button>
-      <button nz-col (click)="st.reload()" nz-button>Current Date</button>
-    </div>
-    <st class="st-width" #st [widthMode]="{ type: 'strict' }" [data]="orderHistory" [columns]="ohColumns"></st>
+    <app-order-history></app-order-history>
   </nz-tab>
 </nz-tabset>

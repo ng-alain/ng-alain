@@ -1,0 +1,5 @@
+<div class="mb-md st-width" nz-row nzJustify="end">
+  <button nz-col (click)="st.clear()" nz-button>Update</button>
+  <button nz-col (click)="st.reload()" nz-button>Current Date</button>
+</div>
+<st class="st-width" #st [widthMode]="{ type: 'strict' }" [data]="orderHistory" [columns]="ohColumns"></st>

@@ -1,0 +1,17 @@
+<st #st [data]="balance" [columns]="bColumns">
+  <ng-template st-row="symbolTpl" let-item let-index="index">
+    <select *ngIf="item.edit" nz-input [ngModel]="item.symbol" (ngModelChange)="st.setRow(index, { symbol: $event })">
+      <option value="BTC">BTC</option>
+      <option value="ETH">ETH</option>
+      <option value="XRP">XRP</option>
+    </select>
+    <ng-container *ngIf="!item.edit">{{ item.symbol }}</ng-container>
+  </ng-template>
+  <ng-template st-row="amountTpl" let-item let-index="index">
+    <select *ngIf="item.edit" [ngModel]="item.amount.toLocaleString()" (ngModelChange)="st.setRow(index, { amount: $event })">
+      <option value="0">0</option>
+      <option value="50,000,000">50,000,000</option>
+    </select>
+    <ng-container *ngIf="!item.edit">{{ item.amount.toLocaleString() }}</ng-container>
+  </ng-template>
+</st>

@@ -1,0 +1,38 @@
+<st class="st-width" #st [data]="orders" [columns]="oColumns">
+  <ng-template st-row="symbolTpl" let-item let-index="index">
+    <select *ngIf="item.edit" nz-input [ngModel]="item.symbol" (ngModelChange)="st.setRow(index, { symbol: $event })">
+      <option value="BTC">BTC</option>
+      <option value="ETH">ETH</option>
+      <option value="XRP">XRP</option>
+    </select>
+    <ng-container *ngIf="!item.edit">{{ item.symbol }}</ng-container>
+  </ng-template>
+  <ng-template st-row="bidTpl" let-item let-index="index">
+    <select *ngIf="item.edit" [ngModel]="item.bid" (ngModelChange)="st.setRow(index, { bid: $event })">
+      <option value="0">0</option>
+      <option value="100">100</option>
+    </select>
+    <ng-container *ngIf="!item.edit">{{ item.bid }}</ng-container>
+  </ng-template>
+  <ng-template st-row="askTpl" let-item let-index="index">
+    <select *ngIf="item.edit" [ngModel]="item.ask" (ngModelChange)="st.setRow(index, { ask: $event })">
+      <option value="0">0</option>
+      <option value="100">100</option>
+    </select>
+    <ng-container *ngIf="!item.edit">{{ item.ask }}</ng-container>
+  </ng-template>
+  <ng-template st-row="amountTpl" let-item let-index="index">
+    <select *ngIf="item.edit" [ngModel]="item.amount" (ngModelChange)="st.setRow(index, { amount: $event })">
+      <option value="0.2">0.2</option>
+      <option value="1">1</option>
+    </select>
+    <ng-container *ngIf="!item.edit">{{ item.amount.toLocaleString() }}</ng-container>
+  </ng-template>
+  <ng-template st-row="intervalTpl" let-item let-index="index">
+    <select *ngIf="item.edit" [ngModel]="item.interval" (ngModelChange)="st.setRow(index, { interval: $event })">
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+    </select>
+    <ng-container *ngIf="!item.edit">{{ item.interval }}</ng-container>
+  </ng-template>
+</st>

@@ -20,8 +20,14 @@ import { SharedModule } from '@shared';
 import { CountdownModule } from 'ngx-countdown';
 
 import { DashboardAnalysisComponent } from './analysis/analysis.component';
+import { BalanceAdjustmentComponent } from './balance-adjustment/balance-adjustment.component';
+import { CurrentRateComponent } from './current-rate/current-rate.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { ExposureComponent } from './exposure/exposure.component';
 import { DashboardMonitorComponent } from './monitor/monitor.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { OrderSettingComponent } from './order-setting/order-setting.component';
+import { SettingsHistoryLogsComponent } from './settings-history-logs/settings-history-logs.component';
 import { DashboardV1Component } from './v1/v1.component';
 import { DashboardWorkplaceComponent } from './workplace/workplace.component';
 
@@ -50,6 +56,14 @@ const COMPONENTS = [DashboardV1Component, DashboardAnalysisComponent, DashboardM
     QuickMenuModule,
     OnboardingModule
   ],
-  declarations: [...COMPONENTS]
+  declarations: [
+    ...COMPONENTS,
+    OrderSettingComponent,
+    BalanceAdjustmentComponent,
+    SettingsHistoryLogsComponent,
+    CurrentRateComponent,
+    ExposureComponent,
+    OrderHistoryComponent
+  ]
 })
 export class DashboardModule {}
