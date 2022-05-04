@@ -1,7 +1,7 @@
 {
   "app": {
-    "name": "DMM Broker",
-    "description": "A Broker Trading Agent Web Application"
+    "name": "Crypto Bot",
+    "description": "A Crypto Trading Bot Web Application"
   },
   "user": {
     "name": "DMM User",
