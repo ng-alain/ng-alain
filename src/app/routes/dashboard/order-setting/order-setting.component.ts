@@ -59,29 +59,40 @@ export class OrderSettingComponent {
     }
   ];
   oColumns: STColumn[] = [
-    { title: 'CP', index: 'cp' },
-    { title: 'Symbol', index: 'symbol', render: 'symbolTpl' },
-    { title: 'Bid', index: 'bid', render: 'bidTpl' },
-    { title: 'Ask', index: 'ask', render: 'askTpl' },
-    { title: 'Amount', index: 'amount', render: 'amountTpl' },
-    { title: 'Interval', index: 'interval', render: 'intervalTpl' },
+    { title: 'CP', index: 'cp', render: 'cpTpl', sort: { compare: (a, b) => a.cp.localeCompare(b.cp) } },
+    { title: 'Symbol', index: 'symbol', render: 'symbolTpl', sort: { compare: (a, b) => a.symbol.localeCompare(b.symbol) } },
+    { title: 'Bid', index: 'bid', render: 'bidTpl', sort: true },
+    { title: 'Ask', index: 'ask', render: 'askTpl', sort: true },
+    { title: 'Amount', index: 'amount', render: 'amountTpl', sort: true },
+    { title: 'Interval', index: 'interval', render: 'intervalTpl', sort: true },
     {
       title: 'Action',
       buttons: [
         {
-          text: `Update`,
+          // text: 'Update',
+          icon: 'edit',
           iif: i => !i.edit,
           click: i => this.updateEdit(i, true)
         },
         {
-          text: `Save`,
+          // text: 'Delete',
+          icon: 'delete',
+          iif: i => !i.edit,
+          pop: {
+            title: 'Are you sure?',
+            okType: 'danger'
+          },
+          click: i => this.deleteRow(i)
+        },
+        {
+          text: 'Save',
           iif: i => i.edit,
           click: i => {
             this.submit(i);
           }
         },
         {
-          text: `Cancel`,
+          text: 'Cancel',
           iif: i => i.edit,
           click: i => this.updateEdit(i, false)
         }
@@ -97,5 +108,9 @@ export class OrderSettingComponent {
 
   private updateEdit(i: STData, edit: boolean): void {
     this.st.setRow(i, { edit }, { refreshSchema: true });
+  }
+
+  private deleteRow(i: STData): void {
+    this.st.removeRow(i);
   }
 }

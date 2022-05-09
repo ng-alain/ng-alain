@@ -1,4 +1,20 @@
+<div class="mb-md st-width" nz-row nzJustify="end">
+  <button nz-col (click)="st.addRow({ cp: 'Bitflyer', symbol: 'BTC', bid: '0', ask: '0', amount: '0', interval: '0' })" nz-button
+    >Add Order Setting</button
+  >
+</div>
 <st class="st-width" #st [data]="orders" [columns]="oColumns">
+  <ng-template st-row="cpTpl" let-item let-index="index">
+    <select *ngIf="item.edit" nz-input [ngModel]="item.cp" (ngModelChange)="st.setRow(index, { cp: $event })">
+      <option value="Bitflyer">Bitflyer</option>
+      <option value="Okex">Okex</option>
+      <option value="Huobi">Huobi</option>
+      <option value="Liquid">Liquid</option>
+      <option value="CoinCheck">CoinCheck</option>
+      <option value="CG">CG</option>
+    </select>
+    <ng-container *ngIf="!item.edit">{{ item.cp }}</ng-container>
+  </ng-template>
   <ng-template st-row="symbolTpl" let-item let-index="index">
     <select *ngIf="item.edit" nz-input [ngModel]="item.symbol" (ngModelChange)="st.setRow(index, { symbol: $event })">
       <option value="BTC">BTC</option>
@@ -23,6 +39,7 @@
   </ng-template>
   <ng-template st-row="amountTpl" let-item let-index="index">
     <select *ngIf="item.edit" [ngModel]="item.amount" (ngModelChange)="st.setRow(index, { amount: $event })">
+      <option value="0">0</option>
       <option value="0.2">0.2</option>
       <option value="1">1</option>
     </select>
@@ -30,6 +47,7 @@
   </ng-template>
   <ng-template st-row="intervalTpl" let-item let-index="index">
     <select *ngIf="item.edit" [ngModel]="item.interval" (ngModelChange)="st.setRow(index, { interval: $event })">
+      <option value="0">0</option>
       <option value="0.5">0.5</option>
       <option value="1">1</option>
     </select>

@@ -1,3 +1,6 @@
+<div class="mb-md" nz-row nzJustify="end">
+  <button nz-col (click)="st.addRow({ cp: 'Bitflyer', symbol: 'XRP', amount: '0' })" nz-button>Add Balance Adjustment</button>
+</div>
 <st #st [data]="balance" [columns]="bColumns">
   <ng-template st-row="symbolTpl" let-item let-index="index">
     <select *ngIf="item.edit" nz-input [ngModel]="item.symbol" (ngModelChange)="st.setRow(index, { symbol: $event })">
