@@ -12,6 +12,8 @@ export class DashboardV1Component {
     return this.settings.user;
   }
 
+  user_email = localStorage.getItem('email');
+
   type: number | undefined;
   switch({ index }: NzTabChangeEvent): void {
     this.type = index!;

@@ -54,7 +54,7 @@ export class StartupService {
         // this.menuService.add(appData.menu);
         this.menuService.add([
           {
-            text: `Welcome, ${appData.user.name}!`,
+            text: `Welcome, ${localStorage.getItem('name')}!`,
             group: true,
             children: [
               {
