@@ -1,59 +1,21 @@
-<nz-table class="st-width" #editRowTable nzBordered [nzData]="listOfData" nzTableLayout="fixed">
-  <thead>
-    <tr>
-      <th>Exchange</th>
-      <th>Symbol</th>
-      <th>Bid</th>
-      <th>Ask</th>
-      <th>Amount</th>
-      <th>Interval</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let data of editRowTable.data">
-    <tr *ngFor="let value of data.value; let i = index; let f = first">
-      <!-- <ng-container *ngIf="!editCache[data.id].edit; else editTemplate"> -->
-      <td *ngIf="f" [attr.rowspan]="data.value.length">{{ data.exchange }}</td>
-      <td>{{ data.value[i].symbol }}</td>
-      <td>{{ data.value[i].bid }}</td>
-      <td>{{ data.value[i].ask }}</td>
-      <td>{{ data.value[i].amount }}</td>
-      <td>{{ data.value[i].interval }}</td>
-      <td><a (click)="startEdit(data.id)">Update</a></td>
-      <!-- </ng-container> -->
-      <!-- <ng-template #editTemplate>
-        <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.value[i].symbol" /></td>
-        <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.value[i].bid" /></td>
-        <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.value[i].ask" /></td>
-        <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.value[i].amount" /></td>
-        <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.value[i].interval" /></td>
-        <td>
-          <a (click)="saveEdit(data.id)" class="save">Save</a>
-          <a nz-popconfirm nzPopconfirmTitle="Sure to cancel?" (nzOnConfirm)="cancelEdit(data.id)">Cancel</a>
-        </td>
-      </ng-template> -->
-    </tr>
-  </tbody>
-</nz-table>
-<!-- <div class="mb-md st-width" nz-row nzJustify="end">
-  <button nz-col (click)="st.addRow({ cp: 'Bitflyer', symbol: 'BTC', bid: '0', ask: '0', amount: '0', interval: '0' })" nz-button
-    >Add Order Setting</button
-  >
-</div>
-<st class="st-width" #st [data]="orders" [columns]="oColumns">
-  <ng-template st-row="cpTpl" let-item let-index="index">
-    <select *ngIf="item.edit" nz-input [ngModel]="item.cp" (ngModelChange)="st.setRow(index, { cp: $event })">
-      <option value="Bitflyer">Bitflyer</option>
-      <option value="Okex">Okex</option>
-      <option value="Huobi">Huobi</option>
-      <option value="Liquid">Liquid</option>
-      <option value="CoinCheck">CoinCheck</option>
-      <option value="CG">CG</option>
+<st class="st-width" #st [data]="orders" [columns]="oColumns" bordered>
+  <ng-template st-row="exchangeTpl" let-item let-index="index">
+    <select *ngIf="item.edit" [ngModel]="item.status" (ngModelChange)="st.setRow(index, { status: $event })">
+      <option value="A">Active for all {{ item.exchange }} exchange</option>
+      <option value="I">Inactive for all {{ item.exchange }} exchange</option>
     </select>
-    <ng-container *ngIf="!item.edit">{{ item.cp }}</ng-container>
+    <ng-container *ngIf="!item.edit && item.status == 'A'">
+      <p class="active">{{ item.exchange }}</p>
+    </ng-container>
+    <ng-container *ngIf="!item.edit && item.status == 'I'">
+      <p class="inactive">{{ item.exchange }}</p>
+    </ng-container>
+    <ng-container *ngIf="!item.edit && item.status == 'S'">
+      <p class="suspended">{{ item.exchange }}</p>
+    </ng-container>
   </ng-template>
   <ng-template st-row="symbolTpl" let-item let-index="index">
-    <select *ngIf="item.edit" nz-input [ngModel]="item.symbol" (ngModelChange)="st.setRow(index, { symbol: $event })">
+    <select *ngIf="item.edit" [ngModel]="item.symbol" (ngModelChange)="st.setRow(index, { symbol: $event })">
       <option value="BTC">BTC</option>
       <option value="ETH">ETH</option>
       <option value="XRP">XRP</option>
@@ -64,6 +26,7 @@
     <select *ngIf="item.edit" [ngModel]="item.bid" (ngModelChange)="st.setRow(index, { bid: $event })">
       <option value="0">0</option>
       <option value="100">100</option>
+      <option value="1000000">1000000</option>
     </select>
     <ng-container *ngIf="!item.edit">{{ item.bid }}</ng-container>
   </ng-template>
@@ -71,12 +34,14 @@
     <select *ngIf="item.edit" [ngModel]="item.ask" (ngModelChange)="st.setRow(index, { ask: $event })">
       <option value="0">0</option>
       <option value="100">100</option>
+      <option value="1000000">1000000</option>
     </select>
     <ng-container *ngIf="!item.edit">{{ item.ask }}</ng-container>
   </ng-template>
   <ng-template st-row="amountTpl" let-item let-index="index">
     <select *ngIf="item.edit" [ngModel]="item.amount" (ngModelChange)="st.setRow(index, { amount: $event })">
       <option value="0">0</option>
+      <option value="0.001">0.001</option>
       <option value="0.2">0.2</option>
       <option value="1">1</option>
     </select>
@@ -90,4 +55,4 @@
     </select>
     <ng-container *ngIf="!item.edit">{{ item.interval }}</ng-container>
   </ng-template>
-</st> -->
+</st>
