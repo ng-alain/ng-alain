@@ -71,23 +71,22 @@ export class DefaultInterceptor implements HttpInterceptor {
       return;
     }
 
-    const errortext = CODEMESSAGE[ev.status] || ev.statusText;
-    this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, errortext);
+    const error = JSON.parse(JSON.stringify(ev)).error.message;
+    this.notification.error('Error', error);
   }
 
   /**
    * 刷新 Token 请求
    */
   private refreshTokenRequest(): Observable<any> {
-    const model = this.tokenSrv.get();
-    return this.http.post(`/api/auth/refresh`, null, null, { headers: { refresh_token: model?.['refresh_token'] || '' } });
+    return this.http.get(`v1/auth/refresh-token`);
   }
 
   // #region 刷新Token方式一：使用 401 重新刷新 Token
 
   private tryRefreshToken(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // 1、若请求为刷新Token请求，表示来自刷新Token可以直接跳转登录页
-    if ([`/api/auth/refresh`].some(url => req.url.includes(url))) {
+    if ([`v1/auth/refresh-token`].some(url => req.url.includes(url))) {
       this.toLogin();
       return throwError(ev);
     }
@@ -155,10 +154,12 @@ export class DefaultInterceptor implements HttpInterceptor {
       )
       .subscribe(
         res => {
-          // TODO: Mock expired value
-          res.expired = +new Date() + 1000 * 60 * 5;
           this.refreshToking = false;
-          this.tokenSrv.set(res);
+          this.tokenSrv.set({
+            token: res.data.access_token,
+            expired: +new Date() + res.data.expiresIn,
+            ...res.data.user
+          });
         },
         () => this.toLogin()
       );
@@ -166,8 +167,12 @@ export class DefaultInterceptor implements HttpInterceptor {
 
   // #endregion
 
-  private toLogin(): void {
-    this.notification.error(`未登录或登录已过期，请重新登录。`, ``);
+  private toLogin(error?: HttpErrorResponse): void {
+    if (error) {
+      this.notification.error('Error', error.message);
+    } else {
+      this.notification.error(`Your login session is expired. Please login again.`, ``);
+    }
     this.goTo(this.tokenSrv.login_url!);
   }
 
@@ -204,7 +209,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         if (this.refreshTokenEnabled && this.refreshTokenType === 're-request') {
           return this.tryRefreshToken(ev, req, next);
         }
-        this.toLogin();
+        this.toLogin(JSON.parse(JSON.stringify(ev)).error);
         break;
       case 403:
       case 404:
@@ -240,9 +245,9 @@ export class DefaultInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // 统一加上服务端前缀
     let url = req.url;
-    if (!url.startsWith('https://') && !url.startsWith('http://')) {
-      const { baseUrl } = environment.api;
-      url = baseUrl + (baseUrl.endsWith('/') && url.startsWith('/') ? url.substring(1) : url);
+    if (!url.startsWith('https://') && !url.startsWith('http://') && !url.includes('assets')) {
+      const { apiUrl } = environment.api;
+      url = apiUrl + (apiUrl.endsWith('/') && url.startsWith('/') ? url.substring(1) : url);
     }
 
     const newReq = req.clone({ url, setHeaders: this.getAdditionalHeaders(req.headers) });

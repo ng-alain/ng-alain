@@ -78,10 +78,10 @@ export class BalanceAdjustmentComponent {
       ]
     }
   ];
-  constructor(private msg: NzMessageService) {}
+  constructor() {}
 
   private submit(i: STData): void {
-    this.msg.success(JSON.stringify(this.st.pureItem(i)));
+    // this.msg.success(JSON.stringify(this.st.pureItem(i)));
     this.updateEdit(i, false);
   }
 

@@ -11,7 +11,7 @@ import { UserRegisterComponent } from './register/register.component';
 const routes: Routes = [
   // passport
   {
-    path: 'passport',
+    path: '',
     component: LayoutPassportComponent,
     children: [
       {

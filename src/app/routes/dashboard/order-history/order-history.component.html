@@ -1,5 +1,53 @@
 <div class="mb-md st-width" nz-row nzJustify="end">
-  <button nz-col (click)="st.clear()" nz-button>Update</button>
-  <button nz-col (click)="st.reload()" nz-button>Current Date</button>
+  <button nz-col nz-button (click)="reset()">Update</button>
+  <button nz-col nz-button>Current Date</button>
 </div>
-<st class="st-width" #st [widthMode]="{ type: 'strict' }" [data]="orderHistory" [columns]="ohColumns"></st>
+<nz-card [nzBordered]="false">
+  <nz-space nzSize="middle" class="width-100" nzDirection="vertical">
+    <div *nzSpaceItem class="mobile-container">
+      <nz-table
+        #table
+        nzShowSizeChanger
+        nzFrontPagination="false"
+        [nzLoading]="loading"
+        [nzTotal]="total"
+        [nzPageIndex]="pageIndex"
+        [nzPageSize]="pageSize"
+        (nzQueryParams)="getData($event)"
+        [nzData]="$orders | async"
+        [nzShowTotal]="totalTpl"
+      >
+        <thead>
+          <tr>
+            <th nzShowSort [nzSortFn]="true" nzColumnKey="exchange">Counter Party</th>
+            <th nzShowSort [nzSortFn]="true" nzColumnKey="orderId">Order ID</th>
+            <th nzShowSort [nzSortFn]="true" nzColumnKey="orderTime">Order Time</th>
+            <th nzShowSort [nzSortFn]="true" nzColumnKey="symbol">Symbol</th>
+            <th nzShowSort [nzSortFn]="true" nzColumnKey="side">Side</th>
+            <th nzShowSort [nzSortFn]="true" nzColumnKey="orderAmount">Order Amount</th>
+            <th nzShowSort [nzSortFn]="true" nzColumnKey="orderPrice">Order Price</th>
+            <th nzShowSort [nzSortFn]="true" nzColumnKey="orderType">Order Type</th>
+            <th nzShowSort [nzSortFn]="true" nzColumnKey="orderResult">Order Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of table.data; let i = index">
+            <td>{{ data?.exchange }}</td>
+            <td>{{ data?.orderId }}</td>
+            <td>{{ data?.orderTime | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+            <td>{{ data?.symbol }}</td>
+            <td>{{ data?.side }}</td>
+            <td>{{ data?.orderAmount }}</td>
+            <td>{{ data?.orderPrice }}</td>
+            <td>{{ data?.orderType }}</td>
+            <td><uic-status-tag [nzIsOrderStatus]="true" [nzType]="data?.orderResult"></uic-status-tag></td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-space>
+</nz-card>
+
+<ng-template #resultTpl let-result="result"> </ng-template>
+
+<ng-template #totalTpl let-range="range"> {{ range[0] }} - {{ range[1] }} of {{ total }} </ng-template>

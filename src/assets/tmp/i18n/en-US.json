@@ -149,5 +149,8 @@
   "validation.title.required": "Please enter a title",
   "validation.date.required": "Please select the start and end date",
   "validation.goal.required": "Please enter a description of the goal",
-  "validation.standard.required": "Please enter a metric"
+  "validation.standard.required": "Please enter a metric",
+  "logout.alert.body": "You can stay logged in by clicking \"Continue\" or click \"Logout\" to end your session now.",
+  "logout.alert.countdown": "Session expired in",
+  "logout.alert.header": "Your current session will expire soon."
 }

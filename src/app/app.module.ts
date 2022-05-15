@@ -5,7 +5,7 @@ import { default as ngLang } from '@angular/common/locales/zh';
 import { APP_INITIALIZER, LOCALE_ID, NgModule, Type } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SimpleInterceptor } from '@delon/auth';
+import { JWTInterceptor, SimpleInterceptor } from '@delon/auth';
 import { DELON_LOCALE, zh_CN as delonLang, ALAIN_I18N_TOKEN } from '@delon/theme';
 import { NZ_DATE_LOCALE, NZ_I18N, zh_CN as zorroLang } from 'ng-zorro-antd/i18n';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
@@ -57,7 +57,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DefaultInterceptor } from '@core';
 
 const INTERCEPTOR_PROVIDES = [
-  { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true }
 ];
 // #endregion
@@ -88,6 +88,9 @@ import { STWidgetModule } from './shared/st-widget/st-widget.module';
 import { Observable } from 'rxjs';
 import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
 import { AuthGuardService } from './auth-guard.service';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { UserIdleModule } from 'angular-user-idle';
+import { AppConstant } from './app.constant';
 
 // const GOOGLE_CLIENT_ID = process.env['GOOGLE_CLIENT_ID'];
 
@@ -104,9 +107,11 @@ import { AuthGuardService } from './auth-guard.service';
     RoutesModule,
     STWidgetModule,
     NzNotificationModule,
+    NzMessageModule,
     SocialLoginModule,
     ...GLOBAL_THIRD_MODULES,
-    ...FORM_MODULES
+    ...FORM_MODULES,
+    UserIdleModule.forRoot({ idle: AppConstant.IDLE_SECONDS, timeout: AppConstant.TIMEOUT_SECONDS })
   ],
   providers: [
     ...LANG_PROVIDES,
@@ -124,8 +129,7 @@ import { AuthGuardService } from './auth-guard.service';
           }
         ]
       }
-    },
-    AuthGuardService
+    }
   ],
   bootstrap: [AppComponent]
 })

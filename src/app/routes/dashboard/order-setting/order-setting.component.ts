@@ -1,9 +1,15 @@
 import { Location } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { STColumn, STComponent, STData } from '@delon/abc/st';
+import { STChange, STColumn, STComponent, STData } from '@delon/abc/st';
+import { dateTimePickerUtil } from '@delon/util';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { delay, finalize, forkJoin, map, Observable, of, tap } from 'rxjs';
+import { SettingRestService } from 'src/app/shared/services/rest/setting.rest.service';
+import commonUtil from 'src/app/shared/utils/common-util';
 
 interface UpdatedData {
   exchangeId: number;
@@ -12,166 +18,227 @@ interface UpdatedData {
 }
 
 interface UpdatedValues {
-  symbol: string;
-  bid: string;
-  ask: string;
-  amount: string;
-  interval: string;
+  symbol: string[];
+  bid: string[];
+  ask: string[];
+  amount: string[];
+  interval: string[];
+  status: string;
+  id: string;
+  exchange: string;
 }
 
 @Component({
   selector: 'app-order-setting',
-  templateUrl: './order-setting.component.html'
+  templateUrl: './order-setting.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OrderSettingComponent implements OnInit {
-  list: any;
-  valuelist: any;
-  updatevalue: any;
-  values: any[] = [];
-  orders: STData[] = [];
-  updatedData: UpdatedData = {
-    exchangeId: 0,
-    status: '',
-    values: ''
-  };
-  updatedValues: UpdatedValues = {
-    symbol: '',
-    bid: '',
-    ask: '',
-    amount: '',
-    interval: ''
-  };
+export class OrderSettingComponent {
+  $findExchangeSetting!: Observable<any>;
+  loading = false;
+
+  // Tables
+  data = [];
+  editCache: { [key: string]: { edit: boolean; data: UpdatedValues; initialSymbol?: string; display?: any } } = {};
+  listOfData: UpdatedValues[] = [];
+
+  dropdownSetting: any;
+  initialData: any;
 
   @ViewChild('st') private st!: STComponent;
-  constructor(private msg: NzMessageService, private http: HttpClient, public _router: Router, public _location: Location) {}
-  headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('access_token')}`);
+  constructor(
+    private msg: NzMessageService,
+    private http: HttpClient,
+    public _router: Router,
+    public _location: Location,
+    private cdr: ChangeDetectorRef,
+    private settingRestService: SettingRestService,
+    private modalSrv: NzModalService,
+    private notificationService: NzNotificationService
+  ) {}
 
-  ngOnInit(): void {
-    this.getOrderSetting();
-  }
+  getData(): void {
+    this.listOfData = [];
+    this.loading = true;
 
-  oColumns: STColumn[] = [
-    { title: 'Exchange', type: 'date', index: 'exchange', render: 'exchangeTpl', sort: { compare: (a, b) => a.cp.localeCompare(b.cp) } },
-    { title: 'Symbol', type: 'date', index: 'symbol', render: 'symbolTpl', sort: { compare: (a, b) => a.symbol.localeCompare(b.symbol) } },
-    { title: 'Bid', type: 'date', index: 'bid', render: 'bidTpl', sort: true },
-    { title: 'Ask', type: 'date', index: 'ask', render: 'askTpl', sort: true },
-    { title: 'Amount', type: 'date', index: 'amount', render: 'amountTpl', sort: true },
-    { title: 'Interval', type: 'date', index: 'interval', render: 'intervalTpl', sort: true },
-    {
-      title: 'Action',
-      type: 'date',
-      buttons: [
-        {
-          icon: 'edit',
-          iif: i => !i.edit,
-          click: i => this.updateEdit(i, true)
-        },
-        {
-          text: 'Save',
-          iif: i => i.edit,
-          pop: {
-            title: 'Save changes?',
-            okType: 'primary'
-          },
-          click: i => {
-            this.submit(i);
+    this.settingRestService
+      .getSetting()
+      .pipe(
+        map(res => {
+          const found = res.find((x: any) => x.key === 'Dropdown Setting');
+          if (found) {
+            this.dropdownSetting = JSON.parse(found.value);
           }
-        },
-        {
-          text: 'Cancel',
-          iif: i => i.edit,
-          click: i => this.updateEdit(i, false)
-        }
-      ]
-    }
-  ];
+        }),
+        finalize(() => {
+          this.cdr.detectChanges();
+        })
+      )
+      .subscribe();
 
-  getOrderSetting() {
-    console.log(localStorage.getItem('access_token'));
-    this.http
-      .get('http://localhost:3000/api/v1/setting/get-exchange-setting?_allow_anonymous=true', { headers: this.headers })
-      .subscribe(res => {
-        // console.log(res);
-        this.list = res;
-
-        this.list.data.map((item: any) => {
-          // console.log('item', JSON.parse(item.value));
-          this.valuelist = JSON.parse(item.value);
-          let exchangeId = item.id;
-          let exchange = item.exchange;
-          let status = item.status;
-          let i = 0;
-          this.valuelist.map((item: any) => {
-            this.valuelist[i].valueId = (i + 1).toString();
-            this.valuelist[i].exchangeId = exchangeId;
-            this.valuelist[i].exchange = exchange;
-            this.valuelist[i].status = status;
-            // console.log('valuelist item', item);
-            i++;
-          });
-          item.value = this.valuelist;
-          this.orders = item.value;
-          // console.log('listOfData', this.orders);
+    this.$findExchangeSetting = this.settingRestService.getExchangeSetting().pipe(
+      map(res => {
+        this.initialData = res;
+        return res.map((i: any) => {
+          const value = JSON.parse(i.value);
+          const data = {
+            exchange: i.exchange,
+            symbol: value.map((x: any) => x.symbol),
+            bid: value.map((x: any) => x.bid),
+            ask: value.map((x: any) => x.ask),
+            amount: value.map((x: any) => x.amount),
+            interval: value.map((x: any) => x.interval),
+            status: i.status,
+            id: i.id.toString()
+          };
+          this.listOfData.push(data);
+          return data;
         });
-      });
-  }
-
-  refresh(): void {
-    this._router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
-      // console.log(decodeURI(this._location.path()));
-      this._router.navigate([decodeURI(this._location.path())]);
-    });
-  }
-
-  private submit(i: STData): void {
-    this.updatevalue = this.st.pureItem(i);
-    // console.log('updatevalue', this.updatevalue.valueId);
-    const updatedOrders = this.orders.map((item: any) => {
-      if (item.valueId == this.updatevalue.valueId) {
-        return {
-          ...item,
-          symbol: this.updatevalue.symbol,
-          bid: this.updatevalue.bid,
-          ask: this.updatevalue.ask,
-          amount: this.updatevalue.amount,
-          interval: this.updatevalue.interval,
-          status: this.updatevalue.status
-        };
-      }
-      return item;
-    });
-    this.updatedData.exchangeId = this.updatevalue.exchangeId;
-    this.updatedData.status = this.updatevalue.status;
-    // console.log('updatedOrders: ', updatedOrders, 'updatedData: ', this.updatedData);
-
-    updatedOrders.map((item: any) => {
-      this.updatedValues = { symbol: '', bid: '', ask: '', amount: '', interval: '' };
-      this.updatedValues.symbol = item.symbol;
-      this.updatedValues.bid = item.bid;
-      this.updatedValues.ask = item.ask;
-      this.updatedValues.amount = item.amount;
-      this.updatedValues.interval = item.interval;
-      // console.log(this.updatedValues);
-      this.values.push(this.updatedValues);
-    });
-    // console.log('updatedData ', this.updatedData);
-    this.updatedData.values = JSON.stringify(this.values);
-    // console.log('final updatedData: ', this.updatedData);
-
-    this.http
-      .post('http://localhost:3000/api/v1/setting/update-exchange-setting?_allow_anonymous=true', this.updatedData, {
-        headers: this.headers
+      }),
+      finalize(() => {
+        this.loading = false;
+        this.updateEditCache(); // Update template
+        this.cdr.detectChanges();
       })
-      .subscribe(res => {
-        console.log(res);
-      });
-    this.msg.success('Changes saved!');
-    this.updateEdit(i, false);
-    this.getOrderSetting();
-    this.refresh();
+    );
   }
 
-  private updateEdit(i: STData, edit: boolean): void {
-    this.st.setRow(i, { edit }, { refreshSchema: true });
+  startEdit(id: string) {
+    this.editCache[id].edit = true;
+    this.mapConfig(id);
+  }
+
+  cancelEdit(id: string): void {
+    const index = this.listOfData.findIndex(item => item.id === id);
+    const symbolIndex = this.listOfData[index].symbol.findIndex(x => x === this.editCache[id].initialSymbol);
+    this.editCache[id] = {
+      data: { ...this.listOfData[index] },
+      edit: false,
+      initialSymbol: this.editCache[id].initialSymbol,
+      display: {
+        status: this.listOfData[index].status,
+        bid: this.listOfData[index].bid[symbolIndex],
+        ask: this.listOfData[index].ask[symbolIndex],
+        amount: this.listOfData[index].amount[symbolIndex],
+        interval: this.listOfData[index].interval[symbolIndex]
+      }
+    };
+    this.mapConfig(id);
+  }
+
+  saveEdit(id: string): void {
+    const callback = () => {
+      const index = this.listOfData.findIndex(item => item.id === id);
+      Object.assign(this.listOfData[index], this.editCache[id].data);
+      const found = this.initialData.find((x: any) => x.id.toString() === id);
+      if (found) {
+        let value = JSON.parse(found.value);
+        value = value.map((x: any) => {
+          if (x.symbol === this.editCache[id].initialSymbol) {
+            return {
+              ...x,
+              bid: this.editCache[id].display.bid,
+              ask: this.editCache[id].display.ask,
+              amount: this.editCache[id].display.amount,
+              interval: this.editCache[id].display.interval
+            };
+          } else {
+            return x;
+          }
+        });
+
+        this.loading = true;
+        this.settingRestService
+          .updateExchangeSetting({
+            exchangeId: Number(id),
+            status: this.editCache[id].display.status,
+            values: JSON.stringify(value)
+          })
+          .pipe(
+            map(res => {
+              if (!res || res.message == null) {
+                this.notificationService.success('Success', 'Updated successful.');
+              }
+            }),
+            finalize(() => {
+              this.editCache[id].edit = false;
+              this.loading = true;
+              this.getData();
+            })
+          )
+          .subscribe();
+      }
+    };
+
+    this.modalSrv.confirm({
+      nzTitle: 'Confirmation',
+      nzContent: 'Would you like to update your settings?',
+      nzCancelDisabled: false,
+      nzOkText: 'Confirm',
+      nzCancelText: 'Cancel',
+      nzOnOk: () => callback()
+    });
+  }
+
+  updateEditCache(): void {
+    this.listOfData.forEach(item => {
+      this.editCache[item.id] = {
+        edit: false,
+        initialSymbol: item.symbol[0],
+        data: { ...item },
+        display: {
+          status: item.status,
+          bid: item.bid[0],
+          ask: item.ask[0],
+          amount: item.amount[0],
+          interval: item.interval[0]
+        }
+      };
+    });
+  }
+
+  changeSymbol(event: any, id: string) {
+    const item = this.listOfData.find(x => x.id === id);
+    if (item) {
+      const index = item.symbol.findIndex(x => x === event);
+      this.editCache[id].display = {
+        status: item.status,
+        bid: item.bid[index],
+        ask: item.ask[index],
+        amount: item.amount[index],
+        interval: item.interval[index]
+      };
+    }
+
+    this.mapConfig(id);
+  }
+
+  updateStatus(id: string) {
+    if (this.editCache[id].edit) {
+      if (this.editCache[id].display.status === 'A') {
+        this.editCache[id].display.status = 'I';
+      } else {
+        this.editCache[id].display.status = 'A';
+      }
+    }
+  }
+
+  /**
+   * Construct dropdown (preset values)
+   *
+   * @param id: Exchange Setting ID
+   */
+  private mapConfig(id: string) {
+    const found = this.listOfData.find((x: any) => x.id === id);
+    if (found) {
+      const list = this.dropdownSetting[found.exchange.toLowerCase()];
+      const setting = list.find((x: any) => x.symbol === this.editCache[id].initialSymbol);
+      Object.assign(this.editCache[id], {
+        bidConfig: setting.bid,
+        askConfig: setting.ask,
+        amountConfig: setting.amount,
+        intervalConfig: setting.interval
+      });
+    }
   }
 }

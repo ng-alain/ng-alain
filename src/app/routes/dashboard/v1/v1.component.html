@@ -1,25 +1,19 @@
-<div class="alain-default__content-title">
-  <h1>
-    Dashboard
-    <small>Logged in with: {{ user_email }}</small>
-  </h1>
-</div>
 <nz-tabset [nzAnimated]="false" class="tabs" (nzSelectChange)="switch($event)">
   <nz-tab [nzTitle]="'Exposure' | i18n">
-    <h3>Current Rate</h3>
+    <!-- <h3>Current Rate</h3>
     <app-current-rate></app-current-rate>
     <h3>Exposure</h3>
-    <app-exposure></app-exposure>
+    <app-exposure></app-exposure> -->
   </nz-tab>
   <nz-tab [nzTitle]="'Settings' | i18n">
     <h3>Order Setting (Mark Up, Amount, Interval)</h3>
     <app-order-setting></app-order-setting>
-    <h3>Balance Adjustment</h3>
+    <!-- <h3>Balance Adjustment</h3>
     <div class="st-width">
       <app-balance-adjustment></app-balance-adjustment>
       <h3>Settings History Logs</h3>
       <app-settings-history-logs></app-settings-history-logs>
-    </div>
+    </div> -->
   </nz-tab>
   <nz-tab [nzTitle]="'Report' | i18n">
     <h3>Order History</h3>
