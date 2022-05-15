@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ACLService } from '@delon/acl';
 import { ALAIN_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@delon/theme';
+import { Store } from '@ngxs/store';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import { Observable, zip } from 'rxjs';
@@ -11,6 +12,7 @@ import { catchError, map } from 'rxjs/operators';
 import { ICONS } from '../../../style-icons';
 import { ICONS_AUTO } from '../../../style-icons-auto';
 import { I18NService } from '../i18n/i18n.service';
+import { GlobalState } from '../store/global.state';
 
 /**
  * Used for application startup
@@ -26,7 +28,8 @@ export class StartupService {
     private aclService: ACLService,
     private titleService: TitleService,
     private httpClient: HttpClient,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {
     iconSrv.addIcon(...ICONS_AUTO, ...ICONS);
   }
@@ -47,11 +50,26 @@ export class StartupService {
         // 应用信息：包括站点名、描述、年份
         this.settingService.setApp(appData.app);
         // 用户信息：包括姓名、头像、邮箱地址
-        this.settingService.setUser(appData.user);
+        const user = this.store.selectSnapshot(GlobalState.getUser);
+        console.log(user);
+        this.settingService.setUser(user);
         // ACL：设置权限为全量
         this.aclService.setFull(true);
         // 初始化菜单
         this.menuService.add(appData.menu);
+        // this.menuService.add([
+        //   {
+        //     text: `Welcome, ${localStorage.getItem('name')}!`,
+        //     group: true,
+        //     children: [
+        //       {
+        //         text: 'Dashboard',
+        //         link: '/dashboard',
+        //         icon: { type: 'icon', value: 'appstore' }
+        //       }
+        //     ]
+        //   }
+        // ]);
         // 设置页面标题的后缀
         this.titleService.default = '';
         this.titleService.suffix = appData.app.name;

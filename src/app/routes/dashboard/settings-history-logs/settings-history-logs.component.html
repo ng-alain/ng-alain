@@ -1,0 +1,3 @@
+<g2-card class="history-logs" contentHeight="100%">
+  <p *ngFor="let log of list">{{ log?.time | date: 'YYYYMMDD HH:MM:SSS' }} {{ log?.content }}</p>
+</g2-card>

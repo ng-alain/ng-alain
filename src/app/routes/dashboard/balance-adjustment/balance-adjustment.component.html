@@ -1,0 +1,40 @@
+<nz-card [nzBordered]="false">
+  <nz-space nzSize="middle" class="width-100" nzDirection="vertical">
+    <div *nzSpaceItem class="mobile-container">
+      <nz-table #table nzFrontPagination="false" [nzLoading]="loading" (nzQueryParams)="getData()" [nzData]="$balances | async">
+        <thead>
+          <tr>
+            <th nzColumnKey="exchange">CP</th>
+            <th nzColumnKey="symbol">Symbol</th>
+            <th nzColumnKey="bid">Amount</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of table.data; let i = index">
+            <ng-container>
+              <td>{{ data?.exchange }}</td>
+              <td><ng-container *ngTemplateOutlet="symbolTpl; context: { symbol: data?.symbol, id: data?.exchange }"></ng-container></td>
+              <td><ng-container *ngTemplateOutlet="amountTpl; context: { amount: data?.amount, id: data?.exchange }"></ng-container></td>
+              <td><a (click)="getData()">Update</a></td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-space>
+</nz-card>
+
+<ng-template #symbolTpl let-item="symbol" let-id="id">
+  <nz-select
+    *ngIf="editCache[id] && item && item.length > 0"
+    [(ngModel)]="editCache[id].initialSymbol"
+    (ngModelChange)="changeSymbol($event, id)"
+  >
+    <nz-option *ngFor="let i of item" [nzValue]="i" [nzLabel]="i"></nz-option>
+  </nz-select>
+</ng-template>
+
+<ng-template #amountTpl let-item="amount" let-id="id">
+  <p>{{ editCache[id]?.display.amount }}</p>
+</ng-template>

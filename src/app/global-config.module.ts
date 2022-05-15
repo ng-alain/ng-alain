@@ -12,7 +12,7 @@ import { environment } from '@env/environment';
 // #region NG-ALAIN Config
 
 const alainConfig: AlainConfig = {
-  st: { modal: { size: 'lg' } },
+  // st: { modal: { size: 'lg' } },
   pageHeader: { homeI18n: 'home' },
   lodop: {
     license: `A59B099A586B3851E0F0D7FDBF37B603`,

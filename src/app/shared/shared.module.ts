@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -6,19 +6,28 @@ import { DelonACLModule } from '@delon/acl';
 import { DelonFormModule } from '@delon/form';
 import { AlainThemeModule } from '@delon/theme';
 
+import { CurrencyPipe } from './pipes/currency.pipe';
+import { DashNullPipe } from './pipes/dash-null.pipe';
+import { DateFormatPipe } from './pipes/date-format.pipe';
+import { MinutePipe } from './pipes/minute.pipe';
+import { MonthPipe } from './pipes/month.pipe';
+import { SseService } from './services/sse.service';
 import { SHARED_DELON_MODULES } from './shared-delon.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
+import { PdfWrapperComponent } from './ui-components/pdf-wrapper/pdf-wrapper.component';
+import { StatusTagComponent } from './ui-components/status-tag/status-tag.component';
 
 // #region third libs
 // import { NgxTinymceModule } from 'ngx-tinymce';
 // import { UEditorModule } from 'ngx-ueditor';
+const THIRDMODULES: Array<Type<void>> = [];
 
-const THIRDMODULES: Array<Type<any>> = [];
+const COMPONENTS: Array<Type<void>> = [StatusTagComponent, PdfWrapperComponent];
+const DIRECTIVES: Array<Type<void>> = [];
+const PIPES: Array<Type<any>> = [DateFormatPipe, DashNullPipe, MinutePipe, MonthPipe, CurrencyPipe];
 // #endregion
 
-// #region your componets & directives
-const COMPONENTS: Array<Type<any>> = [];
-const DIRECTIVES: Array<Type<any>> = [];
+const SERVICES: Array<Type<any>> = [SseService, DatePipe];
 // #endregion
 
 @NgModule({
@@ -38,7 +47,8 @@ const DIRECTIVES: Array<Type<any>> = [];
   declarations: [
     // your components
     ...COMPONENTS,
-    ...DIRECTIVES
+    ...DIRECTIVES,
+    ...PIPES
   ],
   exports: [
     CommonModule,
@@ -54,7 +64,9 @@ const DIRECTIVES: Array<Type<any>> = [];
     ...THIRDMODULES,
     // your components
     ...COMPONENTS,
-    ...DIRECTIVES
-  ]
+    ...DIRECTIVES,
+    ...PIPES
+  ],
+  providers: [...SERVICES]
 })
 export class SharedModule {}

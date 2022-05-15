@@ -19,36 +19,47 @@ import { G2WaterWaveModule } from '@delon/chart/water-wave';
 import { SharedModule } from '@shared';
 import { CountdownModule } from 'ngx-countdown';
 
-import { DashboardAnalysisComponent } from './analysis/analysis.component';
+import { BalanceAdjustmentComponent } from './balance-adjustment/balance-adjustment.component';
+import { CurrentRateComponent } from './current-rate/current-rate.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardMonitorComponent } from './monitor/monitor.component';
+import { ExposureComponent } from './exposure/exposure.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { OrderSettingComponent } from './order-setting/order-setting.component';
+import { SettingsHistoryLogsComponent } from './settings-history-logs/settings-history-logs.component';
 import { DashboardV1Component } from './v1/v1.component';
-import { DashboardWorkplaceComponent } from './workplace/workplace.component';
 
-const COMPONENTS = [DashboardV1Component, DashboardAnalysisComponent, DashboardMonitorComponent, DashboardWorkplaceComponent];
+const COMPONENTS = [
+  DashboardV1Component,
+  OrderSettingComponent,
+  BalanceAdjustmentComponent,
+  SettingsHistoryLogsComponent,
+  CurrentRateComponent,
+  ExposureComponent,
+  OrderHistoryComponent
+];
 
 @NgModule({
   imports: [
     SharedModule,
     DashboardRoutingModule,
-    CountDownModule,
-    CountdownModule,
-    G2BarModule,
-    G2CardModule,
-    G2GaugeModule,
-    G2MiniAreaModule,
-    G2MiniBarModule,
-    G2MiniProgressModule,
-    G2PieModule,
-    G2RadarModule,
-    G2SingleBarModule,
-    G2TagCloudModule,
-    G2TimelineModule,
-    G2WaterWaveModule,
-    NumberInfoModule,
-    TrendModule,
-    QuickMenuModule,
-    OnboardingModule
+    // CountDownModule,
+    // CountdownModule,
+    // G2BarModule,
+    G2CardModule
+    // G2GaugeModule,
+    // G2MiniAreaModule,
+    // G2MiniBarModule,
+    // G2MiniProgressModule,
+    // G2PieModule,
+    // G2RadarModule,
+    // G2SingleBarModule,
+    // G2TagCloudModule,
+    // G2TimelineModule,
+    // G2WaterWaveModule,
+    // NumberInfoModule,
+    // TrendModule,
+    // QuickMenuModule,
+    // OnboardingModule
   ],
   declarations: [...COMPONENTS]
 })

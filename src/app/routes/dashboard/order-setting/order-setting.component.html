@@ -1,0 +1,107 @@
+<nz-card [nzBordered]="false">
+  <nz-space nzSize="middle" class="width-100" nzDirection="vertical">
+    <div *nzSpaceItem class="mobile-container">
+      <nz-table #table nzFrontPagination="false" [nzLoading]="loading" (nzQueryParams)="getData()" [nzData]="$findExchangeSetting | async">
+        <thead>
+          <tr>
+            <th nzColumnKey="exchange">CP</th>
+            <th nzColumnKey="symbol">Symbol</th>
+            <th nzColumnKey="bid">Bid</th>
+            <th nzColumnKey="ask">Ask</th>
+            <th nzColumnKey="amount">Amount</th>
+            <th nzColumnKey="interval">Interval</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of table.data; let i = index">
+            <ng-container>
+              <td><ng-container *ngTemplateOutlet="exchangeTpl; context: { exchange: data?.exchange, id: data?.id }"></ng-container></td>
+              <td><ng-container *ngTemplateOutlet="symbolTpl; context: { symbol: data?.symbol, id: data?.id }"></ng-container></td>
+              <td><ng-container *ngTemplateOutlet="bidTpl; context: { bid: data?.bid, id: data?.id }"></ng-container></td>
+              <td><ng-container *ngTemplateOutlet="askTpl; context: { ask: data?.ask, id: data?.id }"></ng-container></td>
+              <td><ng-container *ngTemplateOutlet="amountTpl; context: { amount: data?.amount, id: data?.id }"></ng-container></td>
+              <td><ng-container *ngTemplateOutlet="intervalTpl; context: { interval: data?.interval, id: data?.id }"></ng-container></td>
+              <td><ng-container *ngTemplateOutlet="actionTpl; context: { id: data?.id }"></ng-container></td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-space>
+</nz-card>
+
+<ng-template #exchangeTpl let-item="exchange" let-id="id">
+  <nz-tag *ngIf="editCache[id].display.status === 'A'" [nzColor]="'#87d068'">
+    <a (click)="updateStatus(id)">{{ item }}</a>
+  </nz-tag>
+  <nz-tag *ngIf="editCache[id].display.status === 'I'" nzColor="gray">
+    <a (click)="updateStatus(id)">{{ item }}</a></nz-tag
+  >
+  <nz-tag *ngIf="editCache[id].display.status === 'R'" nzColor="red">
+    <a (click)="updateStatus(id)">{{ item }}</a></nz-tag
+  >
+</ng-template>
+
+<ng-template #symbolTpl let-item="symbol" let-id="id">
+  <nz-select *ngIf="item && item.length > 0" [(ngModel)]="editCache[id].initialSymbol" (ngModelChange)="changeSymbol($event, id)">
+    <nz-option *ngFor="let i of item" [nzValue]="i" [nzLabel]="i"></nz-option>
+  </nz-select>
+</ng-template>
+
+<ng-template #bidTpl let-item="bid" let-id="id">
+  <p *ngIf="!editCache[id].edit">{{ editCache[id].display.bid }}</p>
+  <div *ngIf="editCache[id].edit">
+    <input nz-input [(ngModel)]="editCache[id].display.bid" [nzAutocomplete]="auto" />
+    <nz-autocomplete #auto>
+      <nz-auto-option *ngFor="let i of editCache[id].bidConfig" [nzValue]="i" [nzLabel]="i">
+        {{ i }}
+      </nz-auto-option>
+    </nz-autocomplete>
+  </div>
+</ng-template>
+
+<ng-template #askTpl let-item="ask" let-id="id">
+  <p *ngIf="!editCache[id].edit">{{ editCache[id].display.ask }}</p>
+  <div *ngIf="editCache[id].edit">
+    <input nz-input [(ngModel)]="editCache[id].display.ask" [nzAutocomplete]="auto" />
+    <nz-autocomplete #auto>
+      <nz-auto-option *ngFor="let i of editCache[id].askConfig" [nzValue]="i" [nzLabel]="i">
+        {{ i }}
+      </nz-auto-option>
+    </nz-autocomplete>
+  </div>
+</ng-template>
+
+<ng-template #amountTpl let-item="amount" let-id="id">
+  <p *ngIf="!editCache[id].edit">{{ editCache[id].display.amount }}</p>
+  <div *ngIf="editCache[id].edit">
+    <input nz-input [(ngModel)]="editCache[id].display.amount" [nzAutocomplete]="auto" />
+    <nz-autocomplete #auto>
+      <nz-auto-option *ngFor="let i of editCache[id].amountConfig" [nzValue]="i" [nzLabel]="i">
+        {{ i }}
+      </nz-auto-option>
+    </nz-autocomplete>
+  </div>
+</ng-template>
+
+<ng-template #intervalTpl let-item="interval" let-id="id">
+  <p *ngIf="!editCache[id].edit">{{ editCache[id].display.interval }}</p>
+  <div *ngIf="editCache[id].edit">
+    <input nz-input [(ngModel)]="editCache[id].display.interval" [nzAutocomplete]="auto" />
+    <nz-autocomplete #auto>
+      <nz-auto-option *ngFor="let i of editCache[id].intervalConfig" [nzValue]="i" [nzLabel]="i">
+        {{ i }}
+      </nz-auto-option>
+    </nz-autocomplete>
+  </div>
+</ng-template>
+
+<ng-template #actionTpl let-id="id">
+  <a *ngIf="!editCache[id].edit" (click)="startEdit(id)">Edit</a>
+  <div *ngIf="editCache[id].edit">
+    <a (click)="saveEdit(id)" class="save">Save</a>
+    <nz-divider nzType="vertical"></nz-divider>
+    <a nz-popconfirm nzPopconfirmTitle="Sure to cancel?" (nzOnConfirm)="cancelEdit(id)">Cancel</a>
+  </div>
+</ng-template>

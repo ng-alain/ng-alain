@@ -2,13 +2,16 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { SettingsService, User } from '@delon/theme';
+import { Store } from '@ngxs/store';
+import { SocialAuthService } from 'angularx-social-login';
+import { Logout } from 'src/app/core/store/global.action';
 
 @Component({
   selector: 'header-user',
   template: `
     <div class="alain-default__nav-item d-flex align-items-center px-sm" nz-dropdown nzPlacement="bottomRight" [nzDropdownMenu]="userMenu">
       <nz-avatar [nzSrc]="user.avatar" nzSize="small" class="mr-sm"></nz-avatar>
-      {{ user.name }}
+      {{ user['username'] }}
     </div>
     <nz-dropdown-menu #userMenu="nzDropdownMenu">
       <div nz-menu class="width-sm">
@@ -39,9 +42,17 @@ export class HeaderUserComponent {
     return this.settings.user;
   }
 
-  constructor(private settings: SettingsService, private router: Router, @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService) {}
+  constructor(
+    private socialAuthService: SocialAuthService,
+    private settings: SettingsService,
+    private router: Router,
+    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
+    private store: Store
+  ) {}
 
   logout(): void {
+    this.socialAuthService.signOut();
+    this.store.dispatch(new Logout());
     this.tokenService.clear();
     this.router.navigateByUrl(this.tokenService.login_url!);
   }

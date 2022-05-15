@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-alain": {
+    "dmm-admin": {
       "projectType": "application",
       "root": "",
       "sourceRoot": "src",
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
+            "outputPath": "dist/dmm-admin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
@@ -55,7 +55,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "deployUrl": "/admin/",
+              "baseHref": "/admin/"
             },
             "development": {
               "buildOptimizer": false,
@@ -71,15 +73,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-alain:build",
+            "browserTarget": "dmm-admin:build",
             "proxyConfig": "proxy.conf.js"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-alain:build:production"
+              "browserTarget": "dmm-admin:build:production"
             },
             "development": {
-              "browserTarget": "ng-alain:build:development"
+              "browserTarget": "dmm-admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +89,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-alain:build"
+            "browserTarget": "dmm-admin:build"
           }
         },
         "test": {
@@ -123,7 +125,7 @@
       }
     }
   },
-  "defaultProject": "ng-alain",
+  "defaultProject": "dmm-admin",
   "cli": {
     "packageManager": "yarn"
   }
