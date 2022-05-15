@@ -1,20 +1,40 @@
-<div class="mb-md" nz-row nzJustify="end">
-  <button nz-col (click)="st.addRow({ cp: 'Bitflyer', symbol: 'XRP', amount: '0' })" nz-button>Add Balance Adjustment</button>
-</div>
-<st #st [data]="balance" [columns]="bColumns">
-  <ng-template st-row="symbolTpl" let-item let-index="index">
-    <select *ngIf="item.edit" nz-input [ngModel]="item.symbol" (ngModelChange)="st.setRow(index, { symbol: $event })">
-      <option value="BTC">BTC</option>
-      <option value="ETH">ETH</option>
-      <option value="XRP">XRP</option>
-    </select>
-    <ng-container *ngIf="!item.edit">{{ item.symbol }}</ng-container>
-  </ng-template>
-  <ng-template st-row="amountTpl" let-item let-index="index">
-    <select *ngIf="item.edit" [ngModel]="item.amount.toLocaleString()" (ngModelChange)="st.setRow(index, { amount: $event })">
-      <option value="0">0</option>
-      <option value="50,000,000">50,000,000</option>
-    </select>
-    <ng-container *ngIf="!item.edit">{{ item.amount.toLocaleString() }}</ng-container>
-  </ng-template>
-</st>
+<nz-card [nzBordered]="false">
+  <nz-space nzSize="middle" class="width-100" nzDirection="vertical">
+    <div *nzSpaceItem class="mobile-container">
+      <nz-table #table nzFrontPagination="false" [nzLoading]="loading" (nzQueryParams)="getData()" [nzData]="$balances | async">
+        <thead>
+          <tr>
+            <th nzColumnKey="exchange">CP</th>
+            <th nzColumnKey="symbol">Symbol</th>
+            <th nzColumnKey="bid">Amount</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of table.data; let i = index">
+            <ng-container>
+              <td>{{ data?.exchange }}</td>
+              <td><ng-container *ngTemplateOutlet="symbolTpl; context: { symbol: data?.symbol, id: data?.exchange }"></ng-container></td>
+              <td><ng-container *ngTemplateOutlet="amountTpl; context: { amount: data?.amount, id: data?.exchange }"></ng-container></td>
+              <td><a (click)="getData()">Update</a></td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-space>
+</nz-card>
+
+<ng-template #symbolTpl let-item="symbol" let-id="id">
+  <nz-select
+    *ngIf="editCache[id] && item && item.length > 0"
+    [(ngModel)]="editCache[id].initialSymbol"
+    (ngModelChange)="changeSymbol($event, id)"
+  >
+    <nz-option *ngFor="let i of item" [nzValue]="i" [nzLabel]="i"></nz-option>
+  </nz-select>
+</ng-template>
+
+<ng-template #amountTpl let-item="amount" let-id="id">
+  <p>{{ editCache[id]?.display.amount }}</p>
+</ng-template>

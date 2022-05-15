@@ -1,1 +1,28 @@
-<st class="st-width" #st [widthMode]="{ type: 'strict' }" [data]="exposure" [columns]="eColumns" max-width="80%"></st>
+<nz-card [nzBordered]="false">
+  <nz-space nzSize="middle" class="width-100" nzDirection="vertical">
+    <div *nzSpaceItem class="mobile-container">
+      <nz-table #table nzFrontPagination="false" [nzData]="list">
+        <thead>
+          <tr>
+            <th nzColumnKey="exchange">CP</th>
+            <th nzColumnKey="symbol">JPY</th>
+            <th nzColumnKey="bid">BTC</th>
+            <th nzColumnKey="bid">ETH</th>
+            <th nzColumnKey="bid">XRP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of table.data; let i = index">
+            <ng-container>
+              <td>{{ data?.exchange }}</td>
+              <td>{{ findBalance(data?.values, 'JPY') }}</td>
+              <td>{{ findBalance(data?.values, 'BTC') }}</td>
+              <td>{{ findBalance(data?.values, 'ETH') }}</td>
+              <td>{{ findBalance(data?.values, 'XRP') }}</td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-space>
+</nz-card>

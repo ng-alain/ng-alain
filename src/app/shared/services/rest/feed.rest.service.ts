@@ -15,6 +15,10 @@ export class FeedRestService extends AbstractRestService {
   getOrderHistory(payload: GetOrderHistoryDto) {
     return this.post('/get-order-history', payload).pipe(responseHandler());
   }
+
+  getBalances() {
+    return this.get('/get-balances').pipe(responseHandler());
+  }
 }
 
 export interface GetOrderHistoryDto extends PaginationDto {

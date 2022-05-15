@@ -10,20 +10,6 @@ import commonUtil from 'src/app/shared/utils/common-util';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrderHistoryComponent {
-  orderHistory = [
-    {
-      counterParty: '',
-      orderID: '',
-      orderTime: '',
-      symbol: '',
-      side: '',
-      orderAmount: '',
-      orderPrice: '',
-      orderType: '',
-      orderResult: ''
-    }
-  ];
-
   $orders!: Observable<any>;
   loading = false;
 

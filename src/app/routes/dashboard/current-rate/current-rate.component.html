@@ -1,1 +1,17 @@
-<st class="st-width" #st [widthMode]="{ type: 'strict' }" [data]="currentRate" [columns]="crColumns"></st>
+<nz-card [nzBordered]="false">
+  <nz-space nzSize="middle" class="width-100" nzDirection="vertical">
+    <div *nzSpaceItem class="mobile-container">
+      <nz-table #table nzFrontPagination="false" [nzData]="list">
+        <tbody>
+          <tr *ngFor="let data of table.data; let i = index">
+            <ng-container>
+              <td>{{ data?.symbol }}</td>
+              <td>{{ data?.bid }}</td>
+              <td>{{ data?.ask }}</td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-space>
+</nz-card>

@@ -1,32 +1,16 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
+import { environment } from '@env/environment';
+import { catchError } from 'rxjs';
+import { SseService } from 'src/app/shared/services/sse.service';
 
 @Component({
   selector: 'app-current-rate',
-  templateUrl: './current-rate.component.html'
+  templateUrl: './current-rate.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CurrentRateComponent {
-  currentRate = [
-    {
-      Currency: 'BTCJPY',
-      RateLow: 4500000,
-      RateHigh: 4550000
-    },
-    {
-      Currency: 'ETHJPY',
-      RateLow: 4500000,
-      RateHigh: 4550000
-    },
-    {
-      Currency: 'ETHJPY',
-      RateLow: 4500000,
-      RateHigh: 4550000
-    }
-  ];
-  crColumns: STColumn[] = [
-    { title: 'Currency', index: 'Currency' },
-    { title: 'Low', index: 'RateLow', type: 'currency' },
-    { title: 'High', index: 'RateHigh', type: 'currency' }
-  ];
-  constructor() {}
+  @Input() list = [];
+
+  constructor(private sseService: SseService, private cdr: ChangeDetectorRef) {}
 }

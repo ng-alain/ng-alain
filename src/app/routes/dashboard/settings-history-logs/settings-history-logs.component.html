@@ -1,6 +1,3 @@
 <g2-card class="history-logs" contentHeight="100%">
-  <p class="history-logs">YYYYMMDD HH:MM:SSS Bitflyer changed to non-tradeable.</p>
-  <p class="history-logs">YYYYMMDD HH:MM:SSS Bitflyer changed to tradeable.</p>
-  <p>YYYYMMDD HH:MM:SSS Bid Spread Points of Bitcoin for Bitflyer changed to 100.</p>
-  <p>YYYYMMDD HH:MM:SSS Bid Spread Points of Bitcoin for Bitflyer was deleted.</p>
+  <p *ngFor="let log of list">{{ log?.time | date: 'YYYYMMDD HH:MM:SSS' }} {{ log?.content }}</p>
 </g2-card>
