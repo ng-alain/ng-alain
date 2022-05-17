@@ -29,24 +29,24 @@ interface LangConfigData {
   delon: NzSafeAny;
 }
 
-const DEFAULT = 'zh-CN';
+const DEFAULT = 'en-US';
 const LANGS: { [key: string]: LangConfigData } = {
-  'zh-CN': {
-    text: '简体中文',
-    ng: ngZh,
-    zorro: zorroZhCN,
-    date: dfZhCn,
-    delon: delonZhCn,
-    abbr: '🇨🇳'
-  },
-  'zh-TW': {
-    text: '繁体中文',
-    ng: ngZhTw,
-    zorro: zorroZhTW,
-    date: dfZhTw,
-    delon: delonZhTw,
-    abbr: '🇭🇰'
-  },
+  // 'zh-CN': {
+  //   text: '简体中文',
+  //   ng: ngZh,
+  //   zorro: zorroZhCN,
+  //   date: dfZhCn,
+  //   delon: delonZhCn,
+  //   abbr: '🇨🇳'
+  // },
+  // 'zh-TW': {
+  //   text: '繁体中文',
+  //   ng: ngZhTw,
+  //   zorro: zorroZhTW,
+  //   date: dfZhTw,
+  //   delon: delonZhTw,
+  //   abbr: '🇭🇰'
+  // },
   'en-US': {
     text: 'English',
     ng: ngEn,

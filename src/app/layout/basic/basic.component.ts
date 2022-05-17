@@ -8,6 +8,11 @@ import { environment } from '@env/environment';
   selector: 'layout-basic',
   template: `
     <layout-default [options]="options" [content]="contentTpl" [customError]="null">
+      <layout-default-header-item direction="left">
+        <div layout-default-header-item-trigger (click)="searchToggleStatus = !searchToggleStatus">
+          <div class="app-header">Order Bot</div>
+        </div>
+      </layout-default-header-item>
       <layout-default-header-item direction="right">
         <header-user></header-user>
       </layout-default-header-item>
@@ -23,17 +28,20 @@ import { environment } from '@env/environment';
       </ng-template>
     </layout-default>
 
-    <setting-drawer *ngIf="showSettingDrawer"></setting-drawer>
+    <!-- <setting-drawer *ngIf="showSettingDrawer"></setting-drawer> -->
     <!-- <theme-btn></theme-btn> -->
   `
 })
 export class LayoutBasicComponent {
   options: LayoutDefaultOptions = {
-    logoExpanded: `./assets/logo-full.svg`,
-    logoCollapsed: `./assets/logo.svg`
+    // logoExpanded: `./assets/logo-full.svg`,
+    // logoCollapsed: `./assets/logo.svg`
+    logoFixWidth: 0
+    // logoExpanded: ``,
+    // logoCollapsed: ``
   };
   searchToggleStatus = false;
-  showSettingDrawer = !environment.production;
+  // showSettingDrawer = !environment.production;
   get user(): User {
     return this.settings.user;
   }
