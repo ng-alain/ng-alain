@@ -1,4 +1,4 @@
-<nz-card [nzBordered]="false">
+<nz-card class="st-width" [nzBordered]="false">
   <nz-space nzSize="middle" class="width-100" nzDirection="vertical">
     <div *nzSpaceItem class="mobile-container">
       <nz-table #table nzFrontPagination="false" [nzLoading]="loading" (nzQueryParams)="getData()" [nzData]="$findExchangeSetting | async">

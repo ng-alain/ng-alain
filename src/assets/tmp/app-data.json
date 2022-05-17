@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Crypto Bot",
+    "name": "Order Bot",
     "description": "A Crypto Trading Bot Web Application"
   },
   "user": {
@@ -10,8 +10,8 @@
   },
   "menu": [
     {
-      "text": "Dashboard",
-      "i18n": "menu.dashboard",
+      "text": "",
+      "i18n": "",
       "group": true,
       "hideInBreadcrumb": true,
       "children": [
