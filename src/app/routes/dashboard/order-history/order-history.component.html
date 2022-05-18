@@ -1,6 +1,6 @@
 <div class="mb-md st-width" nz-row nzJustify="end">
   <button nz-col nz-button (click)="reset()">Update</button>
-  <button nz-col nz-button>Current Date</button>
+  <button nz-col nz-button (click)="export()" [disabled]="exportData.length === 0">Current Date</button>
 </div>
 <nz-card [nzBordered]="false">
   <nz-space nzSize="middle" class="width-100" nzDirection="vertical">

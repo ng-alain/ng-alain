@@ -46,13 +46,24 @@ export class BalanceAdjustmentComponent {
     this.listOfData.forEach(item => {
       const iitem = commonUtil.deepCopy(item);
 
-      this.editCache[iitem.exchange] = {
-        initialSymbol: iitem.symbol[0],
-        data: { ...iitem },
-        display: {
-          amount: iitem.amount[0]
-        }
-      };
+      if (this.editCache[iitem.exchange] != null) {
+        const index = iitem.symbol.findIndex((x: string) => x === this.editCache[iitem.exchange].initialSymbol);
+        this.editCache[iitem.exchange] = {
+          initialSymbol: this.editCache[iitem.exchange].initialSymbol,
+          data: { ...iitem },
+          display: {
+            amount: iitem.amount[index]
+          }
+        };
+      } else {
+        this.editCache[iitem.exchange] = {
+          initialSymbol: iitem.symbol[0],
+          data: { ...iitem },
+          display: {
+            amount: iitem.amount[0]
+          }
+        };
+      }
     });
   }
 

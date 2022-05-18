@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
 import { finalize, map, Observable } from 'rxjs';
+import { DateConstant } from 'src/app/shared/constants/date.constant';
+import { DateFormatPipe } from 'src/app/shared/pipes/date-format.pipe';
+import { ExportService } from 'src/app/shared/services/export.service';
 import { FeedRestService } from 'src/app/shared/services/rest/feed.rest.service';
 import commonUtil from 'src/app/shared/utils/common-util';
 
@@ -14,13 +17,21 @@ export class OrderHistoryComponent {
   loading = false;
 
   // table props
+  DATE = DateConstant;
   total = 0;
   pageIndex = 1;
   pageSize = 100;
   criteriaStored = undefined;
   data = [];
 
-  constructor(private feedRestService: FeedRestService, private cdr: ChangeDetectorRef) {}
+  exportData = [];
+
+  constructor(
+    private feedRestService: FeedRestService,
+    private cdr: ChangeDetectorRef,
+    private datePipe: DateFormatPipe,
+    private exportService: ExportService
+  ) {}
 
   getData($criteria?: any): void {
     this.criteriaStored = $criteria;
@@ -38,10 +49,43 @@ export class OrderHistoryComponent {
         this.cdr.detectChanges();
       })
     );
+
+    this.feedRestService
+      .getOrderHistory({
+        orderBy: 'createdDate',
+        orderSequence: -1
+      })
+      .pipe(
+        map(res => {
+          this.exportData = res.data;
+        }),
+        finalize(() => {
+          this.cdr.detectChanges();
+        })
+      )
+      .subscribe();
   }
 
   reset(): void {
     this.getData();
+  }
+
+  export(): void {
+    const data: any[] = [];
+    this.exportData.forEach((d: any) => {
+      // Remove unncessary things
+      delete d.updatedBy;
+      delete d.updatedDate;
+      delete d.createdBy;
+
+      data.push({
+        ...d,
+        orderTime: this.datePipe.transform(d.orderTime, 'dd/MM/yyyy HH:mm:ss'),
+        createdDate: this.datePipe.transform(d.createdDate, this.DATE.CURRENT_DATE_TIME_FORMAT),
+        orderResult: d.orderResult === 'C' ? 'Matched' : d.orderResult === 'P' ? 'Pending for confirmation' : 'Not matched'
+      });
+    });
+    this.exportService.exportToCsv(data, `order_history`);
   }
 
   private criteria($criteria: any = { pageIndex: 1, pageSize: 10, sort: [] }) {

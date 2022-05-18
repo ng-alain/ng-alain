@@ -1,3 +1,8 @@
-<g2-card class="history-logs" contentHeight="100%">
-  <p *ngFor="let log of list">{{ log?.time | date: 'YYYYMMDD HH:MM:SSS' }} {{ log?.content }}</p>
+<g2-card class="history-logs">
+  <div style="max-height: 500px; overflow-y: scroll">
+    <p *ngFor="let log of list"
+      >{{ log?.timestamp | date: 'YYYYMMdd HH:MM:SSS' }} <b>{{ log?.content }}</b> by
+      <span style="font-style: italic">{{ log?.user?.emailAddress }}</span></p
+    >
+  </div>
 </g2-card>

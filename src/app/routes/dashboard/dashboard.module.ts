@@ -18,6 +18,7 @@ import { TrendModule } from '@delon/chart/trend';
 import { G2WaterWaveModule } from '@delon/chart/water-wave';
 import { SharedModule } from '@shared';
 import { CountdownModule } from 'ngx-countdown';
+import { DateFormatPipe } from 'src/app/shared/pipes/date-format.pipe';
 
 import { BalanceAdjustmentComponent } from './balance-adjustment/balance-adjustment.component';
 import { CurrentRateComponent } from './current-rate/current-rate.component';
@@ -61,6 +62,7 @@ const COMPONENTS = [
     // QuickMenuModule,
     // OnboardingModule
   ],
-  declarations: [...COMPONENTS]
+  declarations: [...COMPONENTS],
+  providers: [DateFormatPipe]
 })
 export class DashboardModule {}

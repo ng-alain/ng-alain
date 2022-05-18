@@ -51,9 +51,11 @@ export class HeaderUserComponent {
   ) {}
 
   logout(): void {
-    this.socialAuthService.signOut();
-    this.store.dispatch(new Logout());
-    this.tokenService.clear();
-    this.router.navigateByUrl(this.tokenService.login_url!);
+    this.socialAuthService.signOut().then(() => {
+      this.tokenService.clear();
+      this.store.dispatch(new Logout()).subscribe(() => {
+        this.router.navigateByUrl(this.tokenService.login_url!);
+      });
+    });
   }
 }

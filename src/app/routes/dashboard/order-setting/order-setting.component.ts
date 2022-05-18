@@ -8,6 +8,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { delay, finalize, forkJoin, map, Observable, of, tap } from 'rxjs';
+import { EventConstant } from 'src/app/shared/constants/event.constant';
+import { EventService } from 'src/app/shared/services/event.service';
 import { SettingRestService } from 'src/app/shared/services/rest/setting.rest.service';
 import commonUtil from 'src/app/shared/utils/common-util';
 
@@ -48,13 +50,13 @@ export class OrderSettingComponent {
   @ViewChild('st') private st!: STComponent;
   constructor(
     private msg: NzMessageService,
-    private http: HttpClient,
     public _router: Router,
     public _location: Location,
     private cdr: ChangeDetectorRef,
     private settingRestService: SettingRestService,
     private modalSrv: NzModalService,
-    private notificationService: NzNotificationService
+    private notificationService: NzNotificationService,
+    private eventService: EventService
   ) {}
 
   getData(): void {
@@ -164,6 +166,8 @@ export class OrderSettingComponent {
               this.editCache[id].edit = false;
               this.loading = true;
               this.getData();
+
+              this.eventService.publish(EventConstant.UPDATE_HISTORY_LOGS, null);
             })
           )
           .subscribe();
@@ -182,18 +186,35 @@ export class OrderSettingComponent {
 
   updateEditCache(): void {
     this.listOfData.forEach(item => {
-      this.editCache[item.id] = {
-        edit: false,
-        initialSymbol: item.symbol[0],
-        data: { ...item },
-        display: {
-          status: item.status,
-          bid: item.bid[0],
-          ask: item.ask[0],
-          amount: item.amount[0],
-          interval: item.interval[0]
-        }
-      };
+      if (this.editCache[item.id] != null) {
+        const index = item.symbol.findIndex(x => x === this.editCache[item.id].initialSymbol);
+
+        this.editCache[item.id] = {
+          edit: false,
+          initialSymbol: this.editCache[item.id].initialSymbol,
+          data: { ...item },
+          display: {
+            status: item.status,
+            bid: item.bid[index],
+            ask: item.ask[index],
+            amount: item.amount[index],
+            interval: item.interval[index]
+          }
+        };
+      } else {
+        this.editCache[item.id] = {
+          edit: false,
+          initialSymbol: item.symbol[0],
+          data: { ...item },
+          display: {
+            status: item.status,
+            bid: item.bid[0],
+            ask: item.ask[0],
+            amount: item.amount[0],
+            interval: item.interval[0]
+          }
+        };
+      }
     });
   }
 

@@ -1,16 +1,18 @@
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DelonACLModule } from '@delon/acl';
 import { DelonFormModule } from '@delon/form';
-import { AlainThemeModule } from '@delon/theme';
+import { AlainThemeModule, DatePipe } from '@delon/theme';
 
 import { CurrencyPipe } from './pipes/currency.pipe';
 import { DashNullPipe } from './pipes/dash-null.pipe';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { MinutePipe } from './pipes/minute.pipe';
 import { MonthPipe } from './pipes/month.pipe';
+import { EventService } from './services/event.service';
+import { ExportService } from './services/export.service';
 import { SseService } from './services/sse.service';
 import { SHARED_DELON_MODULES } from './shared-delon.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
@@ -27,7 +29,7 @@ const DIRECTIVES: Array<Type<void>> = [];
 const PIPES: Array<Type<any>> = [DateFormatPipe, DashNullPipe, MinutePipe, MonthPipe, CurrencyPipe];
 // #endregion
 
-const SERVICES: Array<Type<any>> = [SseService, DatePipe];
+const SERVICES: Array<Type<any>> = [SseService, DatePipe, EventService, ExportService];
 // #endregion
 
 @NgModule({
