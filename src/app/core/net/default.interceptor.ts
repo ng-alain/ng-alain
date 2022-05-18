@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { ALAIN_I18N_TOKEN, _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
+import { SocialAuthService } from 'angularx-social-login';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, filter, mergeMap, switchMap, take } from 'rxjs/operators';
@@ -63,7 +64,14 @@ export class DefaultInterceptor implements HttpInterceptor {
   }
 
   private goTo(url: string): void {
-    setTimeout(() => this.injector.get(Router).navigateByUrl(url));
+    setTimeout(() => {
+      this.injector
+        .get(SocialAuthService)
+        .signOut()
+        .finally(() => {
+          this.injector.get(Router).navigateByUrl(url);
+        });
+    });
   }
 
   private checkStatus(ev: HttpResponseBase): void {
@@ -173,6 +181,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     } else {
       this.notification.error(`Your login session is expired. Please login again.`, ``);
     }
+    console.log(this.tokenSrv.login_url);
     this.goTo(this.tokenSrv.login_url!);
   }
 

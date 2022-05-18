@@ -47,6 +47,6 @@ export class LayoutBasicComponent {
   }
 
   constructor(private settings: SettingsService, private route: ActivatedRoute) {
-    this.route.data.subscribe(params => console.log(params));
+    // this.route.data.subscribe(params => console.log(params));
   }
 }

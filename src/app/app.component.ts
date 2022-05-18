@@ -5,9 +5,10 @@ import { TitleService, VERSION as VERSION_ALAIN } from '@delon/theme';
 import { environment } from '@env/environment';
 import { Store } from '@ngxs/store';
 import { UserIdleService } from 'angular-user-idle';
+import { SocialAuthService } from 'angularx-social-login';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { VERSION as VERSION_ZORRO } from 'ng-zorro-antd/version';
-import { Subscription } from 'rxjs';
+import { finalize, Subscription, tap } from 'rxjs';
 
 import { AppConstant } from './app.constant';
 import { I18NService } from './core/i18n/i18n.service';
@@ -41,6 +42,7 @@ export class AppComponent implements OnInit {
     private userIdle: UserIdleService,
     private i18nService: I18NService,
     private store: Store,
+    private socialAuthService: SocialAuthService,
     @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService
   ) {
     renderer.setAttribute(el.nativeElement, 'ng-alain-version', VERSION_ALAIN.full);
@@ -117,14 +119,26 @@ export class AppComponent implements OnInit {
 
   logout() {
     new Promise(() => {
-      this.store.dispatch(new Logout());
-      this.tokenService.clear();
-      this.router.navigateByUrl(this.tokenService.login_url!).then();
-      // Stop watching
-      this.userIdle.stopTimer();
-      this.userIdle.stopWatching();
-      this.$timer.unsubscribe();
-      this.isModalOpened = false;
-    }).then();
+      this.socialAuthService
+        .signOut()
+        .then(() => {
+          this.store
+            .dispatch(new Logout())
+            .pipe(
+              finalize(() => {
+                // Stop watching
+                this.userIdle.stopTimer();
+                this.userIdle.stopWatching();
+                this.$timer.unsubscribe();
+                this.isModalOpened = false;
+              })
+            )
+            .subscribe(() => {
+              this.tokenService.clear();
+              this.router.navigateByUrl(this.tokenService.login_url!).then();
+            });
+        })
+        .then();
+    });
   }
 }

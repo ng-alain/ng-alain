@@ -51,7 +51,6 @@ export class StartupService {
         this.settingService.setApp(appData.app);
         // 用户信息：包括姓名、头像、邮箱地址
         const user = this.store.selectSnapshot(GlobalState.getUser);
-        console.log(user);
         this.settingService.setUser(user);
         // ACL：设置权限为全量
         this.aclService.setFull(true);
