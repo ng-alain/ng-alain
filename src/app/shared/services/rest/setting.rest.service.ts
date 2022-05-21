@@ -22,10 +22,23 @@ export class SettingRestService extends AbstractRestService {
   updateExchangeSetting(payload: ExchangeSetting) {
     return this.post(`/update-exchange-setting`, payload).pipe(responseHandler());
   }
+
+  updateSiteSetting(payload: SiteSetting) {
+    return this.put(`/update-site-setting`, payload).pipe(responseHandler());
+  }
 }
 
 interface ExchangeSetting {
   exchangeId?: number;
   status?: string;
   values?: string;
+}
+
+interface SiteSetting {
+  details?: [
+    {
+      key?: string;
+      value?: string;
+    }
+  ];
 }
