@@ -22,6 +22,20 @@
           "icon": "anticon-dashboard"
         }
       ]
+    },
+    {
+      "text": "",
+      "i18n": "",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "Dropdown Setting",
+          "i18n": "menu.dropdown.dropdown-setting",
+          "link": "/dropdown/dropdown-setting",
+          "icon": "anticon-setting"
+        }
+      ]
     }
   ]
 }
