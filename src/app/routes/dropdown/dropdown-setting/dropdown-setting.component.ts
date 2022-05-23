@@ -22,12 +22,10 @@ interface UpdatedValues {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownSettingComponent implements OnInit {
-  loading = false;
-
   listOfData: UpdatedValues[] = [];
-
   dropdownSetting: any;
   initialData: {} = {};
+  loading = false;
 
   optionsCP: Array<{ value: string; label: string }> = [];
   optionsSymbol: Array<{ value: string; label: string }> = [];
@@ -146,6 +144,8 @@ export class DropdownSettingComponent implements OnInit {
       let updatedData: any = {};
       updatedData = { ...this.initialData };
 
+      this.loading = true;
+
       const callback = () => {
         const key: any = this.listOfData[this.selectedCP - 1]?.exchange;
         const symbolIndex = this.optionsSymbol.map(item => item.value).indexOf(this.selectedSymbol);
@@ -158,7 +158,6 @@ export class DropdownSettingComponent implements OnInit {
           interval: this.selectedIntervals
         };
 
-        this.loading = true;
         this.settingRestService
           .updateSiteSetting({
             details: [
@@ -175,7 +174,6 @@ export class DropdownSettingComponent implements OnInit {
               }
             }),
             finalize(() => {
-              this.loading = false;
               this.clearInput();
               this.getData();
             })
@@ -189,7 +187,8 @@ export class DropdownSettingComponent implements OnInit {
         nzCancelDisabled: false,
         nzOkText: 'Confirm',
         nzCancelText: 'Cancel',
-        nzOnOk: () => callback()
+        nzOnOk: () => callback(),
+        nzOnCancel: () => this.getData()
       });
     }
   }
