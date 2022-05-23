@@ -174,6 +174,7 @@ export class DropdownSettingComponent implements OnInit {
               }
             }),
             finalize(() => {
+              this.loading = false;
               this.clearInput();
               this.getData();
             })
@@ -188,7 +189,10 @@ export class DropdownSettingComponent implements OnInit {
         nzOkText: 'Confirm',
         nzCancelText: 'Cancel',
         nzOnOk: () => callback(),
-        nzOnCancel: () => this.getData()
+        nzOnCancel: () => {
+          this.clearInput();
+          this.getData();
+        }
       });
     }
   }

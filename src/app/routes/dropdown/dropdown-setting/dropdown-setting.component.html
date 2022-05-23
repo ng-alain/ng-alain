@@ -1,105 +1,107 @@
 <div class="alain-default__content-title">
   <h1>Dropdown Setting</h1>
 </div>
-<nz-card class="st-width" [nzBordered]="false">
-  <nz-space nzSize="middle" class="width-100" nzDirection="vertical">
-    <div *nzSpaceItem class="mobile-container">
-      <form nz-form [nzLayout]="'vertical'">
-        <h3 class="label">Update dropdown setting options</h3><br />
-        <nz-form-item>
-          <nz-form-label>CP&nbsp;<span class="label">&nbsp;(Select an exchange)</span></nz-form-label>
-          <nz-form-control>
-            <nz-select
-              nzAllowClear
-              nzShowSearch
-              nzPlaceholder="Exchange"
-              [(ngModel)]="selectedCP"
-              [ngModelOptions]="{ standalone: true }"
-              (ngModelChange)="cpChange($event)"
-            >
-              <nz-option
-                *ngFor="let e of listOfData"
-                [nzValue]="e.id"
-                [nzLabel]="e.exchange.charAt(0).toUpperCase() + e.exchange.slice(1)"
-              ></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label>Symbol&nbsp;<span class="label">&nbsp;(Select a currency)</span></nz-form-label>
-          <nz-form-control>
-            <nz-select
-              nzPlaceholder="Symbol"
-              [(ngModel)]="selectedSymbol"
-              [ngModelOptions]="{ standalone: true }"
-              [nzOptions]="optionsSymbol"
-              (ngModelChange)="symbolChange($event)"
-            >
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label>Bid&nbsp;<span class="label">&nbsp;(Multiple inputs allowed)</span></nz-form-label>
-          <nz-form-control>
-            <nz-select
-              nzPlaceholder="Bid"
-              [(ngModel)]="selectedBids"
-              [ngModelOptions]="{ standalone: true }"
-              [nzOptions]="optionsBid"
-              nzMode="tags"
-              [nzTokenSeparators]="[',']"
-            >
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label>Ask&nbsp;<span class="label">&nbsp;(Multiple inputs allowed)</span></nz-form-label>
-          <nz-form-control>
-            <nz-select
-              nzPlaceholder="Ask"
-              [(ngModel)]="selectedAsks"
-              [ngModelOptions]="{ standalone: true }"
-              [nzOptions]="optionsAsk"
-              nzMode="tags"
-              [nzTokenSeparators]="[',']"
-            >
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label>Amount&nbsp;<span class="label">&nbsp;(Multiple inputs allowed)</span></nz-form-label>
-          <nz-form-control>
-            <nz-select
-              nzPlaceholder="Amount"
-              [(ngModel)]="selectedAmounts"
-              [ngModelOptions]="{ standalone: true }"
-              [nzOptions]="optionsAmount"
-              nzMode="tags"
-              [nzTokenSeparators]="[',']"
-            >
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label>Interval&nbsp;<span class="label">&nbsp;(Multiple inputs allowed)</span></nz-form-label>
-          <nz-form-control>
-            <nz-select
-              nzPlaceholder="Interval"
-              [(ngModel)]="selectedIntervals"
-              [ngModelOptions]="{ standalone: true }"
-              [nzOptions]="optionsInterval"
-              nzMode="tags"
-              [nzTokenSeparators]="[',']"
-            >
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-control class="right">
-            <button nz-button nzType="primary" (click)="updateDropdown()" [nzLoading]="loading">Update</button>
-          </nz-form-control>
-        </nz-form-item>
-      </form>
-    </div>
-  </nz-space>
-</nz-card>
+<nz-spin [nzSpinning]="loading">
+  <nz-card class="st-width" [nzBordered]="false">
+    <nz-space nzSize="middle" class="width-100" nzDirection="vertical">
+      <div *nzSpaceItem class="mobile-container">
+        <form nz-form [nzLayout]="'vertical'">
+          <h3 class="label">Update dropdown setting options</h3><br />
+          <nz-form-item>
+            <nz-form-label>CP&nbsp;<span class="label">&nbsp;(Select an exchange)</span></nz-form-label>
+            <nz-form-control>
+              <nz-select
+                nzAllowClear
+                nzShowSearch
+                nzPlaceholder="Exchange"
+                [(ngModel)]="selectedCP"
+                [ngModelOptions]="{ standalone: true }"
+                (ngModelChange)="cpChange($event)"
+              >
+                <nz-option
+                  *ngFor="let e of listOfData"
+                  [nzValue]="e.id"
+                  [nzLabel]="e.exchange.charAt(0).toUpperCase() + e.exchange.slice(1)"
+                ></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label>Symbol&nbsp;<span class="label">&nbsp;(Select a currency)</span></nz-form-label>
+            <nz-form-control>
+              <nz-select
+                nzPlaceholder="Symbol"
+                [(ngModel)]="selectedSymbol"
+                [ngModelOptions]="{ standalone: true }"
+                [nzOptions]="optionsSymbol"
+                (ngModelChange)="symbolChange($event)"
+              >
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label>Bid&nbsp;<span class="label">&nbsp;(Multiple inputs allowed)</span></nz-form-label>
+            <nz-form-control>
+              <nz-select
+                nzPlaceholder="Bid"
+                [(ngModel)]="selectedBids"
+                [ngModelOptions]="{ standalone: true }"
+                [nzOptions]="optionsBid"
+                nzMode="tags"
+                [nzTokenSeparators]="[',']"
+              >
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label>Ask&nbsp;<span class="label">&nbsp;(Multiple inputs allowed)</span></nz-form-label>
+            <nz-form-control>
+              <nz-select
+                nzPlaceholder="Ask"
+                [(ngModel)]="selectedAsks"
+                [ngModelOptions]="{ standalone: true }"
+                [nzOptions]="optionsAsk"
+                nzMode="tags"
+                [nzTokenSeparators]="[',']"
+              >
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label>Amount&nbsp;<span class="label">&nbsp;(Multiple inputs allowed)</span></nz-form-label>
+            <nz-form-control>
+              <nz-select
+                nzPlaceholder="Amount"
+                [(ngModel)]="selectedAmounts"
+                [ngModelOptions]="{ standalone: true }"
+                [nzOptions]="optionsAmount"
+                nzMode="tags"
+                [nzTokenSeparators]="[',']"
+              >
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label>Interval&nbsp;<span class="label">&nbsp;(Multiple inputs allowed)</span></nz-form-label>
+            <nz-form-control>
+              <nz-select
+                nzPlaceholder="Interval"
+                [(ngModel)]="selectedIntervals"
+                [ngModelOptions]="{ standalone: true }"
+                [nzOptions]="optionsInterval"
+                nzMode="tags"
+                [nzTokenSeparators]="[',']"
+              >
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control class="right">
+              <button nz-button nzType="primary" (click)="updateDropdown()" [nzLoading]="loading">Update</button>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+    </nz-space>
+  </nz-card>
+</nz-spin>
