@@ -18,12 +18,6 @@ import { environment } from '@env/environment';
       </layout-default-header-item>
 
       <ng-template #contentTpl>
-        <div class="alain-default__content-title">
-          <h1>
-            Dashboard
-            <!-- <small>Logged in with: {{ user_email }}</small> -->
-          </h1>
-        </div>
         <router-outlet></router-outlet>
       </ng-template>
     </layout-default>
@@ -37,8 +31,6 @@ export class LayoutBasicComponent {
     // logoExpanded: `./assets/logo-full.svg`,
     // logoCollapsed: `./assets/logo.svg`
     logoFixWidth: 0
-    // logoExpanded: ``,
-    // logoCollapsed: ``
   };
   searchToggleStatus = false;
   // showSettingDrawer = !environment.production;

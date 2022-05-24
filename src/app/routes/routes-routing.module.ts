@@ -28,7 +28,8 @@ const routes: Routes = [
             breadcrumbI18nKey: 'menu.dashboard'
           }
         }
-      }
+      },
+      { path: 'dropdown', loadChildren: () => import('./dropdown/dropdown.module').then(m => m.DropdownModule) }
     ]
   },
   {
