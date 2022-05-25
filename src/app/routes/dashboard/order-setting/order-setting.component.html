@@ -52,48 +52,36 @@
 <ng-template #bidTpl let-item="bid" let-id="id">
   <p *ngIf="!editCache[id].edit">{{ editCache[id].display.bid }}</p>
   <div *ngIf="editCache[id].edit">
-    <input nz-input [(ngModel)]="editCache[id].display.bid" [nzAutocomplete]="auto" />
-    <nz-autocomplete #auto>
-      <nz-auto-option *ngFor="let i of editCache[id].bidConfig" [nzValue]="i" [nzLabel]="i">
-        {{ i }}
-      </nz-auto-option>
-    </nz-autocomplete>
+    <nz-select [(ngModel)]="editCache[id].display.bid">
+      <nz-option *ngFor="let i of editCache[id].bidConfig" [nzValue]="i" [nzLabel]="i">{{ i }}</nz-option>
+    </nz-select>
   </div>
 </ng-template>
 
 <ng-template #askTpl let-item="ask" let-id="id">
   <p *ngIf="!editCache[id].edit">{{ editCache[id].display.ask }}</p>
   <div *ngIf="editCache[id].edit">
-    <input nz-input [(ngModel)]="editCache[id].display.ask" [nzAutocomplete]="auto" />
-    <nz-autocomplete #auto>
-      <nz-auto-option *ngFor="let i of editCache[id].askConfig" [nzValue]="i" [nzLabel]="i">
-        {{ i }}
-      </nz-auto-option>
-    </nz-autocomplete>
+    <nz-select [(ngModel)]="editCache[id].display.ask">
+      <nz-option *ngFor="let i of editCache[id].askConfig" [nzValue]="i" [nzLabel]="i">{{ i }}</nz-option>
+    </nz-select>
   </div>
 </ng-template>
 
 <ng-template #amountTpl let-item="amount" let-id="id">
   <p *ngIf="!editCache[id].edit">{{ editCache[id].display.amount }}</p>
   <div *ngIf="editCache[id].edit">
-    <input nz-input [(ngModel)]="editCache[id].display.amount" [nzAutocomplete]="auto" />
-    <nz-autocomplete #auto>
-      <nz-auto-option *ngFor="let i of editCache[id].amountConfig" [nzValue]="i" [nzLabel]="i">
-        {{ i }}
-      </nz-auto-option>
-    </nz-autocomplete>
+    <nz-select [(ngModel)]="editCache[id].display.amount">
+      <nz-option *ngFor="let i of editCache[id].amountConfig" [nzValue]="i" [nzLabel]="i">{{ i }}</nz-option>
+    </nz-select>
   </div>
 </ng-template>
 
 <ng-template #intervalTpl let-item="interval" let-id="id">
   <p *ngIf="!editCache[id].edit">{{ editCache[id].display.interval }}</p>
   <div *ngIf="editCache[id].edit">
-    <input nz-input [(ngModel)]="editCache[id].display.interval" [nzAutocomplete]="auto" />
-    <nz-autocomplete #auto>
-      <nz-auto-option *ngFor="let i of editCache[id].intervalConfig" [nzValue]="i" [nzLabel]="i">
-        {{ i }}
-      </nz-auto-option>
-    </nz-autocomplete>
+    <nz-select [(ngModel)]="editCache[id].display.interval">
+      <nz-option *ngFor="let i of editCache[id].intervalConfig" [nzValue]="i" [nzLabel]="i">{{ i }}</nz-option>
+    </nz-select>
   </div>
 </ng-template>
 
