@@ -139,22 +139,25 @@ export class DropdownSettingComponent implements OnInit {
   }
 
   updateDropdown() {
+    let inputs: any = [];
+    const validate = /^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/;
+
+    this.selectedBids.map(item => {
+      inputs.push(validate.test(item));
+    });
+    this.selectedAsks.map(item => {
+      inputs.push(validate.test(item));
+    });
+    this.selectedAmounts.map(item => {
+      inputs.push(validate.test(item));
+    });
+    this.selectedIntervals.map(item => {
+      inputs.push(validate.test(item));
+    });
+
     if (this.selectedCP == '' || this.selectedSymbol == '' || this.selectedCP == null || this.selectedSymbol == null) {
       this.notificationService.error('Error', 'All fields are required.');
-    } else if (
-      this.selectedBids.map(item => {
-        /^[0-9]+$/.test(item) == false;
-      }) ||
-      this.selectedAsks.map(item => {
-        /^[0-9]+$/.test(item) == false;
-      }) ||
-      this.selectedAmounts.map(item => {
-        /^[0-9]+$/.test(item) == false;
-      }) ||
-      this.selectedIntervals.map(item => {
-        /^[0-9]+$/.test(item) == false;
-      })
-    ) {
+    } else if (inputs.includes(false)) {
       this.notificationService.error('Error', 'Only number inputs are allowed.');
       this.clearInput();
       this.getData();
