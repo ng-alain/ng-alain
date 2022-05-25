@@ -80,6 +80,7 @@ export class DropdownSettingComponent implements OnInit {
           }
         }),
         finalize(() => {
+          console.log('listOfData: ', this.listOfData);
           this.loading = false;
           this.cdr.detectChanges();
         })
@@ -140,6 +141,23 @@ export class DropdownSettingComponent implements OnInit {
   updateDropdown() {
     if (this.selectedCP == '' || this.selectedSymbol == '' || this.selectedCP == null || this.selectedSymbol == null) {
       this.notificationService.error('Error', 'All fields are required.');
+    } else if (
+      this.selectedBids.map(item => {
+        /^[0-9]+$/.test(item) == false;
+      }) ||
+      this.selectedAsks.map(item => {
+        /^[0-9]+$/.test(item) == false;
+      }) ||
+      this.selectedAmounts.map(item => {
+        /^[0-9]+$/.test(item) == false;
+      }) ||
+      this.selectedIntervals.map(item => {
+        /^[0-9]+$/.test(item) == false;
+      })
+    ) {
+      this.notificationService.error('Error', 'Only number inputs are allowed.');
+      this.clearInput();
+      this.getData();
     } else {
       let updatedData: any = {};
       updatedData = { ...this.initialData };
