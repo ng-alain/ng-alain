@@ -13,8 +13,7 @@ import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { ALAIN_I18N_TOKEN, _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { catchError, filter, mergeMap, switchMap, take } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, throwError, catchError, filter, mergeMap, switchMap, take } from 'rxjs';
 
 const CODEMESSAGE: { [key: number]: string } = {
   200: '服务器成功返回请求的数据。',

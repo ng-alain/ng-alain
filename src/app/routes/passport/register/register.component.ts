@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
 import { MatchControl } from '@delon/util/form';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
-import { finalize } from 'rxjs/operators';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'passport-register',
