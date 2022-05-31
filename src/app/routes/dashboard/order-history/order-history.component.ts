@@ -42,7 +42,11 @@ export class OrderHistoryComponent {
         const { data, total } = res;
         this.total = total;
         this.data = data;
-        return commonUtil.deepCopy(data);
+        if (data) {
+          return commonUtil.deepCopy(data);
+        } else {
+          return data;
+        }
       }),
       finalize(() => {
         this.loading = false;
@@ -57,7 +61,9 @@ export class OrderHistoryComponent {
       })
       .pipe(
         map(res => {
-          this.exportData = res.data;
+          if (res.data) {
+            this.exportData = res.data;
+          }
         }),
         finalize(() => {
           this.cdr.detectChanges();
