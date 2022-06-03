@@ -28,6 +28,8 @@ interface UpdatedValues {
   status: string;
   id: string;
   exchange: string;
+  statusError: string[];
+  errorCount: number[];
 }
 
 @Component({
@@ -91,6 +93,8 @@ export class OrderSettingComponent {
             amount: value.map((x: any) => x.amount),
             interval: value.map((x: any) => x.interval),
             status: i.status,
+            statusError: value.map((x: any) => x.status),
+            errorCount: value.map((x: any) => x.errorCount),
             id: i.id.toString()
           };
           this.listOfData.push(data);
@@ -122,7 +126,9 @@ export class OrderSettingComponent {
         bid: this.listOfData[index].bid[symbolIndex],
         ask: this.listOfData[index].ask[symbolIndex],
         amount: this.listOfData[index].amount[symbolIndex],
-        interval: this.listOfData[index].interval[symbolIndex]
+        interval: this.listOfData[index].interval[symbolIndex],
+        statusError: this.listOfData[index].statusError[symbolIndex],
+        errorCount: this.listOfData[index].errorCount[symbolIndex]
       }
     };
     this.mapConfig(id);
@@ -137,12 +143,18 @@ export class OrderSettingComponent {
         let value = JSON.parse(found.value);
         value = value.map((x: any) => {
           if (x.symbol === this.editCache[id].initialSymbol) {
+            // Update symbol status if changed
+            if (x.status === 'I' && this.editCache[id].display.statusError === 'A') {
+              x.errorCount = 0;
+            }
+
             return {
               ...x,
               bid: this.editCache[id].display.bid,
               ask: this.editCache[id].display.ask,
               amount: this.editCache[id].display.amount,
-              interval: this.editCache[id].display.interval
+              interval: this.editCache[id].display.interval,
+              status: this.editCache[id].display.statusError
             };
           } else {
             return x;
@@ -185,6 +197,7 @@ export class OrderSettingComponent {
   }
 
   updateEditCache(): void {
+    console.log(this.listOfData);
     this.listOfData.forEach(item => {
       if (this.editCache[item.id] != null) {
         const index = item.symbol.findIndex(x => x === this.editCache[item.id].initialSymbol);
@@ -198,7 +211,9 @@ export class OrderSettingComponent {
             bid: item.bid[index],
             ask: item.ask[index],
             amount: item.amount[index],
-            interval: item.interval[index]
+            interval: item.interval[index],
+            statusError: item.statusError[index],
+            errorCount: item.errorCount[index]
           }
         };
       } else {
@@ -211,11 +226,14 @@ export class OrderSettingComponent {
             bid: item.bid[0],
             ask: item.ask[0],
             amount: item.amount[0],
-            interval: item.interval[0]
+            interval: item.interval[0],
+            statusError: item.statusError[0],
+            errorCount: item.errorCount[0]
           }
         };
       }
     });
+    console.log(this.editCache);
   }
 
   changeSymbol(event: any, id: string) {
@@ -227,7 +245,9 @@ export class OrderSettingComponent {
         bid: item.bid[index],
         ask: item.ask[index],
         amount: item.amount[index],
-        interval: item.interval[index]
+        interval: item.interval[index],
+        statusError: item.statusError[index],
+        errorCount: item.errorCount[index]
       };
     }
 
@@ -240,6 +260,16 @@ export class OrderSettingComponent {
         this.editCache[id].display.status = 'I';
       } else {
         this.editCache[id].display.status = 'A';
+      }
+    }
+  }
+
+  updateSymbolStatus(id: string) {
+    if (this.editCache[id].edit) {
+      if (this.editCache[id].display.statusError === 'A') {
+        this.editCache[id].display.statusError = 'I';
+      } else {
+        this.editCache[id].display.statusError = 'A';
       }
     }
   }

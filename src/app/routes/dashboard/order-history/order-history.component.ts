@@ -56,6 +56,8 @@ export class OrderHistoryComponent {
 
     this.feedRestService
       .getOrderHistory({
+        fromDate: this.datePipe.transform(new Date(new Date().getTime() - 24 * 60 * 60 * 1000), DateConstant.BACKEND_INPUT_DATE_FORMAT),
+        toDate: this.datePipe.transform(new Date(), DateConstant.BACKEND_INPUT_DATE_FORMAT),
         orderBy: 'createdDate',
         orderSequence: -1
       })

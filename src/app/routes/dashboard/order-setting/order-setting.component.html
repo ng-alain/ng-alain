@@ -10,6 +10,7 @@
             <th nzColumnKey="ask">Ask</th>
             <th nzColumnKey="amount">Amount</th>
             <th nzColumnKey="interval">Interval</th>
+            <th nzColumnKey="interval">Status</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -22,6 +23,7 @@
               <td><ng-container *ngTemplateOutlet="askTpl; context: { ask: data?.ask, id: data?.id }"></ng-container></td>
               <td><ng-container *ngTemplateOutlet="amountTpl; context: { amount: data?.amount, id: data?.id }"></ng-container></td>
               <td><ng-container *ngTemplateOutlet="intervalTpl; context: { interval: data?.interval, id: data?.id }"></ng-container></td>
+              <td><ng-container *ngTemplateOutlet="statusTpl; context: { id: data?.id }"></ng-container></td>
               <td><ng-container *ngTemplateOutlet="actionTpl; context: { id: data?.id }"></ng-container></td>
             </ng-container>
           </tr>
@@ -83,6 +85,13 @@
       <nz-option *ngFor="let i of editCache[id].intervalConfig" [nzValue]="i" [nzLabel]="i">{{ i }}</nz-option>
     </nz-select>
   </div>
+</ng-template>
+
+<ng-template #statusTpl let-id="id">
+  <button *ngIf="editCache[id].display.statusError === 'A'" nz-button nzType="primary" (click)="updateSymbolStatus(id)">Active</button>
+  <button *ngIf="editCache[id].display.statusError === 'I'" nz-button nzType="primary" nzDanger (click)="updateSymbolStatus(id)"
+    >Inactive</button
+  >
 </ng-template>
 
 <ng-template #actionTpl let-id="id">
