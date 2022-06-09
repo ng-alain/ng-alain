@@ -1,8 +1,9 @@
 const path = require('path');
-const fse = require('fs-extra');
+const fs = require('fs');
+
 
 const packagePath = path.join(__dirname, '../../package.json');
-const json = fse.readJSONSync(packagePath);
+const json = JSON.parse(fs.readFileSync(packagePath).toString('utf8'));
 json['dependencies']['ajv'] = '^8.10.0';
 json['dependencies']['ajv-formats'] = '^2.1.1';
-fse.writeJSONSync(packagePath, json, { spaces: 2 });
+fs.writeFileSync(packagePath, JSON.stringify(json, null, 2));
