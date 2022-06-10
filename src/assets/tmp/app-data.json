@@ -36,6 +36,20 @@
           "icon": "anticon-setting"
         }
       ]
+    },
+    {
+      "text": "",
+      "i18n": "",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "Exchange Setting",
+          "i18n": "menu.exchange.exchange-setting",
+          "link": "/exchange/exchange-setting",
+          "icon": "anticon-api"
+        }
+      ]
     }
   ]
 }

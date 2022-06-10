@@ -54,7 +54,7 @@
 <ng-template #bidTpl let-item="bid" let-id="id">
   <p *ngIf="!editCache[id].edit">{{ editCache[id].display.bid }}</p>
   <div *ngIf="editCache[id].edit">
-    <nz-select [(ngModel)]="editCache[id].display.bid">
+    <nz-select style="width: 100px;" [(ngModel)]="editCache[id].display.bid">
       <nz-option *ngFor="let i of editCache[id].bidConfig" [nzValue]="i" [nzLabel]="i">{{ i }}</nz-option>
     </nz-select>
   </div>
@@ -63,7 +63,7 @@
 <ng-template #askTpl let-item="ask" let-id="id">
   <p *ngIf="!editCache[id].edit">{{ editCache[id].display.ask }}</p>
   <div *ngIf="editCache[id].edit">
-    <nz-select [(ngModel)]="editCache[id].display.ask">
+    <nz-select style="width: 100px;" [(ngModel)]="editCache[id].display.ask">
       <nz-option *ngFor="let i of editCache[id].askConfig" [nzValue]="i" [nzLabel]="i">{{ i }}</nz-option>
     </nz-select>
   </div>

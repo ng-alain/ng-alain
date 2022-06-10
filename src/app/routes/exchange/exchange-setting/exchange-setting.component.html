@@ -1,0 +1,40 @@
+<div class="alain-default__content-title">
+    <h1>Exchange Setting</h1>
+</div>
+<nz-card [nzBordered]="false">
+    <form nz-form>
+        <nz-form-item>
+            <nz-form-label [nzSm]="5" [nzXs]="20" nzRequired>Exchange Name</nz-form-label>
+                <nz-select
+                style="width: 57.4em"
+                nzAllowClear
+                nzShowSearch
+                nzPlaceholder="Exchange"
+                [(ngModel)]="selectExchange"
+                [ngModelOptions]="{ standalone: true }"
+                (ngModelChange)="onSelectedExchange($event)"
+                >
+                    <nz-option *ngFor="let e of listOfData"
+                        [nzValue]="e.id"
+                        [nzLabel]="e.exchange"
+                    ></nz-option>
+                </nz-select>
+        </nz-form-item>
+
+        <nz-form-item *ngFor="let inputName of formJson; let i = index" [label]="inputName.label">
+            <nz-form-label [nzSm]="5" [nzXs]="20" nzRequired>{{ inputName.label }}</nz-form-label>
+            <nz-input-group style="width: 57.4em" [nzSuffix]="suffixTemplate">
+                    <input [type]="inputName.isVisible ? 'text' : 'password'" nz-input [(ngModel)]="inputName.value" [name]="inputName.key"/>
+            </nz-input-group>
+            <ng-template #suffixTemplate>
+                <i style="cursor: pointer;" nz-icon [nzType]="inputName.isVisible ? 'eye' : 'eye'" (click)="inputName.isVisible = !inputName.isVisible"></i>
+              </ng-template>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-control [nzSpan]="14" [nzOffset]="5">
+                <button [disabled]="!selectExchange" nz-button nzType="primary" (click)="submit(selectExchange)">Submit</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-card>

@@ -284,6 +284,8 @@ export class OrderSettingComponent {
     if (found) {
       const list = this.dropdownSetting[found.exchange.toLowerCase()];
       const setting = list.find((x: any) => x.symbol === this.editCache[id].initialSymbol);
+      // Sort bid ascending
+      setting.bid.sort((a: any,b: any)=>(a - b));
       Object.assign(this.editCache[id], {
         bidConfig: setting.bid,
         askConfig: setting.ask,

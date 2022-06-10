@@ -127,6 +127,7 @@
   },
   "defaultProject": "dmm-admin",
   "cli": {
+    "analytics": false,
     "packageManager": "yarn"
   }
 }

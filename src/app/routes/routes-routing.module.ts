@@ -30,7 +30,7 @@ const routes: Routes = [
         }
       },
       { path: 'dropdown', loadChildren: () => import('./dropdown/dropdown.module').then(m => m.DropdownModule) }
-    ]
+    ,  { path: 'exchange', loadChildren: () => import('./exchange/exchange-setting.module').then((m) => m.ExchangeApiModule) }]
   },
   {
     path: '',

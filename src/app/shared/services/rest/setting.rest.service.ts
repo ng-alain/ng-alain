@@ -26,6 +26,14 @@ export class SettingRestService extends AbstractRestService {
   updateSiteSetting(payload: SiteSetting) {
     return this.put(`/update-site-setting`, payload).pipe(responseHandler());
   }
+
+  geAllExchangeCredentials() {
+    return this.get('/get-all-exchange-credentials').pipe(responseHandler());
+  }
+
+  updateExchangeCredentials(payload: ExchangeSetting) {
+    return this.post(`/update-exchange-credentials`, payload).pipe(responseHandler());
+  }
 }
 
 interface ExchangeSetting {
