@@ -107,8 +107,6 @@ export class ExchangeSettingComponent implements OnInit {
       .geAllExchangeCredentials()
       .pipe(
         map(res => {
-            // res.map((x: any) => this.exchangeOptions = x);
-          // console.log(found);
           this.initialData = this.exchangeOptions;
           let i = 1;
           this.exchangeOptions = res;
@@ -132,11 +130,9 @@ export class ExchangeSettingComponent implements OnInit {
             };
             i++;
             this.listOfData.push(data);
-            console.log(this.listOfData)
           });
         }),
         finalize(() => {
-          console.log('listOfData: ', this.listOfData);
           this.loading = false;
           this.cdr.detectChanges();
         })
@@ -145,7 +141,6 @@ export class ExchangeSettingComponent implements OnInit {
   }
 
   reset() {
-    console.log(this.tempJsonBackup)
     this.formJson = [    
       { label: "ACCESS KEY",  key: "access_key", value: null, isRequired: false, isVisible: true},
       { label: "SECRET KEY", key: "secret_key", value: null, isRequired: false, isVisible: false},
@@ -172,8 +167,6 @@ export class ExchangeSettingComponent implements OnInit {
         }]
       })
     })
-
-    console.log(payload)
     
     this.settingRestService.updateExchangeCredentials(payload, this.exchange_name.exchange).pipe(
       map(res => {
