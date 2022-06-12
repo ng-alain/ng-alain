@@ -18,3 +18,8 @@ export enum OrderStatus {
   FAILED = 'F',
   PENDING = 'P'
 }
+
+export enum ExchangeKeyPermission {
+  ALLOWED = 'A',
+  DISALLOWED = 'D'
+}
