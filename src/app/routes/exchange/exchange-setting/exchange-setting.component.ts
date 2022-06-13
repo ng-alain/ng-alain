@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { finalize, map } from 'rxjs';
-import { ExchangeKeyPermission } from 'src/app/shared/constants/status.constant';
 import { SettingRestService } from 'src/app/shared/services/rest/setting.rest.service';
 
 @Component({
@@ -113,7 +112,7 @@ export class ExchangeSettingComponent implements OnInit {
           Object.keys(this.exchangeOptions).map((key) => {
             const data = {
               id: i,
-              exchange: key.charAt(0).toUpperCase() + key.slice(1),
+              exchange: key,
               access_key: {
                 value: this.exchangeOptions[key].map((val: any) => val.KEY.value).toString(),
                 isRequired: JSON.parse(this.exchangeOptions[key].map((val: any) => val.KEY.isRequired).toString())
