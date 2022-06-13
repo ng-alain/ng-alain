@@ -29,32 +29,8 @@
               "text": "分析页",
               "link": "/dashboard/analysis",
               "i18n": "menu.dashboard.analysis"
-            },
-            {
-              "text": "监控页",
-              "link": "/dashboard/monitor",
-              "i18n": "menu.dashboard.monitor"
-            },
-            {
-              "text": "工作台",
-              "link": "/dashboard/workplace",
-              "i18n": "menu.dashboard.workplace"
             }
           ]
-        },
-        {
-          "text": "快捷菜单",
-          "i18n": "menu.shortcut",
-          "icon": "anticon-rocket",
-          "shortcutRoot": true,
-          "children": []
-        },
-        {
-          "text": "小部件",
-          "i18n": "menu.widgets",
-          "link": "/widgets",
-          "icon": "anticon-appstore",
-          "badge": 2
         }
       ]
     },
@@ -103,58 +79,16 @@
               "i18n": "menu.delon.table"
             },
             {
-              "text": "Util",
-              "link": "/delon/util",
-              "i18n": "menu.delon.util",
-              "acl": "role-a"
-            },
-            {
-              "text": "Print",
-              "link": "/delon/print",
-              "i18n": "menu.delon.print",
-              "acl": "role-b"
-            },
-            {
-              "text": "QR",
-              "link": "/delon/qr",
-              "i18n": "menu.delon.qr"
-            },
-            {
-              "text": "ACL",
-              "link": "/delon/acl",
-              "i18n": "menu.delon.acl"
-            },
-            {
-              "text": "Route Guard",
-              "link": "/delon/guard",
-              "i18n": "menu.delon.guard"
-            },
-            {
-              "text": "Cache",
-              "link": "/delon/cache",
-              "i18n": "menu.delon.cache"
-            },
-            {
               "text": "Down File",
               "link": "/delon/downfile",
               "i18n": "menu.delon.downfile"
-            },
-            {
-              "text": "Xlsx",
-              "link": "/delon/xlsx",
-              "i18n": "menu.delon.xlsx"
-            },
-            {
-              "text": "Zip",
-              "link": "/delon/zip",
-              "i18n": "menu.delon.zip"
             }
           ]
         }
       ]
     },
     {
-      "text": "Pro",
+      "text": "Pr",
       "i18n": "menu.pro",
       "group": true,
       "hideInBreadcrumb": true,
@@ -170,11 +104,6 @@
               "link": "/pro/form/basic-form",
               "i18n": "menu.form.basicform",
               "shortcut": true
-            },
-            {
-              "text": "Step Form",
-              "link": "/pro/form/step-form",
-              "i18n": "menu.form.stepform"
             },
             {
               "text": "Advanced Form",
@@ -198,30 +127,6 @@
               "text": "Basic List",
               "link": "/pro/list/basic-list",
               "i18n": "menu.list.basiclist"
-            },
-            {
-              "text": "Card List",
-              "link": "/pro/list/card-list",
-              "i18n": "menu.list.cardlist"
-            },
-            {
-              "text": "Search List",
-              "i18n": "menu.list.searchlist",
-              "children": [
-                {
-                  "link": "/pro/list/articles",
-                  "i18n": "menu.list.searchlist.articles"
-                },
-                {
-                  "link": "/pro/list/projects",
-                  "i18n": "menu.list.searchlist.projects",
-                  "shortcut": true
-                },
-                {
-                  "link": "/pro/list/applications",
-                  "i18n": "menu.list.searchlist.applications"
-                }
-              ]
             }
           ]
         },
@@ -234,12 +139,6 @@
               "text": "Basic",
               "link": "/pro/profile/basic",
               "i18n": "menu.profile.basic"
-            },
-            {
-              "text": "Advanced",
-              "link": "/pro/profile/advanced",
-              "i18n": "menu.profile.advanced",
-              "shortcut": true
             }
           ]
         },
@@ -292,11 +191,6 @@
           "icon": "anticon-user",
           "children": [
             {
-              "text": "center",
-              "link": "/pro/account/center",
-              "i18n": "menu.account.center"
-            },
-            {
               "text": "settings",
               "link": "/pro/account/settings",
               "i18n": "menu.account.settings"
@@ -312,29 +206,11 @@
       "hideInBreadcrumb": true,
       "children": [
         {
-          "text": "Report",
-          "i18n": "menu.report",
-          "icon": "anticon-cloud",
-          "children": [
-            {
-              "text": "Relation",
-              "link": "/data-v/relation",
-              "i18n": "menu.report.relation",
-              "reuse": false
-            }
-          ]
-        },
-        {
           "text": "Extras",
           "i18n": "menu.extras",
           "link": "/extras",
           "icon": "anticon-link",
           "children": [
-            {
-              "text": "Help Center",
-              "link": "/extras/helpcenter",
-              "i18n": "menu.extras.helpcenter"
-            },
             {
               "text": "Settings",
               "link": "/extras/settings",
