@@ -82,6 +82,9 @@ stages:
     jobs:
       - job: Build
         steps:
+          - script: |
+              node ./scripts/_ci/fix-day.js
+            displayName: 'Fix day'
           - script: yarn install
             displayName: 'Install'
           - script: |

@@ -63,9 +63,7 @@
     "@delon/util": "^13.5.2",
     "ngx-tinymce": "^13.0.0",
     "ngx-ueditor": "^13.0.0",
-    "screenfull": "^6.0.1",
-    "ajv": "^8.10.0",
-    "ajv-formats": "^2.1.1"
+    "screenfull": "^6.0.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.3",
