@@ -10,7 +10,7 @@ import {
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
-import { ALAIN_I18N_TOKEN, _HttpClient } from '@delon/theme';
+import { ALAIN_I18N_TOKEN, IGNORE_BASE_URL, _HttpClient, CUSTOM_ERROR, RAW_BODY } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { BehaviorSubject, Observable, of, throwError, catchError, filter, mergeMap, switchMap, take } from 'rxjs';
@@ -88,7 +88,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     // 1、若请求为刷新Token请求，表示来自刷新Token可以直接跳转登录页
     if ([`/api/auth/refresh`].some(url => req.url.includes(url))) {
       this.toLogin();
-      return throwError(ev);
+      return throwError(() => ev);
     }
     // 2、如果 `refreshToking` 为 `true` 表示已经在请求刷新 Token 中，后续所有请求转入等待状态，直至结果返回后再重新发起请求
     if (this.refreshToking) {
@@ -115,7 +115,7 @@ export class DefaultInterceptor implements HttpInterceptor {
       catchError(err => {
         this.refreshToking = false;
         this.toLogin();
-        return throwError(err);
+        return throwError(() => err);
       })
     );
   }
@@ -152,15 +152,15 @@ export class DefaultInterceptor implements HttpInterceptor {
           return this.refreshTokenRequest();
         })
       )
-      .subscribe(
-        res => {
+      .subscribe({
+        next: res => {
           // TODO: Mock expired value
           res.expired = +new Date() + 1000 * 60 * 5;
           this.refreshToking = false;
           this.tokenSrv.set(res);
         },
-        () => this.toLogin()
-      );
+        error: () => this.toLogin()
+      });
   }
 
   // #endregion
@@ -183,13 +183,14 @@ export class DefaultInterceptor implements HttpInterceptor {
         // if (ev instanceof HttpResponse) {
         //   const body = ev.body;
         //   if (body && body.status !== 0) {
-        //     this.injector.get(NzMessageService).error(body.msg);
-        //     // 注意：这里如果继续抛出错误会被行254的 catchError 二次拦截，导致外部实现的 Pipe、subscribe 操作被中断，例如：this.http.get('/').subscribe() 不会触发
-        //     // 如果你希望外部实现，需要手动移除行254
-        //     return throwError({});
+        //     const customError = req.context.get(CUSTOM_ERROR);
+        //     if (customError) this.injector.get(NzMessageService).error(body.msg);
+        //     // 注意：这里如果继续抛出错误会被行258的 catchError 二次拦截，导致外部实现的 Pipe、subscribe 操作被中断，例如：this.http.get('/').subscribe() 不会触发
+        //     // 如果你希望外部实现，需要手动移除行259
+        //     return if (customError) throwError({}) : of({});
         //   } else {
-        //     // 忽略 Blob 文件体
-        //     if (ev.body instanceof Blob) {
+        //     // 返回原始返回体
+        //     if (req.context.get(RAW_BODY) || ev.body instanceof Blob) {
         //        return of(ev);
         //     }
         //     // 重新修改 `body` 内容为 `response` 内容，对于绝大多数场景已经无须再关心业务状态码
@@ -220,7 +221,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         break;
     }
     if (ev instanceof HttpErrorResponse) {
-      return throwError(ev);
+      return throwError(() => ev);
     } else {
       return of(ev);
     }
@@ -239,7 +240,7 @@ export class DefaultInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // 统一加上服务端前缀
     let url = req.url;
-    if (!url.startsWith('https://') && !url.startsWith('http://')) {
+    if (!req.context.get(IGNORE_BASE_URL) && !url.startsWith('https://') && !url.startsWith('http://')) {
       const { baseUrl } = environment.api;
       url = baseUrl + (baseUrl.endsWith('/') && url.startsWith('/') ? url.substring(1) : url);
     }
@@ -253,8 +254,8 @@ export class DefaultInterceptor implements HttpInterceptor {
         }
         // 若一切都正常，则后续操作
         return of(ev);
-      }),
-      catchError((err: HttpErrorResponse) => this.handleData(err, newReq, next))
+      })
+      // catchError((err: HttpErrorResponse) => this.handleData(err, newReq, next))
     );
   }
 }

@@ -28,7 +28,7 @@ export class ProListLayoutComponent implements OnInit, OnDestroy {
   constructor(private router: Router) {}
 
   private setActive(): void {
-    const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
+    const key = this.router.url.substring(this.router.url.lastIndexOf('/') + 1);
     const idx = this.tabs.findIndex(w => w.key === key);
     if (idx !== -1) {
       this.pos = idx;

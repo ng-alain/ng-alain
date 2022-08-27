@@ -38,7 +38,7 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
   }
 
   private setActive(): void {
-    const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
+    const key = this.router.url.substring(this.router.url.lastIndexOf('/') + 1);
     this.menus.forEach(i => {
       i.selected = i.key === key;
     });
