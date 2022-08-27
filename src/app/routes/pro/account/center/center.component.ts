@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
-import { Subscription, zip } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Subscription, zip, filter } from 'rxjs';
 
 @Component({
   selector: 'app-account-center',

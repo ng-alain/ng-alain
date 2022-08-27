@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { TransferService } from './transfer.service';
 
@@ -9,26 +9,19 @@ import { TransferService } from './transfer.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Step2Component implements OnInit {
-  form!: FormGroup;
+  form = new FormGroup({
+    password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)]))
+  });
   loading = false;
   get item(): TransferService {
     return this.srv;
   }
 
-  constructor(private fb: FormBuilder, private srv: TransferService) {}
+  constructor(private srv: TransferService) {}
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      password: [null, Validators.compose([Validators.required, Validators.minLength(6)])]
-    });
     this.form.patchValue(this.item);
   }
-
-  //#region get form fields
-  get password(): AbstractControl {
-    return this.form.get('password')!;
-  }
-  //#endregion
 
   _submitForm(): void {
     this.loading = true;

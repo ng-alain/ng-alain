@@ -4,7 +4,7 @@ import { _HttpClient } from '@delon/theme';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { map, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-table-list',
