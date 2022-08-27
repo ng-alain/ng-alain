@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { SettingsService, User } from '@delon/theme';
@@ -10,28 +10,24 @@ import { SettingsService, User } from '@delon/theme';
   styleUrls: ['./lock.component.less']
 })
 export class UserLockComponent {
-  f: FormGroup;
+  f = this.fb.group({
+    password: [null, Validators.required]
+  });
 
   get user(): User {
     return this.settings.user;
   }
 
   constructor(
-    fb: FormBuilder,
+    private fb: FormBuilder,
     @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
     private settings: SettingsService,
     private router: Router
-  ) {
-    this.f = fb.group({
-      password: [null, Validators.required]
-    });
-  }
+  ) {}
 
   submit(): void {
-    for (const i in this.f.controls) {
-      this.f.controls[i].markAsDirty();
-      this.f.controls[i].updateValueAndValidity();
-    }
+    this.f.controls.password.markAsDirty();
+    this.f.controls.password.updateValueAndValidity();
     if (this.f.valid) {
       console.log('Valid!');
       console.log(this.f.value);

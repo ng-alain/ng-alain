@@ -25,10 +25,21 @@
             "main": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
-            "assets": ["src/assets", "src/favicon.ico"],
-            "styles": ["src/styles.less"],
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ],
+            "styles": [
+              "src/styles.less"
+            ],
             "scripts": [],
-            "allowedCommonJsDependencies": ["ajv", "ajv-formats"],
+            "allowedCommonJsDependencies": [
+              "ajv",
+              "ajv-formats",
+              "mockjs",
+              "file-saver",
+              "extend"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules/"
@@ -99,13 +110,18 @@
             "tsConfig": "tsconfig.spec.json",
             "scripts": [],
             "styles": [],
-            "assets": ["src/assets"]
+            "assets": [
+              "src/assets"
+            ]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         },
         "e2e": {
@@ -123,8 +139,10 @@
       }
     }
   },
-  "defaultProject": "ng-alain",
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "schematicCollections": [
+      "@schematics/angular", "ng-alain"
+    ]
   }
 }
