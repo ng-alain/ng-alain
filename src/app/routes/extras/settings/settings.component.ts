@@ -8,7 +8,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class ExtrasSettingsComponent implements OnInit {
   active = 1;
-  profileForm = this.fb.group({
+  profileForm = this.fb.nonNullable.group({
     name: ['', Validators.compose([Validators.required, Validators.pattern(`^[-_a-zA-Z0-9]{4,20}$`)])],
     email: '',
     bio: ['', Validators.maxLength(160)],

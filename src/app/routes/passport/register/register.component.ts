@@ -17,14 +17,14 @@ export class UserRegisterComponent implements OnDestroy {
 
   // #region fields
 
-  form = this.fb.group(
+  form = this.fb.nonNullable.group(
     {
-      mail: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
-      confirm: [null, [Validators.required, Validators.minLength(6)]],
+      mail: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
+      confirm: ['', [Validators.required, Validators.minLength(6)]],
       mobilePrefix: ['+86'],
-      mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
-      captcha: [null, [Validators.required]]
+      mobile: ['', [Validators.required, Validators.pattern(/^1\d{10}$/)]],
+      captcha: ['', [Validators.required]]
     },
     {
       validators: MatchControl('password', 'confirm')
