@@ -1,6 +1,8 @@
+import { HttpContext } from '@angular/common/http';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ALLOW_ANONYMOUS } from '@delon/auth';
 import { _HttpClient } from '@delon/theme';
 import { MatchControl } from '@delon/util/form';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -17,14 +19,14 @@ export class UserRegisterComponent implements OnDestroy {
 
   // #region fields
 
-  form = this.fb.group(
+  form = this.fb.nonNullable.group(
     {
-      mail: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
-      confirm: [null, [Validators.required, Validators.minLength(6)]],
+      mail: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
+      confirm: ['', [Validators.required, Validators.minLength(6)]],
       mobilePrefix: ['+86'],
-      mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
-      captcha: [null, [Validators.required]]
+      mobile: ['', [Validators.required, Validators.pattern(/^1\d{10}$/)]],
+      captcha: ['', [Validators.required]]
     },
     {
       validators: MatchControl('password', 'confirm')
@@ -104,7 +106,9 @@ export class UserRegisterComponent implements OnDestroy {
     this.loading = true;
     this.cdr.detectChanges();
     this.http
-      .post('/register?_allow_anonymous=true', data)
+      .post('/register', data, null, {
+        context: new HttpContext().set(ALLOW_ANONYMOUS, true)
+      })
       .pipe(
         finalize(() => {
           this.loading = false;

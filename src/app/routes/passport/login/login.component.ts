@@ -1,9 +1,10 @@
+import { HttpContext } from '@angular/common/http';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, Optional } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StartupService } from '@core';
 import { ReuseTabService } from '@delon/abc/reuse-tab';
-import { DA_SERVICE_TOKEN, ITokenService, SocialOpenType, SocialService } from '@delon/auth';
+import { ALLOW_ANONYMOUS, DA_SERVICE_TOKEN, ITokenService, SocialOpenType, SocialService } from '@delon/auth';
 import { SettingsService, _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
@@ -33,11 +34,11 @@ export class UserLoginComponent implements OnDestroy {
 
   // #region fields
 
-  form = this.fb.group({
-    userName: [null, [Validators.required, Validators.pattern(/^(admin|user)$/)]],
-    password: [null, [Validators.required, Validators.pattern(/^(ng\-alain\.com)$/)]],
-    mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
-    captcha: [null, [Validators.required]],
+  form = this.fb.nonNullable.group({
+    userName: ['', [Validators.required, Validators.pattern(/^(admin|user)$/)]],
+    password: ['', [Validators.required, Validators.pattern(/^(ng\-alain\.com)$/)]],
+    mobile: ['', [Validators.required, Validators.pattern(/^1\d{10}$/)]],
+    captcha: ['', [Validators.required]],
     remember: [true]
   });
   error = '';
@@ -96,15 +97,22 @@ export class UserLoginComponent implements OnDestroy {
     }
 
     // 默认配置中对所有HTTP请求都会强制 [校验](https://ng-alain.com/auth/getting-started) 用户 Token
-    // 然一般来说登录请求不需要校验，因此可以在请求URL加上：`/login?_allow_anonymous=true` 表示不触发用户 Token 校验
+    // 然一般来说登录请求不需要校验，因此加上 `ALLOW_ANONYMOUS` 表示不触发用户 Token 校验
     this.loading = true;
     this.cdr.detectChanges();
     this.http
-      .post('/login/account?_allow_anonymous=true', {
-        type: this.type,
-        userName: this.form.value.userName,
-        password: this.form.value.password
-      })
+      .post(
+        '/login/account',
+        {
+          type: this.type,
+          userName: this.form.value.userName,
+          password: this.form.value.password
+        },
+        null,
+        {
+          context: new HttpContext().set(ALLOW_ANONYMOUS, true)
+        }
+      )
       .pipe(
         finalize(() => {
           this.loading = false;
