@@ -10,7 +10,7 @@ import {
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
-import { ALAIN_I18N_TOKEN, IGNORE_BASE_URL, _HttpClient, CUSTOM_ERROR } from '@delon/theme';
+import { ALAIN_I18N_TOKEN, IGNORE_BASE_URL, _HttpClient, CUSTOM_ERROR, RAW_BODY } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { BehaviorSubject, Observable, of, throwError, catchError, filter, mergeMap, switchMap, take } from 'rxjs';
@@ -185,12 +185,12 @@ export class DefaultInterceptor implements HttpInterceptor {
         //   if (body && body.status !== 0) {
         //     const customError = req.context.get(CUSTOM_ERROR);
         //     if (customError) this.injector.get(NzMessageService).error(body.msg);
-        //     // 注意：这里如果继续抛出错误会被行259的 catchError 二次拦截，导致外部实现的 Pipe、subscribe 操作被中断，例如：this.http.get('/').subscribe() 不会触发
+        //     // 注意：这里如果继续抛出错误会被行258的 catchError 二次拦截，导致外部实现的 Pipe、subscribe 操作被中断，例如：this.http.get('/').subscribe() 不会触发
         //     // 如果你希望外部实现，需要手动移除行259
         //     return if (customError) throwError({}) : of({});
         //   } else {
-        //     // 忽略 Blob 文件体
-        //     if (ev.body instanceof Blob) {
+        //     // 返回原始返回体
+        //     if (req.context.get(RAW_BODY) || ev.body instanceof Blob) {
         //        return of(ev);
         //     }
         //     // 重新修改 `body` 内容为 `response` 内容，对于绝大多数场景已经无须再关心业务状态码
