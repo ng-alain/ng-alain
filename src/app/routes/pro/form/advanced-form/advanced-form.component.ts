@@ -1,5 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
+
+interface UserForm {
+  key: FormControl<string>;
+  workId: FormControl<string>;
+  name: FormControl<string>;
+  department: FormControl<string>;
+}
 
 @Component({
   selector: 'app-advanced-form',
@@ -9,30 +17,27 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
 export class AdvancedFormComponent implements OnInit {
   editIndex = -1;
   editObj = {};
-  form!: FormGroup;
+  form = new FormGroup({
+    name: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    url: new FormControl('', { validators: [Validators.required] }),
+    owner: new FormControl(undefined, { validators: [Validators.required] }),
+    approver: new FormControl('', { validators: [Validators.required] }),
+    date_range: new FormControl('', { validators: [Validators.required] }),
+    type: new FormControl('', { validators: [Validators.required] }),
+    name2: new FormControl('', { validators: [Validators.required] }),
+    summary: new FormControl('', { validators: [Validators.required] }),
+    owner2: new FormControl('', { validators: [Validators.required] }),
+    approver2: new FormControl('', { validators: [Validators.required] }),
+    time: new FormControl('', { validators: [Validators.required] }),
+    type2: new FormControl('', { validators: [Validators.required] }),
+    items: new FormArray<FormGroup<UserForm>>([])
+  });
   users: Array<{ value: string; label: string }> = [
     { value: 'xiao', label: '付晓晓' },
     { value: 'mao', label: '周毛毛' }
   ];
 
-  constructor(private fb: FormBuilder) {}
-
   ngOnInit(): void {
-    this.form = this.fb.group({
-      name: [null, [Validators.required]],
-      url: [null, [Validators.required]],
-      owner: [undefined, [Validators.required]],
-      approver: [null, [Validators.required]],
-      date_range: [null, [Validators.required]],
-      type: [null, [Validators.required]],
-      name2: [null, [Validators.required]],
-      summary: [null, [Validators.required]],
-      owner2: [null, [Validators.required]],
-      approver2: [null, [Validators.required]],
-      time: [null, [Validators.required]],
-      type2: [null, [Validators.required]],
-      items: this.fb.array([])
-    });
     const userList = [
       {
         key: '1',
@@ -60,59 +65,18 @@ export class AdvancedFormComponent implements OnInit {
     });
   }
 
-  createUser(): FormGroup {
-    return this.fb.group({
-      key: [null],
-      workId: [null, [Validators.required]],
-      name: [null, [Validators.required]],
-      department: [null, [Validators.required]]
+  createUser(): FormGroup<UserForm> {
+    return new FormGroup({
+      key: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      name: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      workId: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      department: new FormControl('', { nonNullable: true, validators: [Validators.required] })
     });
   }
 
-  //#region get form fields
-  get name(): AbstractControl {
-    return this.form.get('name')!;
+  get items(): FormArray<FormGroup<UserForm>> {
+    return this.form.controls.items;
   }
-  get url(): AbstractControl {
-    return this.form.get('url')!;
-  }
-  get owner(): AbstractControl {
-    return this.form.get('owner')!;
-  }
-  get approver(): AbstractControl {
-    return this.form.get('approver')!;
-  }
-  get time_start(): AbstractControl {
-    return this.form.get('time_start')!;
-  }
-  get time_end(): AbstractControl {
-    return this.form.get('time_end')!;
-  }
-  get type(): AbstractControl {
-    return this.form.get('type')!;
-  }
-  get name2(): AbstractControl {
-    return this.form.get('name2')!;
-  }
-  get summary(): AbstractControl {
-    return this.form.get('summary')!;
-  }
-  get owner2(): AbstractControl {
-    return this.form.get('owner2')!;
-  }
-  get approver2(): AbstractControl {
-    return this.form.get('approver2')!;
-  }
-  get time(): AbstractControl {
-    return this.form.get('time')!;
-  }
-  get type2(): AbstractControl {
-    return this.form.get('type2')!;
-  }
-  get items(): FormArray {
-    return this.form.get('items') as FormArray;
-  }
-  //#endregion
 
   add(): void {
     this.items.push(this.createUser());
@@ -132,11 +96,8 @@ export class AdvancedFormComponent implements OnInit {
   }
 
   save(index: number): void {
-    const item = this.items.at(index) as FormGroup;
-    Object.keys(item.controls).forEach(key => {
-      item.controls[key].markAsDirty();
-      item.controls[key].updateValueAndValidity();
-    });
+    const item = this.items.at(index);
+    this.formValidity(item.controls);
     if (item.invalid) {
       return;
     }
@@ -154,12 +115,17 @@ export class AdvancedFormComponent implements OnInit {
   }
 
   _submitForm(): void {
-    Object.keys(this.form.controls).forEach(key => {
-      this.form.controls[key].markAsDirty();
-      this.form.controls[key].updateValueAndValidity();
-    });
+    this.formValidity(this.form.controls);
     if (this.form.invalid) {
       return;
     }
+  }
+
+  private formValidity(controls: NzSafeAny): void {
+    Object.keys(controls).forEach(key => {
+      const control = (controls as NzSafeAny)[key] as AbstractControl;
+      control.markAsDirty();
+      control.updateValueAndValidity();
+    });
   }
 }

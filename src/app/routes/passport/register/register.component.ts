@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
 import { MatchControl } from '@delon/util/form';
@@ -13,40 +13,23 @@ import { finalize } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserRegisterComponent implements OnDestroy {
-  constructor(fb: FormBuilder, private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {
-    this.form = fb.group(
-      {
-        mail: [null, [Validators.required, Validators.email]],
-        password: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
-        confirm: [null, [Validators.required, Validators.minLength(6)]],
-        mobilePrefix: ['+86'],
-        mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
-        captcha: [null, [Validators.required]]
-      },
-      {
-        validators: MatchControl('password', 'confirm')
-      }
-    );
-  }
+  constructor(private fb: FormBuilder, private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
 
   // #region fields
 
-  get mail(): AbstractControl {
-    return this.form.get('mail')!;
-  }
-  get password(): AbstractControl {
-    return this.form.get('password')!;
-  }
-  get confirm(): AbstractControl {
-    return this.form.get('confirm')!;
-  }
-  get mobile(): AbstractControl {
-    return this.form.get('mobile')!;
-  }
-  get captcha(): AbstractControl {
-    return this.form.get('captcha')!;
-  }
-  form: FormGroup;
+  form = this.fb.group(
+    {
+      mail: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
+      confirm: [null, [Validators.required, Validators.minLength(6)]],
+      mobilePrefix: ['+86'],
+      mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
+      captcha: [null, [Validators.required]]
+    },
+    {
+      validators: MatchControl('password', 'confirm')
+    }
+  );
   error = '';
   type = 0;
   loading = false;
@@ -64,14 +47,14 @@ export class UserRegisterComponent implements OnDestroy {
   // #region get captcha
 
   count = 0;
-  interval$: any;
+  interval$: NzSafeAny;
 
   static checkPassword(control: FormControl): NzSafeAny {
     if (!control) {
       return null;
     }
     // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const self: any = this;
+    const self: NzSafeAny = this;
     self.visible = !!control.value;
     if (control.value && control.value.length > 9) {
       self.status = 'ok';
@@ -87,9 +70,10 @@ export class UserRegisterComponent implements OnDestroy {
   }
 
   getCaptcha(): void {
-    if (this.mobile.invalid) {
-      this.mobile.markAsDirty({ onlySelf: true });
-      this.mobile.updateValueAndValidity({ onlySelf: true });
+    const { mobile } = this.form.controls;
+    if (mobile.invalid) {
+      mobile.markAsDirty({ onlySelf: true });
+      mobile.updateValueAndValidity({ onlySelf: true });
       return;
     }
     this.count = 59;
@@ -108,8 +92,9 @@ export class UserRegisterComponent implements OnDestroy {
   submit(): void {
     this.error = '';
     Object.keys(this.form.controls).forEach(key => {
-      this.form.controls[key].markAsDirty();
-      this.form.controls[key].updateValueAndValidity();
+      const control = (this.form.controls as NzSafeAny)[key] as AbstractControl;
+      control.markAsDirty();
+      control.updateValueAndValidity();
     });
     if (this.form.invalid) {
       return;

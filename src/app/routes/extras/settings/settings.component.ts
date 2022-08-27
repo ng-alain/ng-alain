@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -8,7 +8,14 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class ExtrasSettingsComponent implements OnInit {
   active = 1;
-  profileForm: FormGroup;
+  profileForm = this.fb.group({
+    name: ['', Validators.compose([Validators.required, Validators.pattern(`^[-_a-zA-Z0-9]{4,20}$`)])],
+    email: '',
+    bio: ['', Validators.maxLength(160)],
+    url: '',
+    company: '',
+    location: ''
+  });
   pwd = {
     old_password: '',
     new_password: '',
@@ -17,20 +24,7 @@ export class ExtrasSettingsComponent implements OnInit {
   // Email
   primary_email = 'cipchk@qq.com';
 
-  constructor(fb: FormBuilder, public msg: NzMessageService) {
-    this.profileForm = fb.group({
-      name: [null, Validators.compose([Validators.required, Validators.pattern(`^[-_a-zA-Z0-9]{4,20}$`)])],
-      email: '',
-      bio: [null, Validators.maxLength(160)],
-      url: '',
-      company: '',
-      location: ''
-    });
-  }
-
-  get name(): AbstractControl {
-    return this.profileForm.get('name')!;
-  }
+  constructor(private fb: FormBuilder, public msg: NzMessageService) {}
 
   profileSave(value: any): void {
     console.log('profile value', value);
