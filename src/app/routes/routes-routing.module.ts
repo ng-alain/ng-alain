@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StartPageGuard } from '@core';
+import { startPageGuard } from '@core';
 import { SimpleGuard } from '@delon/auth';
 import { PreloadOptionalModules } from '@delon/theme';
 import { environment } from '@env/environment';
@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutBasicComponent,
-    canActivate: [StartPageGuard, SimpleGuard],
+    canActivate: [startPageGuard, SimpleGuard],
     canActivateChild: [SimpleGuard],
     data: {},
     children: [
