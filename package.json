@@ -62,7 +62,6 @@
     "@delon/theme": "^14.0.0",
     "@delon/util": "^14.0.0",
     "ngx-tinymce": "^14.0.0",
-    "ngx-ueditor": "^14.0.0",
     "screenfull": "^6.0.2"
   },
   "devDependencies": {
