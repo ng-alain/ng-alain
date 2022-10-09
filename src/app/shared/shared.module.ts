@@ -11,7 +11,6 @@ import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 
 // #region third libs
 // import { NgxTinymceModule } from 'ngx-tinymce';
-// import { UEditorModule } from 'ngx-ueditor';
 
 const THIRDMODULES: Array<Type<any>> = [];
 // #endregion
