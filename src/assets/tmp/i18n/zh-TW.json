@@ -1,5 +1,5 @@
 {
-  "menu.search.placeholder": "搜索：員工、文件、照片等",
+  "menu.search.placeholder": "搜索：員工、文件、照片等，按 F1 可触发",
   "menu.fullscreen": "全屏",
   "menu.fullscreen.exit": "退出全屏",
   "menu.clear.local.storage": "清理在地緩存",
