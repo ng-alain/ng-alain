@@ -1,11 +1,11 @@
 name: Deploy website
 
-on: push
+# on: push
 
-# on:
-#   push:
-#     branches:
-#       - 'publish-**'
+on:
+  push:
+    branches:
+      - 'publish-**'
 
 jobs:
   build-and-deploy:
