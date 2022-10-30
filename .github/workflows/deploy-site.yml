@@ -1,11 +1,11 @@
 name: Deploy website
 
-# on: push
+on: push
 
-on:
-  push:
-    branches:
-      - 'publish-**'
+# on:
+#   push:
+#     branches:
+#       - 'publish-**'
 
 jobs:
   build-and-deploy:
@@ -29,6 +29,14 @@ jobs:
           token: ${{ secrets.SURGE_TOKEN }}
           domain: https://ng-alain.surge.sh
           project: ./dist
+
+      - name: Replace base href for gh-pages
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: '<base href="/">'
+          replace: '<base href="/ng-alain/">'
+          include: '*.html'
+          regex: false
 
       - name: deploy-to-gh-pages
         uses: peaceiris/actions-gh-pages@v2
