@@ -30,6 +30,7 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged, tap } from 'rxjs';
         (input)="search($event)"
         (focus)="qFocus()"
         (blur)="qBlur()"
+        hotkey="F1"
         [attr.placeholder]="'menu.search.placeholder' | i18n"
       />
     </nz-input-group>
