@@ -103,8 +103,6 @@
     "stylelint-order": "^5.0.0",
     "@delon/testing": "^15.0.0",
     "ng-alain": "^15.0.0",
-    "ng-alain-plugin-theme": "^15.0.1",
-    "ng-alain-sts": "^0.0.2",
     "@types/jasminewd2": "~2.0.10",
     "jasmine-spec-reporter": "^7.0.0",
     "protractor": "~7.0.0",
