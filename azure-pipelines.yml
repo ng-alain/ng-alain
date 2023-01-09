@@ -160,4 +160,4 @@ stages:
         steps:
           - script: yarn install
             displayName: 'Install'
-          - script: npx ng test --no-progress --browsers=ChromeHeadlessCI --code-coverage --no-watch
+          - script: npx ng test --no-progress --browsers=ChromeHeadless --code-coverage --no-watch
