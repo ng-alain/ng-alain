@@ -62,9 +62,7 @@
     "@delon/theme": "^15.0.0",
     "@delon/util": "^15.0.0",
     "ngx-tinymce": "^15.0.0",
-    "screenfull": "^6.0.2",
-    "ajv": "^8.11.2",
-    "ajv-formats": "^2.1.1"
+    "screenfull": "^6.0.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.0.4",
