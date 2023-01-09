@@ -24,7 +24,9 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "assets": [
               "src/assets",
               "src/favicon.ico"
@@ -105,7 +107,10 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "karmaConfig": "karma.conf.js",
             "tsConfig": "tsconfig.spec.json",
             "scripts": [],
