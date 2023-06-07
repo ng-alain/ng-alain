@@ -106,7 +106,8 @@ module.exports = {
         'prefer-template': 'error',
         'prefer-const': 'off',
         'max-len': 'off',
-        'deprecation/deprecation': 'warn'
+        'deprecation/deprecation': 'warn',
+        'jsdoc/newline-after-description': 'off'
       }
     },
     {
