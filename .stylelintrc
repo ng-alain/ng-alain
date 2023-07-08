@@ -1,8 +1,7 @@
 {
   "extends": [
     "stylelint-config-standard",
-    "stylelint-config-rational-order",
-    "stylelint-config-prettier"
+    "stylelint-config-rational-order"
   ],
   "customSyntax": "postcss-less",
   "plugins": [
