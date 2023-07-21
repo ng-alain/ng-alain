@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { startPageGuard } from '@core';
-import { SimpleGuard } from '@delon/auth';
+import { authSimpleCanActivate, authSimpleCanActivateChild } from '@delon/auth';
 import { PreloadOptionalModules } from '@delon/theme';
 import { environment } from '@env/environment';
 
@@ -13,8 +13,8 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutBasicComponent,
-    canActivate: [startPageGuard, SimpleGuard],
-    canActivateChild: [SimpleGuard],
+    canActivate: [startPageGuard, authSimpleCanActivate],
+    canActivateChild: [authSimpleCanActivateChild],
     data: {},
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
