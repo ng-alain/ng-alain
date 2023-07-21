@@ -19,7 +19,10 @@ export class ACLComponent {
     return this.aclSrv.data;
   }
 
-  constructor(private aclSrv: ACLService, private menuSrv: MenuService) {}
+  constructor(
+    private aclSrv: ACLService,
+    private menuSrv: MenuService
+  ) {}
 
   private reMenu(): void {
     this.menuSrv.resume();

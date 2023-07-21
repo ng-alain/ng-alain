@@ -10,7 +10,11 @@ import { Subscription, zip, filter } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProAccountCenterComponent implements OnInit, OnDestroy {
-  constructor(private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private router: Router,
+    private http: _HttpClient,
+    private cdr: ChangeDetectorRef
+  ) {}
   private router$!: Subscription;
   @ViewChild('tagInput', { static: false }) private tagInput!: ElementRef<HTMLInputElement>;
   user: any;

@@ -31,7 +31,8 @@
       }
     ],
     "import-notation": "string",
-    "media-feature-range-notation": "prefix"
+    "media-feature-range-notation": "prefix",
+    "media-query-no-invalid": null
   },
   "ignoreFiles": [
     "src/assets/**/*"

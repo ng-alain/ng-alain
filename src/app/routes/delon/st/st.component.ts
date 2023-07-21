@@ -59,7 +59,10 @@ export class STDemoComponent implements OnInit {
     }
   ];
 
-  constructor(public http: _HttpClient, private message: NzMessageService) {}
+  constructor(
+    public http: _HttpClient,
+    private message: NzMessageService
+  ) {}
 
   ngOnInit(): void {
     this.http.get('/chart/visit').subscribe((res: G2MiniBarData[]) => (this.events = res.slice(0, 8)));

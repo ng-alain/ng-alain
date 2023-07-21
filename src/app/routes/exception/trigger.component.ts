@@ -16,7 +16,10 @@ import { _HttpClient } from '@delon/theme';
 export class ExceptionTriggerComponent {
   types = [401, 403, 404, 500];
 
-  constructor(private http: _HttpClient, @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService) {}
+  constructor(
+    private http: _HttpClient,
+    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService
+  ) {}
 
   go(type: number): void {
     this.http.get(`/api/${type}`).subscribe();

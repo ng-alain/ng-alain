@@ -12,7 +12,11 @@ export class GuardComponent {
     return this.aclSrv.data;
   }
 
-  constructor(private aclSrv: ACLService, private menuSrv: MenuService, private router: Router) {}
+  constructor(
+    private aclSrv: ACLService,
+    private menuSrv: MenuService,
+    private router: Router
+  ) {}
 
   setRole(value: string | boolean): void {
     this.aclSrv.setFull(typeof value === 'boolean' ? value : false);

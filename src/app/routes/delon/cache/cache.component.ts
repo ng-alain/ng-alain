@@ -9,7 +9,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class CacheComponent {
   KEY = 'user';
 
-  constructor(private cache: CacheService, private msg: NzMessageService) {}
+  constructor(
+    private cache: CacheService,
+    private msg: NzMessageService
+  ) {}
 
   set(): void {
     this.cache.set(this.KEY, +new Date());

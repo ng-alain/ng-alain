@@ -18,7 +18,11 @@ export class UserLockComponent {
     return this.settings.user;
   }
 
-  constructor(@Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService, private settings: SettingsService, private router: Router) {}
+  constructor(
+    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
+    private settings: SettingsService,
+    private router: Router
+  ) {}
 
   submit(): void {
     this.f.controls.password.markAsDirty();

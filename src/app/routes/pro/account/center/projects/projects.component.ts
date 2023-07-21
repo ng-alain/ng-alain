@@ -12,7 +12,11 @@ export class ProAccountCenterProjectsComponent {
   listLoading = true;
   list: any[] = [];
 
-  constructor(private http: _HttpClient, private msg: NzMessageService, private cdr: ChangeDetectorRef) {
+  constructor(
+    private http: _HttpClient,
+    private msg: NzMessageService,
+    private cdr: ChangeDetectorRef
+  ) {
     this.http.get('/api/list', { count: 8 }).subscribe(res => {
       this.list = res;
       this.listLoading = false;

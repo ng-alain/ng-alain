@@ -38,7 +38,10 @@ export class ProBasicListEditComponent {
     }
   };
 
-  constructor(private modal: NzModalRef, private msgSrv: NzMessageService) {}
+  constructor(
+    private modal: NzModalRef,
+    private msgSrv: NzMessageService
+  ) {}
 
   save(value: any): void {
     this.msgSrv.success('保存成功');

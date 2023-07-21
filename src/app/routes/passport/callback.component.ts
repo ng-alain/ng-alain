@@ -11,7 +11,11 @@ import { SettingsService } from '@delon/theme';
 export class CallbackComponent implements OnInit {
   type = '';
 
-  constructor(private socialService: SocialService, private settingsSrv: SettingsService, private route: ActivatedRoute) {}
+  constructor(
+    private socialService: SocialService,
+    private settingsSrv: SettingsService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.type = this.route.snapshot.params['type'];

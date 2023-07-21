@@ -9,7 +9,10 @@ import { _HttpClient } from '@delon/theme';
 export class ProAccountCenterArticlesComponent {
   list!: any[];
 
-  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {
+  constructor(
+    private http: _HttpClient,
+    private cdr: ChangeDetectorRef
+  ) {
     this.http.get('/api/list', { count: 8 }).subscribe(res => {
       this.list = res;
       this.cdr.detectChanges();

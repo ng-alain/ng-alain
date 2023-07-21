@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { DelonFormModule, WidgetRegistry } from '@delon/form';
 
-import { SharedModule } from '../shared.module';
 import { TestWidget } from './test/test.widget';
+import { SharedModule } from '../shared.module';
 
 export const SCHEMA_THIRDS_COMPONENTS = [TestWidget];
 

@@ -24,7 +24,10 @@ export class ExtrasSettingsComponent implements OnInit {
   // Email
   primary_email = 'cipchk@qq.com';
 
-  constructor(private fb: FormBuilder, public msg: NzMessageService) {}
+  constructor(
+    private fb: FormBuilder,
+    public msg: NzMessageService
+  ) {}
 
   profileSave(value: any): void {
     console.log('profile value', value);

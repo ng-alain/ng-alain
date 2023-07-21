@@ -26,7 +26,11 @@ export class ProProfileAdvancedComponent implements OnInit {
     { title: '备注', index: 'memo', default: '-' }
   ];
 
-  constructor(public msg: NzMessageService, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
+  constructor(
+    public msg: NzMessageService,
+    private http: _HttpClient,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.http.get('/profile/advanced').subscribe(res => {

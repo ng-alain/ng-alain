@@ -22,7 +22,10 @@ export class ColorsComponent {
     return this.colorSrv.brands;
   }
 
-  constructor(private colorSrv: ColorService, private msg: NzMessageService) {}
+  constructor(
+    private colorSrv: ColorService,
+    private msg: NzMessageService
+  ) {}
 
   onCopy(str: string): void {
     copy(str).then(() => this.msg.success(`Copied Success!`));
