@@ -20,7 +20,11 @@ export class ProCardListComponent implements OnInit {
 
   loading = true;
 
-  constructor(private http: _HttpClient, private msg: NzMessageService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private http: _HttpClient,
+    private msg: NzMessageService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.loading = true;

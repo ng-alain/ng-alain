@@ -21,7 +21,10 @@ export class BasicFormComponent {
   });
   submitting = false;
 
-  constructor(private msg: NzMessageService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private msg: NzMessageService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   submit(): void {
     this.submitting = true;

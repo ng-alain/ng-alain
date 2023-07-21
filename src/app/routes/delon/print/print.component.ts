@@ -8,7 +8,11 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
   templateUrl: './print.component.html'
 })
 export class PrintComponent {
-  constructor(public lodopSrv: LodopService, private msg: NzMessageService, private notify: NzNotificationService) {
+  constructor(
+    public lodopSrv: LodopService,
+    private msg: NzMessageService,
+    private notify: NzNotificationService
+  ) {
     this.lodopSrv.lodop.subscribe(({ lodop, ok }) => {
       if (!ok) {
         this.error = true;

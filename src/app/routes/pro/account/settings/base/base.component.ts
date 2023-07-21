@@ -33,7 +33,11 @@ interface ProAccountSettingsCity {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProAccountSettingsBaseComponent implements OnInit {
-  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef, private msg: NzMessageService) {}
+  constructor(
+    private http: _HttpClient,
+    private cdr: ChangeDetectorRef,
+    private msg: NzMessageService
+  ) {}
   avatar = '';
   userLoading = true;
   user!: ProAccountSettingsUser;

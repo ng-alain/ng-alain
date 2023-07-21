@@ -19,7 +19,11 @@ export class ZipComponent implements OnInit {
     }
   ];
 
-  constructor(private zip: ZipService, private msg: NzMessageService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private zip: ZipService,
+    private msg: NzMessageService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.zip.create().then(ret => {

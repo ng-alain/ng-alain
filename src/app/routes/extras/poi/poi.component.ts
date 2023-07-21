@@ -44,7 +44,10 @@ export class ExtrasPoiComponent {
     }
   ];
 
-  constructor(private msg: NzMessageService, private modal: ModalHelper) {}
+  constructor(
+    private msg: NzMessageService,
+    private modal: ModalHelper
+  ) {}
 
   add(): void {
     this.modal.createStatic(ExtrasPoiEditComponent, { i: { id: 0 } }).subscribe(() => {

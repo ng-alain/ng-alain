@@ -54,7 +54,10 @@ export class ProListApplicationsComponent implements OnInit {
   }
   // endregion
 
-  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private http: _HttpClient,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.getData();

@@ -9,7 +9,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class UserRegisterResultComponent {
   params = { email: '' };
   email = '';
-  constructor(route: ActivatedRoute, public msg: NzMessageService) {
+  constructor(
+    route: ActivatedRoute,
+    public msg: NzMessageService
+  ) {
     this.params.email = this.email = route.snapshot.queryParams['email'] || 'ng-alain@example.com';
   }
 }

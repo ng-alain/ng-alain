@@ -9,7 +9,10 @@ import { _HttpClient } from '@delon/theme';
 export class ProListArticlesComponent implements OnInit {
   // endregion
 
-  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private http: _HttpClient,
+    private cdr: ChangeDetectorRef
+  ) {}
   q = {
     ps: 5,
     categories: [],

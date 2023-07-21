@@ -15,7 +15,12 @@ import { finalize } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserRegisterComponent implements OnDestroy {
-  constructor(private fb: FormBuilder, private router: Router, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private http: _HttpClient,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   // #region fields
 

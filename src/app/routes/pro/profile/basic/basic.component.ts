@@ -50,5 +50,8 @@ export class ProProfileBaseComponent {
     { title: '耗时', index: 'cost' }
   ];
 
-  constructor(private http: _HttpClient, private msg: NzMessageService) {}
+  constructor(
+    private http: _HttpClient,
+    private msg: NzMessageService
+  ) {}
 }

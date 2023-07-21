@@ -53,7 +53,11 @@ export class WidgetsComponent implements OnInit {
   like = false;
   dislike = false;
 
-  constructor(public msg: NzMessageService, private http: _HttpClient, private cdr: ChangeDetectorRef) {}
+  constructor(
+    public msg: NzMessageService,
+    private http: _HttpClient,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.http.get('/chart/visit').subscribe((res: G2MiniBarData[]) => {
