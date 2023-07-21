@@ -12,7 +12,6 @@ import { DownFileComponent } from './downfile/downfile.component';
 import { DelonFormComponent } from './form/form.component';
 import { GuardAdminComponent } from './guard/admin.component';
 import { GuardAuthComponent } from './guard/auth.component';
-import { CanLeaveProvide } from './guard/can-leave.provide';
 import { GuardComponent } from './guard/guard.component';
 import { GuardLeaveComponent } from './guard/leave.component';
 import { PrintComponent } from './print/print.component';
@@ -41,7 +40,6 @@ const COMPONENTS = [
 
 @NgModule({
   imports: [SharedModule, DelonRoutingModule, DownFileModule, FullContentModule, QRModule, G2MiniBarModule],
-  providers: [CanLeaveProvide],
   declarations: COMPONENTS
 })
 export class DelonModule {}

@@ -19,8 +19,12 @@ export class GuardComponent {
   ) {}
 
   setRole(value: string | boolean): void {
-    this.aclSrv.setFull(typeof value === 'boolean' ? value : false);
-    this.aclSrv.set({ role: [value as string] });
+    this.aclSrv.setFull(false);
+    if (typeof value === 'boolean') {
+      this.aclSrv.setFull(value);
+    } else {
+      this.aclSrv.set({ role: [value as string] });
+    }
     this.menuSrv.resume();
     this.router.navigate(['/delon/guard']);
   }

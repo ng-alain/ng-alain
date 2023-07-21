@@ -8,7 +8,7 @@ import { DownFileComponent } from './downfile/downfile.component';
 import { DelonFormComponent } from './form/form.component';
 import { GuardAdminComponent } from './guard/admin.component';
 import { GuardAuthComponent } from './guard/auth.component';
-import { CanLeaveProvide } from './guard/can-leave.provide';
+import { canLeave } from './guard/can-leave';
 import { GuardComponent } from './guard/guard.component';
 import { GuardLeaveComponent } from './guard/leave.component';
 import { PrintComponent } from './print/print.component';
@@ -30,7 +30,7 @@ const routes: Routes = [
       {
         path: 'leave',
         component: GuardLeaveComponent,
-        canDeactivate: [CanLeaveProvide]
+        canDeactivate: [canLeave]
       },
       {
         path: 'auth',
