@@ -53,7 +53,8 @@ const routes: Routes = [
       // NOTICE: If you use `reuse-tab` component and turn on keepingScroll you can set to `disabled`
       // Pls refer to https://ng-alain.com/components/reuse-tab
       scrollPositionRestoration: 'top',
-      preloadingStrategy: PreloadOptionalModules
+      preloadingStrategy: PreloadOptionalModules,
+      bindToComponentInputs: true
     })
   ],
   exports: [RouterModule]
