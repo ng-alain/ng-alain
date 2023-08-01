@@ -19,7 +19,7 @@
         </se>
         <se label="国家/地区">
           <nz-select [(ngModel)]="user.country" name="country" required>
-            <nz-option nzLabel="中国" nzValue="China"></nz-option>
+            <nz-option nzLabel="中国" nzValue="China" />
           </nz-select>
         </se>
         <se label="所在省市">
@@ -31,10 +31,10 @@
               required
               class="width-50 mr-sm"
             >
-              <nz-option *ngFor="let p of provinces" [nzLabel]="p.name" [nzValue]="p.id"></nz-option>
+              <nz-option *ngFor="let p of provinces" [nzLabel]="p.name" [nzValue]="p.id" />
             </nz-select>
             <nz-select [(ngModel)]="user.geographic.city.key" name="geographic.city.key" required class="width-50">
-              <nz-option *ngFor="let p of cities" [nzLabel]="p.name" [nzValue]="p.id"></nz-option>
+              <nz-option *ngFor="let p of cities" [nzLabel]="p.name" [nzValue]="p.id" />
             </nz-select>
           </div>
         </se>

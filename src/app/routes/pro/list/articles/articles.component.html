@@ -14,7 +14,7 @@
     </se>
     <se label="owner" line>
       <nz-select [(ngModel)]="q.owners" name="owners" [nzMode]="'tags'" style="max-width: 286px">
-        <nz-option *ngFor="let i of owners" [nzLabel]="i.name" [nzValue]="i.id"></nz-option>
+        <nz-option *ngFor="let i of owners" [nzLabel]="i.name" [nzValue]="i.id" />
       </nz-select>
       <a class="ml-sm" (click)="setOwner()">只看自己的</a>
     </se>
@@ -24,7 +24,7 @@
           <nz-form-label nzFor="rate">作者</nz-form-label>
           <nz-form-control>
             <nz-select [(ngModel)]="q.user" name="user" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" style="width: 100px">
-              <nz-option [nzLabel]="'李三'" [nzValue]="'lisa'"></nz-option>
+              <nz-option [nzLabel]="'李三'" [nzValue]="'lisa'" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -32,7 +32,7 @@
           <nz-form-label nzFor="rate">好评度</nz-form-label>
           <nz-form-control>
             <nz-select [(ngModel)]="q.rate" name="rate" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" style="width: 100px">
-              <nz-option [nzLabel]="'优秀'" [nzValue]="'good'"></nz-option>
+              <nz-option [nzLabel]="'优秀'" [nzValue]="'good'" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -63,7 +63,7 @@
         <ng-template #nzContent>
           <p>{{ item.content }}</p>
           <div class="mt-md d-flex">
-            <nz-avatar [nzSrc]="item.avatar" [nzSize]="'small'" class="mr-sm"></nz-avatar>
+            <nz-avatar [nzSrc]="item.avatar" [nzSize]="'small'" class="mr-sm" />
             <a href="{{ item.href }}" target="_blank">{{ item.owner }}</a>
             <span class="px-sm">发布在</span>
             <a href="{{ item.href }}" target="_blank">{{ item.href }}</a>

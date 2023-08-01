@@ -27,7 +27,7 @@
         </ng-template>
         <nz-card-meta [nzAvatar]="nzAvatar" [nzTitle]="nzTitle" [nzDescription]="nzDescription">
           <ng-template #nzAvatar>
-            <nz-avatar nzSize="large" [nzSrc]="item.avatar"></nz-avatar>
+            <nz-avatar nzSize="large" [nzSrc]="item.avatar" />
           </ng-template>
           <ng-template #nzTitle>
             <a (click)="show('标题：' + item.id)">{{ item.title }}</a>

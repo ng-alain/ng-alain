@@ -1,5 +1,5 @@
-<page-header [title]="'Page Name'"></page-header>
+<page-header [title]="'Page Name'" />
 <nz-card>
-  <sf mode="search" [schema]="searchSchema" [formData]="params" (formSubmit)="st.reset($event)" (formReset)="st.reset(params)"></sf>
-  <st #st [data]="url" [columns]="columns" [req]="{ params: params }"></st>
+  <sf mode="search" [schema]="searchSchema" [formData]="params" (formSubmit)="st.reset($event)" (formReset)="st.reset(params)" />
+  <st #st [data]="url" [columns]="columns" [req]="{ params: params }" />
 </nz-card>

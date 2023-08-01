@@ -47,7 +47,7 @@
     <nz-form-label nzSpan="4">门店类型</nz-form-label>
     <nz-form-control nzSpan="8">
       <nz-select [(ngModel)]="i.categories" name="categories" required [nzAllowClear]="false">
-        <nz-option *ngFor="let i of cat" [nzLabel]="i" [nzValue]="i"> </nz-option>
+        <nz-option *ngFor="let i of cat" [nzLabel]="i" [nzValue]="i" />
       </nz-select>
     </nz-form-control>
   </nz-form-item>
@@ -74,7 +74,7 @@
   <nz-form-item class="mb-sm">
     <nz-form-label nzSpan="4">人均价格</nz-form-label>
     <nz-form-control nzSpan="8">
-      <nz-input-number [(ngModel)]="i.avg_price" name="avg_price" [nzMin]="0" [nzStep]="10"></nz-input-number>
+      <nz-input-number [(ngModel)]="i.avg_price" name="avg_price" [nzMin]="0" [nzStep]="10" />
     </nz-form-control>
   </nz-form-item>
   <div class="modal-footer">

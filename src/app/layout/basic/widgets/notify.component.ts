@@ -16,7 +16,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
       (select)="select($event)"
       (clear)="clear($event)"
       (popoverVisibleChange)="loadData()"
-    ></notice-icon>
+    />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

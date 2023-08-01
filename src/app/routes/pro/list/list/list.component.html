@@ -9,8 +9,8 @@
   </div>
   <ng-template #tab>
     <nz-tabset [nzSelectedIndex]="pos">
-      <nz-tab *ngFor="let i of tabs" [nzTitle]="i.tab" (nzClick)="to(i)"></nz-tab>
+      <nz-tab *ngFor="let i of tabs" [nzTitle]="i.tab" (nzClick)="to(i)" />
     </nz-tabset>
   </ng-template>
 </page-header>
-<router-outlet></router-outlet>
+<router-outlet />

@@ -1,7 +1,7 @@
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
   <nz-tabset [nzAnimated]="false" class="tabs" (nzSelectChange)="switch($event)">
     <nz-tab [nzTitle]="'app.login.tab-login-credentials' | i18n">
-      <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
+      <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg" />
       <nz-form-item>
         <nz-form-control nzErrorTip="Please enter mobile number, muse be: admin or user">
           <nz-input-group nzSize="large" nzPrefixIcon="user">

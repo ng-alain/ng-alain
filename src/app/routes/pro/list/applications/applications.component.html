@@ -18,7 +18,7 @@
           <nz-form-label nzFor="rate">作者</nz-form-label>
           <nz-form-control>
             <nz-select [(ngModel)]="q.user" name="user" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" style="width: 100px">
-              <nz-option [nzLabel]="'李三'" [nzValue]="'lisa'"></nz-option>
+              <nz-option [nzLabel]="'李三'" [nzValue]="'lisa'" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -26,7 +26,7 @@
           <nz-form-label nzFor="rate">好评度</nz-form-label>
           <nz-form-control>
             <nz-select [(ngModel)]="q.rate" name="rate" [nzPlaceHolder]="'不限'" [nzShowSearch]="true" style="width: 100px">
-              <nz-option [nzLabel]="'优秀'" [nzValue]="'good'"></nz-option>
+              <nz-option [nzLabel]="'优秀'" [nzValue]="'good'" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -60,7 +60,7 @@
         </ng-template>
         <nz-card-meta [nzTitle]="item.title" [nzAvatar]="nzAvatar">
           <ng-template #nzAvatar>
-            <nz-avatar nzSize="small" [nzSrc]="item.avatar"></nz-avatar>
+            <nz-avatar nzSize="small" [nzSrc]="item.avatar" />
           </ng-template>
         </nz-card-meta>
         <div class="card-info d-flex">

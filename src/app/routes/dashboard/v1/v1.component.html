@@ -40,7 +40,7 @@
           [data]="webSite"
           tooltipType="mini"
           (ready)="fixDark($event)"
-        ></g2-mini-bar>
+        />
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@
           [data]="webSite"
           tooltipType="mini"
           (ready)="fixDark($event)"
-        ></g2-mini-bar>
+        />
       </div>
     </div>
   </div>
@@ -80,7 +80,7 @@
           [data]="webSite"
           tooltipType="mini"
           (ready)="fixDark($event)"
-        ></g2-mini-bar>
+        />
       </div>
     </div>
   </div>
@@ -100,7 +100,7 @@
           [data]="webSite"
           tooltipType="mini"
           (ready)="fixDark($event)"
-        ></g2-mini-bar>
+        />
       </div>
     </div>
   </div>
@@ -112,7 +112,7 @@
         Sales Statistics
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
-      <g2-bar *ngIf="salesData" height="275" [data]="salesData"></g2-bar>
+      <g2-bar *ngIf="salesData" height="275" [data]="salesData" />
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzMd="12">
@@ -121,12 +121,7 @@
         Growth Rate
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
-      <g2-timeline
-        *ngIf="offlineChartData"
-        [data]="offlineChartData"
-        [height]="289"
-        [titleMap]="{ y1: '客流量', y2: '支付笔数' }"
-      ></g2-timeline>
+      <g2-timeline *ngIf="offlineChartData" [data]="offlineChartData" [height]="289" [titleMap]="{ y1: '客流量', y2: '支付笔数' }" />
     </nz-card>
   </div>
 </div>
@@ -156,7 +151,7 @@
       </ng-template>
       <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md bg-grey-lighter-h point" *ngFor="let item of todoData">
         <div nz-col [nzSpan]="4" class="text-center">
-          <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'"></nz-avatar>
+          <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
         </div>
         <div nz-col [nzSpan]="20">
           <strong>{{ item.name }}</strong>
@@ -169,7 +164,7 @@
     <nz-card nzTitle="Todo lists" [nzBordered]="false" class="ant-card__body-nopadding">
       <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md bg-grey-lighter-h point" *ngFor="let item of todoData">
         <div nz-col [nzSpan]="4" class="text-center">
-          <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'"></nz-avatar>
+          <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
         </div>
         <div nz-col [nzSpan]="18">
           <strong>{{ item.name }}</strong>

@@ -1,11 +1,6 @@
 <form nz-form [formGroup]="form" (ngSubmit)="_submitForm()">
   <div se-container="1" labelWidth="100">
-    <nz-alert
-      class="pb-lg"
-      [nzMessage]="'确认转账后，资金将直接打入对方账户，无法退回。'"
-      [nzShowIcon]="true"
-      [nzCloseable]="true"
-    ></nz-alert>
+    <nz-alert class="pb-lg" [nzMessage]="'确认转账后，资金将直接打入对方账户，无法退回。'" [nzShowIcon]="true" [nzCloseable]="true" />
     <se label="付款账户">{{ item.pay_account }}</se>
     <se label="账户类型">{{ item.receiver_type === 'alipay' ? '支付宝' : '银行' }}</se>
     <se label="收款账户">{{ item.receiver_account }}</se>

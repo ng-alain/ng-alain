@@ -27,7 +27,7 @@
           <nz-form-label>仓库管理员</nz-form-label>
           <nz-form-control nzErrorTip="请选择管理员">
             <nz-select formControlName="owner" [nzPlaceHolder]="'请选择管理员'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value"></nz-option>
+              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -39,7 +39,7 @@
           <nz-form-label>审批员</nz-form-label>
           <nz-form-control nzErrorTip="请选择审批员">
             <nz-select formControlName="approver" [nzPlaceHolder]="'请选择管理员'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value"> </nz-option>
+              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -48,7 +48,7 @@
         <nz-form-item>
           <nz-form-label>生效日期</nz-form-label>
           <nz-form-control>
-            <nz-range-picker formControlName="date_range" [style]="{ width: '100%' }"></nz-range-picker>
+            <nz-range-picker formControlName="date_range" [style]="{ width: '100%' }" />
           </nz-form-control>
         </nz-form-item>
       </nz-col>
@@ -57,8 +57,8 @@
           <nz-form-label>仓库类型</nz-form-label>
           <nz-form-control nzErrorTip="请选择仓库类型">
             <nz-select formControlName="type" [nzShowSearch]="true" [nzPlaceHolder]="'请选择仓库类型'">
-              <nz-option [nzLabel]="'私密'" [nzValue]="'private'"></nz-option>
-              <nz-option [nzLabel]="'公开'" [nzValue]="'public'"></nz-option>
+              <nz-option [nzLabel]="'私密'" [nzValue]="'private'" />
+              <nz-option [nzLabel]="'公开'" [nzValue]="'public'" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -88,7 +88,7 @@
           <nz-form-label>执行人</nz-form-label>
           <nz-form-control nzErrorTip="请选择执行人">
             <nz-select formControlName="owner2" [nzPlaceHolder]="'请选择执行人'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value"> </nz-option>
+              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -100,7 +100,7 @@
           <nz-form-label>责任人</nz-form-label>
           <nz-form-control nzErrorTip="请选择责任人">
             <nz-select formControlName="approver2" [nzPlaceHolder]="'请选择责任人'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value"></nz-option>
+              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -109,7 +109,7 @@
         <nz-form-item>
           <nz-form-label>生效时间</nz-form-label>
           <nz-form-control>
-            <nz-time-picker formControlName="time"></nz-time-picker>
+            <nz-time-picker formControlName="time" />
           </nz-form-control>
         </nz-form-item>
       </nz-col>
@@ -118,8 +118,8 @@
           <nz-form-label>任务类型</nz-form-label>
           <nz-form-control nzErrorTip="请选择任务类型">
             <nz-select formControlName="type2" [nzShowSearch]="true" [nzPlaceHolder]="'请选择任务类型'">
-              <nz-option [nzLabel]="'私密'" [nzValue]="'private'"></nz-option>
-              <nz-option [nzLabel]="'公开'" [nzValue]="'public'"></nz-option>
+              <nz-option [nzLabel]="'私密'" [nzValue]="'private'" />
+              <nz-option [nzLabel]="'公开'" [nzValue]="'public'" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -165,12 +165,12 @@
           <td>
             <span *ngIf="editIndex !== i">
               <a (click)="edit(i)">编辑</a>
-              <nz-divider nzType="vertical"></nz-divider>
+              <nz-divider nzType="vertical" />
               <a nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="del(i)">删除</a>
             </span>
             <span *ngIf="editIndex === i">
               <a (click)="save(i)">保存</a>
-              <nz-divider nzType="vertical"></nz-divider>
+              <nz-divider nzType="vertical" />
               <a nz-popconfirm nzPopconfirmTitle="是否要取消操作？" (nzOnConfirm)="cancel(i)">取消</a>
             </span>
           </td>
