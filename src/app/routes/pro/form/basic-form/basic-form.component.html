@@ -5,7 +5,7 @@
       <input nz-input formControlName="title" placeholder="给目标起个名字" />
     </se>
     <se label="起止日期" error="请输入标题" required>
-      <nz-range-picker formControlName="date"></nz-range-picker>
+      <nz-range-picker formControlName="date" />
     </se>
     <se label="目标描述" error="请输入目标描述" required>
       <textarea nz-input formControlName="goal" [nzAutosize]="{ minRows: 4 }" placeholder="请输入你的阶段性工作目标"></textarea>
@@ -20,7 +20,7 @@
       <input nz-input formControlName="invites" placeholder="请直接 @姓名／工号，最多可邀请 5 人" />
     </se>
     <se label="权重">
-      <nz-input-number formControlName="weight" placeholder="请输入"></nz-input-number>
+      <nz-input-number formControlName="weight" placeholder="请输入" />
       <em>%</em>
     </se>
     <se label="目标公开" extra="客户、邀评人默认被分享">

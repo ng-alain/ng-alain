@@ -25,7 +25,7 @@
       <ng-template #action2>
         <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"></i>
       </ng-template>
-      <g2-mini-area *ngIf="data.visitData" color="#975FE4" height="46" [data]="data.visitData"></g2-mini-area>
+      <g2-mini-area *ngIf="data.visitData" color="#975FE4" height="46" [data]="data.visitData" />
       <ng-template #footer2>
         <p class="text-truncate mb0">
           {{ 'app.analysis.day-visits' | i18n }}
@@ -39,7 +39,7 @@
       <ng-template #action3>
         <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"></i>
       </ng-template>
-      <g2-mini-bar *ngIf="data.visitData" height="46" [data]="data.visitData"></g2-mini-bar>
+      <g2-mini-bar *ngIf="data.visitData" height="46" [data]="data.visitData" />
       <ng-template #footer3>
         <p class="text-truncate mb0">
           {{ 'app.analysis.conversion-rate' | i18n }}
@@ -53,7 +53,7 @@
       <ng-template #action4>
         <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"></i>
       </ng-template>
-      <g2-mini-progress height="46" percent="78" strokeWidth="8" target="80" color="#13C2C2"></g2-mini-progress>
+      <g2-mini-progress height="46" percent="78" strokeWidth="8" target="80" color="#13C2C2" />
       <ng-template #footer4>
         <div class="d-flex justify-content-between text-truncate">
           <trend flag="up">
@@ -81,7 +81,7 @@
               style="width: 100%"
               [title]="'app.analysis.' + tab.key + '-trend' | i18n"
               [data]="data.salesData"
-            ></g2-bar>
+            />
           </div>
         </div>
         <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8">
@@ -105,7 +105,7 @@
             {{ 'app.analysis.all-' + t | i18n }}
           </span>
         </div>
-        <nz-range-picker [(ngModel)]="dateRange"></nz-range-picker>
+        <nz-range-picker [(ngModel)]="dateRange" />
       </div>
     </ng-template>
   </nz-tabset>
@@ -136,11 +136,11 @@
               <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle" class="ml-sm"></i>
             </ng-template>
           </number-info>
-          <g2-mini-area *ngIf="data.visitData2" [line]="true" height="45" [data]="data.visitData2"></g2-mini-area>
+          <g2-mini-area *ngIf="data.visitData2" [line]="true" height="45" [data]="data.visitData2" />
         </div>
         <div nz-col nzXs="24" nzSm="12" class="mb-md">
-          <number-info [subTitle]="'app.analysis.per-capita-search' | i18n" total="2.7" subTotal="26.2" status="down"></number-info>
-          <g2-mini-area *ngIf="data.visitData2" [line]="true" height="45" [data]="data.visitData2"></g2-mini-area>
+          <number-info [subTitle]="'app.analysis.per-capita-search' | i18n" total="2.7" subTotal="26.2" status="down" />
+          <g2-mini-area *ngIf="data.visitData2" [line]="true" height="45" [data]="data.visitData2" />
         </div>
       </div>
       <st [data]="data.searchData" [columns]="searchColumn" size="small" ps="5" [page]="{ toTop: false }">
@@ -192,8 +192,7 @@
         [lineWidth]="4"
         [total]="salesTotal"
         [valueFormat]="handlePieValueFormat"
-      >
-      </g2-pie>
+      />
     </nz-card>
   </div>
 </div>
@@ -209,7 +208,7 @@
             [total]="tab.cvr * 100 + '%'"
             [theme]="i !== offlineIdx ? 'light' : 'default'"
             class="mr-md"
-          ></number-info>
+          />
           <g2-pie
             style="padding-top: 36px; width: 48px"
             [animate]="false"
@@ -219,12 +218,11 @@
             [padding]="[0, 0, 0, 0]"
             [percent]="tab.cvr * 100"
             [height]="48"
-          >
-          </g2-pie>
+          />
         </div>
       </ng-template>
       <div class="px-lg">
-        <g2-timeline *ngIf="tab.show" [data]="tab.chart" [titleMap]="titleMap"></g2-timeline>
+        <g2-timeline *ngIf="tab.show" [data]="tab.chart" [titleMap]="titleMap" />
       </div>
     </nz-tab>
   </nz-tabset>

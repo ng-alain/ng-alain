@@ -28,8 +28,8 @@
               <nz-form-label nzFor="email">email</nz-form-label>
               <nz-form-control [nzExtra]="emailExtra">
                 <nz-select formControlName="email">
-                  <nz-option [nzLabel]="'Select a verified email to display'" [nzValue]="''"></nz-option>
-                  <nz-option [nzLabel]="'cipchk@qq.com'" [nzValue]="'cipchk@qq.com'"></nz-option>
+                  <nz-option [nzLabel]="'Select a verified email to display'" [nzValue]="''" />
+                  <nz-option [nzLabel]="'cipchk@qq.com'" [nzValue]="'cipchk@qq.com'" />
                 </nz-select>
                 <ng-template #emailExtra>
                   You can manage verified email addresses in your
@@ -151,7 +151,7 @@
         cipchk@qq.com will be used for account-related notifications and for web-based GitHub operations (e.g. edits and merges).
       </p>
       <nz-select [(ngModel)]="primary_email" class="mr-sm">
-        <nz-option [nzLabel]="'cipchk@qq.com'" [nzValue]="'cipchk@qq.com'"></nz-option>
+        <nz-option [nzLabel]="'cipchk@qq.com'" [nzValue]="'cipchk@qq.com'" />
       </nz-select>
       <button nz-button (click)="msg.info('save')">Save</button>
     </nz-card>

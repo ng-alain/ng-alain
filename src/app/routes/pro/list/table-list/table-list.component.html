@@ -1,4 +1,4 @@
-<page-header [title]="'查询表格'"></page-header>
+<page-header [title]="'查询表格'" />
 <nz-card [nzBordered]="false">
   <form nz-form [nzLayout]="'inline'" (ngSubmit)="getData()" class="search__form">
     <div nz-row [nzGutter]="{ xs: 8, sm: 8, md: 8, lg: 24, xl: 48, xxl: 48 }">
@@ -15,7 +15,7 @@
           <nz-form-label nzFor="status">使用状态</nz-form-label>
           <nz-form-control>
             <nz-select [(ngModel)]="q.status" name="status" id="status" [nzPlaceHolder]="'请选择'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of status; let idx = index" [nzLabel]="i.text" [nzValue]="idx"></nz-option>
+              <nz-option *ngFor="let i of status; let idx = index" [nzLabel]="i.text" [nzValue]="idx" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -32,7 +32,7 @@
         <nz-form-item>
           <nz-form-label nzFor="updatedAt">更新日期</nz-form-label>
           <nz-form-control>
-            <nz-date-picker id="updatedAt"></nz-date-picker>
+            <nz-date-picker id="updatedAt" />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -41,7 +41,7 @@
           <nz-form-label nzFor="status2">使用状态</nz-form-label>
           <nz-form-control>
             <nz-select [nzPlaceHolder]="'请选择'" nzId="status2" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of status; let idx = index" [nzLabel]="i.text" [nzValue]="idx"></nz-option>
+              <nz-option *ngFor="let i of status; let idx = index" [nzLabel]="i.text" [nzValue]="idx" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -51,7 +51,7 @@
           <nz-form-label nzFor="status3">使用状态</nz-form-label>
           <nz-form-control>
             <nz-select [nzPlaceHolder]="'请选择'" nzId="status3" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of status; let idx = index" [nzLabel]="i.text" [nzValue]="idx"></nz-option>
+              <nz-option *ngFor="let i of status; let idx = index" [nzLabel]="i.text" [nzValue]="idx" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -94,7 +94,7 @@
   </div>
   <st #st [columns]="columns" [data]="data" [loading]="loading" (change)="stChange($event)">
     <ng-template st-row="status" let-i>
-      <nz-badge [nzStatus]="i.statusType" [nzText]="i.statusText"></nz-badge>
+      <nz-badge [nzStatus]="i.statusType" [nzText]="i.statusText" />
     </ng-template>
   </st>
 </nz-card>

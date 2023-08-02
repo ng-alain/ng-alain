@@ -18,7 +18,7 @@
         <div class="card-item-content">
           <span class="text-grey">{{ item.updatedAt | _date: 'fn' }}</span>
           <avatar-list size="mini">
-            <avatar-list-item *ngFor="let m of item.members" [src]="m.avatar" [tips]="m.name"></avatar-list-item>
+            <avatar-list-item *ngFor="let m of item.members" [src]="m.avatar" [tips]="m.name" />
           </avatar-list>
         </div>
       </nz-card>

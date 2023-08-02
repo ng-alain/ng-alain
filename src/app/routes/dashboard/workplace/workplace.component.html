@@ -13,7 +13,7 @@
   <ng-template #content>
     <div class="content">
       <div class="avatar">
-        <nz-avatar nzSrc="https://gw.alipayobjects.com/zos/rmsportal/lctvVCLfRpYCkYxAsiVQ.png"></nz-avatar>
+        <nz-avatar nzSrc="https://gw.alipayobjects.com/zos/rmsportal/lctvVCLfRpYCkYxAsiVQ.png" />
       </div>
       <div class="desc">
         <div class="desc-title">早安，山治，我要吃肉！</div>
@@ -58,7 +58,7 @@
           <nz-card-meta [nzTitle]="noticeTitle" [nzDescription]="item.description">
             <ng-template #noticeTitle>
               <div class="card-title">
-                <nz-avatar [nzSrc]="item.logo" [nzSize]="'small'"></nz-avatar>
+                <nz-avatar [nzSrc]="item.logo" [nzSize]="'small'" />
                 <a (click)="msg.info('to' + item.href)">{{ item.title }}</a>
               </div>
             </ng-template>
@@ -100,14 +100,14 @@
       </div>
     </nz-card>
     <nz-card nzTitle="XX 指数" [nzBordered]="false" [nzLoading]="loading" class="mb-lg">
-      <g2-radar *ngIf="radarData" [data]="radarData" [height]="343" [hasLegend]="true"></g2-radar>
+      <g2-radar *ngIf="radarData" [data]="radarData" [height]="343" [hasLegend]="true" />
     </nz-card>
     <nz-card nzTitle="团队" [nzBordered]="false" [nzBodyStyle]="{ 'padding-top.px': 12, 'padding-bottom.px': 12 }" class="mb-lg">
       <div class="members">
         <div nz-row [nzGutter]="48">
           <div nz-col [nzSpan]="12" *ngFor="let i of members">
             <a (click)="msg.success(i.title)">
-              <nz-avatar [nzSrc]="i.logo" [nzSize]="'small'"></nz-avatar>
+              <nz-avatar [nzSrc]="i.logo" [nzSize]="'small'" />
               <span class="member">{{ i.title }}</span>
             </a>
           </div>

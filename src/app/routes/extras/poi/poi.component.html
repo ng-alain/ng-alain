@@ -5,12 +5,12 @@
 <form nz-form nzLayout="inline" se-container>
   <se>
     <nz-select [(ngModel)]="s.s" name="s" [nzAllowClear]="false">
-      <nz-option nzValue="" nzLabel="状态不限"></nz-option>
-      <nz-option nzValue="1" nzLabel="正常"></nz-option>
-      <nz-option nzValue="2" nzLabel="已取消"></nz-option>
-      <nz-option nzValue="3" nzLabel="已删除"></nz-option>
-      <nz-option nzValue="10" nzLabel="待提交"></nz-option>
-      <nz-option nzValue="11" nzLabel="待审核"></nz-option>
+      <nz-option nzValue="" nzLabel="状态不限" />
+      <nz-option nzValue="1" nzLabel="正常" />
+      <nz-option nzValue="2" nzLabel="已取消" />
+      <nz-option nzValue="3" nzLabel="已删除" />
+      <nz-option nzValue="10" nzLabel="待提交" />
+      <nz-option nzValue="11" nzLabel="待审核" />
     </nz-select>
   </se>
   <se>
@@ -23,4 +23,4 @@
     <button nz-button (click)="st.reset(s)" nzType="primary">搜索</button>
   </se>
 </form>
-<st #st class="bg-white" [columns]="columns" [data]="url" [req]="{ params: s }"></st>
+<st #st class="bg-white" [columns]="columns" [data]="url" [req]="{ params: s }" />

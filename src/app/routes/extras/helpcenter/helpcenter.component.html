@@ -6,11 +6,11 @@
   <nz-input-group nzCompact nzSize="large">
     <input [(ngModel)]="q" placeholder="请用关键词进行搜索，例如“服务器密码重置”" style="width: 50%" nz-input />
     <nz-select [(ngModel)]="type" nzSize="large" style="width: 20%">
-      <nz-option [nzLabel]="'不限'" [nzValue]="''"></nz-option>
-      <nz-option [nzLabel]="'弹性计算'" [nzValue]="'弹性计算'"></nz-option>
-      <nz-option [nzLabel]="'存储与CDN'" [nzValue]="'存储与CDN'"></nz-option>
-      <nz-option [nzLabel]="'会员服务'" [nzValue]="'会员服务'"></nz-option>
-      <nz-option [nzLabel]="'数据库'" [nzValue]="'数据库'"></nz-option>
+      <nz-option [nzLabel]="'不限'" [nzValue]="''" />
+      <nz-option [nzLabel]="'弹性计算'" [nzValue]="'弹性计算'" />
+      <nz-option [nzLabel]="'存储与CDN'" [nzValue]="'存储与CDN'" />
+      <nz-option [nzLabel]="'会员服务'" [nzValue]="'会员服务'" />
+      <nz-option [nzLabel]="'数据库'" [nzValue]="'数据库'" />
     </nz-select>
     <button nz-button [nzType]="'primary'" (click)="search()" nzSize="large">
       <span>搜索</span>

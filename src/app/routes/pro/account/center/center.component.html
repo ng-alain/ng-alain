@@ -16,7 +16,7 @@
             {{ user.geographic.city.label }}
           </p>
         </div>
-        <nz-divider nzDashed></nz-divider>
+        <nz-divider nzDashed />
         <div class="tags">
           <div class="tags-title">标签</div>
           <nz-tag *ngFor="let t of user.tags">{{ t.label }}</nz-tag>
@@ -35,14 +35,14 @@
             style="width: 78px"
           />
         </div>
-        <nz-divider nzDashed></nz-divider>
+        <nz-divider nzDashed />
         <div class="team">
           <div class="team-title">团队</div>
           <nz-spin [nzSpinning]="!notice">
             <div nz-row nzGutter="36">
               <div nz-col *ngFor="let t of notice" nzLg="24" nzXl="12">
                 <a href="#" class="text-truncate">
-                  <nz-avatar [nzSrc]="t.logo" nzSize="small"></nz-avatar>
+                  <nz-avatar [nzSrc]="t.logo" nzSize="small" />
                   {{ t.member }}
                 </a>
               </div>
@@ -56,10 +56,10 @@
     <nz-card class="tabs-card" [nzBordered]="false" [nzTitle]="tagTitleTpl">
       <ng-template #tagTitleTpl>
         <nz-tabset nzSize="large" [nzSelectedIndex]="pos">
-          <nz-tab *ngFor="let i of tabs" [nzTitle]="i.tab" (nzClick)="to(i)"></nz-tab>
+          <nz-tab *ngFor="let i of tabs" [nzTitle]="i.tab" (nzClick)="to(i)" />
         </nz-tabset>
       </ng-template>
-      <router-outlet></router-outlet>
+      <router-outlet />
     </nz-card>
   </div>
 </div>

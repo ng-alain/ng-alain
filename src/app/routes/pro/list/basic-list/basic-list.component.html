@@ -1,4 +1,4 @@
-<page-header [title]="null"></page-header>
+<page-header [title]="null" />
 <nz-card [nzBordered]="false">
   <div nz-row>
     <div nz-col [nzXs]="24" [nzSm]="8" class="header-info">
@@ -64,7 +64,7 @@
             <a href="{{ item.href }}" target="_blank">{{ item.title }}</a>
           </ng-template>
           <ng-template #nzAvatar>
-            <nz-avatar [nzSrc]="item.logo" nzSize="large" [nzShape]="'square'"></nz-avatar>
+            <nz-avatar [nzSrc]="item.logo" nzSize="large" [nzShape]="'square'" />
           </ng-template>
         </nz-list-item-meta>
         <ng-template #nzContent>
@@ -79,13 +79,13 @@
                 <p>{{ item.createdAt | _date }}</p>
               </div>
             </div>
-            <nz-progress [nzPercent]="item.percent" [nzStatus]="item.status" [nzStrokeWidth]="6"></nz-progress>
+            <nz-progress [nzPercent]="item.percent" [nzStatus]="item.status" [nzStrokeWidth]="6" />
           </div>
         </ng-template>
       </nz-list-item>
     </ng-template>
     <ng-template #pagination>
-      <nz-pagination [nzTotal]="50" [nzPageSize]="5" (nzPageIndexChange)="getData()"></nz-pagination>
+      <nz-pagination [nzTotal]="50" [nzPageSize]="5" (nzPageIndexChange)="getData()" />
     </ng-template>
   </nz-list>
 </nz-card>

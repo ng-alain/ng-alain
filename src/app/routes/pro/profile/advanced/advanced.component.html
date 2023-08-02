@@ -33,8 +33,8 @@
   </ng-template>
   <ng-template #tab>
     <nz-tabset>
-      <nz-tab nzTitle="详情"></nz-tab>
-      <nz-tab nzTitle="规则"></nz-tab>
+      <nz-tab nzTitle="详情" />
+      <nz-tab nzTitle="规则" />
     </nz-tabset>
   </ng-template>
   <sv-container size="small" col="2">
@@ -72,8 +72,8 @@
         </div>
       </ng-template>
     </nz-step>
-    <nz-step [nzTitle]="'财务复核'"></nz-step>
-    <nz-step [nzTitle]="'完成'"></nz-step>
+    <nz-step [nzTitle]="'财务复核'" />
+    <nz-step [nzTitle]="'完成'" />
   </nz-steps>
   <div class="steps-content"></div>
 </nz-card>
@@ -88,7 +88,7 @@
   <sv-container class="mb-lg" title="信息组">
     <sv label="某某数据">725</sv>
     <sv label="该数据更新时间">2017-08-08</sv>
-    <sv>&nbsp;</sv>
+    <sv />
     <sv [label]="label">
       <ng-template #label>
         某某数据
@@ -107,11 +107,11 @@
       <sv label="过期时间">2017-08-08</sv>
       <sv label="描述">这段描述很长很长很长很长很长很长很长很长很长很长很长很长很长很长...</sv>
     </sv-container>
-    <nz-divider></nz-divider>
+    <nz-divider />
     <sv-container size="small" title="组名称" col="1">
       <sv label="学名"> Citrullus lanatus (Thunb.) Matsum. et Nakai一年生蔓生藤本；茎、枝粗壮，具明显的棱。卷须较粗.. </sv>
     </sv-container>
-    <nz-divider></nz-divider>
+    <nz-divider />
     <sv-container size="small" title="组名称">
       <sv label="负责人">付小小</sv>
       <sv label="角色码">1234568</sv>
@@ -124,15 +124,15 @@
 <nz-card [nzBordered]="false">
   <nz-card-tab>
     <nz-tabset nzSize="large" (nzSelectChange)="change($event)">
-      <nz-tab nzTitle="操作日志一"></nz-tab>
-      <nz-tab nzTitle="操作日志二"></nz-tab>
-      <nz-tab nzTitle="操作日志三"></nz-tab>
+      <nz-tab nzTitle="操作日志一" />
+      <nz-tab nzTitle="操作日志二" />
+      <nz-tab nzTitle="操作日志三" />
     </nz-tabset>
   </nz-card-tab>
   <st [columns]="opColumns" [data]="list">
     <ng-template st-row="status" let-i>
-      <nz-badge *ngIf="i.status === 'success'" [nzStatus]="'success'" [nzText]="'成功'"></nz-badge>
-      <nz-badge *ngIf="i.status !== 'success'" [nzStatus]="'processing'" [nzText]="'进行中'"></nz-badge>
+      <nz-badge *ngIf="i.status === 'success'" [nzStatus]="'success'" [nzText]="'成功'" />
+      <nz-badge *ngIf="i.status !== 'success'" [nzStatus]="'processing'" [nzText]="'进行中'" />
     </ng-template>
   </st>
 </nz-card>

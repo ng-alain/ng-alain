@@ -1,6 +1,6 @@
 <h3>{{ 'app.register.register' | i18n }}</h3>
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
-  <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
+  <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg" />
   <nz-form-item>
     <nz-form-control [nzErrorTip]="mailErrorTip">
       <nz-input-group nzSize="large" nzAddonBeforeIcon="user">
@@ -35,12 +35,7 @@
             <div *ngSwitchDefault class="error">{{ 'validation.password.strength.short' | i18n }}</div>
           </ng-container>
           <div class="progress-{{ status }}">
-            <nz-progress
-              [nzPercent]="progress"
-              [nzStatus]="passwordProgressMap[status]"
-              [nzStrokeWidth]="6"
-              [nzShowInfo]="false"
-            ></nz-progress>
+            <nz-progress [nzPercent]="progress" [nzStatus]="passwordProgressMap[status]" [nzStrokeWidth]="6" [nzShowInfo]="false" />
           </div>
           <p class="mt-sm">{{ 'validation.password.strength.msg' | i18n }}</p>
         </div>
@@ -63,8 +58,8 @@
       <nz-input-group nzSize="large" [nzAddOnBefore]="addOnBeforeTemplate">
         <ng-template #addOnBeforeTemplate>
           <nz-select formControlName="mobilePrefix" style="width: 100px">
-            <nz-option [nzLabel]="'+86'" [nzValue]="'+86'"></nz-option>
-            <nz-option [nzLabel]="'+87'" [nzValue]="'+87'"></nz-option>
+            <nz-option [nzLabel]="'+86'" [nzValue]="'+86'" />
+            <nz-option [nzLabel]="'+87'" [nzValue]="'+87'" />
           </nz-select>
         </ng-template>
         <input formControlName="mobile" nz-input placeholder="Phone number" />
