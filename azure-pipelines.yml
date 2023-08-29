@@ -19,7 +19,7 @@ stages:
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: '16.15.0'
+              versionSpec: '18.10.0'
             displayName: 'Install Node.js'
 
   - stage: build
@@ -29,7 +29,7 @@ stages:
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: '16.15.0'
+              versionSpec: '18.10.0'
             displayName: 'Install Node.js'
           - script: yarn install
             displayName: 'Install'
