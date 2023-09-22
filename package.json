@@ -51,7 +51,7 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0",
-    "ng-zorro-antd": "^16.1.0",
+    "ng-zorro-antd": "^16.2.0",
     "@delon/abc": "^16.3.0",
     "@delon/acl": "^16.3.0",
     "@delon/auth": "^16.3.0",

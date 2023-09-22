@@ -7,7 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SimpleInterceptor } from '@delon/auth';
 import { DELON_LOCALE, zh_CN as delonLang, ALAIN_I18N_TOKEN } from '@delon/theme';
-import { NZ_DATE_LOCALE, NZ_I18N, zh_CN as zorroLang } from 'ng-zorro-antd/i18n';
+import { NZ_DATE_LOCALE, provideNzI18n, zh_CN as zorroLang } from 'ng-zorro-antd/i18n';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
 // #region default language
@@ -27,7 +27,7 @@ import { registerLocaleData } from '@angular/common';
 registerLocaleData(LANG.ng, LANG.abbr);
 const LANG_PROVIDES = [
   { provide: LOCALE_ID, useValue: LANG.abbr },
-  { provide: NZ_I18N, useValue: LANG.zorro },
+  provideNzI18n(LANG.zorro),
   { provide: NZ_DATE_LOCALE, useValue: LANG.date },
   { provide: DELON_LOCALE, useValue: LANG.delon }
 ];
