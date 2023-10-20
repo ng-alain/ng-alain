@@ -30,6 +30,9 @@
       ],
       "@env/*": [
         "src/environments/*"
+      ],
+      "@_mock": [
+        "_mock/index"
       ]
     },
     "allowSyntheticDefaultImports": true,
