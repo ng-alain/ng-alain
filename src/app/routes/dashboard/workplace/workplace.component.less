@@ -21,57 +21,56 @@
       top: 4px;
       flex: 1 1 auto;
       margin-left: 24px;
-      color: @text-color-secondary;
       line-height: 22px;
+      color: @text-color-secondary;
 
       .desc-title {
         margin-bottom: 12px;
-        color: @heading-color;
-        font-weight: 500;
         font-size: 20px;
+        font-weight: 500;
         line-height: 28px;
+        color: @heading-color;
       }
     }
   }
 
   .page-extra {
-    .clearfix();
-
     float: right;
     white-space: nowrap;
+    .clearfix();
 
     & > div {
       position: relative;
       display: inline-block;
       padding: 0 32px;
 
-      & > p:first-child {
-        margin-bottom: 4px;
-        color: @text-color-secondary;
-        font-size: @font-size-base;
-        line-height: 22px;
-      }
-
-      & > p {
-        margin: 0;
-        color: @heading-color;
-        font-size: 30px;
-        line-height: 38px;
-
-        & > span {
-          color: @text-color-secondary;
-          font-size: 20px;
-        }
-      }
-
       &::after {
+        content: '';
         position: absolute;
         top: 8px;
         right: 0;
         width: 1px;
         height: 40px;
         background-color: @border-color-split;
-        content: '';
+      }
+
+      & > p:first-child {
+        margin-bottom: 4px;
+        font-size: @font-size-base;
+        line-height: 22px;
+        color: @text-color-secondary;
+      }
+
+      & > p {
+        margin: 0;
+        font-size: 30px;
+        line-height: 38px;
+        color: @heading-color;
+
+        & > span {
+          font-size: 20px;
+          color: @text-color-secondary;
+        }
       }
     }
 
@@ -86,10 +85,10 @@
 
   .project-list {
     .ant-card-meta-description {
-      height: 44px;
       overflow: hidden;
-      color: @text-color-secondary;
+      height: 44px;
       line-height: 22px;
+      color: @text-color-secondary;
     }
 
     .card-title {
@@ -99,9 +98,9 @@
         display: inline-block;
         height: 24px;
         margin-left: 12px;
-        color: @heading-color;
         font-size: @font-size-base;
         line-height: 24px;
+        color: @heading-color;
         vertical-align: top;
 
         &:hover {
@@ -115,10 +114,10 @@
     }
 
     .project-item {
+      overflow: hidden;
       display: flex;
       height: 20px;
       margin-top: 8px;
-      overflow: hidden;
       font-size: 12px;
       line-height: 20px;
       .textOverflow();
@@ -135,8 +134,8 @@
       }
 
       .datetime {
-        flex: 0 0 auto;
         float: right;
+        flex: 0 0 auto;
         color: @disabled-color;
       }
     }
@@ -166,9 +165,9 @@
         display: inline-block;
         max-width: 100px;
         margin-left: 12px;
-        color: @text-color;
         font-size: @font-size-base;
         line-height: 24px;
+        color: @text-color;
         vertical-align: top;
         transition: all 0.3s;
         .textOverflow();
@@ -194,8 +193,8 @@
       display: inline-block;
       width: 25%;
       margin-bottom: 13px;
-      color: @text-color;
       font-size: @font-size-base;
+      color: @text-color;
 
       &:hover {
         color: @primary-color;

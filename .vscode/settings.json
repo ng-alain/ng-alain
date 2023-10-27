@@ -27,8 +27,7 @@
   },
   "files.associations": {
     "*.json": "jsonc",
-    ".prettierrc": "jsonc",
-    ".stylelintrc": "jsonc"
+    ".prettierrc": "jsonc"
   },
   // Angular schematics 插件: https://marketplace.visualstudio.com/items?itemName=cyrilletuzi.angular-schematics
   "ngschematics.schematics": [
