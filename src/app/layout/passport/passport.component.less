@@ -15,11 +15,11 @@
     text-align: right;
 
     .anticon {
+      cursor: pointer;
       margin-top: 24px;
       margin-right: 24px;
       font-size: 14px;
       vertical-align: top;
-      cursor: pointer;
     }
   }
 
@@ -32,19 +32,6 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
-  }
-
-  @media (min-width: @screen-md-min) {
-    .container {
-      background-image: url('https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg');
-      background-repeat: no-repeat;
-      background-position: center 110px;
-      background-size: 100%;
-    }
-
-    .wrap {
-      padding: 32px 0 24px;
-    }
   }
 
   .top {
@@ -67,18 +54,31 @@
 
   .title {
     position: relative;
-    color: @heading-color;
-    font-weight: 600;
-    font-size: 33px;
     font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 33px;
+    font-weight: 600;
+    color: @heading-color;
     vertical-align: middle;
   }
 
   .desc {
     margin-top: 12px;
     margin-bottom: 40px;
-    color: @text-color-secondary;
     font-size: @font-size-base;
+    color: @text-color-secondary;
+  }
+
+  @media (min-width: @screen-md-min) {
+    .container {
+      background-image: url('https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg');
+      background-repeat: no-repeat;
+      background-position: center 110px;
+      background-size: 100%;
+    }
+
+    .wrap {
+      padding: 32px 0 24px;
+    }
   }
 }
 

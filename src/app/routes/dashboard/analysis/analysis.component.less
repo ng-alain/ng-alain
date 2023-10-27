@@ -3,9 +3,9 @@
 :host ::ng-deep {
   .icon-group {
     i {
+      cursor: pointer;
       margin-left: 16px;
       color: @text-color-secondary;
-      cursor: pointer;
       transition: color 0.32s;
 
       &:hover {
@@ -20,11 +20,10 @@
     list-style: none;
 
     li {
-      .clearfix();
-
       display: flex;
       align-items: center;
       margin-top: 16px;
+      .clearfix();
 
       span {
         font-size: 14px;
@@ -37,8 +36,8 @@
         height: 20px;
         margin-top: 1.5px;
         margin-right: 16px;
-        font-weight: 600;
         font-size: 12px;
+        font-weight: 600;
         line-height: 20px;
         text-align: center;
         background-color: @background-color-base;
@@ -51,11 +50,11 @@
       }
 
       .title {
+        overflow: hidden;
         flex: 1;
         margin-right: 8px;
-        overflow: hidden;
-        white-space: nowrap;
         text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
   }
@@ -65,8 +64,8 @@
     margin-right: 24px;
 
     span {
-      margin-left: 24px;
       cursor: pointer;
+      margin-left: 24px;
 
       &:hover {
         color: @primary-color;
@@ -150,6 +149,18 @@
     color: @heading-color;
   }
 
+  // fix pagination bottom
+  .ant-table-pagination {
+    margin-bottom: 0;
+  }
+
+  .g2-pie {
+    &__legend-block,
+    &__chart {
+      margin: 0;
+    }
+  }
+
   @media screen and (max-width: @screen-lg) {
     .sales-extra {
       display: none;
@@ -183,18 +194,6 @@
       .ant-tabs-content {
         padding-top: 30px;
       }
-    }
-  }
-
-  // fix pagination bottom
-  .ant-table-pagination {
-    margin-bottom: 0;
-  }
-
-  .g2-pie {
-    &__legend-block,
-    &__chart {
-      margin: 0;
     }
   }
 }
