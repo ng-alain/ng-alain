@@ -13,6 +13,7 @@ scripts/var.less
 # dependencies
 /node_modules
 /yarn.lock
+/pnpm-lock.yaml
 
 # IDEs and editors
 /.idea
