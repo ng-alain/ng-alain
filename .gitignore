@@ -1,21 +1,18 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# compiled output
+# Compiled output
 /dist
 /tmp
 /out-tsc
-# /src/assets/color.less
-delon-builds
-scripts/var.less
-# src/assets/style.dark.css
-# src/assets/style.compact.css
+/bazel-out
 
-# dependencies
+# Node
 /node_modules
-/yarn.lock
+npm-debug.log
+yarn-error.log
 
 # IDEs and editors
-/.idea
+.idea/
 .project
 .classpath
 .c9/
@@ -23,28 +20,29 @@ scripts/var.less
 .settings/
 *.sublime-workspace
 
-# IDE - VSCode
+# Visual Studio Code
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.history/*
 
-# misc
+# Miscellaneous
 /.angular/cache
-/.sass-cache
+.sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log
-npm-debug.log
 testem.log
 /typings
-yarn-error.log
-/_all.less
 
-# e2e
-/e2e/*.map
-
-# System Files
+# System files
 .DS_Store
 Thumbs.db
+
+# lock
+/pnpm-lock.yaml
+/yarn.lock
+
+/delon-builds
