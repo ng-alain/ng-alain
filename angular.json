@@ -18,11 +18,11 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "polyfills": [
               "zone.js"
@@ -71,12 +71,9 @@
               ]
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -84,15 +81,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-alain:build",
-            "proxyConfig": "proxy.conf.js"
+            "proxyConfig": "proxy.conf.js",
+            "buildTarget": "ng-alain:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-alain:build:production"
+              "buildTarget": "ng-alain:build:production"
             },
             "development": {
-              "browserTarget": "ng-alain:build:development"
+              "buildTarget": "ng-alain:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -100,7 +97,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-alain:build"
+            "buildTarget": "ng-alain:build"
           }
         },
         "test": {
