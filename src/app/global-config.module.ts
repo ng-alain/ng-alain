@@ -1,8 +1,6 @@
 /* eslint-disable import/order */
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { DelonACLModule } from '@delon/acl';
-import { AlainThemeModule } from '@delon/theme';
-import { AlainConfig, ALAIN_CONFIG } from '@delon/util/config';
+import { AlainConfig, provideAlainConfig } from '@delon/util/config';
 
 import { throwIfAlreadyLoaded } from '@core';
 
@@ -21,8 +19,8 @@ const alainConfig: AlainConfig = {
   auth: { login_url: '/passport/login' }
 };
 
-const alainModules: any[] = [AlainThemeModule.forRoot(), DelonACLModule.forRoot()];
-const alainProvides = [{ provide: ALAIN_CONFIG, useValue: alainConfig }];
+const alainModules: any[] = [];
+const alainProvides = [provideAlainConfig(alainConfig)];
 
 // #region reuse-tab
 /**
