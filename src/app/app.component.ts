@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, NavigationError, RouteConfigLoadStart, Router } from '@angular/router';
-import { TitleService, VERSION as VERSION_ALAIN } from '@delon/theme';
+import { TitleService, VERSION as VERSION_ALAIN, stepPreloader } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { VERSION as VERSION_ZORRO } from 'ng-zorro-antd/version';
@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let configLoad = false;
+    const done = stepPreloader();
     this.router.events.subscribe(ev => {
       if (ev instanceof RouteConfigLoadStart) {
         configLoad = true;
@@ -38,6 +39,7 @@ export class AppComponent implements OnInit {
         });
       }
       if (ev instanceof NavigationEnd) {
+        done();
         this.titleSrv.setTitle();
         this.modalSrv.closeAll();
       }
