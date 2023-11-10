@@ -10,6 +10,8 @@ import { VERSION as VERSION_ZORRO } from 'ng-zorro-antd/version';
   template: ` <router-outlet />`
 })
 export class AppComponent implements OnInit {
+  private donePreloader = stepPreloader();
+
   constructor(
     el: ElementRef,
     renderer: Renderer2,
@@ -23,7 +25,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let configLoad = false;
-    const done = stepPreloader();
     this.router.events.subscribe(ev => {
       if (ev instanceof RouteConfigLoadStart) {
         configLoad = true;
@@ -39,7 +40,7 @@ export class AppComponent implements OnInit {
         });
       }
       if (ev instanceof NavigationEnd) {
-        done();
+        this.donePreloader();
         this.titleSrv.setTitle();
         this.modalSrv.closeAll();
       }
