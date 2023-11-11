@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 import * as MOCKDATA from '@_mock';
-import { DelonMockModule } from '@delon/mock';
+import { provideDelonMockConfig } from '@delon/mock';
 import { Environment } from '@delon/theme';
 
 export const environment = {
@@ -14,7 +14,7 @@ export const environment = {
     refreshTokenEnabled: true,
     refreshTokenType: 'auth-refresh'
   },
-  modules: [DelonMockModule.forRoot({ data: MOCKDATA })]
+  providers: [provideDelonMockConfig({ data: MOCKDATA })]
 } as Environment;
 
 /*

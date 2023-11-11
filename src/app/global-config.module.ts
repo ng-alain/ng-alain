@@ -69,7 +69,7 @@ export class GlobalConfigModule {
   static forRoot(): ModuleWithProviders<GlobalConfigModule> {
     return {
       ngModule: GlobalConfigModule,
-      providers: [...alainProvides, ...zorroProvides]
+      providers: [...alainProvides, ...zorroProvides, ...(environment.providers || [])]
     };
   }
 }
