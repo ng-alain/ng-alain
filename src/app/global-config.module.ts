@@ -1,6 +1,6 @@
 /* eslint-disable import/order */
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { AlainConfig, provideAlainConfig } from '@delon/util/config';
+import { AlainConfig } from '@delon/util/config';
 
 import { throwIfAlreadyLoaded } from '@core';
 
@@ -20,7 +20,7 @@ const alainConfig: AlainConfig = {
 };
 
 const alainModules: any[] = [];
-const alainProvides = [provideAlainConfig(alainConfig)];
+const alainProvides = [provideAlain(alainConfig)];
 
 // #region reuse-tab
 /**
@@ -51,6 +51,7 @@ const alainProvides = [provideAlainConfig(alainConfig)];
 // #region NG-ZORRO Config
 
 import { NzConfig, provideNzConfig } from 'ng-zorro-antd/core/config';
+import { provideAlain } from '@delon/theme';
 
 const ngZorroConfig: NzConfig = {};
 
@@ -69,7 +70,7 @@ export class GlobalConfigModule {
   static forRoot(): ModuleWithProviders<GlobalConfigModule> {
     return {
       ngModule: GlobalConfigModule,
-      providers: [...alainProvides, ...zorroProvides, ...(environment.providers || [])]
+      providers: [...alainProvides, ...zorroProvides, ...(environment.providers || []), ...(environment.providers || [])]
     };
   }
 }
