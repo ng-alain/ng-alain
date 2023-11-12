@@ -71,12 +71,7 @@ export class GlobalConfigModule {
   static forRoot(): ModuleWithProviders<GlobalConfigModule> {
     return {
       ngModule: GlobalConfigModule,
-      providers: [
-        ...alainProvides,
-        ...zorroProvides,
-        ...(environment.providers || []),
-        provideHttpClient(withInterceptors(environment.interceptorFns || []))
-      ]
+      providers: [...alainProvides, ...zorroProvides, ...(environment.providers || []), provideHttpClient()]
     };
   }
 }
