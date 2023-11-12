@@ -20,7 +20,7 @@ const alainConfig: AlainConfig = {
 };
 
 const alainModules: any[] = [];
-const alainProvides = [provideAlain(alainConfig)];
+const alainProvides = [provideAlain({ config: alainConfig })];
 
 // #region reuse-tab
 /**
