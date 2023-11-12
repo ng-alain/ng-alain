@@ -1,4 +1,12 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @Component({
   selector: 'header-task',
@@ -17,8 +25,10 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
     </div>
     <nz-dropdown-menu #taskMenu="nzDropdownMenu">
       <div nz-menu class="wd-lg">
-        <div *ngIf="loading" class="mx-lg p-lg"><nz-spin /></div>
-        <nz-card *ngIf="!loading" nzTitle="Notifications" nzBordered="false" class="ant-card__body-nopadding">
+        @if (loading) {
+        <div class="mx-lg p-lg"><nz-spin /></div>
+        } @else {
+        <nz-card nzTitle="Notifications" nzBordered="false" class="ant-card__body-nopadding">
           <ng-template #extra><i nz-icon nzType="plus"></i></ng-template>
           <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md point bg-grey-lighter-h">
             <div nz-col [nzSpan]="4" class="text-center">
@@ -69,10 +79,13 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
             <div nz-col [nzSpan]="24" class="pt-md border-top-1 text-center text-grey point">See All</div>
           </div>
         </nz-card>
+        }
       </div>
     </nz-dropdown-menu>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgTemplateOutlet, NzDropDownModule, NzBadgeModule, NzIconModule, NzSpinModule, NzGridModule, NzAvatarModule, NzCardModule]
 })
 export class HeaderTaskComponent {
   loading = true;

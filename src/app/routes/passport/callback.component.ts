@@ -5,7 +5,8 @@ import { SettingsService } from '@delon/theme';
 @Component({
   selector: 'app-callback',
   template: ``,
-  providers: [SocialService]
+  providers: [SocialService],
+  standalone: true
 })
 export class CallbackComponent implements OnInit {
   @Input() type = '';

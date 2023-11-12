@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ALLOW_ANONYMOUS } from '@delon/auth';
 import { _HttpClient } from '@delon/theme';
 import { MatchControl } from '@delon/util/form';
+import { SHARED } from '@shared';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { finalize } from 'rxjs';
 
@@ -12,7 +13,9 @@ import { finalize } from 'rxjs';
   selector: 'passport-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [...SHARED]
 })
 export class UserRegisterComponent implements OnDestroy {
   constructor(

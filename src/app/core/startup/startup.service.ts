@@ -1,15 +1,24 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { APP_INITIALIZER, Inject, Injectable, Provider } from '@angular/core';
 import { Router } from '@angular/router';
 import { ACLService } from '@delon/acl';
 import { ALAIN_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@delon/theme';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
-import { NzIconService } from 'ng-zorro-antd/icon';
 import { Observable, zip, catchError, map } from 'rxjs';
 
-import { ICONS } from '../../../style-icons';
-import { ICONS_AUTO } from '../../../style-icons-auto';
 import { I18NService } from '../i18n/i18n.service';
+
+export function provideStartup(): Provider[] {
+  return [
+    StartupService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (startupService: StartupService) => () => startupService.load(),
+      deps: [StartupService],
+      multi: true
+    }
+  ];
+}
 
 /**
  * Used for application startup
@@ -18,7 +27,6 @@ import { I18NService } from '../i18n/i18n.service';
 @Injectable()
 export class StartupService {
   constructor(
-    iconSrv: NzIconService,
     private menuService: MenuService,
     @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
     private settingService: SettingsService,
@@ -26,9 +34,7 @@ export class StartupService {
     private titleService: TitleService,
     private httpClient: HttpClient,
     private router: Router
-  ) {
-    iconSrv.addIcon(...ICONS_AUTO, ...ICONS);
-  }
+  ) {}
 
   load(): Observable<void> {
     const defaultLang = this.i18n.defaultLang;

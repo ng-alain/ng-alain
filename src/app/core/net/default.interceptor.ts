@@ -1,4 +1,5 @@
 import {
+  HTTP_INTERCEPTORS,
   HttpErrorResponse,
   HttpEvent,
   HttpHandler,
@@ -7,13 +8,23 @@ import {
   HttpRequest,
   HttpResponseBase
 } from '@angular/common/http';
-import { Injectable, Injector } from '@angular/core';
+import { Injectable, Injector, Provider } from '@angular/core';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { ALAIN_I18N_TOKEN, IGNORE_BASE_URL, _HttpClient, CUSTOM_ERROR, RAW_BODY } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { BehaviorSubject, Observable, of, throwError, catchError, filter, mergeMap, switchMap, take } from 'rxjs';
+
+export function provideDefaultInterceptor(): Provider[] {
+  return [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: DefaultInterceptor,
+      multi: true
+    }
+  ];
+}
 
 const CODEMESSAGE: { [key: number]: string } = {
   200: '服务器成功返回请求的数据。',
@@ -37,7 +48,7 @@ const CODEMESSAGE: { [key: number]: string } = {
  * 默认HTTP拦截器，其注册细节见 `app.module.ts`
  */
 @Injectable()
-export class DefaultInterceptor implements HttpInterceptor {
+class DefaultInterceptor implements HttpInterceptor {
   private refreshTokenEnabled = environment.api.refreshTokenEnabled;
   private refreshTokenType: 're-request' | 'auth-refresh' = environment.api.refreshTokenType;
   private refreshToking = false;

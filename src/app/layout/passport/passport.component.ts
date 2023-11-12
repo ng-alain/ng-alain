@@ -1,10 +1,18 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { GlobalFooterModule } from '@delon/abc/global-footer';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
+import { ThemeBtnComponent } from '@delon/theme/theme-btn';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
+import { HeaderI18nComponent } from '../basic/widgets/i18n.component';
 
 @Component({
   selector: 'layout-passport',
   templateUrl: './passport.component.html',
-  styleUrls: ['./passport.component.less']
+  styleUrls: ['./passport.component.less'],
+  standalone: true,
+  imports: [RouterOutlet, HeaderI18nComponent, GlobalFooterModule, NzIconModule, ThemeBtnComponent]
 })
 export class LayoutPassportComponent implements OnInit {
   links = [

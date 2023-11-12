@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
+import { I18nPipe } from '@delon/theme';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 
@@ -11,7 +13,9 @@ import { NzModalService } from 'ng-zorro-antd/modal';
   host: {
     '[class.flex-1]': 'true'
   },
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NzIconModule, I18nPipe]
 })
 export class HeaderClearStorageComponent {
   constructor(

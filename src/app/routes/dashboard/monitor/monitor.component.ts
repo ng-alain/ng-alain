@@ -1,5 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { CountDownModule } from '@delon/abc/count-down';
+import { G2GaugeModule } from '@delon/chart/gauge';
+import { G2MiniAreaModule } from '@delon/chart/mini-area';
+import { NumberInfoModule } from '@delon/chart/number-info';
+import { G2PieModule } from '@delon/chart/pie';
+import { G2TagCloudModule } from '@delon/chart/tag-cloud';
+import { G2WaterWaveModule } from '@delon/chart/water-wave';
 import { _HttpClient } from '@delon/theme';
+import { SHARED } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import type { CountdownConfig } from 'ngx-countdown';
 import { zip } from 'rxjs';
@@ -8,7 +16,9 @@ import { zip } from 'rxjs';
   selector: 'app-dashboard-monitor',
   templateUrl: './monitor.component.html',
   styleUrls: ['./monitor.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [...SHARED, G2WaterWaveModule, G2TagCloudModule, G2PieModule, G2GaugeModule, G2MiniAreaModule, NumberInfoModule, CountDownModule]
 })
 export class DashboardMonitorComponent implements OnInit, OnDestroy {
   constructor(
