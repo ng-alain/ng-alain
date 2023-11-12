@@ -1,8 +1,6 @@
 /* eslint-disable import/order */
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { DelonACLModule } from '@delon/acl';
-import { AlainThemeModule } from '@delon/theme';
-import { AlainConfig, ALAIN_CONFIG } from '@delon/util/config';
+import { AlainConfig } from '@delon/util/config';
 
 import { throwIfAlreadyLoaded } from '@core';
 
@@ -21,8 +19,8 @@ const alainConfig: AlainConfig = {
   auth: { login_url: '/passport/login' }
 };
 
-const alainModules: any[] = [AlainThemeModule.forRoot(), DelonACLModule.forRoot()];
-const alainProvides = [{ provide: ALAIN_CONFIG, useValue: alainConfig }];
+const alainModules: any[] = [];
+const alainProvides = [provideAlain({ config: alainConfig })];
 
 // #region reuse-tab
 /**
@@ -53,6 +51,8 @@ const alainProvides = [{ provide: ALAIN_CONFIG, useValue: alainConfig }];
 // #region NG-ZORRO Config
 
 import { NzConfig, provideNzConfig } from 'ng-zorro-antd/core/config';
+import { provideAlain } from '@delon/theme';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 const ngZorroConfig: NzConfig = {};
 
@@ -71,7 +71,7 @@ export class GlobalConfigModule {
   static forRoot(): ModuleWithProviders<GlobalConfigModule> {
     return {
       ngModule: GlobalConfigModule,
-      providers: [...alainProvides, ...zorroProvides]
+      providers: [...alainProvides, ...zorroProvides, ...(environment.providers || []), provideHttpClient()]
     };
   }
 }

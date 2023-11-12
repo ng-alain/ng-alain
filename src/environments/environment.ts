@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 import * as MOCKDATA from '@_mock';
-import { DelonMockModule } from '@delon/mock';
+import { provideMockConfig } from '@delon/mock';
 import { Environment } from '@delon/theme';
 
 export const environment = {
@@ -14,13 +14,5 @@ export const environment = {
     refreshTokenEnabled: true,
     refreshTokenType: 'auth-refresh'
   },
-  modules: [DelonMockModule.forRoot({ data: MOCKDATA })]
+  providers: [provideMockConfig({ data: MOCKDATA })]
 } as Environment;
-
-/*
- * In development mode, to ignore zone related error stack frames such as
- * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
- * import the following file, but please comment it out in production mode
- * because it will have performance impact when throw error
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

@@ -41,7 +41,7 @@
               <nz-form-label nzFor="bio">Bio</nz-form-label>
               <nz-form-control [nzExtra]="bioExtra">
                 <textarea nz-input formControlName="bio" id="bio" placeholder="Tell us a little bit about yourself"></textarea>
-                <ng-template #bioExtra> You can <strong>@mention</strong> other users and organizations to link to them. </ng-template>
+                <ng-template #bioExtra> You can <strong>&#64;mention</strong> other users and organizations to link to them. </ng-template>
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
@@ -125,7 +125,7 @@
     <nz-card nzTitle="Email" *ngIf="active === 3">
       <nz-row class="border-1 p-md rounded-sm" [nzJustify]="'center'" [nzAlign]="'middle'">
         <nz-col [nzSpan]="12">
-          cipchk@qq.com
+          cipchk&#64;qq.com
           <nz-tag
             nz-tooltip
             nzTooltipTitle="This email will be used for account-related notifications (e.g. account changes, password resets, billing receipts) as well as any web-based GitHub operations (e.g. edits and merges)."
@@ -148,7 +148,7 @@
       <button nz-button (click)="msg.info('add')">Add</button>
       <h4 class="border-top-1 py-md mt-md">Primary email address</h4>
       <p class="mb-md">
-        cipchk@qq.com will be used for account-related notifications and for web-based GitHub operations (e.g. edits and merges).
+        cipchk&#64;qq.com will be used for account-related notifications and for web-based GitHub operations (e.g. edits and merges).
       </p>
       <nz-select [(ngModel)]="primary_email" class="mr-sm">
         <nz-option [nzLabel]="'cipchk@qq.com'" [nzValue]="'cipchk@qq.com'" />
@@ -165,7 +165,7 @@
         </nz-list-item>
         <nz-list-item class="d-block">
           <h4>Participating</h4>
-          <p class="py-sm">Notifications for the conversations you are participating in, or if someone cites you with an @mention.</p>
+          <p class="py-sm">Notifications for the conversations you are participating in, or if someone cites you with an &#64;mention.</p>
           <label nz-checkbox [ngModel]="true">Email</label>
           <label nz-checkbox [ngModel]="true">Web</label>
         </nz-list-item>

@@ -32,3 +32,5 @@ node_modules/
 
 # yarn v2
 .yarn
+
+**/src/index.html

@@ -26,7 +26,7 @@ const DIRECTIVES: Array<Type<any>> = [];
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    AlainThemeModule.forChild(),
+    AlainThemeModule,
     DelonACLModule,
     DelonFormModule,
     ...SHARED_DELON_MODULES,

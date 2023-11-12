@@ -1,6 +1,5 @@
 /* eslint-disable import/order */
 /* eslint-disable import/no-duplicates */
-import { HttpClientModule } from '@angular/common/http';
 import { default as ngLang } from '@angular/common/locales/zh';
 import { APP_INITIALIZER, LOCALE_ID, NgModule, Type } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -92,7 +91,6 @@ import { Observable } from 'rxjs';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     GlobalConfigModule.forRoot(),
     CoreModule,
     SharedModule,
