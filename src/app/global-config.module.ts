@@ -52,6 +52,7 @@ const alainProvides = [provideAlain(alainConfig)];
 
 import { NzConfig, provideNzConfig } from 'ng-zorro-antd/core/config';
 import { provideAlain } from '@delon/theme';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 const ngZorroConfig: NzConfig = {};
 
@@ -70,7 +71,12 @@ export class GlobalConfigModule {
   static forRoot(): ModuleWithProviders<GlobalConfigModule> {
     return {
       ngModule: GlobalConfigModule,
-      providers: [...alainProvides, ...zorroProvides, ...(environment.providers || []), ...(environment.providers || [])]
+      providers: [
+        ...alainProvides,
+        ...zorroProvides,
+        ...(environment.providers || []),
+        provideHttpClient(withInterceptors(environment.interceptorFns || []))
+      ]
     };
   }
 }
