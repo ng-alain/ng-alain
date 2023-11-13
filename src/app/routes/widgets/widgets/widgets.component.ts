@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { G2MiniAreaModule } from '@delon/chart/mini-area';
 import { G2MiniBarData, G2MiniBarModule } from '@delon/chart/mini-bar';
 import { _HttpClient } from '@delon/theme';
-import { SHARED } from '@shared';
+import { SHARED_IMPORTS } from '@shared';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -12,7 +12,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   styleUrls: ['./widgets.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [...SHARED, NzCarouselModule, G2MiniBarModule, G2MiniAreaModule]
+  imports: [...SHARED_IMPORTS, NzCarouselModule, G2MiniBarModule, G2MiniAreaModule]
 })
 export class WidgetsComponent implements OnInit {
   data: G2MiniBarData[] = [];

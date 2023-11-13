@@ -6,7 +6,7 @@ import { DatePipe, I18nPipe } from '@delon/theme';
 import { SHARED_DELON_MODULES } from './shared-delon.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 
-export const SHARED = [
+export const SHARED_IMPORTS = [
   FormsModule,
   ReactiveFormsModule,
   RouterLink,

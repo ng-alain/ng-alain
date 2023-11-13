@@ -8,7 +8,7 @@ import { G2BarModule } from '@delon/chart/bar';
 import { G2MiniBarModule } from '@delon/chart/mini-bar';
 import { G2TimelineModule } from '@delon/chart/timeline';
 import { _HttpClient } from '@delon/theme';
-import { SHARED } from '@shared';
+import { SHARED_IMPORTS } from '@shared';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 @Component({
@@ -16,7 +16,7 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
   templateUrl: './v1.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [...SHARED, G2TimelineModule, G2BarModule, G2MiniBarModule, QuickMenuModule, OnboardingModule]
+  imports: [...SHARED_IMPORTS, G2TimelineModule, G2BarModule, G2MiniBarModule, QuickMenuModule, OnboardingModule]
 })
 export class DashboardV1Component implements OnInit {
   todoData = [

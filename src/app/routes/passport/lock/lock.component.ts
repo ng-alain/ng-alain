@@ -3,14 +3,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { SettingsService, User } from '@delon/theme';
-import { SHARED } from '@shared';
+import { SHARED_IMPORTS } from '@shared';
 
 @Component({
   selector: 'passport-lock',
   templateUrl: './lock.component.html',
   styleUrls: ['./lock.component.less'],
   standalone: true,
-  imports: [...SHARED]
+  imports: [...SHARED_IMPORTS]
 })
 export class UserLockComponent {
   f = new FormGroup({

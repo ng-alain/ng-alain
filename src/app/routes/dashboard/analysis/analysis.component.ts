@@ -14,7 +14,7 @@ import { TrendModule } from '@delon/chart/trend';
 import { ALAIN_I18N_TOKEN, _HttpClient } from '@delon/theme';
 import { getTimeDistance } from '@delon/util/date-time';
 import { deepCopy } from '@delon/util/other';
-import { SHARED, yuan } from '@shared';
+import { SHARED_IMPORTS, yuan } from '@shared';
 import type { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -25,7 +25,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
-    ...SHARED,
+    ...SHARED_IMPORTS,
     G2TimelineModule,
     G2PieModule,
     NumberInfoModule,
