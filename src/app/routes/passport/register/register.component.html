@@ -92,18 +92,18 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="'validation.verification-code.required' | i18n">
-      <nz-row [nzGutter]="8">
-        <nz-col [nzSpan]="16">
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="16">
           <nz-input-group nzSize="large" nzAddonBeforeIcon="mail">
             <input nz-input formControlName="captcha" placeholder="Captcha" />
           </nz-input-group>
-        </nz-col>
-        <nz-col [nzSpan]="8">
+        </div>
+        <div nz-col [nzSpan]="8">
           <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count > 0" nzBlock [nzLoading]="loading">
             {{ count ? count + 's' : ('app.register.get-verification-code' | i18n) }}
           </button>
-        </nz-col>
-      </nz-row>
+        </div>
+      </div>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
