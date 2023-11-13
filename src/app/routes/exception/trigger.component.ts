@@ -10,7 +10,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
     <div class="pt-lg">
       <nz-card>
         @for (t of types; track $index) {
-        <button (click)="go(t)" nz-button nzDanger>触发{{ t }}</button>
+          <button (click)="go(t)" nz-button nzDanger>触发{{ t }}</button>
         }
         <button nz-button nzType="link" (click)="refresh()">触发刷新Token</button>
       </nz-card>

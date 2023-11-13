@@ -94,7 +94,9 @@ import { HeaderUserComponent } from './widgets/user.component';
         <router-outlet />
       </ng-template>
     </layout-default>
-    @if (showSettingDrawer) { <setting-drawer /> }
+    @if (showSettingDrawer) {
+      <setting-drawer />
+    }
     <theme-btn />
   `,
   standalone: true,

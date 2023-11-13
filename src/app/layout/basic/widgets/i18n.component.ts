@@ -11,21 +11,21 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
   selector: 'header-i18n',
   template: `
     @if (showLangText) {
-    <div nz-dropdown [nzDropdownMenu]="langMenu" nzPlacement="bottomRight">
-      <i nz-icon nzType="global"></i>
-      {{ 'menu.lang' | i18n }}
-      <i nz-icon nzType="down"></i>
-    </div>
+      <div nz-dropdown [nzDropdownMenu]="langMenu" nzPlacement="bottomRight">
+        <i nz-icon nzType="global"></i>
+        {{ 'menu.lang' | i18n }}
+        <i nz-icon nzType="down"></i>
+      </div>
     } @else {
-    <i nz-dropdown [nzDropdownMenu]="langMenu" nzPlacement="bottomRight" nz-icon nzType="global"></i>
+      <i nz-dropdown [nzDropdownMenu]="langMenu" nzPlacement="bottomRight" nz-icon nzType="global"></i>
     }
     <nz-dropdown-menu #langMenu="nzDropdownMenu">
       <ul nz-menu>
         @for (item of langs; track $index) {
-        <li nz-menu-item [nzSelected]="item.code === curLangCode" (click)="change(item.code)">
-          <span role="img" [attr.aria-label]="item.text" class="pr-xs">{{ item.abbr }}</span>
-          {{ item.text }}
-        </li>
+          <li nz-menu-item [nzSelected]="item.code === curLangCode" (click)="change(item.code)">
+            <span role="img" [attr.aria-label]="item.text" class="pr-xs">{{ item.abbr }}</span>
+            {{ item.text }}
+          </li>
         }
       </ul>
     </nz-dropdown-menu>

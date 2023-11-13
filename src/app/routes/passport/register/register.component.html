@@ -1,7 +1,7 @@
 <h3>{{ 'app.register.register' | i18n }}</h3>
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
   @if (error) {
-  <nz-alert [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg" />
+    <nz-alert [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg" />
   }
   <nz-form-item>
     <nz-form-control [nzErrorTip]="mailErrorTip">
@@ -10,9 +10,10 @@
       </nz-input-group>
       <ng-template #mailErrorTip let-i>
         @if (i.errors?.required) {
-        {{ 'validation.email.required' | i18n }}
-        } @if (i.errors?.email) {
-        {{ 'validation.email.wrong-format' | i18n }}
+          {{ 'validation.email.required' | i18n }}
+        }
+        @if (i.errors?.email) {
+          {{ 'validation.email.wrong-format' | i18n }}
         }
       </ng-template>
     </nz-form-control>
@@ -34,13 +35,17 @@
       </nz-input-group>
       <ng-template #pwdCdkTpl>
         <div style="padding: 4px 0">
-          @switch (status) { @case ('ok') {
-          <div class="success">{{ 'validation.password.strength.strong' | i18n }}</div>
-          } @case ('pass') {
-          <div class="warning">{{ 'validation.password.strength.medium' | i18n }}</div>
-          } @default {
-          <div class="error">{{ 'validation.password.strength.short' | i18n }}</div>
-          } }
+          @switch (status) {
+            @case ('ok') {
+              <div class="success">{{ 'validation.password.strength.strong' | i18n }}</div>
+            }
+            @case ('pass') {
+              <div class="warning">{{ 'validation.password.strength.medium' | i18n }}</div>
+            }
+            @default {
+              <div class="error">{{ 'validation.password.strength.short' | i18n }}</div>
+            }
+          }
           <div class="progress-{{ status }}">
             <nz-progress [nzPercent]="progress" [nzStatus]="passwordProgressMap[status]" [nzStrokeWidth]="6" [nzShowInfo]="false" />
           </div>
@@ -56,9 +61,10 @@
       </nz-input-group>
       <ng-template #confirmErrorTip let-i>
         @if (i.errors?.required) {
-        {{ 'validation.confirm-password.required' | i18n }}
-        } @if (i.errors?.matchControl) {
-        {{ 'validation.password.twice' | i18n }}
+          {{ 'validation.confirm-password.required' | i18n }}
+        }
+        @if (i.errors?.matchControl) {
+          {{ 'validation.password.twice' | i18n }}
         }
       </ng-template>
     </nz-form-control>
@@ -75,8 +81,12 @@
         <input formControlName="mobile" nz-input placeholder="Phone number" />
       </nz-input-group>
       <ng-template #mobileErrorTip let-i>
-        @if (i.errors?.required) { {{ 'validation.phone-number.required' | i18n }} } @if (i.errors?.pattern) {
-        {{ 'validation.phone-number.wrong-format' | i18n }} }
+        @if (i.errors?.required) {
+          {{ 'validation.phone-number.required' | i18n }}
+        }
+        @if (i.errors?.pattern) {
+          {{ 'validation.phone-number.wrong-format' | i18n }}
+        }
       </ng-template>
     </nz-form-control>
   </nz-form-item>

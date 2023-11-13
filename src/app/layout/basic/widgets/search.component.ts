@@ -27,7 +27,7 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged, tap } from 'rxjs';
       </ng-template>
       <ng-template #loadingTpl>
         @if (loading) {
-        <i nz-icon nzType="loading"></i>
+          <i nz-icon nzType="loading"></i>
         }
       </ng-template>
       <input
@@ -44,7 +44,7 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged, tap } from 'rxjs';
     </nz-input-group>
     <nz-autocomplete nzBackfill #auto>
       @for (i of options; track $index) {
-      <nz-auto-option [nzValue]="i">{{ i }}</nz-auto-option>
+        <nz-auto-option [nzValue]="i">{{ i }}</nz-auto-option>
       }
     </nz-autocomplete>
   `,
