@@ -71,6 +71,7 @@ export class DashboardV1Component implements OnInit {
   ) {
     // TODO: Wait for the page to load
     setTimeout(() => this.genOnboarding(), 1000);
+    this.http.get('/chart-invalud').subscribe(res => {});
   }
 
   fixDark(chart: Chart): void {

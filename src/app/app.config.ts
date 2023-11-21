@@ -1,12 +1,12 @@
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { default as ngLang } from '@angular/common/locales/zh';
 import { ApplicationConfig } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling, withHashLocation, RouterFeatures } from '@angular/router';
-import { I18NService, provideDefaultInterceptor, provideStartup } from '@core';
+import { I18NService, defaultInterceptor, provideStartup } from '@core';
 import { provideCellWidgets } from '@delon/abc/cell';
 import { provideSTWidgets } from '@delon/abc/st';
-import { provideAuth, withSimple } from '@delon/auth';
+import { authSimpleInterceptor, provideAuth } from '@delon/auth';
 import { provideSFConfig } from '@delon/form';
 import { AlainProvideLang, provideAlain, zh_CN as delonLang } from '@delon/theme';
 import { AlainConfig } from '@delon/util/config';
@@ -18,6 +18,7 @@ import { zh_CN as zorroLang } from 'ng-zorro-antd/i18n';
 import { ICONS } from 'src/style-icons';
 import { ICONS_AUTO } from 'src/style-icons-auto';
 
+import { provideBindAuthRefresh } from './core/net';
 import { routes } from './routes/routes';
 
 const defaultLang: AlainProvideLang = {
@@ -45,12 +46,12 @@ if (environment.useHash) routerFeatures.push(withHashLocation());
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([...(environment.interceptorFns ?? []), authSimpleInterceptor, defaultInterceptor])),
     provideAnimations(),
     provideRouter(routes, ...routerFeatures),
     provideAlain({ config: alainConfig, defaultLang, i18nClass: I18NService, icons: [...ICONS_AUTO, ...ICONS] }),
     provideNzConfig(ngZorroConfig),
-    provideAuth(withSimple()),
+    provideAuth(),
     provideCellWidgets(...CELL_WIDGETS),
     provideSTWidgets(...ST_WIDGETS),
     provideSFConfig({
@@ -59,7 +60,7 @@ export const appConfig: ApplicationConfig = {
       ]
     }),
     provideStartup(),
-    provideDefaultInterceptor(),
+    provideBindAuthRefresh(),
     ...(environment.providers || [])
   ]
 };
