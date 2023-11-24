@@ -1,6 +1,6 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { default as ngLang } from '@angular/common/locales/zh';
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, EnvironmentProviders, Provider } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling, withHashLocation, RouterFeatures } from '@angular/router';
 import { I18NService, defaultInterceptor, provideStartup } from '@core';
@@ -44,24 +44,30 @@ const ngZorroConfig: NzConfig = {};
 const routerFeatures: RouterFeatures[] = [withComponentInputBinding(), withInMemoryScrolling({ scrollPositionRestoration: 'top' })];
 if (environment.useHash) routerFeatures.push(withHashLocation());
 
+const providers: Array<Provider | EnvironmentProviders> = [
+  provideHttpClient(withInterceptors([...(environment.interceptorFns ?? []), authSimpleInterceptor, defaultInterceptor])),
+  provideAnimations(),
+  provideRouter(routes, ...routerFeatures),
+  provideAlain({ config: alainConfig, defaultLang, i18nClass: I18NService, icons: [...ICONS_AUTO, ...ICONS] }),
+  provideNzConfig(ngZorroConfig),
+  provideAuth(),
+  provideCellWidgets(...CELL_WIDGETS),
+  provideSTWidgets(...ST_WIDGETS),
+  provideSFConfig({
+    widgets: [
+      ...SF_WIDGETS
+      // withUploadWidget()
+    ]
+  }),
+  provideStartup(),
+  ...(environment.providers || [])
+];
+
+// If you use `@delon/auth` to refresh the token, additional registration `provideBindAuthRefresh` is required
+if (environment.api?.refreshTokenEnabled && environment.api.refreshTokenType === 'auth-refresh') {
+  providers.push(provideBindAuthRefresh());
+}
+
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideHttpClient(withInterceptors([...(environment.interceptorFns ?? []), authSimpleInterceptor, defaultInterceptor])),
-    provideAnimations(),
-    provideRouter(routes, ...routerFeatures),
-    provideAlain({ config: alainConfig, defaultLang, i18nClass: I18NService, icons: [...ICONS_AUTO, ...ICONS] }),
-    provideNzConfig(ngZorroConfig),
-    provideAuth(),
-    provideCellWidgets(...CELL_WIDGETS),
-    provideSTWidgets(...ST_WIDGETS),
-    provideSFConfig({
-      widgets: [
-        ...SF_WIDGETS
-        // withUploadWidget()
-      ]
-    }),
-    provideStartup(),
-    provideBindAuthRefresh(),
-    ...(environment.providers || [])
-  ]
+  providers: providers
 };
