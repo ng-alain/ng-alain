@@ -1,5 +1,5 @@
 import { UpperCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, inject } from '@angular/core';
 import { RTLService } from '@delon/theme';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
@@ -17,7 +17,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
   imports: [NzIconModule, UpperCasePipe]
 })
 export class HeaderRTLComponent {
-  constructor(public rtl: RTLService) {}
+  readonly rtl = inject(RTLService);
 
   @HostListener('click')
   toggleDirection(): void {

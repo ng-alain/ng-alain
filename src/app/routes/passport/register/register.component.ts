@@ -5,7 +5,6 @@ import { Router, RouterLink } from '@angular/router';
 import { ALLOW_ANONYMOUS } from '@delon/auth';
 import { I18nPipe, _HttpClient } from '@delon/theme';
 import { MatchControl } from '@delon/util/form';
-import { SHARED_IMPORTS } from '@shared';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';

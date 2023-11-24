@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { NoticeIconList, NoticeIconModule, NoticeIconSelect, NoticeItem } from '@delon/abc/notice-icon';
 import { add, formatDistanceToNow, parse } from 'date-fns';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
@@ -23,6 +23,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   imports: [NoticeIconModule]
 })
 export class HeaderNotifyComponent {
+  private readonly msg = inject(NzMessageService);
+  private readonly nzI18n = inject(NzI18nService);
+  private readonly cdr = inject(ChangeDetectorRef);
   data: NoticeItem[] = [
     {
       title: '通知',
@@ -48,12 +51,6 @@ export class HeaderNotifyComponent {
   ];
   count = 5;
   loading = false;
-
-  constructor(
-    private msg: NzMessageService,
-    private nzI18n: NzI18nService,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   private updateNoticeData(notices: NoticeIconList[]): NoticeItem[] {
     const data = this.data.slice();

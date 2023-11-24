@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -88,9 +88,8 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
   imports: [NgTemplateOutlet, NzDropDownModule, NzBadgeModule, NzIconModule, NzSpinModule, NzGridModule, NzAvatarModule, NzCardModule]
 })
 export class HeaderTaskComponent {
+  private readonly cdr = inject(ChangeDetectorRef);
   loading = true;
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   change(): void {
     setTimeout(() => {

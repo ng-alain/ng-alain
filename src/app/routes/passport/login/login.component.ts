@@ -7,7 +7,6 @@ import { ReuseTabService } from '@delon/abc/reuse-tab';
 import { ALLOW_ANONYMOUS, DA_SERVICE_TOKEN, ITokenService, SocialOpenType, SocialService } from '@delon/auth';
 import { I18nPipe, SettingsService, _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
-import { SHARED_IMPORTS } from '@shared';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';

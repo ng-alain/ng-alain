@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Component, Input, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ResultModule } from '@delon/abc/result';
 import { I18nPipe } from '@delon/theme';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -12,12 +12,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   imports: [RouterLink, I18nPipe, NzButtonModule, ResultModule]
 })
 export class UserRegisterResultComponent {
-  params = { email: '' };
-  email = '';
-  constructor(
-    route: ActivatedRoute,
-    public msg: NzMessageService
-  ) {
-    this.params.email = this.email = route.snapshot.queryParams['email'] || 'ng-alain@example.com';
-  }
+  readonly msg = inject(NzMessageService);
+  @Input() email = '';
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { I18nPipe, SettingsService, User } from '@delon/theme';
 import { LayoutDefaultModule, LayoutDefaultOptions } from '@delon/theme/layout-default';
@@ -123,6 +123,7 @@ import { HeaderUserComponent } from './widgets/user.component';
   ]
 })
 export class LayoutBasicComponent {
+  private readonly settings = inject(SettingsService);
   options: LayoutDefaultOptions = {
     logoExpanded: `./assets/logo-full.svg`,
     logoCollapsed: `./assets/logo.svg`
@@ -132,6 +133,4 @@ export class LayoutBasicComponent {
   get user(): User {
     return this.settings.user;
   }
-
-  constructor(private settings: SettingsService) {}
 }

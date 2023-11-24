@@ -9,7 +9,8 @@ import {
   HostBinding,
   Input,
   OnDestroy,
-  Output
+  Output,
+  inject
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { I18nPipe } from '@delon/theme';
@@ -53,6 +54,8 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged, tap } from 'rxjs';
   imports: [FormsModule, I18nPipe, NgTemplateOutlet, NzInputModule, NzIconModule, NzAutocompleteModule]
 })
 export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
+  private readonly el = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+  private readonly cdr = inject(ChangeDetectorRef);
   q = '';
   qIpt: HTMLInputElement | null = null;
   options: string[] = [];
@@ -77,13 +80,8 @@ export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
   }
   @Output() readonly toggleChangeChange = new EventEmitter<boolean>();
 
-  constructor(
-    private el: ElementRef<HTMLElement>,
-    private cdr: ChangeDetectorRef
-  ) {}
-
   ngAfterViewInit(): void {
-    this.qIpt = this.el.nativeElement.querySelector('.ant-input') as HTMLInputElement;
+    this.qIpt = this.el.querySelector('.ant-input') as HTMLInputElement;
     this.search$
       .pipe(
         debounceTime(500),

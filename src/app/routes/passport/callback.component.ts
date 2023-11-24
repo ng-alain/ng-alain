@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { SocialService } from '@delon/auth';
 import { SettingsService } from '@delon/theme';
 
@@ -9,12 +9,9 @@ import { SettingsService } from '@delon/theme';
   standalone: true
 })
 export class CallbackComponent implements OnInit {
+  private readonly socialService = inject(SocialService);
+  private readonly settingsSrv = inject(SettingsService);
   @Input() type = '';
-
-  constructor(
-    private socialService: SocialService,
-    private settingsSrv: SettingsService
-  ) {}
 
   ngOnInit(): void {
     this.mockModel();
