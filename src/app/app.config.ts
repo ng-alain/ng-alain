@@ -11,7 +11,7 @@ import { provideSFConfig } from '@delon/form';
 import { AlainProvideLang, provideAlain, zh_CN as delonLang } from '@delon/theme';
 import { AlainConfig } from '@delon/util/config';
 import { environment } from '@env/environment';
-import { CELL_WIDGETS, ST_WIDGETS } from '@shared';
+import { CELL_WIDGETS, SF_WIDGETS, ST_WIDGETS } from '@shared';
 import { zhCN as dateLang } from 'date-fns/locale';
 import { NzConfig, provideNzConfig } from 'ng-zorro-antd/core/config';
 import { zh_CN as zorroLang } from 'ng-zorro-antd/i18n';
@@ -56,6 +56,7 @@ export const appConfig: ApplicationConfig = {
     provideSTWidgets(...ST_WIDGETS),
     provideSFConfig({
       widgets: [
+        ...SF_WIDGETS
         // withUploadWidget()
       ]
     }),

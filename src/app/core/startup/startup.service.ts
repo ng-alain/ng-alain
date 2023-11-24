@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { APP_INITIALIZER, Inject, Injectable, Provider } from '@angular/core';
+import { APP_INITIALIZER, Injectable, Provider, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ACLService } from '@delon/acl';
 import { ALAIN_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@delon/theme';
@@ -8,6 +8,10 @@ import { Observable, zip, catchError, map } from 'rxjs';
 
 import { I18NService } from '../i18n/i18n.service';
 
+/**
+ * Used for application startup
+ * Generally used to get the basic data of the application, like: Menu Data, User Data, etc.
+ */
 export function provideStartup(): Provider[] {
   return [
     StartupService,
@@ -20,21 +24,15 @@ export function provideStartup(): Provider[] {
   ];
 }
 
-/**
- * Used for application startup
- * Generally used to get the basic data of the application, like: Menu Data, User Data, etc.
- */
 @Injectable()
 export class StartupService {
-  constructor(
-    private menuService: MenuService,
-    @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
-    private settingService: SettingsService,
-    private aclService: ACLService,
-    private titleService: TitleService,
-    private httpClient: HttpClient,
-    private router: Router
-  ) {}
+  private menuService = inject(MenuService);
+  private settingService = inject(SettingsService);
+  private aclService = inject(ACLService);
+  private titleService = inject(TitleService);
+  private httpClient = inject(HttpClient);
+  private router = inject(Router);
+  private i18n = inject<I18NService>(ALAIN_I18N_TOKEN);
 
   load(): Observable<void> {
     const defaultLang = this.i18n.defaultLang;
