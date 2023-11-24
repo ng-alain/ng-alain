@@ -54,10 +54,7 @@ const providers: Array<Provider | EnvironmentProviders> = [
   provideCellWidgets(...CELL_WIDGETS),
   provideSTWidgets(...ST_WIDGETS),
   provideSFConfig({
-    widgets: [
-      ...SF_WIDGETS
-      // withUploadWidget()
-    ]
+    widgets: [...SF_WIDGETS]
   }),
   provideStartup(),
   ...(environment.providers || [])
