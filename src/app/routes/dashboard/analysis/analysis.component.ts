@@ -1,10 +1,20 @@
+import { DecimalPipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { I18NService } from '@core';
 import { STColumn } from '@delon/abc/st';
+import { G2BarModule } from '@delon/chart/bar';
+import { G2CardModule } from '@delon/chart/card';
+import { G2MiniAreaModule } from '@delon/chart/mini-area';
+import { G2MiniBarModule } from '@delon/chart/mini-bar';
+import { G2MiniProgressModule } from '@delon/chart/mini-progress';
+import { NumberInfoModule } from '@delon/chart/number-info';
+import { G2PieModule } from '@delon/chart/pie';
+import { G2TimelineModule } from '@delon/chart/timeline';
+import { TrendModule } from '@delon/chart/trend';
 import { ALAIN_I18N_TOKEN, _HttpClient } from '@delon/theme';
 import { getTimeDistance } from '@delon/util/date-time';
 import { deepCopy } from '@delon/util/other';
-import { yuan } from '@shared';
+import { SHARED_IMPORTS, yuan } from '@shared';
 import type { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -12,7 +22,21 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   selector: 'app-dashboard-analysis',
   templateUrl: './analysis.component.html',
   styleUrls: ['./analysis.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    ...SHARED_IMPORTS,
+    G2TimelineModule,
+    G2PieModule,
+    NumberInfoModule,
+    TrendModule,
+    G2MiniAreaModule,
+    DecimalPipe,
+    G2BarModule,
+    G2MiniProgressModule,
+    G2CardModule,
+    G2MiniBarModule
+  ]
 })
 export class DashboardAnalysisComponent implements OnInit {
   constructor(
@@ -94,8 +118,8 @@ export class DashboardAnalysisComponent implements OnInit {
       this.salesType === 'all'
         ? this.data.salesTypeData
         : this.salesType === 'online'
-        ? this.data.salesTypeDataOnline
-        : this.data.salesTypeDataOffline;
+          ? this.data.salesTypeDataOnline
+          : this.data.salesTypeDataOffline;
     if (this.salesPieData) {
       this.salesTotal = this.salesPieData.reduce((pre: number, now: { y: number }) => now.y + pre, 0);
     }

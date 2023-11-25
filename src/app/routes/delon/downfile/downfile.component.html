@@ -2,15 +2,9 @@
   <h1>Download a file</h1>
 </div>
 <nz-card nzTitle="DEMO">
-  <button
-    nz-button
-    *ngFor="let i of fileTypes"
-    class="mr-sm"
-    down-file
-    [http-data]="data"
-    http-url="assets/tmp/demo{{ i }}"
-    file-name="demo中文"
-  >
-    {{ i }}
-  </button>
+  @for (i of fileTypes; track $index) {
+    <button nz-button class="mr-sm" down-file [http-data]="data" http-url="assets/tmp/demo{{ i }}" file-name="demo中文">
+      {{ i }}
+    </button>
+  }
 </nz-card>

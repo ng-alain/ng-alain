@@ -1,18 +1,40 @@
 import { HttpContext } from '@angular/common/http';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { AbstractControl, FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { ALLOW_ANONYMOUS } from '@delon/auth';
-import { _HttpClient } from '@delon/theme';
+import { I18nPipe, _HttpClient } from '@delon/theme';
 import { MatchControl } from '@delon/util/form';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzProgressModule } from 'ng-zorro-antd/progress';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 import { finalize } from 'rxjs';
 
 @Component({
   selector: 'passport-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    I18nPipe,
+    RouterLink,
+    NzAlertModule,
+    NzFormModule,
+    NzInputModule,
+    NzPopoverModule,
+    NzProgressModule,
+    NzSelectModule,
+    NzGridModule,
+    NzButtonModule
+  ]
 })
 export class UserRegisterComponent implements OnDestroy {
   constructor(

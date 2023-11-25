@@ -764,38 +764,45 @@
         Recent Posts
         <small class="text-sm font-weight-normal">Venenatis portauam Inceptos ameteiam</small>
       </ng-template>
-      <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md bg-grey-lighter-h point" *ngFor="let item of todoData">
-        <div nz-col [nzSpan]="4" class="text-center">
-          <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
+      @for (item of todoData; track $index) {
+        <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md bg-grey-lighter-h point">
+          <div nz-col [nzSpan]="4" class="text-center">
+            <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
+          </div>
+          <div nz-col [nzSpan]="20">
+            <strong>{{ item.name }}</strong>
+            <div>{{ item.content }}</div>
+          </div>
         </div>
-        <div nz-col [nzSpan]="20">
-          <strong>{{ item.name }}</strong>
-          <div>{{ item.content }}</div>
-        </div>
-      </div>
+      }
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzMd="12">
     <nz-card nzTitle="Todo lists" class="ant-card__body-nopadding">
-      <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point" *ngFor="let item of todoData">
-        <div nz-col [nzSpan]="4" class="text-center">
-          <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
+      @for (item of todoData; track $index) {
+        <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm bg-grey-lighter-h point">
+          <div nz-col [nzSpan]="4" class="text-center">
+            <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
+          </div>
+          <div nz-col [nzSpan]="18">
+            <strong>{{ item.name }}</strong>
+            <div [class.text-deleted]="item.completed">{{ item.content }}</div>
+          </div>
+          <div nz-col [nzSpan]="2" class="text-right pr-md">
+            <i nz-dropdown [nzDropdownMenu]="menuTpl" nzPlacement="topRight" nz-icon nzType="ellipsis" class="rotate-90"></i>
+            <nz-dropdown-menu #menuTpl="nzDropdownMenu">
+              <ul nz-menu>
+                @if (item.completed) {
+                  <li nz-menu-item (click)="item.completed = false">Active</li>
+                } @else {
+                  <li nz-menu-item (click)="item.completed = true">Completed</li>
+                }
+                <li nz-menu-item (click)="todoData.splice(todoData.indexOf(item), 1)">Delted</li>
+              </ul>
+            </nz-dropdown-menu>
+          </div>
         </div>
-        <div nz-col [nzSpan]="18">
-          <strong>{{ item.name }}</strong>
-          <div [class.text-deleted]="item.completed">{{ item.content }}</div>
-        </div>
-        <div nz-col [nzSpan]="2" class="text-right pr-md">
-          <i nz-dropdown [nzDropdownMenu]="menuTpl" nzPlacement="topRight" nz-icon nzType="ellipsis" class="rotate-90"></i>
-          <nz-dropdown-menu #menuTpl="nzDropdownMenu">
-            <ul nz-menu>
-              <li nz-menu-item *ngIf="item.completed" (click)="item.completed = false">Active</li>
-              <li nz-menu-item *ngIf="!item.completed" (click)="item.completed = true">Completed</li>
-              <li nz-menu-item (click)="todoData.splice(todoData.indexOf(item), 1)">Delted</li>
-            </ul>
-          </nz-dropdown-menu>
-        </div>
-      </div>
+      }
     </nz-card>
   </div>
 </div>

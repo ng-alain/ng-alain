@@ -31,16 +31,17 @@
         <p class="text-nowrap mb0">Website Traffics</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar
-          *ngIf="webSite"
-          height="35"
-          color="#fff"
-          borderWidth="3"
-          [padding]="[5, 30]"
-          [data]="webSite"
-          tooltipType="mini"
-          (ready)="fixDark($event)"
-        />
+        @if (webSite) {
+          <g2-mini-bar
+            height="35"
+            color="#fff"
+            borderWidth="3"
+            [padding]="[5, 30]"
+            [data]="webSite"
+            tooltipType="mini"
+            (ready)="fixDark($event)"
+          />
+        }
       </div>
     </div>
   </div>
@@ -51,16 +52,17 @@
         <p class="text-nowrap mb0">Website Impressions</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar
-          *ngIf="webSite"
-          height="35"
-          color="#fff"
-          borderWidth="3"
-          [padding]="[5, 30]"
-          [data]="webSite"
-          tooltipType="mini"
-          (ready)="fixDark($event)"
-        />
+        @if (webSite) {
+          <g2-mini-bar
+            height="35"
+            color="#fff"
+            borderWidth="3"
+            [padding]="[5, 30]"
+            [data]="webSite"
+            tooltipType="mini"
+            (ready)="fixDark($event)"
+          />
+        }
       </div>
     </div>
   </div>
@@ -71,16 +73,17 @@
         <p class="text-nowrap mb0">Total Sales</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar
-          *ngIf="webSite"
-          height="35"
-          color="#fff"
-          borderWidth="3"
-          [padding]="[5, 30]"
-          [data]="webSite"
-          tooltipType="mini"
-          (ready)="fixDark($event)"
-        />
+        @if (webSite) {
+          <g2-mini-bar
+            height="35"
+            color="#fff"
+            borderWidth="3"
+            [padding]="[5, 30]"
+            [data]="webSite"
+            tooltipType="mini"
+            (ready)="fixDark($event)"
+          />
+        }
       </div>
     </div>
   </div>
@@ -91,16 +94,17 @@
         <p class="text-nowrap mb0">Support Tickets</p>
       </div>
       <div nz-col nzSpan="12">
-        <g2-mini-bar
-          *ngIf="webSite"
-          height="35"
-          color="#fff"
-          borderWidth="3"
-          [padding]="[5, 30]"
-          [data]="webSite"
-          tooltipType="mini"
-          (ready)="fixDark($event)"
-        />
+        @if (webSite) {
+          <g2-mini-bar
+            height="35"
+            color="#fff"
+            borderWidth="3"
+            [padding]="[5, 30]"
+            [data]="webSite"
+            tooltipType="mini"
+            (ready)="fixDark($event)"
+          />
+        }
       </div>
     </div>
   </div>
@@ -112,7 +116,9 @@
         Sales Statistics
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
-      <g2-bar *ngIf="salesData" height="275" [data]="salesData" />
+      @if (salesData) {
+        <g2-bar height="275" [data]="salesData" />
+      }
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzMd="12">
@@ -121,7 +127,9 @@
         Growth Rate
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
-      <g2-timeline *ngIf="offlineChartData" [data]="offlineChartData" [height]="289" [titleMap]="{ y1: '客流量', y2: '支付笔数' }" />
+      @if (offlineChartData) {
+        <g2-timeline [data]="offlineChartData" [height]="289" [titleMap]="{ y1: '客流量', y2: '支付笔数' }" />
+      }
     </nz-card>
   </div>
 </div>
@@ -149,38 +157,45 @@
         Recent Posts
         <small class="text-sm font-weight-normal">Venenatis portauam Inceptos ameteiam</small>
       </ng-template>
-      <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md bg-grey-lighter-h point" *ngFor="let item of todoData">
-        <div nz-col [nzSpan]="4" class="text-center">
-          <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
+      @for (item of todoData; track $index) {
+        <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md bg-grey-lighter-h point">
+          <div nz-col [nzSpan]="4" class="text-center">
+            <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
+          </div>
+          <div nz-col [nzSpan]="20">
+            <strong>{{ item.name }}</strong>
+            <p class="mb0">{{ item.content }}</p>
+          </div>
         </div>
-        <div nz-col [nzSpan]="20">
-          <strong>{{ item.name }}</strong>
-          <p class="mb0">{{ item.content }}</p>
-        </div>
-      </div>
+      }
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzMd="12">
     <nz-card nzTitle="Todo lists" [nzBordered]="false" class="ant-card__body-nopadding">
-      <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md bg-grey-lighter-h point" *ngFor="let item of todoData">
-        <div nz-col [nzSpan]="4" class="text-center">
-          <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
+      @for (item of todoData; track $index) {
+        <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md bg-grey-lighter-h point">
+          <div nz-col [nzSpan]="4" class="text-center">
+            <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
+          </div>
+          <div nz-col [nzSpan]="18">
+            <strong>{{ item.name }}</strong>
+            <p [class.text-deleted]="item.completed" class="mb0">{{ item.content }}</p>
+          </div>
+          <div nz-col [nzSpan]="2" class="text-right pr-md">
+            <i nz-dropdown [nzDropdownMenu]="todoMenus" nzPlacement="topRight" nz-icon nzType="ellipsis" class="rotate-90"></i>
+            <nz-dropdown-menu #todoMenus="nzDropdownMenu">
+              <ul nz-menu>
+                @if (item.completed) {
+                  <li nz-menu-item (click)="item.completed = false">Active</li>
+                } @else {
+                  <li nz-menu-item (click)="item.completed = true">Completed</li>
+                }
+                <li nz-menu-item (click)="todoData.splice(todoData.indexOf(item), 1)">Delted</li>
+              </ul>
+            </nz-dropdown-menu>
+          </div>
         </div>
-        <div nz-col [nzSpan]="18">
-          <strong>{{ item.name }}</strong>
-          <p [class.text-deleted]="item.completed" class="mb0">{{ item.content }}</p>
-        </div>
-        <div nz-col [nzSpan]="2" class="text-right pr-md">
-          <i nz-dropdown [nzDropdownMenu]="todoMenus" nzPlacement="topRight" nz-icon nzType="ellipsis" class="rotate-90"></i>
-          <nz-dropdown-menu #todoMenus="nzDropdownMenu">
-            <ul nz-menu>
-              <li nz-menu-item *ngIf="item.completed" (click)="item.completed = false">Active</li>
-              <li nz-menu-item *ngIf="!item.completed" (click)="item.completed = true">Completed</li>
-              <li nz-menu-item (click)="todoData.splice(todoData.indexOf(item), 1)">Delted</li>
-            </ul>
-          </nz-dropdown-menu>
-        </div>
-      </div>
+      }
     </nz-card>
   </div>
 </div>

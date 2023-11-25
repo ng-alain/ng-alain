@@ -1,7 +1,24 @@
-import { Component } from '@angular/core';
-import { SettingsService, User } from '@delon/theme';
-import { LayoutDefaultOptions } from '@delon/theme/layout-default';
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { I18nPipe, SettingsService, User } from '@delon/theme';
+import { LayoutDefaultModule, LayoutDefaultOptions } from '@delon/theme/layout-default';
+import { SettingDrawerModule } from '@delon/theme/setting-drawer';
+import { ThemeBtnComponent } from '@delon/theme/theme-btn';
 import { environment } from '@env/environment';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+
+import { HeaderClearStorageComponent } from './widgets/clear-storage.component';
+import { HeaderFullScreenComponent } from './widgets/fullscreen.component';
+import { HeaderI18nComponent } from './widgets/i18n.component';
+import { HeaderIconComponent } from './widgets/icon.component';
+import { HeaderNotifyComponent } from './widgets/notify.component';
+import { HeaderRTLComponent } from './widgets/rtl.component';
+import { HeaderSearchComponent } from './widgets/search.component';
+import { HeaderTaskComponent } from './widgets/task.component';
+import { HeaderUserComponent } from './widgets/user.component';
 
 @Component({
   selector: 'layout-basic',
@@ -77,12 +94,36 @@ import { environment } from '@env/environment';
         <router-outlet />
       </ng-template>
     </layout-default>
-
-    <setting-drawer *ngIf="showSettingDrawer" />
+    @if (showSettingDrawer) {
+      <setting-drawer />
+    }
     <theme-btn />
-  `
+  `,
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    I18nPipe,
+    LayoutDefaultModule,
+    NzIconModule,
+    NzMenuModule,
+    NzDropDownModule,
+    NzAvatarModule,
+    SettingDrawerModule,
+    ThemeBtnComponent,
+    HeaderSearchComponent,
+    HeaderNotifyComponent,
+    HeaderTaskComponent,
+    HeaderIconComponent,
+    HeaderRTLComponent,
+    HeaderI18nComponent,
+    HeaderClearStorageComponent,
+    HeaderFullScreenComponent,
+    HeaderUserComponent
+  ]
 })
 export class LayoutBasicComponent {
+  private readonly settings = inject(SettingsService);
   options: LayoutDefaultOptions = {
     logoExpanded: `./assets/logo-full.svg`,
     logoCollapsed: `./assets/logo.svg`
@@ -92,6 +133,4 @@ export class LayoutBasicComponent {
   get user(): User {
     return this.settings.user;
   }
-
-  constructor(private settings: SettingsService) {}
 }

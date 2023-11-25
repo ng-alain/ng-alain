@@ -11,11 +11,11 @@
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
-      <nz-row nzType="flex" nzAlign="middle">
-        <nz-col [nzOffset]="12" [nzSpan]="12" style="text-align: right">
+      <div nz-row nzType="flex" nzAlign="middle">
+        <div nz-col [nzOffset]="12" [nzSpan]="12" style="text-align: right">
           <button nz-button [disabled]="!f.valid" nzType="primary">{{ 'app.lock' | i18n }}</button>
-        </nz-col>
-      </nz-row>
+        </div>
+      </div>
     </form>
   </div>
 </div>

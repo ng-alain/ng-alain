@@ -49,7 +49,9 @@
   </div>
   <div nz-col [nzMd]="8">
     <nz-card nzTitle="Text Colors">
-      <p *ngFor="let color of names" class="pb-0 text-{{ color }}">class="text-{{ color }} bg-{{ color }}"</p>
+      @for (color of names; track $index) {
+        <p class="pb-0 text-{{ color }}">class="text-{{ color }} bg-{{ color }}"</p>
+      }
     </nz-card>
   </div>
 </div>

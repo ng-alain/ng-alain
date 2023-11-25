@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @Component({
   selector: 'header-icon',
@@ -54,12 +59,13 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
       </div>
     </nz-dropdown-menu>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NzDropDownModule, NzIconModule, NzMenuModule, NzGridModule, NzSpinModule]
 })
 export class HeaderIconComponent {
+  private readonly cdr = inject(ChangeDetectorRef);
   loading = true;
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   change(): void {
     setTimeout(() => {

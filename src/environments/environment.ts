@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 import * as MOCKDATA from '@_mock';
-import { provideMockConfig } from '@delon/mock';
+import { mockInterceptor, provideMockConfig } from '@delon/mock';
 import { Environment } from '@delon/theme';
 
 export const environment = {
@@ -14,5 +14,6 @@ export const environment = {
     refreshTokenEnabled: true,
     refreshTokenType: 'auth-refresh'
   },
-  providers: [provideMockConfig({ data: MOCKDATA })]
+  providers: [provideMockConfig({ data: MOCKDATA })],
+  interceptorFns: [mockInterceptor]
 } as Environment;

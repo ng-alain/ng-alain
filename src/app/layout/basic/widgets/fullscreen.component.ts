@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
+import { I18nPipe } from '@delon/theme';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import screenfull from 'screenfull';
 
 @Component({
@@ -10,7 +12,9 @@ import screenfull from 'screenfull';
   host: {
     '[class.flex-1]': 'true'
   },
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NzIconModule, I18nPipe]
 })
 export class HeaderFullScreenComponent {
   status = false;

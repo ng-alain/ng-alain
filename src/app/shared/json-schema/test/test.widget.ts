@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ControlWidget } from '@delon/form';
+import { ControlWidget, DelonFormModule } from '@delon/form';
 
 @Component({
   selector: 'test',
@@ -9,7 +9,9 @@ import { ControlWidget } from '@delon/form';
     </sf-item-wrap>
   `,
   preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [DelonFormModule]
 })
 export class TestWidget extends ControlWidget implements OnInit {
   static readonly KEY = 'test';

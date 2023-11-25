@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { AvatarListModule } from '@delon/abc/avatar-list';
 import { EllipsisModule } from '@delon/abc/ellipsis';
 import { FooterToolbarModule } from '@delon/abc/footer-toolbar';
+import { ResultModule } from '@delon/abc/result';
 import { TagSelectModule } from '@delon/abc/tag-select';
 import { CurrencyPipeModule } from '@delon/util/pipes/currency';
 import { SharedModule } from '@shared';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 import { ProAccountCenterApplicationsComponent } from './account/center/applications/applications.component';
 import { ProAccountCenterArticlesComponent } from './account/center/articles/articles.component';
@@ -77,7 +79,9 @@ const COMPONENTS = [
     FooterToolbarModule,
     NzPaginationModule,
     NzStepsModule,
-    CurrencyPipeModule
+    CurrencyPipeModule,
+    ResultModule,
+    NzUploadModule
   ],
   declarations: COMPONENTS
 })

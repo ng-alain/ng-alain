@@ -1,5 +1,4 @@
 {
-  "recommendations": [
-    "cipchk.ng-alain-extension-pack"
-  ]
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
+  "recommendations": ["cipchk.ng-alain-extension-pack"]
 }

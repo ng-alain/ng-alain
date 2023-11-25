@@ -1,17 +1,28 @@
 import { Platform } from '@angular/cdk/platform';
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import type { Chart } from '@antv/g2';
-import { OnboardingService } from '@delon/abc/onboarding';
+import { OnboardingModule, OnboardingService } from '@delon/abc/onboarding';
+import { QuickMenuModule } from '@delon/abc/quick-menu';
+import { G2BarModule } from '@delon/chart/bar';
+import { G2MiniBarModule } from '@delon/chart/mini-bar';
+import { G2TimelineModule } from '@delon/chart/timeline';
 import { _HttpClient } from '@delon/theme';
-import { NzSafeAny } from 'ng-zorro-antd/core/types';
+import { SHARED_IMPORTS } from '@shared';
 
 @Component({
   selector: 'app-dashboard-v1',
   templateUrl: './v1.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [...SHARED_IMPORTS, G2TimelineModule, G2BarModule, G2MiniBarModule, QuickMenuModule, OnboardingModule]
 })
 export class DashboardV1Component implements OnInit {
+  private readonly http = inject(_HttpClient);
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly obSrv = inject(OnboardingService);
+  private readonly platform = inject(Platform);
+  private readonly doc = inject(DOCUMENT);
   todoData = [
     {
       completed: true,
@@ -55,17 +66,6 @@ export class DashboardV1Component implements OnInit {
   salesData!: any[];
   offlineChartData!: any[];
 
-  constructor(
-    private http: _HttpClient,
-    private cdr: ChangeDetectorRef,
-    private obSrv: OnboardingService,
-    private platform: Platform,
-    @Inject(DOCUMENT) private doc: NzSafeAny
-  ) {
-    // TODO: Wait for the page to load
-    setTimeout(() => this.genOnboarding(), 1000);
-  }
-
   fixDark(chart: Chart): void {
     if (!this.platform.isBrowser || (this.doc.body as HTMLBodyElement).getAttribute('data-theme') !== 'dark') return;
 
@@ -83,6 +83,8 @@ export class DashboardV1Component implements OnInit {
       this.offlineChartData = res.offlineChartData;
       this.cdr.detectChanges();
     });
+    // TODO: Wait for the page to load
+    setTimeout(() => this.genOnboarding(), 1000);
   }
 
   private genOnboarding(): void {

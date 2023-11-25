@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -8,8 +9,14 @@ import {
   HostBinding,
   Input,
   OnDestroy,
-  Output
+  Output,
+  inject
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { I18nPipe } from '@delon/theme';
+import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, tap } from 'rxjs';
 
 @Component({
@@ -20,7 +27,9 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged, tap } from 'rxjs';
         <i nz-icon [nzType]="focus ? 'arrow-down' : 'search'"></i>
       </ng-template>
       <ng-template #loadingTpl>
-        <i *ngIf="loading" nz-icon nzType="loading"></i>
+        @if (loading) {
+          <i nz-icon nzType="loading"></i>
+        }
       </ng-template>
       <input
         type="text"
@@ -35,12 +44,18 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged, tap } from 'rxjs';
       />
     </nz-input-group>
     <nz-autocomplete nzBackfill #auto>
-      <nz-auto-option *ngFor="let i of options" [nzValue]="i">{{ i }}</nz-auto-option>
+      @for (i of options; track $index) {
+        <nz-auto-option [nzValue]="i">{{ i }}</nz-auto-option>
+      }
     </nz-autocomplete>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [FormsModule, I18nPipe, NgTemplateOutlet, NzInputModule, NzIconModule, NzAutocompleteModule]
 })
 export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
+  private readonly el = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+  private readonly cdr = inject(ChangeDetectorRef);
   q = '';
   qIpt: HTMLInputElement | null = null;
   options: string[] = [];
@@ -65,13 +80,8 @@ export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
   }
   @Output() readonly toggleChangeChange = new EventEmitter<boolean>();
 
-  constructor(
-    private el: ElementRef<HTMLElement>,
-    private cdr: ChangeDetectorRef
-  ) {}
-
   ngAfterViewInit(): void {
-    this.qIpt = this.el.nativeElement.querySelector('.ant-input') as HTMLInputElement;
+    this.qIpt = this.el.querySelector('.ant-input') as HTMLInputElement;
     this.search$
       .pipe(
         debounceTime(500),

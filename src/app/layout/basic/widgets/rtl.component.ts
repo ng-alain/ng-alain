@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
+import { UpperCasePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, HostListener, inject } from '@angular/core';
 import { RTLService } from '@delon/theme';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'header-rtl',
@@ -10,10 +12,12 @@ import { RTLService } from '@delon/theme';
   host: {
     '[class.flex-1]': 'true'
   },
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NzIconModule, UpperCasePipe]
 })
 export class HeaderRTLComponent {
-  constructor(public rtl: RTLService) {}
+  readonly rtl = inject(RTLService);
 
   @HostListener('click')
   toggleDirection(): void {

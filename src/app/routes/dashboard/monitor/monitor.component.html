@@ -32,22 +32,26 @@
   </div>
   <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="6">
     <nz-card [nzTitle]="'app.monitor.activity-forecast' | i18n" [nzBordered]="false" class="mb-lg">
-      <div class="active-chart" *ngIf="activeData">
-        <number-info subTitle="目标评估" total="有望达到预期" />
-        <g2-mini-area [animate]="false" line [borderWidth]="2" [height]="84" [padding]="0" [data]="activeData" />
-        <div class="active-grid">
-          <p>{{ activeStat.max }} 亿元</p>
-          <p>{{ activeStat.min }} 亿元</p>
+      @if (activeData) {
+        <div class="active-chart">
+          <number-info subTitle="目标评估" total="有望达到预期" />
+          <g2-mini-area [animate]="false" line [borderWidth]="2" [height]="84" [padding]="0" [data]="activeData" />
+          <div class="active-grid">
+            <p>{{ activeStat.max }} 亿元</p>
+            <p>{{ activeStat.min }} 亿元</p>
+          </div>
+          <div class="active-legend">
+            <span>00:00</span>
+            <span>{{ activeStat.t1 }}</span>
+            <span>{{ activeStat.t2 }}</span>
+          </div>
         </div>
-        <div class="active-legend">
-          <span>00:00</span>
-          <span>{{ activeStat.t1 }}</span>
-          <span>{{ activeStat.t2 }}</span>
-        </div>
-      </div>
+      }
     </nz-card>
     <nz-card [nzTitle]="'app.monitor.efficiency' | i18n" [nzBordered]="false" [nzBodyStyle]="{ 'text-align': 'center' }" class="mb-lg">
-      <g2-gauge *ngIf="percent" [title]="'app.monitor.ratio' | i18n" [height]="180" [percent]="percent" [format]="couponFormat" />
+      @if (percent) {
+        <g2-gauge [title]="'app.monitor.ratio' | i18n" [height]="180" [percent]="percent" [format]="couponFormat" />
+      }
     </nz-card>
   </div>
 </div>

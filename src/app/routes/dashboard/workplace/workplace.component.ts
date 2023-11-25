@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { G2RadarModule } from '@delon/chart/radar';
 import { _HttpClient } from '@delon/theme';
+import { SHARED_IMPORTS } from '@shared';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { zip } from 'rxjs';
 
@@ -7,7 +10,9 @@ import { zip } from 'rxjs';
   selector: 'app-dashboard-workplace',
   templateUrl: './workplace.component.html',
   styleUrls: ['./workplace.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [...SHARED_IMPORTS, NzAvatarModule, G2RadarModule]
 })
 export class DashboardWorkplaceComponent implements OnInit {
   notice: any[] = [];

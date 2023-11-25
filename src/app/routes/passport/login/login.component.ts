@@ -1,13 +1,20 @@
 import { HttpContext } from '@angular/common/http';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, Optional } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { StartupService } from '@core';
 import { ReuseTabService } from '@delon/abc/reuse-tab';
 import { ALLOW_ANONYMOUS, DA_SERVICE_TOKEN, ITokenService, SocialOpenType, SocialService } from '@delon/auth';
-import { SettingsService, _HttpClient } from '@delon/theme';
+import { I18nPipe, SettingsService, _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
-import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzTabChangeEvent, NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -15,7 +22,21 @@ import { finalize } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less'],
   providers: [SocialService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    RouterLink,
+    ReactiveFormsModule,
+    I18nPipe,
+    NzCheckboxModule,
+    NzTabsModule,
+    NzAlertModule,
+    NzFormModule,
+    NzInputModule,
+    NzButtonModule,
+    NzToolTipModule,
+    NzIconModule
+  ]
 })
 export class UserLoginComponent implements OnDestroy {
   constructor(
