@@ -2,10 +2,8 @@
   "typescript.tsdk": "./node_modules/typescript/lib",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    // For ESLint
-    "source.fixAll.eslint": true,
-    // For Stylelint
-    "source.fixAll.stylelint": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   },
   "[markdown]": {
     "editor.formatOnSave": false
