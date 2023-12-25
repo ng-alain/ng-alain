@@ -37,7 +37,8 @@
     "color-less": "ng-alain-plugin-theme -t=colorLess",
     "theme": "ng-alain-plugin-theme -t=themeCss",
     "icon": "ng g ng-alain:plugin icon",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "ng-less-javascript-enabled-patch"
   },
   "dependencies": {
     "@angular/animations": "^17.0.0",
@@ -99,6 +100,7 @@
     "stylelint-config-clean-order": "^5.2.0",
     "@delon/testing": "^17.0.4",
     "ng-alain": "^17.0.4",
+    "ng-less-javascript-enabled-patch": "^17.0.1",
     "@types/jasminewd2": "~2.0.13",
     "jasmine-spec-reporter": "^7.0.0",
     "protractor": "~7.0.0",
