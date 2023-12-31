@@ -23,7 +23,7 @@ jobs:
           ACCESS_REPO: ${{ github.repository }}
           ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
           PR_NUMBER: ${{ steps.findPr.outputs.pr }}
-      - name: Build artifacts
+      - name: Build
         run: ./scripts/_ci/deploy-pipelines.sh
       - name: 'Deploy Site'
         run: |
@@ -69,7 +69,7 @@ jobs:
           ACCESS_REPO: ${{ github.repository }}
           ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
           PR_NUMBER: ${{ steps.findPr.outputs.pr }}
-      - name: Build artifacts
+      - name: Build
         run: ./scripts/_ci/deploy-pipelines.sh -day
       - name: 'Deploy Site'
         run: |
