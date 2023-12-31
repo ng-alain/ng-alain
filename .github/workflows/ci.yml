@@ -15,14 +15,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - name: Install node modules
-        run: yarn install
       - name: Comment on github
         run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
         env:
           ACCESS_REPO: ${{ github.repository }}
           ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
           PR_NUMBER: ${{ steps.findPr.outputs.pr }}
+      - name: Install node modules
+        run: yarn install
       - name: Build
         run: ./scripts/_ci/deploy-pipelines.sh
       - name: 'Deploy Site'
@@ -61,14 +61,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - name: Install node modules
-        run: yarn install
       - name: Comment on github
         run: node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
         env:
           ACCESS_REPO: ${{ github.repository }}
           ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
           PR_NUMBER: ${{ steps.findPr.outputs.pr }}
+      - name: Install node modules
+        run: yarn install
       - name: Build
         run: ./scripts/_ci/deploy-pipelines.sh -day
       - name: 'Deploy Site'
