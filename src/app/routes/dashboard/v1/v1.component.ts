@@ -1,6 +1,7 @@
 import { Platform } from '@angular/cdk/platform';
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import type { Chart } from '@antv/g2';
 import { OnboardingModule, OnboardingService } from '@delon/abc/onboarding';
 import { QuickMenuModule } from '@delon/abc/quick-menu';
@@ -9,6 +10,7 @@ import { G2MiniBarModule } from '@delon/chart/mini-bar';
 import { G2TimelineModule } from '@delon/chart/timeline';
 import { _HttpClient } from '@delon/theme';
 import { SHARED_IMPORTS } from '@shared';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-v1',
@@ -66,6 +68,12 @@ export class DashboardV1Component implements OnInit {
   salesData!: any[];
   offlineChartData!: any[];
 
+  constructor() {
+    timer(1000)
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.genOnboarding());
+  }
+
   fixDark(chart: Chart): void {
     if (!this.platform.isBrowser || (this.doc.body as HTMLBodyElement).getAttribute('data-theme') !== 'dark') return;
 
@@ -83,8 +91,6 @@ export class DashboardV1Component implements OnInit {
       this.offlineChartData = res.offlineChartData;
       this.cdr.detectChanges();
     });
-    // TODO: Wait for the page to load
-    setTimeout(() => this.genOnboarding(), 1000);
   }
 
   private genOnboarding(): void {
