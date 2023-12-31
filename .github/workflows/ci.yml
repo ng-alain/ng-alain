@@ -43,6 +43,7 @@ jobs:
         env:
           ACCESS_REPO: ${{ github.repository }}
           ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
+          PR_NUMBER: ${{ steps.findPr.outputs.pr }}
       - name: 'When failed'
         if: failure()
         run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Failed](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
@@ -88,6 +89,7 @@ jobs:
         env:
           ACCESS_REPO: ${{ github.repository }}
           ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
+          PR_NUMBER: ${{ steps.findPr.outputs.pr }}
       - name: 'When failed'
         if: failure()
         run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using day release @delon, Preview Failed](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
