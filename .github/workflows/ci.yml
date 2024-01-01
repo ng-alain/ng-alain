@@ -1,0 +1,123 @@
+name: CI
+
+on:
+  push:
+    branches-ignore:
+      - gh-pages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Comment on github
+        run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
+        env:
+          ACCESS_REPO: ${{ github.repository }}
+          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
+          PR_NUMBER: ${{ github.event.number || steps.findPr.outputs.pr }}
+      - name: Install node modules
+        run: yarn install
+      - name: Build
+        run: ./scripts/_ci/deploy-pipelines.sh
+      - name: 'Deploy Site'
+        run: |
+          export DEPLOY_DOMAIN=https://preview-${{ github.event.number || steps.findPr.outputs.pr }}-ng-alain.surge.sh
+          echo "Deploy to $DEPLOY_DOMAIN"
+          cp ./dist/browser/index.html ./dist/browser/404.html
+          npx surge --project ./dist/browser --domain $DEPLOY_DOMAIN
+        env:
+          ACCESS_REPO: ${{ github.repository }}
+          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+      - name: 'Update comment on github'
+        run: |
+          export DEPLOY_DOMAIN=https://preview-${{ github.event.number || steps.findPr.outputs.pr }}-ng-alain.surge.sh
+          node ./scripts/_ci/github-comment.js "RELEASE" "[Preview is ready!]($DEPLOY_DOMAIN)"
+        env:
+          ACCESS_REPO: ${{ github.repository }}
+          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
+          PR_NUMBER: ${{ github.event.number || steps.findPr.outputs.pr }}
+      - name: 'When failed'
+        if: failure()
+        run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Failed](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
+        env:
+          ACCESS_REPO: ${{ github.repository }}
+          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
+          PR_NUMBER: ${{ github.event.number || steps.findPr.outputs.pr }}
+
+  build-day:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Comment on github
+        run: node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
+        env:
+          ACCESS_REPO: ${{ github.repository }}
+          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
+          PR_NUMBER: ${{ github.event.number || steps.findPr.outputs.pr }}
+      - name: Install node modules
+        run: yarn install
+      - name: Build
+        run: ./scripts/_ci/deploy-pipelines.sh -day
+      - name: 'Deploy Site'
+        run: |
+          export DEPLOY_DOMAIN=https://preview-${{ github.event.number || steps.findPr.outputs.pr }}-day-ng-alain.surge.sh
+          echo "Deploy to $DEPLOY_DOMAIN"
+          cp ./dist/browser/index.html ./dist/browser/404.html
+          npx surge --project ./dist/browser --domain $DEPLOY_DOMAIN
+        env:
+          ACCESS_REPO: ${{ github.repository }}
+          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+      - name: 'Update comment on github'
+        run: |
+          export DEPLOY_DOMAIN=https://preview-${{ github.event.number || steps.findPr.outputs.pr }}-day-ng-alain.surge.sh
+          node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview is ready!]($DEPLOY_DOMAIN)"
+        env:
+          ACCESS_REPO: ${{ github.repository }}
+          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
+          PR_NUMBER: ${{ github.event.number || steps.findPr.outputs.pr }}
+      - name: 'When failed'
+        if: failure()
+        run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using day release @delon, Preview Failed](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
+        env:
+          ACCESS_REPO: ${{ github.repository }}
+          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
+          PR_NUMBER: ${{ github.event.number || steps.findPr.outputs.pr }}
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install node modules
+        run: yarn install
+      - name: Check code lint
+        run: yarn run lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install node modules
+        run: yarn install
+      - name: Check code lint
+        run: npx ng test --no-progress --browsers=ChromeHeadless --code-coverage --no-watch

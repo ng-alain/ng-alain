@@ -1,10 +1,10 @@
 const REPO = process.env.ACCESS_REPO;
 const TOKEN = process.env.ACCESS_TOKEN;
-const PR = process.env.SYSTEM_PULLREQUEST_PULLREQUESTNUMBER;
+const PR = process.env.PR_NUMBER;
 const argv = process.argv;
 const tag = argv[argv.length - 2];
 const comment = argv[argv.length - 1];
-const REPLACE_MARK = `<!-- AZURE_UPDATE_COMMENT_${tag} -->`;
+const REPLACE_MARK = `<!-- GHA_UPDATE_COMMENT_${tag} -->`;
 
 const wrappedComment = `
   ${REPLACE_MARK}
