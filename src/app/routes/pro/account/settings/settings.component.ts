@@ -71,6 +71,7 @@ export class ProAccountSettingsComponent implements AfterViewInit, OnDestroy {
     this.resize$ = fromEvent(window, 'resize')
       .pipe(debounceTime(200))
       .subscribe(() => this.resize());
+    this.setActive();
   }
 
   ngOnDestroy(): void {
