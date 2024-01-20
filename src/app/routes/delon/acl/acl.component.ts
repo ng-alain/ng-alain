@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ACLService } from '@delon/acl';
 import { MenuService } from '@delon/theme';
 
@@ -7,6 +7,9 @@ import { MenuService } from '@delon/theme';
   templateUrl: './acl.component.html'
 })
 export class ACLComponent {
+  private readonly aclSrv = inject(ACLService);
+  private readonly menuSrv = inject(MenuService);
+
   full = true;
   roleA = '';
   roleB = '';
@@ -18,11 +21,6 @@ export class ACLComponent {
   } {
     return this.aclSrv.data;
   }
-
-  constructor(
-    private aclSrv: ACLService,
-    private menuSrv: MenuService
-  ) {}
 
   private reMenu(): void {
     this.menuSrv.resume();

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -16,15 +16,13 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProCardListComponent implements OnInit {
+  private readonly http = inject(_HttpClient);
+  private readonly msg = inject(NzMessageService);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   list: Array<{ id: number; title: string; avatar: string; description: string } | null> = [null];
 
   loading = true;
-
-  constructor(
-    private http: _HttpClient,
-    private msg: NzMessageService,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.loading = true;

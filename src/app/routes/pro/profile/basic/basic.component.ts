@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -10,6 +10,9 @@ import { tap } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProProfileBaseComponent {
+  private readonly http = inject(_HttpClient);
+  private readonly msg = inject(NzMessageService);
+
   basicNum = 0;
   amountNum = 0;
   goods = this.http.get('/profile/goods').pipe(
@@ -49,9 +52,4 @@ export class ProProfileBaseComponent {
     { title: '操作员ID', index: 'operator' },
     { title: '耗时', index: 'cost' }
   ];
-
-  constructor(
-    private http: _HttpClient,
-    private msg: NzMessageService
-  ) {}
 }

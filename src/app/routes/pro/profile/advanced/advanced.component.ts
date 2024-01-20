@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
 import { _HttpClient } from '@delon/theme';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -12,6 +12,10 @@ import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProProfileAdvancedComponent implements OnInit {
+  readonly msg = inject(NzMessageService);
+  private readonly http = inject(_HttpClient);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   list: Array<{ [key: string]: NzSafeAny }> = [];
   data = {
     advancedOperation1: [],
@@ -25,12 +29,6 @@ export class ProProfileAdvancedComponent implements OnInit {
     { title: '操作时间', index: 'updatedAt', type: 'date' },
     { title: '备注', index: 'memo', default: '-' }
   ];
-
-  constructor(
-    public msg: NzMessageService,
-    private http: _HttpClient,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.http.get('/profile/advanced').subscribe(res => {

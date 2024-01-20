@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { TransferService } from './transfer.service';
@@ -9,6 +9,8 @@ import { TransferService } from './transfer.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Step2Component implements OnInit {
+  private readonly srv = inject(TransferService);
+
   form = new FormGroup({
     password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)]))
   });
@@ -16,8 +18,6 @@ export class Step2Component implements OnInit {
   get item(): TransferService {
     return this.srv;
   }
-
-  constructor(private srv: TransferService) {}
 
   ngOnInit(): void {
     this.form.patchValue(this.item);

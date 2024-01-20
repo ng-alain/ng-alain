@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, inject } from '@angular/core';
 
 import { TransferService } from './transfer.service';
 
@@ -9,11 +9,10 @@ import { TransferService } from './transfer.service';
   providers: [TransferService]
 })
 export class StepFormComponent implements AfterViewInit {
+  private readonly srv = inject(TransferService);
   get item(): TransferService {
     return this.srv;
   }
-
-  constructor(private srv: TransferService) {}
 
   ngAfterViewInit(): void {
     console.log('item', this.item);

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -8,5 +8,5 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProAccountSettingsSecurityComponent {
-  constructor(public msg: NzMessageService) {}
+  readonly msg = inject(NzMessageService);
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild, inject } from '@angular/core';
 import { STChange, STColumn, STComponent, STData } from '@delon/abc/st';
 import { _HttpClient } from '@delon/theme';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -12,6 +12,11 @@ import { map, tap } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProTableListComponent implements OnInit {
+  private readonly http = inject(_HttpClient);
+  private readonly msg = inject(NzMessageService);
+  private readonly modalSrv = inject(NzModalService);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   q: {
     pi: number;
     ps: number;
@@ -91,13 +96,6 @@ export class ProTableListComponent implements OnInit {
   description = '';
   totalCallNo = 0;
   expandForm = false;
-
-  constructor(
-    private http: _HttpClient,
-    public msg: NzMessageService,
-    private modalSrv: NzModalService,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.getData();

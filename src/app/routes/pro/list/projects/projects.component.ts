@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -9,6 +9,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProListProjectsComponent implements OnInit {
+  private readonly http = inject(_HttpClient);
+  readonly msg = inject(NzMessageService);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   q = {
     ps: 8,
     categories: [],
@@ -19,7 +23,6 @@ export class ProListProjectsComponent implements OnInit {
   list: any[] = [];
   loading = true;
 
-  // region: cateogry
   categories = [
     { id: 0, text: '全部', value: false },
     { id: 1, text: '类目一', value: false },
@@ -44,13 +47,6 @@ export class ProListProjectsComponent implements OnInit {
     }
     this.getData();
   }
-  // endregion
-
-  constructor(
-    private http: _HttpClient,
-    public msg: NzMessageService,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.getData();

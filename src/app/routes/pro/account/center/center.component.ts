@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
 import { Subscription, zip, filter } from 'rxjs';
@@ -10,11 +10,10 @@ import { Subscription, zip, filter } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProAccountCenterComponent implements OnInit, OnDestroy {
-  constructor(
-    private router: Router,
-    private http: _HttpClient,
-    private cdr: ChangeDetectorRef
-  ) {}
+  private readonly router = inject(Router);
+  private readonly http = inject(_HttpClient);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   private router$!: Subscription;
   @ViewChild('tagInput', { static: false }) private tagInput!: ElementRef<HTMLInputElement>;
   user: any;

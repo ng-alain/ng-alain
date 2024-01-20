@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ExceptionModule, ExceptionType } from '@delon/abc/exception';
 
@@ -10,9 +10,8 @@ import { ExceptionModule, ExceptionType } from '@delon/abc/exception';
   imports: [ExceptionModule]
 })
 export class ExceptionComponent {
+  private readonly route = inject(ActivatedRoute);
   get type(): ExceptionType {
     return this.route.snapshot.data['type'];
   }
-
-  constructor(private route: ActivatedRoute) {}
 }

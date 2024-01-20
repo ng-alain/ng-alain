@@ -1,5 +1,5 @@
 import { HttpContext } from '@angular/common/http';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ALLOW_ANONYMOUS } from '@delon/auth';
@@ -37,16 +37,13 @@ import { finalize } from 'rxjs';
   ]
 })
 export class UserRegisterComponent implements OnDestroy {
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private http: _HttpClient,
-    private cdr: ChangeDetectorRef
-  ) {}
+  private readonly router = inject(Router);
+  private readonly http = inject(_HttpClient);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   // #region fields
 
-  form = this.fb.nonNullable.group(
+  form = inject(FormBuilder).nonNullable.group(
     {
       mail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],

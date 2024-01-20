@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { copy } from '@delon/util/browser';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -10,6 +10,9 @@ import { ColorService } from '../color.service';
   styleUrls: ['./colors.component.less']
 })
 export class ColorsComponent {
+  private readonly colorSrv = inject(ColorService);
+  private readonly msg = inject(NzMessageService);
+
   nums = Array(10)
     .fill(1)
     .map((v, i) => v + i);
@@ -21,11 +24,6 @@ export class ColorsComponent {
   get brands(): string[] {
     return this.colorSrv.brands;
   }
-
-  constructor(
-    private colorSrv: ColorService,
-    private msg: NzMessageService
-  ) {}
 
   onCopy(str: string): void {
     copy(str).then(() => this.msg.success(`Copied Success!`));

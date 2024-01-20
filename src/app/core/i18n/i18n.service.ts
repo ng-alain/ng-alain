@@ -4,7 +4,7 @@ import { registerLocaleData } from '@angular/common';
 import ngEn from '@angular/common/locales/en';
 import ngZh from '@angular/common/locales/zh';
 import ngZhTw from '@angular/common/locales/zh-Hant';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   DelonLocaleService,
   en_US as delonEnUS,
@@ -59,20 +59,19 @@ const LANGS: { [key: string]: LangConfigData } = {
 
 @Injectable({ providedIn: 'root' })
 export class I18NService extends AlainI18nBaseService {
+  private readonly http = inject(_HttpClient);
+  private readonly settings = inject(SettingsService);
+  private readonly nzI18nService = inject(NzI18nService);
+  private readonly delonLocaleService = inject(DelonLocaleService);
+  private readonly platform = inject(Platform);
+
   protected override _defaultLang = DEFAULT;
   private _langs = Object.keys(LANGS).map(code => {
     const item = LANGS[code];
     return { code, text: item.text, abbr: item.abbr };
   });
 
-  constructor(
-    private http: _HttpClient,
-    private settings: SettingsService,
-    private nzI18nService: NzI18nService,
-    private delonLocaleService: DelonLocaleService,
-    private platform: Platform,
-    cogSrv: AlainConfigService
-  ) {
+  constructor(cogSrv: AlainConfigService) {
     super(cogSrv);
 
     const defaultLang = this.getDefaultLang();

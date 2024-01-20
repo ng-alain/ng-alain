@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { ZipService } from '@delon/abc/zip';
 import * as JSZip from 'jszip';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -9,6 +9,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ZipComponent implements OnInit {
+  private readonly zip = inject(ZipService);
+  private readonly msg = inject(NzMessageService);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   list: any;
   instance: JSZip | null = null;
   data: Array<{ path?: string; url?: string }> = [
@@ -18,12 +22,6 @@ export class ZipComponent implements OnInit {
       url: 'https://wximg.gtimg.com/shake_tv/mina/standard_logo.zip'
     }
   ];
-
-  constructor(
-    private zip: ZipService,
-    private msg: NzMessageService,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.zip.create().then(ret => {

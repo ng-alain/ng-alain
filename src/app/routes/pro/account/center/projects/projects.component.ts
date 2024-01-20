@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -9,14 +9,14 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProAccountCenterProjectsComponent {
+  private readonly http = inject(_HttpClient);
+  private readonly msg = inject(NzMessageService);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   listLoading = true;
   list: any[] = [];
 
-  constructor(
-    private http: _HttpClient,
-    private msg: NzMessageService,
-    private cdr: ChangeDetectorRef
-  ) {
+  constructor() {
     this.http.get('/api/list', { count: 8 }).subscribe(res => {
       this.list = res;
       this.listLoading = false;

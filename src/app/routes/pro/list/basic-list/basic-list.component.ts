@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { ModalHelper, _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -11,6 +11,11 @@ import { ProBasicListEditComponent } from './edit/edit.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProBasicListComponent implements OnInit {
+  private readonly http = inject(_HttpClient);
+  private readonly msg = inject(NzMessageService);
+  private readonly modal = inject(ModalHelper);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   q = {
     q: '',
     status: 'all'
@@ -27,13 +32,6 @@ export class ProBasicListComponent implements OnInit {
     percent: number;
     status: string;
   }> = [];
-
-  constructor(
-    private http: _HttpClient,
-    private msg: NzMessageService,
-    private modal: ModalHelper,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.getData();

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CountDownModule } from '@delon/abc/count-down';
 import { G2GaugeModule } from '@delon/chart/gauge';
 import { G2MiniAreaModule } from '@delon/chart/mini-area';
@@ -8,7 +8,6 @@ import { G2TagCloudModule } from '@delon/chart/tag-cloud';
 import { G2WaterWaveModule } from '@delon/chart/water-wave';
 import { _HttpClient } from '@delon/theme';
 import { SHARED_IMPORTS } from '@shared';
-import { NzMessageService } from 'ng-zorro-antd/message';
 import type { CountdownConfig } from 'ngx-countdown';
 import { zip } from 'rxjs';
 
@@ -30,11 +29,9 @@ import { zip } from 'rxjs';
   ]
 })
 export class DashboardMonitorComponent implements OnInit, OnDestroy {
-  constructor(
-    private http: _HttpClient,
-    public msg: NzMessageService,
-    private cdr: ChangeDetectorRef
-  ) {}
+  private readonly http = inject(_HttpClient);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   data: any = {};
   tags = [];
   loading = true;
