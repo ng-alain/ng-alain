@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
 import { G2MiniBarData } from '@delon/chart/mini-bar';
 import { _HttpClient } from '@delon/theme';
@@ -9,6 +9,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   templateUrl: './st.component.html'
 })
 export class STDemoComponent implements OnInit {
+  readonly http = inject(_HttpClient);
+  private readonly message = inject(NzMessageService);
+
   ps = 20;
   total = 200; // mock total
   args = { _allow_anonymous: true, userid: null };
@@ -58,11 +61,6 @@ export class STDemoComponent implements OnInit {
       ]
     }
   ];
-
-  constructor(
-    public http: _HttpClient,
-    private message: NzMessageService
-  ) {}
 
   ngOnInit(): void {
     this.http.get('/chart/visit').subscribe((res: G2MiniBarData[]) => (this.events = res.slice(0, 8)));

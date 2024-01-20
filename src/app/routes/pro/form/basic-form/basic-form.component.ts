@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -8,6 +8,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasicFormComponent {
+  private readonly msg = inject(NzMessageService);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   form = new FormGroup({
     title: new FormControl('', Validators.required),
     date: new FormControl('', Validators.required),
@@ -20,11 +23,6 @@ export class BasicFormComponent {
     publicUsers: new FormControl('')
   });
   submitting = false;
-
-  constructor(
-    private msg: NzMessageService,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   submit(): void {
     this.submitting = true;

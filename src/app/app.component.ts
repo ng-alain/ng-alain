@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, inject } from '@angular/core';
 import { NavigationEnd, NavigationError, RouteConfigLoadStart, Router, RouterOutlet } from '@angular/router';
 import { TitleService, VERSION as VERSION_ALAIN, stepPreloader } from '@delon/theme';
 import { environment } from '@env/environment';
@@ -12,15 +12,13 @@ import { VERSION as VERSION_ZORRO } from 'ng-zorro-antd/version';
   imports: [RouterOutlet]
 })
 export class AppComponent implements OnInit {
+  private readonly router = inject(Router);
+  private readonly titleSrv = inject(TitleService);
+  private readonly modalSrv = inject(NzModalService);
+
   private donePreloader = stepPreloader();
 
-  constructor(
-    el: ElementRef,
-    renderer: Renderer2,
-    private router: Router,
-    private titleSrv: TitleService,
-    private modalSrv: NzModalService
-  ) {
+  constructor(el: ElementRef, renderer: Renderer2) {
     renderer.setAttribute(el.nativeElement, 'ng-alain-version', VERSION_ALAIN.full);
     renderer.setAttribute(el.nativeElement, 'ng-zorro-version', VERSION_ZORRO.full);
   }

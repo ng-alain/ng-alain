@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CacheService } from '@delon/cache';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -7,12 +7,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   templateUrl: './cache.component.html'
 })
 export class CacheComponent {
-  KEY = 'user';
+  private readonly cache = inject(CacheService);
+  private readonly msg = inject(NzMessageService);
 
-  constructor(
-    private cache: CacheService,
-    private msg: NzMessageService
-  ) {}
+  KEY = 'user';
 
   set(): void {
     this.cache.set(this.KEY, +new Date());

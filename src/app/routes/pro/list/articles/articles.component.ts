@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
@@ -7,12 +7,9 @@ import { _HttpClient } from '@delon/theme';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProListArticlesComponent implements OnInit {
-  // endregion
+  private readonly http = inject(_HttpClient);
+  private readonly cdr = inject(ChangeDetectorRef);
 
-  constructor(
-    private http: _HttpClient,
-    private cdr: ChangeDetectorRef
-  ) {}
   q = {
     ps: 5,
     categories: [],
@@ -24,7 +21,6 @@ export class ProListArticlesComponent implements OnInit {
   list: any[] = [];
   loading = false;
 
-  // region: cateogry
   categories = [
     { id: 0, text: '全部', value: false },
     { id: 1, text: '类目一', value: false },
@@ -40,9 +36,7 @@ export class ProListArticlesComponent implements OnInit {
     { id: 11, text: '类目十一', value: false },
     { id: 12, text: '类目十二', value: false }
   ];
-  // endregion
 
-  // region: owners
   owners = [
     {
       id: 'wzj',

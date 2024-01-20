@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { TransferService } from './transfer.service';
 
@@ -8,9 +8,9 @@ import { TransferService } from './transfer.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Step3Component {
+  private readonly srv = inject(TransferService);
+
   get item(): TransferService {
     return this.srv;
   }
-
-  constructor(private srv: TransferService) {}
 }

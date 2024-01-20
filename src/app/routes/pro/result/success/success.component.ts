@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -6,5 +6,5 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   templateUrl: './success.component.html'
 })
 export class ProResultSuccessComponent {
-  constructor(public msg: NzMessageService) {}
+  readonly msg = inject(NzMessageService);
 }

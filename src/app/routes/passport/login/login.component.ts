@@ -1,10 +1,10 @@
 import { HttpContext } from '@angular/common/http';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { StartupService } from '@core';
 import { ReuseTabService } from '@delon/abc/reuse-tab';
-import { ALLOW_ANONYMOUS, DA_SERVICE_TOKEN, ITokenService, SocialOpenType, SocialService } from '@delon/auth';
+import { ALLOW_ANONYMOUS, DA_SERVICE_TOKEN, SocialOpenType, SocialService } from '@delon/auth';
 import { I18nPipe, SettingsService, _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
@@ -39,23 +39,16 @@ import { finalize } from 'rxjs';
   ]
 })
 export class UserLoginComponent implements OnDestroy {
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private settingsService: SettingsService,
-    private socialService: SocialService,
-    @Optional()
-    @Inject(ReuseTabService)
-    private reuseTabService: ReuseTabService,
-    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
-    private startupSrv: StartupService,
-    private http: _HttpClient,
-    private cdr: ChangeDetectorRef
-  ) {}
+  private readonly router = inject(Router);
+  private readonly settingsService = inject(SettingsService);
+  private readonly socialService = inject(SocialService);
+  private readonly reuseTabService = inject(ReuseTabService, { optional: true });
+  private readonly tokenService = inject(DA_SERVICE_TOKEN);
+  private readonly startupSrv = inject(StartupService);
+  private readonly http = inject(_HttpClient);
+  private readonly cdr = inject(ChangeDetectorRef);
 
-  // #region fields
-
-  form = this.fb.nonNullable.group({
+  form = inject(FormBuilder).nonNullable.group({
     userName: ['', [Validators.required, Validators.pattern(/^(admin|user)$/)]],
     password: ['', [Validators.required, Validators.pattern(/^(ng\-alain\.com)$/)]],
     mobile: ['', [Validators.required, Validators.pattern(/^1\d{10}$/)]],
@@ -66,12 +59,8 @@ export class UserLoginComponent implements OnDestroy {
   type = 0;
   loading = false;
 
-  // #region get captcha
-
   count = 0;
   interval$: any;
-
-  // #endregion
 
   switch({ index }: NzTabChangeEvent): void {
     this.type = index!;
@@ -92,8 +81,6 @@ export class UserLoginComponent implements OnDestroy {
       }
     }, 1000);
   }
-
-  // #endregion
 
   submit(): void {
     this.error = '';
@@ -147,7 +134,7 @@ export class UserLoginComponent implements OnDestroy {
           return;
         }
         // 清空路由复用信息
-        this.reuseTabService.clear();
+        this.reuseTabService?.clear();
         // 设置用户Token信息
         // TODO: Mock expired value
         res.user.expired = +new Date() + 1000 * 60 * 5;
@@ -162,8 +149,6 @@ export class UserLoginComponent implements OnDestroy {
         });
       });
   }
-
-  // #region social
 
   open(type: string, openType: SocialOpenType = 'href'): void {
     let url = ``;
@@ -203,8 +188,6 @@ export class UserLoginComponent implements OnDestroy {
       });
     }
   }
-
-  // #endregion
 
   ngOnDestroy(): void {
     if (this.interval$) {

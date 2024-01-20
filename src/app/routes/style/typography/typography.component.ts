@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { ColorService } from '../color.service';
 
@@ -7,9 +7,8 @@ import { ColorService } from '../color.service';
   templateUrl: './typography.component.html'
 })
 export class TypographyComponent {
+  private readonly colorSrv = inject(ColorService);
   get names(): string[] {
     return this.colorSrv.names;
   }
-
-  constructor(private colorSrv: ColorService) {}
 }

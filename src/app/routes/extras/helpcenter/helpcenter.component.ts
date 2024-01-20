@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -6,6 +6,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   templateUrl: './helpcenter.component.html'
 })
 export class HelpCenterComponent {
+  readonly msg = inject(NzMessageService);
   type = '';
   q = '';
 
@@ -17,6 +18,4 @@ export class HelpCenterComponent {
   search(): void {
     this.msg.success(`搜索：${this.q}`);
   }
-
-  constructor(public msg: NzMessageService) {}
 }

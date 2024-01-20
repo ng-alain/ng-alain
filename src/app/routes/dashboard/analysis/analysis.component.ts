@@ -1,6 +1,5 @@
 import { DecimalPipe } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
-import { I18NService } from '@core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
 import { G2BarModule } from '@delon/chart/bar';
 import { G2CardModule } from '@delon/chart/card';
@@ -39,12 +38,11 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   ]
 })
 export class DashboardAnalysisComponent implements OnInit {
-  constructor(
-    private http: _HttpClient,
-    public msg: NzMessageService,
-    @Inject(ALAIN_I18N_TOKEN) private i18n: I18NService,
-    private cdr: ChangeDetectorRef
-  ) {}
+  private readonly http = inject(_HttpClient);
+  readonly msg = inject(NzMessageService);
+  private readonly i18n = inject(ALAIN_I18N_TOKEN);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   data: any = {};
   loading = true;
   dateRange: Date[] = [];

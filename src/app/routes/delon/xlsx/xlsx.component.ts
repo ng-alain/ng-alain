@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
 import { XlsxService } from '@delon/abc/xlsx';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -8,7 +8,7 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
   templateUrl: './xlsx.component.html'
 })
 export class XlsxComponent {
-  constructor(private xlsx: XlsxService) {}
+  private readonly xlsx = inject(XlsxService);
 
   data: any;
   users: Array<{ id: number; name: string; age: number }> = Array(100)

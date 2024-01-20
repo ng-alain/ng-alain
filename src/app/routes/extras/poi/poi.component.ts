@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { STColumn, STComponent } from '@delon/abc/st';
 import { ModalHelper } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -10,6 +10,9 @@ import { ExtrasPoiEditComponent } from './edit/edit.component';
   templateUrl: './poi.component.html'
 })
 export class ExtrasPoiComponent {
+  private readonly msg = inject(NzMessageService);
+  private readonly modal = inject(ModalHelper);
+
   @ViewChild('st', { static: true })
   st!: STComponent;
   s = {
@@ -43,11 +46,6 @@ export class ExtrasPoiComponent {
       ]
     }
   ];
-
-  constructor(
-    private msg: NzMessageService,
-    private modal: ModalHelper
-  ) {}
 
   add(): void {
     this.modal.createStatic(ExtrasPoiEditComponent, { i: { id: 0 } }).subscribe(() => {

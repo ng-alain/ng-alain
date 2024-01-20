@@ -1,18 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Lodop, LodopService } from '@delon/abc/lodop';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-print',
   templateUrl: './print.component.html'
 })
 export class PrintComponent {
-  constructor(
-    public lodopSrv: LodopService,
-    private msg: NzMessageService,
-    private notify: NzNotificationService
-  ) {
+  private readonly lodopSrv = inject(LodopService);
+  private readonly msg = inject(NzMessageService);
+
+  constructor() {
     this.lodopSrv.lodop.subscribe(({ lodop, ok }) => {
       if (!ok) {
         this.error = true;
@@ -24,6 +22,7 @@ export class PrintComponent {
       this.pinters = this.lodopSrv.printer;
     });
   }
+
   cog: any = {
     url: 'https://localhost:8443/CLodopfuncs.js',
     printer: '',

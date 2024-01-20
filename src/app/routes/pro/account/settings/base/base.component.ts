@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { zip } from 'rxjs';
@@ -33,11 +33,10 @@ interface ProAccountSettingsCity {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProAccountSettingsBaseComponent implements OnInit {
-  constructor(
-    private http: _HttpClient,
-    private cdr: ChangeDetectorRef,
-    private msg: NzMessageService
-  ) {}
+  private readonly http = inject(_HttpClient);
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly msg = inject(NzMessageService);
+
   avatar = '';
   userLoading = true;
   user!: ProAccountSettingsUser;

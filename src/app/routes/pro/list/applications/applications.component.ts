@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 
 interface ProListApplicationListItem {
@@ -15,6 +15,9 @@ interface ProListApplicationListItem {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProListApplicationsComponent implements OnInit {
+  private readonly http = inject(_HttpClient);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   q = {
     ps: 8,
     user: null,
@@ -53,11 +56,6 @@ export class ProListApplicationsComponent implements OnInit {
     this.getData();
   }
   // endregion
-
-  constructor(
-    private http: _HttpClient,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.getData();

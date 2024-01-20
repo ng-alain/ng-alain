@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
+import { Component, inject } from '@angular/core';
+import { DA_SERVICE_TOKEN } from '@delon/auth';
 import { _HttpClient } from '@delon/theme';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -20,12 +20,10 @@ import { NzCardModule } from 'ng-zorro-antd/card';
   imports: [NzCardModule, NzButtonModule]
 })
 export class ExceptionTriggerComponent {
-  types = [401, 403, 404, 500];
+  private readonly http = inject(_HttpClient);
+  private readonly tokenService = inject(DA_SERVICE_TOKEN);
 
-  constructor(
-    private http: _HttpClient,
-    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService
-  ) {}
+  types = [401, 403, 404, 500];
 
   go(type: number): void {
     this.http.get(`/api/${type}`).subscribe();

@@ -1,13 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivationEnd, Router } from '@angular/router';
-import { Subscription, filter } from 'rxjs';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-list-layout',
   templateUrl: './list.component.html'
 })
-export class ProListLayoutComponent implements OnInit, OnDestroy {
-  private router$!: Subscription;
+export class ProListLayoutComponent implements OnInit {
+  private readonly router = inject(Router);
+  private readonly d$ = inject(DestroyRef);
+
   tabs = [
     {
       key: 'articles',
@@ -25,8 +28,6 @@ export class ProListLayoutComponent implements OnInit, OnDestroy {
 
   pos = 0;
 
-  constructor(private router: Router) {}
-
   private setActive(): void {
     const key = this.router.url.substring(this.router.url.lastIndexOf('/') + 1);
     const idx = this.tabs.findIndex(w => w.key === key);
@@ -36,15 +37,16 @@ export class ProListLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.router$ = this.router.events.pipe(filter(e => e instanceof ActivationEnd)).subscribe(() => this.setActive());
+    this.router.events
+      .pipe(
+        takeUntilDestroyed(this.d$),
+        filter(e => e instanceof ActivationEnd)
+      )
+      .subscribe(() => this.setActive());
     this.setActive();
   }
 
   to(item: { key: string }): void {
     this.router.navigateByUrl(`/pro/list/${item.key}`);
-  }
-
-  ngOnDestroy(): void {
-    this.router$.unsubscribe();
   }
 }

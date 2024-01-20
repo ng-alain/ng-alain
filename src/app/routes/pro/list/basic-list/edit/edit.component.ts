@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SFSchema } from '@delon/form';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
@@ -8,6 +8,9 @@ import { NzModalRef } from 'ng-zorro-antd/modal';
   templateUrl: './edit.component.html'
 })
 export class ProBasicListEditComponent {
+  private readonly modal = inject(NzModalRef);
+  private readonly msgSrv = inject(NzMessageService);
+
   record: any = {};
   schema: SFSchema = {
     properties: {
@@ -37,11 +40,6 @@ export class ProBasicListEditComponent {
       grid: { span: 24 }
     }
   };
-
-  constructor(
-    private modal: NzModalRef,
-    private msgSrv: NzMessageService
-  ) {}
 
   save(value: any): void {
     this.msgSrv.success('保存成功');

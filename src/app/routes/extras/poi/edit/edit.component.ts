@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
@@ -8,14 +8,12 @@ import { NzModalRef } from 'ng-zorro-antd/modal';
   templateUrl: './edit.component.html'
 })
 export class ExtrasPoiEditComponent implements OnInit {
+  readonly msgSrv = inject(NzMessageService);
+  private readonly modal = inject(NzModalRef);
+  readonly http = inject(_HttpClient);
+
   i: any;
   cat: string[] = ['美食', '美食,粤菜', '美食,粤菜,湛江菜'];
-
-  constructor(
-    private modal: NzModalRef,
-    public msgSrv: NzMessageService,
-    public http: _HttpClient
-  ) {}
 
   ngOnInit(): void {
     if (this.i.id > 0) {
