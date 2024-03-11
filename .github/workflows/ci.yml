@@ -4,6 +4,8 @@ on:
   pull_request:
     branches-ignore:
       - gh-pages
+  push:
+    branches: [main, master]
 
 jobs:
   build:
@@ -14,6 +16,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - name: Comment on github
+        if: github.event.number
         run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
         env:
           ACCESS_REPO: ${{ github.repository }}
@@ -24,6 +27,7 @@ jobs:
       - name: Build
         run: ./scripts/_ci/deploy-pipelines.sh
       - name: 'Deploy Site'
+        if: github.event.number
         run: |
           export DEPLOY_DOMAIN=https://preview-${{ github.event.number }}-ng-alain.surge.sh
           echo "Deploy to $DEPLOY_DOMAIN"
@@ -35,6 +39,7 @@ jobs:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       - name: 'Update comment on github'
+        if: github.event.number
         run: |
           export DEPLOY_DOMAIN=https://preview-${{ github.event.number }}-ng-alain.surge.sh
           node ./scripts/_ci/github-comment.js "RELEASE" "[Preview is ready!]($DEPLOY_DOMAIN)"
@@ -43,7 +48,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
           PR_NUMBER: ${{ github.event.number }}
       - name: 'When failed'
-        if: failure()
+        if: github.event.number && failure()
         run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Failed](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
         env:
           ACCESS_REPO: ${{ github.repository }}
@@ -58,6 +63,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - name: Comment on github
+        if: github.event.number
         run: node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
         env:
           ACCESS_REPO: ${{ github.repository }}
@@ -68,6 +74,7 @@ jobs:
       - name: Build
         run: ./scripts/_ci/deploy-pipelines.sh -day
       - name: 'Deploy Site'
+        if: github.event.number
         run: |
           export DEPLOY_DOMAIN=https://preview-${{ github.event.number }}-day-ng-alain.surge.sh
           echo "Deploy to $DEPLOY_DOMAIN"
@@ -79,6 +86,7 @@ jobs:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       - name: 'Update comment on github'
+        if: github.event.number
         run: |
           export DEPLOY_DOMAIN=https://preview-${{ github.event.number }}-day-ng-alain.surge.sh
           node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview is ready!]($DEPLOY_DOMAIN)"
@@ -87,7 +95,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
           PR_NUMBER: ${{ github.event.number }}
       - name: 'When failed'
-        if: failure()
+        if: github.event.number && failure()
         run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using day release @delon, Preview Failed](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
         env:
           ACCESS_REPO: ${{ github.repository }}
