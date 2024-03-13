@@ -37,8 +37,8 @@ export class StartupService {
   load(): Observable<void> {
     const defaultLang = this.i18n.defaultLang;
     // If http request allows anonymous access, you need to add `ALLOW_ANONYMOUS`:
-    // this.httpClient.get('assets/tmp/app-data.json', { context: new HttpContext().set(ALLOW_ANONYMOUS, true) })
-    return zip(this.i18n.loadLangData(defaultLang), this.httpClient.get('assets/tmp/app-data.json')).pipe(
+    // this.httpClient.get('/app', { context: new HttpContext().set(ALLOW_ANONYMOUS, true) })
+    return zip(this.i18n.loadLangData(defaultLang), this.httpClient.get('./assets/tmp/app-data.json')).pipe(
       // 接收其他拦截器后产生的异常消息
       catchError(res => {
         console.warn(`StartupService.load: Network request failed`, res);
