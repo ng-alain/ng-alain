@@ -8,7 +8,7 @@ export class QRComponent {
   value = 'https://ng-alain.com/';
   background = '#ffffff';
   foreground = '#000000';
-  level = 'L';
+  level: 'L' | 'M' | 'Q' | 'H' = 'L';
   mime = 'image/png';
   padding = 10;
   size = 220;
