@@ -37,8 +37,7 @@
     "color-less": "ng-alain-plugin-theme -t=colorLess",
     "theme": "ng-alain-plugin-theme -t=themeCss",
     "icon": "ng g ng-alain:plugin icon",
-    "prepare": "husky install",
-    "postinstall": "ng-less-javascript-enabled-patch"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@angular/animations": "^17.2.0",
