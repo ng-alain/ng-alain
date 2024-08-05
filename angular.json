@@ -28,6 +28,10 @@
               "zone.js"
             ],
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
               "src/assets",
               "src/favicon.ico"
             ],
@@ -35,6 +39,7 @@
               "src/styles.less"
             ],
             "scripts": [],
+            "inlineStyleLanguage": "less",
             "allowedCommonJsDependencies": [
               "ajv",
               "ajv-formats",
@@ -108,9 +113,14 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "less",
             "scripts": [],
             "styles": [],
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
               "src/assets"
             ]
           }

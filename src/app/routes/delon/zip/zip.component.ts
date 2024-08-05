@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { ZipService } from '@delon/abc/zip';
-import * as JSZip from 'jszip';
+import type jsZipType from 'jszip';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -14,7 +14,7 @@ export class ZipComponent implements OnInit {
   private readonly cdr = inject(ChangeDetectorRef);
 
   list: any;
-  instance: JSZip | null = null;
+  instance: jsZipType | null = null;
   data: Array<{ path?: string; url?: string }> = [
     { path: 'demo.docx', url: 'https://ng-alain.com/assets/demo.docx' },
     {
