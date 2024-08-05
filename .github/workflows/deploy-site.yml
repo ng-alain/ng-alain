@@ -11,12 +11,13 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@master
-
-      - uses: borales/actions-yarn@v3.0.0
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          cmd: install
+          node-version-file: '.nvmrc'
+
+      - name: Install node modules
+        run: yarn install
 
       - name: build
         shell: bash
