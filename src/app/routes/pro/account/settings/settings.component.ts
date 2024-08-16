@@ -37,21 +37,13 @@ export class ProAccountSettingsComponent implements AfterViewInit {
     }
   ];
 
-  constructor() {
-    this.router.events
-      .pipe(
-        takeUntilDestroyed(),
-        filter(e => e instanceof ActivationEnd)
-      )
-      .subscribe(() => this.setActive());
-  }
-
   private setActive(): void {
     const key = this.router.url.substring(this.router.url.lastIndexOf('/') + 1);
     this.menus.forEach(i => {
       i.selected = i.key === key;
     });
     this.title = this.menus.find(w => w.selected)!.title;
+    this.cdr.detectChanges();
   }
 
   to(item: { key: string }): void {
@@ -73,9 +65,17 @@ export class ProAccountSettingsComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.router.events
+      .pipe(
+        takeUntilDestroyed(this.d$),
+        filter(e => e instanceof ActivationEnd)
+      )
+      .subscribe(() => this.setActive());
+
     fromEvent(window, 'resize')
       .pipe(takeUntilDestroyed(this.d$), debounceTime(200))
       .subscribe(() => this.resize());
+
     this.setActive();
   }
 }
