@@ -293,11 +293,11 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
     &-item.@{prefix-cls}&-item-rtl&-first-item:not(&-last-item) {border-top-left-radius: 0;border-bottom-left-radius: 0;}
     &-item.@{prefix-cls}&-item-rtl&-last-item:not(&-first-item) {border-top-right-radius: 0;border-bottom-right-radius: 0;}
   }
-  & when (not (@bordered-item-cls = null)) {&-item:not(&-first-item):not(&-last-item).@{prefix-cls} > .@{bordered-item-cls} {border-radius: 0;}
-    &-item&-first-item.@{prefix-cls}:not(&-last-item):not(&-item-rtl) > .@{bordered-item-cls} {border-top-right-radius: 0;border-bottom-right-radius: 0;}
-    &-item&-last-item.@{prefix-cls}:not(&-first-item):not(&-item-rtl) > .@{bordered-item-cls} {border-top-left-radius: 0;border-bottom-left-radius: 0;}
-    &-item.@{prefix-cls}&-first-item&-item-rtl:not(&-last-item) > .@{bordered-item-cls} {border-top-left-radius: 0;border-bottom-left-radius: 0;}
-    &-item.@{prefix-cls}&-last-item&-item-rtl:not(&-first-item) > .@{bordered-item-cls} {border-top-right-radius: 0;border-bottom-right-radius: 0;}
+  & when (not (@bordered-item-cls = null)) {&-item:not(&-first-item):not(&-last-item).@{prefix-cls} .@{bordered-item-cls} {border-radius: 0;}
+    &-item&-first-item.@{prefix-cls}:not(&-last-item):not(&-item-rtl) .@{bordered-item-cls} {border-top-right-radius: 0;border-bottom-right-radius: 0;}
+    &-item&-last-item.@{prefix-cls}:not(&-first-item):not(&-item-rtl) .@{bordered-item-cls} {border-top-left-radius: 0;border-bottom-left-radius: 0;}
+    &-item.@{prefix-cls}&-first-item&-item-rtl:not(&-last-item) .@{bordered-item-cls} {border-top-left-radius: 0;border-bottom-left-radius: 0;}
+    &-item.@{prefix-cls}&-last-item&-item-rtl:not(&-first-item) .@{bordered-item-cls} {border-top-right-radius: 0;border-bottom-right-radius: 0;}
   }
 }
 .compact-item-border(@prefix-cls, @bordered-item-cls: null, @special-open-cls) {& when (@bordered-item-cls = null) {&-item:not(&-last-item):not(&-item-rtl) {margin-right: -@border-width-base;}
