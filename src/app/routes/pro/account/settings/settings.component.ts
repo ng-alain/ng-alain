@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, D
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivationEnd, Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
+import { SHARED_IMPORTS } from '@shared';
 import { NzMenuModeType } from 'ng-zorro-antd/menu';
 import { fromEvent, debounceTime, filter } from 'rxjs';
 
@@ -9,7 +10,8 @@ import { fromEvent, debounceTime, filter } from 'rxjs';
   selector: 'app-account-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: SHARED_IMPORTS
 })
 export class ProAccountSettingsComponent implements AfterViewInit {
   private readonly router = inject(Router);

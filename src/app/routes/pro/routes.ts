@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { ProAccountCenterApplicationsComponent } from './account/center/applications/applications.component';
 import { ProAccountCenterArticlesComponent } from './account/center/articles/articles.component';
@@ -25,7 +24,7 @@ import { ProProfileBaseComponent } from './profile/basic/basic.component';
 import { ProResultFailComponent } from './result/fail/fail.component';
 import { ProResultSuccessComponent } from './result/success/success.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: 'form',
     children: [
@@ -120,9 +119,3 @@ const routes: Routes = [
     ]
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class ProRoutingModule {}

@@ -1,12 +1,15 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
+import { SHARED_IMPORTS } from '@shared';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-account-center-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [...SHARED_IMPORTS, NzAvatarModule]
 })
 export class ProAccountCenterProjectsComponent {
   private readonly http = inject(_HttpClient);

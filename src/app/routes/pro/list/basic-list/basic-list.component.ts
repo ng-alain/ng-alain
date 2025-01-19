@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { ModalHelper, _HttpClient } from '@delon/theme';
+import { SHARED_IMPORTS } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
 
 import { ProBasicListEditComponent } from './edit/edit.component';
 
@@ -8,7 +10,8 @@ import { ProBasicListEditComponent } from './edit/edit.component';
   selector: 'app-basic-list',
   templateUrl: './basic-list.component.html',
   styleUrls: ['./basic-list.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [...SHARED_IMPORTS, NzPaginationComponent]
 })
 export class ProBasicListComponent implements OnInit {
   private readonly http = inject(_HttpClient);

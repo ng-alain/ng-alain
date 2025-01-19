@@ -60,7 +60,6 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     </nz-dropdown-menu>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [NzDropDownModule, NzIconModule, NzMenuModule, NzGridModule, NzSpinModule]
 })
 export class HeaderIconComponent {

@@ -1,4 +1,3 @@
-import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -50,8 +49,7 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged, tap } from 'rxjs';
     </nz-autocomplete>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [FormsModule, I18nPipe, NgTemplateOutlet, NzInputModule, NzIconModule, NzAutocompleteModule]
+  imports: [FormsModule, I18nPipe, NzInputModule, NzIconModule, NzAutocompleteModule]
 })
 export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
   private readonly el = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;

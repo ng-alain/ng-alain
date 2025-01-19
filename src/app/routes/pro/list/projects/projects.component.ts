@@ -1,12 +1,15 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
+import { TagSelectComponent } from '@delon/abc/tag-select';
 import { _HttpClient } from '@delon/theme';
+import { SHARED_IMPORTS } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-list-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [...SHARED_IMPORTS, TagSelectComponent]
 })
 export class ProListProjectsComponent implements OnInit {
   private readonly http = inject(_HttpClient);

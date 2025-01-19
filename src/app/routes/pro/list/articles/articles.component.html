@@ -2,19 +2,18 @@
   <form nz-form se-container="1" size="compact" [gutter]="32" [labelWidth]="null">
     <se label="所属类目" line>
       <tag-select>
-        <nz-tag
-          *ngFor="let i of categories; let idx = index"
-          nzMode="checkable"
-          [nzChecked]="i.value"
-          (nzCheckedChange)="changeCategory($event, idx)"
-        >
-          {{ i.text }}
-        </nz-tag>
+        @for (i of categories; track $index) {
+          <nz-tag nzMode="checkable" [nzChecked]="i.value" (nzCheckedChange)="changeCategory($event, $index)">
+            {{ i.text }}
+          </nz-tag>
+        }
       </tag-select>
     </se>
     <se label="owner" line>
       <nz-select [(ngModel)]="q.owners" name="owners" [nzMode]="'tags'" style="max-width: 286px">
-        <nz-option *ngFor="let i of owners" [nzLabel]="i.name" [nzValue]="i.id" />
+        @for (i of owners; track $index) {
+          <nz-option [nzLabel]="i.name" [nzValue]="i.id" />
+        }
       </nz-select>
       <a class="ml-sm" (click)="setOwner()">只看自己的</a>
     </se>

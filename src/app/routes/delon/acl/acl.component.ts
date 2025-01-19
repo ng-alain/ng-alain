@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ACLService } from '@delon/acl';
 import { MenuService } from '@delon/theme';
+import { SHARED_IMPORTS } from '@shared';
 
 @Component({
   selector: 'app-acl',
-  templateUrl: './acl.component.html'
+  templateUrl: './acl.component.html',
+  imports: SHARED_IMPORTS
 })
 export class ACLComponent {
   private readonly aclSrv = inject(ACLService);

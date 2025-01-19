@@ -30,7 +30,6 @@ import { HeaderI18nComponent } from '../basic/widgets/i18n.component';
     <theme-btn />
   `,
   styleUrls: ['./passport.component.less'],
-  standalone: true,
   imports: [RouterOutlet, HeaderI18nComponent, GlobalFooterModule, NzIconModule, ThemeBtnComponent]
 })
 export class LayoutPassportComponent implements OnInit {

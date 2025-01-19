@@ -19,7 +19,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
     />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [NoticeIconModule]
 })
 export class HeaderNotifyComponent {

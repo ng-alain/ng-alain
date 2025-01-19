@@ -11,7 +11,6 @@ import { zip } from 'rxjs';
   templateUrl: './workplace.component.html',
   styleUrls: ['./workplace.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [...SHARED_IMPORTS, NzAvatarModule, G2RadarModule]
 })
 export class DashboardWorkplaceComponent implements OnInit {

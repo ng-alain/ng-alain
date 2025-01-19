@@ -22,7 +22,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   templateUrl: './analysis.component.html',
   styleUrls: ['./analysis.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     ...SHARED_IMPORTS,
     G2TimelineModule,

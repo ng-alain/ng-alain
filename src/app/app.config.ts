@@ -23,9 +23,9 @@ import { zhCN as dateLang } from 'date-fns/locale';
 import { NzConfig, provideNzConfig } from 'ng-zorro-antd/core/config';
 import { zh_CN as zorroLang } from 'ng-zorro-antd/i18n';
 
-import { routes } from './routes/routes';
 import { ICONS } from '../style-icons';
 import { ICONS_AUTO } from '../style-icons-auto';
+import { routes } from './routes/routes';
 
 const defaultLang: AlainProvideLang = {
   abbr: 'zh-CN',

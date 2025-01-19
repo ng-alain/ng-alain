@@ -2,14 +2,11 @@
   <form nz-form se-container="1" size="compact" [gutter]="32" [labelWidth]="null">
     <se label="所属类目" line>
       <tag-select>
-        <nz-tag
-          *ngFor="let i of categories; let idx = index"
-          nzMode="checkable"
-          [nzChecked]="i.value"
-          (nzCheckedChange)="changeCategory($event, idx)"
-        >
-          {{ i.text }}
-        </nz-tag>
+        @for (i of categories; track $index) {
+          <nz-tag nzMode="checkable" [nzChecked]="i.value" (nzCheckedChange)="changeCategory($event, $index)">
+            {{ i.text }}
+          </nz-tag>
+        }
       </tag-select>
     </se>
     <se label="其它选项">
@@ -48,9 +45,11 @@
         </nz-card-meta>
         <div class="card-item-content">
           <span class="text-grey">{{ item.updatedAt | _date: 'fn' }}</span>
-          <avatar-list size="mini">
-            <avatar-list-item *ngFor="let m of item.members" [src]="m.avatar" [tips]="m.name" />
-          </avatar-list>
+          <nz-avatar-group>
+            @for (m of item.members; track $index) {
+              <nz-avatar [nzSrc]="m.avatar" nz-tooltip [nzTooltipTitle]="m.name" />
+            }
+          </nz-avatar-group>
         </div>
       </nz-card>
     </nz-list-item>

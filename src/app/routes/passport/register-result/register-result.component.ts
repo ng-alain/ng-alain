@@ -8,7 +8,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 @Component({
   selector: 'passport-register-result',
   templateUrl: './register-result.component.html',
-  standalone: true,
   imports: [RouterLink, I18nPipe, NzButtonModule, ResultModule]
 })
 export class UserRegisterResultComponent {

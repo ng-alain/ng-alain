@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { SFSchema } from '@delon/form';
+import { SHARED_IMPORTS } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-basic-list-edit',
-  templateUrl: './edit.component.html'
+  templateUrl: './edit.component.html',
+  imports: SHARED_IMPORTS
 })
 export class ProBasicListEditComponent {
   private readonly modal = inject(NzModalRef);

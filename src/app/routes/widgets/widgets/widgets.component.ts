@@ -11,7 +11,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   templateUrl: './widgets.component.html',
   styleUrls: ['./widgets.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [...SHARED_IMPORTS, NzCarouselModule, G2MiniBarModule, G2MiniAreaModule]
 })
 export class WidgetsComponent implements OnInit {

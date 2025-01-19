@@ -10,7 +10,6 @@ import { ControlWidget, DelonFormModule } from '@delon/form';
   `,
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [DelonFormModule]
 })
 export class TestWidget extends ControlWidget implements OnInit {

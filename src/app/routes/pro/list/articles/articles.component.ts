@@ -1,10 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
+import { TagSelectComponent } from '@delon/abc/tag-select';
 import { _HttpClient } from '@delon/theme';
+import { SHARED_IMPORTS } from '@shared';
 
 @Component({
   selector: 'app-list-articles',
   templateUrl: './articles.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [...SHARED_IMPORTS, TagSelectComponent]
 })
 export class ProListArticlesComponent implements OnInit {
   private readonly http = inject(_HttpClient);

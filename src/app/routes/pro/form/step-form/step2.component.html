@@ -9,7 +9,7 @@
       ><strong class="text-lg">{{ item.amount }}</strong></se
     >
     <se label="支付密码" required error="至少6位数以上" class="border-top-1 pt-lg">
-      <input nz-input formControlName="password" type="password" />
+      <nz-input-otp formControlName="password" />
     </se>
     <se>
       <button nz-button [nzType]="'primary'" [nzLoading]="loading" [disabled]="form.invalid">提交</button>

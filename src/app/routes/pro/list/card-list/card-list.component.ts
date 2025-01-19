@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { EllipsisComponent } from '@delon/abc/ellipsis';
 import { _HttpClient } from '@delon/theme';
+import { SHARED_IMPORTS } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -13,7 +15,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
     `
   ],
   encapsulation: ViewEncapsulation.Emulated,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [...SHARED_IMPORTS, EllipsisComponent]
 })
 export class ProCardListComponent implements OnInit {
   private readonly http = inject(_HttpClient);

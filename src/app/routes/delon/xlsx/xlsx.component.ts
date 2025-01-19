@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
 import { XlsxService } from '@delon/abc/xlsx';
+import { SHARED_IMPORTS } from '@shared';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 @Component({
   selector: 'app-xlsx',
-  templateUrl: './xlsx.component.html'
+  templateUrl: './xlsx.component.html',
+  imports: SHARED_IMPORTS
 })
 export class XlsxComponent {
   private readonly xlsx = inject(XlsxService);

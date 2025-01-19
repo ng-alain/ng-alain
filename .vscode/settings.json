@@ -17,6 +17,9 @@
   "[jsonc]": {
     "editor.formatOnSave": false
   },
+  "[html]": {
+    "editor.formatOnSave": false
+  },
   "files.watcherExclude": {
     "**/.git/*/**": true,
     "**/node_modules/*/**": true,

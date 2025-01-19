@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SHARED_IMPORTS } from '@shared';
 
 @Component({
   selector: 'app-guard-leave',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
     <button nz-button [nzType]="'primary'" [routerLink]="['/delon/guard']">
       <span>我要离开</span>
     </button>
-  `
+  `,
+  imports: SHARED_IMPORTS
 })
 export class GuardLeaveComponent {}

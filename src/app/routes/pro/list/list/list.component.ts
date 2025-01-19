@@ -1,11 +1,13 @@
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivationEnd, Router } from '@angular/router';
+import { SHARED_IMPORTS } from '@shared';
 import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-list-layout',
-  templateUrl: './list.component.html'
+  templateUrl: './list.component.html',
+  imports: SHARED_IMPORTS
 })
 export class ProListLayoutComponent implements OnInit {
   private readonly router = inject(Router);

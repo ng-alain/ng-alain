@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
 import { SFSchema } from '@delon/form';
+import { SHARED_IMPORTS } from '@shared';
 
 @Component({
   selector: 'app-delon-form',
-  templateUrl: './form.component.html'
+  templateUrl: './form.component.html',
+  imports: SHARED_IMPORTS
 })
 export class DelonFormComponent {
   params: any = {};

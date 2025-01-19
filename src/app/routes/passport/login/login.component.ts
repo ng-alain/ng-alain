@@ -23,7 +23,6 @@ import { finalize } from 'rxjs';
   styleUrls: ['./login.component.less'],
   providers: [SocialService],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     RouterLink,
     ReactiveFormsModule,

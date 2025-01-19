@@ -47,7 +47,9 @@
     <nz-form-label nzSpan="4">门店类型</nz-form-label>
     <nz-form-control nzSpan="8">
       <nz-select [(ngModel)]="i.categories" name="categories" required [nzAllowClear]="false">
-        <nz-option *ngFor="let i of cat" [nzLabel]="i" [nzValue]="i" />
+        @for (i of cat; track $index) {
+          <nz-option [nzLabel]="i" [nzValue]="i" />
+        }
       </nz-select>
     </nz-form-control>
   </nz-form-item>
