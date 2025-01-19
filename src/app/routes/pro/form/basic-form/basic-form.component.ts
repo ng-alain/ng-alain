@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SHARED_IMPORTS } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-basic-form',
   templateUrl: './basic-form.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: SHARED_IMPORTS
 })
 export class BasicFormComponent {
   private readonly msg = inject(NzMessageService);

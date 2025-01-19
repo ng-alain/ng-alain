@@ -13,7 +13,6 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     '[class.flex-1]': 'true'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [NzIconModule, UpperCasePipe]
 })
 export class HeaderRTLComponent {

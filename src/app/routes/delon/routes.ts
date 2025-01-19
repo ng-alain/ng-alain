@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { aclCanActivate } from '@delon/acl';
 
 import { ACLComponent } from './acl/acl.component';
@@ -18,7 +17,7 @@ import { UtilComponent } from './util/util.component';
 import { XlsxComponent } from './xlsx/xlsx.component';
 import { ZipComponent } from './zip/zip.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'st', component: STDemoComponent },
   { path: 'util', component: UtilComponent },
   { path: 'print', component: PrintComponent },
@@ -53,9 +52,3 @@ const routes: Routes = [
   { path: 'zip', component: ZipComponent },
   { path: 'form', component: DelonFormComponent }
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class DelonRoutingModule {}

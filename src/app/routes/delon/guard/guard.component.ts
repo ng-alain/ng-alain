@@ -2,10 +2,12 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ACLService } from '@delon/acl';
 import { MenuService } from '@delon/theme';
+import { SHARED_IMPORTS } from '@shared';
 
 @Component({
   selector: 'app-guard',
-  templateUrl: './guard.component.html'
+  templateUrl: './guard.component.html',
+  imports: SHARED_IMPORTS
 })
 export class GuardComponent {
   private readonly aclSrv = inject(ACLService);

@@ -7,7 +7,6 @@ import { RouterOutlet } from '@angular/router';
   host: {
     '[class.alain-blank]': 'true'
   },
-  standalone: true,
   imports: [RouterOutlet]
 })
 export class LayoutBlankComponent {}

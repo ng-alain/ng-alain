@@ -13,7 +13,6 @@ import { NzInputModule } from 'ng-zorro-antd/input';
   selector: 'passport-lock',
   templateUrl: './lock.component.html',
   styleUrls: ['./lock.component.less'],
-  standalone: true,
   imports: [ReactiveFormsModule, I18nPipe, NzAvatarModule, NzFormModule, NzGridModule, NzButtonModule, NzInputModule]
 })
 export class UserLockComponent {

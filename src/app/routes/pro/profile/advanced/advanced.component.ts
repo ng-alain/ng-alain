@@ -1,15 +1,18 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { STColumn } from '@delon/abc/st';
 import { _HttpClient } from '@delon/theme';
+import { SHARED_IMPORTS } from '@shared';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
 
 @Component({
   selector: 'app-profile-advanced',
   templateUrl: './advanced.component.html',
   styleUrls: ['./advanced.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [...SHARED_IMPORTS, NzStepsModule]
 })
 export class ProProfileAdvancedComponent implements OnInit {
   readonly msg = inject(NzMessageService);

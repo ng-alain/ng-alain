@@ -29,7 +29,9 @@
         <label nz-radio [nzValue]="2">部分公开</label>
         <label nz-radio [nzValue]="3">不公开</label>
       </nz-radio-group>
-      <input *ngIf="form.value.public === 2" nz-input formControlName="publicUsers" placeholder="公开给" />
+      @if (form.value.public === 2) {
+        <input nz-input formControlName="publicUsers" placeholder="公开给" />
+      }
     </se>
     <se>
       <button nz-button nzType="primary" [disabled]="form.invalid" type="submit" [nzLoading]="submitting">提交</button>

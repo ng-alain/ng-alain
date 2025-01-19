@@ -16,7 +16,6 @@ import { NzCardModule } from 'ng-zorro-antd/card';
       </nz-card>
     </div>
   `,
-  standalone: true,
   imports: [NzCardModule, NzButtonModule]
 })
 export class ExceptionTriggerComponent {

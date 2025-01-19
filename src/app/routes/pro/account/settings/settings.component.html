@@ -1,7 +1,9 @@
 <div class="main">
   <div class="menu">
     <ul nz-menu [nzMode]="mode">
-      <li *ngFor="let m of menus" nz-menu-item [nzSelected]="m.selected" (click)="to(m)">{{ m.title }}</li>
+      @for (m of menus; track $index) {
+        <li nz-menu-item [nzSelected]="m.selected" (click)="to(m)">{{ m.title }}</li>
+      }
     </ul>
   </div>
   <div class="content">

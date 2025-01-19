@@ -27,7 +27,9 @@
           <nz-form-label>仓库管理员</nz-form-label>
           <nz-form-control nzErrorTip="请选择管理员">
             <nz-select formControlName="owner" [nzPlaceHolder]="'请选择管理员'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value" />
+              @for (i of users; track $index) {
+                <nz-option [nzLabel]="i.label" [nzValue]="i.value" />
+              }
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -39,7 +41,9 @@
           <nz-form-label>审批员</nz-form-label>
           <nz-form-control nzErrorTip="请选择审批员">
             <nz-select formControlName="approver" [nzPlaceHolder]="'请选择管理员'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value" />
+              @for (i of users; track $index) {
+                <nz-option [nzLabel]="i.label" [nzValue]="i.value" />
+              }
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -88,7 +92,9 @@
           <nz-form-label>执行人</nz-form-label>
           <nz-form-control nzErrorTip="请选择执行人">
             <nz-select formControlName="owner2" [nzPlaceHolder]="'请选择执行人'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value" />
+              @for (i of users; track $index) {
+                <nz-option [nzLabel]="i.label" [nzValue]="i.value" />
+              }
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -100,7 +106,9 @@
           <nz-form-label>责任人</nz-form-label>
           <nz-form-control nzErrorTip="请选择责任人">
             <nz-select formControlName="approver2" [nzPlaceHolder]="'请选择责任人'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of users" [nzLabel]="i.label" [nzValue]="i.value" />
+              @for (i of users; track $index) {
+                <nz-option [nzLabel]="i.label" [nzValue]="i.value" />
+              }
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -137,50 +145,64 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
-          <td>
-            <span *ngIf="editIndex !== i">{{ items.value[i].name }}</span>
-            <nz-form-item *ngIf="editIndex === i">
-              <nz-form-control nzErrorTip="请输入成员姓名">
-                <input nz-input formControlName="name" placeholder="请输入成员姓名" />
-              </nz-form-control>
-            </nz-form-item>
-          </td>
-          <td>
-            <span *ngIf="editIndex !== i">{{ items.value[i].workId }}</span>
-            <nz-form-item *ngIf="editIndex === i">
-              <nz-form-control nzErrorTip="请输入工号">
-                <input nz-input formControlName="workId" placeholder="请输入工号" />
-              </nz-form-control>
-            </nz-form-item>
-          </td>
-          <td>
-            <span *ngIf="editIndex !== i">{{ items.value[i].department }}</span>
-            <nz-form-item *ngIf="editIndex === i">
-              <nz-form-control nzErrorTip="请输入所属部门">
-                <input nz-input formControlName="department" placeholder="请输入所属部门" />
-              </nz-form-control>
-            </nz-form-item>
-          </td>
-          <td>
-            <span *ngIf="editIndex !== i">
-              <a (click)="edit(i)">编辑</a>
-              <nz-divider nzType="vertical" />
-              <a nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="del(i)">删除</a>
-            </span>
-            <span *ngIf="editIndex === i">
-              <a (click)="save(i)">保存</a>
-              <nz-divider nzType="vertical" />
-              <a nz-popconfirm nzPopconfirmTitle="是否要取消操作？" (nzOnConfirm)="cancel(i)">取消</a>
-            </span>
-          </td>
-        </tr>
+        @for (item of items.controls; track $index; let i = $index) {
+          <tr [formGroupName]="i">
+            @let v = items.value[i];
+            @let isView = editIndex !== i;
+            <td>
+              @if (isView) {
+                {{ v.name }}
+              } @else {
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="请输入成员姓名">
+                    <input nz-input formControlName="name" placeholder="请输入成员姓名" />
+                  </nz-form-control>
+                </nz-form-item>
+              }
+            </td>
+            <td>
+              @if (isView) {
+                {{ v.workId }}
+              } @else {
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="请输入工号">
+                    <input nz-input formControlName="workId" placeholder="请输入工号" />
+                  </nz-form-control>
+                </nz-form-item>
+              }
+            </td>
+            <td>
+              @if (isView) {
+                {{ v.department }}
+              } @else {
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="请输入所属部门">
+                    <input nz-input formControlName="department" placeholder="请输入所属部门" />
+                  </nz-form-control>
+                </nz-form-item>
+              }
+            </td>
+            <td>
+              @if (isView) {
+                <a (click)="edit(i)">编辑</a>
+                <nz-divider nzType="vertical" />
+                <a nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="del(i)">删除</a>
+              } @else {
+                <a (click)="save(i)">保存</a>
+                <nz-divider nzType="vertical" />
+                <a nz-popconfirm nzPopconfirmTitle="是否要取消操作？" (nzOnConfirm)="cancel(i)">取消</a>
+              }
+            </td>
+          </tr>
+        }
       </tbody>
     </nz-table>
-    <button *ngIf="editIndex === -1" nz-button [nzType]="'dashed'" (click)="add()" nzBlock class="mt-md">
-      <i nz-icon nzType="plus"></i>
-      <span>新增成员</span>
-    </button>
+    @if (editIndex === -1) {
+      <button nz-button [nzType]="'dashed'" (click)="add()" nzBlock class="mt-md">
+        <i nz-icon nzType="plus"></i>
+        <span>新增成员</span>
+      </button>
+    }
   </nz-card>
   <footer-toolbar errorCollect>
     <button nz-button type="primary" nzType="primary">提交</button>

@@ -131,8 +131,11 @@
   </nz-card-tab>
   <st [columns]="opColumns" [data]="list">
     <ng-template st-row="status" let-i>
-      <nz-badge *ngIf="i.status === 'success'" [nzStatus]="'success'" [nzText]="'成功'" />
-      <nz-badge *ngIf="i.status !== 'success'" [nzStatus]="'processing'" [nzText]="'进行中'" />
+      @if (i.status === 'success') {
+        <nz-badge nzStatus="success" nzText="成功" />
+      } @else {
+        <nz-badge nzStatus="processing" nzText="进行中" />
+      }
     </ng-template>
   </st>
 </nz-card>

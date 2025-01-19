@@ -1,6 +1,6 @@
-<result type="success" [title]="'操作成功'" description="预计两小时内到账" [extra]="resultExtra">
-  <ng-template #resultExtra>
-    <div sv-container col="1" labelWidth="150">
+<nz-result nzStatus="success" [nzTitle]="'操作成功'" nzSubTitle="预计两小时内到账">
+  <div nz-result-extra>
+    <div sv-container col="1" labelWidth="150" class="mb-lg">
       <sv label="付款账户">{{ item.pay_account }}</sv>
       <sv label="账户类型">{{ item.receiver_type_str }}</sv>
       <sv label="收款账户">{{ item.receiver_account }}</sv>
@@ -9,7 +9,7 @@
         元
       </sv>
     </div>
-  </ng-template>
-  <button nz-button (click)="item.again()" [nzType]="'primary'">再转一笔</button>
-  <button nz-button class="ml-sm">查看账单</button>
-</result>
+    <button nz-button (click)="item.again()" [nzType]="'primary'">再转一笔</button>
+    <button nz-button class="ml-sm">查看账单</button>
+  </div>
+</nz-result>

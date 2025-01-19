@@ -7,8 +7,7 @@ import { VERSION as VERSION_ZORRO } from 'ng-zorro-antd/version';
 
 @Component({
   selector: 'app-root',
-  template: ` <router-outlet />`,
-  standalone: true,
+  template: `<router-outlet />`,
   imports: [RouterOutlet]
 })
 export class AppComponent implements OnInit {

@@ -1,7 +1,7 @@
 <div nz-row nzGutter="24" class="py-lg">
   <div nz-col nzMd="24" nzLg="7">
     <nz-card [nzBordered]="false" class="mb-lg" [nzLoading]="!user">
-      <ng-container *ngIf="user">
+      @if (user) {
         <div class="avatar-holder">
           <img src="{{ user.avatar }}" />
           <div class="name">{{ user.name }}</div>
@@ -19,44 +19,52 @@
         <nz-divider nzDashed />
         <div class="tags">
           <div class="tags-title">标签</div>
-          <nz-tag *ngFor="let t of user.tags">{{ t.label }}</nz-tag>
-          <nz-tag *ngIf="!taging" (click)="tagShowIpt()" class="ant-tag__plus">
-            <i nz-icon nzType="plus"></i>
-          </nz-tag>
-          <input
-            *ngIf="taging"
-            #tagInput
-            nz-input
-            [(ngModel)]="tagValue"
-            (blur)="tagBlur()"
-            (keydown)="tagEnter($event)"
-            nzSize="small"
-            type="text"
-            style="width: 78px"
-          />
+          @for (t of user.tags; track $index) {
+            <nz-tag>{{ t.label }}</nz-tag>
+          }
+          @if (taging) {
+            <input
+              #tagInput
+              nz-input
+              [(ngModel)]="tagValue"
+              (blur)="tagBlur()"
+              (keydown)="tagEnter($event)"
+              nzSize="small"
+              type="text"
+              style="width: 78px"
+            />
+          } @else {
+            <nz-tag (click)="tagShowIpt()" class="ant-tag__plus">
+              <i nz-icon nzType="plus"></i>
+            </nz-tag>
+          }
         </div>
         <nz-divider nzDashed />
         <div class="team">
           <div class="team-title">团队</div>
           <nz-spin [nzSpinning]="!notice">
             <div nz-row nzGutter="36">
-              <div nz-col *ngFor="let t of notice" nzLg="24" nzXl="12">
-                <a href="#" class="text-truncate">
-                  <nz-avatar [nzSrc]="t.logo" nzSize="small" />
-                  {{ t.member }}
-                </a>
-              </div>
+              @for (t of notice; track $index) {
+                <div nz-col nzLg="24" nzXl="12">
+                  <a href="#" class="text-truncate">
+                    <nz-avatar [nzSrc]="t.logo" nzSize="small" />
+                    {{ t.member }}
+                  </a>
+                </div>
+              }
             </div>
           </nz-spin>
         </div>
-      </ng-container>
+      }
     </nz-card>
   </div>
   <div nz-col nzMd="24" nzLg="17">
     <nz-card class="tabs-card" [nzBordered]="false" [nzTitle]="tagTitleTpl">
       <ng-template #tagTitleTpl>
         <nz-tabset nzSize="large" [nzSelectedIndex]="pos">
-          <nz-tab *ngFor="let i of tabs" [nzTitle]="i.tab" (nzClick)="to(i)" />
+          @for (i of tabs; track $index) {
+            <nz-tab [nzTitle]="i.tab" (nzClick)="to(i)" />
+          }
         </nz-tabset>
       </ng-template>
       <router-outlet />

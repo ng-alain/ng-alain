@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FooterToolbarModule } from '@delon/abc/footer-toolbar';
+import { SHARED_IMPORTS } from '@shared';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 interface UserForm {
@@ -12,7 +14,8 @@ interface UserForm {
 @Component({
   selector: 'app-advanced-form',
   templateUrl: './advanced-form.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [...SHARED_IMPORTS, FooterToolbarModule]
 })
 export class AdvancedFormComponent implements OnInit {
   editIndex = -1;

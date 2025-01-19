@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { Lodop, LodopService } from '@delon/abc/lodop';
+import { SHARED_IMPORTS } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-print',
-  templateUrl: './print.component.html'
+  templateUrl: './print.component.html',
+  imports: SHARED_IMPORTS
 })
 export class PrintComponent {
   private readonly lodopSrv = inject(LodopService);

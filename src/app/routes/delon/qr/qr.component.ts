@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { SHARED_IMPORTS } from '@shared';
+import { NzQRCodeComponent } from 'ng-zorro-antd/qr-code';
 
 @Component({
   selector: 'app-qr',
-  templateUrl: './qr.component.html'
+  templateUrl: './qr.component.html',
+  imports: [...SHARED_IMPORTS, NzQRCodeComponent]
 })
 export class QRComponent {
   value = 'https://ng-alain.com/';

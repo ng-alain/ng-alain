@@ -16,7 +16,6 @@ import { zip } from 'rxjs';
   templateUrl: './monitor.component.html',
   styleUrls: ['./monitor.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     ...SHARED_IMPORTS,
     G2WaterWaveModule,

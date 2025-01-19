@@ -29,6 +29,7 @@ module.exports = {
     'import-notation': 'string',
     'media-feature-range-notation': 'prefix',
     'media-query-no-invalid': null,
+    'declaration-property-value-no-unknown': null,
     'order/order': [
       [
         'dollar-variables',

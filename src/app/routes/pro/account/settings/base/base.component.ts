@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { _HttpClient } from '@delon/theme';
+import { SHARED_IMPORTS } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzUploadComponent } from 'ng-zorro-antd/upload';
 import { zip } from 'rxjs';
 
 interface ProAccountSettingsUser {
@@ -30,7 +32,8 @@ interface ProAccountSettingsCity {
   selector: 'app-account-settings-base',
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [...SHARED_IMPORTS, NzUploadComponent]
 })
 export class ProAccountSettingsBaseComponent implements OnInit {
   private readonly http = inject(_HttpClient);

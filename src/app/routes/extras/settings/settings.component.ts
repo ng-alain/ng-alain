@@ -1,10 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { SHARED_IMPORTS } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzUploadComponent } from 'ng-zorro-antd/upload';
 
 @Component({
   selector: 'app-extras-settings',
-  templateUrl: './settings.component.html'
+  templateUrl: './settings.component.html',
+  imports: [...SHARED_IMPORTS, NzUploadComponent]
 })
 export class ExtrasSettingsComponent implements OnInit {
   readonly msg = inject(NzMessageService);

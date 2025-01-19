@@ -14,7 +14,6 @@ import { NzModalService } from 'ng-zorro-antd/modal';
     '[class.flex-1]': 'true'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [NzIconModule, I18nPipe]
 })
 export class HeaderClearStorageComponent {

@@ -5,7 +5,15 @@
     <nz-step nzTitle="确认转账信息" />
     <nz-step nzTitle="完成" />
   </nz-steps>
-  <app-step1 *ngIf="item.step === 0" />
-  <app-step2 *ngIf="item.step === 1" />
-  <app-step3 *ngIf="item.step === 2" />
+  @switch (item.step) {
+    @case (0) {
+      <app-step1 />
+    }
+    @case (1) {
+      <app-step2 />
+    }
+    @case (2) {
+      <app-step3 />
+    }
+  }
 </nz-card>

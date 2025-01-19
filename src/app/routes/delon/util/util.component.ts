@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { copy } from '@delon/util/browser';
 import { format } from '@delon/util/format';
-import { yuan } from '@shared';
+import { SHARED_IMPORTS, yuan } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-util',
-  templateUrl: './util.component.html'
+  templateUrl: './util.component.html',
+  imports: SHARED_IMPORTS
 })
 export class UtilComponent {
   readonly messageSrv = inject(NzMessageService);

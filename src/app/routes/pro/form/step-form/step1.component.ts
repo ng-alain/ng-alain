@@ -1,12 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SHARED_IMPORTS } from '@shared';
 
 import { TransferService } from './transfer.service';
 
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: SHARED_IMPORTS
 })
 export class Step1Component implements OnInit {
   private readonly srv = inject(TransferService);

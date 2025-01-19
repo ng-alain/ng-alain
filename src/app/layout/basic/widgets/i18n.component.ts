@@ -33,7 +33,6 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
     '[class.flex-1]': 'true'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [I18nPipe, NzDropDownModule, NzIconModule, NzMenuModule]
 })
 export class HeaderI18nComponent {

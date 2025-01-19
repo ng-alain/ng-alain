@@ -8,7 +8,7 @@
     <nz-list-item>
       <nz-card nzHoverable [nzCover]="cover">
         <ng-template #cover>
-          <img alt="{{ item.title }}" src="{{ item.cover }}" />
+          <img [attr.alt]="item.title" [attr.src]="item.cover" />
         </ng-template>
         <nz-card-meta [nzTitle]="nzTitle" [nzDescription]="item.subDescription">
           <ng-template #nzTitle>
@@ -17,9 +17,11 @@
         </nz-card-meta>
         <div class="card-item-content">
           <span class="text-grey">{{ item.updatedAt | _date: 'fn' }}</span>
-          <avatar-list size="mini">
-            <avatar-list-item *ngFor="let m of item.members" [src]="m.avatar" [tips]="m.name" />
-          </avatar-list>
+          <nz-avatar-group>
+            @for (m of item.members; track $index) {
+              <nz-avatar [nzSrc]="m.avatar" nz-tooltip [nzTooltipTitle]="m.name" />
+            }
+          </nz-avatar-group>
         </div>
       </nz-card>
     </nz-list-item>
