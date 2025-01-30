@@ -29,7 +29,7 @@
     "analyze": "npm run ng-high-memory build -- --source-map",
     "analyze:view": "source-map-explorer dist/**/*.js",
     "lint": "npm run lint:ts && npm run lint:style",
-    "lint:ts": "ng lint --fix",
+    "lint:ts": "npx eslint --cache --fix",
     "lint:style": "npx stylelint 'src/**/*.less'",
     "e2e": "ng e2e",
     "test": "ng test --watch",
@@ -66,11 +66,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.1.2",
-    "@angular-eslint/builder": "^19.0.2",
-    "@angular-eslint/eslint-plugin": "^19.0.2",
-    "@angular-eslint/eslint-plugin-template": "^19.0.2",
-    "@angular-eslint/schematics": "^19.0.2",
-    "@angular-eslint/template-parser": "^19.0.2",
     "@angular/cli": "^19.1.2",
     "@angular/compiler-cli": "^19.1.0",
     "@angular/language-service": "^19.1.1",
@@ -78,15 +73,18 @@
     "@ng-util/monaco-editor": "^19.0.0",
     "@types/jasmine": "~5.1.0",
     "@types/jasminewd2": "~2.0.13",
-    "@typescript-eslint/eslint-plugin": "^8.20.0",
-    "@typescript-eslint/parser": "^8.20.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "~9.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "@typescript-eslint/utils": "^8.22.0",
+    "angular-eslint": "19.0.2",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-deprecation": "^3.0.0",
     "eslint-plugin-import": "~2.31.0",
-    "eslint-plugin-jsdoc": "~50.6.2",
+    "eslint-plugin-jsdoc": "~50.6.3",
     "eslint-plugin-prefer-arrow": "~1.2.3",
-    "eslint-plugin-prettier": "~5.2.2",
+    "eslint-plugin-prettier": "~5.2.3",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "husky": "^9.1.7",
     "jasmine-core": "~5.5.0",
     "jasmine-spec-reporter": "^7.0.0",
@@ -107,11 +105,12 @@
     "stylelint-config-standard": "^37.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.8.0",
     "ts-node": "~10.9.2",
-    "typescript": "~5.7.2"
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.22.0"
   },
   "lint-staged": {
     "(src)/**/*.{html,ts}": [
-      "eslint --fix"
+      "eslint --cache"
     ],
     "(src)/**/*.less": [
       "npm run lint:style"
