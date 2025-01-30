@@ -46,31 +46,38 @@ export default tseslint.config(
     processor: angular.processInlineTemplates,
     rules: {
       'prettier/prettier': ['error', {}],
+      'jsdoc/tag-lines': [
+        'error',
+        'any',
+        {
+          startLines: 1,
+        },
+      ],
+      '@angular-eslint/component-class-suffix': [
+        'error',
+        {
+          suffixes: ['Directive', 'Component', 'Base', 'Widget']
+        }
+      ],
+      '@angular-eslint/directive-class-suffix': [
+        'error',
+        {
+          suffixes: ['Directive', 'Component', 'Base', 'Widget']
+        }
+      ],
       '@angular-eslint/component-selector': [
         'off',
         {
           type: ['element', 'attribute'],
-          prefix: ['nz', 'test'],
+          prefix: ['app', 'test'],
           style: 'kebab-case'
-        }
-      ],
-      '@angular-eslint/component-class-suffix': [
-        'off',
-        {
-          suffixes: ['Directive', 'Component', 'Base', 'Widget', 'Property', 'HarnessTest']
-        }
-      ],
-      '@angular-eslint/directive-class-suffix': [
-        'off',
-        {
-          suffixes: ['Directive', 'Component', 'Base', 'Widget']
         }
       ],
       '@angular-eslint/directive-selector': [
         'off',
         {
           type: 'attribute',
-          prefix: ['nz']
+          prefix: ['app']
         }
       ],
       '@angular-eslint/no-attribute-decorator': 'error',
@@ -82,6 +89,8 @@ export default tseslint.config(
       '@angular-eslint/prefer-output-readonly': 'error',
       '@angular-eslint/use-component-selector': 'off',
       '@angular-eslint/use-component-view-encapsulation': 'off',
+      '@angular-eslint/no-input-rename': 'off',
+      '@angular-eslint/no-output-native': 'off',
       '@typescript-eslint/array-type': [
         'error',
         {
@@ -92,9 +101,6 @@ export default tseslint.config(
         'off',
         {
           types: {
-            Object: {
-              message: 'Use {} instead.'
-            },
             String: {
               message: 'Use string instead.'
             },
@@ -110,40 +116,6 @@ export default tseslint.config(
           }
         }
       ],
-      '@typescript-eslint/consistent-type-definitions': 'error',
-      '@typescript-eslint/explicit-member-accessibility': [
-        'off',
-        {
-          accessibility: 'explicit'
-        }
-      ],
-      '@typescript-eslint/no-explicit-any': [
-        'off',
-        {
-          ignoreRestArgs: true
-        }
-      ],
-      '@typescript-eslint/no-floating-promises': 'off',
-      '@typescript-eslint/no-for-in-array': 'error',
-      '@typescript-eslint/no-inferrable-types': [
-        'error',
-        {
-          ignoreParameters: true,
-          ignoreProperties: true
-        }
-      ],
-      '@typescript-eslint/no-non-null-assertion': 'off',
-      '@typescript-eslint/no-this-alias': 'error',
-      '@typescript-eslint/naming-convention': 'off',
-      '@typescript-eslint/no-unused-expressions': 'off',
-      '@typescript-eslint/explicit-function-return-type': [
-        'error',
-        {
-          allowExpressions: true,
-          allowConciseArrowFunctionExpressionsStartingWithVoid: true
-        }
-      ],
-      'prefer-arrow/prefer-arrow-functions': 'off',
       'import/no-duplicates': 'error',
       'import/no-unused-modules': 'error',
       'import/no-unassigned-import': 'error',
@@ -152,49 +124,24 @@ export default tseslint.config(
         {
           alphabetize: { order: 'asc', caseInsensitive: false },
           'newlines-between': 'always',
-          groups: [['builtin', 'external'], 'internal', ['parent', 'sibling', 'index']],
-          pathGroups: [
-            {
-              pattern: '{@angular/**,rxjs}',
-              group: 'external',
-              position: 'before'
-            },
-            {
-              pattern: '{ng-zorro-antd/**,@delon/**}',
-              group: 'internal',
-              position: 'before'
-            },
-            {
-              pattern: '{@core,@share,@env/*}',
-              group: 'parent',
-              position: 'before'
-            }
-          ],
-          "pathGroupsExcludedImportTypes": []
+          groups: ['external', 'internal', ['parent', 'sibling', 'index']],
+          pathGroups: [],
+          pathGroupsExcludedImportTypes: []
         }
       ],
-      'no-bitwise': 'off',
-      'no-duplicate-imports': 'error',
-      'no-invalid-this': 'off',
+      '@typescript-eslint/no-this-alias': 'error',
+      '@typescript-eslint/member-ordering': 'off',
       'no-irregular-whitespace': 'error',
-      'no-magic-numbers': 'off',
       'no-multiple-empty-lines': 'error',
-      'no-redeclare': 'off',
-      'no-underscore-dangle': 'off',
       'no-sparse-arrays': 'error',
-      'no-template-curly-in-string': 'off',
       'prefer-object-spread': 'error',
       'prefer-template': 'error',
-      yoda: 'error',
-      '@angular-eslint/no-input-rename': 'off',
-      '@angular-eslint/no-output-native': 'off',
-      '@typescript-eslint/member-ordering': 'off',
-      'no-shadow': 'off',
       'prefer-const': 'off',
       'max-len': 'off',
-      'no-empty': 'off',
+      '@typescript-eslint/no-deprecated': 'warn',
+      "no-empty-function": "off",
       '@typescript-eslint/no-empty-function': 'off',
-      '@typescript-eslint/no-deprecated': 'warn'
+      '@typescript-eslint/no-explicit-any': 'warn'
     }
   },
   {

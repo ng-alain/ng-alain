@@ -70,7 +70,7 @@ export class HeaderNotifyComponent {
             processing: 'blue',
             urgent: 'red',
             doing: 'gold'
-          } as { [key: string]: string | undefined }
+          } as Record<string, string | undefined>
         )[newItem['status']];
       }
       data.find(w => w.title === newItem['type'])!.list.push(newItem);

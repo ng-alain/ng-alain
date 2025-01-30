@@ -19,7 +19,7 @@ export class ProProfileAdvancedComponent implements OnInit {
   private readonly http = inject(_HttpClient);
   private readonly cdr = inject(ChangeDetectorRef);
 
-  list: Array<{ [key: string]: NzSafeAny }> = [];
+  list: Array<Record<string, NzSafeAny>> = [];
   data = {
     advancedOperation1: [],
     advancedOperation2: [],

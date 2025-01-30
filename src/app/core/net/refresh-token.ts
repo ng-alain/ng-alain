@@ -66,7 +66,7 @@ export function tryRefreshToken(injector: Injector, ev: HttpResponseBase, req: H
   );
 }
 
-function buildAuthRefresh(injector: Injector) {
+function buildAuthRefresh(injector: Injector): void {
   const tokenSrv = injector.get(DA_SERVICE_TOKEN);
   tokenSrv.refresh
     .pipe(

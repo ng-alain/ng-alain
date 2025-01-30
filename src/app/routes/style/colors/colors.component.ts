@@ -1,8 +1,6 @@
 import { Component, inject } from '@angular/core';
-
-import { SHARED_IMPORTS } from '@shared';
-
 import { copy } from '@delon/util/browser';
+import { SHARED_IMPORTS } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { ColorService } from '../color.service';
