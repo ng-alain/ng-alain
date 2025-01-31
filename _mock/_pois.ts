@@ -27,7 +27,7 @@ export const POIS = {
         status_str: '待审核',
         status_wx: 1,
         modified: 1505826527288,
-        created: 1505826527288,
+        created: 1505826527288
       },
       {
         id: 10001,
@@ -54,8 +54,8 @@ export const POIS = {
         status_str: '待审核',
         status_wx: 1,
         modified: 1505826527288,
-        created: 1505826527288,
-      },
-    ],
-  },
+        created: 1505826527288
+      }
+    ]
+  }
 };

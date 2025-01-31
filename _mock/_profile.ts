@@ -5,7 +5,7 @@ const basicGoods = [
     barcode: '12421432143214321',
     price: '2.00',
     num: '1',
-    amount: '2.00',
+    amount: '2.00'
   },
   {
     id: '1234562',
@@ -13,7 +13,7 @@ const basicGoods = [
     barcode: '12421432143214322',
     price: '3.00',
     num: '2',
-    amount: '6.00',
+    amount: '6.00'
   },
   {
     id: '1234563',
@@ -21,7 +21,7 @@ const basicGoods = [
     barcode: '12421432143214323',
     price: '7.00',
     num: '4',
-    amount: '28.00',
+    amount: '28.00'
   },
   {
     id: '1234564',
@@ -29,8 +29,8 @@ const basicGoods = [
     barcode: '12421432143214324',
     price: '8.50',
     num: '3',
-    amount: '25.50',
-  },
+    amount: '25.50'
+  }
 ];
 
 const basicProgress = [
@@ -40,7 +40,7 @@ const basicProgress = [
     rate: '联系客户',
     status: 'processing',
     operator: '取货员 ID1234',
-    cost: '5mins',
+    cost: '5mins'
   },
   {
     key: '2',
@@ -48,7 +48,7 @@ const basicProgress = [
     rate: '取货员出发',
     status: 'success',
     operator: '取货员 ID1234',
-    cost: '1h',
+    cost: '1h'
   },
   {
     key: '3',
@@ -56,7 +56,7 @@ const basicProgress = [
     rate: '取货员接单',
     status: 'success',
     operator: '取货员 ID1234',
-    cost: '5mins',
+    cost: '5mins'
   },
   {
     key: '4',
@@ -64,7 +64,7 @@ const basicProgress = [
     rate: '申请审批通过',
     status: 'success',
     operator: '系统',
-    cost: '1h',
+    cost: '1h'
   },
   {
     key: '5',
@@ -72,8 +72,8 @@ const basicProgress = [
     rate: '发起退货申请',
     status: 'success',
     operator: '用户',
-    cost: '5mins',
-  },
+    cost: '5mins'
+  }
 ];
 
 const advancedOperation1 = [
@@ -83,7 +83,7 @@ const advancedOperation1 = [
     name: '曲丽丽',
     status: 'agree',
     updatedAt: '2017-10-03  19:23:12',
-    memo: '-',
+    memo: '-'
   },
   {
     key: 'op2',
@@ -91,7 +91,7 @@ const advancedOperation1 = [
     name: '付小小',
     status: 'reject',
     updatedAt: '2017-10-03  19:23:12',
-    memo: '不通过原因',
+    memo: '不通过原因'
   },
   {
     key: 'op3',
@@ -99,7 +99,7 @@ const advancedOperation1 = [
     name: '周毛毛',
     status: 'agree',
     updatedAt: '2017-10-03  19:23:12',
-    memo: '-',
+    memo: '-'
   },
   {
     key: 'op4',
@@ -107,7 +107,7 @@ const advancedOperation1 = [
     name: '林东东',
     status: 'agree',
     updatedAt: '2017-10-03  19:23:12',
-    memo: '很棒',
+    memo: '很棒'
   },
   {
     key: 'op5',
@@ -115,8 +115,8 @@ const advancedOperation1 = [
     name: '汗牙牙',
     status: 'agree',
     updatedAt: '2017-10-03  19:23:12',
-    memo: '-',
-  },
+    memo: '-'
+  }
 ];
 
 const advancedOperation2 = [
@@ -126,8 +126,8 @@ const advancedOperation2 = [
     name: '曲丽丽',
     status: 'agree',
     updatedAt: '2017-10-03  19:23:12',
-    memo: '-',
-  },
+    memo: '-'
+  }
 ];
 
 const advancedOperation3 = [
@@ -137,8 +137,8 @@ const advancedOperation3 = [
     name: '汗牙牙',
     status: 'agree',
     updatedAt: '2017-10-03  19:23:12',
-    memo: '-',
-  },
+    memo: '-'
+  }
 ];
 
 export const PROFILES = {
@@ -147,6 +147,6 @@ export const PROFILES = {
   'GET /profile/advanced': {
     advancedOperation1,
     advancedOperation2,
-    advancedOperation3,
-  },
+    advancedOperation3
+  }
 };

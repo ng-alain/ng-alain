@@ -152,7 +152,7 @@ export class ProTableListComponent implements OnInit {
     this.msg.success(`审批了 ${this.selectedRows.length} 笔`);
   }
 
-  add(tpl: TemplateRef<{}>): void {
+  add(tpl: TemplateRef<unknown>): void {
     this.modalSrv.create({
       nzTitle: '新建规则',
       nzContent: tpl,

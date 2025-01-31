@@ -65,7 +65,7 @@ export class ZipComponent implements OnInit {
           this.data = [];
         });
       },
-      (error: {}) => {
+      (error: unknown) => {
         console.warn(error);
         this.msg.error(JSON.stringify(error));
       }

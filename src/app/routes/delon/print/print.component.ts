@@ -64,7 +64,7 @@ export class PrintComponent {
     }
     this.papers = this.lodop.GET_PAGESIZES_LIST(name, '\n').split('\n');
   }
-  print(isPrivew: boolean = false): void {
+  print(isPrivew = false): void {
     const LODOP = this.lodop as Lodop;
     LODOP.PRINT_INITA(10, 20, 810, 610, '测试C-Lodop远程打印四步骤');
     LODOP.SET_PRINTER_INDEXA(this.cog.printer);

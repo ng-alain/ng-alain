@@ -1,4 +1,4 @@
-const { propertyGroups } = require('stylelint-config-clean-order');
+import { propertyGroups } from 'stylelint-config-clean-order';
 
 const propertiesOrder = propertyGroups.map(properties => ({
   noEmptyLineBetween: true,
@@ -6,7 +6,7 @@ const propertiesOrder = propertyGroups.map(properties => ({
   properties
 }));
 
-module.exports = {
+export default {
   extends: ['stylelint-config-standard'],
   customSyntax: 'postcss-less',
   plugins: ['stylelint-order', 'stylelint-declaration-block-no-ignored-properties'],

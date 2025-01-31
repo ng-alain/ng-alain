@@ -81,7 +81,7 @@ export class ProListArticlesComponent implements OnInit {
     this.getData();
   }
 
-  getData(more: boolean = false): void {
+  getData(more = false): void {
     this.loading = true;
     this.http.get('/api/list', { count: this.q.ps }).subscribe(res => {
       this.list = more ? this.list.concat(res) : res;

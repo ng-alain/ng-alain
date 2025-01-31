@@ -10,7 +10,7 @@ export interface ReThrowHttpError {
   _throw: true;
 }
 
-export const CODEMESSAGE: { [key: number]: string } = {
+export const CODEMESSAGE: Record<number, string> = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
   202: '一个请求已经进入后台排队（异步任务）。',
@@ -37,8 +37,8 @@ export function toLogin(injector: Injector): void {
   goTo(injector, injector.get(DA_SERVICE_TOKEN).login_url!);
 }
 
-export function getAdditionalHeaders(headers?: HttpHeaders): { [name: string]: string } {
-  const res: { [name: string]: string } = {};
+export function getAdditionalHeaders(headers?: HttpHeaders): Record<string, string> {
+  const res: Record<string, string> = {};
   const lang = inject(ALAIN_I18N_TOKEN).currentLang;
   if (!headers?.has('Accept-Language') && lang) {
     res['Accept-Language'] = lang;

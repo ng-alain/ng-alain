@@ -5,6 +5,10 @@
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
   },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
   "[markdown]": {
     "editor.formatOnSave": false
   },
@@ -17,8 +21,9 @@
   "[jsonc]": {
     "editor.formatOnSave": false
   },
-  "[html]": {
-    "editor.formatOnSave": false
+  "[less]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
   },
   "files.watcherExclude": {
     "**/.git/*/**": true,

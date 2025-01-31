@@ -4,12 +4,10 @@ import { TestBed } from '@angular/core/testing';
 import { DelonLocaleService, SettingsService } from '@delon/theme';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
-import { of } from 'rxjs';
 
 import { I18NService } from './i18n.service';
 
 describe('Service: I18n', () => {
-  let injector: TestBed;
   let srv: I18NService;
   const MockSettingsService: NzSafeAny = {
     layout: {
@@ -23,17 +21,9 @@ describe('Service: I18n', () => {
   const MockDelonLocaleService = {
     setLocale: () => {}
   };
-  const MockTranslateService = {
-    getBrowserLang: jasmine.createSpy('getBrowserLang'),
-    addLangs: () => {},
-    setLocale: () => {},
-    getDefaultLang: () => '',
-    use: (lang: string) => of(lang),
-    instant: jasmine.createSpy('instant')
-  };
 
   function genModule(): void {
-    injector = TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       imports: [],
       providers: [
         I18NService,

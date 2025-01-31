@@ -61,7 +61,7 @@ export class UserRegisterComponent implements OnDestroy {
   visible = false;
   status = 'pool';
   progress = 0;
-  passwordProgressMap: { [key: string]: 'success' | 'normal' | 'exception' } = {
+  passwordProgressMap: Record<string, 'success' | 'normal' | 'exception'> = {
     ok: 'success',
     pass: 'normal',
     pool: 'exception'

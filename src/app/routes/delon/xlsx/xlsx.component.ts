@@ -40,7 +40,7 @@ export class XlsxComponent {
 
   download(): void {
     const data = [this.columns.map(i => i.title)];
-    this.users.forEach((i: { [key: string]: NzSafeAny }) => data.push(this.columns.map(c => i[c.index as string])));
+    this.users.forEach((i: Record<string, NzSafeAny>) => data.push(this.columns.map(c => i[c.index as string])));
     this.xlsx.export({
       sheets: [
         {

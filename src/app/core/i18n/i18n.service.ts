@@ -30,7 +30,7 @@ interface LangConfigData {
 }
 
 const DEFAULT = 'zh-CN';
-const LANGS: { [key: string]: LangConfigData } = {
+const LANGS: Record<string, LangConfigData> = {
   'zh-CN': {
     text: '简体中文',
     ng: ngZh,
