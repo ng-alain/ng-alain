@@ -21,9 +21,6 @@
   "[jsonc]": {
     "editor.formatOnSave": false
   },
-  "[html]": {
-    "editor.formatOnSave": false
-  },
   "[less]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "stylelint.vscode-stylelint"
