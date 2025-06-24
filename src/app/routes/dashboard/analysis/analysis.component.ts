@@ -89,14 +89,13 @@ export class DashboardAnalysisComponent implements OnInit {
   salesPieData: any;
   salesTotal = 0;
 
-  saleTabs: Array<{ key: string; show?: boolean }> = [{ key: 'sales', show: true }, { key: 'visits' }];
+  saleTabs: string[] = ['sales', 'visits'];
 
   offlineIdx = 0;
 
   ngOnInit(): void {
     this.http.get('/chart').subscribe(res => {
-      res.offlineData.forEach((item: any, idx: number) => {
-        item.show = idx === 0;
+      res.offlineData.forEach((item: any) => {
         item.chart = deepCopy(res.offlineChartData);
       });
       this.data = res;
@@ -125,12 +124,6 @@ export class DashboardAnalysisComponent implements OnInit {
 
   handlePieValueFormat(value: string | number): string {
     return yuan(value);
-  }
-  salesChange(idx: number): void {
-    if (this.saleTabs[idx].show !== true) {
-      this.saleTabs[idx].show = true;
-      this.cdr.detectChanges();
-    }
   }
   offlineChange(idx: number): void {
     if (this.data.offlineData[idx].show !== true) {
