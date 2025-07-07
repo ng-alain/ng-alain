@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, booleanAttribute, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute, inject, DOCUMENT } from '@angular/core';
 import { I18NService } from '@core';
 import { ALAIN_I18N_TOKEN, I18nPipe, SettingsService } from '@delon/theme';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';

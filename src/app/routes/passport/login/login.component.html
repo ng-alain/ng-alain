@@ -1,8 +1,8 @@
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
-  <nz-tabset [nzAnimated]="false" class="tabs" (nzSelectChange)="switch($event)">
+  <nz-tabs [nzAnimated]="false" class="tabs" (nzSelectChange)="switch($event)">
     <nz-tab [nzTitle]="'app.login.tab-login-credentials' | i18n">
       @if (error) {
-        <nz-alert [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg" />
+      <nz-alert [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg" />
       }
       <nz-form-item>
         <nz-form-control nzErrorTip="Please enter mobile number, muse be: admin or user">
@@ -27,10 +27,10 @@
           </nz-input-group>
           <ng-template #mobileErrorTip let-i>
             @if (i.errors.required) {
-              {{ 'validation.phone-number.required' | i18n }}
+            {{ 'validation.phone-number.required' | i18n }}
             }
             @if (i.errors.pattern) {
-              {{ 'validation.phone-number.wrong-format' | i18n }}
+            {{ 'validation.phone-number.wrong-format' | i18n }}
             }
           </ng-template>
         </nz-form-control>
@@ -44,7 +44,8 @@
               </nz-input-group>
             </nz-col>
             <nz-col [nzSpan]="8">
-              <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count >= 0" nzBlock [nzLoading]="loading">
+              <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count >= 0" nzBlock
+                [nzLoading]="loading">
                 {{ count ? count + 's' : ('app.register.get-verification-code' | i18n) }}
               </button>
             </nz-col>
@@ -52,7 +53,7 @@
         </nz-form-control>
       </nz-form-item>
     </nz-tab>
-  </nz-tabset>
+  </nz-tabs>
   <nz-form-item>
     <nz-col [nzSpan]="12">
       <label nz-checkbox formControlName="remember">{{ 'app.login.remember-me' | i18n }}</label>
@@ -69,8 +70,10 @@
 </form>
 <div class="other">
   {{ 'app.login.sign-in-with' | i18n }}
-  <i nz-tooltip nzTooltipTitle="in fact Auth0 via window" (click)="open('auth0', 'window')" nz-icon nzType="alipay-circle" class="icon"></i>
-  <i nz-tooltip nzTooltipTitle="in fact Github via redirect" (click)="open('github')" nz-icon nzType="taobao-circle" class="icon"></i>
+  <i nz-tooltip nzTooltipTitle="in fact Auth0 via window" (click)="open('auth0', 'window')" nz-icon
+    nzType="alipay-circle" class="icon"></i>
+  <i nz-tooltip nzTooltipTitle="in fact Github via redirect" (click)="open('github')" nz-icon nzType="taobao-circle"
+    class="icon"></i>
   <i (click)="open('weibo', 'window')" nz-icon nzType="weibo-circle" class="icon"></i>
   <a class="register" routerLink="/passport/register">{{ 'app.login.signup' | i18n }}</a>
 </div>

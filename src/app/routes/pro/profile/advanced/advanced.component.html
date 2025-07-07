@@ -3,10 +3,10 @@
     <img src="https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png" />
   </ng-template>
   <ng-template #action>
-    <nz-button-group>
+    <nz-space-compact>
       <button nz-button>操作</button>
       <button nz-button>操作</button>
-    </nz-button-group>
+    </nz-space-compact>
     <button nz-button nz-dropdown [nzDropdownMenu]="opMenu" class="mx-sm">
       <i nz-icon nzType="ellipsis"></i>
     </button>
@@ -32,10 +32,10 @@
     </div>
   </ng-template>
   <ng-template #tab>
-    <nz-tabset>
+    <nz-tabs>
       <nz-tab nzTitle="详情" />
       <nz-tab nzTitle="规则" />
-    </nz-tabset>
+    </nz-tabs>
   </ng-template>
   <sv-container size="small" col="2">
     <sv label="创建人">曲丽丽</sv>
@@ -123,18 +123,18 @@
 </nz-card>
 <nz-card [nzBordered]="false">
   <nz-card-tab>
-    <nz-tabset nzSize="large" (nzSelectChange)="change($event)">
+    <nz-tabs nzSize="large" (nzSelectChange)="change($event)">
       <nz-tab nzTitle="操作日志一" />
       <nz-tab nzTitle="操作日志二" />
       <nz-tab nzTitle="操作日志三" />
-    </nz-tabset>
+    </nz-tabs>
   </nz-card-tab>
   <st [columns]="opColumns" [data]="list">
     <ng-template st-row="status" let-i>
       @if (i.status === 'success') {
-        <nz-badge nzStatus="success" nzText="成功" />
+      <nz-badge nzStatus="success" nzText="成功" />
       } @else {
-        <nz-badge nzStatus="processing" nzText="进行中" />
+      <nz-badge nzStatus="processing" nzText="进行中" />
       }
     </ng-template>
   </st>

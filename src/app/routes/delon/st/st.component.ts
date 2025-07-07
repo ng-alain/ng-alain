@@ -69,7 +69,7 @@ export class STDemoComponent implements OnInit {
     this.http.get('/chart/visit').subscribe((res: G2MiniBarData[]) => (this.events = res.slice(0, 8)));
   }
 
-  fullChange(val: boolean): void {
+  fullChange(val?: boolean): void {
     this.scroll = val ? { y: '350px' } : { y: '230px' };
   }
 }

@@ -1,4 +1,4 @@
-import { AsyncPipe, JsonPipe, NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgTemplateOutlet } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { DatePipe, I18nPipe } from '@delon/theme';
@@ -12,8 +12,6 @@ export const SHARED_IMPORTS = [
   RouterLink,
   RouterOutlet,
   NgTemplateOutlet,
-  NgClass,
-  NgStyle,
   I18nPipe,
   JsonPipe,
   DatePipe,
