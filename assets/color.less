@@ -637,6 +637,7 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @outline-fade: 20%;
 @background-color-light: hsv(0, 0, 98%); 
 @background-color-base: hsv(0, 0, 96%); 
+@background-color-dark: hsv(0, 0, 94%); 
 @disabled-color: fade(#000, 25%);
 @disabled-bg: @background-color-base;
 @disabled-active-bg: tint(@black, 90%);
@@ -847,6 +848,8 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @input-outline-offset: 0 0;
 @input-icon-hover-color: fade(@black, 85%);
 @input-disabled-color: @disabled-color;
+@input-variant-filled-bg: @background-color-base;
+@input-variant-filled-hover-bg: @background-color-dark;
 @mentions-dropdown-bg: @component-background;
 @mentions-dropdown-menu-item-hover-bg: @mentions-dropdown-bg;
 @select-border-color: @border-color-base;
@@ -870,6 +873,7 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @select-multiple-disabled-background: @input-disabled-bg;
 @select-multiple-item-disabled-color: #bfbfbf;
 @select-multiple-item-disabled-border-color: @select-border-color;
+@select-multiple-item-filled-bg: @component-background;
 @cascader-bg: @component-background;
 @cascader-item-selected-bg: @primary-1;
 @cascader-menu-bg: @component-background;
@@ -1544,6 +1548,7 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @alain-default-aside-nav-depth3-padding-left: @layout-gutter * 5;
 @alain-default-aside-nav-depth4-padding-left: @layout-gutter * 6;
 @alain-default-aside-nav-depth5-padding-left: @layout-gutter * 7;
+@alain-default-aside-nav-divider-bg: ~'var(--@{alain-default-name}-aside-nav-divider, #efe3e5)';
 @alain-default-aside-collapsed-wd: @layout-gutter * 8;
 @alain-default-aside-collapsed-nav-fs: 24px;
 @alain-default-aside-collapsed-nav-img-wh: 24px;
@@ -1589,7 +1594,6 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @se-label-optional-color: fade(@black, 35%);
 @se-compact-bottom: @layout-gutter;
 @se-optional-margin: 2px;
-@avatar-list-mini-wh: 20px;
 @error-collect-color: #f5222d;
 @footer-toolbar-height: 56px;
 @footer-toolbar-box-shadow: 0 -1px 2px fade(@black, 3%);
@@ -1604,7 +1608,6 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @quick-menu-ctrl-hw: 50px;
 @quick-menu-border-color: #fff;
 @quick-menu-bg: #fff;
-@result-extra-bg: #fafafa;
 @reuse-tab-height: 52px;
 @reuse-tab-bg: #fff;
 @reuse-tab-padding: 8px;
