@@ -1,6 +1,7 @@
 <div nz-row [nzGutter]="24" class="pt-lg">
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
-    <g2-card [title]="'app.analysis.total-sales' | i18n" total="¥ 126,560" contentHeight="44px" [action]="action1" [footer]="footer1">
+    <g2-card [title]="'app.analysis.total-sales' | i18n" total="¥ 126,560" contentHeight="44px" [action]="action1"
+      [footer]="footer1">
       <ng-template #action1>
         <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"></i>
       </ng-template>
@@ -21,12 +22,13 @@
     </g2-card>
   </div>
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
-    <g2-card [title]="'app.analysis.visits' | i18n" total="8,848" contentHeight="46px" [action]="action2" [footer]="footer2">
+    <g2-card [title]="'app.analysis.visits' | i18n" total="8,848" contentHeight="46px" [action]="action2"
+      [footer]="footer2">
       <ng-template #action2>
         <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"></i>
       </ng-template>
       @if (data.visitData) {
-        <g2-mini-area color="#975FE4" height="46" [data]="data.visitData" />
+      <g2-mini-area color="#975FE4" height="46" [data]="data.visitData" />
       }
       <ng-template #footer2>
         <p class="text-truncate mb0">
@@ -37,12 +39,13 @@
     </g2-card>
   </div>
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
-    <g2-card [title]="'app.analysis.payments' | i18n" total="6,560" contentHeight="46px" [action]="action3" [footer]="footer3">
+    <g2-card [title]="'app.analysis.payments' | i18n" total="6,560" contentHeight="46px" [action]="action3"
+      [footer]="footer3">
       <ng-template #action3>
         <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"></i>
       </ng-template>
       @if (data.visitData) {
-        <g2-mini-bar height="46" [data]="data.visitData" />
+      <g2-mini-bar height="46" [data]="data.visitData" />
       }
       <ng-template #footer3>
         <p class="text-truncate mb0">
@@ -53,7 +56,8 @@
     </g2-card>
   </div>
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
-    <g2-card [title]="'app.analysis.operational-effect' | i18n" total="78%" contentHeight="46px" [action]="action4" [footer]="footer4">
+    <g2-card [title]="'app.analysis.operational-effect' | i18n" total="78%" contentHeight="46px" [action]="action4"
+      [footer]="footer4">
       <ng-template #action4>
         <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"></i>
       </ng-template>
@@ -75,58 +79,54 @@
 </div>
 <nz-card [nzLoading]="loading" [nzBordered]="false" class="ant-card__body-nopadding sales-card">
   @if (data.salesData) {
-    <nz-tabset [nzTabBarExtraContent]="extraTemplate" (nzSelectedIndexChange)="salesChange($event)">
-      @for (tab of saleTabs; track $index) {
-        <nz-tab [nzTitle]="'app.analysis.' + tab.key | i18n">
-          <div nz-row>
-            <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="16">
-              <div class="bar">
-                @if (tab.show) {
-                  <g2-bar height="295" style="width: 100%" [title]="'app.analysis.' + tab.key + '-trend' | i18n" [data]="data.salesData" />
+  <nz-tabset [nzTabBarExtraContent]="extraTemplate">
+    @for (tab of saleTabs; track $index) {
+    <nz-tab [nzTitle]="'app.analysis.' + tab | i18n">
+      <ng-template nz-tab>
+        <div nz-row>
+          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="16">
+            <div class="bar">
+              <g2-bar height="295" style="width: 100%" [title]="'app.analysis.' + tab + '-trend' | i18n"
+                [data]="data.salesData" />
+            </div>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8">
+            <div class="rank">
+              <h4 class="ranking-title">{{ 'app.analysis.' + tab + '-ranking' | i18n }}</h4>
+              <ul class="rank-list">
+                @for (i of rankingListData; track $index) {
+                <li>
+                  <span class="number" [ngClass]="{ active: $index < 3 }">{{ $index + 1 }}</span>
+                  <span class="title">{{ i.title }}</span>
+                  <span class="value">{{ i.total | number: '3.0' }}</span>
+                </li>
                 }
-              </div>
-            </div>
-            <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8">
-              <div class="rank">
-                <h4 class="ranking-title">{{ 'app.analysis.' + tab.key + '-ranking' | i18n }}</h4>
-                <ul class="rank-list">
-                  @for (i of rankingListData; track $index) {
-                    <li>
-                      <span class="number" [ngClass]="{ active: $index < 3 }">{{ $index + 1 }}</span>
-                      <span class="title">{{ i.title }}</span>
-                      <span class="value">{{ i.total | number: '3.0' }}</span>
-                    </li>
-                  }
-                </ul>
-              </div>
+              </ul>
             </div>
           </div>
-        </nz-tab>
-      }
-      <ng-template #extraTemplate>
-        <div class="sales-extra-wrap">
-          <div class="sales-extra">
-            @for (t of dateRangeTypes; track $index) {
-              <span (click)="setDate(t)" [class.current-date]="dateRangeType === t">
-                {{ 'app.analysis.all-' + t | i18n }}
-              </span>
-            }
-          </div>
-          <nz-range-picker [(ngModel)]="dateRange" />
         </div>
       </ng-template>
-    </nz-tabset>
+    </nz-tab>
+    }
+    <ng-template #extraTemplate>
+      <div class="sales-extra-wrap">
+        <div class="sales-extra">
+          @for (t of dateRangeTypes; track $index) {
+          <span (click)="setDate(t)" [class.current-date]="dateRangeType === t">
+            {{ 'app.analysis.all-' + t | i18n }}
+          </span>
+          }
+        </div>
+        <nz-range-picker [(ngModel)]="dateRange" />
+      </div>
+    </ng-template>
+  </nz-tabset>
   }
 </nz-card>
 <div nz-row [nzGutter]="24">
   <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12">
-    <nz-card
-      [nzLoading]="loading"
-      [nzBordered]="false"
-      [nzTitle]="'app.analysis.online-top-search' | i18n"
-      [nzExtra]="extraOp"
-      class="mb-0"
-    >
+    <nz-card [nzLoading]="loading" [nzBordered]="false" [nzTitle]="'app.analysis.online-top-search' | i18n"
+      [nzExtra]="extraOp" class="mb-0">
       <ng-template #extraOp>
         <i nz-dropdown [nzDropdownMenu]="extraOpMenu" nz-icon nzType="ellipsis" class="icon-group"></i>
         <nz-dropdown-menu #extraOpMenu="nzDropdownMenu">
@@ -141,17 +141,18 @@
           <number-info total="12,321" subTotal="17.1" status="up" [subTitle]="subTitle">
             <ng-template #subTitle>
               {{ 'app.analysis.search-users' | i18n }}
-              <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle" class="ml-sm"></i>
+              <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"
+                class="ml-sm"></i>
             </ng-template>
           </number-info>
           @if (data.visitData2) {
-            <g2-mini-area [line]="true" height="45" [data]="data.visitData2" />
+          <g2-mini-area [line]="true" height="45" [data]="data.visitData2" />
           }
         </div>
         <div nz-col nzXs="24" nzSm="12" class="mb-md">
           <number-info [subTitle]="'app.analysis.per-capita-search' | i18n" total="2.7" subTotal="26.2" status="down" />
           @if (data.visitData2) {
-            <g2-mini-area [line]="true" height="45" [data]="data.visitData2" />
+          <g2-mini-area [line]="true" height="45" [data]="data.visitData2" />
           }
         </div>
       </div>
@@ -165,15 +166,8 @@
     </nz-card>
   </div>
   <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12">
-    <nz-card
-      [nzLoading]="loading"
-      [nzBordered]="false"
-      [nzTitle]="'app.analysis.the-proportion-of-sales' | i18n"
-      [nzBodyStyle]="{ 'padding.px': 24 }"
-      [nzExtra]="extra"
-      class="sales-card mb-0"
-      style="min-height: 506.5px"
-    >
+    <nz-card [nzLoading]="loading" [nzBordered]="false" [nzTitle]="'app.analysis.the-proportion-of-sales' | i18n"
+      [nzBodyStyle]="{ 'padding.px': 24 }" [nzExtra]="extra" class="sales-card mb-0" style="min-height: 506.5px">
       <ng-template #extra>
         <nz-radio-group [(ngModel)]="salesType" (ngModelChange)="changeSaleType()">
           <label nz-radio-button [nzValue]="'all'">
@@ -186,7 +180,8 @@
             {{ 'app.analysis.channel.stores' | i18n }}
           </label>
         </nz-radio-group>
-        <i nz-dropdown [nzDropdownMenu]="salesExtraMenu" nzPlacement="bottomLeft" nz-icon nzType="ellipsis" class="ml-md"></i>
+        <i nz-dropdown [nzDropdownMenu]="salesExtraMenu" nzPlacement="bottomLeft" nz-icon nzType="ellipsis"
+          class="ml-md"></i>
         <nz-dropdown-menu #salesExtraMenu="nzDropdownMenu">
           <ul nz-menu>
             <li nz-menu-item>操作一</li>
@@ -196,53 +191,33 @@
       </ng-template>
       <h4 class="my-xl">{{ 'app.analysis.sales' | i18n }}</h4>
       @if (salesPieData) {
-        <g2-pie
-          [data]="salesPieData"
-          [hasLegend]="true"
-          [subTitle]="'app.analysis.sales' | i18n"
-          [height]="248"
-          [lineWidth]="4"
-          [total]="salesTotal"
-          [valueFormat]="handlePieValueFormat"
-        />
+      <g2-pie [data]="salesPieData" [hasLegend]="true" [subTitle]="'app.analysis.sales' | i18n" [height]="248"
+        [lineWidth]="4" [total]="salesTotal" [valueFormat]="handlePieValueFormat" />
       }
     </nz-card>
   </div>
 </div>
 <nz-card [nzLoading]="loading" [nzBordered]="false" [nzBodyStyle]="{ padding: '0 0 32px' }" class="offline-card mt-lg">
   @if (data.offlineData) {
-    <nz-tabset [(nzSelectedIndex)]="offlineIdx" (nzSelectedIndexChange)="offlineChange($event)">
-      @for (tab of data.offlineData; track $index) {
-        <nz-tab [nzTitle]="nzTabHeading">
-          <ng-template #nzTabHeading>
-            <div class="flex-center-between px-md">
-              <number-info
-                [title]="tab.name"
-                [subTitle]="'app.analysis.conversion-rate' | i18n"
-                gap="2"
-                [total]="tab.cvr * 100 + '%'"
-                [theme]="$index !== offlineIdx ? 'light' : 'default'"
-                class="mr-md"
-              />
-              <g2-pie
-                style="padding-top: 36px; width: 48px"
-                [animate]="false"
-                [color]="$index !== offlineIdx ? '#BDE4FF' : 'rgba(24, 144, 255, 0.85)'"
-                [inner]="0.55"
-                [tooltip]="false"
-                [padding]="[0, 0, 0, 0]"
-                [percent]="tab.cvr * 100"
-                [height]="48"
-              />
-            </div>
-          </ng-template>
-          <div class="px-lg">
-            @if (tab.show) {
-              <g2-timeline [data]="tab.chart" [titleMap]="titleMap" />
-            }
-          </div>
-        </nz-tab>
-      }
-    </nz-tabset>
+  <nz-tabset [(nzSelectedIndex)]="offlineIdx" (nzSelectedIndexChange)="offlineChange($event)">
+    @for (tab of data.offlineData; track $index) {
+    <nz-tab [nzTitle]="nzTabHeading">
+      <ng-template #nzTabHeading>
+        <div class="flex-center-between px-md">
+          <number-info [title]="tab.name" [subTitle]="'app.analysis.conversion-rate' | i18n" gap="2"
+            [total]="tab.cvr * 100 + '%'" [theme]="$index !== offlineIdx ? 'light' : 'default'" class="mr-md" />
+          <g2-pie style="padding-top: 36px; width: 48px" [animate]="false"
+            [color]="$index !== offlineIdx ? '#BDE4FF' : 'rgba(24, 144, 255, 0.85)'" [inner]="0.55" [tooltip]="false"
+            [padding]="[0, 0, 0, 0]" [percent]="tab.cvr * 100" [height]="48" />
+        </div>
+      </ng-template>
+      <ng-template nz-tab>
+        <div class="px-lg">
+          <g2-timeline [data]="tab.chart" [titleMap]="titleMap" />
+        </div>
+      </ng-template>
+    </nz-tab>
+    }
+  </nz-tabset>
   }
 </nz-card>
