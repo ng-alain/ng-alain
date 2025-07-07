@@ -31,8 +31,8 @@ jobs:
         run: |
           export DEPLOY_DOMAIN=https://preview-${{ github.event.number }}-ng-alain.surge.sh
           echo "Deploy to $DEPLOY_DOMAIN"
-          cp ./dist/browser/index.html ./dist/browser/404.html
-          npx surge --project ./dist/browser --domain $DEPLOY_DOMAIN
+          cp ./dist/ng-alain/browser/index.html ./dist/ng-alain/browser/404.html
+          npx surge --project ./dist/ng-alain/browser --domain $DEPLOY_DOMAIN
         env:
           ACCESS_REPO: ${{ github.repository }}
           ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
@@ -78,8 +78,8 @@ jobs:
         run: |
           export DEPLOY_DOMAIN=https://preview-${{ github.event.number }}-day-ng-alain.surge.sh
           echo "Deploy to $DEPLOY_DOMAIN"
-          cp ./dist/browser/index.html ./dist/browser/404.html
-          npx surge --project ./dist/browser --domain $DEPLOY_DOMAIN
+          cp ./dist/ng-alain/browser/index.html ./dist/ng-alain/browser/404.html
+          npx surge --project ./dist/ng-alain/browser --domain $DEPLOY_DOMAIN
         env:
           ACCESS_REPO: ${{ github.repository }}
           ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
