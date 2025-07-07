@@ -8,11 +8,11 @@
     </nz-input-group>
   </div>
   <ng-template #tab>
-    <nz-tabset [nzSelectedIndex]="pos">
+    <nz-tabs [nzSelectedIndex]="pos">
       @for (i of tabs; track $index) {
-        <nz-tab [nzTitle]="i.tab" (nzClick)="to(i)" />
+      <nz-tab [nzTitle]="i.tab" (nzClick)="to(i)" />
       }
-    </nz-tabset>
+    </nz-tabs>
   </ng-template>
 </page-header>
 <router-outlet />

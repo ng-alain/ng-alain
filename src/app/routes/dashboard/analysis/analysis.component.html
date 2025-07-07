@@ -79,7 +79,7 @@
 </div>
 <nz-card [nzLoading]="loading" [nzBordered]="false" class="ant-card__body-nopadding sales-card">
   @if (data.salesData) {
-  <nz-tabset [nzTabBarExtraContent]="extraTemplate">
+  <nz-tabs [nzTabBarExtraContent]="extraTemplate">
     @for (tab of saleTabs; track $index) {
     <nz-tab [nzTitle]="'app.analysis.' + tab | i18n">
       <ng-template nz-tab>
@@ -96,7 +96,7 @@
               <ul class="rank-list">
                 @for (i of rankingListData; track $index) {
                 <li>
-                  <span class="number" [ngClass]="{ active: $index < 3 }">{{ $index + 1 }}</span>
+                  <span class="number" [class.active]="$index < 3">{{ $index + 1 }}</span>
                   <span class="title">{{ i.title }}</span>
                   <span class="value">{{ i.total | number: '3.0' }}</span>
                 </li>
@@ -120,7 +120,7 @@
         <nz-range-picker [(ngModel)]="dateRange" />
       </div>
     </ng-template>
-  </nz-tabset>
+  </nz-tabs>
   }
 </nz-card>
 <div nz-row [nzGutter]="24">
@@ -199,7 +199,7 @@
 </div>
 <nz-card [nzLoading]="loading" [nzBordered]="false" [nzBodyStyle]="{ padding: '0 0 32px' }" class="offline-card mt-lg">
   @if (data.offlineData) {
-  <nz-tabset [(nzSelectedIndex)]="offlineIdx" (nzSelectedIndexChange)="offlineChange($event)">
+  <nz-tabs [(nzSelectedIndex)]="offlineIdx" (nzSelectedIndexChange)="offlineChange($event)">
     @for (tab of data.offlineData; track $index) {
     <nz-tab [nzTitle]="nzTabHeading">
       <ng-template #nzTabHeading>
@@ -218,6 +218,6 @@
       </ng-template>
     </nz-tab>
     }
-  </nz-tabset>
+  </nz-tabs>
   }
 </nz-card>
