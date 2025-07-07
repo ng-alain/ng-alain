@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Alain",
+    "name": "NG-ALAIN",
     "description": "Ng-zorro admin panel front-end framework"
   },
   "user": {
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "text": "Alain",
+      "text": "NG-ALAIN",
       "i18n": "menu.alain",
       "group": true,
       "hideInBreadcrumb": true,
