@@ -120,6 +120,7 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 .ant-cron-expression-label-foucs {color: @primary-color;}
 .ant-color-picker-trigger:hover {border-color: @primary-color;}
 .ant-hash-code-primary {background-color: @primary-color;}
+.ant-check-list .ant-check-list-trigger-dot {color: @primary-color;}
 .ant-check-list-content .ant-check-list-header-finish .ant-check-list-header-finish-icon {color: @primary-color;}
 .ant-check-list-content .ant-check-list-steps .ant-check-list-steps-item .ant-check-list-steps-item-circle .ant-check-list-steps-number {color: @primary-color;}
 .ant-check-list-content .ant-check-list-steps .ant-check-list-steps-item-arrows {color: @primary-color;}
@@ -288,10 +289,49 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
   &:hover {color: @link-hover-color;}
   &:active {color: @link-active-color;}
 }
-.roundedArrow(@width, @outer-radius, @bg-color: var(--antd-arrow-background-color)) {@corner-height: unit(((@outer-radius) * (1 - 1 / sqrt(2))));@width-without-unit: unit(@width);@outer-radius-without-unit: unit(@outer-radius);@inner-radius-without-unit: unit(@arrow-border-radius);@a-x: @width-without-unit - @corner-height;@a-y: 2 * @width-without-unit + @corner-height;@b-x: @a-x + @outer-radius-without-unit * (1 / sqrt(2));@b-y: 2 * @width-without-unit;@c-x: 2 * @width-without-unit - @inner-radius-without-unit;@c-y: 2 * @width-without-unit;@d-x: 2 * @width-without-unit;@d-y: 2 * @width-without-unit - @inner-radius-without-unit;@e-x: 2 * @width-without-unit;@e-y: @f-y + @outer-radius-without-unit * (1 / sqrt(2));@f-x: 2 * @width-without-unit + @corner-height;@f-y: @width-without-unit - @corner-height;@g-x: @f-x - 1;@g-y: @f-y;@h-x: @a-x;@h-y: @a-y - 1;border-radius: 0 0 @arrow-border-radius;pointer-events: none;&::before {position: absolute;top: -@width;left: -@width;width: @width * 3;height: @width * 3;background: @bg-color;background-repeat: no-repeat;background-position: ceil(-@width + 1px) ceil(-@width + 1px);content: '';clip-path: inset(33% 33%); 
-    clip-path: path(
-      'M @{a-x} @{a-y} A @{outer-radius-without-unit} @{outer-radius-without-unit} 0 0 1 @{b-x} @{b-y} L @{c-x} @{c-y} A @{inner-radius-without-unit} @{inner-radius-without-unit} 0 0 0 @{d-x} @{d-y} L @{e-x} @{e-y} A @{outer-radius-without-unit} @{outer-radius-without-unit} 0 0 1 @{f-x} @{f-y} L @{g-x} @{g-y} L @{h-x} @{h-y} Z'
-    );}
+.roundedArrow(
+  @arrow-size,
+  @border-radius-outer,
+  @border-radius-inner,
+  @bg-color: var(--antd-arrow-background-color),
+  @box-shadow: none
+) {@unit-width: (unit(@arrow-size) / 2);@border-radius-outer-without-unit: unit(@border-radius-outer);@border-radius-inner-without-unit: unit(@border-radius-inner);@a-x: 0;@a-y: @unit-width;@b-x: ((@border-radius-outer-without-unit * 1) / sqrt(2));@b-y: (@unit-width - @border-radius-outer-without-unit * (1 - 1 / sqrt(2)));@c-x: (@unit-width - @border-radius-inner-without-unit * (1 / sqrt(2)));@c-y: (@border-radius-outer-without-unit * (sqrt(2) - 1) + @border-radius-inner-without-unit * (1 / sqrt(2)));@d-x: 2 * @unit-width - @c-x;@d-y: @c-y;@e-x: 2 * @unit-width - @b-x;@e-y: @b-y;@f-x: 2 * @unit-width - @a-x;@f-y: @a-y;@arrow-shadow-width: @unit-width * sqrt(2) + @border-radius-outer * (sqrt(2) - 2);@polygon-offset: @border-radius-outer * (sqrt(2) - 1);@polygon-right: @arrow-size - @polygon-offset;@arrow-polygon: polygon(@polygon-offset 100%, 50% @polygon-offset, @polygon-right 100%, @polygon-offset 100%);@arrow-path: path('M @{a-x} @{a-y} A @{border-radius-outer-without-unit} @{border-radius-outer-without-unit} 0 0 0 @{b-x} @{b-y} L @{c-x} @{c-y} A @{border-radius-inner-without-unit} @{border-radius-inner-without-unit} 0 0 1 @{d-x} @{d-y} L @{e-x} @{e-y} A @{border-radius-outer-without-unit} @{border-radius-outer-without-unit} 0 0 0 @{f-x} @{f-y} Z');width: @arrow-size;height: @arrow-size;overflow: hidden;pointer-events: none;&::before {position: absolute;bottom: 0;width: @arrow-size;height: calc(@arrow-size / 2);background: @bg-color;content: '';clip-path: @arrow-polygon; 
+    clip-path: @arrow-path;inset-inline-start: 0;}
+  &::after {position: absolute;bottom: 0;z-index: 0;width: @arrow-shadow-width;height: @arrow-shadow-width;margin: auto;background: transparent;border-radius: 0 0 @border-radius-inner;box-shadow: @box-shadow;transform: translateY(50%) rotate(-135deg);content: '';inset-inline: 0;}
+}
+.placementArrow(
+  @arrow-size,
+  @border-radius-outer,
+  @border-radius-inner,
+  @bg-color: var(--antd-arrow-background-color),
+  @box-shadow: none
+) {@arrow-distance: 0px;@arrow-offset-horizontal: 16px;&-arrow {position: absolute;z-index: 1; 
+    display: block;.roundedArrow(@arrow-size, @border-radius-outer, @border-radius-inner, @bg-color, @box-shadow);&::before {background: @bg-color;}
+  }
+  &-placement-top > &-arrow,
+  &-placement-topLeft > &-arrow,
+  &-placement-topRight > &-arrow {bottom: @arrow-distance;transform: translateY(100%) rotate(180deg);}
+  &-placement-top > &-arrow {left: 50%;transform: translateX(-50%) translateY(100%) rotate(180deg);}
+  &-placement-topLeft > &-arrow {left: @arrow-offset-horizontal;}
+  &-placement-topRight > &-arrow {right: @arrow-offset-horizontal;}
+  &-placement-bottom > &-arrow,
+  &-placement-bottomLeft > &-arrow,
+  &-placement-bottomRight > &-arrow {top: @arrow-distance;transform: translateY(-100%);}
+  &-placement-bottom > &-arrow {left: 50%;transform: translateX(-50%) translateY(-100%);}
+  &-placement-bottomLeft > &-arrow {left: @arrow-offset-horizontal;}
+  &-placement-bottomRight > &-arrow {right: @arrow-offset-horizontal;}
+  &-placement-left > &-arrow,
+  &-placement-leftTop > &-arrow,
+  &-placement-leftBottom > &-arrow {right: @arrow-distance;transform: translateX(100%) rotate(90deg);}
+  &-placement-left > &-arrow {top: 50%;transform: translateY(-50%) translateX(100%) rotate(90deg);}
+  &-placement-leftTop > &-arrow {top: @arrow-offset-horizontal;}
+  &-placement-leftBottom > &-arrow {bottom: @arrow-offset-horizontal;}
+  &-placement-right > &-arrow,
+  &-placement-rightTop > &-arrow,
+  &-placement-rightBottom > &-arrow {left: @arrow-distance;transform: translateX(-100%) rotate(-90deg);}
+  &-placement-right > &-arrow {top: 50%;transform: translateY(-50%) translateX(-100%) rotate(-90deg);}
+  &-placement-rightTop > &-arrow {top: @arrow-offset-horizontal;}
+  &-placement-rightBottom > &-arrow {bottom: @arrow-offset-horizontal;}
 }
 .compact-item-border-radius(@prefix-cls, @bordered-item-cls: null) {& when (@bordered-item-cls = null) {&-item:not(&-first-item):not(&-last-item).@{prefix-cls} {border-radius: 0;}
     &-item.@{prefix-cls}&-first-item:not(&-last-item):not(&-item-rtl) {border-top-right-radius: 0;border-bottom-right-radius: 0;}
@@ -576,14 +616,17 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @font-size-base: 14px;
 @font-size-lg: @font-size-base + 2px;
 @font-size-sm: 12px;
+@font-size-icon: @font-size-sm;
 @heading-1-size: ceil(@font-size-base * 2.71);
 @heading-2-size: ceil(@font-size-base * 2.14);
 @heading-3-size: ceil(@font-size-base * 1.71);
 @heading-4-size: ceil(@font-size-base * 1.42);
 @heading-5-size: ceil(@font-size-base * 1.14);
 @line-height-base: 1.5715;
+@line-width: 1px;
 @border-radius-base: 2px;
 @border-radius-sm: 2px;
+@border-radius-lg: 4px;
 @control-border-radius: @border-radius-base;
 @arrow-border-radius: 2px;
 @padding-lg: 24px; 
@@ -815,9 +858,9 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @input-height-base: @height-base;
 @input-height-lg: @height-lg;
 @input-height-sm: @height-sm;
-@input-padding-horizontal: @control-padding-horizontal - 1px;
+@input-padding-horizontal: @control-padding-horizontal - @line-width;
 @input-padding-horizontal-base: @input-padding-horizontal;
-@input-padding-horizontal-sm: @control-padding-horizontal-sm - 1px;
+@input-padding-horizontal-sm: @control-padding-horizontal-sm - @line-width;
 @input-padding-horizontal-lg: @input-padding-horizontal;
 @input-padding-vertical-base: max(
   (round(((@input-height-base - @font-size-base * @line-height-base) / 2) * 10) / 10) -
@@ -852,6 +895,7 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @input-variant-filled-hover-bg: @background-color-dark;
 @mentions-dropdown-bg: @component-background;
 @mentions-dropdown-menu-item-hover-bg: @mentions-dropdown-bg;
+@select-height: @input-height-base;
 @select-border-color: @border-color-base;
 @select-item-selected-color: @text-color;
 @select-item-selected-font-weight: 600;
@@ -868,12 +912,14 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @select-selection-item-border-color: @border-color-split;
 @select-single-item-height-lg: 40px;
 @select-multiple-item-height: @input-height-base - @input-padding-vertical-base * 2; 
+@select-multiple-item-height-sm: @input-height-sm - @input-padding-vertical-base * 2;
 @select-multiple-item-height-lg: 32px;
 @select-multiple-item-spacing-half: ceil((@input-padding-vertical-base / 2));
 @select-multiple-disabled-background: @input-disabled-bg;
 @select-multiple-item-disabled-color: #bfbfbf;
 @select-multiple-item-disabled-border-color: @select-border-color;
 @select-multiple-item-filled-bg: @component-background;
+@select-select-affix-padding: 4px;
 @cascader-bg: @component-background;
 @cascader-item-selected-bg: @primary-1;
 @cascader-menu-bg: @component-background;
@@ -890,7 +936,7 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @tooltip-max-width: 250px;
 @tooltip-color: #fff;
 @tooltip-bg: rgba(0, 0, 0, 0.75);
-@tooltip-arrow-width: 8px * sqrt(2);
+@tooltip-arrow-width: 16px;
 @tooltip-distance: @tooltip-arrow-width - 1px + 4px;
 @tooltip-arrow-color: @tooltip-bg;
 @tooltip-border-radius: @border-radius-base;
@@ -900,8 +946,9 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @popover-min-height: 32px;
 @popover-arrow-width: @tooltip-arrow-width;
 @popover-arrow-color: @popover-bg;
+@popover-arrow-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 @popover-arrow-outer-color: @popover-bg;
-@popover-distance: @popover-arrow-width + 4px;
+@popover-distance: calc(@popover-arrow-width / 2 + @margin-xss);
 @popover-padding-horizontal: @padding-md;
 @modal-header-padding-vertical: @padding-md;
 @modal-header-padding-horizontal: @padding-lg;
