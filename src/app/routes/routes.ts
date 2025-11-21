@@ -27,7 +27,7 @@ export const routes: Routes = [
       { path: 'pro', loadChildren: () => import('./pro/routes').then(m => m.routes) }
     ]
   },
-  // Blak Layout 空白布局
+  // Blank Layout 空白布局
   {
     path: 'data-v',
     component: LayoutBlankComponent,
