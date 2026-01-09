@@ -5,8 +5,8 @@
   }
   <nz-form-item>
     <nz-form-control [nzErrorTip]="mailErrorTip">
-      <nz-input-group nzSize="large" nzAddonBeforeIcon="user">
-        <input nz-input formControlName="mail" placeholder="Email" />
+      <nz-input-group nzSize="large" nzAddonBeforeIcon="user"
+        ><input nz-input formControlName="mail" placeholder="Email" autocomplete="email" />
       </nz-input-group>
       <ng-template #mailErrorTip let-i>
         @if (i.errors?.required) {

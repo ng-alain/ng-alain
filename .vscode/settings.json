@@ -5,6 +5,10 @@
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
   },
+  "[html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[typescript]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -21,9 +25,14 @@
   "[jsonc]": {
     "editor.formatOnSave": false
   },
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": ["css", "less", "scss"],
+  "stylelint.customSyntax": "postcss-less",
   "[less]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "files.watcherExclude": {
     "**/.git/*/**": true,
