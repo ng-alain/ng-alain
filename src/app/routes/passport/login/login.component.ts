@@ -33,7 +33,7 @@ import { finalize } from 'rxjs';
     NzFormModule,
     NzInputModule,
     NzButtonModule,
-    NzTooltipModule,
+    NzToolTipModule,
     NzIconModule
   ]
 })
