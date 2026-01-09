@@ -54,7 +54,7 @@ export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
   qIpt: HTMLInputElement | null = null;
   options: string[] = [];
   search$ = new BehaviorSubject('');
-  loading = true;
+  loading = false;
 
   @HostBinding('class.alain-default__search-focus')
   focus = false;
