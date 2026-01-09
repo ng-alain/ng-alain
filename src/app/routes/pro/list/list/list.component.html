@@ -10,7 +10,7 @@
   <ng-template #tab>
     <nz-tabs [nzSelectedIndex]="pos">
       @for (i of tabs; track $index) {
-      <nz-tab [nzTitle]="i.tab" (nzClick)="to(i)" />
+        <nz-tab [nzTitle]="i.tab" (nzClick)="to(i)" />
       }
     </nz-tabs>
   </ng-template>
