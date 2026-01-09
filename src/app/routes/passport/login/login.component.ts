@@ -14,7 +14,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzTabChangeEvent, NzTabsModule } from 'ng-zorro-antd/tabs';
-import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzTooltipModule } from 'ng-zorro-antd/tooltip';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -33,7 +33,7 @@ import { finalize } from 'rxjs';
     NzFormModule,
     NzInputModule,
     NzButtonModule,
-    NzToolTipModule,
+    NzTooltipModule,
     NzIconModule
   ]
 })
@@ -59,7 +59,7 @@ export class UserLoginComponent implements OnDestroy {
   loading = false;
 
   count = 0;
-  interval$: any;
+  interval$?: ReturnType<typeof setInterval>;
 
   switch({ index }: NzTabChangeEvent): void {
     this.type = index!;
