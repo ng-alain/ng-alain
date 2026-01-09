@@ -16,9 +16,9 @@
         <nz-form-item>
           <nz-form-label>仓库域名</nz-form-label>
           <nz-form-control nzErrorTip="请输入仓库域名">
-            <nz-input-group nzAddOnBefore="http://" nzAddOnAfter=".com">
+            <nz-input-wrapper nzAddonBefore="http://" nzAddonAfter=".com">
               <input nz-input formControlName="url" placeholder="请输入" />
-            </nz-input-group>
+            </nz-input-wrapper>
           </nz-form-control>
         </nz-form-item>
       </nz-col>
@@ -199,7 +199,7 @@
     </nz-table>
     @if (editIndex === -1) {
       <button nz-button [nzType]="'dashed'" (click)="add()" nzBlock class="mt-md">
-        <i nz-icon nzType="plus"></i>
+        <nz-icon nzType="plus" />
         <span>新增成员</span>
       </button>
     }

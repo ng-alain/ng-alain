@@ -163,7 +163,8 @@ export default defineConfig(
     ],
     rules: {
       "prettier/prettier": ["error"],
-      "@angular-eslint/template/eqeqeq": "off"
+      "@angular-eslint/template/eqeqeq": "off",
+      "@angular-eslint/template/prefer-self-closing-tags": "error"
     }
   }
 );

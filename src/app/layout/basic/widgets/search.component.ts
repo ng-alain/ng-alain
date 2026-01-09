@@ -16,20 +16,16 @@ import { I18nPipe } from '@delon/theme';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { BehaviorSubject, debounceTime, distinctUntilChanged, tap } from 'rxjs';
+import { BehaviorSubject, debounceTime, delay, distinctUntilChanged, tap } from 'rxjs';
 
 @Component({
   selector: 'header-search',
   template: `
-    <nz-input-group [nzPrefix]="iconTpl" [nzSuffix]="loadingTpl">
-      <ng-template #iconTpl>
-        <i nz-icon [nzType]="focus ? 'arrow-down' : 'search'"></i>
-      </ng-template>
-      <ng-template #loadingTpl>
-        @if (loading) {
-          <i nz-icon nzType="loading"></i>
-        }
-      </ng-template>
+    <nz-input-wrapper>
+      <nz-icon nzInputPrefix [nzType]="focus ? 'arrow-down' : 'search'" />
+      @if (loading) {
+        <nz-icon nzInputSuffix nzType="loading" />
+      }
       <input
         type="text"
         nz-input
@@ -41,7 +37,7 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged, tap } from 'rxjs';
         hotkey="F1"
         [attr.placeholder]="'menu.search.placeholder' | i18n"
       />
-    </nz-input-group>
+    </nz-input-wrapper>
     <nz-autocomplete nzBackfill #auto>
       @for (i of options; track $index) {
         <nz-auto-option [nzValue]="i">{{ i }}</nz-auto-option>
@@ -58,7 +54,7 @@ export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
   qIpt: HTMLInputElement | null = null;
   options: string[] = [];
   search$ = new BehaviorSubject('');
-  loading = false;
+  loading = true;
 
   @HostBinding('class.alain-default__search-focus')
   focus = false;
@@ -84,11 +80,11 @@ export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
-        tap({
-          complete: () => {
-            this.loading = true;
-          }
-        })
+        tap(() => {
+          this.loading = true;
+          this.cdr.detectChanges();
+        }),
+        delay(500) // Mock http
       )
       .subscribe(value => {
         this.options = value ? [value, value + value, value + value + value] : [];

@@ -21,14 +21,9 @@
       <nz-form-item nz-row>
         <nz-form-label nz-col [nzSm]="6">打印服务器</nz-form-label>
         <nz-form-control nz-col [nzSm]="18">
-          <nz-input-group>
-            <div nz-col [nzSpan]="16">
-              <input nz-input nzPlaceHolder="https://localhost:8443/CLodopfuncs.js" [(ngModel)]="cog.url" name="url" />
-            </div>
-            <div nz-col [nzSpan]="8">
-              <button nz-button (click)="reload(null)">重新加载打印机</button>
-            </div>
-          </nz-input-group>
+          <nz-input-search nzEnterButton="重新加载打印机" (nzSearch)="reload(null)">
+            <input nz-input nzPlaceHolder="https://localhost:8443/CLodopfuncs.js" [(ngModel)]="cog.url" name="url" />
+          </nz-input-search>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item nz-row>

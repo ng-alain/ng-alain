@@ -8,18 +8,18 @@
     <nz-list-item>
       <nz-card nzHoverable [nzActions]="[op1, op2, op3, op4]">
         <ng-template #op1>
-          <i nz-tooltip nzTooltipTitle="下载" nz-icon nzType="download"></i>
+          <nz-icon nzType="download" nz-tooltip nzTooltipTitle="下载" />
         </ng-template>
         <ng-template #op2>
-          <i nz-tooltip nzTooltipTitle="编辑" nz-icon nzType="edit"></i>
+          <nz-icon nzType="edit" nz-tooltip nzTooltipTitle="编辑" />
         </ng-template>
         <ng-template #op3>
-          <i nz-tooltip nzTooltipTitle="分享" nz-icon nzType="share-alt"></i>
+          <nz-icon nzType="share-alt" nz-tooltip nzTooltipTitle="分享" />
         </ng-template>
         <ng-template #op4>
-          <i nz-dropdown [nzDropdownMenu]="op4Menu" nzPlacement="bottomLeft" nz-icon nzType="ellipsis"></i>
+          <nz-icon nzType="ellipsis" nz-dropdown [nzDropdownMenu]="op4Menu" nzPlacement="bottomLeft" />
           <nz-dropdown-menu #op4Menu="nzDropdownMenu">
-            <i nz-dropdown nz-icon nzType="ellipsis"></i>
+            <nz-icon nzType="ellipsis" nz-dropdown />
             <ul nz-menu>
               <li nz-menu-item>1st menu item</li>
               <li nz-menu-item>2st menu item</li>

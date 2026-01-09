@@ -6,7 +6,7 @@ import screenfull from 'screenfull';
 @Component({
   selector: 'header-fullscreen',
   template: `
-    <i nz-icon [nzType]="status ? 'fullscreen-exit' : 'fullscreen'"></i>
+    <nz-icon [nzType]="status ? 'fullscreen-exit' : 'fullscreen'" />
     {{ (status ? 'menu.fullscreen.exit' : 'menu.fullscreen') | i18n }}
   `,
   host: {

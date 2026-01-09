@@ -10,10 +10,12 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -32,7 +34,9 @@ import { finalize } from 'rxjs';
     NzProgressModule,
     NzSelectModule,
     NzGridModule,
-    NzButtonModule
+    NzButtonModule,
+    NzIconDirective,
+    NzSpaceModule
   ]
 })
 export class UserRegisterComponent implements OnDestroy {

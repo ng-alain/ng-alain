@@ -6,7 +6,7 @@ import { ALAIN_I18N_TOKEN } from '@delon/theme';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 export interface ReThrowHttpError {
-  body: any;
+  body: unknown;
   _throw: true;
 }
 
@@ -52,6 +52,6 @@ export function checkStatus(injector: Injector, ev: HttpResponseBase): void {
     return;
   }
 
-  const errortext = CODEMESSAGE[ev.status] || ev.statusText;
+  const errortext = CODEMESSAGE[ev.status] || ev.status.toString();
   injector.get(NzNotificationService).error(`请求错误 ${ev.status}: ${ev.url}`, errortext);
 }

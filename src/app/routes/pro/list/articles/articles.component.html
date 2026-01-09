@@ -43,9 +43,9 @@
   <nz-list nzItemLayout="vertical" [nzLoading]="loading" [nzDataSource]="list" [nzRenderItem]="item" [nzLoadMore]="loadMore">
     <ng-template #item let-item>
       <nz-list-item [nzContent]="nzContent" [nzExtra]="nzExtra" [nzActions]="[op1, op2, op3]">
-        <ng-template #op1> <i nz-icon nzType="star" class="mr-sm"></i>{{ item.star }}</ng-template>
-        <ng-template #op2> <i nz-icon nzType="like" class="mr-sm"></i>{{ item.like }}</ng-template>
-        <ng-template #op3> <i nz-icon nzType="message" class="mr-sm"></i>{{ item.message }}</ng-template>
+        <ng-template #op1> <nz-icon nzType="star" class="mr-sm" />{{ item.star }}</ng-template>
+        <ng-template #op2> <nz-icon nzType="like" class="mr-sm" />{{ item.like }}</ng-template>
+        <ng-template #op3> <nz-icon nzType="message" class="mr-sm" />{{ item.message }}</ng-template>
         <ng-template #nzExtra>
           <div style="width: 272px; height: 1px"></div>
         </ng-template>

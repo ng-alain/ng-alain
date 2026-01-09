@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, booleanAttribute, inject, DOCUMENT } from '@angular/core';
 import { I18NService } from '@core';
 import { ALAIN_I18N_TOKEN, I18nPipe, SettingsService } from '@delon/theme';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
@@ -10,12 +10,12 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
   template: `
     @if (showLangText) {
       <div nz-dropdown [nzDropdownMenu]="langMenu" nzPlacement="bottomRight">
-        <i nz-icon nzType="global"></i>
+        <nz-icon nzType="global" />
         {{ 'menu.lang' | i18n }}
-        <i nz-icon nzType="down"></i>
+        <nz-icon nzType="down" />
       </div>
     } @else {
-      <i nz-dropdown [nzDropdownMenu]="langMenu" nzPlacement="bottomRight" nz-icon nzType="global"></i>
+      <nz-icon nz-dropdown [nzDropdownMenu]="langMenu" nzPlacement="bottomRight" nzType="global" />
     }
     <nz-dropdown-menu #langMenu="nzDropdownMenu">
       <ul nz-menu>
@@ -32,7 +32,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
     '[class.flex-1]': 'true'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [I18nPipe, NzDropDownModule, NzIconModule, NzMenuModule]
+  imports: [I18nPipe, NzDropdownModule, NzIconModule, NzMenuModule]
 })
 export class HeaderI18nComponent {
   private readonly settings = inject(SettingsService);

@@ -5,9 +5,10 @@
   }
   <nz-form-item>
     <nz-form-control [nzErrorTip]="mailErrorTip">
-      <nz-input-group nzSize="large" nzAddonBeforeIcon="user"
-        ><input nz-input formControlName="mail" placeholder="Email" autocomplete="email" />
-      </nz-input-group>
+      <nz-input-wrapper>
+        <nz-icon nzInputPrefix nzType="user" />
+        <input nz-input nzSize="large" formControlName="mail" placeholder="Email" autocomplete="email" />
+      </nz-input-wrapper>
       <ng-template #mailErrorTip let-i>
         @if (i.errors?.required) {
           {{ 'validation.email.required' | i18n }}
@@ -20,9 +21,7 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="'validation.password.required' | i18n">
-      <nz-input-group
-        nzSize="large"
-        nzAddonBeforeIcon="lock"
+      <nz-input-wrapper
         nz-popover
         nzPopoverPlacement="right"
         nzPopoverTrigger="focus"
@@ -31,8 +30,9 @@
         [nzPopoverOverlayStyle]="{ 'width.px': 240 }"
         [nzPopoverContent]="pwdCdkTpl"
       >
-        <input nz-input type="password" formControlName="password" placeholder="Password" />
-      </nz-input-group>
+        <nz-icon nzInputPrefix nzType="lock" />
+        <input nzSize="large" nz-input type="password" formControlName="password" placeholder="Password" autocomplete="off" />
+      </nz-input-wrapper>
       <ng-template #pwdCdkTpl>
         <div style="padding: 4px 0">
           @switch (status) {
@@ -56,9 +56,10 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="confirmErrorTip">
-      <nz-input-group nzSize="large" nzAddonBeforeIcon="lock">
-        <input nz-input type="password" formControlName="confirm" placeholder="Confirm Password" />
-      </nz-input-group>
+      <nz-input-wrapper>
+        <nz-icon nzInputPrefix nzType="lock" />
+        <input nz-input nzSize="large" type="password" formControlName="confirm" placeholder="Confirm Password" autocomplete="off" />
+      </nz-input-wrapper>
       <ng-template #confirmErrorTip let-i>
         @if (i.errors?.required) {
           {{ 'validation.confirm-password.required' | i18n }}
@@ -71,15 +72,13 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="mobileErrorTip">
-      <nz-input-group nzSize="large" [nzAddOnBefore]="addOnBeforeTemplate">
-        <ng-template #addOnBeforeTemplate>
-          <nz-select formControlName="mobilePrefix" style="width: 100px">
-            <nz-option [nzLabel]="'+86'" [nzValue]="'+86'" />
-            <nz-option [nzLabel]="'+87'" [nzValue]="'+87'" />
-          </nz-select>
-        </ng-template>
-        <input formControlName="mobile" nz-input placeholder="Phone number" />
-      </nz-input-group>
+      <nz-space-compact nzSize="large" class="width-100">
+        <nz-select nzSize="large" formControlName="mobilePrefix" style="width: 100px">
+          <nz-option [nzLabel]="'+86'" [nzValue]="'+86'" />
+          <nz-option [nzLabel]="'+87'" [nzValue]="'+87'" />
+        </nz-select>
+        <input nz-input nzSize="large" formControlName="mobile" placeholder="Phone number" />
+      </nz-space-compact>
       <ng-template #mobileErrorTip let-i>
         @if (i.errors?.required) {
           {{ 'validation.phone-number.required' | i18n }}
@@ -94,9 +93,10 @@
     <nz-form-control [nzErrorTip]="'validation.verification-code.required' | i18n">
       <div nz-row [nzGutter]="8">
         <div nz-col [nzSpan]="16">
-          <nz-input-group nzSize="large" nzAddonBeforeIcon="mail">
-            <input nz-input formControlName="captcha" placeholder="Captcha" />
-          </nz-input-group>
+          <nz-input-wrapper>
+            <nz-icon nzInputPrefix nzType="mail" />
+            <input nz-input nzSize="large" formControlName="captcha" placeholder="Captcha" />
+          </nz-input-wrapper>
         </div>
         <div nz-col [nzSpan]="8">
           <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count > 0" nzBlock [nzLoading]="loading">

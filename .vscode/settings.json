@@ -38,7 +38,16 @@
     "**/.git/*/**": true,
     "**/node_modules/*/**": true,
     "**/dist/*/**": true,
-    "**/coverage/*/**": true
+    "**/coverage/*/**": true,
+    "**/.angular/*/**": true,
+    "**/.yarn/*/**": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.angular": true,
+    "**/.github": true,
+    "**/.yarn": true,
+    "**/*.css": true
   },
   "files.associations": {
     "*.json": "jsonc",

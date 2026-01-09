@@ -69,20 +69,20 @@
         <button nz-button type="reset" (click)="reset()" class="mx-sm">重置</button>
         <a (click)="expandForm = !expandForm">
           {{ expandForm ? '收起' : '展开' }}
-          <i nz-icon [nzType]="expandForm ? 'up' : 'down'"></i>
+          <nz-icon [nzType]="expandForm ? 'up' : 'down'" />
         </a>
       </div>
     </div>
   </form>
   <button nz-button (click)="add(modalContent)" [nzType]="'primary'">
-    <i nz-icon nzType="plus"></i>
+    <nz-icon nzType="plus" />
     <span>新建</span>
   </button>
   @if (selectedRows.length > 0) {
     <button nz-button>批量操作</button>
     <button nz-button nz-dropdown [nzDropdownMenu]="batchMenu" nzPlacement="bottomLeft">
       更多操作
-      <i nz-icon nzType="down"></i>
+      <nz-icon nzType="down" />
     </button>
     <nz-dropdown-menu #batchMenu="nzDropdownMenu">
       <ul nz-menu>

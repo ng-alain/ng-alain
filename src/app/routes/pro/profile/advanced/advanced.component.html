@@ -8,7 +8,7 @@
       <button nz-button>操作</button>
     </nz-space-compact>
     <button nz-button nz-dropdown [nzDropdownMenu]="opMenu" class="mx-sm">
-      <i nz-icon nzType="ellipsis"></i>
+      <nz-icon nzType="ellipsis" />
     </button>
     <nz-dropdown-menu #opMenu="nzDropdownMenu">
       <ul nz-menu>
@@ -55,7 +55,7 @@
         <div class="desc">
           <div class="my-sm">
             曲丽丽
-            <i nz-icon nzType="dingding" class="ml-sm"></i>
+            <nz-icon nzType="dingding" class="ml-sm" />
           </div>
           <div>2016-12-12 12:32</div>
         </div>
@@ -66,7 +66,7 @@
         <div class="desc">
           <div class="my-sm">
             周毛毛
-            <i nz-icon nzType="dingding" class="ml-sm" style="color: #00a0e9"></i>
+            <nz-icon nzType="dingding" class="ml-sm" style="color: #00a0e9" />
           </div>
           <a (click)="msg.success('click')">催一下</a>
         </div>
@@ -92,7 +92,7 @@
     <sv [label]="label">
       <ng-template #label>
         某某数据
-        <i nz-tooltip nzTooltipTitle="数据说明" nz-icon nzType="info-circle"></i>
+        <nz-icon nzType="info-circle" nz-tooltip nzTooltipTitle="数据说明" />
       </ng-template>
       725
     </sv>
@@ -119,7 +119,7 @@
   </nz-card>
 </nz-card>
 <nz-card [nzBordered]="false" nzTitle="用户近半年来电记录" class="mb-lg">
-  <div class="no-data"><i nz-icon nzType="frown"></i>暂无数据</div>
+  <div class="no-data"><nz-icon nzType="frown" />暂无数据</div>
 </nz-card>
 <nz-card [nzBordered]="false">
   <nz-card-tab>

@@ -6,31 +6,35 @@
       }
       <nz-form-item>
         <nz-form-control nzErrorTip="Please enter mobile number, muse be: admin or user">
-          <nz-input-group nzSize="large" nzPrefixIcon="user">
-            <input nz-input formControlName="userName" autocomplete="username" placeholder="username: admin or user" />
-          </nz-input-group>
+          <nz-input-wrapper>
+            <nz-icon nzInputPrefix nzType="user" />
+            <input nz-input nzSize="large" formControlName="userName" autocomplete="username" placeholder="username: admin or user" />
+          </nz-input-wrapper>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-control nzErrorTip="Please enter password, muse be: ng-alain.com">
-          <nz-input-group nzSize="large" nzPrefixIcon="lock">
+          <nz-input-wrapper>
+            <nz-icon nzInputPrefix nzType="lock" />
             <input
               nz-input
+              nzSize="large"
               type="password"
               formControlName="password"
               autocomplete="current-password"
               placeholder="password: ng-alain.com"
             />
-          </nz-input-group>
+          </nz-input-wrapper>
         </nz-form-control>
       </nz-form-item>
     </nz-tab>
     <nz-tab [nzTitle]="'app.login.tab-login-mobile' | i18n">
       <nz-form-item>
         <nz-form-control [nzErrorTip]="mobileErrorTip">
-          <nz-input-group nzSize="large" nzPrefixIcon="user">
-            <input nz-input formControlName="mobile" placeholder="mobile number" />
-          </nz-input-group>
+          <nz-input-wrapper>
+            <nz-icon nzInputPrefix nzType="user" />
+            <input nz-input nzSize="large" formControlName="mobile" placeholder="mobile number" />
+          </nz-input-wrapper>
           <ng-template #mobileErrorTip let-i>
             @if (i.errors.required) {
               {{ 'validation.phone-number.required' | i18n }}
@@ -45,9 +49,10 @@
         <nz-form-control [nzErrorTip]="'validation.verification-code.required' | i18n">
           <nz-row [nzGutter]="8">
             <nz-col [nzSpan]="16">
-              <nz-input-group nzSize="large" nzPrefixIcon="mail">
-                <input nz-input formControlName="captcha" placeholder="captcha" />
-              </nz-input-group>
+              <nz-input-wrapper>
+                <nz-icon nzInputPrefix nzType="mail" />
+                <input nz-input nzSize="large" formControlName="captcha" placeholder="captcha" />
+              </nz-input-wrapper>
             </nz-col>
             <nz-col [nzSpan]="8">
               <button type="button" nz-button nzSize="large" (click)="getCaptcha()" [disabled]="count >= 0" nzBlock [nzLoading]="loading">
@@ -75,8 +80,8 @@
 </form>
 <div class="other">
   {{ 'app.login.sign-in-with' | i18n }}
-  <i nz-tooltip nzTooltipTitle="in fact Auth0 via window" (click)="open('auth0', 'window')" nz-icon nzType="alipay-circle" class="icon"></i>
-  <i nz-tooltip nzTooltipTitle="in fact Github via redirect" (click)="open('github')" nz-icon nzType="taobao-circle" class="icon"></i>
-  <i (click)="open('weibo', 'window')" nz-icon nzType="weibo-circle" class="icon"></i>
+  <nz-icon nzType="alipay-circle" nz-tooltip nzTooltipTitle="in fact Auth0 via window" (click)="open('auth0', 'window')" class="icon" />
+  <nz-icon nzType="taobao-circle" nz-tooltip nzTooltipTitle="in fact Github via redirect" (click)="open('github')" class="icon" />
+  <nz-icon nzType="weibo-circle" (click)="open('weibo', 'window')" class="icon" />
   <a class="register" routerLink="/passport/register">{{ 'app.login.signup' | i18n }}</a>
 </div>
