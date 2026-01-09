@@ -2,51 +2,59 @@
   <div nz-col nzMd="24" nzLg="7">
     <nz-card [nzBordered]="false" class="mb-lg" [nzLoading]="!user">
       @if (user) {
-      <div class="avatar-holder">
-        <img src="{{ user.avatar }}" />
-        <div class="name">{{ user.name }}</div>
-        <div>{{ user.signature }}</div>
-      </div>
-      <div class="detail">
-        <p><i class="title"></i>{{ user.title }}</p>
-        <p><i class="group"></i>{{ user.group }}</p>
-        <p>
-          <i class="address"></i>
-          {{ user.geographic.province.label }}
-          {{ user.geographic.city.label }}
-        </p>
-      </div>
-      <nz-divider nzDashed />
-      <div class="tags">
-        <div class="tags-title">标签</div>
-        @for (t of user.tags; track $index) {
-        <nz-tag>{{ t.label }}</nz-tag>
-        }
-        @if (taging) {
-        <input #tagInput nz-input [(ngModel)]="tagValue" (blur)="tagBlur()" (keydown)="tagEnter($event)" nzSize="small"
-          type="text" style="width: 78px" />
-        } @else {
-        <nz-tag (click)="tagShowIpt()" class="ant-tag__plus">
-          <i nz-icon nzType="plus"></i>
-        </nz-tag>
-        }
-      </div>
-      <nz-divider nzDashed />
-      <div class="team">
-        <div class="team-title">团队</div>
-        <nz-spin [nzSpinning]="!notice">
-          <div nz-row nzGutter="36">
-            @for (t of notice; track $index) {
-            <div nz-col nzLg="24" nzXl="12">
-              <a href="#" class="text-truncate">
-                <nz-avatar [nzSrc]="t.logo" nzSize="small" />
-                {{ t.member }}
-              </a>
+        <div class="avatar-holder">
+          <img src="{{ user.avatar }}" />
+          <div class="name">{{ user.name }}</div>
+          <div>{{ user.signature }}</div>
+        </div>
+        <div class="detail">
+          <p><i class="title"></i>{{ user.title }}</p>
+          <p><i class="group"></i>{{ user.group }}</p>
+          <p>
+            <i class="address"></i>
+            {{ user.geographic.province.label }}
+            {{ user.geographic.city.label }}
+          </p>
+        </div>
+        <nz-divider nzDashed />
+        <div class="tags">
+          <div class="tags-title">标签</div>
+          @for (t of user.tags; track $index) {
+            <nz-tag>{{ t.label }}</nz-tag>
+          }
+          @if (taging) {
+            <input
+              #tagInput
+              nz-input
+              [(ngModel)]="tagValue"
+              (blur)="tagBlur()"
+              (keydown)="tagEnter($event)"
+              nzSize="small"
+              type="text"
+              style="width: 78px"
+            />
+          } @else {
+            <nz-tag (click)="tagShowIpt()" class="ant-tag__plus">
+              <i nz-icon nzType="plus"></i>
+            </nz-tag>
+          }
+        </div>
+        <nz-divider nzDashed />
+        <div class="team">
+          <div class="team-title">团队</div>
+          <nz-spin [nzSpinning]="!notice">
+            <div nz-row nzGutter="36">
+              @for (t of notice; track $index) {
+                <div nz-col nzLg="24" nzXl="12">
+                  <a href="#" class="text-truncate">
+                    <nz-avatar [nzSrc]="t.logo" nzSize="small" />
+                    {{ t.member }}
+                  </a>
+                </div>
+              }
             </div>
-            }
-          </div>
-        </nz-spin>
-      </div>
+          </nz-spin>
+        </div>
       }
     </nz-card>
   </div>
@@ -55,7 +63,7 @@
       <ng-template #tagTitleTpl>
         <nz-tabs nzSize="large" [nzSelectedIndex]="pos">
           @for (i of tabs; track $index) {
-          <nz-tab [nzTitle]="i.tab" (nzClick)="to(i)" />
+            <nz-tab [nzTitle]="i.tab" (nzClick)="to(i)" />
           }
         </nz-tabs>
       </ng-template>

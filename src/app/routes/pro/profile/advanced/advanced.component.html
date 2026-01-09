@@ -132,9 +132,9 @@
   <st [columns]="opColumns" [data]="list">
     <ng-template st-row="status" let-i>
       @if (i.status === 'success') {
-      <nz-badge nzStatus="success" nzText="成功" />
+        <nz-badge nzStatus="success" nzText="成功" />
       } @else {
-      <nz-badge nzStatus="processing" nzText="进行中" />
+        <nz-badge nzStatus="processing" nzText="进行中" />
       }
     </ng-template>
   </st>
