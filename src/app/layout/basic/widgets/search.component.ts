@@ -12,6 +12,7 @@ import {
   inject
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HotkeyDirective } from '@delon/abc/hotkey';
 import { I18nPipe } from '@delon/theme';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -45,7 +46,7 @@ import { BehaviorSubject, debounceTime, delay, distinctUntilChanged, tap } from 
     </nz-autocomplete>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, I18nPipe, NzInputModule, NzIconModule, NzAutocompleteModule]
+  imports: [FormsModule, I18nPipe, NzInputModule, NzIconModule, NzAutocompleteModule, HotkeyDirective]
 })
 export class HeaderSearchComponent implements AfterViewInit, OnDestroy {
   private readonly el = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
