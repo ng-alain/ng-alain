@@ -6,7 +6,7 @@ import { SettingDrawerModule } from '@delon/theme/setting-drawer';
 import { ThemeBtnComponent } from '@delon/theme/theme-btn';
 import { environment } from '@env/environment';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
@@ -26,17 +26,17 @@ import { HeaderUserComponent } from './widgets/user.component';
     <layout-default [options]="options" [asideUser]="asideUserTpl" [content]="contentTpl" [customError]="null">
       <layout-default-header-item direction="left">
         <a layout-default-header-item-trigger href="//github.com/ng-alain/ng-alain" target="_blank">
-          <i nz-icon nzType="github"></i>
+          <nz-icon nzType="github" />
         </a>
       </layout-default-header-item>
       <layout-default-header-item direction="left" hidden="mobile">
         <a layout-default-header-item-trigger routerLink="/passport/lock">
-          <i nz-icon nzType="lock"></i>
+          <nz-icon nzType="lock" />
         </a>
       </layout-default-header-item>
       <layout-default-header-item direction="left" hidden="pc">
         <div layout-default-header-item-trigger (click)="searchToggleStatus = !searchToggleStatus">
-          <i nz-icon nzType="search"></i>
+          <nz-icon nzType="search" />
         </div>
       </layout-default-header-item>
       <layout-default-header-item direction="middle">
@@ -53,7 +53,7 @@ import { HeaderUserComponent } from './widgets/user.component';
       </layout-default-header-item>
       <layout-default-header-item direction="right" hidden="mobile">
         <div layout-default-header-item-trigger nz-dropdown [nzDropdownMenu]="settingsMenu" nzTrigger="click" nzPlacement="bottomRight">
-          <i nz-icon nzType="setting"></i>
+          <nz-icon nzType="setting" />
         </div>
         <nz-dropdown-menu #settingsMenu="nzDropdownMenu">
           <div nz-menu style="width: 200px;">
@@ -106,7 +106,7 @@ import { HeaderUserComponent } from './widgets/user.component';
     LayoutDefaultModule,
     NzIconModule,
     NzMenuModule,
-    NzDropDownModule,
+    NzDropdownModule,
     NzAvatarModule,
     SettingDrawerModule,
     ThemeBtnComponent,

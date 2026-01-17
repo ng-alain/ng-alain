@@ -32,13 +32,13 @@
           <span>等待中</span>
         </label>
       </nz-radio-group>
-      <nz-input-group nzSuffixIcon="search" style="width: 270px">
+      <nz-input-search style="width: 200px">
         <input type="text" nz-input placeholder="请输入" [(ngModel)]="q.q" name="q" />
-      </nz-input-group>
+      </nz-input-search>
     </div>
   </div>
   <button nz-button (click)="openEdit()" [nzType]="'dashed'" nzBlock class="mb-sm">
-    <i nz-icon nzType="plus"></i>
+    <nz-icon nzType="plus" />
     <span>添加</span>
   </button>
   <nz-list [nzDataSource]="data" [nzLoading]="loading" [nzRenderItem]="item" [nzPagination]="pagination">
@@ -50,7 +50,7 @@
         <ng-template #op>
           <a class="ant-dropdown-link" nz-dropdown [nzDropdownMenu]="opMenu">
             更多
-            <i nz-icon nzType="down"></i>
+            <nz-icon nzType="down" />
           </a>
           <nz-dropdown-menu #opMenu="nzDropdownMenu">
             <ul nz-menu>

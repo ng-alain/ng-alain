@@ -20,9 +20,9 @@
         <time class="pl-md text-grey" title="{{ item.updatedAt }}">{{ item.updatedAt | _date }}</time>
       </div>
       <ul nz-list-item-actions>
-        <nz-list-item-action> <i nz-icon nzType="star" class="mr-sm"></i>{{ item.star }} </nz-list-item-action>
-        <nz-list-item-action><i nz-icon nzType="like" class="mr-sm"></i>{{ item.like }}</nz-list-item-action>
-        <nz-list-item-action><i nz-icon nzType="message" class="mr-sm"></i>{{ item.message }}</nz-list-item-action>
+        <nz-list-item-action><nz-icon nzType="star" class="mr-sm" />{{ item.star }} </nz-list-item-action>
+        <nz-list-item-action><nz-icon nzType="like" class="mr-sm" />{{ item.like }}</nz-list-item-action>
+        <nz-list-item-action><nz-icon nzType="message" class="mr-sm" />{{ item.message }}</nz-list-item-action>
       </ul>
     </nz-list-item>
   }

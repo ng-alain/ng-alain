@@ -58,7 +58,7 @@
     "@delon/theme": "^21.0.0-next.1",
     "@delon/util": "^21.0.0-next.1",
     "@ng-util/monaco-editor": "^21.0.1",
-    "ng-zorro-antd": "^21.0.0-beta.0",
+    "ng-zorro-antd": "^21.0.1",
     "ngx-tinymce": "^21.0.0",
     "rxjs": "~7.8.0",
     "screenfull": "^6.0.2",

@@ -6,7 +6,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 @Component({
   selector: 'header-rtl',
   template: `
-    <i nz-icon [nzType]="rtl.nextDir === 'rtl' ? 'border-left' : 'border-right'"></i>
+    <nz-icon [nzType]="rtl.nextDir === 'rtl' ? 'border-left' : 'border-right'" />
     {{ rtl.nextDir | uppercase }}
   `,
   host: {

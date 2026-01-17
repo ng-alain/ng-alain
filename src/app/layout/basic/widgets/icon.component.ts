@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
@@ -16,42 +16,42 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
       nzPlacement="bottomRight"
       (nzVisibleChange)="change()"
     >
-      <i nz-icon nzType="appstore"></i>
+      <nz-icon nzType="appstore" />
     </div>
     <nz-dropdown-menu #iconMenu="nzDropdownMenu">
       <div nz-menu class="wd-xl animated jello">
         <nz-spin [nzSpinning]="loading" [nzTip]="'正在读取数据...'">
           <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="app-icons">
             <div nz-col [nzSpan]="6">
-              <i nz-icon nzType="calendar" class="bg-error text-white"></i>
+              <nz-icon nzType="calendar" class="bg-error text-white" />
               <small>Calendar</small>
             </div>
             <div nz-col [nzSpan]="6">
-              <i nz-icon nzType="file" class="bg-geekblue text-white"></i>
+              <nz-icon nzType="file" class="bg-geekblue text-white" />
               <small>Files</small>
             </div>
             <div nz-col [nzSpan]="6">
-              <i nz-icon nzType="cloud" class="bg-success text-white"></i>
+              <nz-icon nzType="cloud" class="bg-success text-white" />
               <small>Cloud</small>
             </div>
             <div nz-col [nzSpan]="6">
-              <i nz-icon nzType="star" class="bg-magenta text-white"></i>
+              <nz-icon nzType="star" class="bg-magenta text-white" />
               <small>Star</small>
             </div>
             <div nz-col [nzSpan]="6">
-              <i nz-icon nzType="team" class="bg-purple text-white"></i>
+              <nz-icon nzType="team" class="bg-purple text-white" />
               <small>Team</small>
             </div>
             <div nz-col [nzSpan]="6">
-              <i nz-icon nzType="scan" class="bg-warning text-white"></i>
+              <nz-icon nzType="scan" class="bg-warning text-white" />
               <small>QR</small>
             </div>
             <div nz-col [nzSpan]="6">
-              <i nz-icon nzType="pay-circle" class="bg-cyan text-white"></i>
+              <nz-icon nzType="pay-circle" class="bg-cyan text-white" />
               <small>Pay</small>
             </div>
             <div nz-col [nzSpan]="6">
-              <i nz-icon nzType="printer" class="bg-grey text-white"></i>
+              <nz-icon nzType="printer" class="bg-grey text-white" />
               <small>Print</small>
             </div>
           </div>
@@ -60,7 +60,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     </nz-dropdown-menu>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NzDropDownModule, NzIconModule, NzMenuModule, NzGridModule, NzSpinModule]
+  imports: [NzDropdownModule, NzIconModule, NzMenuModule, NzGridModule, NzSpinModule]
 })
 export class HeaderIconComponent {
   private readonly cdr = inject(ChangeDetectorRef);

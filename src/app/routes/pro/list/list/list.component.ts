@@ -2,6 +2,8 @@ import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivationEnd, Router } from '@angular/router';
 import { SHARED_IMPORTS } from '@shared';
+import { NzInputSearchEvent } from 'ng-zorro-antd/input';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { filter } from 'rxjs';
 
 @Component({
@@ -11,6 +13,7 @@ import { filter } from 'rxjs';
 })
 export class ProListLayoutComponent implements OnInit {
   private readonly router = inject(Router);
+  private readonly msg = inject(NzMessageService);
   private readonly d$ = inject(DestroyRef);
 
   tabs = [
@@ -50,5 +53,9 @@ export class ProListLayoutComponent implements OnInit {
 
   to(item: { key: string }): void {
     this.router.navigateByUrl(`/pro/list/${item.key}`);
+  }
+
+  protected search(ev: NzInputSearchEvent): void {
+    this.msg.success(`搜索：${JSON.stringify(ev)}`);
   }
 }

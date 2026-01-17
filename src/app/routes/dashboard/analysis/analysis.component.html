@@ -2,7 +2,7 @@
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <g2-card [title]="'app.analysis.total-sales' | i18n" total="¥ 126,560" contentHeight="44px" [action]="action1" [footer]="footer1">
       <ng-template #action1>
-        <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"></i>
+        <nz-icon nzType="info-circle" nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" />
       </ng-template>
       <trend flag="up" style="display: block; margin-top: 2px">
         {{ 'app.analysis.week' | i18n }}
@@ -23,7 +23,7 @@
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <g2-card [title]="'app.analysis.visits' | i18n" total="8,848" contentHeight="46px" [action]="action2" [footer]="footer2">
       <ng-template #action2>
-        <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"></i>
+        <nz-icon nzType="info-circle" nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" />
       </ng-template>
       @if (data.visitData) {
         <g2-mini-area color="#975FE4" height="46" [data]="data.visitData" />
@@ -39,7 +39,7 @@
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <g2-card [title]="'app.analysis.payments' | i18n" total="6,560" contentHeight="46px" [action]="action3" [footer]="footer3">
       <ng-template #action3>
-        <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"></i>
+        <nz-icon nzType="info-circle" nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" />
       </ng-template>
       @if (data.visitData) {
         <g2-mini-bar height="46" [data]="data.visitData" />
@@ -55,7 +55,7 @@
   <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
     <g2-card [title]="'app.analysis.operational-effect' | i18n" total="78%" contentHeight="46px" [action]="action4" [footer]="footer4">
       <ng-template #action4>
-        <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle"></i>
+        <nz-icon nzType="info-circle" nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" />
       </ng-template>
       <g2-mini-progress height="46" percent="78" strokeWidth="8" target="80" color="#13C2C2" />
       <ng-template #footer4>
@@ -128,7 +128,7 @@
       class="mb-0"
     >
       <ng-template #extraOp>
-        <i nz-dropdown [nzDropdownMenu]="extraOpMenu" nz-icon nzType="ellipsis" class="icon-group"></i>
+        <nz-icon nz-dropdown [nzDropdownMenu]="extraOpMenu" nzType="ellipsis" class="icon-group" />
         <nz-dropdown-menu #extraOpMenu="nzDropdownMenu">
           <ul nz-menu>
             <li nz-menu-item>操作一</li>
@@ -141,7 +141,7 @@
           <number-info total="12,321" subTotal="17.1" status="up" [subTitle]="subTitle">
             <ng-template #subTitle>
               {{ 'app.analysis.search-users' | i18n }}
-              <i nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" nz-icon nzType="info-circle" class="ml-sm"></i>
+              <nz-icon nzType="info-circle" nz-tooltip [nzTooltipTitle]="'app.analysis.introduce' | i18n" class="ml-sm" />
             </ng-template>
           </number-info>
           @if (data.visitData2) {
@@ -186,7 +186,7 @@
             {{ 'app.analysis.channel.stores' | i18n }}
           </label>
         </nz-radio-group>
-        <i nz-dropdown [nzDropdownMenu]="salesExtraMenu" nzPlacement="bottomLeft" nz-icon nzType="ellipsis" class="ml-md"></i>
+        <nz-icon nz-dropdown [nzDropdownMenu]="salesExtraMenu" nzPlacement="bottomLeft" nzType="ellipsis" class="ml-md" />
         <nz-dropdown-menu #salesExtraMenu="nzDropdownMenu">
           <ul nz-menu>
             <li nz-menu-item>操作一</li>

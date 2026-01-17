@@ -53,33 +53,6 @@ export default defineConfig(
           startLines: 1,
         },
       ],
-      '@angular-eslint/component-class-suffix': [
-        'error',
-        {
-          suffixes: ['Directive', 'Component', 'Base', 'Widget']
-        }
-      ],
-      '@angular-eslint/directive-class-suffix': [
-        'error',
-        {
-          suffixes: ['Directive', 'Component', 'Base', 'Widget']
-        }
-      ],
-      '@angular-eslint/component-selector': [
-        'off',
-        {
-          type: ['element', 'attribute'],
-          prefix: ['app', 'test'],
-          style: 'kebab-case'
-        }
-      ],
-      '@angular-eslint/directive-selector': [
-        'off',
-        {
-          type: 'attribute',
-          prefix: ['app']
-        }
-      ],
       '@angular-eslint/no-attribute-decorator': 'error',
       '@angular-eslint/no-conflicting-lifecycle': 'off',
       '@angular-eslint/no-forward-ref': 'off',
@@ -163,7 +136,8 @@ export default defineConfig(
     ],
     rules: {
       "prettier/prettier": ["error"],
-      "@angular-eslint/template/eqeqeq": "off"
+      "@angular-eslint/template/eqeqeq": "off",
+      "@angular-eslint/template/prefer-self-closing-tags": "error"
     }
   }
 );

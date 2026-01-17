@@ -182,7 +182,7 @@
             <p [class.text-deleted]="item.completed" class="mb0">{{ item.content }}</p>
           </div>
           <div nz-col [nzSpan]="2" class="text-right pr-md">
-            <i nz-dropdown [nzDropdownMenu]="todoMenus" nzPlacement="topRight" nz-icon nzType="ellipsis" class="rotate-90"></i>
+            <nz-icon nzType="ellipsis" nz-dropdown [nzDropdownMenu]="todoMenus" nzPlacement="topRight" class="rotate-90" />
             <nz-dropdown-menu #todoMenus="nzDropdownMenu">
               <ul nz-menu>
                 @if (item.completed) {

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzCardModule } from 'ng-zorro-antd/card';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
@@ -19,7 +19,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
       (nzVisibleChange)="change()"
     >
       <nz-badge [nzDot]="true">
-        <i nz-icon nzType="bell" class="alain-default__nav-item-icon"></i>
+        <nz-icon nzType="bell" class="alain-default__nav-item-icon" />
       </nz-badge>
     </div>
     <nz-dropdown-menu #taskMenu="nzDropdownMenu">
@@ -28,7 +28,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
           <div class="mx-lg p-lg"><nz-spin /></div>
         } @else {
           <nz-card nzTitle="Notifications" nzBordered="false" class="ant-card__body-nopadding">
-            <ng-template #extra><i nz-icon nzType="plus"></i></ng-template>
+            <ng-template #extra><nz-icon nzType="plus" /></ng-template>
             <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md point bg-grey-lighter-h">
               <div nz-col [nzSpan]="4" class="text-center">
                 <nz-avatar [nzSrc]="'./assets/tmp/img/1.png'" />
@@ -83,7 +83,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     </nz-dropdown-menu>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NzDropDownModule, NzBadgeModule, NzIconModule, NzSpinModule, NzGridModule, NzAvatarModule, NzCardModule]
+  imports: [NzDropdownModule, NzBadgeModule, NzIconModule, NzSpinModule, NzGridModule, NzAvatarModule, NzCardModule]
 })
 export class HeaderTaskComponent {
   private readonly cdr = inject(ChangeDetectorRef);
