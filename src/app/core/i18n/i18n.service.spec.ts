@@ -37,8 +37,10 @@ describe('Service: I18n', () => {
     srv = TestBed.inject(I18NService);
   }
 
+  afterEach(() => vi.restoreAllMocks());
+
   it('should working', () => {
-    spyOnProperty(navigator, 'languages').and.returnValue(['zh-CN']);
+    vi.spyOn(navigator, 'languages', 'get').mockReturnValue(['zh-CN']);
     genModule();
     expect(srv).toBeTruthy();
     expect(srv.defaultLang).toBe('zh-CN');
@@ -48,7 +50,7 @@ describe('Service: I18n', () => {
 
   it('should be used layout as default language', () => {
     MockSettingsService.layout.lang = 'en-US';
-    const navSpy = spyOnProperty(navigator, 'languages');
+    const navSpy = vi.spyOn(navigator, 'languages', 'get');
     genModule();
     expect(navSpy).not.toHaveBeenCalled();
     expect(srv.defaultLang).toBe('en-US');
@@ -56,13 +58,13 @@ describe('Service: I18n', () => {
   });
 
   it('should be used browser as default language', () => {
-    spyOnProperty(navigator, 'languages').and.returnValue(['zh-TW']);
+    vi.spyOn(navigator, 'languages', 'get').mockReturnValue(['zh-TW']);
     genModule();
     expect(srv.defaultLang).toBe('zh-TW');
   });
 
   it('should be use default language when the browser language is not in the list', () => {
-    spyOnProperty(navigator, 'languages').and.returnValue(['es-419']);
+    vi.spyOn(navigator, 'languages', 'get').mockReturnValue(['es-419']);
     genModule();
     expect(srv.defaultLang).toBe('zh-CN');
   });

@@ -100,23 +100,16 @@
           "builder": "@angular/build:extract-i18n"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "less",
-            "scripts": [],
-            "styles": [],
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              },
-              "src/assets"
-            ]
+            "browsers": ["chromium"],
+            "runnerConfig": "vitest.config.ts"
+          },
+          "configurations": {
+            "coverage": {
+						  "coverageReporters": ["lcov"],
+              "browsers": ["ChromiumHeadless"]
+            }
           }
         },
         "lint": {
