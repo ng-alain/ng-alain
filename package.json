@@ -21,23 +21,20 @@
     "scaffold"
   ],
   "scripts": {
-    "ng-high-memory": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng",
-    "ng": "ng",
+    "prepare": "husky install",
     "start": "ng s -o",
     "hmr": "ng s -o --hmr",
-    "build": "npm run ng-high-memory build",
-    "analyze": "npm run ng-high-memory build -- --source-map",
-    "analyze:view": "source-map-explorer dist/**/*.js",
+    "build": "ng b",
+    "analyze": "ng b --source-map",
+    "analyze:view": "source-map-explorer dist/**/*.js --no-border-checks",
     "lint": "npm run lint:ts && npm run lint:style",
-    "lint:ts": "npx eslint --cache --fix",
+    "lint:ts": "ng lint",
     "lint:style": "npx stylelint 'src/**/*.less'",
-    "e2e": "ng e2e",
     "test": "ng test",
     "test-coverage": "ng test -c coverage --coverage --watch=false",
     "color-less": "ng-alain-plugin-theme -t=colorLess",
     "theme": "ng-alain-plugin-theme -t=themeCss",
-    "icon": "ng g ng-alain:plugin icon",
-    "prepare": "husky install"
+    "icon": "ng g ng-alain:plugin icon"
   },
   "dependencies": {
     "@angular/animations": "^21.0.8",

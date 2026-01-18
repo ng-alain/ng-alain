@@ -120,18 +120,6 @@
               "src/**/*.html"
             ]
           }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ng-alain:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "ng-alain:serve:production"
-            }
-          }
         }
       }
     }
