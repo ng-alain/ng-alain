@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { I18nPipe } from '@delon/theme';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import screenfull from 'screenfull';
@@ -6,25 +6,26 @@ import screenfull from 'screenfull';
 @Component({
   selector: 'header-fullscreen',
   template: `
-    <nz-icon [nzType]="status ? 'fullscreen-exit' : 'fullscreen'" />
-    {{ (status ? 'menu.fullscreen.exit' : 'menu.fullscreen') | i18n }}
+    @let s = status();
+    <nz-icon [nzType]="s ? 'fullscreen-exit' : 'fullscreen'" />
+    {{ (s ? 'menu.fullscreen.exit' : 'menu.fullscreen') | i18n }}
   `,
   host: {
-    '[class.flex-1]': 'true'
+    class: 'flex-1',
+    '(window:resize)': '_resize()',
+    '(click)': '_click()'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NzIconModule, I18nPipe]
 })
 export class HeaderFullScreenComponent {
-  status = false;
+  protected status = signal(false);
 
-  @HostListener('window:resize')
-  _resize(): void {
-    this.status = screenfull.isFullscreen;
+  protected _resize(): void {
+    this.status.set(screenfull.isFullscreen);
   }
 
-  @HostListener('click')
-  _click(): void {
+  protected _click(): void {
     if (screenfull.isEnabled) {
       screenfull.toggle();
     }

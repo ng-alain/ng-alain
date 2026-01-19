@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { I18nPipe, SettingsService, User } from '@delon/theme';
+import { I18nPipe, SettingsService } from '@delon/theme';
 import { LayoutDefaultModule, LayoutDefaultOptions } from '@delon/theme/layout-default';
 import { SettingDrawerModule } from '@delon/theme/setting-drawer';
 import { ThemeBtnComponent } from '@delon/theme/theme-btn';
@@ -35,12 +35,12 @@ import { HeaderUserComponent } from './widgets/user.component';
         </a>
       </layout-default-header-item>
       <layout-default-header-item direction="left" hidden="pc">
-        <div layout-default-header-item-trigger (click)="searchToggleStatus = !searchToggleStatus">
+        <div layout-default-header-item-trigger (click)="searchToggleStatus.set(!searchToggleStatus())">
           <nz-icon nzType="search" />
         </div>
       </layout-default-header-item>
       <layout-default-header-item direction="middle">
-        <header-search class="alain-default__search" [(toggleChange)]="searchToggleStatus" />
+        <header-search [(toggleChange)]="searchToggleStatus" />
       </layout-default-header-item>
       <layout-default-header-item direction="right">
         <header-notify />
@@ -122,14 +122,11 @@ import { HeaderUserComponent } from './widgets/user.component';
   ]
 })
 export class LayoutBasicComponent {
-  private readonly settings = inject(SettingsService);
-  options: LayoutDefaultOptions = {
+  readonly user = inject(SettingsService).user;
+  protected options: LayoutDefaultOptions = {
     logoExpanded: `./assets/logo-full.svg`,
     logoCollapsed: `./assets/logo.svg`
   };
-  searchToggleStatus = false;
-  showSettingDrawer = !environment.production;
-  get user(): User {
-    return this.settings.user;
-  }
+  protected searchToggleStatus = signal(false);
+  protected showSettingDrawer = !environment.production;
 }

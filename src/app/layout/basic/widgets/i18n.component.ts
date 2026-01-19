@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, booleanAttribute, inject, DOCUMENT } from '@angular/core';
+import { ChangeDetectionStrategy, Component, booleanAttribute, inject, DOCUMENT, input } from '@angular/core';
 import { I18NService } from '@core';
 import { ALAIN_I18N_TOKEN, I18nPipe, SettingsService } from '@delon/theme';
 import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
@@ -8,7 +8,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 @Component({
   selector: 'header-i18n',
   template: `
-    @if (showLangText) {
+    @if (showLangText()) {
       <div nz-dropdown [nzDropdownMenu]="langMenu" nzPlacement="bottomRight">
         <nz-icon nzType="global" />
         {{ 'menu.lang' | i18n }}
@@ -29,7 +29,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
     </nz-dropdown-menu>
   `,
   host: {
-    '[class.flex-1]': 'true'
+    class: 'flex-1'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [I18nPipe, NzDropdownModule, NzIconModule, NzMenuModule]
@@ -38,18 +38,14 @@ export class HeaderI18nComponent {
   private readonly settings = inject(SettingsService);
   private readonly i18n = inject<I18NService>(ALAIN_I18N_TOKEN);
   private readonly doc = inject(DOCUMENT);
+
   /** Whether to display language text */
-  @Input({ transform: booleanAttribute }) showLangText = true;
+  readonly showLangText = input(true, { transform: booleanAttribute });
 
-  get langs(): Array<{ code: string; text: string; abbr: string }> {
-    return this.i18n.getLangs();
-  }
+  protected readonly langs = this.i18n.getLangs();
+  protected readonly curLangCode = this.settings.layout.lang;
 
-  get curLangCode(): string {
-    return this.settings.layout.lang;
-  }
-
-  change(lang: string): void {
+  protected change(lang: string): void {
     const spinEl = this.doc.createElement('div');
     spinEl.setAttribute('class', `page-loading ant-spin ant-spin-lg ant-spin-spinning`);
     spinEl.innerHTML = `<span class="ant-spin-dot ant-spin-dot-spin"><i></i><i></i><i></i><i></i></span>`;
