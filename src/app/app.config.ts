@@ -1,6 +1,6 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { default as ngLang } from '@angular/common/locales/zh';
-import { ApplicationConfig, EnvironmentProviders, Provider } from '@angular/core';
+import { ApplicationConfig, EnvironmentProviders, Provider, provideZonelessChangeDetection } from '@angular/core';
 import {
   provideRouter,
   withComponentInputBinding,
@@ -49,6 +49,7 @@ const routerFeatures: RouterFeatures[] = [
 if (environment.useHash) routerFeatures.push(withHashLocation());
 
 const providers: Array<Provider | EnvironmentProviders> = [
+  provideZonelessChangeDetection(),
   provideHttpClient(withInterceptors([...(environment.interceptorFns ?? []), authSimpleInterceptor, defaultInterceptor])),
   provideRouter(routes, ...routerFeatures),
   provideAlain({ config: alainConfig, defaultLang, i18nClass: I18NService, icons: [...ICONS_AUTO, ...ICONS] }),
