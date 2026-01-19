@@ -16,6 +16,6 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NzIconModule, UpperCasePipe]
 })
-export class HeaderRTLComponent {
+export class HeaderRTL {
   readonly rtl = inject(RTLService);
 }

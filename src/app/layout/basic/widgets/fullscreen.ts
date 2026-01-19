@@ -18,7 +18,7 @@ import screenfull from 'screenfull';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NzIconModule, I18nPipe]
 })
-export class HeaderFullScreenComponent {
+export class HeaderFullScreen {
   protected status = signal(false);
 
   protected _resize(): void {

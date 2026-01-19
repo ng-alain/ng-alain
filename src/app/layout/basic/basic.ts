@@ -10,15 +10,15 @@ import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
-import { HeaderClearStorageComponent } from './widgets/clear-storage.component';
-import { HeaderFullScreenComponent } from './widgets/fullscreen.component';
-import { HeaderI18nComponent } from './widgets/i18n.component';
-import { HeaderIconComponent } from './widgets/icon.component';
-import { HeaderNotifyComponent } from './widgets/notify.component';
-import { HeaderRTLComponent } from './widgets/rtl.component';
-import { HeaderSearchComponent } from './widgets/search.component';
-import { HeaderTaskComponent } from './widgets/task.component';
-import { HeaderUserComponent } from './widgets/user.component';
+import { HeaderClearStorage } from './widgets/clear-storage';
+import { HeaderFullScreen } from './widgets/fullscreen';
+import { HeaderI18n } from './widgets/i18n';
+import { HeaderIcon } from './widgets/icon';
+import { HeaderNotify } from './widgets/notify';
+import { HeaderRTL } from './widgets/rtl';
+import { HeaderSearch } from './widgets/search';
+import { HeaderTask } from './widgets/task';
+import { HeaderUser } from './widgets/user';
 
 @Component({
   selector: 'layout-basic',
@@ -110,15 +110,15 @@ import { HeaderUserComponent } from './widgets/user.component';
     NzAvatarModule,
     SettingDrawerModule,
     ThemeBtnComponent,
-    HeaderSearchComponent,
-    HeaderNotifyComponent,
-    HeaderTaskComponent,
-    HeaderIconComponent,
-    HeaderRTLComponent,
-    HeaderI18nComponent,
-    HeaderClearStorageComponent,
-    HeaderFullScreenComponent,
-    HeaderUserComponent
+    HeaderSearch,
+    HeaderNotify,
+    HeaderTask,
+    HeaderIcon,
+    HeaderRTL,
+    HeaderI18n,
+    HeaderClearStorage,
+    HeaderFullScreen,
+    HeaderUser
   ]
 })
 export class LayoutBasicComponent {

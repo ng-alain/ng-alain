@@ -1,6 +1,12 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { default as ngLang } from '@angular/common/locales/zh';
-import { ApplicationConfig, EnvironmentProviders, Provider, provideZonelessChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  EnvironmentProviders,
+  provideBrowserGlobalErrorListeners,
+  Provider,
+  provideZonelessChangeDetection
+} from '@angular/core';
 import {
   provideRouter,
   withComponentInputBinding,
@@ -49,6 +55,7 @@ const routerFeatures: RouterFeatures[] = [
 if (environment.useHash) routerFeatures.push(withHashLocation());
 
 const providers: Array<Provider | EnvironmentProviders> = [
+  provideBrowserGlobalErrorListeners(),
   provideZonelessChangeDetection(),
   provideHttpClient(withInterceptors([...(environment.interceptorFns ?? []), authSimpleInterceptor, defaultInterceptor])),
   provideRouter(routes, ...routerFeatures),

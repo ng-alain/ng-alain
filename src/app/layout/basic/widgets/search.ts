@@ -40,7 +40,7 @@ import { BehaviorSubject, debounceTime, delay, distinctUntilChanged, filter, tap
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [I18nPipe, NzInputModule, NzIconModule, NzAutocompleteModule, HotkeyDirective]
 })
-export class HeaderSearchComponent {
+export class HeaderSearch {
   private readonly el = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
   private readonly d$ = inject(DestroyRef);
   private readonly search$ = new BehaviorSubject('');

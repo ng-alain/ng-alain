@@ -62,7 +62,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NzDropdownModule, NzIconModule, NzMenuModule, NzGridModule, NzSpinModule]
 })
-export class HeaderIconComponent {
+export class HeaderIcon {
   protected loading = signal(true);
 
   protected change(): void {

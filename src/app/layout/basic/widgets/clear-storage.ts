@@ -17,7 +17,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NzIconModule, I18nPipe]
 })
-export class HeaderClearStorageComponent {
+export class HeaderClearStorage {
   private readonly modalSrv = inject(NzModalService);
   private readonly messageSrv = inject(NzMessageService);
 

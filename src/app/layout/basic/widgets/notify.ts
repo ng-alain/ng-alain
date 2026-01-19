@@ -21,7 +21,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NoticeIconModule]
 })
-export class HeaderNotifyComponent {
+export class HeaderNotify {
   private readonly msg = inject(NzMessageService);
   private readonly nzI18n = inject(NzI18nService);
   protected data = signal<NoticeItem[]>([
@@ -77,7 +77,7 @@ export class HeaderNotifyComponent {
     return data;
   }
 
-  loadData(): void {
+  protected loadData(): void {
     if (this.loading()) {
       return;
     }

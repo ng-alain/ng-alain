@@ -5,7 +5,7 @@ import { DA_SERVICE_TOKEN } from '@delon/auth';
 import { ThemeBtnComponent } from '@delon/theme/theme-btn';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-import { HeaderI18nComponent } from '../basic/widgets/i18n.component';
+import { HeaderI18n } from '../basic/widgets/i18n';
 
 @Component({
   selector: 'layout-passport',
@@ -29,11 +29,11 @@ import { HeaderI18nComponent } from '../basic/widgets/i18n.component';
     </div>
     <theme-btn />
   `,
-  styleUrls: ['./passport.component.less'],
-  imports: [RouterOutlet, HeaderI18nComponent, GlobalFooterModule, NzIconModule, ThemeBtnComponent]
+  styleUrls: ['./passport.less'],
+  imports: [RouterOutlet, HeaderI18n, GlobalFooterModule, NzIconModule, ThemeBtnComponent]
 })
-export class LayoutPassportComponent {
-  private tokenService = inject(DA_SERVICE_TOKEN);
+export class LayoutPassport {
+  private tokenSrv = inject(DA_SERVICE_TOKEN);
 
   links = [
     {
@@ -51,6 +51,6 @@ export class LayoutPassportComponent {
   ];
 
   constructor() {
-    this.tokenService.clear();
+    this.tokenSrv.clear();
   }
 }

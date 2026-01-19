@@ -9,4 +9,4 @@ import { RouterOutlet } from '@angular/router';
   },
   imports: [RouterOutlet]
 })
-export class LayoutBlankComponent {}
+export class LayoutBlank {}

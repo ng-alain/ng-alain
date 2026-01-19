@@ -39,7 +39,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, NzDropdownModule, NzMenuModule, NzIconModule, I18nPipe, NzAvatarModule]
 })
-export class HeaderUserComponent {
+export class HeaderUser {
   protected readonly user = inject(SettingsService).user;
   private readonly router = inject(Router);
   private readonly tokenService = inject(DA_SERVICE_TOKEN);

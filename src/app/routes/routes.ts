@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { startPageGuard } from '@core';
 import { authSimpleCanActivate, authSimpleCanActivateChild } from '@delon/auth';
 
-import { LayoutBasicComponent, LayoutBlankComponent } from '../layout';
+import { LayoutBasicComponent, LayoutBlank } from '../layout';
 
 export const routes: Routes = [
   {
@@ -30,7 +30,7 @@ export const routes: Routes = [
   // Blank Layout 空白布局
   {
     path: 'data-v',
-    component: LayoutBlankComponent,
+    component: LayoutBlank,
     children: [{ path: '', loadChildren: () => import('./data-v/routes').then(m => m.routes) }]
   },
   // passport

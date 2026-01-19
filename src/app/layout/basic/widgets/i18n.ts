@@ -34,7 +34,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [I18nPipe, NzDropdownModule, NzIconModule, NzMenuModule]
 })
-export class HeaderI18nComponent {
+export class HeaderI18n {
   private readonly settings = inject(SettingsService);
   private readonly i18n = inject<I18NService>(ALAIN_I18N_TOKEN);
   private readonly doc = inject(DOCUMENT);

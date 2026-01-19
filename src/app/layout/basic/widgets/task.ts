@@ -85,10 +85,10 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NzDropdownModule, NzBadgeModule, NzIconModule, NzSpinModule, NzGridModule, NzAvatarModule, NzCardModule]
 })
-export class HeaderTaskComponent {
+export class HeaderTask {
   protected loading = signal(true);
 
-  change(): void {
+  protected change(): void {
     setTimeout(() => {
       this.loading.set(false);
     }, 500);
