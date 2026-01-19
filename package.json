@@ -37,7 +37,6 @@
     "icon": "ng g ng-alain:plugin icon"
   },
   "dependencies": {
-    "@angular/animations": "^21.0.8",
     "@angular/cdk": "^21.0.6",
     "@angular/common": "^21.0.8",
     "@angular/compiler": "^21.0.8",
@@ -59,8 +58,7 @@
     "ngx-tinymce": "^21.0.0",
     "rxjs": "~7.8.0",
     "screenfull": "^6.0.2",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular/build": "^21.0.5",

@@ -15,9 +15,6 @@ for ARG in "$@"; do
   esac
 done
 
-echo "List:"
-ls -al
-
 ROOT_DIR="$(pwd)"
 DIST_DIR="$(pwd)/dist"
 
@@ -44,8 +41,21 @@ npm run theme
 
 echo '===== need mock'
 cp -f ${ROOT_DIR}/src/environments/environment.ts ${ROOT_DIR}/src/environments/environment.prod.ts
-sed -i 's/production: false/production: true/g' ${ROOT_DIR}/src/environments/environment.prod.ts
-sed -i 's/showSettingDrawer = !environment.production;/showSettingDrawer = true;/g' ${ROOT_DIR}/src/app/layout/basic/basic.component.ts
+
+# 兼容 macOS 和 Linux 的 sed 处理
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  sed -i '' 's/production: false/production: true/g' ${ROOT_DIR}/src/environments/environment.prod.ts
+  sed -i '' 's/showSettingDrawer = !environment.production;/showSettingDrawer = true;/g' ${ROOT_DIR}/src/app/layout/basic/basic.component.ts
+  sed -i '' '/const alainConfig: AlainConfig = {/a\
+  lodop: {\
+    license: `A59B099A586B3851E0F0D7FDBF37B603`,\
+    licenseA: `C94CEE276DB2187AE6B65D56B3FC2848`\
+  },' ${ROOT_DIR}/src/app/app.config.ts
+else
+  sed -i 's/production: false/production: true/g' ${ROOT_DIR}/src/environments/environment.prod.ts
+  sed -i 's/showSettingDrawer = !environment.production;/showSettingDrawer = true;/g' ${ROOT_DIR}/src/app/layout/basic/basic.component.ts
+  sed -i '/const alainConfig: AlainConfig = {/a\  lodop: {\n    license: `A59B099A586B3851E0F0D7FDBF37B603`,\n    licenseA: `C94CEE276DB2187AE6B65D56B3FC2848`\n  },' ${ROOT_DIR}/src/app/app.config.ts
+fi
 
 if [[ ${GH} == true ]]; then
   echo "Build angular [github gh-pages]"
