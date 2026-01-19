@@ -121,7 +121,7 @@ import { HeaderUser } from './widgets/user';
     HeaderUser
   ]
 })
-export class LayoutBasicComponent {
+export class LayoutBasic {
   readonly user = inject(SettingsService).user;
   protected options: LayoutDefaultOptions = {
     logoExpanded: `./assets/logo-full.svg`,
