@@ -5,13 +5,13 @@ import { UserLockComponent } from './lock/lock.component';
 import { UserLoginComponent } from './login/login.component';
 import { UserRegisterComponent } from './register/register.component';
 import { UserRegisterResultComponent } from './register-result/register-result.component';
-import { LayoutPassportComponent } from '../../layout';
+import { LayoutPassport } from '../../layout';
 
 export const routes: Routes = [
   // passport
   {
     path: 'passport',
-    component: LayoutPassportComponent,
+    component: LayoutPassport,
     children: [
       {
         path: 'login',

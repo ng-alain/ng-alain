@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { DA_SERVICE_TOKEN } from '@delon/auth';
-import { I18nPipe, SettingsService, User } from '@delon/theme';
+import { I18nPipe, SettingsService } from '@delon/theme';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -39,15 +39,12 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, NzDropdownModule, NzMenuModule, NzIconModule, I18nPipe, NzAvatarModule]
 })
-export class HeaderUserComponent {
-  private readonly settings = inject(SettingsService);
+export class HeaderUser {
+  protected readonly user = inject(SettingsService).user;
   private readonly router = inject(Router);
   private readonly tokenService = inject(DA_SERVICE_TOKEN);
-  get user(): User {
-    return this.settings.user;
-  }
 
-  logout(): void {
+  protected logout(): void {
     this.tokenService.clear();
     this.router.navigateByUrl(this.tokenService.login_url!);
   }

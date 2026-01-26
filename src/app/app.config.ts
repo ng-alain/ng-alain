@@ -1,6 +1,12 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { default as ngLang } from '@angular/common/locales/zh';
-import { ApplicationConfig, EnvironmentProviders, Provider } from '@angular/core';
+import {
+  ApplicationConfig,
+  EnvironmentProviders,
+  provideBrowserGlobalErrorListeners,
+  Provider,
+  provideZonelessChangeDetection
+} from '@angular/core';
 import {
   provideRouter,
   withComponentInputBinding,
@@ -36,11 +42,6 @@ const defaultLang: AlainProvideLang = {
 
 const alainConfig: AlainConfig = {
   st: { modal: { size: 'lg' } },
-  pageHeader: { homeI18n: 'home' },
-  lodop: {
-    license: `A59B099A586B3851E0F0D7FDBF37B603`,
-    licenseA: `C94CEE276DB2187AE6B65D56B3FC2848`
-  },
   auth: { login_url: '/passport/login' }
 };
 
@@ -54,6 +55,8 @@ const routerFeatures: RouterFeatures[] = [
 if (environment.useHash) routerFeatures.push(withHashLocation());
 
 const providers: Array<Provider | EnvironmentProviders> = [
+  provideBrowserGlobalErrorListeners(),
+  provideZonelessChangeDetection(),
   provideHttpClient(withInterceptors([...(environment.interceptorFns ?? []), authSimpleInterceptor, defaultInterceptor])),
   provideRouter(routes, ...routerFeatures),
   provideAlain({ config: alainConfig, defaultLang, i18nClass: I18NService, icons: [...ICONS_AUTO, ...ICONS] }),
