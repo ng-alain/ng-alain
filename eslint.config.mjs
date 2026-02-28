@@ -15,12 +15,7 @@ export default defineConfig(
       '.*/',
       'dist/',
       'coverage/',
-      'junit/',
-      'ng-alain/',
-      'schematics/**/files/**/*',
-      'src/dist/**/*',
-      'src/templates/**/*',
-      'src/app/routes/gen/**/*'
+      'junit/'
     ]
   },
   {
@@ -135,7 +130,15 @@ export default defineConfig(
       // ...angular.configs.templateAccessibility,
     ],
     rules: {
-      "prettier/prettier": ["error"],
+      'prettier/prettier': [
+        'error',
+        {
+          parser: 'angular'
+        },
+        {
+          usePrettierrc: true
+        }
+      ],
       "@angular-eslint/template/eqeqeq": "off",
       "@angular-eslint/template/prefer-self-closing-tags": "error"
     }
