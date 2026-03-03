@@ -87,7 +87,6 @@
     "ng-alain": "^21.0.5",
     "ng-alain-plugin-theme": "^18.0.0",
     "prettier": "^3.8.1",
-    "prettier-eslint": "^16.4.2",
     "source-map-explorer": "^2.5.3",
     "stylelint": "^17.1.0",
     "stylelint-config-clean-order": "^8.0.0",
