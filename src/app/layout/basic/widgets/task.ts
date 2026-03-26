@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -24,7 +24,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     </div>
     <nz-dropdown-menu #taskMenu="nzDropdownMenu">
       <div nz-menu class="wd-lg">
-        @if (loading) {
+        @if (loading()) {
           <div class="mx-lg p-lg"><nz-spin /></div>
         } @else {
           <nz-card nzTitle="Notifications" nzBordered="false" class="ant-card__body-nopadding">
@@ -85,14 +85,12 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NzDropdownModule, NzBadgeModule, NzIconModule, NzSpinModule, NzGridModule, NzAvatarModule, NzCardModule]
 })
-export class HeaderTaskComponent {
-  private readonly cdr = inject(ChangeDetectorRef);
-  loading = true;
+export class HeaderTask {
+  protected loading = signal(true);
 
-  change(): void {
+  protected change(): void {
     setTimeout(() => {
-      this.loading = false;
-      this.cdr.detectChanges();
+      this.loading.set(false);
     }, 500);
   }
 }

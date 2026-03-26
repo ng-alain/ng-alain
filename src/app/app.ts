@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NavigationEnd, NavigationError, RouteConfigLoadStart, Router, RouterOutlet } from '@angular/router';
 import { TitleService, VERSION as VERSION_ALAIN, stepPreloader } from '@delon/theme';
 import { environment } from '@env/environment';
@@ -14,16 +14,16 @@ import { VERSION as VERSION_ZORRO } from 'ng-zorro-antd/version';
     '[attr.ng-zorro-version]': 'ngZorroVersion'
   }
 })
-export class AppComponent implements OnInit {
+export class App {
   private readonly router = inject(Router);
   private readonly titleSrv = inject(TitleService);
   private readonly modalSrv = inject(NzModalService);
-  ngAlainVersion = VERSION_ALAIN.full;
-  ngZorroVersion = VERSION_ZORRO.full;
+  protected ngAlainVersion = VERSION_ALAIN.full;
+  protected ngZorroVersion = VERSION_ZORRO.full;
 
   private donePreloader = stepPreloader();
 
-  ngOnInit(): void {
+  constructor() {
     let configLoad = false;
     this.router.events.subscribe(ev => {
       if (ev instanceof RouteConfigLoadStart) {

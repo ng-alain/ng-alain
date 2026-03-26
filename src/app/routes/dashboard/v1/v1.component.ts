@@ -1,12 +1,12 @@
 import { Platform } from '@angular/cdk/platform';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject, DOCUMENT } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, DOCUMENT, afterNextRender, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import type { Chart } from '@antv/g2';
 import { OnboardingModule, OnboardingService } from '@delon/abc/onboarding';
 import { QuickMenuModule } from '@delon/abc/quick-menu';
-import { G2BarModule } from '@delon/chart/bar';
-import { G2MiniBarModule } from '@delon/chart/mini-bar';
-import { G2TimelineModule } from '@delon/chart/timeline';
+import { type G2BarData, G2BarModule } from '@delon/chart/bar';
+import { type G2MiniBarData, G2MiniBarModule } from '@delon/chart/mini-bar';
+import { G2TimelineData, G2TimelineModule } from '@delon/chart/timeline';
 import { _HttpClient } from '@delon/theme';
 import { SHARED_IMPORTS } from '@shared';
 import { timer } from 'rxjs';
@@ -17,13 +17,12 @@ import { timer } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [...SHARED_IMPORTS, G2TimelineModule, G2BarModule, G2MiniBarModule, QuickMenuModule, OnboardingModule]
 })
-export class DashboardV1Component implements OnInit {
+export class DashboardV1Component {
   private readonly http = inject(_HttpClient);
-  private readonly cdr = inject(ChangeDetectorRef);
   private readonly obSrv = inject(OnboardingService);
   private readonly platform = inject(Platform);
   private readonly doc = inject(DOCUMENT);
-  todoData = [
+  protected todoData = [
     {
       completed: true,
       avatar: '1',
@@ -62,32 +61,31 @@ export class DashboardV1Component implements OnInit {
     }
   ];
 
-  webSite!: any[];
-  salesData!: any[];
-  offlineChartData!: any[];
+  protected webSite = signal<G2MiniBarData[] | null>(null);
+  protected salesData = signal<G2BarData[] | null>(null);
+  protected offlineChartData = signal<G2TimelineData[] | null>(null);
 
   constructor() {
     timer(1000)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.genOnboarding());
+
+    afterNextRender(() => {
+      this.http.get('/chart').subscribe(res => {
+        this.webSite.set(res.visitData.slice(0, 10));
+        this.salesData.set(res.salesData);
+        this.offlineChartData.set(res.offlineChartData);
+      });
+    });
   }
 
-  fixDark(chart: Chart): void {
+  protected fixDark(chart: Chart): void {
     if (!this.platform.isBrowser || (this.doc.body as HTMLBodyElement).getAttribute('data-theme') !== 'dark') return;
 
     chart.theme({
       styleSheet: {
         backgroundColor: 'transparent'
       }
-    });
-  }
-
-  ngOnInit(): void {
-    this.http.get('/chart').subscribe(res => {
-      this.webSite = res.visitData.slice(0, 10);
-      this.salesData = res.salesData;
-      this.offlineChartData = res.offlineChartData;
-      this.cdr.detectChanges();
     });
   }
 

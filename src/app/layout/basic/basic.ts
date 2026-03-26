@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { I18nPipe, SettingsService, User } from '@delon/theme';
+import { I18nPipe, SettingsService } from '@delon/theme';
 import { LayoutDefaultModule, LayoutDefaultOptions } from '@delon/theme/layout-default';
 import { SettingDrawerModule } from '@delon/theme/setting-drawer';
 import { ThemeBtnComponent } from '@delon/theme/theme-btn';
@@ -10,15 +10,15 @@ import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
-import { HeaderClearStorageComponent } from './widgets/clear-storage.component';
-import { HeaderFullScreenComponent } from './widgets/fullscreen.component';
-import { HeaderI18nComponent } from './widgets/i18n.component';
-import { HeaderIconComponent } from './widgets/icon.component';
-import { HeaderNotifyComponent } from './widgets/notify.component';
-import { HeaderRTLComponent } from './widgets/rtl.component';
-import { HeaderSearchComponent } from './widgets/search.component';
-import { HeaderTaskComponent } from './widgets/task.component';
-import { HeaderUserComponent } from './widgets/user.component';
+import { HeaderClearStorage } from './widgets/clear-storage';
+import { HeaderFullScreen } from './widgets/fullscreen';
+import { HeaderI18n } from './widgets/i18n';
+import { HeaderIcon } from './widgets/icon';
+import { HeaderNotify } from './widgets/notify';
+import { HeaderRTL } from './widgets/rtl';
+import { HeaderSearch } from './widgets/search';
+import { HeaderTask } from './widgets/task';
+import { HeaderUser } from './widgets/user';
 
 @Component({
   selector: 'layout-basic',
@@ -35,12 +35,12 @@ import { HeaderUserComponent } from './widgets/user.component';
         </a>
       </layout-default-header-item>
       <layout-default-header-item direction="left" hidden="pc">
-        <div layout-default-header-item-trigger (click)="searchToggleStatus = !searchToggleStatus">
+        <div layout-default-header-item-trigger (click)="searchToggleStatus.set(!searchToggleStatus())">
           <nz-icon nzType="search" />
         </div>
       </layout-default-header-item>
       <layout-default-header-item direction="middle">
-        <header-search class="alain-default__search" [(toggleChange)]="searchToggleStatus" />
+        <header-search [(toggleChange)]="searchToggleStatus" />
       </layout-default-header-item>
       <layout-default-header-item direction="right">
         <header-notify />
@@ -110,26 +110,23 @@ import { HeaderUserComponent } from './widgets/user.component';
     NzAvatarModule,
     SettingDrawerModule,
     ThemeBtnComponent,
-    HeaderSearchComponent,
-    HeaderNotifyComponent,
-    HeaderTaskComponent,
-    HeaderIconComponent,
-    HeaderRTLComponent,
-    HeaderI18nComponent,
-    HeaderClearStorageComponent,
-    HeaderFullScreenComponent,
-    HeaderUserComponent
+    HeaderSearch,
+    HeaderNotify,
+    HeaderTask,
+    HeaderIcon,
+    HeaderRTL,
+    HeaderI18n,
+    HeaderClearStorage,
+    HeaderFullScreen,
+    HeaderUser
   ]
 })
-export class LayoutBasicComponent {
-  private readonly settings = inject(SettingsService);
-  options: LayoutDefaultOptions = {
+export class LayoutBasic {
+  readonly user = inject(SettingsService).user;
+  protected options: LayoutDefaultOptions = {
     logoExpanded: `./assets/logo-full.svg`,
     logoCollapsed: `./assets/logo.svg`
   };
-  searchToggleStatus = false;
-  showSettingDrawer = !environment.production;
-  get user(): User {
-    return this.settings.user;
-  }
+  protected searchToggleStatus = signal(false);
+  protected showSettingDrawer = !environment.production;
 }

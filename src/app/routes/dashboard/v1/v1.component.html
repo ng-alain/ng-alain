@@ -1,3 +1,4 @@
+@let _webSite = webSite();
 <div class="alain-default__content-title">
   <h1>
     Dashboard
@@ -31,13 +32,13 @@
         <p class="text-nowrap mb0">Website Traffics</p>
       </div>
       <div nz-col nzSpan="12">
-        @if (webSite) {
+        @if (_webSite) {
           <g2-mini-bar
             height="35"
             color="#fff"
             borderWidth="3"
             [padding]="[5, 30]"
-            [data]="webSite"
+            [data]="_webSite"
             tooltipType="mini"
             (ready)="fixDark($event)"
           />
@@ -52,13 +53,13 @@
         <p class="text-nowrap mb0">Website Impressions</p>
       </div>
       <div nz-col nzSpan="12">
-        @if (webSite) {
+        @if (_webSite) {
           <g2-mini-bar
             height="35"
             color="#fff"
             borderWidth="3"
             [padding]="[5, 30]"
-            [data]="webSite"
+            [data]="_webSite"
             tooltipType="mini"
             (ready)="fixDark($event)"
           />
@@ -73,13 +74,13 @@
         <p class="text-nowrap mb0">Total Sales</p>
       </div>
       <div nz-col nzSpan="12">
-        @if (webSite) {
+        @if (_webSite) {
           <g2-mini-bar
             height="35"
             color="#fff"
             borderWidth="3"
             [padding]="[5, 30]"
-            [data]="webSite"
+            [data]="_webSite"
             tooltipType="mini"
             (ready)="fixDark($event)"
           />
@@ -94,13 +95,13 @@
         <p class="text-nowrap mb0">Support Tickets</p>
       </div>
       <div nz-col nzSpan="12">
-        @if (webSite) {
+        @if (_webSite) {
           <g2-mini-bar
             height="35"
             color="#fff"
             borderWidth="3"
             [padding]="[5, 30]"
-            [data]="webSite"
+            [data]="_webSite"
             tooltipType="mini"
             (ready)="fixDark($event)"
           />
@@ -116,8 +117,9 @@
         Sales Statistics
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
-      @if (salesData) {
-        <g2-bar height="275" [data]="salesData" />
+      @let sd = salesData();
+      @if (sd) {
+        <g2-bar height="275" [data]="sd" />
       }
     </nz-card>
   </div>
@@ -127,8 +129,9 @@
         Growth Rate
         <small class="text-sm font-weight-normal">Business Expectations & Retail Sales Statistics</small>
       </ng-template>
-      @if (offlineChartData) {
-        <g2-timeline [data]="offlineChartData" [height]="289" [titleMap]="{ y1: '客流量', y2: '支付笔数' }" />
+      @let _offlineChartData = offlineChartData();
+      @if (_offlineChartData) {
+        <g2-timeline [data]="_offlineChartData" [height]="289" [titleMap]="{ y1: '客流量', y2: '支付笔数' }" />
       }
     </nz-card>
   </div>

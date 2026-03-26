@@ -1,11 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { GlobalFooterModule } from '@delon/abc/global-footer';
 import { DA_SERVICE_TOKEN } from '@delon/auth';
 import { ThemeBtnComponent } from '@delon/theme/theme-btn';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-import { HeaderI18nComponent } from '../basic/widgets/i18n.component';
+import { HeaderI18n } from '../basic/widgets/i18n';
 
 @Component({
   selector: 'layout-passport',
@@ -29,11 +29,11 @@ import { HeaderI18nComponent } from '../basic/widgets/i18n.component';
     </div>
     <theme-btn />
   `,
-  styleUrls: ['./passport.component.less'],
-  imports: [RouterOutlet, HeaderI18nComponent, GlobalFooterModule, NzIconModule, ThemeBtnComponent]
+  styleUrls: ['./passport.less'],
+  imports: [RouterOutlet, HeaderI18n, GlobalFooterModule, NzIconModule, ThemeBtnComponent]
 })
-export class LayoutPassportComponent implements OnInit {
-  private tokenService = inject(DA_SERVICE_TOKEN);
+export class LayoutPassport {
+  private tokenSrv = inject(DA_SERVICE_TOKEN);
 
   links = [
     {
@@ -50,7 +50,7 @@ export class LayoutPassportComponent implements OnInit {
     }
   ];
 
-  ngOnInit(): void {
-    this.tokenService.clear();
+  constructor() {
+    this.tokenSrv.clear();
   }
 }

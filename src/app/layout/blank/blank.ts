@@ -5,8 +5,8 @@ import { RouterOutlet } from '@angular/router';
   selector: 'layout-blank',
   template: `<router-outlet />`,
   host: {
-    '[class.alain-blank]': 'true'
+    class: 'alain-blank'
   },
   imports: [RouterOutlet]
 })
-export class LayoutBlankComponent {}
+export class LayoutBlank {}

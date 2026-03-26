@@ -1,5 +1,5 @@
 import { UpperCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostListener, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RTLService } from '@delon/theme';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
@@ -10,16 +10,12 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     {{ rtl.nextDir | uppercase }}
   `,
   host: {
-    '[class.flex-1]': 'true'
+    class: 'flex-1',
+    '(click)': 'rtl.toggle()'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NzIconModule, UpperCasePipe]
 })
-export class HeaderRTLComponent {
+export class HeaderRTL {
   readonly rtl = inject(RTLService);
-
-  @HostListener('click')
-  toggleDirection(): void {
-    this.rtl.toggle();
-  }
 }

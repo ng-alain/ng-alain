@@ -59,8 +59,7 @@
     "ngx-tinymce": "^21.0.0",
     "rxjs": "~7.8.0",
     "screenfull": "^6.0.2",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular/build": "^21.1.2",
@@ -94,7 +93,7 @@
     "stylelint-declaration-block-no-ignored-properties": "^3.0.0",
     "stylelint-order": "^7.0.1",
     "typescript": "~5.9.2",
-    "typescript-eslint": "8.54.0",
+    "typescript-eslint": "^8.56.0",
     "vitest": "^4.0.16"
   },
   "lint-staged": {

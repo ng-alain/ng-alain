@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostListener, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { I18nPipe } from '@delon/theme';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -11,17 +11,17 @@ import { NzModalService } from 'ng-zorro-antd/modal';
     {{ 'menu.clear.local.storage' | i18n }}
   `,
   host: {
-    '[class.flex-1]': 'true'
+    class: 'flex-1',
+    '(click)': '_click()'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NzIconModule, I18nPipe]
 })
-export class HeaderClearStorageComponent {
+export class HeaderClearStorage {
   private readonly modalSrv = inject(NzModalService);
   private readonly messageSrv = inject(NzMessageService);
 
-  @HostListener('click')
-  _click(): void {
+  protected _click(): void {
     this.modalSrv.confirm({
       nzTitle: 'Make sure clear all local storage?',
       nzOnOk: () => {
