@@ -1,0 +1,1 @@
+import{R as o}from"./chunk-K7GSPBPN.js";import{Ra as i,da as n}from"./chunk-MOBE5KQX.js";var y=(()=>{class e{srv=n(o);transform(r,t){return this.srv.format(r,t)}static \u0275fac=function(t){return new(t||e)};static \u0275pipe=i({name:"price",type:e,pure:!0})}return e})();export{y as a};
