@@ -1,7 +1,7 @@
 const { ACCESS_REPO: REPO, ACCESS_TOKEN: TOKEN, PR_NUMBER: PR } = process.env;
 const tag = process.argv.at(-2);
 const comment = process.argv.at(-1);
-const REPLACE_MARK = `<!-- GHA_UPDATE_COMMENT -->`;
+const REPLACE_MARK = `<!-- GHA_UPDATE_COMMENT_${tag} -->`;
 const ISSUE_API = `https://api.github.com/repos/${REPO}/issues`;
 
 const wrappedComment = `${REPLACE_MARK}\n${comment}`;
