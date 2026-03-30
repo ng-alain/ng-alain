@@ -11,7 +11,7 @@ async function withGithub(path, options = {}) {
   const res = await fetch(`${ISSUE_API}${path}`, {
     method,
     headers: {
-      Accept: 'application/json',
+      Accept: 'application/vnd.github+json',
       'Content-Type': 'application/json',
       Authorization: TOKEN.startsWith('ghp_') ? `Basic ${Buffer.from(TOKEN).toString('base64')}` : `Bearer ${TOKEN}`,
     },
