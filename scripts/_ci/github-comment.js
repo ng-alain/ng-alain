@@ -13,7 +13,7 @@ async function withGithub(path, options = {}) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${TOKEN}`,
+      Authorization: TOKEN.startsWith('ghp_') ? `Basic ${Buffer.from(TOKEN).toString('base64')}` : `Bearer ${TOKEN}`,
     },
     body: body ? JSON.stringify(body) : undefined,
   });

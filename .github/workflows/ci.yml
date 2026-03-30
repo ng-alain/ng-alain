@@ -10,10 +10,11 @@ on:
 permissions:
   contents: read
   issues: write
+  pull-requests: write
 
 env:
   ACCESS_REPO: ${{ github.repository }}
-  ACCESS_TOKEN: ${{ secrets.CI_COMMENTS }}
+  ACCESS_TOKEN: ${{ github.token }}
   PR_NUMBER: ${{ github.event.number }}
   SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
   SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
