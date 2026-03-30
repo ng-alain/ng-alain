@@ -7,6 +7,10 @@ on:
   push:
     branches: [main, master]
 
+permissions:
+  contents: read
+  issues: write
+
 env:
   ACCESS_REPO: ${{ github.repository }}
   ACCESS_TOKEN: ${{ secrets.CI_COMMENTS }}
