@@ -7,6 +7,13 @@ on:
   push:
     branches: [main, master]
 
+env:
+  ACCESS_REPO: ${{ github.repository }}
+  ACCESS_TOKEN: ${{ secrets.CI_COMMENTS }}
+  PR_NUMBER: ${{ github.event.number }}
+  SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+  SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,10 +25,6 @@ jobs:
       - name: Comment on github
         if: github.event.number
         run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
-        env:
-          ACCESS_REPO: ${{ github.repository }}
-          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
-          PR_NUMBER: ${{ github.event.number }}
       - name: Install node modules
         run: yarn install
       - name: Build
@@ -33,27 +36,14 @@ jobs:
           echo "Deploy to $DEPLOY_DOMAIN"
           cp ./dist/ng-alain/browser/index.html ./dist/ng-alain/browser/404.html
           npx surge --project ./dist/ng-alain/browser --domain $DEPLOY_DOMAIN
-        env:
-          ACCESS_REPO: ${{ github.repository }}
-          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
-          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       - name: 'Update comment on github'
         if: github.event.number
         run: |
           export DEPLOY_DOMAIN=https://preview-${{ github.event.number }}-ng-alain.surge.sh
           node ./scripts/_ci/github-comment.js "RELEASE" "[Preview is ready!]($DEPLOY_DOMAIN)"
-        env:
-          ACCESS_REPO: ${{ github.repository }}
-          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
-          PR_NUMBER: ${{ github.event.number }}
       - name: 'When failed'
         if: github.event.number && failure()
         run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Failed](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
-        env:
-          ACCESS_REPO: ${{ github.repository }}
-          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
-          PR_NUMBER: ${{ github.event.number }}
 
   build-day:
     runs-on: ubuntu-latest
@@ -65,10 +55,6 @@ jobs:
       - name: Comment on github
         if: github.event.number
         run: node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
-        env:
-          ACCESS_REPO: ${{ github.repository }}
-          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
-          PR_NUMBER: ${{ github.event.number }}
       - name: Install node modules
         run: yarn install
       - name: Build
@@ -80,27 +66,14 @@ jobs:
           echo "Deploy to $DEPLOY_DOMAIN"
           cp ./dist/ng-alain/browser/index.html ./dist/ng-alain/browser/404.html
           npx surge --project ./dist/ng-alain/browser --domain $DEPLOY_DOMAIN
-        env:
-          ACCESS_REPO: ${{ github.repository }}
-          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
-          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       - name: 'Update comment on github'
         if: github.event.number
         run: |
           export DEPLOY_DOMAIN=https://preview-${{ github.event.number }}-day-ng-alain.surge.sh
           node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview is ready!]($DEPLOY_DOMAIN)"
-        env:
-          ACCESS_REPO: ${{ github.repository }}
-          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
-          PR_NUMBER: ${{ github.event.number }}
       - name: 'When failed'
         if: github.event.number && failure()
         run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using day release @delon, Preview Failed](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
-        env:
-          ACCESS_REPO: ${{ github.repository }}
-          ACCESS_TOKEN: ${{ secrets.CI_TOKEN }}
-          PR_NUMBER: ${{ github.event.number }}
 
   lint:
     runs-on: ubuntu-latest
@@ -124,7 +97,7 @@ jobs:
       - run: yarn install
       - run: npx playwright install chromium-headless-shell
       - run: yarn test-coverage
-      - uses: codecov/codecov-action@v4
+      - uses: codecov/codecov-action@v6
         with:
           file: coverage/ng-alain/lcov.info
           flags: unit
