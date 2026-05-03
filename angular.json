@@ -37,7 +37,7 @@
             "allowedCommonJsDependencies": [
               "ajv",
               "ajv-formats",
-              "mockjs",
+              "@faker-js/faker",
               "file-saver",
               "extend"
             ],

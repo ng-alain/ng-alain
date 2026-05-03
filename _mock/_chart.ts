@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import * as Mock from 'mockjs';
+import { faker } from '@faker-js/faker';
 
 // region: mock data
 
@@ -199,7 +199,10 @@ export const CHARTS = {
     })
   ),
   '/chart/visit': JSON.parse(JSON.stringify(visitData)),
-  '/chart/tags': Mock.mock({
-    'list|100': [{ name: '@city', 'value|1-100': 150 }]
-  })
+  '/chart/tags': {
+    list: Array.from({ length: 100 }, () => ({
+      name: faker.location.city(),
+      value: faker.number.int({ min: 1, max: 100 })
+    }))
+  }
 };
