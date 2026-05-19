@@ -11,6 +11,20 @@ import { SHARED_IMPORTS } from '@shared';
 import type { CountdownConfig } from 'ngx-countdown';
 import { zip } from 'rxjs';
 
+interface MonitorTagItem {
+  name: string;
+  value: number;
+}
+
+interface MonitorTagsResponse {
+  list: MonitorTagItem[];
+}
+
+interface ActiveDataItem {
+  x: string;
+  y: number;
+}
+
 @Component({
   selector: 'app-dashboard-monitor',
   templateUrl: './monitor.component.html',
@@ -31,8 +45,8 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
   private readonly http = inject(_HttpClient);
   private readonly cdr = inject(ChangeDetectorRef);
 
-  data: any = {};
-  tags = [];
+  data: Record<string, unknown> = {};
+  tags: MonitorTagItem[] = [];
   loading = true;
   q = {
     start: null,
@@ -46,9 +60,9 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
 
   // region: active chart
 
-  activeTime$: any;
+  activeTime$?: ReturnType<typeof setInterval>;
 
-  activeData!: any[];
+  activeData: ActiveDataItem[] = [];
 
   activeStat = {
     max: 0,
@@ -58,9 +72,12 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit(): void {
-    zip(this.http.get('/chart'), this.http.get('/chart/tags')).subscribe(([res, tags]: [any, any]) => {
+    zip(this.http.get<Record<string, unknown>>('/chart'), this.http.get<MonitorTagsResponse>('/chart/tags')).subscribe(([res, tags]) => {
       this.data = res;
-      tags.list[Math.floor(Math.random() * tags.list.length) + 1].value = 1000;
+      const randomIndex = Math.floor(Math.random() * tags.list.length);
+      if (tags.list[randomIndex]) {
+        tags.list[randomIndex].value = 1000;
+      }
       this.tags = tags.list;
       this.loading = false;
       this.cdr.detectChanges();
@@ -72,7 +89,7 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
   }
 
   refData(): void {
-    const activeData: any[] = [];
+    const activeData: ActiveDataItem[] = [];
     for (let i = 0; i < 24; i += 1) {
       activeData.push({
         x: `${i.toString().padStart(2, '0')}:00`,
@@ -81,8 +98,9 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
     }
     this.activeData = activeData;
     // stat
-    this.activeStat.max = [...activeData].sort()[activeData.length - 1].y + 200;
-    this.activeStat.min = [...activeData].sort()[Math.floor(activeData.length / 2)].y;
+    const sortedByY = [...activeData].sort((a, b) => a.y - b.y);
+    this.activeStat.max = sortedByY[activeData.length - 1].y + 200;
+    this.activeStat.min = sortedByY[Math.floor(activeData.length / 2)].y;
     this.activeStat.t1 = activeData[Math.floor(activeData.length / 2)].x;
     this.activeStat.t2 = activeData[activeData.length - 1].x;
     // percent
@@ -92,8 +110,8 @@ export class DashboardMonitorComponent implements OnInit, OnDestroy {
 
   // endregion
 
-  couponFormat(val: any): string {
-    switch (parseInt(val, 10)) {
+  couponFormat(val: number | string): string {
+    switch (Number(val)) {
       case 20:
         return '差';
       case 40:

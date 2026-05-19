@@ -34,7 +34,7 @@ export class ProTableListComponent implements OnInit {
     status: null,
     statusList: []
   };
-  data: any[] = [];
+  data: STData[] = [];
   loading = false;
   status = [
     { index: 0, text: '关闭', value: false, type: 'default', checked: false },

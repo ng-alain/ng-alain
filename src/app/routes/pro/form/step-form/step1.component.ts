@@ -29,7 +29,7 @@ export class Step1Component implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form.patchValue(this.item as any);
+    this.form.patchValue(this.item as unknown as Record<string, unknown>);
   }
 
   _submitForm(): void {

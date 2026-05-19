@@ -17,7 +17,7 @@ export class UtilComponent {
   format_obj = JSON.stringify({ name: 'asdf' });
 
   // yuan
-  yuan_str: any;
+  yuan_value?: number;
   yuan_res!: string;
 
   content = `time ${+new Date()}
