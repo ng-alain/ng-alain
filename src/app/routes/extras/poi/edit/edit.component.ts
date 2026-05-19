@@ -4,6 +4,26 @@ import { SHARED_IMPORTS } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 
+interface PoiEditModel {
+  id: number;
+  user_id?: number;
+  branch_name?: string;
+  name?: string;
+  geo?: string;
+  type?: string;
+  typeName?: string;
+  address?: string;
+  tel?: string;
+  lat?: number;
+  lng?: number;
+  categories?: string[];
+  recommend?: string;
+  special?: string;
+  introduction?: string;
+  open_time?: string;
+  avg_price?: number;
+}
+
 @Component({
   selector: 'app-extras-poi-edit',
   templateUrl: './edit.component.html',
@@ -14,12 +34,12 @@ export class ExtrasPoiEditComponent implements OnInit {
   private readonly modal = inject(NzModalRef);
   readonly http = inject(_HttpClient);
 
-  i: any;
+  i!: PoiEditModel;
   cat: string[] = ['美食', '美食,粤菜', '美食,粤菜,湛江菜'];
 
   ngOnInit(): void {
     if (this.i.id > 0) {
-      this.http.get('/pois').subscribe(res => (this.i = res.list[0]));
+      this.http.get('/pois').subscribe(res => (this.i = res.list[0] as PoiEditModel));
     }
   }
 

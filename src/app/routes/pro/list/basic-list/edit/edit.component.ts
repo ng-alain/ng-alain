@@ -13,7 +13,7 @@ export class ProBasicListEditComponent {
   private readonly modal = inject(NzModalRef);
   private readonly msgSrv = inject(NzMessageService);
 
-  record: any = {};
+  record: Record<string, unknown> = {};
   schema: SFSchema = {
     properties: {
       title: { type: 'string', title: '任务名称', maxLength: 50 },
@@ -43,7 +43,7 @@ export class ProBasicListEditComponent {
     }
   };
 
-  save(value: any): void {
+  save(value: unknown): void {
     this.msgSrv.success('保存成功');
     this.modal.close(value);
   }

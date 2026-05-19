@@ -23,7 +23,7 @@ export class ProListProjectsComponent implements OnInit {
     user: null,
     rate: null
   };
-  list: any[] = [];
+  list: unknown[] = [];
   loading = true;
 
   categories = [
@@ -57,7 +57,7 @@ export class ProListProjectsComponent implements OnInit {
 
   getData(): void {
     this.loading = true;
-    this.http.get('/api/list', { count: this.q.ps }).subscribe(res => {
+    this.http.get<unknown[]>('/api/list', { count: this.q.ps }).subscribe(res => {
       this.list = this.list.concat(res);
       this.loading = false;
       this.cdr.detectChanges();

@@ -17,7 +17,7 @@ export class ProAccountCenterProjectsComponent {
   private readonly cdr = inject(ChangeDetectorRef);
 
   listLoading = true;
-  list: any[] = [];
+  list: Array<Record<string, unknown>> = [];
 
   constructor() {
     this.http.get('/api/list', { count: 8 }).subscribe(res => {

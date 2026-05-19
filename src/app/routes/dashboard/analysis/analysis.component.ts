@@ -1,20 +1,19 @@
 import { DecimalPipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
-import { STColumn } from '@delon/abc/st';
-import { G2BarModule } from '@delon/chart/bar';
+import { STColumn, STData } from '@delon/abc/st';
+import { G2BarData, G2BarModule } from '@delon/chart/bar';
 import { G2CardModule } from '@delon/chart/card';
-import { G2MiniAreaModule } from '@delon/chart/mini-area';
+import { G2MiniAreaData, G2MiniAreaModule } from '@delon/chart/mini-area';
 import { G2MiniBarModule } from '@delon/chart/mini-bar';
 import { G2MiniProgressModule } from '@delon/chart/mini-progress';
 import { NumberInfoModule } from '@delon/chart/number-info';
-import { G2PieModule } from '@delon/chart/pie';
-import { G2TimelineModule } from '@delon/chart/timeline';
+import { G2PieData, G2PieModule } from '@delon/chart/pie';
+import { G2TimelineData, G2TimelineModule } from '@delon/chart/timeline';
 import { TrendModule } from '@delon/chart/trend';
 import { ALAIN_I18N_TOKEN, _HttpClient } from '@delon/theme';
 import { getTimeDistance } from '@delon/util/date-time';
 import { deepCopy } from '@delon/util/other';
 import { SHARED_IMPORTS, yuan } from '@shared';
-import type { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -37,15 +36,26 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   ]
 })
 export class DashboardAnalysisComponent implements OnInit {
+  private readonly dateTypeOptions = ['today', 'week', 'month', 'year'] as const;
+
   private readonly http = inject(_HttpClient);
   readonly msg = inject(NzMessageService);
   private readonly i18n = inject(ALAIN_I18N_TOKEN);
   private readonly cdr = inject(ChangeDetectorRef);
 
-  data: any = {};
+  data: {
+    salesTypeData?: G2MiniAreaData[];
+    salesTypeDataOnline?: G2MiniAreaData[];
+    salesTypeDataOffline?: G2MiniAreaData[];
+    visitData?: G2MiniAreaData[];
+    visitData2?: G2MiniAreaData[];
+    searchData?: STData[];
+    salesData?: G2BarData[];
+    offlineData?: Array<{ name: string; cvr: number; chart: G2TimelineData[]; show?: boolean }>;
+  } = {};
   loading = true;
   dateRange: Date[] = [];
-  dateRangeTypes = ['today', 'week', 'month', 'year'];
+  dateRangeTypes = [...this.dateTypeOptions];
   dateRangeType = this.dateRangeTypes[0];
   rankingListData: Array<{ title: string; total: number }> = Array(7)
     .fill({})
@@ -86,7 +96,7 @@ export class DashboardAnalysisComponent implements OnInit {
   ];
 
   salesType = 'all';
-  salesPieData: any;
+  salesPieData?: G2PieData[];
   salesTotal = 0;
 
   saleTabs: string[] = ['sales', 'visits'];
@@ -95,7 +105,7 @@ export class DashboardAnalysisComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get('/chart').subscribe(res => {
-      res.offlineData.forEach((item: any) => {
+      res.offlineData.forEach((item: { chart: unknown }) => {
         item.chart = deepCopy(res.offlineChartData);
       });
       this.data = res;
@@ -104,8 +114,8 @@ export class DashboardAnalysisComponent implements OnInit {
     });
   }
 
-  setDate(type: string): void {
-    this.dateRange = getTimeDistance(type as NzSafeAny);
+  setDate(type: (typeof this.dateTypeOptions)[number]): void {
+    this.dateRange = getTimeDistance(type);
     this.dateRangeType = type;
     setTimeout(() => this.cdr.detectChanges());
   }
@@ -126,8 +136,9 @@ export class DashboardAnalysisComponent implements OnInit {
     return yuan(value);
   }
   offlineChange(idx: number): void {
-    if (this.data.offlineData[idx].show !== true) {
-      this.data.offlineData[idx].show = true;
+    const item = this.data.offlineData?.[idx];
+    if (item && item.show !== true) {
+      item.show = true;
       this.cdr.detectChanges();
     }
   }

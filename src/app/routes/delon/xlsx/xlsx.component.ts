@@ -12,7 +12,7 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
 export class XlsxComponent {
   private readonly xlsx = inject(XlsxService);
 
-  data: any;
+  data: unknown;
   users: Array<{ id: number; name: string; age: number }> = Array(100)
     .fill(0)
     .map((_item: number, idx: number) => {
