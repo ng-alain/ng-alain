@@ -56,6 +56,5 @@
     ".prettierrc": "json"
   },
   "js/ts.referencesCodeLens.enabled": true,
-  "angular.enable-strict-mode-prompt": false,
-  "ng-alain-vscode.classMode": "hover"
+  "angular.enable-strict-mode-prompt": false
 }
