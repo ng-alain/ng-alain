@@ -1,0 +1,3 @@
+@layer theme, base, ng-alain, utilities;
+
+@import 'tailwindcss';

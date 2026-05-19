@@ -31,6 +31,7 @@
               "src/favicon.ico"
             ],
             "styles": [
+              "src/tailwind.css",
               "src/styles.less"
             ],
             "scripts": [],
@@ -99,13 +100,19 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "browsers": ["chromium"],
+            "browsers": [
+              "chromium"
+            ],
             "runnerConfig": "vitest.config.ts"
           },
           "configurations": {
             "coverage": {
-						  "coverageReporters": ["lcov"],
-              "browsers": ["ChromiumHeadless"]
+              "coverageReporters": [
+                "lcov"
+              ],
+              "browsers": [
+                "ChromiumHeadless"
+              ]
             }
           }
         },
