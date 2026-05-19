@@ -4,6 +4,33 @@ import { _HttpClient } from '@delon/theme';
 import { SHARED_IMPORTS } from '@shared';
 import { Subscription, zip, filter } from 'rxjs';
 
+interface CenterTag {
+  label: string;
+}
+
+interface CenterUser {
+  avatar: string;
+  name: string;
+  signature: string;
+  title: string;
+  group: string;
+  geographic: {
+    province: CenterTag;
+    city: CenterTag;
+  };
+  tags: CenterTag[];
+}
+
+interface CenterNoticeItem {
+  logo: string;
+  member: string;
+}
+
+interface CenterTabItem {
+  key: string;
+  tab: string;
+}
+
 @Component({
   selector: 'app-account-center',
   templateUrl: './center.component.html',
@@ -18,9 +45,9 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
 
   private router$!: Subscription;
   @ViewChild('tagInput', { static: false }) private tagInput!: ElementRef<HTMLInputElement>;
-  user: any;
-  notice: any;
-  tabs = [
+  user: CenterUser | null = null;
+  notice: CenterNoticeItem[] | null = null;
+  tabs: CenterTabItem[] = [
     {
       key: 'articles',
       tab: '文章 (8)'
@@ -47,7 +74,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    zip(this.http.get('/user/current'), this.http.get('/api/notice')).subscribe(([user, notice]) => {
+    zip(this.http.get<CenterUser>('/user/current'), this.http.get<CenterNoticeItem[]>('/api/notice')).subscribe(([user, notice]) => {
       this.user = user;
       this.notice = notice;
       this.cdr.detectChanges();
@@ -67,7 +94,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
 
   tagBlur(): void {
     const { user, cdr, tagValue } = this;
-    if (tagValue && user.tags.filter((tag: { label: string }) => tag.label === tagValue).length === 0) {
+    if (user && tagValue && user.tags.every(tag => tag.label !== tagValue)) {
       user.tags.push({ label: tagValue });
     }
     this.tagValue = '';

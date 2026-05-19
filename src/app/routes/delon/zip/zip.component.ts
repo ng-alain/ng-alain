@@ -15,7 +15,7 @@ export class ZipComponent implements OnInit {
   private readonly msg = inject(NzMessageService);
   private readonly cdr = inject(ChangeDetectorRef);
 
-  list: any;
+  list: unknown[] = [];
   instance: jsZipType | null = null;
   data: Array<{ path?: string; url?: string }> = [
     { path: 'demo.docx', url: 'https://ng-alain.com/assets/demo.docx' },
@@ -32,7 +32,7 @@ export class ZipComponent implements OnInit {
     });
   }
 
-  private format(data: any): void {
+  private format(data: { files: Record<string, { dir: boolean; date: Date }> }): void {
     const files = data.files;
     this.list = Object.keys(files).map(key => {
       return {

@@ -3,6 +3,13 @@ import { Lodop, LodopService } from '@delon/abc/lodop';
 import { SHARED_IMPORTS } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
+interface PrintConfig {
+  url: string;
+  printer: string;
+  paper: string;
+  html: string;
+}
+
 @Component({
   selector: 'app-print',
   templateUrl: './print.component.html',
@@ -25,7 +32,7 @@ export class PrintComponent {
     });
   }
 
-  cog: any = {
+  cog: PrintConfig = {
     url: 'https://localhost:8443/CLodopfuncs.js',
     printer: '',
     paper: '',
@@ -40,7 +47,7 @@ export class PrintComponent {
   };
   error = false;
   lodop: Lodop | null = null;
-  pinters: any[] = [];
+  pinters: string[] = [];
   papers: string[] = [];
 
   printing = false;

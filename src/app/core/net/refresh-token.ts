@@ -1,19 +1,19 @@
-import { HttpClient, HttpHandlerFn, HttpRequest, HttpResponseBase } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandlerFn, HttpRequest, HttpResponseBase } from '@angular/common/http';
 import { EnvironmentProviders, Injector, inject, provideAppInitializer } from '@angular/core';
-import { DA_SERVICE_TOKEN } from '@delon/auth';
+import { DA_SERVICE_TOKEN, ITokenModel } from '@delon/auth';
 import { BehaviorSubject, Observable, catchError, filter, switchMap, take, throwError } from 'rxjs';
 
 import { toLogin } from './helper';
 
 let refreshToking = false;
-let refreshToken$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+let refreshToken$ = new BehaviorSubject<unknown>(null);
 
 /**
  * 重新附加新 Token 信息
  *
  * > 由于已经发起的请求，不会再走一遍 `@delon/auth` 因此需要结合业务情况重新附加新的 Token
  */
-function reAttachToken(injector: Injector, req: HttpRequest<any>): HttpRequest<any> {
+function reAttachToken(injector: Injector, req: HttpRequest<unknown>): HttpRequest<unknown> {
   const token = injector.get(DA_SERVICE_TOKEN).get()?.token;
   return req.clone({
     setHeaders: {
@@ -22,15 +22,20 @@ function reAttachToken(injector: Injector, req: HttpRequest<any>): HttpRequest<a
   });
 }
 
-function refreshTokenRequest(injector: Injector): Observable<any> {
+function refreshTokenRequest(injector: Injector): Observable<ITokenModel> {
   const model = injector.get(DA_SERVICE_TOKEN).get();
-  return injector.get(HttpClient).post(`/api/auth/refresh`, { headers: { refresh_token: model?.['refresh_token'] || '' } });
+  return injector.get(HttpClient).post<ITokenModel>(`/api/auth/refresh`, { headers: { refresh_token: model?.['refresh_token'] || '' } });
 }
 
 /**
  * 刷新Token方式一：使用 401 重新刷新 Token
  */
-export function tryRefreshToken(injector: Injector, ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandlerFn): Observable<any> {
+export function tryRefreshToken(
+  injector: Injector,
+  ev: HttpResponseBase,
+  req: HttpRequest<unknown>,
+  next: HttpHandlerFn
+): Observable<HttpEvent<unknown>> {
   // 1、若请求为刷新Token请求，表示来自刷新Token可以直接跳转登录页
   if ([`/api/auth/refresh`].some(url => req.url.includes(url))) {
     toLogin(injector);

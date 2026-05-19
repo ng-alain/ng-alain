@@ -14,7 +14,7 @@ export class GuardComponent {
   private readonly menuSrv = inject(MenuService);
   private readonly router = inject(Router);
 
-  get data(): any {
+  get data(): unknown {
     return this.aclSrv.data;
   }
 

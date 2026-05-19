@@ -9,7 +9,7 @@ import { SHARED_IMPORTS } from '@shared';
   imports: SHARED_IMPORTS
 })
 export class DelonFormComponent {
-  params: any = {};
+  params: Record<string, unknown> = {};
   url = `/user`;
   searchSchema: SFSchema = {
     properties: {

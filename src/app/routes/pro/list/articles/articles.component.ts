@@ -21,7 +21,7 @@ export class ProListArticlesComponent implements OnInit {
     rate: ''
   };
 
-  list: any[] = [];
+  list: unknown[] = [];
   loading = false;
 
   categories = [

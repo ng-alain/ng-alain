@@ -1,4 +1,4 @@
-import { HttpErrorResponse, HttpHandlerFn, HttpInterceptorFn, HttpRequest, HttpResponseBase } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpInterceptorFn, HttpRequest, HttpResponseBase } from '@angular/common/http';
 import { Injector, inject } from '@angular/core';
 import { IGNORE_BASE_URL } from '@delon/theme';
 import { environment } from '@env/environment';
@@ -7,7 +7,12 @@ import { Observable, of, throwError, mergeMap } from 'rxjs';
 import { ReThrowHttpError, checkStatus, getAdditionalHeaders, toLogin } from './helper';
 import { tryRefreshToken } from './refresh-token';
 
-function handleData(injector: Injector, ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandlerFn): Observable<any> {
+function handleData(
+  injector: Injector,
+  ev: HttpResponseBase,
+  req: HttpRequest<unknown>,
+  next: HttpHandlerFn
+): Observable<HttpEvent<unknown>> {
   checkStatus(injector, ev);
   // 业务处理：一些通用操作
   switch (ev.status) {
@@ -29,7 +34,7 @@ function handleData(injector: Injector, ev: HttpResponseBase, req: HttpRequest<a
       //       return of(ev);
       //     }
       //     // 重新修改 `body` 内容为 `response` 内容，对于绝大多数场景已经无须再关心业务状态码
-      //     return of(new HttpResponse({ ...ev, body: body.response } as any));
+      //     return of(new HttpResponse({ ...ev, body: body.response } as HttpEvent<unknown>));
       //     // 或者依然保持完整的格式
       //     return of(ev);
       //   }
@@ -57,7 +62,7 @@ function handleData(injector: Injector, ev: HttpResponseBase, req: HttpRequest<a
   } else if ((ev as unknown as ReThrowHttpError)._throw === true) {
     return throwError(() => (ev as unknown as ReThrowHttpError).body);
   } else {
-    return of(ev);
+    return of(ev) as unknown as Observable<HttpEvent<unknown>>;
   }
 }
 

@@ -29,7 +29,7 @@ export class ExtrasSettingsComponent implements OnInit {
   // Email
   primary_email = 'cipchk@qq.com';
 
-  profileSave(value: any): void {
+  profileSave(value: unknown): void {
     console.log('profile value', value);
   }
 

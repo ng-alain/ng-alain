@@ -37,7 +37,7 @@
       <nz-card nzType="inner" nzTitle="yuan">
         <nz-row [nzGutter]="16">
           <nz-col [nzSpan]="12">
-            <input type="number" nz-input [(ngModel)]="yuan_str" (ngModelChange)="onYuan($event)" />
+            <input type="number" nz-input [(ngModel)]="yuan_value" (ngModelChange)="onYuan($event)" />
           </nz-col>
           <nz-col [nzSpan]="12">
             <div [innerHTML]="yuan_res"></div>

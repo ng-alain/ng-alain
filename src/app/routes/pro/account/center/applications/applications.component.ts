@@ -16,7 +16,7 @@ export class ProAccountCenterApplicationsComponent {
   private readonly cdr = inject(ChangeDetectorRef);
 
   listLoading = true;
-  list: any[] = [];
+  list: NzSafeAny[] = [];
   constructor() {
     this.http.get('/api/list', { count: 8 }).subscribe((res: NzSafeAny[]) => {
       this.list = res.map(item => {
