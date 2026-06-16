@@ -402,9 +402,9 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
       animation-duration: @router-animation-duration;}
   }
   .router-ant-mixin(@router-animation-enabled);}
-@plugin "./bezierEasing";
-@plugin "./tinyColor";
-@plugin "./colorPalette";
+@plugin "./bezierEasing.cjs";
+@plugin "./tinyColor.cjs";
+@plugin "./colorPalette.cjs";
 @blue-base: #1890ff;
 @blue-1: color(colorPalette('@{blue-6}', 1));
 @blue-2: color(colorPalette('@{blue-6}', 2));
@@ -797,11 +797,14 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @screen-xl-min: @screen-xl;
 @screen-xxl: 1600px;
 @screen-xxl-min: @screen-xxl;
+@screen-xxxl: 1920px;
+@screen-xxxl-min: @screen-xxxl;
 @screen-xs-max: (@screen-sm-min - 1px);
 @screen-sm-max: (@screen-md-min - 1px);
 @screen-md-max: (@screen-lg-min - 1px);
 @screen-lg-max: (@screen-xl-min - 1px);
 @screen-xl-max: (@screen-xxl-min - 1px);
+@screen-xxl-max: (@screen-xxxl-min - 1px);
 @grid-columns: 24;
 @layout-body-background: #f0f2f5;
 @layout-header-background: #001529;
