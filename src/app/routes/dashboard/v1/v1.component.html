@@ -161,7 +161,7 @@
         <small class="text-sm font-weight-normal">Venenatis portauam Inceptos ameteiam</small>
       </ng-template>
       @for (item of todoData; track $index) {
-        <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md bg-grey-lighter-h point">
+        <div nz-row nzJustify="center" nzAlign="middle" class="py-sm pr-md bg-grey-lighter-h point">
           <div nz-col [nzSpan]="4" class="text-center">
             <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
           </div>
@@ -176,7 +176,7 @@
   <div nz-col nzXs="24" nzMd="12">
     <nz-card nzTitle="Todo lists" [nzBordered]="false" class="ant-card__body-nopadding">
       @for (item of todoData; track $index) {
-        <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="py-sm pr-md bg-grey-lighter-h point">
+        <div nz-row nzJustify="center" nzAlign="middle" class="py-sm pr-md bg-grey-lighter-h point">
           <div nz-col [nzSpan]="4" class="text-center">
             <nz-avatar [nzSrc]="'./assets/tmp/img/' + item.avatar + '.png'" />
           </div>

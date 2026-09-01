@@ -1,6 +1,6 @@
-<page-header [title]="'查询表格'" />
+<page-header title="查询表格" />
 <nz-card [nzBordered]="false">
-  <form nz-form [nzLayout]="'inline'" (ngSubmit)="getData()" class="search__form">
+  <form nz-form nzLayout="inline" (ngSubmit)="getData()" class="search__form">
     <div nz-row [nzGutter]="{ xs: 8, sm: 8, md: 8, lg: 24, xl: 48, xxl: 48 }">
       <div nz-col nzMd="8" nzSm="24">
         <nz-form-item>
@@ -14,7 +14,7 @@
         <nz-form-item>
           <nz-form-label nzFor="status">使用状态</nz-form-label>
           <nz-form-control>
-            <nz-select [(ngModel)]="q.status" name="status" id="status" [nzPlaceHolder]="'请选择'" [nzShowSearch]="true">
+            <nz-select [(ngModel)]="q.status" name="status" id="status" nzPlaceHolder="请选择" [nzShowSearch]="true">
               @for (i of status; track $index) {
                 <nz-option [nzLabel]="i.text" [nzValue]="$index" />
               }
@@ -43,7 +43,7 @@
           <nz-form-item>
             <nz-form-label nzFor="status2">使用状态</nz-form-label>
             <nz-form-control>
-              <nz-select [nzPlaceHolder]="'请选择'" nzId="status2" [nzShowSearch]="true">
+              <nz-select nzPlaceHolder="请选择" nzId="status2" [nzShowSearch]="true">
                 @for (i of status; track $index) {
                   <nz-option [nzLabel]="i.text" [nzValue]="$index" />
                 }
@@ -55,7 +55,7 @@
           <nz-form-item>
             <nz-form-label nzFor="status3">使用状态</nz-form-label>
             <nz-form-control>
-              <nz-select [nzPlaceHolder]="'请选择'" nzId="status3" [nzShowSearch]="true">
+              <nz-select nzPlaceHolder="请选择" nzId="status3" [nzShowSearch]="true">
                 @for (i of status; track $index) {
                   <nz-option [nzLabel]="i.text" [nzValue]="$index" />
                 }
@@ -65,7 +65,7 @@
         </div>
       }
       <div nz-col [nzSpan]="expandForm ? 24 : 8" [class.text-right]="expandForm">
-        <button nz-button type="submit" [nzType]="'primary'" [nzLoading]="loading">查询</button>
+        <button nz-button type="submit" nzType="primary" [nzLoading]="loading">查询</button>
         <button nz-button type="reset" (click)="reset()" class="mx-sm">重置</button>
         <a (click)="expandForm = !expandForm">
           {{ expandForm ? '收起' : '展开' }}
@@ -74,7 +74,7 @@
       </div>
     </div>
   </form>
-  <button nz-button (click)="add(modalContent)" [nzType]="'primary'">
+  <button nz-button (click)="add(modalContent)" nzType="primary">
     <nz-icon nzType="plus" />
     <span>新建</span>
   </button>
@@ -92,7 +92,7 @@
     </nz-dropdown-menu>
   }
   <div class="my-md">
-    <nz-alert [nzType]="'info'" [nzShowIcon]="true" [nzMessage]="message">
+    <nz-alert nzType="info" [nzShowIcon]="true" [nzMessage]="message">
       <ng-template #message>
         已选择
         <strong class="text-primary">{{ selectedRows.length }}</strong> 项&nbsp;&nbsp; 服务调用总计 <strong>{{ totalCallNo }}</strong> 万

@@ -9,7 +9,7 @@
 </div>
 <nz-card>
   @if (error) {
-    <nz-alert [nzType]="'warning'" [nzMessage]="message">
+    <nz-alert nzType="warning" [nzMessage]="message">
       <ng-template #message>
         请先下载
         <a href="http://c-lodop.com/download.html" target="_blank">Lodop插件</a>。

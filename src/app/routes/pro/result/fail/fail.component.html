@@ -1,6 +1,6 @@
 <page-header />
 <nz-card [nzBordered]="false">
-  <nz-result nzStatus="error" [nzTitle]="'提交失败'" nzSubTitle="请核对并修改以下信息后，再重新提交。">
+  <nz-result nzStatus="error" nzTitle="提交失败" nzSubTitle="请核对并修改以下信息后，再重新提交。">
     <div nz-result-extra>
       <div class="mb-md text-lg">您提交的内容有如下错误：</div>
       <div class="mb-md">
@@ -17,7 +17,7 @@
           <nz-icon nzType="right" class="pl-sm" />
         </a>
       </div>
-      <button nz-button [nzType]="'primary'">返回修改</button>
+      <button nz-button nzType="primary">返回修改</button>
     </div>
   </nz-result>
 </nz-card>

@@ -18,19 +18,18 @@
     "sourceMap": true,
     "declaration": false,
     "useDefineForClassFields": false,
-    "baseUrl": "./",
     "paths": {
       "@shared": [
-        "src/app/shared/index"
+        "./src/app/shared/index"
       ],
       "@core": [
-        "src/app/core/index"
+        "./src/app/core/index"
       ],
       "@env/*": [
-        "src/environments/*"
+        "./src/environments/*"
       ],
       "@_mock": [
-        "_mock/index"
+        "./_mock/index"
       ]
     }
   },

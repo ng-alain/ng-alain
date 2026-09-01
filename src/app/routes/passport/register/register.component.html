@@ -1,7 +1,7 @@
 <h3>{{ 'app.register.register' | i18n }}</h3>
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
   @if (error) {
-    <nz-alert [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg" />
+    <nz-alert nzType="error" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg" />
   }
   <nz-form-item>
     <nz-form-control [nzErrorTip]="mailErrorTip">
@@ -74,8 +74,8 @@
     <nz-form-control [nzErrorTip]="mobileErrorTip">
       <nz-space-compact nzSize="large" class="width-100">
         <nz-select nzSize="large" formControlName="mobilePrefix" style="width: 100px">
-          <nz-option [nzLabel]="'+86'" [nzValue]="'+86'" />
-          <nz-option [nzLabel]="'+87'" [nzValue]="'+87'" />
+          <nz-option nzLabel="+86" nzValue="+86" />
+          <nz-option nzLabel="+87" nzValue="+87" />
         </nz-select>
         <input nz-input nzSize="large" formControlName="mobile" placeholder="Phone number" />
       </nz-space-compact>

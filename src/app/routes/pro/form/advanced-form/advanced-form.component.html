@@ -1,7 +1,5 @@
-<page-header [title]="'高级表单'">
-  高级表单常见于一次性输入和提交大批量数据的场景。（示例采用响应式表单，也可使用模板驱动方式）
-</page-header>
-<form nz-form [formGroup]="form" (ngSubmit)="_submitForm()" [nzLayout]="'vertical'">
+<page-header title="高级表单"> 高级表单常见于一次性输入和提交大批量数据的场景。（示例采用响应式表单，也可使用模板驱动方式） </page-header>
+<form nz-form [formGroup]="form" (ngSubmit)="_submitForm()" nzLayout="vertical">
   <nz-card [nzBordered]="false" nzTitle="仓库管理">
     <nz-row nzGutter="16">
       <nz-col nzLg="6" nzMd="12" nzSm="24">
@@ -26,7 +24,7 @@
         <nz-form-item>
           <nz-form-label>仓库管理员</nz-form-label>
           <nz-form-control nzErrorTip="请选择管理员">
-            <nz-select formControlName="owner" [nzPlaceHolder]="'请选择管理员'" [nzShowSearch]="true">
+            <nz-select formControlName="owner" nzPlaceHolder="请选择管理员" [nzShowSearch]="true">
               @for (i of users; track $index) {
                 <nz-option [nzLabel]="i.label" [nzValue]="i.value" />
               }
@@ -40,7 +38,7 @@
         <nz-form-item>
           <nz-form-label>审批员</nz-form-label>
           <nz-form-control nzErrorTip="请选择审批员">
-            <nz-select formControlName="approver" [nzPlaceHolder]="'请选择管理员'" [nzShowSearch]="true">
+            <nz-select formControlName="approver" nzPlaceHolder="请选择管理员" [nzShowSearch]="true">
               @for (i of users; track $index) {
                 <nz-option [nzLabel]="i.label" [nzValue]="i.value" />
               }
@@ -60,9 +58,9 @@
         <nz-form-item>
           <nz-form-label>仓库类型</nz-form-label>
           <nz-form-control nzErrorTip="请选择仓库类型">
-            <nz-select formControlName="type" [nzShowSearch]="true" [nzPlaceHolder]="'请选择仓库类型'">
-              <nz-option [nzLabel]="'私密'" [nzValue]="'private'" />
-              <nz-option [nzLabel]="'公开'" [nzValue]="'public'" />
+            <nz-select formControlName="type" [nzShowSearch]="true" nzPlaceHolder="请选择仓库类型">
+              <nz-option nzLabel="私密" nzValue="private" />
+              <nz-option nzLabel="公开" nzValue="public" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -83,7 +81,7 @@
         <nz-form-item>
           <nz-form-label>任务描述</nz-form-label>
           <nz-form-control nzErrorTip="请输入任务描述">
-            <textarea nz-input formControlName="summary" [nzAutosize]="true" placeholder="请输入任务描述"></textarea>
+            <textarea nz-input formControlName="summary" cdkTextareaAutosize placeholder="请输入任务描述"></textarea>
           </nz-form-control>
         </nz-form-item>
       </nz-col>
@@ -91,7 +89,7 @@
         <nz-form-item>
           <nz-form-label>执行人</nz-form-label>
           <nz-form-control nzErrorTip="请选择执行人">
-            <nz-select formControlName="owner2" [nzPlaceHolder]="'请选择执行人'" [nzShowSearch]="true">
+            <nz-select formControlName="owner2" nzPlaceHolder="请选择执行人" [nzShowSearch]="true">
               @for (i of users; track $index) {
                 <nz-option [nzLabel]="i.label" [nzValue]="i.value" />
               }
@@ -105,7 +103,7 @@
         <nz-form-item>
           <nz-form-label>责任人</nz-form-label>
           <nz-form-control nzErrorTip="请选择责任人">
-            <nz-select formControlName="approver2" [nzPlaceHolder]="'请选择责任人'" [nzShowSearch]="true">
+            <nz-select formControlName="approver2" nzPlaceHolder="请选择责任人" [nzShowSearch]="true">
               @for (i of users; track $index) {
                 <nz-option [nzLabel]="i.label" [nzValue]="i.value" />
               }
@@ -125,9 +123,9 @@
         <nz-form-item>
           <nz-form-label>任务类型</nz-form-label>
           <nz-form-control nzErrorTip="请选择任务类型">
-            <nz-select formControlName="type2" [nzShowSearch]="true" [nzPlaceHolder]="'请选择任务类型'">
-              <nz-option [nzLabel]="'私密'" [nzValue]="'private'" />
-              <nz-option [nzLabel]="'公开'" [nzValue]="'public'" />
+            <nz-select formControlName="type2" [nzShowSearch]="true" nzPlaceHolder="请选择任务类型">
+              <nz-option nzLabel="私密" nzValue="private" />
+              <nz-option nzLabel="公开" nzValue="public" />
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -145,10 +143,10 @@
         </tr>
       </thead>
       <tbody>
-        @for (item of items.controls; track $index; let i = $index) {
-          <tr [formGroupName]="i">
-            @let v = items.value[i];
-            @let isView = editIndex !== i;
+        @for (item of items.controls; track $index) {
+          <tr [formGroupName]="$index">
+            @let v = items.value[$index];
+            @let isView = editIndex !== $index;
             <td>
               @if (isView) {
                 {{ v.name }}
@@ -184,13 +182,13 @@
             </td>
             <td>
               @if (isView) {
-                <a (click)="edit(i)">编辑</a>
+                <a (click)="edit($index)">编辑</a>
                 <nz-divider nzType="vertical" />
-                <a nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="del(i)">删除</a>
+                <a nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="del($index)">删除</a>
               } @else {
-                <a (click)="save(i)">保存</a>
+                <a (click)="save($index)">保存</a>
                 <nz-divider nzType="vertical" />
-                <a nz-popconfirm nzPopconfirmTitle="是否要取消操作？" (nzOnConfirm)="cancel(i)">取消</a>
+                <a nz-popconfirm nzPopconfirmTitle="是否要取消操作？" (nzOnConfirm)="cancel($index)">取消</a>
               }
             </td>
           </tr>
@@ -198,7 +196,7 @@
       </tbody>
     </nz-table>
     @if (editIndex === -1) {
-      <button nz-button [nzType]="'dashed'" (click)="add()" nzBlock class="mt-md">
+      <button nz-button nzType="dashed" (click)="add()" nzBlock class="mt-md">
         <nz-icon nzType="plus" />
         <span>新增成员</span>
       </button>

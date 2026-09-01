@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { copy } from '@delon/util/browser';
 import { format } from '@delon/util/format';
 import { SHARED_IMPORTS, yuan } from '@shared';
+import type { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -24,7 +25,7 @@ export class UtilComponent {
 
     中文！@#￥%……&*`;
   onFormat(): void {
-    let obj = null;
+    let obj: NzSafeAny;
     try {
       obj = JSON.parse(this.format_obj);
     } catch {

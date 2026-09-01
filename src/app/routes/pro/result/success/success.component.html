@@ -2,7 +2,7 @@
 <nz-card>
   <nz-result
     nzStatus="success"
-    [nzTitle]="'提交成功'"
+    nzTitle="提交成功"
     nzSubTitle="提交结果页用于反馈一系列操作任务的处理结果，如果仅是简单操作，使用 Message 全局提示反馈即可。本文字区域可以展示简单的补充说明，如果有类似展示x“单据”的需求，下面这个灰色区域可以呈现比较复杂的内容。"
   >
     <div nz-result-extra>
@@ -21,7 +21,7 @@
         </div>
       </div>
       <nz-steps [nzCurrent]="1" nzProgressDot class="mb-lg">
-        <nz-step [nzTitle]="'创建项目'" [nzDescription]="createDesc">
+        <nz-step nzTitle="创建项目" [nzDescription]="createDesc">
           <ng-template #createDesc>
             <div style="font-size: 14px; position: relative; left: 38px">
               <div style="margin-top: 8px; margin-bottom: 4px">
@@ -32,7 +32,7 @@
             </div>
           </ng-template>
         </nz-step>
-        <nz-step [nzTitle]="'部门初审'" [nzDescription]="checkedDesc">
+        <nz-step nzTitle="部门初审" [nzDescription]="checkedDesc">
           <ng-template #checkedDesc>
             <div style="font-size: 14px; position: relative; left: 38px">
               <div style="margin-top: 8px; margin-bottom: 4px">
@@ -45,10 +45,10 @@
             </div>
           </ng-template>
         </nz-step>
-        <nz-step [nzTitle]="'财务复核'" />
-        <nz-step [nzTitle]="'完成'" />
+        <nz-step nzTitle="财务复核" />
+        <nz-step nzTitle="完成" />
       </nz-steps>
-      <button nz-button [nzType]="'primary'">返回列表</button>
+      <button nz-button nzType="primary">返回列表</button>
       <button nz-button>查看项目</button>
       <button nz-button>打 印</button>
     </div>

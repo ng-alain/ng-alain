@@ -2,6 +2,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { DelonLocaleService, SettingsService } from '@delon/theme';
+import { provideNzDateFnsAdapter } from 'ng-zorro-antd/core/time';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
 
@@ -31,7 +32,8 @@ describe('Service: I18n', () => {
         { provide: NzI18nService, useValue: MockNzI18nService },
         { provide: DelonLocaleService, useValue: MockDelonLocaleService },
         provideHttpClient(withInterceptorsFromDi()),
-        provideHttpClientTesting()
+        provideHttpClientTesting(),
+        provideNzDateFnsAdapter()
       ]
     });
     srv = TestBed.inject(I18NService);

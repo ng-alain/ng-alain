@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { NoticeIconList, NoticeIconModule, NoticeIconSelect, NoticeItem } from '@delon/abc/notice-icon';
 import { add, formatDistanceToNow, parse } from 'date-fns';
-import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -23,7 +22,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class HeaderNotify {
   private readonly msg = inject(NzMessageService);
-  private readonly nzI18n = inject(NzI18nService);
   protected data = signal<NoticeItem[]>([
     {
       title: '通知',
@@ -60,7 +58,7 @@ export class HeaderNotify {
         newItem.datetime = parse(newItem.datetime, 'yyyy-MM-dd', new Date());
       }
       if (newItem.datetime) {
-        newItem.datetime = formatDistanceToNow(newItem.datetime as Date, { locale: this.nzI18n.getDateLocale() });
+        newItem.datetime = formatDistanceToNow(newItem.datetime as Date);
       }
       if (newItem.extra && newItem['status']) {
         newItem['color'] = (

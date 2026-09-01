@@ -176,13 +176,13 @@
     >
       <ng-template #extra>
         <nz-radio-group [(ngModel)]="salesType" (ngModelChange)="changeSaleType()">
-          <label nz-radio-button [nzValue]="'all'">
+          <label nz-radio-button nzValue="all">
             {{ 'app.analysis.channel.all' | i18n }}
           </label>
-          <label nz-radio-button [nzValue]="'online'">
+          <label nz-radio-button nzValue="online">
             {{ 'app.analysis.channel.online' | i18n }}
           </label>
-          <label nz-radio-button [nzValue]="'offline'">
+          <label nz-radio-button nzValue="offline">
             {{ 'app.analysis.channel.stores' | i18n }}
           </label>
         </nz-radio-group>

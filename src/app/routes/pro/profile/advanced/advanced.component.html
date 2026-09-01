@@ -1,4 +1,4 @@
-<page-header [title]="'单号：234231029431'" [logo]="logo" [action]="action" [extra]="extra" [tab]="tab">
+<page-header title="单号：234231029431" [logo]="logo" [action]="action" [extra]="extra" [tab]="tab">
   <ng-template #logo>
     <img src="https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png" />
   </ng-template>
@@ -17,7 +17,7 @@
         <li nz-menu-item>选项三</li>
       </ul>
     </nz-dropdown-menu>
-    <button nz-button [nzType]="'primary'">主操作</button>
+    <button nz-button nzType="primary">主操作</button>
   </ng-template>
   <ng-template #extra>
     <div nz-row>
@@ -50,7 +50,7 @@
 </page-header>
 <nz-card [nzBordered]="false" class="mb-lg" nzTitle="流程进度">
   <nz-steps [nzCurrent]="1" nzProgressDot>
-    <nz-step [nzTitle]="'创建项目'" [nzDescription]="createDesc">
+    <nz-step nzTitle="创建项目" [nzDescription]="createDesc">
       <ng-template #createDesc>
         <div class="desc">
           <div class="my-sm">
@@ -61,7 +61,7 @@
         </div>
       </ng-template>
     </nz-step>
-    <nz-step [nzTitle]="'部门初审'" [nzDescription]="checkedDesc">
+    <nz-step nzTitle="部门初审" [nzDescription]="checkedDesc">
       <ng-template #checkedDesc>
         <div class="desc">
           <div class="my-sm">
@@ -72,8 +72,8 @@
         </div>
       </ng-template>
     </nz-step>
-    <nz-step [nzTitle]="'财务复核'" />
-    <nz-step [nzTitle]="'完成'" />
+    <nz-step nzTitle="财务复核" />
+    <nz-step nzTitle="完成" />
   </nz-steps>
   <div class="steps-content"></div>
 </nz-card>

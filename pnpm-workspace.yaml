@@ -1,0 +1,38 @@
+publicHoistPattern:
+  - '@antv/g2'
+  - 'jszip'
+  - 'ngx-countdown'
+  - '@faker-js/faker'
+  - 'date-fns'
+  - '@ant-design/icons-angular'
+allowBuilds:
+  '@parcel/watcher': false
+  core-js: false
+  esbuild: false
+  lmdb: false
+  msgpackr-extract: false
+  unrs-resolver: false
+minimumReleaseAgeExclude:
+  - '@typescript-eslint/eslint-plugin@8.69.0'
+  - '@typescript-eslint/parser@8.69.0'
+  - '@typescript-eslint/project-service@8.69.0'
+  - '@typescript-eslint/scope-manager@8.69.0'
+  - '@typescript-eslint/tsconfig-utils@8.69.0'
+  - '@typescript-eslint/type-utils@8.69.0'
+  - '@typescript-eslint/types@8.69.0'
+  - '@typescript-eslint/typescript-estree@8.69.0'
+  - '@typescript-eslint/utils@8.69.0'
+  - '@typescript-eslint/visitor-keys@8.69.0'
+  - eslint-plugin-jsdoc@64.3.3
+  - typescript-eslint@8.69.0
+  - '@delon/abc@22.0.0-next.1'
+  - '@delon/acl@22.0.0-next.1'
+  - '@delon/auth@22.0.0-next.1'
+  - '@delon/cache@22.0.0-next.1'
+  - '@delon/chart@22.0.0-next.1'
+  - '@delon/form@22.0.0-next.1'
+  - '@delon/mock@22.0.0-next.1'
+  - '@delon/testing@22.0.0-next.1'
+  - '@delon/theme@22.0.0-next.1'
+  - '@delon/util@22.0.0-next.1'
+  - ng-alain@22.0.0-next.1

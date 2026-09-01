@@ -3,10 +3,10 @@
     <nz-card [nzTitle]="'app.monitor.trading-activity' | i18n" [nzBordered]="false" class="mb-lg">
       <div nz-row>
         <div nz-col nzXs="24" nzSm="12" nzMd="6">
-          <number-info [subTitle]="'app.monitor.total-transactions' | i18n" [total]="'124,543,233'" suffix="元" />
+          <number-info [subTitle]="'app.monitor.total-transactions' | i18n" total="124,543,233" suffix="元" />
         </div>
         <div nz-col nzXs="24" nzSm="12" nzMd="6">
-          <number-info [subTitle]="'app.monitor.sales-target' | i18n" [total]="'92%'" />
+          <number-info [subTitle]="'app.monitor.sales-target' | i18n" total="92%" />
         </div>
         <div nz-col nzXs="24" nzSm="12" nzMd="6">
           <number-info [subTitle]="'app.monitor.remaining-time' | i18n" [total]="lastTotalTime">

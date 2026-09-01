@@ -2,7 +2,7 @@
   <nz-tabs [nzAnimated]="false" class="tabs" (nzSelectChange)="switch($event)">
     <nz-tab [nzTitle]="'app.login.tab-login-credentials' | i18n">
       @if (error) {
-        <nz-alert [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg" />
+        <nz-alert nzType="error" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg" />
       }
       <nz-form-item>
         <nz-form-control nzErrorTip="Please enter mobile number, muse be: admin or user">

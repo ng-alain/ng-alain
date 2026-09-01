@@ -15,6 +15,7 @@ import {
   AlainI18nBaseService
 } from '@delon/theme';
 import { enUS as dfEn, zhCN as dfZhCn, zhTW as dfZhTw } from 'date-fns/locale';
+import { NzDateAdapter } from 'ng-zorro-antd/core/time';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { en_US as zorroEnUS, NzI18nService, zh_CN as zorroZhCN, zh_TW as zorroZhTW } from 'ng-zorro-antd/i18n';
 import { Observable } from 'rxjs';
@@ -61,6 +62,7 @@ export class I18NService extends AlainI18nBaseService {
   private readonly http = inject(_HttpClient);
   private readonly settings = inject(SettingsService);
   private readonly nzI18nService = inject(NzI18nService);
+  private readonly nzDataAdapter = inject(NzDateAdapter);
   private readonly delonLocaleService = inject(DelonLocaleService);
   private readonly platform = inject(Platform);
 
@@ -101,7 +103,7 @@ export class I18NService extends AlainI18nBaseService {
     const item = LANGS[lang];
     registerLocaleData(item.ng);
     this.nzI18nService.setLocale(item.zorro);
-    this.nzI18nService.setDateLocale(item.date);
+    this.nzDataAdapter.setLocale(item.date);
     this.delonLocaleService.setLocale(item.delon);
     this._currentLang = lang;
 

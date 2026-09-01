@@ -1,4 +1,4 @@
-<nz-result nzStatus="success" [nzTitle]="'操作成功'" nzSubTitle="预计两小时内到账">
+<nz-result nzStatus="success" nzTitle="操作成功" nzSubTitle="预计两小时内到账">
   <div nz-result-extra>
     <div sv-container col="1" labelWidth="150" class="mb-lg">
       <sv label="付款账户">{{ item.pay_account }}</sv>
@@ -9,7 +9,7 @@
         元
       </sv>
     </div>
-    <button nz-button (click)="item.again()" [nzType]="'primary'">再转一笔</button>
+    <button nz-button (click)="item.again()" nzType="primary">再转一笔</button>
     <button nz-button class="ml-sm">查看账单</button>
   </div>
 </nz-result>
