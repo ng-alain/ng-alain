@@ -28,12 +28,11 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
       - name: Comment on github
         if: github.event.number
         run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
       - name: Install node modules
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
       - name: Build
         run: ./scripts/_ci/deploy-pipelines.sh
       - name: 'Deploy Site'
@@ -60,12 +59,11 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
       - name: Comment on github
         if: github.event.number
         run: node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
       - name: Install node modules
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
       - name: Build
         run: ./scripts/_ci/deploy-pipelines.sh -day
       - name: 'Deploy Site'
@@ -92,9 +90,8 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
       - name: Install node modules
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
       - name: Check code lint
         run: pnpm run lint
 
@@ -106,8 +103,7 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install --no-frozen-lockfile
       - run: npx playwright install chromium-headless-shell
       - run: pnpm run test-coverage
       - uses: codecov/codecov-action@v7

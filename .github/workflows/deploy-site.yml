@@ -16,10 +16,9 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
 
       - name: Install node modules
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: build
         shell: bash
