@@ -1,10 +1,20 @@
 publicHoistPattern:
+  - '@antv/data-set'
   - '@antv/g2'
-  - 'jszip'
-  - 'ngx-countdown'
+  - 'echarts'
+  - 'ajv'
+  - 'ajv-formats'
   - '@faker-js/faker'
   - 'date-fns'
   - '@ant-design/icons-angular'
+  - 'isutf8'
+  - 'file-saver'
+  - 'jszip'
+  - 'plyr'
+  - '@github/hotkey'
+  - 'ngx-countdown'
+  - 'extend'
+
 allowBuilds:
   '@parcel/watcher': false
   core-js: false
