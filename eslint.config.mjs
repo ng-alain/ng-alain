@@ -1,12 +1,13 @@
 // @ts-check
 import { defineConfig } from 'eslint/config';
 import eslint from '@eslint/js';
+import markdown from '@eslint/markdown';
 import tseslint from 'typescript-eslint';
 import angular from 'angular-eslint';
 
 import jsdoc from 'eslint-plugin-jsdoc';
 import prettier from 'eslint-plugin-prettier';
-import * as importPlugin from 'eslint-plugin-import';
+import importPlugin from 'eslint-plugin-import-x';
 import unusedImports from 'eslint-plugin-unused-imports';
 
 export default defineConfig(
@@ -28,7 +29,7 @@ export default defineConfig(
     },
     plugins: {
       jsdoc,
-      import: importPlugin,
+      'import-x': importPlugin,
       prettier,
       'unused-imports': unusedImports
     },
@@ -69,6 +70,9 @@ export default defineConfig(
         'off',
         {
           types: {
+            Object: {
+              message: 'Use {} instead.'
+            },
             String: {
               message: 'Use string instead.'
             },
@@ -84,10 +88,43 @@ export default defineConfig(
           }
         }
       ],
-      'import/no-duplicates': 'error',
-      'import/no-unused-modules': 'error',
-      'import/no-unassigned-import': 'error',
-      'import/order': [
+      '@typescript-eslint/consistent-type-definitions': 'error',
+      '@typescript-eslint/explicit-member-accessibility': [
+        'off',
+        {
+          accessibility: 'explicit'
+        }
+      ],
+      '@typescript-eslint/no-explicit-any': [
+        'off',
+        {
+          ignoreRestArgs: true
+        }
+      ],
+      '@typescript-eslint/no-floating-promises': 'off',
+      '@typescript-eslint/no-for-in-array': 'error',
+      '@typescript-eslint/no-inferrable-types': [
+        'error',
+        {
+          ignoreParameters: true,
+          ignoreProperties: true
+        }
+      ],
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-this-alias': 'error',
+      '@typescript-eslint/naming-convention': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
+      '@typescript-eslint/explicit-function-return-type': [
+        'error',
+        {
+          allowExpressions: true,
+          allowConciseArrowFunctionExpressionsStartingWithVoid: true
+        }
+      ],
+      'prefer-arrow/prefer-arrow-functions': 'off',
+      'import-x/no-duplicates': 'error',
+      'import-x/no-unassigned-import': 'error',
+      'import-x/order': [
         'error',
         {
           alphabetize: { order: 'asc', caseInsensitive: false },
@@ -97,19 +134,26 @@ export default defineConfig(
           pathGroupsExcludedImportTypes: []
         }
       ],
-      '@typescript-eslint/no-this-alias': 'error',
-      '@typescript-eslint/member-ordering': 'off',
+      'no-bitwise': 'off',
+      'no-duplicate-imports': 'error',
+      'no-invalid-this': 'off',
       'no-irregular-whitespace': 'error',
+      'no-magic-numbers': 'off',
       'no-multiple-empty-lines': 'error',
+      'no-redeclare': 'off',
+      'no-underscore-dangle': 'off',
       'no-sparse-arrays': 'error',
+      'no-template-curly-in-string': 'off',
       'prefer-object-spread': 'error',
       'prefer-template': 'error',
+      yoda: 'error',
+      '@typescript-eslint/member-ordering': 'off',
+      'no-shadow': 'off',
       'prefer-const': 'off',
       'max-len': 'off',
-      '@typescript-eslint/no-deprecated': 'warn',
-      "no-empty-function": "off",
+      'no-empty': 'off',
       '@typescript-eslint/no-empty-function': 'off',
-      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-deprecated': 'warn',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
@@ -122,7 +166,7 @@ export default defineConfig(
   {
     files: ['**/*.html'],
     plugins: {
-      prettier,
+      prettier
     },
     extends: [
       ...angular.configs.templateRecommended
@@ -139,8 +183,25 @@ export default defineConfig(
           usePrettierrc: true
         }
       ],
-      "@angular-eslint/template/eqeqeq": "off",
-      "@angular-eslint/template/prefer-self-closing-tags": "error"
+      '@angular-eslint/template/prefer-self-closing-tags': 'error',
+      '@angular-eslint/template/prefer-at-empty': 'error',
+      '@angular-eslint/template/prefer-static-string-properties': 'error',
+      '@angular-eslint/template/prefer-contextual-for-variables': 'error',
+      '@angular-eslint/template/eqeqeq': 'off'
+    }
+  },
+  {
+    files: ['**/*.md'],
+    plugins: {
+      prettier,
+      markdown
+    },
+    extends: [markdown.configs.recommended],
+    rules: {
+      'prettier/prettier': 'error',
+      'markdown/no-missing-label-refs': 'off',
+      'markdown/no-unused-definitions': 'off',
+      'markdown/no-duplicate-definitions': 'off'
     }
   }
 );

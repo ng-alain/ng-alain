@@ -1,3 +1,4 @@
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { AsyncPipe, JsonPipe, NgTemplateOutlet } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet, RouterLink } from '@angular/router';
@@ -12,6 +13,7 @@ export const SHARED_IMPORTS = [
   RouterLink,
   RouterOutlet,
   NgTemplateOutlet,
+  CdkTextareaAutosize,
   I18nPipe,
   JsonPipe,
   DatePipe,

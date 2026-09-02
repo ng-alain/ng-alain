@@ -20,8 +20,8 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     </div>
     <nz-dropdown-menu #iconMenu="nzDropdownMenu">
       <div nz-menu class="wd-xl animated jello">
-        <nz-spin [nzSpinning]="loading()" [nzTip]="'正在读取数据...'">
-          <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="app-icons">
+        <nz-spin [nzSpinning]="loading()" nzTip="正在读取数据...">
+          <div nz-row nzJustify="center" nzAlign="middle" class="app-icons">
             <div nz-col [nzSpan]="6">
               <nz-icon nzType="calendar" class="bg-error text-white" />
               <small>Calendar</small>

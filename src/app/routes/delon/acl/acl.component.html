@@ -11,8 +11,8 @@
   <div nz-col [nzSpan]="24">
     <nz-card nzTitle="按钮粒度">
       ACL原始数据：{{ data | json }}
-      <button nz-button [acl]="'role-a'">role-a</button>
-      <button nz-button [acl]="'role-b'" class="ml-sm">role-b</button>
+      <button nz-button acl="role-a">role-a</button>
+      <button nz-button acl="role-b" class="ml-sm">role-b</button>
     </nz-card>
   </div>
 </div>

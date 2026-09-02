@@ -22,13 +22,13 @@
     <h3 class="flex-1 text-lg">标准列表</h3>
     <div>
       <nz-radio-group [(ngModel)]="q.status" class="mr-md">
-        <label nz-radio-button [nzValue]="'all'">
+        <label nz-radio-button nzValue="all">
           <span>全部</span>
         </label>
-        <label nz-radio-button [nzValue]="'progress'">
+        <label nz-radio-button nzValue="progress">
           <span>进行中</span>
         </label>
-        <label nz-radio-button [nzValue]="'waiting'">
+        <label nz-radio-button nzValue="waiting">
           <span>等待中</span>
         </label>
       </nz-radio-group>
@@ -37,7 +37,7 @@
       </nz-input-search>
     </div>
   </div>
-  <button nz-button (click)="openEdit()" [nzType]="'dashed'" nzBlock class="mb-sm">
+  <button nz-button (click)="openEdit()" nzType="dashed" nzBlock class="mb-sm">
     <nz-icon nzType="plus" />
     <span>添加</span>
   </button>
@@ -64,7 +64,7 @@
             <a href="{{ item.href }}" target="_blank">{{ item.title }}</a>
           </ng-template>
           <ng-template #nzAvatar>
-            <nz-avatar [nzSrc]="item.logo" nzSize="large" [nzShape]="'square'" />
+            <nz-avatar [nzSrc]="item.logo" nzSize="large" nzShape="square" />
           </ng-template>
         </nz-list-item-meta>
         <ng-template #nzContent>

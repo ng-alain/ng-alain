@@ -14,7 +14,9 @@
               nz-input
               [(ngModel)]="user.profile"
               name="profile"
-              [nzAutosize]="{ minRows: 4, maxRows: 10 }"
+              cdkTextareaAutosize
+              [cdkAutosizeMinRows]="4"
+              [cdkAutosizeMaxRows]="10"
               placeholder="个人简介"
             ></textarea>
           </se>

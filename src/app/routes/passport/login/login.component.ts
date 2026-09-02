@@ -151,7 +151,7 @@ export class UserLoginComponent implements OnDestroy {
 
   open(type: string, openType: SocialOpenType = 'href'): void {
     let url = ``;
-    let callback = ``;
+    let callback: string;
     if (environment.production) {
       callback = `https://ng-alain.github.io/ng-alain/#/passport/callback/${type}`;
     } else {

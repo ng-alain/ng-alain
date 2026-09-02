@@ -23,15 +23,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
       - name: Comment on github
         if: github.event.number
         run: node ./scripts/_ci/github-comment.js "RELEASE" "[Using release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
       - name: Install node modules
-        run: yarn install
+        run: pnpm install --no-frozen-lockfile
       - name: Build
         run: ./scripts/_ci/deploy-pipelines.sh
       - name: 'Deploy Site'
@@ -53,15 +54,16 @@ jobs:
   build-day:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
       - name: Comment on github
         if: github.event.number
         run: node ./scripts/_ci/github-comment.js "RELEASE_DAY" "[Using day release @delon, Preview Preparing...](https://github.com/ng-alain/ng-alain/actions/runs/${{ github.run_id }})"
       - name: Install node modules
-        run: yarn install
+        run: pnpm install --no-frozen-lockfile
       - name: Build
         run: ./scripts/_ci/deploy-pipelines.sh -day
       - name: 'Deploy Site'
@@ -83,26 +85,28 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
       - name: Install node modules
-        run: yarn install
+        run: pnpm install --no-frozen-lockfile
       - name: Check code lint
-        run: yarn run lint
+        run: pnpm run lint
 
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
-      - run: yarn install
+      - run: pnpm install --no-frozen-lockfile
       - run: npx playwright install chromium-headless-shell
-      - run: yarn test-coverage
-      - uses: codecov/codecov-action@v6
+      - run: pnpm run test-coverage
+      - uses: codecov/codecov-action@v7
         with:
           file: coverage/ng-alain/lcov.info
           flags: unit

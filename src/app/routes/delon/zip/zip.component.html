@@ -17,7 +17,7 @@
 }
 @if (instance) {
   <nz-card nzTitle="压缩">
-    <button nz-button (click)="data.push({})" [nzType]="'primary'">new</button>
+    <button nz-button (click)="data.push({})" nzType="primary">new</button>
     <button nz-button (click)="download()" class="ml-sm">download</button>
     <nz-table [nzData]="data" [nzFrontPagination]="false" [nzShowPagination]="false" class="mt-sm">
       <thead>

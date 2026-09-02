@@ -59,7 +59,7 @@
             <nz-card-meta [nzTitle]="noticeTitle" [nzDescription]="item.description">
               <ng-template #noticeTitle>
                 <div class="card-title">
-                  <nz-avatar [nzSrc]="item.logo" [nzSize]="'small'" />
+                  <nz-avatar [nzSrc]="item.logo" nzSize="small" />
                   <a (click)="msg.info('to' + item.href)">{{ item.title }}</a>
                 </div>
               </ng-template>
@@ -101,7 +101,7 @@
         @for (item of links; track $index) {
           <a (click)="msg.success(item.title)">{{ item.title }}</a>
         }
-        <button nz-button (click)="links.push({ title: 'new titel', href: 'href' })" [nzType]="'dashed'" [nzSize]="'small'">
+        <button nz-button (click)="links.push({ title: 'new titel', href: 'href' })" nzType="dashed" nzSize="small">
           <nz-icon nzType="plus" />
           <span>添加</span>
         </button>
@@ -118,7 +118,7 @@
           @for (i of members; track $index) {
             <div nz-col [nzSpan]="12">
               <a (click)="msg.success(i.title)">
-                <nz-avatar [nzSrc]="i.logo" [nzSize]="'small'" />
+                <nz-avatar [nzSrc]="i.logo" nzSize="small" />
                 <span class="member">{{ i.title }}</span>
               </a>
             </div>
