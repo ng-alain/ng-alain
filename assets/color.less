@@ -116,7 +116,6 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 .ant-picker-calendar-full .ant-picker-panel .ant-picker-cell-selected .ant-picker-calendar-date .ant-picker-calendar-date-value, .ant-picker-calendar-full .ant-picker-panel .ant-picker-cell-selected:hover .ant-picker-calendar-date .ant-picker-calendar-date-value, .ant-picker-calendar-full .ant-picker-panel .ant-picker-cell-selected .ant-picker-calendar-date-today .ant-picker-calendar-date-value, .ant-picker-calendar-full .ant-picker-panel .ant-picker-cell-selected:hover .ant-picker-calendar-date-today .ant-picker-calendar-date-value {color: @primary-color;}
 .ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date-today {border-color: @primary-color;}
 .ant-result-info .ant-result-icon > .anticon {color: @primary-color;}
-.ant-cron-expression-input-group-focus {border-color: @primary-color;}
 .ant-cron-expression-label-foucs {color: @primary-color;}
 .ant-color-picker-trigger:hover {border-color: @primary-color;}
 .ant-hash-code-primary {background-color: @primary-color;}
@@ -312,14 +311,14 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
   &-placement-topLeft > &-arrow,
   &-placement-topRight > &-arrow {bottom: @arrow-distance;transform: translateY(100%) rotate(180deg);}
   &-placement-top > &-arrow {left: 50%;transform: translateX(-50%) translateY(100%) rotate(180deg);}
-  &-placement-topLeft > &-arrow {left: @arrow-offset-horizontal;}
-  &-placement-topRight > &-arrow {right: @arrow-offset-horizontal;}
+  &-placement-topLeft > &-arrow {inset-inline-start: @arrow-offset-horizontal;}
+  &-placement-topRight > &-arrow {inset-inline-end: @arrow-offset-horizontal;}
   &-placement-bottom > &-arrow,
   &-placement-bottomLeft > &-arrow,
   &-placement-bottomRight > &-arrow {top: @arrow-distance;transform: translateY(-100%);}
   &-placement-bottom > &-arrow {left: 50%;transform: translateX(-50%) translateY(-100%);}
-  &-placement-bottomLeft > &-arrow {left: @arrow-offset-horizontal;}
-  &-placement-bottomRight > &-arrow {right: @arrow-offset-horizontal;}
+  &-placement-bottomLeft > &-arrow {inset-inline-start: @arrow-offset-horizontal;}
+  &-placement-bottomRight > &-arrow {inset-inline-end: @arrow-offset-horizontal;}
   &-placement-left > &-arrow,
   &-placement-leftTop > &-arrow,
   &-placement-leftBottom > &-arrow {right: @arrow-distance;transform: translateX(100%) rotate(90deg);}
@@ -334,20 +333,15 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
   &-placement-rightBottom > &-arrow {bottom: @arrow-offset-horizontal;}
 }
 .compact-item-border-radius(@prefix-cls, @bordered-item-cls: null) {& when (@bordered-item-cls = null) {&-item:not(&-first-item):not(&-last-item).@{prefix-cls} {border-radius: 0;}
-    &-item.@{prefix-cls}&-first-item:not(&-last-item):not(&-item-rtl) {border-top-right-radius: 0;border-bottom-right-radius: 0;}
-    &-item.@{prefix-cls}&-last-item:not(&-first-item):not(&-item-rtl) {border-top-left-radius: 0;border-bottom-left-radius: 0;}
-    &-item.@{prefix-cls}&-item-rtl&-first-item:not(&-last-item) {border-top-left-radius: 0;border-bottom-left-radius: 0;}
-    &-item.@{prefix-cls}&-item-rtl&-last-item:not(&-first-item) {border-top-right-radius: 0;border-bottom-right-radius: 0;}
+    &-item.@{prefix-cls}&-first-item:not(&-last-item) {border-start-end-radius: 0;border-end-end-radius: 0;}
+    &-item.@{prefix-cls}&-last-item:not(&-first-item) {border-start-start-radius: 0;border-end-start-radius: 0;}
   }
   & when (not (@bordered-item-cls = null)) {&-item:not(&-first-item):not(&-last-item).@{prefix-cls} .@{bordered-item-cls} {border-radius: 0;}
-    &-item&-first-item.@{prefix-cls}:not(&-last-item):not(&-item-rtl) .@{bordered-item-cls} {border-top-right-radius: 0;border-bottom-right-radius: 0;}
-    &-item&-last-item.@{prefix-cls}:not(&-first-item):not(&-item-rtl) .@{bordered-item-cls} {border-top-left-radius: 0;border-bottom-left-radius: 0;}
-    &-item.@{prefix-cls}&-first-item&-item-rtl:not(&-last-item) .@{bordered-item-cls} {border-top-left-radius: 0;border-bottom-left-radius: 0;}
-    &-item.@{prefix-cls}&-last-item&-item-rtl:not(&-first-item) .@{bordered-item-cls} {border-top-right-radius: 0;border-bottom-right-radius: 0;}
+    &-item&-first-item.@{prefix-cls}:not(&-last-item) .@{bordered-item-cls} {border-start-end-radius: 0;border-end-end-radius: 0;}
+    &-item&-last-item.@{prefix-cls}:not(&-first-item) .@{bordered-item-cls} {border-start-start-radius: 0;border-end-start-radius: 0;}
   }
 }
-.compact-item-border(@prefix-cls, @bordered-item-cls: null, @special-open-cls) {& when (@bordered-item-cls = null) {&-item:not(&-last-item):not(&-item-rtl) {margin-right: -@border-width-base;}
-    &-item:not(&-last-item)&-item-rtl {margin-left: -@border-width-base;}
+.compact-item-border(@prefix-cls, @bordered-item-cls: null, @special-open-cls) {& when (@bordered-item-cls = null) {&-item:not(&-last-item) {margin-inline-end: -@border-width-base;}
     &-item {&:hover,
       &:focus,
       &:active {z-index: 2;}
@@ -356,8 +350,7 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
       &[disabled] {z-index: 0;}
     }
   }
-  & when (not (@bordered-item-cls = null)) {&-item:not(&-last-item) {margin-right: -@border-width-base;&.@{prefix-cls}-compact-item-rtl {margin-right: 0;margin-left: -@border-width-base;}
-    }
+  & when (not (@bordered-item-cls = null)) {&-item:not(&-last-item) {margin-inline-end: -@border-width-base;}
     &-item {&:hover,
       &:focus,
       &:active {> * {z-index: 2;}
@@ -935,9 +928,8 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @cascader-dropdown-line-height: @dropdown-line-height;
 @anchor-bg: transparent;
 @anchor-border-color: @border-color-split;
-@anchor-link-top: 4px;
-@anchor-link-left: 16px;
-@anchor-link-padding: @anchor-link-top 0 @anchor-link-top @anchor-link-left;
+@anchor-link-padding-block: 4px;
+@anchor-link-padding-inline-start: 16px;
 @tooltip-max-width: 250px;
 @tooltip-color: #fff;
 @tooltip-bg: rgba(0, 0, 0, 0.75);
@@ -1158,7 +1150,6 @@ a.ant-typography, .ant-typography a {color: @primary-color;}
 @tabs-bar-margin: 0 0 @margin-md 0;
 @tabs-horizontal-gutter: 32px;
 @tabs-horizontal-margin: 0 0 0 @tabs-horizontal-gutter;
-@tabs-horizontal-margin-rtl: 0 0 0 32px;
 @tabs-horizontal-padding: @padding-sm 0;
 @tabs-horizontal-padding-lg: @padding-md 0;
 @tabs-horizontal-padding-sm: @padding-xs 0;
