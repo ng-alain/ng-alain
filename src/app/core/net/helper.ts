@@ -1,5 +1,5 @@
 import { HttpHeaders, HttpResponseBase } from '@angular/common/http';
-import { Injector, inject } from '@angular/core';
+import { Injector, inject, runInInjectionContext } from '@angular/core';
 import { toLogin as toLoginAuth } from '@delon/auth';
 import { ALAIN_I18N_TOKEN } from '@delon/theme';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
@@ -29,7 +29,9 @@ export const CODEMESSAGE: Record<number, string> = {
 
 export function toLogin(injector: Injector): void {
   injector.get(NzNotificationService).error(`未登录或登录已过期，请重新登录。`, ``);
-  toLoginAuth();
+  runInInjectionContext(injector, () => {
+    toLoginAuth();
+  });
 }
 
 export function getAdditionalHeaders(headers?: HttpHeaders): Record<string, string> {
