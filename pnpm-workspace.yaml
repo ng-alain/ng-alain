@@ -21,6 +21,7 @@ allowBuilds:
   esbuild: false
   lmdb: false
   msgpackr-extract: false
+  plyr: false
   unrs-resolver: false
 minimumReleaseAgeExclude:
   - '@typescript-eslint/eslint-plugin@8.69.0'
